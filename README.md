@@ -15,7 +15,7 @@ myImport thingie
 * 1) Restart all your Tasmota devices
 * 2) Upgrade Selected Tasmota Devices (optional)
 * 3) Upgrade all your Tasmota Devices
-     * [Tasmota_EZ-Buttons.yaml](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota%20EZ-Buttons.md)
+     * [Tasmota_EZ-Buttons.yaml](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.md)
      * [Tasmota_EZ-Buttons.yaml](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml)
 
 #### Another Blueprint goes here
