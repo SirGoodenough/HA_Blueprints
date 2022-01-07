@@ -15,5 +15,5 @@ myImport thingie
 * 1) Restart all your Tasmota devices
 * 2) Upgrade Selected Tasmota Devices (optional)
 * 3) Upgrade all your Tasmota Devices
-* * link to file.yaml
-* * link to file.md
+     * [Tasmota_EZ-Buttons.yaml](Scripts/Tasmota_EZ-Buttons.yaml)
+     * [Tasmota_EZ-Buttons.yaml](Scripts/Tasmota_EZ-Buttons.md)

@@ -1,0 +1,95 @@
+blueprint:
+  name: Tasmota EZ-Button for Update and Reset All 2022-01-06
+  description: "This will create 3 buttons to help you 
+  #1: Press a button to restart ALL Tasmota Devices (Also to use during 
+  Home Assistant Restart to get all current State and Sensor readings)  
+
+  #2: Press a button to update a couple of Tasmota devices to test that the 
+  new version will not break something,  
+
+  (Think of these units as your canary's in the coal mine.) 
+  #3: Press a button to update ALL Tasmota devices that you push 
+  when a new release happens.  
+
+  There are a few Requirements to allow this to work.  
+
+  A: You need the Home Assistant Tasmota Integration to be functional on your system
+  and HA needs to be able to see and interact with the devices.  
+  This Blueprint does not do that for you.  
+
+  B: sonoffs to tasmotas talk
+
+  C: Your Home Assistant Instance needs to be or be communicating with an MQTT Broker.  
+  But this is easy because in order to have A: running, MQTT is a requirement for A:.  
+
+  D: Your Tasmota devices need to be updated to the same 'breaking change' generation 
+  as the Released version of Tasmota for this to be able to update.  
+  Again this is easy because in order to have A: running, 
+  Tasmota V9.2 minimum is a requirement for A:.  
+  Tasmota has had breaking changes in it's history.  Therefore you should never 
+  stray from the upgrade path listed in the Tasmota Docs.  
+  To upgrade your Tasmota firmware, you need to follow the path, 
+  or risk bad things happening:  
+  v1.0.11 > v3.9.22 > v4.2.0 > v5.14.0 > v6.7.1 > v7.2.0 > v8.5.1 > v9.1 > Current release  
+  That means you need to manually update your firmware up to 9.1 minimum 
+  for these buttons to work going forward.  
+  "
+  #source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297
+  domain: script
+  homeassistant:
+    min_version: 2021.12.0
+  input:
+    ez_update_tasmota:
+      name: EZ Update Button Tasmota
+      description: "This is the name of the button you want 
+      to use for updating ALL your Tasmota instances.  
+      It will use the built-in groupTopics in Tasmota to send the update command 
+      to all devices.  
+      Note: in the tasmota console, the default setting for: 
+      'OTAUrl' is the current release location for the latest Tasmota Binary.  
+      With devices that were upgraded from old firmware versions, you may have to 
+      go to the Tasmota Console upgrade section and type this into the Ota Url field: 
+      'http://ota.tasmota.com/tasmota/release/tasmota.bin.gz'.  
+      If you have a downloaded copy of a firmware file, you can change this value 
+      to that path instead (Advanced Users).  
+      'https://tasmota.github.io/docs/Upgrading/'"
+      default: "EZ Update Button Tasmota"
+      selector:
+        text:
+    ez_canary_tasmota:
+      name: EZ Canary Button Tasmota
+      description: "This is the name of the button you want 
+      to use for the test new version select sample.  I suggest use 5 or less 
+      Tasmota devices for this list.  
+      Leave this as 'not_selected' if you do not plan on using this feature"
+      default: "not_selected"
+      selector:
+        text:
+    ez_canary_grouptopic_tasmota:
+      name: The GroupTopic name for the Devices getting the EZ Canary Button command.
+      description: "This is the name you assigned to the GroupTopics in the devices 
+      you chose as the first ones to recieve a firmware update.  
+      This needs to be set-up by you in the Tasmota Console of the devices themselves.  
+      Leave this blank if you are not using this feature.  The button will be created, 
+      but it won't do anything."
+      default: "firsts"
+      selector:
+        text:
+    ez_reset_tasmota:
+      name: EZ Reset Button Tasmota
+      description: "This is the name of the button you want 
+      to use for resetting all Tasmota devices. 
+      Use this if you are having wierd problems and want to 
+      restart them with a fresh boot.  
+      I also suggest you add a 'Button Press' service for this button 
+      to execure a minute or so after Home Assistant restarts.  
+      It will update all the devices and pull fresh sensor and 
+      state readings into HA so things are working right away when you start."
+      default: "EZ Reset Button Tasmota"
+      selector:
+        text:
+mode: single
+max_exceeded: silent
+sequence:
+  service: script.media_player_bathroom_silence
+  
