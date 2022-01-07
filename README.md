@@ -5,8 +5,8 @@ These are the Blueprints I have created and are sharing with the community.  I h
 
 Here is a list of each blueprint, the description file for it, a quick description, and an import link for import to home assistant...
 
-#### Scripts:
-### Tasmota EZ Button Blueprint
+### Scripts:
+#### Tasmota EZ Button Blueprint
 
 This will create 3 buttons to help you:
 
