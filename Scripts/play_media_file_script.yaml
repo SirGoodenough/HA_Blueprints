@@ -4,7 +4,7 @@ blueprint:
       long list of YAML entries but keep the main script or automation clean. 
       All that is required there would be a simple line like:  
         '- service: script.media_player_doorbell_sound'"
-  source_url: https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml
   domain: script
   homeassistant:
     min_version: 2021.11.0
