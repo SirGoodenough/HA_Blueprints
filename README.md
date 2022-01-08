@@ -5,12 +5,12 @@ These are the Blueprints I have created and are sharing with the community.  I h
 
 Here is a list of each blueprint, the description file for it, a quick description, and an import link for import to home assistant...
 
-### Scripts:
+## Scripts:
 #### Tasmota EZ Button Blueprint
 
-This will create 3 buttons to help you:
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
 
-myImport thingie
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
 
 * 1) Restart all your Tasmota devices
 * 2) Upgrade Selected Tasmota Devices (optional)
@@ -20,6 +20,8 @@ myImport thingie
 
 #### Another Blueprint goes here
 
+## Automations:
+#### An Automation Blueprint goes here
 
 
      
