@@ -2,7 +2,7 @@ blueprint:
   name: TTS Google Translate Say Message_2021-12-24
   description: A script that uses tts google_translate_say to send a message to a google speaker
   #  Community link for blueprint:  https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199
-  source_url: https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_google_translate_say_message_script.yaml
   domain: script
   homeassistant:
     min_version: 2021.11.0

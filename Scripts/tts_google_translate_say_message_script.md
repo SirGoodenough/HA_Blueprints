@@ -1,6 +1,6 @@
 ## :arrow_down: Get Started
 
-Updates will be published on my [GIST repository ](https://gist.github.com/SirGoodenough) with the rest of my Home Assistant Blueprint collection.
+Updates will be published on my [GIT repository ](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
 ### Option 1: My Home Assistant
 
@@ -11,9 +11,9 @@ Click the badge to import this Blueprint
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
-```https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b```
+```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_google_translate_say_message_script.yaml```
 
-https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_google_translate_say_message_script.yaml
 
 ## :page_facing_up: Description
 
@@ -31,8 +31,8 @@ You can import the script blueprint via the button above or manually as below, h
 To import this Blueprint: 
 >  - Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 >  - Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
->  - In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GIST on GitHub:
->  ◦   ```https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b```
+>  - In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public REPO on GitHub:
+>  ◦   ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_google_translate_say_message_script.yaml```
 
 ### Home Assistant
 Once installed, go into blueprints and use this to add a script with your variables.  Answer the required questions and you can change or ignore the ones with defaults.  Remember the name you typed in.  For this example, we will suppose you named the script: 
