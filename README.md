@@ -20,13 +20,34 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 
 #### Another Blueprint goes here
 
-     🛌🏾        🧑🏿‍🚒         🙈 🙉 🙊         🎲          🦠
+* description: A script that uses TTS google_translate_say to send a message to a google speaker  
+    https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
+
+    source_url: https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b 
+* description: A script that uses TTS-cloud via Nabu-Casa to send a message to a google speaker 
+    https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
+
+    source_url: https://gist.github.com/SirGoodenough/ed99bd75a65088f4a41c46d1ce19f103 
+* description: This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
+    https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988 
+
 
 ## Automations:
 #### An Automation Blueprint goes here
 
-     🧑🏻‍🍳        👨🏻‍🎓        🧚🏻‍♀️        👨🏻‍🦼       🕵🏼         🥷🏼
+* description: This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature. 
+    https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419 
 
+    source_url: (https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728 
+* description: This will accept any 5 button presses or binary sensor detections and use them to preform an action.  RE open a lock, or whatever.
+    https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385 
+
+    source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297 
+* description: This uses tts.cloud_say from Nabu-Casa to tell you a door is open too long and a door has been closed.  
+    https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046 
+
+    source_url: https://gist.github.com/SirGoodenough/ed99bd75a65088f4a41c46d1ce19f103 
+    
 
 ### Contact Links or see my other work:
 
