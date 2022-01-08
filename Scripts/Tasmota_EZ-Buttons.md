@@ -36,6 +36,7 @@ Click the badge to import this Blueprint
 
 Copy this link if you want to import the blueprint in your installation.
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml```
+
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
 
 ## :page_facing_up: Description
@@ -96,7 +97,8 @@ Example automation:
     - alias: Push the Tasmota Reset Button
     - service: button.press
       target:
-        entity_id: button.ez_update_button_tasmota```
+        entity_id: button.ez_update_button_tasmota
+```
 
 ## Changelog
 
