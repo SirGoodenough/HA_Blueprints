@@ -97,10 +97,10 @@ Example automation:
       event: start
   action:
     - delay: 00:00:39
-    - alias: Push the Tasmota Reset Button
+    - alias: Push the Tasmota Restart Button
     - service: button.press
       target:
-        entity_id: button.ez_update_button_tasmota
+        entity_id: button.ez_restart_button_tasmota
 ```
 
 ## Changelog
