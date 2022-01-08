@@ -12,6 +12,8 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
 
+https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
+
 * 1) Restart all your Tasmota devices
 * 2) Upgrade Selected Tasmota Devices (optional)
 * 3) Upgrade all your Tasmota Devices
