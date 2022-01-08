@@ -18,8 +18,6 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
      * [Tasmota_EZ-Buttons.yaml](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.md)
      * [Tasmota_EZ-Buttons.yaml](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml)
 
-#### Another Blueprint goes here
-
 * description: A script that uses TTS google_translate_say to send a message to a google speaker  
     https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
 
@@ -33,7 +31,6 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 
 
 ## Automations:
-#### An Automation Blueprint goes here
 
 * description: This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature. 
     https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419 
