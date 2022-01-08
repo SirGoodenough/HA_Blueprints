@@ -1,0 +1,81 @@
+blueprint:
+  name: TTS Google Translate Say Message_2021-12-24
+  description: A script that uses tts google_translate_say to send a message to a google speaker
+  #  Community link for blueprint:  https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199
+  source_url: https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b
+  domain: script
+  homeassistant:
+    min_version: 2021.11.0
+  input:
+    speaker_target:
+      name: Device(s) to speak thru
+      description: This uses google_translate to send a text message
+      selector:
+        entity:
+          domain: media_player
+    speaker_language:
+      name: Speaker Language
+      description:
+        "Check the complete list of [supported languages] for allowed values.
+        [ https://cloud.google.com/text-to-speech/docs/voices
+        The 2 letter lead acronym (example- en for english)
+        is all that is used here. The 3 letter ones do not work...]
+        This defaults to en (english)"
+      default: en
+      selector:
+        select:
+          options:
+            - af
+            - ar
+            - bg
+            - bn
+            - ca
+            - ca
+            - da
+            - de
+            - el
+            - en
+            - es
+            - fr
+            - gu
+            - hi
+            - hu
+            - id
+            - is
+            - it
+            - ja
+            - kn
+            - ko
+            - lv
+            - ml
+            - ms
+            - nb
+            - nl
+            - pa
+            - pl
+            - pt
+            - ro
+            - ru
+            - sk
+            - sr
+            - sv
+            - ta
+            - te
+            - th
+            - tr
+            - uk
+            - vi
+    announcement_message:
+      name: Spoken message
+      description: 'Type your message here:'
+      default: It matters not what I say.
+      selector:
+        text:
+          multiline: true
+mode: queued
+sequence:
+- service: tts.google_translate_say
+  data:
+    entity_id: !input 'speaker_target'
+    message: !input 'announcement_message'
+    language: !input 'speaker_language'
