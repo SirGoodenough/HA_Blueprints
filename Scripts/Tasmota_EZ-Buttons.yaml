@@ -17,7 +17,7 @@ blueprint:
 
     Press a button to update ALL Tasmota devices to the latest version.  
 
-    ## 🧿 There are a few Requirements to allow this to work. 🧿  
+    ## 🧿 There are a Requirements to allow this to work. 🧿  
 
     #### A: ✔️
 
@@ -40,6 +40,12 @@ blueprint:
     But this is easy because in order to have A: running, MQTT is a requirement for A:.  
 
     #### D: ✔️
+
+    This assumes your Tasmota Devices MQTT topic is set to the default.  
+    ```%prefix%/%topic%/```  If not you will need to edit this in a couple of 
+    places in the Blueprint to match your Tasmota topic.
+
+    #### E: ✔️
 
     Your Tasmota devices need to be updated to the same 'breaking change' generation 
     as the Released version of Tasmota for this to be able to update.  

@@ -55,6 +55,7 @@ First, let’s go over Blueprints and what they are.  Blueprints are a way to sh
 > • Home Assistant 2021.12.0 or newer because that is where the MQTT Button Entity Debuts
 > • Home Assistant Tasmota Integration installed and talking to all yout Tasmota Devices.
 > • The default GroupTopic of 'Tasmotas' is available on all your Tasmota Devices.
+> • This assumes you have left your Tasmota Devices MQTT topic set as the default.  ```%prefix%/%topic%/```  If not you will need to edit this in a couple of places in the Blueprint to match your Tasmota topic.
 > • Your Tasmota devices need to be updated to the same 'breaking change' generation as the Released version of Tasmota for this to be able to update.  Currently that is v9.1 minumum.
 
 #### Extended Information
