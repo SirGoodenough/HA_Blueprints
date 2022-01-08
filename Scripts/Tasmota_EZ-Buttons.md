@@ -35,6 +35,7 @@ Click the badge to import this Blueprint
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
+
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml```
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
@@ -46,18 +47,18 @@ First, let’s go over Blueprints and what they are.  Blueprints are a way to sh
 ### How the Blueprint works:
 
 #### To import this Blueprint: 
-• Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
-• Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
-• In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GIST on GitHub:
-  ◦   https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
+* Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
+* Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
+* In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GIST on GitHub:
+* *   https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
 
 #### To make the blueprint work it will need:
-• MQTT Broker happy and running your Tasmota Device connection to Home Assistant.
-• Home Assistant 2021.12.0 or newer because that is where the MQTT Button Entity Debuts.
-• Home Assistant Tasmota Integration installed and talking to all yout Tasmota Devices.
-• The default GroupTopic of 'Tasmotas' is available on all your Tasmota Devices.
-• This assumes you have left your Tasmota Devices MQTT topic set as the default.  ```%prefix%/%topic%/```  If not you will need to edit this in a couple of places in the Blueprint to match your Tasmota topic.
-• Your Tasmota devices need to be updated to the same 'breaking change' generation as the Released version of Tasmota for this to be able to update.  Currently that is v9.1 minumum.
+* MQTT Broker happy and running your Tasmota Device connection to Home Assistant.
+* Home Assistant 2021.12.0 or newer because that is where the MQTT Button Entity Debuts.
+* Home Assistant Tasmota Integration installed and talking to all yout Tasmota Devices.
+* The default GroupTopic of 'Tasmotas' is available on all your Tasmota Devices.
+* This assumes you have left your Tasmota Devices MQTT topic set as the default.  ```%prefix%/%topic%/```  If not you will need to edit this in a couple of places in the Blueprint to match your Tasmota topic.
+* Your Tasmota devices need to be updated to the same 'breaking change' generation as the Released version of Tasmota for this to be able to update.  Currently that is v9.1 minumum.
 
 #### Extended Information
 This implementation is exactly the implementation in the Home Assistant Docs.
@@ -132,17 +133,25 @@ Example automation:
 
 #### Contact Links or see my other work:
 What are we Fixing Today Homepage / Website:        https://www.WhatAreWeFixing.Today/
+
 Channel Link URL: (WhatAreWeFixingToday)             https://bit.ly/WhatAreWeFixingTodaysYT
+
 What are we Fixing Today Facebook page (Sir GoodEnough):         https://bit.ly/WhatAreWeFixingTodaybFB
+
 What are we Fixing Today Twitter Account (Sir GoodEnough):         https://bit.ly/WhatAreWeFixingTodayTW
+
 Discord Guild: (Sir_Goodenough#9683)                     https://discord.gg/Uhmhu3B
 
 #### If you want to support me:
 Buy me Coffee:                                        https://www.buymeacoffee.com/SirGoodenough
+
 PayPal one-off donation link:                    https://www.paypal.me/SirGoodenough
+
 Cash App \$CASHTAG:                             https://cash.me/$SirGoodenough
+
 Venmo cash link:                                      https://venmo.com/SirGoodenough 
 
-#WhatAreWeFixingToday
+#WhatAreWeFixingToday     
+
 #SirGoodEnough
   
