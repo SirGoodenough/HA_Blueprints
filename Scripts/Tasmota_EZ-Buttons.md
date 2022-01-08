@@ -71,14 +71,32 @@ To build the script:
 > 1. Click on 'Create Script'
 > 2. Add a Description so you can tell what this one is for
 > 3. Pick the names you want for your buttons or accept the defaults
-> 4. The 'ez_canary_grouptopic' selection MUST be in lower_case_chase format for this to function correctly.
+> 4. The 'ez_canary_grouptopic' selection MUST be in lower_case_chase format for this to function correctly.  Also you need to install this GroupTopic on a select number of your Tasmota Devices.  This allows you to update these first, and you can see if the update is going to work for you before pushing the Update-All Button.  What you put here has to exactly match what you put in your devices.
 > 5. The 'ez_canary' name must be changed from the default to enable this button.
 
 #### Generating the Buttons
-Once the names have been selected and you click the 'Save Script' button, you onlt need to execure the script once, and it builds the buttons.
+Once the names have been selected and you click the 'Save Script' button, you only need to execute the script once, and it builds the buttons.
 Look in your Devices list for 'Tasmota EZ Buttons'.
 [![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
 
+#### Other Ideas
+
+You can effectively use the Tasmota Reset Button to 'reload' all of your Tasmota Devices shortly after you start/restart Home Assistant.  This will give Home assistant a current look at all the states and sensors without relying on retain as it starts up.
+Example automation:
+
+```yaml
+- id: fc3ad7f5-f199-409b-99dc-fb3a0728ecd9
+  alias: Power state on HA start-up
+  initial_state: on
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay: 00:00:39
+    - alias: Push the Tasmota Reset Button
+    - service: button.press
+      target:
+        entity_id: button.ez_update_button_tasmota```
 
 ## Changelog
 
