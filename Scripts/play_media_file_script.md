@@ -25,8 +25,8 @@ First, let’s go over Blueprints and what they are.  Blueprints are a way to sh
 #### To import this Blueprint: 
 * Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 * Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
-* In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GIST on GitHub:
-    *   https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml
+* In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public REPO on GitHub:
+    *   https://github.com/SirGoodenough/HA_Blueprints
 
 #### To make the blueprint work it will need:
 > 1 or more functioning media_players
@@ -60,7 +60,7 @@ To build the script:
 
 * description: A script that uses TTS google_translate_say to send a message to a google speaker  
     https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
-    
+
     source_url: https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b 
 * description: A script that uses TTS-cloud via Nabu-Casa to send a message to a google speaker 
     https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
