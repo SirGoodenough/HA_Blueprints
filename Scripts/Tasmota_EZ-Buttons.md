@@ -5,7 +5,7 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 I was looking for a Home Assistant Related project and when chatting to Luma from the HASPOne Project a couple of days ago, he mentioned how he uses an MQTT Trick to Generate entities inside of a Blueprint.
 This spawned an idea in my head, and Voilia, we have this Blueprint.
 
-I have had these EZY buttons for quite a while on my system.  The idea of the 2 Update Buttons came from Digiblur.  Recently for 2021.12.0 the Home Assistant Team came out with buttons.  I converted my update scripts to buttons.
+I have had these EZ buttons for quite a while on my system.  The idea of the 2 Update Buttons came from Digiblur.  Recently for 2021.12.0 the Home Assistant Team came out with buttons.  I converted my update scripts to buttons.
 
 After chatting Luma, I put the 2 together, and here we have a Script Blueprint that uses MQTT Discovery to generate 3 buttons for your Tasmota Devices.
 
@@ -47,26 +47,35 @@ First, let’s go over Blueprints and what they are.  Blueprints are a way to sh
 
 #### To import this Blueprint: 
 > • Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
+
 > • Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
+
 > • In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GIST on GitHub:
+
 >  ◦   https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
 
 #### To make the blueprint work it will need:
-> • MQTT Broker happy and running your Tasmota Device connection to Home Assistant
-> • Home Assistant 2021.12.0 or newer because that is where the MQTT Button Entity Debuts
+> • MQTT Broker happy and running your Tasmota Device connection to Home Assistant.
+
+> • Home Assistant 2021.12.0 or newer because that is where the MQTT Button Entity Debuts.
+
 > • Home Assistant Tasmota Integration installed and talking to all yout Tasmota Devices.
+
 > • The default GroupTopic of 'Tasmotas' is available on all your Tasmota Devices.
+
 > • This assumes you have left your Tasmota Devices MQTT topic set as the default.  ```%prefix%/%topic%/```  If not you will need to edit this in a couple of places in the Blueprint to match your Tasmota topic.
+
 > • Your Tasmota devices need to be updated to the same 'breaking change' generation as the Released version of Tasmota for this to be able to update.  Currently that is v9.1 minumum.
 
 #### Extended Information
 This implementation is exactly the implementation in the Home Assistant Docs.
 For further information, reference the links below.
-          (https://www.home-assistant.io/integrations/button/)
-          (https://www.home-assistant.io/docs/automation/using_blueprints/)
-          (https://www.home-assistant.io/integrations/tasmota/)
-          (https://tasmota.github.io/docs/Upgrading/)
-          (https://tasmota.github.io/docs/Commands/#mqtt)
+
+>      (https://www.home-assistant.io/integrations/button/)
+>      (https://www.home-assistant.io/docs/automation/using_blueprints/)
+>      (https://www.home-assistant.io/integrations/tasmota/)
+>      (https://tasmota.github.io/docs/Upgrading/)
+>      (https://tasmota.github.io/docs/Commands/#mqtt)
 
 To build the script:  
 > 1. Click on 'Create Script'
@@ -78,6 +87,7 @@ To build the script:
 #### Generating the Buttons
 Once the names have been selected and you click the 'Save Script' button, you only need to execute the script once, and it builds the buttons.
 Look in your Devices list for 'Tasmota EZ Buttons'.
+
 [![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
 
 #### Other Ideas
