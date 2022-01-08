@@ -132,6 +132,7 @@ Example automation:
     source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
 
 #### Contact Links or see my other work:
+
 What are we Fixing Today Homepage / Website:        https://www.WhatAreWeFixing.Today/
 
 Channel Link URL: (WhatAreWeFixingToday)             https://bit.ly/WhatAreWeFixingTodaysYT
@@ -143,6 +144,7 @@ What are we Fixing Today Twitter Account (Sir GoodEnough):         https://bit.l
 Discord Guild: (Sir_Goodenough#9683)                     https://discord.gg/Uhmhu3B
 
 #### If you want to support me:
+
 Buy me Coffee:                                        https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link:                    https://www.paypal.me/SirGoodenough
