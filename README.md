@@ -17,19 +17,51 @@ https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-butto
 * 1) Restart all your Tasmota devices
 * 2) Upgrade Selected Tasmota Devices (optional)
 * 3) Upgrade all your Tasmota Devices
-     * [Tasmota_EZ-Buttons.yaml](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.md)
-     * [Tasmota_EZ-Buttons.yaml](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml)
 
-* description: A script that uses TTS google_translate_say to send a message to a google speaker  
-    https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
+ * [Tasmota_EZ-Buttons.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.md)
+ * [Tasmota_EZ-Buttons.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml)
 
-    source_url: https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b 
-* description: A script that uses TTS-cloud via Nabu-Casa to send a message to a google speaker 
-    https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
 
-    source_url: https://gist.github.com/SirGoodenough/ed99bd75a65088f4a41c46d1ce19f103 
-* description: This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
-    https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988 
+#### Play Media File Script Blueprint Blueprint
+
+ This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fplay_media_file_script.yaml)
+
+https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988
+
+ I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file.  In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function.  The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario. 
+
+ * [play_media_file_script.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.md)
+ * [play_media_file_script.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+
+
+#### TTS Cloud Message Blueprint
+
+This Script Blueprint plays a Nabu-Casa tts-cloud-say message in Home Assistant leaving the mess out of the main code.
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Ftts_cloud_message_script.yaml)
+
+https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199
+
+This version uses tts_cloud_say to send the message. This is is available only if you are a subscriber to Nabu-Casa.
+
+ * [tts_cloud_message_script.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_cloud_message_script.md)
+ * [tts_cloud_message_script.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_cloud_message_script.yaml)
+
+
+#### TTS Cloud Message Blueprint
+
+This Script Blueprint plays a Google Translate say message in Home Assistant leaving the mess out of the main code.
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Ftts_google_translate_say_message_script.yaml)
+
+https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199
+
+
+ * [tts_google_translate_say_message_script.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_google_translate_say_message_script.md)
+ * [tts_google_translate_say_message_script.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_google_translate_say_message_script.yaml)
+
 
 
 ## Automations:
