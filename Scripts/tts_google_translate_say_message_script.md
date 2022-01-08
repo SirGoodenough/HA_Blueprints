@@ -58,8 +58,7 @@ I have recently found that the !input will accept templates. Who knew, right? I 
 * **2021-08-26**: First blueprint version :tada:
 * **2021-11-20**: Changes because of release of Blueprint Script UI
 * * Add Minimum Home Assistant 2021-11-0
-* **2021-12-15**: (For Google_Translate version)
-* * Changed link to get language acronyms.  Functionally the same.
+* **2021-12-15**: Changed link to get language acronyms.  Functionally the same.
 * **2021-12-24**: Add pick list of all the available languages,
 
 ## All My Blueprints
