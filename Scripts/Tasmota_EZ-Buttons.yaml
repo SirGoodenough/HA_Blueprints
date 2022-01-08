@@ -158,7 +158,6 @@ sequence:
                     "sa": "home",
                     "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml"
                     "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
-
                 },
                 "cmd_t": "cmnd/{{ ez_canary_grouptopic_var }}/upgrade",
                 "payload_press": "1"
@@ -180,7 +179,6 @@ sequence:
               "sa": "home",
               "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml"
               "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
-
           },
           "cmd_t": "cmnd/tasmotas/restart",
           "payload_press": "1"
