@@ -20,11 +20,13 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 
 #### Another Blueprint goes here
 
+     🛌🏾        🧑🏿‍🚒         🙈 🙉 🙊         🎲          🦠
+
 ## Automations:
 #### An Automation Blueprint goes here
 
+🧑🏻‍🍳        👨🏻‍🎓        🧚🏻‍♀️        👨🏻‍🦼       🕵🏼         🥷🏼
 
-     
 
 ### Contact Links or see my other work:
 
