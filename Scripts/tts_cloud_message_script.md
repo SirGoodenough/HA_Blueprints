@@ -1,4 +1,4 @@
-Script Blueprint  for a Nabu-Casa tts-cloud-say message. Home Assistant 
+Script Blueprint for a Nabu-Casa tts-cloud-say message. Home Assistant 
 
 # :arrow_down: Get Started tts_cloud_say version
 
