@@ -1,0 +1,51 @@
+blueprint:
+  name: Media Player Script Blueprint 2021-12-28
+  description: "This provides a way to play canned media files with the big 
+      long list of YAML entries but keep the main script or automation clean. 
+      All that is required there would be a simple line like:  
+        '- service: script.media_player_doorbell_sound'"
+  source_url: https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773
+  domain: script
+  homeassistant:
+    min_version: 2021.11.0
+  input:
+    speaker_target:
+      name: Device(s) to send the file to
+      description: "Add the media_player that you want to play this on. 
+      You can manually edit this to include multiple media players, or just
+      use the pick list to pick one."
+      selector:
+        entity:
+          domain: media_player
+    file_2_play:
+      name: Media File to play
+      description: "The file name needs to be put here. 
+        Please include the path that is accessable to the media player. 
+        A sample path may be 'media-source://media_source/local/sample_file.mp3'.
+        See more information here: 
+          (https://www.home-assistant.io/more-info/local-media/add-media/)
+          (https://www.home-assistant.io/more-info/local-media/setup-media/)
+          (https://www.home-assistant.io/integrations/media_source/)"
+      default: "media-source://media_source/local/mp3/Door-chime-sound.mp3"
+      selector:
+        text:
+    media_type:
+      name: Media_Content_type
+      description: "This is where you match how the content is encoded with 
+        how the player will play it.  Trial and error here can be your friend 
+        unless you are much better at figuring this stuff out than me. 
+        I generally only use 'audio/mp3' and occasionally 'image/jpg'. 
+        More detailed information available here: 
+          (https://www.home-assistant.io/integrations/cast/)
+          (https://developers.google.com/cast/docs/media/)"
+      default: "audio/mp3"
+      selector:
+        text:
+mode: queued
+sequence:
+- alias: Media Player Blueprint Script
+  service: media_player.play_media
+  data:
+    entity_id: !input 'speaker_target'
+    media_content_id: !input 'file_2_play'
+    media_content_type: !input 'media_type'

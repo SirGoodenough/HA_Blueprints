@@ -1,44 +1,20 @@
 ## :arrow_down: Get Started
-
-This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
-
-I was looking for a Home Assistant Related project and when chatting to Luma from the HASPOne Project a couple of days ago, he mentioned how he uses an MQTT Trick to Generate entities inside of a Blueprint.
-This spawned an idea in my head, and Voilia, we have this Blueprint.
-
-I have had these EZ buttons for quite a while on my system.  The idea of the 2 Update Buttons came from Digiblur.  Recently for 2021.12.0 the Home Assistant Team came out with buttons.  I converted my update scripts to buttons.
-
-After chatting Luma, I put the 2 together, and here we have a Script Blueprint that uses MQTT Discovery to generate 3 buttons for your Tasmota Devices.
-
-#### 1:
-
-    Press a button to restart ALL Tasmota Devices (Also to use during 
-    Home Assistant Restart to get all current State and Sensor readings)  
-
-#### 2:
-
-    Press a button to update a couple of Tasmota devices to test that the 
-    new version will not break something,  
-    (Think of these units as your canary's in the coal mine.)  
-
-#### 3:
-
-    Press a button to update ALL Tasmota devices to the latest version. 
-
-More details and Requirements in the Blueprint Decription and the Input Descriptions.
+ This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
+ 
+ I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file.  In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function.  The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario. 
 
 ### Option 1: My Home Assistant
 
 Click the badge to import this Blueprint 
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgist.github.com%2FSirGoodenough%2F0f4ba089a08f78dae6ef2ebb4d058773)
 
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
+```https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773```
 
-```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml```
-
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
+https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773
 
 ## :page_facing_up: Description
 
@@ -50,90 +26,56 @@ First, let’s go over Blueprints and what they are.  Blueprints are a way to sh
 * Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 * Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
 * In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GIST on GitHub:
-* *   https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
+    *   https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773
 
 #### To make the blueprint work it will need:
-* MQTT Broker happy and running your Tasmota Device connection to Home Assistant.
-* Home Assistant 2021.12.0 or newer because that is where the MQTT Button Entity Debuts.
-* Home Assistant Tasmota Integration installed and talking to all yout Tasmota Devices.
-* The default GroupTopic of 'Tasmotas' is available on all your Tasmota Devices.
-* This assumes you have left your Tasmota Devices MQTT topic set as the default.  ```%prefix%/%topic%/```  If not you will need to edit this in a couple of places in the Blueprint to match your Tasmota topic.
-* Your Tasmota devices need to be updated to the same 'breaking change' generation as the Released version of Tasmota for this to be able to update.  Currently that is v9.1 minumum.
+> 1 or more functioning media_players
+> Media file(s) that are accessible to Home Assistant such that they can be played / displayed thru media_player.
 
 #### Extended Information
 This implementation is exactly the implementation in the Home Assistant Docs.
 For further information, reference the links below.
+>     (https://www.home-assistant.io/more-info/local-media/add-media/)
+>     (https://www.home-assistant.io/more-info/local-media/setup-media/)
+>     (https://www.home-assistant.io/integrations/media_source/)
+>     (https://www.home-assistant.io/integrations/cast/)
+>     (https://developers.google.com/cast/docs/media/)
 
->      https://www.home-assistant.io/integrations/button/
->      https://www.home-assistant.io/docs/automation/using_blueprints/
->      https://www.home-assistant.io/integrations/tasmota/
->      https://tasmota.github.io/docs/Upgrading/
->      https://tasmota.github.io/docs/Commands/#mqtt
-
-To build the script:  
+Once you have the entities created or decided upon you can build the Automation.  
+To build the script: 
 
 [![Open your Home Assistant instance and show your blueprints.](https://my.home-assistant.io/badges/blueprints.svg)](https://my.home-assistant.io/redirect/blueprints/)
 
 > 1. Click on 'Create Script'
 > 2. Add a Description so you can tell what this one is for
-> 3. Pick the names you want for your buttons or accept the defaults
-> 4. The 'ez_canary_grouptopic' selection MUST be in lower_case_chase format for this to function correctly.  Also you need to install this GroupTopic on a select number of your Tasmota Devices.  This allows you to update these first, and you can see if the update is going to work for you before pushing the Update-All Button.  What you put here has to exactly match what you put in your devices.
-> 5. The 'ez_canary' name must be changed from the default to enable this button.
-
-#### Generating the Buttons
-Once the names have been selected and you click the 'Save Script' button, you only need to execute the script once, and it builds the buttons.
-Look in your Devices list for 'Tasmota EZ Buttons'.
-
-[![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
-
-#### Other Ideas
-
-You can effectively use the Tasmota Reset Button to 'reload' all of your Tasmota Devices shortly after you start/restart Home Assistant.  This will give Home assistant a current look at all the states and sensors without relying on retain as it starts up.
-Example automation:
-
-```yaml
-- id: fc3ad7f5-f199-409b-99dc-fb3a0728ecd9
-  alias: Power state on HA start-up
-  initial_state: on
-  trigger:
-    - platform: homeassistant
-      event: start
-  action:
-    - delay: 00:00:39
-    - alias: Push the Tasmota Restart Button
-    - service: button.press
-      target:
-        entity_id: button.ez_restart_button_tasmota
-```
+> 3. Use the Drop-downs to select the Entities for the listed purposes
+> 4. The media_player field will pull from a pick list but you can extend that with multiple media_players or groups as needed by typing them in.  Use the links above to help get your system able to play media files.
+> 5. The media type is where you match how the content is encoded with how the player will play it.  Trial and error here can be your friend unless you are much better at figuring this stuff out than me.  I generally only use 'audio/mp3' and occasionally 'image/jpg'.  More detailed information available in the Google Developers link above.
 
 ## Changelog
 
-* **2022-01-07**: First blueprint version :tada:
+* **2021-12-28**: First blueprint version :tada:
 
 ## All My Blueprints
 
 * description: A script that uses TTS google_translate_say to send a message to a google speaker  
     https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
-
     source_url: https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b 
 * description: A script that uses TTS-cloud via Nabu-Casa to send a message to a google speaker 
     https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
-
     source_url: https://gist.github.com/SirGoodenough/7eea35ad75daf883a7938c0bc99499bd
 * description: This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature. 
     https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419 
-
     source_url: (https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728 
 * description: This will accept any 5 button presses or binary sensor detections and use them to preform an action.  RE open a lock, or whatever.
     https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385 
-
     source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297 
 * description: This uses tts.cloud_say from Nabu-Casa to tell you a door is open too long and a door has been closed.  
     https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046 
-
     source_url: https://gist.github.com/SirGoodenough/ed99bd75a65088f4a41c46d1ce19f103 
 * description: This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
     https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988 
+    source_url: https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773
 
     source_url: https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773
 * description: This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all. 
@@ -166,4 +108,4 @@ Venmo cash link:                                      https://venmo.com/SirGoode
 #WhatAreWeFixingToday     
 
 #SirGoodEnough
-  
+ 
