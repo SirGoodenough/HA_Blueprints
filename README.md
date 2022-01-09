@@ -5,7 +5,7 @@ These are the Blueprints I have created and are sharing with the community.  I h
 
 # All My Blueprints
 
-Here is a list of each blueprint, the description file for it, a quick description, and an import link for import to home assistant...
+Here is a list of each of my blueprints, a quick description, and an import link for import to home assistant, and jump links to the Blueprints Exchange post and the files in my GIT Repo...
 
 ## Scripts:
 #### Broadlink on Script Blueprint
