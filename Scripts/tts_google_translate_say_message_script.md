@@ -1,3 +1,5 @@
+This Script Blueprint uses Google_translate_say to send the message.  This is the default TTS in Home Assistant.
+
 ## :arrow_down: Get Started
 
 Updates will be published on my [GIT repository ](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
@@ -17,7 +19,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_google_tr
 
 ## :page_facing_up: Description
 
-This version uses Google_translate_say to send the message.  This is the default TTS in Home Assistant.
+This Script Blueprint uses Google_translate_say to send the message.  This is the default TTS in Home Assistant.
 
 I have my TTS configuration looking like this.  You may need to adjust the blueprint if yours is different:
 ```
@@ -64,3 +66,30 @@ I have recently found that the !input will accept templates. Who knew, right? I 
 # All My Blueprints
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md
+
+
+## Contact Links or see my other work:
+
+What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
+
+Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
+
+What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
+
+What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
+
+Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
+
+## If you want to support me:
+
+Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
+
+PayPal one-off donation link: https://www.paypal.me/SirGoodenough
+
+Cash App $CASHTAG: https://cash.me/$SirGoodenough
+
+Venmo cash link: https://venmo.com/SirGoodenough
+
+#WhatAreWeFixingToday
+
+#SirGoodEnough

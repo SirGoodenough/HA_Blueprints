@@ -1,18 +1,22 @@
+This Blueprint accepts 5 actions & when done in the right order, flips an input_boolean.  Thisk a lock from a common keypad, or a puzzle to solve in a safe house.  
+ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q) about it here for detailed info!
+
 ## :arrow_down: Get Started
 
-ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q) about it here for detailed info!
 Updates will be published on my [GIT repository ](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
 ### Option 1: My Home Assistant
 
 Click the badge to import this Blueprint (needs Home Assistant Core 2021.7 or higher for Trigger_ID to work)
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.|212x28](upload://laxW40s3fqX5zPNuVspYWHAstt9) ](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgist.github.com%2FSirGoodenough%2Ffbd552e2c93ebaa5c9b3d2b4ebff3297)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2Fkeypad_5_button_cipher_to_turn_on_something.yaml)
 
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
-https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297
+```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml```
+
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml
 
 ## :page_facing_up: Description
 
@@ -85,3 +89,34 @@ The rest is one big choose: statement. To get button 1 to be accepted you only n
 * **2021-09-03**: Add Description.
 * **2021-11-20**: Add Minimum Home Assistant version.
 
+
+# All My Blueprints
+
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md
+
+
+## Contact Links or see my other work:
+
+What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
+
+Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
+
+What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
+
+What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
+
+Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
+
+## If you want to support me:
+
+Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
+
+PayPal one-off donation link: https://www.paypal.me/SirGoodenough
+
+Cash App $CASHTAG: https://cash.me/$SirGoodenough
+
+Venmo cash link: https://venmo.com/SirGoodenough
+
+#WhatAreWeFixingToday
+
+#SirGoodEnough

@@ -1,6 +1,6 @@
-## :arrow_down: Get Started
-
 This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+
+## :arrow_down: Get Started
 
 I was looking for a Home Assistant Related project and when chatting to Luma from the HASPOne Project a couple of days ago, he mentioned how he uses an MQTT Trick to Generate entities inside of a Blueprint.
 This spawned an idea in my head, and Voilia, we have this Blueprint.
@@ -110,6 +110,34 @@ Example automation:
 
 * **2022-01-07**: First blueprint version :tada:
 
+
 # All My Blueprints
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md
+
+
+## Contact Links or see my other work:
+
+What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
+
+Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
+
+What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
+
+What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
+
+Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
+
+## If you want to support me:
+
+Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
+
+PayPal one-off donation link: https://www.paypal.me/SirGoodenough
+
+Cash App $CASHTAG: https://cash.me/$SirGoodenough
+
+Venmo cash link: https://venmo.com/SirGoodenough
+
+#WhatAreWeFixingToday
+
+#SirGoodEnough

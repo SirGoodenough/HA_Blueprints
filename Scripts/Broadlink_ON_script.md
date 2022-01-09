@@ -19,7 +19,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_
 
 ## :page_facing_up: Description 
 
-This is a Script Blueprint that takes on the huge mess of scripts created by the Standard Broadlink Integration.  If you have a Broadlink that helps run your TV, you know exactly what I mean.  Evey button and function and button sequence on your remote becomes another script that must be called to get stuff done.  It's hard enough to remember what button does what on the remote itself, remembering all the names of the buttons it impoeeible (for me).
+This is a Script Blueprint that takes on the huge mess of scripts created by the Standard Broadlink Integration.  If you have a Broadlink that helps run your TV, you know exactly what I mean.  Every button and function and button sequence on your remote becomes another script that must be called to get stuff done.  It's hard enough to remember what button does what on the remote itself, remembering all the names of the buttons it impoeeible (for me).
 
 The scripts built with this Blueprint gives you a common scenario for turning your stuff on and putting the device in the correct mode to do the things you want to do.  I have a number instances of this blueprint script created in my system.  Here is a shot of them:
 
@@ -40,3 +40,34 @@ This is my version and has defaults specific to my system that will need to be c
 * **2021-11-20**: Changes because of release of Blueprint Script UI
 * * Add Minimum Home Assistant 2021-11-0
 
+
+# All My Blueprints
+
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md
+
+
+## Contact Links or see my other work:
+
+What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
+
+Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
+
+What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
+
+What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
+
+Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
+
+## If you want to support me:
+
+Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
+
+PayPal one-off donation link: https://www.paypal.me/SirGoodenough
+
+Cash App $CASHTAG: https://cash.me/$SirGoodenough
+
+Venmo cash link: https://venmo.com/SirGoodenough
+
+#WhatAreWeFixingToday
+
+#SirGoodEnough

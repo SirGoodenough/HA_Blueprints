@@ -1,6 +1,7 @@
+This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
+
 ## :arrow_down: Get Started
- This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
- 
+
  I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file.  In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function.  The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario. 
 
 ### Option 1: My Home Assistant
@@ -56,6 +57,34 @@ To build the script:
 
 * **2021-12-28**: First blueprint version :tada:
 
+
 # All My Blueprints
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md
+
+
+## Contact Links or see my other work:
+
+What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
+
+Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
+
+What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
+
+What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
+
+Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
+
+## If you want to support me:
+
+Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
+
+PayPal one-off donation link: https://www.paypal.me/SirGoodenough
+
+Cash App $CASHTAG: https://cash.me/$SirGoodenough
+
+Venmo cash link: https://venmo.com/SirGoodenough
+
+#WhatAreWeFixingToday
+
+#SirGoodEnough
