@@ -1,0 +1,183 @@
+blueprint:
+  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_2021-09-03
+  description: This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature.
+  # Community link for blueprint:  source_url: https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
+  source_url: https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728
+  domain: automation
+  homeassistant:
+    min_version: 2021.7.0
+  input:
+    fan_control:
+      name: Toggle to turn the fan function off for when away or seasonally
+      description: input_boolean - If this is off, the Automation will be disabled.
+      selector:
+        entity:
+          domain: input_boolean
+    room_temp_now:
+      name: Room Temperature Sensor
+      description: >-
+        This is a temperature sensor or averaged temperature sensor preferrably within 
+        the path of the moving air from the fan.  Otherwise the action will be laggy 
+        where changes in temperature will have a lower effect on fan speed.
+      selector:
+        entity:
+          domain: sensor
+    room_set_temp:
+      name: Room Target Temperature
+      description: >-
+        input_number - This is the target temperature of the room.  
+        This can be Metric or imperial, but the same as the temperature sensor.
+      selector:
+        entity:
+          domain: input_number
+    temp_gap:
+      name: Temp Hysteresis
+      description: >-
+        This keeps the fan from speed cycling too often.  
+        Set it bigger if the fan goes on and off too much.  
+        Set it smaller if the fan doesn't change speeds fast enough.  
+        0 is a good number if this area is not used in conjunction with a heating or 
+        cooling unit where you want to set them both to 21C (for instance).  
+        I use the Temperature setting input_number as an input to climate and this 
+        at the same time, so I needed an offset.
+      default: 1.3
+      selector:
+        number:
+          min: 0.0
+          max: 7.0
+          unit_of_measurement: Degrees
+          mode: slider
+          step: 0.1
+    temp_gap_1_to_2:
+      name: Temp Gap between Low and Medium
+      description: >-
+        This is the temp swing between Low and Medium. 
+        If the sensor reads between the base temperature and 
+        this degrees warmer, the fan is on LOW.
+        Below the base temperature the fan is off.
+      default: 4.5
+      selector:
+        number:
+          min: 1.0
+          max: 20.0
+          unit_of_measurement: Degrees
+          mode: slider
+          step: 0.1
+    temp_gap_2_to_3:
+      name: Temp Gap between Medium and High
+      description: >-
+        This is the temp change between Medium and High.   
+        If the sensor reads between the base temperature plus the 
+        1-2 temperature and this degrees warmer, the fan is on MEDIUM.  
+        Any warmer than this and the fan is set to HIGH.
+      default: 2.0
+      selector:
+        number:
+          min: 1.0
+          max: 20.0
+          unit_of_measurement: Degrees
+          mode: slider
+          step: 0.1
+    fan_on_time:
+      name: Time of day fan should start
+      description: Set this for the time of day you want the fan function to be enabled.
+      selector:
+        time:
+    fan_off_time:
+      name: Time of day fan should stop
+      description: Set this for the time of day you want the fan function to end.
+      selector:
+        time:
+    mqtt_fan_topic:
+      name: Fan Topic
+      description: >-
+        This is the MQTT Topic needed to change the fan speed.  
+        Tasmota flashed IFANxx devices have a topic such as: 
+          'cmnd/Bedroom_Fan/FanSpeed', 
+        but you need to look at YOUR device and determine the exact correct 
+        topic to send to the broker to make yours work.
+      default: 'cmnd/Bedroom_Fan/FanSpeed'
+      selector:
+        text:
+variables:    # Convert !inputs for use in jinja templates
+  temp_gap_var: !input 'temp_gap'
+  temp_gap_1_to_2_var: !input 'temp_gap_1_to_2'
+  temp_gap_2_to_3_var: !input 'temp_gap_2_to_3'
+  room_temp_now_var: !input 'room_temp_now'
+  room_set_temp_var: !input 'room_set_temp'
+  room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float }}'
+  room_set_temp_val: '{{ expand(room_set_temp_var)[0].state | float - temp_gap_var | float }}'
+mode: restart
+trigger:
+  - platform: state
+    id: go_on_any_sensor_temp_changes
+    entity_id: !input 'room_temp_now'
+  - platform: state
+    id: go_on_any_set_temp_changes
+    entity_id: !input 'room_set_temp'
+  - platform: time
+    id: go_if_the_start_time_occurs
+    at: !input 'fan_on_time'
+  - platform: state
+    id: go_if_the_control_is_switched_on
+    entity_id: !input 'fan_control'
+    to: "on"
+  - platform: time
+    id: go_if_the_stop_time_occurs
+    at: !input 'fan_off_time'
+  - platform: state
+    id: go_if_the_control_is_switched_off
+    entity_id: !input 'fan_control'
+    to: "off"
+action:
+- choose:
+  - alias: Fan normal turn off sequence
+    conditions:
+      condition: or
+      conditions:
+      - alias: Time limit has been reached
+        condition: trigger
+        id: go_if_the_stop_time_occurs
+      - alias: The automation has been disabled
+        condition: trigger
+        id: go_if_the_control_is_switched_off
+    sequence:
+    - alias: Stop the fan
+      service: mqtt.publish
+      data:
+        topic: !input 'mqtt_fan_topic'
+        payload: 0
+        qos: 1
+        retain: false
+  - alias: Normal fan run sequence
+    conditions:
+      condition: and
+      conditions:
+        - alias: Make sure the Fan is enabled
+          condition: state
+          entity_id: !input 'fan_control'
+          state: "on"
+        - alias: Only allow execution within selected hours
+          condition: time
+          after: !input 'fan_on_time'
+          before: !input 'fan_off_time'
+    sequence:
+    - service: mqtt.publish
+      data:
+        topic: !input 'mqtt_fan_topic'
+        payload: >
+          {% if room_temp_now_val < room_set_temp_val %}
+          {# Room is cooler than set temp so turn fan OFF. #}
+            0
+          {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_var) %}
+          {# Room is at the temp where the fan should be at LOW speed. #}
+            1
+          {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_var + temp_gap_2_to_3_var) %} 
+          {# Room is at the temp where the fan should be at MEDIUM speed. #}
+            2
+          {% else %} 
+          {# Room is warm enough to be on HIGH speed, #}
+            3
+          {% endif %}
+        qos: 1
+        retain: false

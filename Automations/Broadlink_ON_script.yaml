@@ -1,0 +1,98 @@
+blueprint:
+  name: Broadlink_ON_script_2021-11-20
+  description: A script that gets my TV on and Reciever set-up to correct mode.
+  source_url: https://gist.github.com/SirGoodenough/d530280dc4177aa2882bc3e7924982d5
+  #  Community link for blueprint:  https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755
+  domain: script
+  homeassistant:
+    min_version: 2021.11.0
+  input:
+    adapter_power:
+      name: Turn on the smart plug that powers the adapter
+      description: This turns on the smart plug that runs the adapter
+      default: switch.chromecast
+      selector:
+        entity:
+          domain: switch
+    reciever_power:
+      name: Reciever Power
+      description: Turn the Reciever Device ON
+      default: script.denon_power
+      selector:
+        entity:
+          domain: script
+    tv_power:
+      name: TV Power
+      description: Turn the TV Device ON
+      default: script.vizio_j_power
+      selector:
+        entity:
+          domain: script
+    tv_mode:
+      name: TV Input Mode
+      description: Select the feed into the TV.  Clicked after the OTA mode below.
+      selector:
+        entity:
+          domain: script
+    tv_ota_mode:
+      name: OTA Input Mode
+      description: 
+        Select the Over The Air TV mode to put the TV Mode into a known state.  
+        Note- My TV uses multiple presses to select some inputs, so this is needed in my case.
+        You may not need this.  Adjust sequence accordingly...
+      default: script.vizio_j_tv
+      selector:
+        entity:
+          domain: script
+    reciever_input:
+      name: Reciever Input
+      description: Turn the Reciever Input to the correct adapter line
+      selector:
+        entity:
+          domain: script
+    reciever_out_mode:
+      name: Reciever Speaker Out Mode
+      description: Turn the Reciever Speakers into the desired output mode
+      default: script.denon_multeq_out
+      selector:
+        entity:
+          domain: script
+    cooldown:
+      name: Cooldown
+      description: The between IR Blasts...
+      default: 3
+      selector:
+        number:
+          min: 0.0
+          max: 10.0
+          unit_of_measurement: seconds
+          step: 0.5
+          mode: slider
+mode: queued
+sequence:
+  - service: switch.turn_on
+    target:
+      entity_id: !input 'adapter_power'
+  - service: script.turn_on
+    target:
+      entity_id: !input 'reciever_power'
+  - delay: !input 'cooldown'
+  - service: script.turn_on
+    target:
+      entity_id: !input 'tv_power'
+  - delay: !input 'cooldown'
+  - service: script.turn_on
+    target:
+      entity_id: !input 'reciever_input'
+  - delay: !input 'cooldown'
+  - service: script.turn_on
+    target:
+      entity_id: !input 'tv_ota_mode'
+  - delay: !input 'cooldown'
+  - service: script.turn_on
+    target:
+      entity_id: !input 'reciever_out_mode'
+  - delay: !input 'cooldown'
+  - service: script.turn_on
+    target:
+      entity_id: !input 'tv_mode'

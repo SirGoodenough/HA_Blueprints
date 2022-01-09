@@ -26,7 +26,7 @@ https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-butto
 
 #### Play Media File Script Blueprint Blueprint
 
- This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
+This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fplay_media_file_script.yaml)
 
@@ -67,20 +67,47 @@ https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-
 
 
 ## Automations:
+#### Tasmota EZ Button Blueprint
 
-* description: This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature. 
-    https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419 
+This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature. 
 
-    source_url: (https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728 
-* description: This will accept any 5 button presses or binary sensor detections and use them to preform an action.  RE open a lock, or whatever.
-    https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385 
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
 
-    source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297 
-* description: This uses tts.cloud_say from Nabu-Casa to tell you a door is open too long and a door has been closed.  
-    https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046 
+https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
 
-    source_url: https://gist.github.com/SirGoodenough/ed99bd75a65088f4a41c46d1ce19f103 
-    
+
+
+ * [Tasmota_EZ-Buttons.md Help File]()
+ * [Tasmota_EZ-Buttons.yaml Code File]()
+
+
+#### Tasmota EZ Button Blueprint
+
+This will accept any 5 button presses or binary sensor detections and use them to preform an action.  RE open a lock, or whatever.
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
+
+https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385 
+
+
+
+ * [Tasmota_EZ-Buttons.md Help File]()
+ * [Tasmota_EZ-Buttons.yaml Code File]()
+
+
+#### Tasmota EZ Button Blueprint
+
+This uses tts.cloud_say from Nabu-Casa to tell you a door is open too long and a door has been closed.
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
+
+https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
+
+
+
+ * [Tasmota_EZ-Buttons.md Help File]()
+ * [Tasmota_EZ-Buttons.yaml Code File]()
+
 
 ### Contact Links or see my other work:
 
