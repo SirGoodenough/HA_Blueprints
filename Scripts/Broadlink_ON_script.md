@@ -19,11 +19,11 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_
 
 ## :page_facing_up: Description 
 
-This is a Script Blueprint that takes on the huge mess of scripts created by the Standars Broaslink Integration.  If you have a Boradlink that helps run your TV, yu know exactly what I mean.  Wvwey buyyon and function and button sequence on your remot becomes another script that must be called to get stuff done.  It's hard enough to remember what button on the remote itself, remembering all the names of the buttons it impoeeible.
+This is a Script Blueprint that takes on the huge mess of scripts created by the Standard Broadlink Integration.  If you have a Broadlink that helps run your TV, you know exactly what I mean.  Evey button and function and button sequence on your remote becomes another script that must be called to get stuff done.  It's hard enough to remember what button does what on the remote itself, remembering all the names of the buttons it impoeeible (for me).
 
-The script template built with yjis giveds you a common scenario for turning your stuff on and putting the device in the correct mode to do the thing yu want to do.  I have a number of this blueprint script created in my system and here is a shot of them:
+The scripts built with this Blueprint gives you a common scenario for turning your stuff on and putting the device in the correct mode to do the things you want to do.  I have a number instances of this blueprint script created in my system.  Here is a shot of them:
 
-![My Buttons in Lovelace](images/Screenshot_2022-01-08_20-11-15.png)
+![My Buttons in Lovelace](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Screenshot_2022-01-08_20-11-15.png?raw=true "Examples of this Blueprint in Lovelace")
 
 You can import the script blueprint via the button above or manually as below.
 To import this Blueprint: 
