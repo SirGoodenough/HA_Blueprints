@@ -18,8 +18,8 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_
 
 The scripts built with this Blueprint gives you a common scenario for turning your stuff on and putting the device in the correct mode to do the things you want to do.  I have a number instances of this blueprint script created in my system.  Here is a shot of them:
 
- * [Tasmota_EZ-Buttons.md Help File]()
- * [Tasmota_EZ-Buttons.yaml Code File]()
+ * [Broadlink_ON_script.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.md)
+ * [Broadlink_ON_script.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml)
 
 
 #### Tasmota EZ Button Blueprint
