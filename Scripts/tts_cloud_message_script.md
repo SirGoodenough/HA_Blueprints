@@ -47,7 +47,7 @@ This is a very simple sample test case, I wanted to see if it would work. To my 
 I have recently found that the !input will accept templates. Who knew, right? I have a few TTS instances that call for a random response, I just need the sound for timing of something I'm doing, and I found that something like this craziness works. It is the lyrics from a song and when triggered, it just picks one of them to play using random. It also picks a random dialect of English to speak the message from the list. Pretty slick, right?
 **NOTE:**  After this was edited to get a pick list, you will need to manually edit the blueprint to change the language to a text input field or you will need to manually edit the script calling blueprint to similar values.
 
-![Screenshot_2021-12-15_13-40-52](https://user-images.githubusercontent.com/47349533/146256617-047a05e7-5f45-4d44-b33e-29938cbe571c.png)
+![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/CloudMessageRandom.png?raw=true "Example showing Random Selection")
 
 ## Changelog
 
