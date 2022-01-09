@@ -8,6 +8,20 @@ These are the Blueprints I have created and are sharing with the community.  I h
 Here is a list of each blueprint, the description file for it, a quick description, and an import link for import to home assistant...
 
 ## Scripts:
+#### Broadlink on Script Blueprint
+
+This will accept any 5 button presses or binary sensor detections and use them to preform an action.  RE open a lock, or whatever.
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
+
+https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755
+
+
+
+ * [Tasmota_EZ-Buttons.md Help File]()
+ * [Tasmota_EZ-Buttons.yaml Code File]()
+
+
 #### Tasmota EZ Button Blueprint
 
 This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
@@ -67,27 +81,13 @@ https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-
 
 
 ## Automations:
-#### Tasmota EZ Button Blueprint
+#### Auto Fan Control Blueprint
 
 This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature. 
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FAutoFanControl.yaml)
 
-https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
-
-
-
- * [Tasmota_EZ-Buttons.md Help File]()
- * [Tasmota_EZ-Buttons.yaml Code File]()
-
-
-#### Tasmota EZ Button Blueprint
-
-This will accept any 5 button presses or binary sensor detections and use them to preform an action.  RE open a lock, or whatever.
-
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
-
-https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385 
+https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
 
 
 
@@ -99,9 +99,9 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 This uses tts.cloud_say from Nabu-Casa to tell you a door is open too long and a door has been closed.
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2Fdoor_open_tts_cloud_say_announcer_nabu_casa_required.yaml)
 
-https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
+https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
 
 
 

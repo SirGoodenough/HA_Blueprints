@@ -1,120 +1,64 @@
 ## :arrow_down: Get Started
 
-ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q) about it here for detailed info!
+Updates will be published on my [GIT repository ](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
 ### Option 1: My Home Assistant
 
-Click the badge to import this Blueprint (needs Home Assistant Core 2021.7 or higher for Trigger_ID to work)
+Click the link below to import this Blueprint: (needs Home Assistant Core 2021.3 or higher)
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.|212x28](upload://laxW40s3fqX5zPNuVspYWHAstt9) ](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgist.github.com%2FSirGoodenough%2Ffbd552e2c93ebaa5c9b3d2b4ebff3297)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2Fdoor_open_tts_cloud_say_announcer_nabu_casa_required.yaml)
 
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
-https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297
+```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml```
+
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
 
 ## :page_facing_up: Description
 
-This all started out with my <a href="https://whatarewefixing.today/125/tasmota-based-drop-pin-door-lock/" target="_blank">Less Than $30 Drop Pin Lock</a> Project that I installed a couple of years ago in my house.  These locks had the unfortunate problem of not having a way to unlock them from the outside without Google Home or the Home Assistant App on your phone.  I always wanted to create a keypad that would function in this manner, and until the addition of the Trigger_ID feature in Home Assistant 2021.7, the Automation while possible, would involve extensive use of complicated templating that I was not in the mood to build.  Trigger_ID’s made it simple!
+This is a TTS.cloud-say version of another Door Announcer I found in the HA Blueprint Exchange.  For people that have Nabu-Casa, TTS.cloud-say is far superior to TTS.google_say as it adds languages and gender to the voices available.  If you are a Nabu-Casa subscriber, I highly recommend using this.
 
-First, let’s go over Blueprints and what they are.  Blueprints are a way to share automations and is built into Home Assistant.  Simple as that.  You can import my template code and a copy of it will reside in your configuration.  Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build an automation.  It will collect the information needed based on your entities and your personal adjustments, and provide a working automation.  You will have to have or add the required hardware and entities that the Blueprint needs to function.
+This blueprint is set up to watch a binary sensor.  When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice.  The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message.  The delay time and all the other parameters are adjustable.
+
+You will need to select a country code as listed in the TTS.cloud_say documentation listed here:  https://www.nabucasa.com/config/tts/
 
 ### How the Blueprint works:
 
 To import this Blueprint: 
 > • Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 > • Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
-> • In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GIST on GitHub:
->  ◦   https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297
+> • In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public REPO on GitHub:
+>  ◦   ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml```
 
 To make the blueprint work it will need:
-> • 5 binary_sensor entities to sense the button presses
-> • 1 input_boolean entity as the feature to trigger the lock action
-> • 1 input_number entity to store the internal sequence number
-
-The binary sensors can be the inputs from a device like I have OR it can be existing devices.  For instance if you want to walk into your back porch and use the PIR as button one, then in sequence you trigger the freezer door, the light switch on the wall, the doorbell, and the fridge door, then that can be your door unlock sequence.  No keypad needed!  I personally bought an RM433 from Itead / Sonoff and plugged the number codes into my RF-Bridge set-up and went with that.
+> • 1 binary_sensor entities to sense the action you are announcing
+> • 1 media_player, group of media _players, or list of media_players to send the words to
+> • Pick a gender and language from https://www.nabucasa.com/config/tts/
 
 Once you have the entities created or decided upon you can build the Automation.  To build the automation:  
 > 1. Click on 'Create Automation
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
-> 4. Select a Lock On time in seconds.  This is how long the input_boolean stays on before the lock is released.
-> 5. Test that your Cipher works by pressing the buttons and watching the result.
-
-To get your lock to open, build a simple automation using the UI (or manually) that triggers on your input boolean, and the action is opening your lock or whatever you want to do.  For example:
-
-```yaml
-  - id: 0b408ade-16fd-42fc-8333-518660b421ae
-    mode: single
-    max_exceeded: silent
-    alias: test lock
-    initial_state: on
-    trigger:
-      - platform: state
-        entity_id: input_boolean.pad_enable
-    action:
-      - service: lock.unlock
-        data:
-          code: '7554288'
-        target:
-          entity_id: lock.side_door
-```
-
-### FAQ for blueprint
-Questions:
-> 1. Buttons can only be used once in each cipher code.  If you want to tweak the Blueprint you can change this, but that is how this one is set-up.
->  2. You can use the same blueprint for multiple cipher codes to open the same lock.  For example, you have a code, and the dog walker has a different code. You will need a separate input_number entity for each cipher code.  You can re-use the same keys and lock pad, but I highly suggest that button 1 be different on every cipher code.
->  3. You can use this blueprint to control more that 1 lock or device.  Follow FAQ #2 plus create a separate input_boolean entity to attach to another lock.
+> 4. Set the time-frame that the automation will be active.  Default is always on.
+> 5. Select the speaker Gender and Language from the Nabu Casa website
+> 6. Enter the messages for when it is found open and when it finally closes
+> 7. Set the time delay before the first message and between the open messages
 
 ### HOW the Blueprint / Automation works
 Walk-thru:
 > 1. The header of the Blueprint contains the required info plus the URL from where it came from.
 > 2. The input: section is where it gets the information it needs to fill in the blanks. This information is stored in the actual automation referencing this Blueprint when executing the task.
-> 3. In the Variables section has several entries. The first is needed to convert the !input: variable of the input_number into a variable so that it can be used in a template. After that we grab and store the last time the sequence number was changed, the actual value of the sequence number, and the current time. These are used for the watchdog so that the code cannot be accidentally left ‘almost’ triggered.
-> 4. In the trigger section there is a trigger for each button, watching for that button to be pressed. When the button is pressed, a trigger_id is generated and passed along to the action: section so it knows which trigger was initiated.
-> 5. In the action: section the always executed first part is the watchdog. It checks that the last time the sequence number was changed was within the last 5 minutes. Otherwise if the sequence was left at the 4th button for a week, all someone would have to do it hit the 5th button and it would open the lock.
-The rest is one big choose: statement. To get button 1 to be accepted you only need the button 1 trigger_ID and this changes the sequence code number. In order to get to stage 2 of the cipher, both the trigger_ID and the sequence number have to be correct, and once it is, it again changes the sequence number. This pattern is repeated until the fifth number is pressed with the correct sequence code set and that fires the input_boolean to open the lock. Should you press the numbers in the wrong order, the cipher resets and you need to know to start over. Pressing button 1 again will also reset the sequence via the default action in the choose code.
+> 3. The Trigger section will start everything when your Binary Sensor changes state from off to on.
+> 4. Once triggered it goes into a repeat loop that starts with the delay time selected.  This repeat loop will immediately abort if the  binary sensor flips back to off.  If the binary sensor stays on long enough to get passed the delay time, the initial announcement will be sent to the speaker and it will cycle back to the top and start the repeat loop again.
+> 5. When the binary_sensor flips to off it will play the closing message,
 
 ## Changelog
 
-* **2021-07-11**: First blueprint version :tada:
-                        needs Home Assistant Core 2021.7 or higher for Trigger_ID to work
-* **2021-07-21**: Add the watchdog timeout test.
-* **2021-08-04**: Add comments and cleanup.
-* **2021-09-03**: Add Description.
-* **2021-11-20**: Add Minimum Home Assistant version.
+* **2021-06-16**: First blueprint version :tada:
+                        needs Home Assistant Core 2021.3 or higher and Nabu-Casa to work
+* **2021-09-03**: Add Description
+* **2021-10-29**: Add the ability to select the time-frame the announcement will be active
+* **2021-12-24**: Add pick list of all the available languages and dialects.
+* **2022-01-03**: Remove 'Door' restriction on input sensor, and expanded description.
 
-## All My Blueprints
-
-* description: This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
-    https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988 
-    source_url: https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773
-* description: A script that uses tts google_translate_say to send a message to a google speaker  
-    https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
-    source_url: https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b 
-* description: A script that uses tts-cloud via Nabu-Casa to send a message to a google speaker 
-    https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
-    source_url: https://gist.github.com/SirGoodenough/7eea35ad75daf883a7938c0bc99499bd
-* description: This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature. 
-    https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419 
-    source_url: (https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728 
-* description: This will accept any 5 button presses or binary sensor detections and use them to preform an action.  RE open a lock, or whatever.
-    https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385 
-    source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297 
-* description: This uses tts.cloud_say from Nabu-Casa to tell you a door is open too long and a door has been closed.  
-    https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046 
-    source_url: https://gist.github.com/SirGoodenough/ed99bd75a65088f4a41c46d1ce19f103 
-
-#### Contact Links or see my other work:
-What are we Fixing Today Homepage / Website:        https://www.WhatAreWeFixing.Today/
-Channel Link URL: (WhatAreWeFixingToday)             https://bit.ly/WhatAreWeFixingTodaysYT
-What are we Fixing Today Facebook page (Sir GoodEnough):         https://bit.ly/WhatAreWeFixingTodayFB
-What are we Fixing Today Twitter Account (Sir GoodEnough):         https://bit.ly/WhatAreWeFixingTodayTW
-Discord Guild: (Sir_Goodenough#9683)                     https://discord.gg/Uhmhu3B
-
-#### If you want to support me:
-Buy me Coffee:                                        https://www.buymeacoffee.com/SirGoodenough
-PayPal one-off donation link:                    https://www.paypal.me/SirGoodenough
-Cash App $CASHTAG:                             https://cash.me/$SirGoodenough
-Venmo cash link:                                      https://venmo.com/SirGoodenough 
-  

@@ -1,15 +1,19 @@
 ## :arrow_down: Get Started
 
+Updates will be published on my [GIT repository ](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+
 ### Option 1: My Home Assistant
 
 Click the badge to import this Blueprint (needs Home Assistant Core 2021.7 or higher for Trigger_ID to work)
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgist.github.com%2FSirGoodenough%2F15003002fc5409f029f38914876fa728)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FAutoFanControl.yaml)
 
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
-https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728
+```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.yaml```
+
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.yaml
 
 ## :page_facing_up: Description
 
@@ -26,8 +30,8 @@ First, let’s go over Blueprints and what they are.  Blueprints are a way to sh
 To import this Blueprint: 
 > • Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 > • Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
-> • In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GIST on GitHub:
->  ◦   https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728
+> • In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public REPO on GitHub:
+>  ◦   ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.yaml```
 
 To make the blueprint work it will need:
 > • 1 input_boolean entity as the feature so you can enable or disable the automation easily
@@ -63,36 +67,3 @@ Walk-thru:
 * **2021-09-03**: Add Description.
 * **2021-11-20**: Add Minimum Home Assistant version.
 
-## All My Blueprints
-
-* description: This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
-    https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988 
-    source_url: https://gist.github.com/SirGoodenough/0f4ba089a08f78dae6ef2ebb4d058773
-* description: A script that uses tts google_translate_say to send a message to a google speaker  
-    https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
-    source_url: https://gist.github.com/SirGoodenough/ecf747f3bc399f088a13853cf80ec12b 
-* description: A script that uses tts-cloud via Nabu-Casa to send a message to a google speaker 
-    https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199 
-    source_url: https://gist.github.com/SirGoodenough/7eea35ad75daf883a7938c0bc99499bd
-* description: This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature. 
-    https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419 
-    source_url: (https://gist.github.com/SirGoodenough/15003002fc5409f029f38914876fa728 
-* description: This will accept any 5 button presses or binary sensor detections and use them to preform an action.  RE open a lock, or whatever.
-    https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385 
-    source_url: https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297 
-* description: This uses tts.cloud_say from Nabu-Casa to tell you a door is open too long and a door has been closed.  
-    https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046 
-    source_url: https://gist.github.com/SirGoodenough/ed99bd75a65088f4a41c46d1ce19f103 
-
-#### Contact Links or see my other work:
-What are we Fixing Today Homepage / Website:        https://www.WhatAreWeFixing.Today/
-Channel Link URL: (WhatAreWeFixingToday)             https://bit.ly/WhatAreWeFixingTodaysYT
-What are we Fixing Today Facebook page (Sir GoodEnough):         https://bit.ly/WhatAreWeFixingTodayFB
-What are we Fixing Today Twitter Account (Sir GoodEnough):         https://bit.ly/WhatAreWeFixingTodayTW
-Discord Guild: (Sir_Goodenough#9683)                     https://discord.gg/Uhmhu3B
-
-#### If you want to support me:
-Buy me Coffee:                                        https://www.buymeacoffee.com/SirGoodenough
-PayPal one-off donation link:                    https://www.paypal.me/SirGoodenough
-Cash App $CASHTAG:                             https://cash.me/$SirGoodenough
-Venmo cash link:                                      https://venmo.com/SirGoodenough 
