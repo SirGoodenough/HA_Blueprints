@@ -65,7 +65,7 @@ I have recently found that the !input will accept templates. Who knew, right? I 
 
 # All My Blueprints
 
-```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
+[Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
 
 
 ## Contact Links or see my other work:

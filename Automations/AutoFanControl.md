@@ -71,7 +71,7 @@ Walk-thru:
 
 # All My Blueprints
 
-```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
+[Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
 
 
 ## Contact Links or see my other work:
