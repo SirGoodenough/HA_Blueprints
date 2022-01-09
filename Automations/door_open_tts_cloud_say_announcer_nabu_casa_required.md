@@ -1,3 +1,5 @@
+This blueprint is set up to watch a binary sensor. When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice. The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message. The delay time and all the other parameters are adjustable.
+
 ## :arrow_down: Get Started
 
 Updates will be published on my [GIT repository ](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
@@ -65,7 +67,7 @@ Walk-thru:
 
 # All My Blueprints
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md
+```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
 
 ## Contact Links or see my other work:

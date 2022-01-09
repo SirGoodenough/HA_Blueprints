@@ -92,7 +92,7 @@ The rest is one big choose: statement. To get button 1 to be accepted you only n
 
 # All My Blueprints
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md
+```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
 
 ## Contact Links or see my other work:
