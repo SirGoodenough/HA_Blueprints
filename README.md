@@ -3,6 +3,8 @@ My Collection of Automation and Script Blueprints for Home Assistant
 
 These are the Blueprints I have created and are sharing with the community.  I have both Script and Automation Blueprints in seperate folders.  Each Blueprint has a file with the .yaml suffix with all the code and a file with the .md suffix which is a markdown description for set-up and usage of the blueprint.  The .md file contains important information and if you want a sucessful install, you should read it.
 
+# All My Blueprints
+
 Here is a list of each blueprint, the description file for it, a quick description, and an import link for import to home assistant...
 
 ## Scripts:

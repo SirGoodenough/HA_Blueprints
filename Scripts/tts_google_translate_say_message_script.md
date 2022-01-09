@@ -61,6 +61,6 @@ I have recently found that the !input will accept templates. Who knew, right? I 
 * **2021-12-15**: Changed link to get language acronyms.  Functionally the same.
 * **2021-12-24**: Add pick list of all the available languages,
 
-## All My Blueprints
+# All My Blueprints
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md

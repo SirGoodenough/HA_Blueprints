@@ -56,6 +56,6 @@ I have recently found that the !input will accept templates. Who knew, right? I 
 * * Add Minimum Home Assistant 2021-11-0
 * **2021-12-24**: Add pick list of all the available languages,
 
-## All My Blueprints
+# All My Blueprints
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md
