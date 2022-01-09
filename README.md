@@ -124,7 +124,7 @@ ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q
  * [keypad_5_button_cipher_to_turn_on_something.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml)
 
 
-### Contact Links or see my other work:
+## Contact Links or see my other work:
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 
@@ -136,7 +136,7 @@ What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAr
 
 Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 
-### If you want to support me:
+## If you want to support me:
 
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
