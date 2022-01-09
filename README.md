@@ -58,7 +58,7 @@ This Script Blueprint plays a Nabu-Casa tts-cloud-say message in Home Assistant 
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Ftts_cloud_message_script.yaml)
 
-https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199
+https://community.home-assistant.io/t/script-blueprint-to-play-nabu-casa-tts-cloud-say-messages-not-an-automation-blueprint/377368
 
 This version uses tts_cloud_say to send the message. This is is available only if you are a subscriber to Nabu-Casa.
 
@@ -66,14 +66,15 @@ This version uses tts_cloud_say to send the message. This is is available only i
  * [tts_cloud_message_script.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_cloud_message_script.yaml)
 
 
-#### TTS Cloud Message Blueprint
+#### TTS Translate Say Message Blueprint
 
 This Script Blueprint plays a Google Translate say message in Home Assistant leaving the mess out of the main code.
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Ftts_google_translate_say_message_script.yaml)
 
-https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-and-tts-cloud-say-message-not-an-automation-blueprint/333199
+https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-not-an-automation-blueprint/333199
 
+This version uses Google Translate Say to send the message. 
 
  * [tts_google_translate_say_message_script.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_google_translate_say_message_script.md)
  * [tts_google_translate_say_message_script.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_google_translate_say_message_script.yaml)
@@ -101,7 +102,7 @@ This Blueprint is a TTS.cloud-say version of another Door Announcer I found in t
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2Fdoor_open_tts_cloud_say_announcer_nabu_casa_required.yaml)
 
-https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046/33
+https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
 
 This blueprint is set up to watch a binary sensor.  When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice.  The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message.  The delay time and all the other parameters are adjustable.
 
