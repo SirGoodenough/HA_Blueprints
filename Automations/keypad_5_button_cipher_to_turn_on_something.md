@@ -89,10 +89,60 @@ The rest is one big choose: statement. To get button 1 to be accepted you only n
 * **2021-09-03**: Add Description.
 * **2021-11-20**: Add Minimum Home Assistant version.
 
-
 # All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
+
+Here is a list of each of my blueprints, a quick description and jump links to the Blueprints Exchange post...
+
+## Scripts:
+#### Broadlink on Script Blueprint
+
+https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755
+
+#### Tasmota EZ Button Blueprint
+
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+
+https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
+
+#### Play Media File Script Blueprint Blueprint
+
+This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
+
+https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988
+
+#### TTS Cloud Message Blueprint
+
+This Script Blueprint plays a Nabu-Casa tts-cloud-say message in Home Assistant leaving the mess out of the main code.
+
+https://community.home-assistant.io/t/script-blueprint-to-play-nabu-casa-tts-cloud-say-messages-not-an-automation-blueprint/377368
+
+#### TTS Translate Say Message Blueprint
+
+This Script Blueprint plays a Google Translate say message in Home Assistant leaving the mess out of the main code.
+
+https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-not-an-automation-blueprint/333199
+
+## Automations:
+#### Auto Fan Control Blueprint
+
+This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  Intended for Ifan03/Ifan04 but useful other places.
+
+https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
+
+#### Door Open TTS Cloud-Say Message Blueprint
+
+This Blueprint is a TTS.cloud-say version of another Door Announcer I found in the HA Blueprint Exchange.
+
+https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
+
+#### Keypad Lock or puzzle Box Tool Blueprint
+
+This Blueprint accepts 5 actions & when done in the right order, flips an input_boolean.
+
+https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
+
 
 ## Contact Links or see my other work:
 
