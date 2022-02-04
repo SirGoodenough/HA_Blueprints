@@ -1,5 +1,8 @@
 This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
 
+NOTE: Version **2022-02-04** to fix a problem that restart of Home Assistant disables the buttons.  Blueprint code has NOT changed.
+  See **Other Ideas for your Tasmota EZ Buttons Below**...
+
 ## :arrow_down: Get Started
 
 I was looking for a Home Assistant Related project and when chatting to Luma from the HASPOne Project a couple of days ago, he mentioned how he uses an MQTT Trick to Generate entities inside of a Blueprint.
@@ -91,17 +94,29 @@ Look in your Devices list for 'Tasmota EZ Buttons'.
 You can effectively use the Tasmota Reset Button to 'reload' all of your Tasmota Devices shortly after you start/restart Home Assistant.  This will give Home assistant a current look at all the states and sensors without relying on retain as it starts up.
 Example automation:
 
+UPDATE:  I have noticed that the buttons become disabled after Home Assistant Restart.  Very annoying, but easy to fix.  I have added a start-up Automation to Home Assistant to refresh the buttons a little while after the HA system starts.  The delay is to ensure things are going well and the system is not too busy when this is run.  I have found 22 seconds to be a good number for this on my system, feel free to adjust as needed.  I am also pressing the Tasmota Restart button a little while after that to refresh all the  Tasmota's at boot and provide fresh data for HA to update it's register status. The script name and button name will need to be changed to reflect your choices when you built  the blueprint control script.
+
+Example automation:
+
 ```yaml
-- id: fc3ad7f5-f199-409b-99dc-fb3a0728ecd9
+####################################################
+# MQTT Restart Tasmota                             #
+####################################################
+####    Use this automation to get all your devices in sync, including
+####     power state, immediately after Home Assistant is (re)started.
+- id: Tasmota_Restart_Sequence-random-oisjg98uwr8ytjw9ut8344
   alias: Power state on HA start-up
   initial_state: on
   trigger:
     - platform: homeassistant
       event: start
   action:
-    - delay: 00:00:39
-    - alias: Push the Tasmota Restart Button
-    - service: button.press
+    - delay: 00:00:22
+    - alias: Make sure EZ Buttons are active
+      service: script.tasmota_ez_button_for_update_and_restart_all_2022_01_07a
+    - delay: 00:00:22
+    - alias: Push the Tasmota Restart - One Button to Rule them All
+      service: button.press
       target:
         entity_id: button.ez_restart_button_tasmota
 ```
@@ -109,6 +124,7 @@ Example automation:
 ## Changelog
 
 * **2022-01-07**: First blueprint version :tada:
+* **2022-02-04**: Add Automation suggestion to fix HA start-up bug.
 
 
 # All My Blueprints
