@@ -68,6 +68,7 @@ Walk-thru:
 * **2021-08-19**: Remove negative Temp Gap hysteresis, logic wrong.
 * **2021-09-03**: Add Description.
 * **2021-11-20**: Add Minimum Home Assistant version.
+* **2022-02-07**: Add Default value to float filters (for HA Breaking change).
 
 # All My Blueprints
 

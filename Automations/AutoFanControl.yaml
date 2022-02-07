@@ -1,5 +1,5 @@
 blueprint:
-  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_2021-09-03
+  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_2022-02-07
   description: This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04) based on a room temperature.
   # Community link for blueprint:  source_url: https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
@@ -105,8 +105,8 @@ variables:    # Convert !inputs for use in jinja templates
   temp_gap_2_to_3_var: !input 'temp_gap_2_to_3'
   room_temp_now_var: !input 'room_temp_now'
   room_set_temp_var: !input 'room_set_temp'
-  room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float }}'
-  room_set_temp_val: '{{ expand(room_set_temp_var)[0].state | float - temp_gap_var | float }}'
+  room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float(0) }}'
+  room_set_temp_val: '{{ expand(room_set_temp_var)[0].state | float(0) - temp_gap_var | float(0) }}'
 mode: restart
 trigger:
   - platform: state
