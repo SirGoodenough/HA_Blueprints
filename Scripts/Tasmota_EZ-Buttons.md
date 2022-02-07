@@ -124,6 +124,7 @@ Example automation:
 
 * **2022-01-07**: First blueprint version :tada:
 * **2022-02-04**: Add Automation suggestion to fix HA start-up bug.
+* **2022-02-07**: Add Retain flag to fix HA start-up bug.
 
 # All My Blueprints
 
