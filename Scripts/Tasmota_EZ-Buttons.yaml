@@ -146,11 +146,11 @@ sequence:
           service: mqtt.publish
           data:
             "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_canary_var }}/config"
+            "retain": true
             "payload": >
               { "name": "{{ ez_canary_var }}",
                 "avty_t": "homeassistant/status",
                 "uniq_id": "9NS7GaU5U9533erK_{{ ez_canary_var }}",
-                "ret": "true",
                 "dev_cla":"update",
                 "dev": {
                     "ids": "9NS7GaU5U9533erK",
@@ -168,11 +168,11 @@ sequence:
     service: mqtt.publish
     data:
       "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_restart_var }}/config"
+      "retain": true
       "payload": >
         { "name": "{{ ez_restart_var }}",
           "avty_t": "homeassistant/status",
           "uniq_id": "9NS7GaU5U9533erK_{{ ez_restart_var }}",
-          "ret": "true",
           "dev_cla":"restart",
           "dev": {
               "ids": "9NS7GaU5U9533erK",
@@ -190,11 +190,11 @@ sequence:
     service: mqtt.publish
     data:
       "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_update_var }}/config"
+      "retain": true
       "payload": >
         { "name": "{{ ez_update_var }}",
           "avty_t": "homeassistant/status",
           "uniq_id": "9NS7GaU5U9533erK_{{ ez_update_var }}",
-          "ret": "true",
           "dev_cla": "update",
           "dev": {
               "ids": "9NS7GaU5U9533erK",
