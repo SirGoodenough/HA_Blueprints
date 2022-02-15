@@ -30,6 +30,7 @@ blueprint:
   in that chat from people struggling, I wanted to help    
   I also had a better idea for troubleshooting info that didn't involve the log writes.
   "
+  # Community link for blueprint:  source_url: https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml
   domain: automation
   input:
