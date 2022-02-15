@@ -45,7 +45,7 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude
   ```
 
 Event Sensor in Action:
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/CubeLastActionSensorInAction.mp4
+https://youtu.be/thaalK8pKtw
 
   If you wish to 'store' these events you can add this sensor to recorder and it will 
   save them for you.
