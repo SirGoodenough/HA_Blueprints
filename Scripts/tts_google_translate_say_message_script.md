@@ -117,6 +117,12 @@ This Blueprint accepts 5 actions & when done in the right order, flips an input_
 
 https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
 
+#### Zigbee2MQTT - Xiaomi Cube Controller Blueprint
+
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+
+https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
+
 
 ## Contact Links or see my other work:
 

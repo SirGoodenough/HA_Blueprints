@@ -29,8 +29,8 @@ First, let’s go over Blueprints and what they are.  Blueprints are a way to sh
 To import this Blueprint: 
 > • Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 > • Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
-> • In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GIST on GitHub:
->  ◦   https://gist.github.com/SirGoodenough/fbd552e2c93ebaa5c9b3d2b4ebff3297
+> • In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub:
+>  ◦   https://github.com/SirGoodenough/HA_Blueprints
 
 To make the blueprint work it will need:
 > • 5 binary_sensor entities to sense the button presses
@@ -142,6 +142,12 @@ https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-cas
 This Blueprint accepts 5 actions & when done in the right order, flips an input_boolean.
 
 https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
+
+#### Zigbee2MQTT - Xiaomi Cube Controller Blueprint
+
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+
+https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
 
 ## Contact Links or see my other work:
