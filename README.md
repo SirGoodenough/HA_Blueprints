@@ -138,6 +138,8 @@ The split out of functions gives you the ability to assign local scripts or func
  * [keypad_5_button_cipher_to_turn_on_something.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.md)
  * [keypad_5_button_cipher_to_turn_on_something.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml)
 
+https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
+
 
 ## Contact Links or see my other work:
 
