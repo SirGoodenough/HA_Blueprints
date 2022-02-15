@@ -4,18 +4,11 @@ blueprint:
   of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you 
   the ability to assign local scripts or functions to do the things you want the remote to do.  
   Functions that are left empty will simply do nothing.  
-  Here is a sample Template sensor to capture this event:
-  ```yaml
-  template:
-    - trigger:
-      - platform: event
-        event_type: cube_last_action
-    sensor:
-    - name: "Cube Last Action"
-      unique_id: Any-unique-string-here-MUST-be-unique
-      state: '{{ trigger.event.data.event }} - {{ trigger.event.data.side }}'
-  ```
-  Within this code there is an event handler that will latch the last command that the
+
+  There is sample code to make the template sensor in the help file on GitHib named the same 
+  as this one and in the community page related to this.
+
+  Within this blueprint there is an event handler that will latch the last command that the
   blueprint finds and sends that to the event buss.  From there a simple Template sensor 
   can grab it and show you the last action sent.  Thie will help  when setting up new
   functions and to troubleshoot strange behaviours.
