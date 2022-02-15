@@ -45,7 +45,7 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude
   ```
 
 Event Sensor in Action:
-https://youtu.be/thaalK8pKtw
+![Sample Script Generation Screen](?raw=true "Example showing Random Selection")
 
   If you wish to 'store' these events you can add this sensor to recorder and it will 
   save them for you.
