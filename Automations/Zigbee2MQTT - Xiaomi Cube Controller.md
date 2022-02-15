@@ -44,7 +44,7 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude
       state: '{{ trigger.event.data.event }} - {{ trigger.event.data.side }}'
   ```
 
-![Event Sensor in Action](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/CubeLastActionSensorInAction.mp4?raw=true "What this sensor does compared to the live action sensor")
+![Event Sensor in Action](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/CubeLastActionSensorInAction.mp4)
 
   If you wish to 'store' these events you can add this sensor to recorder and it will 
   save them for you.
