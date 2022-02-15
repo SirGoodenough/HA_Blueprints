@@ -10,7 +10,7 @@ Updates will be published on my [GIT repository ](https://github.com/SirGoodenou
 
 ### Option 1: My Home Assistant
 
-Click the badge to import this Blueprint (needs Home Assistant Core 2021.7 or higher for Trigger_ID to work)
+Click the badge to import this Blueprint
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FZigbee2MQTT%2520-%2520Xiaomi%2520Cube%2520Controller.yaml)
 
@@ -45,17 +45,14 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude
   ```
 
 Event Sensor in Action:
-![Sample Script Generation Screen](?raw=true "Example showing Random Selection")
+![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubesensor.gif?raw=true "New sensor compared to the visual display of the action sensor")
 
   If you wish to 'store' these events you can add this sensor to recorder and it will 
   save them for you.
 
   This was 'forked' from 'https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006' 
   V1.2 project authored by luckypoppy and the friends he pulled together to create the base.  
-  I sincerely thank Him (Them) for their work.  I felt there needed to be more documentation 
-  for rookie users to properly set this up.  I had quite a few questions and when I saw a few questions 
-  in that chat from people struggling, I wanted to help    
-  I also had a better idea for troubleshooting info that didn't involve the log writes.
+  I sincerely thank Him (Them) for their work.  I felt there needed to be more documentation for rookie users to properly set this up.  I had quite a few questions and when I saw a few questions in that chat from people struggling, I wanted to help.  I also had a better idea for troubleshooting info that didn't involve the log writes.
 
 
 First, let’s go over Blueprints and what they are.  Blueprints are a way to share automations and is built into Home Assistant.  Simple as that.  You can import my template code and a copy of it will reside in your configuration.  Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build an automation.  It will collect the information needed based on your entities and your personal adjustments, and provide a working automation.  You will have to have or add the required hardware and entities that the Blueprint needs to function.
@@ -80,6 +77,8 @@ Once you have the entities created or decided upon you can build the Automation.
 ## Changelog
 
 * **2022-02-15**: Forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006 Version 1.2
+** Updated Documentation. 
+** Added Latched event sensor. 
 
 # All My Blueprints
 
@@ -154,7 +153,7 @@ Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
 
-Cash App $CASHTAG: https://cash.me/$SirGoodenough
+Cash App \$CASHTAG: https://cash.me/$SirGoodenough
 
 Venmo cash link: https://venmo.com/SirGoodenough
 
