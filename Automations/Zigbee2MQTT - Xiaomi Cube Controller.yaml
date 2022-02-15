@@ -9,19 +9,6 @@ blueprint:
   blueprint finds and sends that to the event buss.  From there a simple Template sensor 
   can grab it and show you the last action sent.  Thie will help  when setting up new
   functions and to troubleshoot strange behaviours.
-  Here is a sample Template sensor to capture this event:
-  ```yaml
-  template:
-    - trigger:
-      - platform: event
-        event_type: cube_last_action
-    sensor:
-    - name: "Cube Last Action"
-      unique_id: Any-unique-string-here-MUST-be-unique
-      state: '{{ trigger.event.data.event }} - {{ trigger.event.data.side }}'
-  ```
-  If you wish to 'store' these events you can add this sensor to recorder and it will 
-  save them for you.
 
   This was 'forked' from 'https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006' 
   V1.2 project authored by luckypoppy and the friends he pulled together to create the base.  
