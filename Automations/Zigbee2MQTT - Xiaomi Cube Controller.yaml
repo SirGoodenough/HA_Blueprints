@@ -1,8 +1,9 @@
 blueprint:
   name: Aqara Magic Cube (Z2M)
-  description:   "This Blueprint uses Zigbee2MQTT built sensors to sort out the multitude 
+  description:   "This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude 
   of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you 
-  the ability to assign local scripts or functions to do the things you want to do.  
+  the ability to assign local scripts or functions to do the things you want the remote to do.  
+  Functions that are left empty will simply do nothing.  
 
   Within this code there is an event handler that will 'latch' the last command that the
   blueprint finds and sends that to the event buss.  From there a simple Template sensor 
@@ -20,14 +21,21 @@ blueprint:
       state: '{{ trigger.event.data.event }} - {{ trigger.event.data.side }}'
   ```
   If you wish to 'store' these events you can add this sensor to recorder and it will 
-  save them for you."
-#  source_url: https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006
+  save them for you.
+
+  This was 'forked' from 'https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006' 
+  V1.2 project authored by luckypoppy and the friends he pulled together to create the base.  
+  I sincerely thank Him (Them) for their work.  I felt there needed to be more documentation 
+  for rookie users to properly set this up.  I had quite a few questions and when I saw a few questions 
+  in that chat from people struggling, I wanted to help    
+  I also had a better idea for troubleshooting info that didn't involve the log writes.
+  "
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml
   domain: automation
   input:
     remote:
       name: Remote
-      description: "Magic Cube to use.  
-      The entity to put here is the sensor that Z2M imported that is named like this:  
+      description: "The entity to put here is the sensor that Z2M imported which is named like this>  
       sensor.XXYour_HameXX_action  
       The other 4 sensors can be disabled, they will not be used."
       selector:
