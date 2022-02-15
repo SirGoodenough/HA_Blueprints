@@ -1,0 +1,358 @@
+blueprint:
+  name: Aqara Magic Cube (Z2M)
+  description:   "This Blueprint uses Zigbee2MQTT built sensors to sort out the multitude 
+  of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you 
+  the ability to assign local scripts or functions to do the things you want to do.  
+
+  Within this code there is an event handler that will 'latch' the last command that the
+  blueprint finds and sends that to the event buss.  From there a simple Template sensor 
+  can grab it and show you the last action sent.  Thie will help  when setting up new
+  functions and to troubleshoot strange behaviours.
+  Here is a sample Template sensor to capture this event:
+  ```yaml
+  template:
+    - trigger:
+      - platform: event
+        event_type: cube_last_action
+    sensor:
+    - name: "Cube Last Action"
+      unique_id: Any-unique-string-here-MUST-be-unique
+      state: '{{ trigger.event.data.event }} - {{ trigger.event.data.side }}'
+  ```
+  If you wish to 'store' these events you can add this sensor to recorder and it will 
+  save them for you."
+#  source_url: https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006
+  domain: automation
+  input:
+    remote:
+      name: Remote
+      description: "Magic Cube to use.  
+      The entity to put here is the sensor that Z2M imported that is named like this:  
+      sensor.XXYour_HameXX_action  
+      The other 4 sensors can be disabled, they will not be used."
+      selector:
+        entity:
+          integration: mqtt
+          domain: sensor
+    slide_face_0:
+      name: Slide the cube with face 0 up
+      description: "Face 0 is the one with the 'Aqara' LOGO"
+      default: []
+      selector:
+        action: {}
+    doubletap_face_0:
+      name: Double tap the cube with face 0 up
+      description: "Face 0 is the one with the 'Aqara' LOGO"
+      default: []
+      selector:
+        action: {}
+    flipped90_face_0:
+      name: Flip the cube 90 degrees to face 0
+      description: "Face 0 is the one with the 'Aqara' LOGO"
+      default: []
+      selector:
+        action: {}
+    flipped180_face_0:
+      name: Flip the cube 180 degrees to face 0
+      description: "NOTE: This action is trick to master, and should be used sparingly... 
+      Face 0 is the one with the 'Aqara' LOGO"
+      default: []
+      selector:
+        action: {}
+    rotate_cw_face_0:
+      name: Rotate cube clockwise with face 0 up
+      description: "Face 0 is the one with the 'Aqara' LOGO"
+      default: []
+      selector:
+        action: {}
+    rotate_ccw_face_0:
+      name: Rotate cube counter clockwise with face 0 up
+      description: "Face 0 is the one with the 'Aqara' LOGO"
+      default: []
+      selector:
+        action: {}
+    slide_face_1:
+      name: Slide the cube with face 1 up
+      default: []
+      selector:
+        action: {}
+    doubletap_face_1:
+      name: Double tap the cube with face 1 up
+      default: []
+      selector:
+        action: {}
+    flipped90_face_1:
+      name: Flip the cube 90 degrees to face 1
+      default: []
+      selector:
+        action: {}
+    flipped180_face_1:
+      name: Flip the cube 180 degrees to face 1
+      description: "NOTE: This action is trick to master, and should be used sparingly..."
+      default: []
+      selector:
+        action: {}
+    rotate_cw_face_1:
+      name: Rotate cube clockwise with face 1 up
+      default: []
+      selector:
+        action: {}
+    rotate_ccw_face_1:
+      name: Rotate cube counter clockwise with face 1 up
+      default: []
+      selector:
+        action: {}
+    slide_face_2:
+      name: Slide the cube with face 2 up
+      default: []
+      selector:
+        action: {}
+    doubletap_face_2:
+      name: Double tap the cube with face 2 up
+      default: []
+      selector:
+        action: {}
+    flipped90_face_2:
+      name: Flip the cube 90 degrees to face 2
+      default: []
+      selector:
+        action: {}
+    flipped180_face_2:
+      name: Flip the cube 180 degrees to face 2
+      description: "NOTE: This action is trick to master, and should be used sparingly..."
+      default: []
+      selector:
+        action: {}
+    rotate_cw_face_2:
+      name: Rotate cube clockwise with face 2 up
+      default: []
+      selector:
+        action: {}
+    rotate_ccw_face_2:
+      name: Rotate cube counter clockwise with face 2 up
+      default: []
+      selector:
+        action: {}
+    slide_face_3:
+      name: Slide the cube with face 3 up
+      default: []
+      selector:
+        action: {}
+    doubletap_face_3:
+      name: Double tap the cube with face 3 up
+      default: []
+      selector:
+        action: {}
+    flipped90_face_3:
+      name: Flip the cube 90 degrees to face 3
+      default: []
+      selector:
+        action: {}
+    flipped180_face_3:
+      name: Flip the cube 180 degrees to face 3
+      description: "NOTE: This action is trick to master, and should be used sparingly..."
+      default: []
+      selector:
+        action: {}
+    rotate_cw_face_3:
+      name: Rotate cube clockwise with face 3 up
+      default: []
+      selector:
+        action: {}
+    rotate_ccw_face_3:
+      name: Rotate cube counter clockwise with face 3 up
+      default: []
+      selector:
+        action: {}
+    slide_face_4:
+      name: Slide the cube with face 4 up
+      default: []
+      selector:
+        action: {}
+    doubletap_face_4:
+      name: Double tap the cube with face 4 up
+      default: []
+      selector:
+        action: {}
+    flipped90_face_4:
+      name: Flip the cube 90 degrees to face 4
+      default: []
+      selector:
+        action: {}
+    flipped180_face_4:
+      name: Flip the cube 180 degrees to face 4
+      description: "NOTE: This action is trick to master, and should be used sparingly..."
+      default: []
+      selector:
+        action: {}
+    rotate_cw_face_4:
+      name: Rotate cube clockwise with face 4 up
+      default: []
+      selector:
+        action: {}
+    rotate_ccw_face_4:
+      name: Rotate cube counter clockwise with face 4 up
+      default: []
+      selector:
+        action: {}
+    slide_face_5:
+      name: Slide the cube with face 5 up
+      default: []
+      selector:
+        action: {}
+    doubletap_face_5:
+      name: Double tap the cube with face 5 up
+      default: []
+      selector:
+        action: {}
+    flipped90_face_5:
+      name: Flip the cube 90 degrees to face 5
+      default: []
+      selector:
+        action: {}
+    flipped180_face_5:
+      name: Flip the cube 180 degrees to face 5
+      description: "NOTE: This action is trick to master, and should be used sparingly..."
+      default: []
+      selector:
+        action: {}
+    rotate_cw_face_5:
+      name: Rotate cube clockwise with face 5 up
+      default: []
+      selector:
+        action: {}
+    rotate_ccw_face_5:
+      name: Rotate cube counter clockwise with face 5 up
+      default: []
+      selector:
+        action: {}
+    shake:
+      name: Shake the cube
+      default: []
+      selector:
+        action: {}
+    fall:
+      name: Drop the cube
+      default: []
+      selector:
+        action: {}
+mode: queued
+max: 5
+max_exceeded: silent
+trigger:
+- platform: state
+  entity_id: !input 'remote'
+condition:
+  - condition: and
+    conditions:
+      - condition: template
+        value_template: >-
+          {{ trigger.from_state.attributes.action != trigger.to_state.attributes.action }} 
+      - condition: template
+        value_template: >
+          {{ trigger.to_state.attributes.action in 
+            ('rotate_right', 'rotate_left', 'flip90', 'flip180', 'slide', 'tap', 'shake', 'fall') }}
+action:
+- variables:
+    event: '{{ trigger.to_state.attributes.action }}'
+    sub_event: '{{ trigger.to_state.attributes.side }}'
+- alias: "Fire Last Action event"
+  event: cube_last_action
+  event_data:
+    event: '{{ event }}'
+    side: '{{ sub_event }}'
+- choose:
+  - conditions: '{{ event == "slide" }}'
+    sequence:
+    - choose:
+      - conditions: '{{ sub_event == 0 }}'
+        sequence: !input 'slide_face_0'
+      - conditions: '{{ sub_event == 1 }}'
+        sequence: !input 'slide_face_1'
+      - conditions: '{{ sub_event == 2 }}'
+        sequence: !input 'slide_face_2'
+      - conditions: '{{ sub_event == 3 }}'
+        sequence: !input 'slide_face_3'
+      - conditions: '{{ sub_event == 4 }}'
+        sequence: !input 'slide_face_4'
+      - conditions: '{{ sub_event == 5 }}'
+        sequence: !input 'slide_face_5'
+  - conditions: '{{ event == "tap" }}'
+    sequence:
+    - choose:
+      - conditions: '{{ sub_event == 0 }}'
+        sequence: !input 'doubletap_face_0'
+      - conditions: '{{ sub_event == 1 }}'
+        sequence: !input 'doubletap_face_1'
+      - conditions: '{{ sub_event == 2 }}'
+        sequence: !input 'doubletap_face_2'
+      - conditions: '{{ sub_event == 3 }}'
+        sequence: !input 'doubletap_face_3'
+      - conditions: '{{ sub_event == 4 }}'
+        sequence: !input 'doubletap_face_4'
+      - conditions: '{{ sub_event == 5 }}'
+        sequence: !input 'doubletap_face_5'
+  - conditions: '{{ event == "flip90" }}'
+    sequence:
+    - choose:
+      - conditions: '{{ sub_event == 0 }}'
+        sequence: !input 'flipped90_face_0'
+      - conditions: '{{ sub_event == 1 }}'
+        sequence: !input 'flipped90_face_1'
+      - conditions: '{{ sub_event == 2 }}'
+        sequence: !input 'flipped90_face_2'
+      - conditions: '{{ sub_event == 3 }}'
+        sequence: !input 'flipped90_face_3'
+      - conditions: '{{ sub_event == 4 }}'
+        sequence: !input 'flipped90_face_4'
+      - conditions: '{{ sub_event == 5 }}'
+        sequence: !input 'flipped90_face_5'
+  - conditions: '{{ event == "flip180" }}'
+    sequence:
+    - choose:
+      - conditions: '{{ sub_event == 0 }}'
+        sequence: !input 'flipped180_face_0'
+      - conditions: '{{ sub_event == 1 }}'
+        sequence: !input 'flipped180_face_1'
+      - conditions: '{{ sub_event == 2 }}'
+        sequence: !input 'flipped180_face_2'
+      - conditions: '{{ sub_event == 3 }}'
+        sequence: !input 'flipped180_face_3'
+      - conditions: '{{ sub_event == 4 }}'
+        sequence: !input 'flipped180_face_4'
+      - conditions: '{{ sub_event == 5 }}'
+        sequence: !input 'flipped180_face_5'
+  - conditions: '{{ event == "rotate_right" }}'
+    sequence:
+    - choose:
+      - conditions: '{{ sub_event == 0 }}'
+        sequence: !input 'rotate_cw_face_0'
+      - conditions: '{{ sub_event == 1 }}'
+        sequence: !input 'rotate_cw_face_1'
+      - conditions: '{{ sub_event == 2 }}'
+        sequence: !input 'rotate_cw_face_2'
+      - conditions: '{{ sub_event == 3 }}'
+        sequence: !input 'rotate_cw_face_3'
+      - conditions: '{{ sub_event == 4 }}'
+        sequence: !input 'rotate_cw_face_4'
+      - conditions: '{{ sub_event == 5 }}'
+        sequence: !input 'rotate_cw_face_5'
+  - conditions: '{{ event == "rotate_left" }}'
+    sequence:
+    - choose:
+      - conditions: '{{ sub_event == 0 }}'
+        sequence: !input 'rotate_ccw_face_0'
+      - conditions: '{{ sub_event == 1 }}'
+        sequence: !input 'rotate_ccw_face_1'
+      - conditions: '{{ sub_event == 2 }}'
+        sequence: !input 'rotate_ccw_face_2'
+      - conditions: '{{ sub_event == 3 }}'
+        sequence: !input 'rotate_ccw_face_3'
+      - conditions: '{{ sub_event == 4 }}'
+        sequence: !input 'rotate_ccw_face_4'
+      - conditions: '{{ sub_event == 5 }}'
+        sequence: !input 'rotate_ccw_face_5'
+  - conditions: '{{ event == "shake" }}'
+    sequence: !input 'shake'
+  - conditions: '{{ event == "fall" }}'
+    sequence: !input 'fall'
