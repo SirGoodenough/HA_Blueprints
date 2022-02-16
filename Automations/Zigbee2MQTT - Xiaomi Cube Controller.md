@@ -77,7 +77,7 @@ Once you have the entities created or decided upon you can build the Automation.
 * **2022-02-15**: Forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006 Version 1.2
 ** Updated Documentation. 
 ** Added Latched event sensor. 
-* **2022-02-15.11**: Later that same day relized that if you have more than 1 cube, the event will be lacking so added ID.
+* **2022-02-15.1**: Later that same day relized that if you have more than 1 cube, the event will be lacking so added ID.
 
 # All My Blueprints
 
