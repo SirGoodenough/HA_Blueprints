@@ -40,7 +40,8 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude
       state: >
         {{ trigger.event.data.friendly_name }} - 
         {{ trigger.event.data.event }} - 
-        {{ trigger.event.data.side }}  ```
+        {{ trigger.event.data.side }}
+  ```
 
 Event Sensor in Action:
 ![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubesensor.gif?raw=true "New sensor compared to the visual display of the action sensor")
