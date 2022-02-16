@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT - 2022-02-15
+  name: Aqara Magic Cube Zigbee2MQTT - 2022-02-15.1
   description: "This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude 
   of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you 
   the ability to assign local scripts or functions to do the things you want the remote to do.  
@@ -254,6 +254,8 @@ action:
 - variables:
     event: '{{ trigger.to_state.attributes.action }}'
     sub_event: '{{ trigger.to_state.attributes.side }}'
+    entity_id: !input 'remote'
+    friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
 - alias: Fire Last Action event
   event: cube_last_action
   event_data:
