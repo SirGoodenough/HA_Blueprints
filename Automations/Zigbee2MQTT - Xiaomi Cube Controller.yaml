@@ -254,11 +254,13 @@ action:
 - variables:
     event: '{{ trigger.to_state.attributes.action }}'
     sub_event: '{{ trigger.to_state.attributes.side }}'
-- alias: "Fire Last Action event"
+- alias: Fire Last Action event
   event: cube_last_action
   event_data:
     event: '{{ event }}'
     side: '{{ sub_event }}'
+    entity_id: '{{ entity_id }}'
+    friendly_name: '{{ friendly_name }}'
 - choose:
   - conditions: '{{ event == "slide" }}'
     sequence:

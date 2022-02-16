@@ -37,8 +37,10 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude
     sensor:
     - name: "Cube Last Action"
       unique_id: Any-unique-string-here-MUST-be-unique
-      state: '{{ trigger.event.data.event }} - {{ trigger.event.data.side }}'
-  ```
+      state: >
+        {{ trigger.event.data.friendly_name }} - 
+        {{ trigger.event.data.event }} - 
+        {{ trigger.event.data.side }}  ```
 
 Event Sensor in Action:
 ![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubesensor.gif?raw=true "New sensor compared to the visual display of the action sensor")
@@ -75,6 +77,7 @@ Once you have the entities created or decided upon you can build the Automation.
 * **2022-02-15**: Forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006 Version 1.2
 ** Updated Documentation. 
 ** Added Latched event sensor. 
+* **2022-02-15.11**: Later that same day relized that if you have more than 1 cube, the event will be lacking so added ID.
 
 # All My Blueprints
 
