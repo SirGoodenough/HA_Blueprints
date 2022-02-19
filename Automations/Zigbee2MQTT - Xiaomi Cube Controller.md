@@ -1,4 +1,4 @@
-This Blueprint uses th Z2M (Zigbee2MQTT) imported Action sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.  
+This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.  
 
 ## :arrow_down: Get Started
 
@@ -26,8 +26,8 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude
 
   Within this code there is an event handler that will 'latch' the last command that the
   blueprint finds and sends that to the event buss.  From there a simple Template sensor 
-  can grab it and show you the last action sent.  Thie will help  when setting up new
-  functions and to troubleshoot strange behaviours.
+  can grab it and show you the last action sent.  This will help  when setting up new
+  functions and to troubleshoot strange behaviors.
   Here is a sample Template sensor to capture this event:
   ```yaml
   template:
@@ -49,10 +49,16 @@ Event Sensor in Action:
   If you wish to 'store' these events you can add this sensor to recorder and it will 
   save them for you.
 
-  This was 'forked' from 'https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006' 
-  V1.2 project authored by luckypoppy and the friends he pulled together to create the base.  
-  I sincerely thank Him (Them) for their work.  I felt there needed to be more documentation for rookie users to properly set this up.  I had quite a few questions and when I saw a few questions in that chat from people struggling, I wanted to help.  I also had a better idea for troubleshooting info that didn't involve the log writes.
+  My 'suggestion' is that you do separate scripts for most, if not all of the actions you generate here.  If you are using the UI editor for the simple things you are fine, but for more complicated things scripts may work better for you.  This is my opinion and how I am using it, to each their own.  See my example dimmer script below...
 
+_________________________
+
+> This was 'forked' from 'https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006' 
+V1.2 project authored by luckypoppy and the friends he pulled together to create the base.  
+>
+> I sincerely thank Him (Them) for their work.  I felt there needed to be more documentation for rookie users to properly set this up.  I had quite a few questions and when I saw a few questions in that chat from people struggling, I wanted to help.  I also had a better idea for troubleshooting info that didn't involve the log writes.
+
+_________________________
 
 First, let’s go over Blueprints and what they are.  Blueprints are a way to share automations and is built into Home Assistant.  Simple as that.  You can import my template code and a copy of it will reside in your configuration.  Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build an automation.  It will collect the information needed based on your entities and your personal adjustments, and provide a working automation.  You will have to have or add the required hardware and entities that the Blueprint needs to function.
 
@@ -73,20 +79,67 @@ Once you have the entities created or decided upon you can build the Automation.
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
 
-## Changelog
+## :sun_with_face: Dimmer Control
+
+If you are looking for a dimmer control to change brightness based on rotation, here's something I cobbled together from other community posts here and there.
+
+I did this with all the complicated stuff in a script that is called with data from the blueprint automation.  Then the complicated part is all in 1 place and there is only 1 copy of it.  The same script works for both increase and decrease of brightness because the angle in the cube goes positive when turning clockwise and negative when going counter clockwise.
+
+In the blueprint automation:
+```yaml
+      rotate_cw_face_0:
+      - service: script.cube_dimmer_control
+        data:
+          angle: "{{ trigger.to_state.attributes.action_angle }}"
+          light: light.bulb1
+      rotate_ccw_face_0:
+      - service: script.cube_dimmer_control
+        data:
+          angle: "{{ trigger.to_state.attributes.action_angle }}"
+          light: light.bulb1
+```
+
+Then this is the script that's called to do the heavy lifting.  It works for both CW and CCW cube rotations:
+```yaml
+cube_dimmer_control:
+  description: Template Dimmer Control
+  variables:
+    angle:
+    light:
+  sequence:
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ light }}"
+        brightness_pct: >
+          {% set step_size = angle * 0.4 %}
+          {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
+          {% set new_brightness = cb | int(1) + step_size %}
+          {% if 91 <= new_brightness < (90 + step_size) %}
+            100
+          {% else %}
+            {{ new_brightness if new_brightness < 100 else 0 }}
+          {% endif %}
+```
+A little explanation on this.  The cube rotation on the correct face triggers the blueprint, and the command is picked up providing the action (rotation CW or CCW) and the angle.  The angle will be a positive or negative value based on the rotation.  You need to add the light you want to control, and the entity and the angle are sent to the script.
+
+The script grabs the current brightness from the light entity, reduces the angle number by 40% (you can change this, but 40$ works well for my needs) and converts that to a percentage of the full scale 255 number.  It then checks that it's not too close to the ends, and turns on the light changing the current percentage.
+
+This can be used over and over for as many lights as you want to control.
+
+## :tada: Changelog
 
 * **2022-02-15**: Forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006 Version 1.2
 ** Updated Documentation. 
 ** Added Latched event sensor. 
-* **2022-02-15.1**: Later that same day relized that if you have more than 1 cube, the event will be lacking so added ID.
+* **2022-02-15.1**: Later that same day realized that if you have more than 1 cube, the event will be lacking so added ID.
 
-# All My Blueprints
+# :factory: All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
 
 Here is a list of each of my blueprints, a quick description and jump links to the Blueprints Exchange post...
 
-## Scripts:
+## :scroll: Scripts:
 #### Broadlink on Script Blueprint
 
 https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755
@@ -115,7 +168,7 @@ This Script Blueprint plays a Google Translate say message in Home Assistant lea
 
 https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-not-an-automation-blueprint/333199
 
-## Automations:
+## :robot: Automations:
 #### Auto Fan Control Blueprint
 
 This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  Intended for Ifan03/Ifan04 but useful other places.
@@ -140,7 +193,7 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of comm
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
-## Contact Links or see my other work:
+## :eyes: Contact Links or see my other work:
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 
@@ -152,7 +205,7 @@ What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAr
 
 Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 
-## If you want to support me:
+## :building_construction: If you want to support me:
 
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
