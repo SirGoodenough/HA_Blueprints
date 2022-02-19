@@ -81,7 +81,7 @@ Once you have the entities created or decided upon you can build the Automation.
 
 ## :sun_with_face: Dimmer Control
 
-If you are looking for a dimmer control to change brightness based on rotation, here's something I cobbled together from other community posts here and there.
+If you are looking for a dimmer control to change brightness based on rotation, here's something I cobbled together from other community posts here and there. ( Credit https://community.home-assistant.io/u/yourigh/summary and others )
 
 I did this with all the complicated stuff in a script that is called with data from the blueprint automation.  Then the complicated part is all in 1 place and there is only 1 copy of it.  The same script works for both increase and decrease of brightness because the angle in the cube goes positive when turning clockwise and negative when going counter clockwise.
 
