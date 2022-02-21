@@ -4,6 +4,11 @@ This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the
 
 Updates will be published on my [GIT repository ](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
+I have 2 of these cubes.  If you aren't careful they trigger and do all kinds of things just sitting on the desk.  Awesome when you want it to do this, but a HUGE PITA if you don't.
+
+A friend of mine came up with this and it works awesome.  He didn't want people hassling him about remixes and such, so he let me put it on the Thingiverse.  I printed one for each of my cubes and because it's now parked at a diagonal it will not trigger, unless you knock it on the floor or something.  I highly suggest you print yourself one of these or find someone to print one for you....  It will make cube life much simpler...
+https://www.thingiverse.com/thing:4536778
+
 ### Option 1: My Home Assistant
 
 Click the badge to import this Blueprint
