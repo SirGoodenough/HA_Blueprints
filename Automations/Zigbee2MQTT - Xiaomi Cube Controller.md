@@ -131,7 +131,13 @@ cube_dimmer_control:
 ```
 A little explanation on this.  The cube rotation on the correct face triggers the blueprint, and the command is picked up providing the action (rotation CW or CCW) and the angle.  The angle will be a positive or negative value based on the rotation.  You need to add the light you want to control, and the entity and the angle are sent to the script.
 
-The script grabs the current brightness from the light entity (as a % of the full scale 255 number). It then reduces the angle number by 40% (you can change this, but 40% works well for my needs).  It then checks if the light is already off, and if so, leaves it off.  It makes sure the new_brightness is above, in my case, 10% so all the lights come on.  It then makes sure that if new_brightness >90%, it is set to 100% and not over that.  Finally it provides the calculated brightness % double checking it's not over 100%.
+* The script reduces the angle number by 40% (you can change this, but 40% works well for my needs).
+* It then grabs the current brightness from the light entity (as a % of the full scale 255 number). 
+* The new_brightness target is then calculated. 
+* It then checks if the light is already off, and if so, leaves it off.
+* It makes sure the new_brightness is above, in my case, 10% so all the lights come on.
+* It then makes sure that if new_brightness >90%, it is set to 100% and not over that.
+* Finally it provides the calculated brightness % double checking it's not over 100%.
 
 This can be used over and over for as many lights as you want to control.
 
