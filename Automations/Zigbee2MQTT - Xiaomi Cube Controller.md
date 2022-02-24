@@ -118,16 +118,20 @@ cube_dimmer_control:
         brightness_pct: >
           {% set step_size = angle * 0.4 %}
           {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
-          {% set new_brightness = cb | int(1) + step_size %}
-          {% if 91 <= new_brightness < (90 + step_size) %}
+          {% set new_brightness = cb | int(10) + step_size %}
+          {% if cb < 5 %} 
+            0
+          {% elif new_brightness <= 10 %} 
+            10
+          {% elif 91 <= new_brightness < (90 + step_size) %}
             100
           {% else %}
-            {{ new_brightness if new_brightness < 100 else 0 }}
+            {{ new_brightness if new_brightness <= 100 else 100 }}
           {% endif %}
 ```
 A little explanation on this.  The cube rotation on the correct face triggers the blueprint, and the command is picked up providing the action (rotation CW or CCW) and the angle.  The angle will be a positive or negative value based on the rotation.  You need to add the light you want to control, and the entity and the angle are sent to the script.
 
-The script grabs the current brightness from the light entity, reduces the angle number by 40% (you can change this, but 40$ works well for my needs) and converts that to a percentage of the full scale 255 number.  It then checks that it's not too close to the ends, and turns on the light changing the current percentage.
+The script grabs the current brightness from the light entity (as a % of the full scale 255 number). It then reduces the angle number by 40% (you can change this, but 40% works well for my needs).  It then checks if the light is already off, and if so, leaves it off.  It makes sure the new_brightness is above, in my case, 10% so all the lights come on.  It then makes sure that if new_brightness >90%, it is set to 100% and not over that.  Finally it provides the calculated brightness % double checking it's not over 100%.
 
 This can be used over and over for as many lights as you want to control.
 
