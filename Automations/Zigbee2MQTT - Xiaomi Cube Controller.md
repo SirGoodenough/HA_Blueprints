@@ -137,7 +137,7 @@ A little explanation on this.  The cube rotation on the correct face triggers th
 * It then checks if the light is already off, and if so, leaves it off.
 * It makes sure the new_brightness is above, in my case, 10% so all the lights come on.
 * It then makes sure that if new_brightness >90%, it is set to 100% and not over that.
-* Finally it provides the calculated brightness % double checking it's not over 100%.
+* Finally it provides the calculated brightness %.
 
 This can be used over and over for as many lights as you want to control.
 
