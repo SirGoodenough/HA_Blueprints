@@ -126,7 +126,7 @@ cube_dimmer_control:
           {% elif 91 <= new_brightness < (90 + step_size) %}
             100
           {% else %}
-            {{ new_brightness if new_brightness <= 100 else 100 }}
+            {{ new_brightness }}
           {% endif %}
 ```
 A little explanation on this.  The cube rotation on the correct face triggers the blueprint, and the command is picked up providing the action (rotation CW or CCW) and the angle.  The angle will be a positive or negative value based on the rotation.  You need to add the light you want to control, and the entity and the angle are sent to the script.
