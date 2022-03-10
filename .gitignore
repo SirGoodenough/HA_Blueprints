@@ -133,4 +133,6 @@ dmypy.json
 # Other Stuff...
 
 ToDo.txt
-/.Purgatory/*
+
+/Archive
+/Archive/*
