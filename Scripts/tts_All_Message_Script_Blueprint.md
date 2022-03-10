@@ -110,7 +110,7 @@ https://community.home-assistant.io/t/script-blueprint-to-play-media-player-file
 
 This script can use any of the 11 integrated TTS Platforms in Home Assistant to send a message to a media player.
 
-
+https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700
 
 ## 🔃 Automations
 
