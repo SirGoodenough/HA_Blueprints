@@ -2,7 +2,7 @@ blueprint:
   domain: script
   homeassistant:
     min_version: 2021.11.0
-  name: TTS_say Message-2022-03-09
+  name: TTS_say_Message-2022-03-09
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   description: '📣 This is a script that can use any of the 11 integrated TTS Platforms 
     in Home Assistant to send a message to a media player. Some will require 
@@ -168,7 +168,7 @@ blueprint:
           - vi-VN
     Google_Cloud_Voice:
       name: Google Cloud Voice Code
-      description: 'Usedonly with tts.google_cloud_say platform.
+      description: 'Used only with tts.google_cloud_say platform.
         Pick from here- ( https://cloud.google.com/text-to-speech/docs/voices )
         This is the voice code of the speaker. The default is: "en-US-Wavenet-F".
         Refer to ( https://www.home-assistant.io/integrations/google_cloud )
