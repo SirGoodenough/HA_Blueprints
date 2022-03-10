@@ -1,6 +1,6 @@
 This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  Intended for Ifan03/Ifan04 but useful other places.
 
-## :arrow_down: Get Started
+## 📩 Get Started
 
 Updates will be published on my [GIT repository ](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
@@ -17,7 +17,7 @@ Copy this link if you want to import the blueprint in your installation.
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.yaml
 
-## :page_facing_up: Description
+## 📖 Description
 
 This functionality started as a way to help my Bedroom AC unit keep an even temperature throughout the bedroom over night.  My partner wanted the fan on, but not faster than it had to be.  I wanted it to change speeds following the temperature of the room.  So that's what I did.
 
@@ -27,7 +27,7 @@ If you are looking to tweak the function here or are looking for something the s
 
 First, let’s go over Blueprints and what they are.  Blueprints are a way to share automations and is built into Home Assistant.  Simple as that.  You can import my template code and a copy of it will reside in your configuration.  Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build an automation.  It will collect the information needed based on your entities and your personal adjustments, and provide a working automation.  You will have to have or add the required hardware and entities that the Blueprint needs to function.
 
-### How the Blueprint works:
+### ⚙️ How the Blueprint works:
 
 To import this Blueprint: 
 > • Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
@@ -46,13 +46,13 @@ Once you have the entities created or decided upon you can build the Automation.
 > 3. Use the Drop-downs to select the Entities and values for the listed purposes.  If you have questions trial and error or hit me up on Discord.
 > 4.  Test that your fan works by changing the input number and the input boolean
 
-### FAQ for blueprint
+### 🛠 FAQ for blueprint
 Questions:
 >  1. You can use either Metric or Imperial, but the sensor and the input_number have to be using the same scale.
 >  2. The Hysteresis offset can be '0' for the simplest operation.  If you hare using the input_number to control both this and a climate integration, you may want an offset so the fan does not quick cycle.  It basically move the input_number set point by the amount you pick
 >  3. You can have multiple automations running off of this with the same or different temp settings or times, but I suggest the times on 'ENABLED' versions do not overlap, or it will get very confused.
 
-### HOW the Blueprint / Automation works
+### 🛠 HOW the Blueprint / Automation works
 Walk-thru:
 > 1. The header of the Blueprint contains the required info plus the URL from where it came from.
 > 2. The input: section is where it gets the information it needs to fill in the blanks. This information is stored in the actual automation referencing this Blueprint when executing the task.
@@ -60,7 +60,7 @@ Walk-thru:
 > 4. The triggers section has hooks for the listed things.  2 of them are used to stop the automation at the appropriate time, and the rest are used to start the automation or to adjust the fan speed on temperature changes.
 > 5. In the action the first test looks to see if the automation wants to stop.  If that is not the case, it will test the temperature reading against the set point and adjust the fan speed accordingly.
 
-## Changelog
+## 📑 Changelog
 
 * **2021-08-02**: First blueprint version :tada:
                         needs Home Assistant Core 2021.7 or higher for Trigger_ID to work
@@ -70,68 +70,63 @@ Walk-thru:
 * **2021-11-20**: Add Minimum Home Assistant version.
 * **2022-02-07**: Add Default value to float filters (for HA Breaking change).
 
-# All My Blueprints
+# 🌐 All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
 
 Here is a list of each of my blueprints, a quick description and jump links to the Blueprints Exchange post...
 
-## Scripts:
-#### Broadlink on Script Blueprint
+## 🌀 Scripts
+
+#### 🧯Broadlink on Script Blueprint
 
 https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755
 
-#### Tasmota EZ Button Blueprint
+#### 🧯Tasmota EZ Button Blueprint
 
 This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
 
 https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
 
-#### Play Media File Script Blueprint Blueprint
+#### 🧯Play Media File Script Blueprint Blueprint
 
-This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean. 
+This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean.
 
 https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988
 
-#### TTS Cloud Message Blueprint
+#### 🧯TTS All Message Blueprint
 
-This Script Blueprint plays a Nabu-Casa tts-cloud-say message in Home Assistant leaving the mess out of the main code.
+This script can use any of the 11 integrated TTS Platforms in Home Assistant to send a message to a media player.
 
-https://community.home-assistant.io/t/script-blueprint-to-play-nabu-casa-tts-cloud-say-messages-not-an-automation-blueprint/377368
+https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700
 
-#### TTS Translate Say Message Blueprint
+## 🔃 Automations
 
-This Script Blueprint plays a Google Translate say message in Home Assistant leaving the mess out of the main code.
-
-https://community.home-assistant.io/t/script-blueprint-for-google-translate-say-not-an-automation-blueprint/333199
-
-## Automations:
-#### Auto Fan Control Blueprint
+#### 🧯Auto Fan Control Blueprint
 
 This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  Intended for Ifan03/Ifan04 but useful other places.
 
 https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
 
-#### Door Open TTS Cloud-Say Message Blueprint
+#### 🧯Door Open TTS Cloud-Say Message Blueprint
 
 This Blueprint is a TTS.cloud-say version of another Door Announcer I found in the HA Blueprint Exchange.
 
 https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
 
-#### Keypad Lock or puzzle Box Tool Blueprint
+#### 🧯Keypad Lock or puzzle Box Tool Blueprint
 
 This Blueprint accepts 5 actions & when done in the right order, flips an input_boolean.
 
 https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
 
-#### Zigbee2MQTT - Xiaomi Cube Controller Blueprint
+#### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
 This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
-
-## Contact Links or see my other work:
+## 🤹🏾‍♂️ Contact Links or see my other work
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 
@@ -143,13 +138,13 @@ What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAr
 
 Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 
-## If you want to support me:
+## 🧀 If you want to support me
 
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
 
-Cash App $CASHTAG: https://cash.me/$SirGoodenough
+Cash App \$CASHTAG: https://cash.me/$SirGoodenough
 
 Venmo cash link: https://venmo.com/SirGoodenough
 
