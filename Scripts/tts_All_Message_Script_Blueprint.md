@@ -51,7 +51,7 @@ You will need to verify that the name you have given to the TTS integration in y
 
 ### 🛠 Installation
 
-You can import the script blueprint via the button above or manually as below, however it does not show in the UI as there is no Script Blueprint UI and it is not an Automation Blueprint.
+You can import the script blueprint via the button above or manually as below.
 To import this Blueprint:
 > *Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 >*Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
