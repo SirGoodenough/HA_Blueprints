@@ -103,15 +103,15 @@ In the blueprint automation:
 
 ```yaml
 rotate_cw_face_0:
-- service: script.cube_dimmer_control
-  data:
-    angle: "{{ trigger.to_state.attributes.action_angle }}"
-    light: light.bulb1
+  - service: script.cube_dimmer_control
+    data:
+      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      light: light.bulb1
 rotate_ccw_face_0:
-- service: script.cube_dimmer_control
-  data:
-    angle: "{{ trigger.to_state.attributes.action_angle }}"
-    light: light.bulb1
+  - service: script.cube_dimmer_control
+    data:
+      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      light: light.bulb1
 ```
 
 Then this is the script that's called to do the heavy lifting.   It works for both CW and CCW cube rotations.
