@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT - 2022-02-15.1
+  name: Aqara Magic Cube Zigbee2MQTT - 2022-03-12
   description: "This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude 
   of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you 
   the ability to assign local scripts or functions to do the things you want the remote to do.  
@@ -234,21 +234,15 @@ blueprint:
       default: []
       selector:
         action: {}
-mode: queued
-max: 5
+mode: single
 max_exceeded: silent
 trigger:
 - platform: state
   entity_id: !input 'remote'
 condition:
-  - condition: and
-    conditions:
-      - condition: template
-        value_template: "{{ trigger.from_state.attributes.action !=\
-          \ trigger.to_state.attributes.action }}" 
-      - condition: template
-        value_template: "{{ trigger.to_state.attributes.action in ('rotate_right',\
-          \ 'rotate_left', 'flip90', 'flip180', 'slide', 'tap', 'shake', 'fall') }}"
+  condition: template
+  value_template: "{{ trigger.to_state.attributes.action in ('rotate_right',\
+    \ 'rotate_left', 'flip90', 'flip180', 'slide', 'tap', 'shake', 'fall') }}"
 action:
 - variables:
     event: '{{ trigger.to_state.attributes.action }}'
@@ -357,3 +351,5 @@ action:
     sequence: !input 'shake'
   - conditions: '{{ event == "fall" }}'
     sequence: !input 'fall'
+- alias: "Delay for debounce so that toggle functions work. Also blueprint is in single mode."
+  delay: 00:00:01
