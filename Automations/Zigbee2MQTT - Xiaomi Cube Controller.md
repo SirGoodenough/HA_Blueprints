@@ -2,11 +2,11 @@ This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the
 
 ## 📑 Changelog
 
+* **2022-03-12**: Changed debounce logic from not repeating the last action to single mode and a 1 second delay at the end.  Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
+* **2022-02-15.1**: Later that same day realized that if you have more than 1 cube, the event will be lacking so added ID.
 * **2022-02-15**: Forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006 Version 1.2
   * Updated Documentation.
   * Added Latched event sensor.
-* **2022-02-15.1**: Later that same day realized that if you have more than 1 cube, the event will be lacking so added ID.
-* **2022-03-12**: Changed debounce logic from not repeating the last action to single mode and a 1 second delay at the end.  Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
 
 ## 📩 Get Started
 
