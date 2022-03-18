@@ -2,7 +2,9 @@ This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the
 
 ## 📑 Changelog
 
-* **2022-03-12**: Changed debounce logic from not repeating the last action to single mode and a 1 second delay at the end.  Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
+* **2022-03-17**: Added 6 functions that do not care about side.  Makes it simple if you only want a couple of functions.
+  * Added some aliases on some choose statements to improve Trace Diagrams and Troubleshooting.
+* **2022-03-12**: Changed debounce logic from not repeating the last action to single mode and added a 1 second delay at the end.  Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
 * **2022-02-15.1**: Later that same day realized that if you have more than 1 cube, the event will be lacking so added ID.
 * **2022-02-15**: Forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006 Version 1.2
   * Updated Documentation.
@@ -33,6 +35,8 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQ
 ## 📖 Description
 
 This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote. The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do. Functions that are left empty will simply do nothing.  
+
+There are a set of event functions that will trigger on *ANY* side. Please be aware that the *ANY* functions and the Side Specific functions **BOTH** trigger every time. Therefore I suggest if you just have a couple of things you want this remote to do that you choose the *ANY* events. If you want more that a few events, you should NOT use the *ANY* and instead use the fuctions on the numbered sides.
 
 Within this code there is an event handler that will 'latch' the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. This will help  when setting up new functions and to troubleshoot strange behaviors. Here is a sample Template sensor to capture this event:
 
