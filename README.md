@@ -1,10 +1,10 @@
-# 🌐 HA_Blueprints
+# 🌐 This my Home Assistant Blueprint Library
 
-My Collection of Automation and Script Blueprints for Home Assistant
+This is the Home Assistant Blueprint Library I have created and am sharing with the community.  I have both Script and Automation Blueprints in separate folders.  Each Blueprint has a file with the .yaml suffix with all the code and a file with the .md suffix which is a markdown description for set-up and usage of the blueprint.  The .md file contains important information and if you want a successful install, you should read it.
 
-These are the Blueprints I have created and are sharing with the community.  I have both Script and Automation Blueprints in seperate folders.  Each Blueprint has a file with the .yaml suffix with all the code and a file with the .md suffix which is a markdown description for set-up and usage of the blueprint.  The .md file contains important information and if you want a sucessful install, you should read it.
+If you want to support my work, check the links below.
 
-# 🌐 All My Blueprints
+# 🌐 Home Assistant Blueprint Library
 
 Here is a list of each of my blueprints, a quick description, and an import link for import to home assistant, and jump links to the Blueprints Exchange post and the files in my GIT Repo...
 

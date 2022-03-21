@@ -1,4 +1,4 @@
-This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.  
+(44 actions!!) This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.  
 
 ## 📑 Changelog
 
