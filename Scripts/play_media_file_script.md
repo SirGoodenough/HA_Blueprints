@@ -1,5 +1,9 @@
 This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean.
 
+## 📑 Changelog
+
+* **2021-12-28**: First blueprint version :tada:
+
 ## 📩 Get Started
 
  I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file.  In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function.  The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario.
@@ -9,6 +13,8 @@ This is a SCRIPT Blueprint. This provides a way to play canned media files with 
 Click the badge to import this Blueprint
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fplay_media_file_script.yaml)
+
+# Please Click the 🧡 at the end of the Post if you find this Useful
 
 ### Option 2: Direct Link
 
@@ -51,15 +57,11 @@ To build the script:
 
 [![Open your Home Assistant instance and show your blueprints.](https://my.home-assistant.io/badges/blueprints.svg)](https://my.home-assistant.io/redirect/blueprints/)
 
-> 1. Click on 'Create Script'
+> 1. Click on 'Create Script' [![Open your Home Assistant instance and show your scripts.](https://my.home-assistant.io/badges/scripts.svg)](https://my.home-assistant.io/redirect/scripts/)  and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
 > 4. The media_player field will pull from a pick list but you can extend that with multiple media_players or groups as needed by typing them in.  Use the links above to help get your system able to play media files.
 > 5. The media type is where you match how the content is encoded with how the player will play it.  Trial and error here can be your friend unless you are much better at figuring this stuff out than me.  I generally only use 'audio/mp3' and occasionally 'image/jpg'.  More detailed information available in the Google Developers link above.
-
-## 📑 Changelog
-
-* **2021-12-28**: First blueprint version :tada:
 
 # 🌐 All My Blueprints
 
@@ -134,10 +136,6 @@ Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
-
-Cash App \$CASHTAG: https://cash.me/$SirGoodenough
-
-Venmo cash link: https://venmo.com/SirGoodenough
 
 #WhatAreWeFixingToday
 

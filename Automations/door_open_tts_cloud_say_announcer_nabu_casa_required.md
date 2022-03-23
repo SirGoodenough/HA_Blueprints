@@ -1,5 +1,14 @@
 This blueprint is set up to watch a binary sensor. When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice. The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message. The delay time and all the other parameters are adjustable.
 
+## 📑 Changelog
+
+* **2022-01-03**: Remove 'Door' restriction on input sensor, and expanded description.
+* **2021-12-24**: Add pick list of all the available languages and dialects.
+* **2021-10-29**: Add the ability to select the time-frame the announcement will be active
+* **2021-09-03**: Add Description
+* **2021-06-16**: First blueprint version :tada:
+                        needs Home Assistant Core 2021.3 or higher and Nabu-Casa to work
+
 ## 📩 Get Started
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
@@ -9,6 +18,8 @@ Updates will be published on my [GIT repository](https://github.com/SirGoodenoug
 Click the link below to import this Blueprint: (needs Home Assistant Core 2021.3 or higher)
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2Fdoor_open_tts_cloud_say_announcer_nabu_casa_required.yaml)
+
+# Please Click the 🧡 at the end of the Post if you find this Useful
 
 ### Option 2: Direct Link
 
@@ -25,22 +36,27 @@ This blueprint is set up to watch a binary sensor.  When it goes from off to on 
 
 You will need to select a country code as listed in the TTS.cloud_say documentation listed here:  https://www.nabucasa.com/config/tts/
 
-### 🛠 How the Blueprint works
+### ⚙️ Usage
 
-To import this Blueprint:
-> • Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
-> • Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
-> • In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public REPO on GitHub:
-> ◦   ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml```
+#### 🛠 Installation
 
-To make the blueprint work it will need:
+* Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
+* Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
+* In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub:
+
+> ◦ https://github.com/SirGoodenough/HA_Blueprints
+
+#### 🧬 To make the blueprint work it will need
+
 > • 1 binary_sensor entities to sense the action you are announcing
+>
 > • 1 media_player, group of media _players, or list of media_players to send the words to
+>
 > • Pick a gender and language from https://www.nabucasa.com/config/tts/
 
 Once you have the entities created or decided upon you can build the Automation.  To build the automation:  
 
-> 1. Click on 'Create Automation
+> 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
 > 4. Set the time-frame that the automation will be active.  Default is always on.
@@ -48,24 +64,13 @@ Once you have the entities created or decided upon you can build the Automation.
 > 6. Enter the messages for when it is found open and when it finally closes
 > 7. Set the time delay before the first message and between the open messages
 
-### 🧬 HOW the Blueprint / Automation works
-
-Walk-thru:
+### 🧬 Walk-thru:
 
 > 1. The header of the Blueprint contains the required info plus the URL from where it came from.
 > 2. The input: section is where it gets the information it needs to fill in the blanks. This information is stored in the actual automation referencing this Blueprint when executing the task.
 > 3. The Trigger section will start everything when your Binary Sensor changes state from off to on.
 > 4. Once triggered it goes into a repeat loop that starts with the delay time selected.  This repeat loop will immediately abort if the  binary sensor flips back to off.  If the binary sensor stays on long enough to get passed the delay time, the initial announcement will be sent to the speaker and it will cycle back to the top and start the repeat loop again.
 > 5. When the binary_sensor flips to off it will play the closing message,
-
-## 📑 Changelog
-
-* **2021-06-16**: First blueprint version :tada:
-                        needs Home Assistant Core 2021.3 or higher and Nabu-Casa to work
-* **2021-09-03**: Add Description
-* **2021-10-29**: Add the ability to select the time-frame the announcement will be active
-* **2021-12-24**: Add pick list of all the available languages and dialects.
-* **2022-01-03**: Remove 'Door' restriction on input sensor, and expanded description.
 
 # 🌐 All My Blueprints
 
@@ -140,10 +145,6 @@ Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
-
-Cash App \$CASHTAG: https://cash.me/$SirGoodenough
-
-Venmo cash link: https://venmo.com/SirGoodenough
 
 #WhatAreWeFixingToday
 

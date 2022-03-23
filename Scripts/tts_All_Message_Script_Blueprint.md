@@ -1,5 +1,9 @@
 📣 This is a script that can use any of the 11 integrated TTS Platforms in Home Assistant to send a message to a media player. Some will require Google Type Speakers, some will require Non-Google type speakers.
 
+## 📑 Changelog
+
+* **2022-03-09**: First blueprint version 🎉
+
 ## 📩 Get Started
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
@@ -25,6 +29,8 @@ Click the badge to import this Blueprint
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Ftts_All_Message_Script_Blueprint.yaml)
 
+# Please Click the 🧡 at the end of the Post if you find this Useful
+
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
@@ -47,18 +53,17 @@ The very basic requirements are for you to provide the *tts_say method that you 
 
 You will need to verify that the name you have given to the TTS integration in your system configuration is the Default name or you need to change this blueprint to use the custom name you have set in the tts: section of configuration.yaml. 🔚
 
-## ⚙️ Usage
+### ⚙️ Usage
 
-### 🛠 Installation
+#### 🛠 Installation
 
-You can import the script blueprint via the button above or manually as below.
-To import this Blueprint:
-> *Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
->*Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
->*In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public REPO on GitHub:
->◦   ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml```
+* Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
+* Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
+* In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub:
 
-### 🧬 Home Assistant
+> ◦ https://github.com/SirGoodenough/HA_Blueprints
+
+#### 🧬 Home Assistant
 
 Once installed, go into blueprints and use this to add a script with your variables.  Answer the required questions and you can change or ignore the ones with defaults.  Remember the name you typed in.  For this example, we will suppose you named the script:
 ```TTS Test One```
@@ -77,10 +82,6 @@ This is a very simple sample test case, I wanted to see if it would work. To my 
 I have recently found that the !input will accept templates. Who knew, right? I have a few TTS instances that call for a random response, I just need the sound for timing of something I'm doing, and I found that something like this craziness works. It is the lyrics from a song and when triggered, it just picks one of them to play using random. It also picks a random language to speak the message from the list.  Pretty slick, right?
 
 ![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/TranslateSayExample.png?raw=true "Example showing Random Selection")
-
-## 📑 Changelog
-
-* **2022-03-09**: First blueprint version 🎉
 
 # 🌐 All My Blueprints
 
@@ -155,10 +156,6 @@ Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
-
-Cash App \$CASHTAG: https://cash.me/$SirGoodenough
-
-Venmo cash link: https://venmo.com/SirGoodenough
 
 #WhatAreWeFixingToday
 

@@ -25,6 +25,8 @@ Click the badge to import this Blueprint
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FZigbee2MQTT%2520-%2520Xiaomi%2520Cube%2520Controller.yaml)
 
+# Please Click the 🧡 at the end of the Post if you find this Useful
+
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
@@ -36,7 +38,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQ
 
 This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote. The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do. Functions that are left empty will simply do nothing.  
 
-There are a set of event functions that will trigger on *ANY* side. Please be aware that the *ANY* functions and the Side Specific functions **BOTH** trigger every time. Therefore I suggest if you just have a couple of things you want this remote to do that you choose the *ANY* events. If you want more that a few events, you should NOT use the *ANY* and instead use the fuctions on the numbered sides.
+There are a set of event functions that will trigger on *ANY* side. Please be aware that the *ANY* functions and the Side Specific functions **BOTH** trigger every time. Therefore I suggest if you just have a couple of things you want this remote to do that you choose the *ANY* events. If you want more that a few events, you should NOT use the *ANY* and instead use the functions on the numbered sides.
 
 Within this code there is an event handler that will 'latch' the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. This will help  when setting up new functions and to troubleshoot strange behaviors. Here is a sample Template sensor to capture this event:
 
@@ -73,17 +75,17 @@ _________________________
 
 First, let’s go over Blueprints and what they are. Blueprints are a way to share automations and is built into Home Assistant. Simple as that. You can import my template code and a copy of it will reside in your configuration. Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build an automation. It will collect the information needed based on your entities and your personal adjustments, and provide a working automation. You will have to have or add the required hardware and entities that the Blueprint needs to function.
 
-### ⚙️ How the Blueprint works
+### ⚙️ Usage
 
-To import this Blueprint:
+#### 🛠 Installation
 
-• Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’. A selection box should pop up. Type blue and select the button to navigate to blueprints. You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
+* Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
+* Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
+* In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub:
 
-• Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
+> ◦ https://github.com/SirGoodenough/HA_Blueprints
 
-• In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub here:
-
-* https://github.com/SirGoodenough/HA_Blueprints
+#### 🧬 To make the blueprint work it will need
 
 To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thri Zigbee2MQTT and find the sensor that Z2M imported which is named like this:
 
@@ -93,7 +95,7 @@ The other 4 imported sensors can be disabled as they will not be used.
 
 Once you have the entities created or decided upon you can build the Automation. To build the automation:
 
-> 1. Click on 'Create Automation
+> 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
 
@@ -295,10 +297,6 @@ Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
-
-Cash App \$CASHTAG: https://cash.me/$SirGoodenough
-
-Venmo cash link: https://venmo.com/SirGoodenough
 
 #WhatAreWeFixingToday
 

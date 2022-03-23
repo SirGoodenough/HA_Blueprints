@@ -1,7 +1,10 @@
 This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
 
-NOTE: Version **2022-02-04** to fix a problem that restart of Home Assistant disables the buttons.  Blueprint code has NOT changed.
-  See **Other Ideas for your Tasmota EZ Buttons Below**...
+## 📑 Changelog
+
+* **2022-02-07**: Add Retain flag to fix HA start-up bug.
+* **2022-02-04**: Add Automation suggestion to fix HA start-up bug.
+* **2022-01-07**: First blueprint version :tada:
 
 ## 📩 Get Started
 
@@ -34,6 +37,8 @@ More details and Requirements in the Blueprint Decription and the Input Descript
 Click the badge to import this Blueprint
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FTasmota_EZ-Buttons.yaml)
+
+# Please Click the 🧡 at the end of the Post if you find this Useful
 
 ### Option 2: Direct Link
 
@@ -81,7 +86,7 @@ To build the script:
 
 [![Open your Home Assistant instance and show your blueprints.](https://my.home-assistant.io/badges/blueprints.svg)](https://my.home-assistant.io/redirect/blueprints/)
 
-> 1. Click on 'Create Script'
+> 1. Click on 'Create Script' [![Open your Home Assistant instance and show your scripts.](https://my.home-assistant.io/badges/scripts.svg)](https://my.home-assistant.io/redirect/scripts/)  and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Pick the names you want for your buttons or accept the defaults
 > 4. The 'ez_canary_grouptopic' selection MUST be in lower_case_chase format for this to function correctly.  Also you need to install this GroupTopic on a select number of your Tasmota Devices.  This allows you to update these first, and you can see if the update is going to work for you before pushing the Update-All Button.  What you put here has to exactly match what you put in your devices.
@@ -124,12 +129,6 @@ Example automation:
       target:
         entity_id: button.ez_restart_button_tasmota
 ```
-
-## 📑 Changelog
-
-* **2022-01-07**: First blueprint version :tada:
-* **2022-02-04**: Add Automation suggestion to fix HA start-up bug.
-* **2022-02-07**: Add Retain flag to fix HA start-up bug.
 
 # 🌐 All My Blueprints
 
@@ -204,10 +203,6 @@ Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
-
-Cash App \$CASHTAG: https://cash.me/$SirGoodenough
-
-Venmo cash link: https://venmo.com/SirGoodenough
 
 #WhatAreWeFixingToday
 
