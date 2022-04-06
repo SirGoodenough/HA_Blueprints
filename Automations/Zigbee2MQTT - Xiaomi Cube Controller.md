@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2022-04-11**: No Code Change.  Added guidance to solve missing Action Sensor condition in this document.
 * **2022-03-17**: Added 6 functions that do not care about side.  Makes it simple if you only want a couple of functions.
   * Added some aliases on some choose statements to improve Trace Diagrams and Troubleshooting.
 * **2022-03-12**: Changed debounce logic from not repeating the last action to single mode and added a 1 second delay at the end.  Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
@@ -87,13 +88,21 @@ First, let’s go over Blueprints and what they are. Blueprints are a way to sha
 
 #### 🧬 To make the blueprint work it will need
 
-To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thri Zigbee2MQTT and find the sensor that Z2M imported which is named like this:
+To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thri Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
 
-* sensor.xxYour_Hamexx_action  
+* sensor.xxDevice_Namexx_action
 
-The other 4 imported sensors can be disabled as they will not be used.
+If you do not see that sensor, 'LegacyAPI' might not be selected in the Zigbee2MQTT settings -  settings - advanced menu. Please find and check/select that setting like so:
 
-Once you have the entities created or decided upon you can build the Automation. To build the automation:
+![Z2M Menu Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-settings-advanced.png?raw=true "Where to find Z2M Legacy API Setting")
+
+-- SCROLL DOWN --
+
+![Legacy API Selected Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-legacy.png?raw=true "Where to find Z2M Legacy API Setting")
+
+The other 4 imported sensors in this Device can be disabled as they will not be used.
+
+Once you have found the entity_id you can build the Automation. To build the automation:
 
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
