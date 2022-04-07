@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT - 2022-03-17
+  name: Aqara Magic Cube Zigbee2MQTT - 2022-04-11
   description: "This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude 
   of commands from the Xiaomi Magic Cube Remote. The split out of functions gives you 
   the ability to assign local scripts or functions to do the things you want the remote to do.  
