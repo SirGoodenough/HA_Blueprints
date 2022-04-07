@@ -1,8 +1,8 @@
 blueprint:
   domain: script
   homeassistant:
-    min_version: 2021.11.0
-  name: TTS_say_Message-2022-03-09
+    min_version: 2022.4.0
+  name: TTS_say_Message-2022-04-11
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   # Community link for blueprint:  source_url:https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700 
   description: '📣 This is a script that can use any of the 11 integrated TTS Platforms 
@@ -78,6 +78,7 @@ blueprint:
         with all TTS engines'
       selector:
         entity:
+          multiple: true
           domain: media_player
     speaker_gender:
       name: Speaker Gender

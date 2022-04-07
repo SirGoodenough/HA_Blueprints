@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
 * **2022-03-09**: First blueprint version 🎉
 
 ## 📩 Get Started

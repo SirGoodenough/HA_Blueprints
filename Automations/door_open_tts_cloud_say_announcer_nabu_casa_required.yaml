@@ -1,8 +1,10 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Nabu-Casa required) 2022-01-03
+  name: Door open tts.cloud_say announcer (Nabu-Casa required) 2022-04-11
   description: This uses tts.cloud_say from Nabu-Casa to tell you a door is open too long and a door has been closed.
   # Community link for blueprint:  source_url: https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+  homeassistant:
+    min_version: 2022.4.0
   domain: automation
   input:
     door_entity:
@@ -12,6 +14,7 @@ blueprint:
       You would just need to enter the entity manually if it's not a binary sensor."
       selector:
         entity:
+          multiple: true
           domain: binary_sensor
     start_time:
       name: StartTime
