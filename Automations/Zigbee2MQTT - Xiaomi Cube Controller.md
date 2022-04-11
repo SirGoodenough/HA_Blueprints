@@ -148,7 +148,7 @@ cube_dimmer_control:
             {# Get brightness as a percent. #}
           {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
           {% set new_brightness = cb | int(10) + step_size %}
-          {% if cb < 5 %}
+          {% if new_brightness < 5 %}
             {# If it gets really low set to 0. Adjust if needed for your lights. #}
             0
           {% elif new_brightness <= 10 %}
