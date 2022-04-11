@@ -3,6 +3,7 @@
 ## 📑 Changelog
 
 * **2022-04-11**: No Code Change.  Added guidance to solve missing Action Sensor condition in this document.
+  * Example code bug fix from [Michael Fischer](https://community.home-assistant.io/u/DagobahMike)
 * **2022-03-17**: Added 6 functions that do not care about side.  Makes it simple if you only want a couple of functions.
   * Added some aliases on some choose statements to improve Trace Diagrams and Troubleshooting.
 * **2022-03-12**: Changed debounce logic from not repeating the last action to single mode and added a 1 second delay at the end.  Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
