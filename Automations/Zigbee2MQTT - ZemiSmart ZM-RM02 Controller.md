@@ -141,7 +141,7 @@ https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
 This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the ZemiSmart ZM-RM02 Controller.
 
-https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
+https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

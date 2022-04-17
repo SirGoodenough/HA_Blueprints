@@ -13,8 +13,8 @@ blueprint:
   can grab it and show you the last action sent. Thie will help  when setting up new
   functions and to troubleshoot strange behaviours."
 
-  # Community link for blueprint:  source_url: 
-  # source_url: 
+  # Community link for blueprint:  source_url: https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
+  # source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20ZemiSmart%20ZM-RM02%20Controller.yaml
   domain: automation
   input:
     remote:
