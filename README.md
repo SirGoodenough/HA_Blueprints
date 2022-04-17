@@ -119,14 +119,25 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of comm
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FZigbee2MQTT%2520-%2520Xiaomi%2520Cube%2520Controller.yaml)
 
-https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
+https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
 The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.
 
 * [Zigbee2MQTT - Xiaomi Cube Controller.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.md)
 * [Zigbee2MQTT - Xiaomi Cube Controller.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml)
 
-https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
+#### 🧯ZemiSmart ZM-RM02 Controller Blueprint
+
+This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the ZemiSmart ZM-RM02 Controller. 
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FZigbee2MQTT%2520-%2520ZemiSmart%2520ZM-RM02%2520Controller.yaml)
+
+https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
+
+The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.  
+
+* [Zigbee2MQTT - ZemiSmart ZM-RM02 Controller.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20ZemiSmart%20ZM-RM02%20Controller.md)
+* [Zigbee2MQTT - ZemiSmart ZM-RM02 Controller.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20ZemiSmart%20ZM-RM02%20Controller.yaml)
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
@@ -145,10 +156,6 @@ Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
-
-Cash App \$CASHTAG: https://cash.me/$SirGoodenough
-
-Venmo cash link: https://venmo.com/SirGoodenough
 
 #WhatAreWeFixingToday
 

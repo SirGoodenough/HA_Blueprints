@@ -32,7 +32,92 @@ Click the badge to import this Blueprint
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
-```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml```
+```https://github.com
+
+[Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
+
+Here is a list of each of my blueprints, a quick description and jump links to the Blueprints Exchange post...
+
+## 🌀 Scripts
+
+#### 🧯Broadlink on Script Blueprint
+
+https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755
+
+This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get it into the correct mode, Pushes remote buttons in sequence.
+
+#### 🧯Tasmota EZ Button Blueprint
+
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+
+https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
+
+#### 🧯Play Media File Script Blueprint Blueprint
+
+This is a SCRIPT Blueprint. This provides a way to play canned media files with the big long list of YAML entries but keep the main script or automation clean.
+
+https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988
+
+#### 🧯TTS All Message Blueprint
+
+This script can use any of the 11 integrated TTS Platforms in Home Assistant to send a message to a media player.
+
+https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700
+
+## 🔃 Automations
+
+#### 🧯Auto Fan Control Blueprint
+
+This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  Intended for Ifan03/Ifan04 but useful other places.
+
+https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
+
+#### 🧯Door Open TTS Cloud-Say Message Blueprint
+
+This Blueprint is a TTS.cloud-say version of another Door Announcer I found in the HA Blueprint Exchange.
+
+https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
+
+#### 🧯Keypad Lock or puzzle Box Tool Blueprint
+
+This Blueprint accepts 5 actions & when done in the right order, flips an input_boolean.
+
+https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
+
+#### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
+
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+
+https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
+
+#### 🧯Zigbee2MQTT - ZemiSmart ZM-RM02 Controller Blueprint
+
+This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the ZemiSmart ZM-RM02 Controller.
+
+https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
+
+## 🤹🏾‍♂️ Contact Links or see my other work
+
+What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
+
+Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
+
+What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
+
+What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
+
+Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
+
+## 🧀 If you want to support me
+
+Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
+
+PayPal one-off donation link: https://www.paypal.me/SirGoodenough
+
+#WhatAreWeFixingToday
+
+#SirGoodEnough
+/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml```
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml
 
@@ -246,6 +331,8 @@ Here is a list of each of my blueprints, a quick description and jump links to t
 
 https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755
 
+This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get it into the correct mode, Pushes remote buttons in sequence.
+
 #### 🧯Tasmota EZ Button Blueprint
 
 This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
@@ -289,6 +376,12 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
+
+#### 🧯Zigbee2MQTT - ZemiSmart ZM-RM02 Controller Blueprint
+
+This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the ZemiSmart ZM-RM02 Controller.
+
+https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

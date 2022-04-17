@@ -112,6 +112,8 @@ Here is a list of each of my blueprints, a quick description and jump links to t
 
 https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755
 
+This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get it into the correct mode, Pushes remote buttons in sequence.
+
 #### 🧯Tasmota EZ Button Blueprint
 
 This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
@@ -155,6 +157,12 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
+
+#### 🧯Zigbee2MQTT - ZemiSmart ZM-RM02 Controller Blueprint
+
+This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the ZemiSmart ZM-RM02 Controller.
+
+https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
