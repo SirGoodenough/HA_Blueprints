@@ -4,8 +4,6 @@ This is the Home Assistant Blueprint Library I have created and am sharing with 
 
 If you want to support my work, check the links below.
 
-# 🌐 Home Assistant Blueprint Library
-
 Here is a list of each of my blueprints, a quick description, and an import link for import to home assistant, and jump links to the Blueprints Exchange post and the files in my GIT Repo...
 
 ## 🌀 Scripts
