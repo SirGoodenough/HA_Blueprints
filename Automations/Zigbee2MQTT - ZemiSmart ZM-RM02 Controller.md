@@ -37,6 +37,9 @@ template:
     sensor:
       - name: "RM02 Last Action"
         unique_id: Random-String-of-Gibberish-HERE
+        icon: mdi:eye-refresh-outline
+        attributes:
+          friendly_name: "RM02 Action"
         state: >
           {{ trigger.event.data.friendly_name }} - 
           {{ trigger.event.data.event }}
