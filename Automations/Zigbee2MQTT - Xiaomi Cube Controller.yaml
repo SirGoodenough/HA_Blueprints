@@ -772,6 +772,5 @@ action:
         sequence: !input '5_from_3'
       - conditions: '{{ last_side == 4 }}'
         sequence: !input '5_from_4'
-- alias: "Delay ⏱ for debounce so that toggle functions work. Also blueprint is in single"
-    mode.
+- alias: "Delay ⏱ for debounce so that toggle functions work. Also blueprint is in single mode."
   delay: 00:00:01
