@@ -1,4 +1,4 @@
-(74 actions!!) This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.  
+(74 actions!!) This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38 commands available from the Xiaomi Magic Cube. This gives you the ability to trigger actions using the remote. NOTICE: Using this Blueprint, this cube *can* be triggered 74 ways, but only 38 of them are unique...
 
 ## 📑 Changelog
 
