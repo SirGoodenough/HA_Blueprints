@@ -570,7 +570,7 @@ action:
     last_side: '{{ last_side }}'
     entity_id: '{{ entity_id }}'
     friendly_name: '{{ friendly_name }}'
-- alias: Group 2 🍊 and No Group 🍩 These are action events for ANY Side
+- alias: "Group 2 🍊 and No Group 🍩 These are action events for ANY Side"
   choose:
   - conditions: '{{ action == "slide" }}'
     sequence: !input 'slide_any'
@@ -588,7 +588,7 @@ action:
     sequence: !input 'shake'
   - conditions: '{{ action == "fall" }}'
     sequence: !input 'fall'
-- alias: Group 1 🍎 These are action events based on the action broken down by side
+- alias: "Group 1 🍎 These are action events based on the action broken down by side"
   choose:
   - conditions: '{{ action == "slide" }}'
     sequence:
@@ -686,7 +686,7 @@ action:
         sequence: !input 'rotate_ccw_face_4'
       - conditions: '{{ side == 5 }}'
         sequence: !input 'rotate_ccw_face_5'
-- alias: Group 3 🍐 Side to side jump events
+- alias: "Group 3 🍐 Side to side jump events"
   choose:
   - conditions: '{{ side == 0 }}'
     sequence:
@@ -772,6 +772,6 @@ action:
         sequence: !input '5_from_3'
       - conditions: '{{ last_side == 4 }}'
         sequence: !input '5_from_4'
-- alias: Delay ⏱ for debounce so that toggle functions work. Also blueprint is in single
+- alias: "Delay ⏱ for debounce so that toggle functions work. Also blueprint is in single"
     mode.
   delay: 00:00:01
