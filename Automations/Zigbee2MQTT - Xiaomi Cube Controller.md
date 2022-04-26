@@ -1,7 +1,14 @@
-(44 actions!!) This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.  
+(74 actions!!) This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.  
 
 ## 📑 Changelog
 
+* **2022-04-26**: Re-configure to add 30 Action Methods
+  * Add 30 flip actions for any sode to any side addressing
+  * Add 'last_side' variable to display sensor and code
+  * Change variable named 'event' into 'action' fo clarity
+  * Change variable named 'sub-event' into 'side' for clarity
+  * Added Group 1 🍎, Group 2 🍊, & Group 3 🍐 to help users decide which sensors to populate
+  * Added Emojis to help people visualize what action is in what Group
 * **2022-04-11**: No Code Change.  Added guidance to solve missing Action Sensor condition in this document.
   * Example code bug fix from [Michael Fischer](https://community.home-assistant.io/u/DagobahMike)
 * **2022-03-17**: Added 6 functions that do not care about side.  Makes it simple if you only want a couple of functions.
@@ -38,11 +45,23 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQ
 
 ## 📖 Description
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote. The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do. Functions that are left empty will simply do nothing.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38 commands available from the Xiaomi Magic Cube Remote. The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do. Functions that are left empty will simply do nothing.  
 
-There are a set of event functions that will trigger on *ANY* side. Please be aware that the *ANY* functions and the Side Specific functions **BOTH** trigger every time. Therefore I suggest if you just have a couple of things you want this remote to do that you choose the *ANY* events. If you want more that a few events, you should NOT use the *ANY* and instead use the functions on the numbered sides.
+### 🍎 There is a set of 36 event functions that will trigger on specific actions on specific sides that are listed as **Group 1 actions 🍎**
 
-Within this code there is an event handler that will 'latch' the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. This will help  when setting up new functions and to troubleshoot strange behaviors. Here is a sample Template sensor to capture this event:
+### 🍊 There is a set of 6 event functions that will trigger on specific actions on *ANY* side that are listed as **Group 2 sctions 🍊**
+
+### 🍐 There is a set of 30 event functions that will trigger on cube flips to & froma specific sides that are listed as **Group 3 sctions 🍐**
+
+### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to be combined with any other group
+
+Please be aware that ALL actions except the 2 listed above / 🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore I suggest if you just have a couple of things you want this remote to do that you choose the *ANY / Group 2 / 🍊* events. If you want more than a few events, you should select actions in **Group 1 / 🍎 OR Group 3 / 🍐**. With careful selection you can use mixed groups, but you run the risk of a single cube action triggering more than 1 Home Assistant action and making a mess of things 🍱.  
+
+#### NOTICE: This cube *can* be triggered 74 ways, but only 38 of them are unique
+
+There is sample code to make the template sensor in the help file on GitHib named the same as this one and in the community page related to this.
+
+Within this blueprint there is an event handler that will latch the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. Thie will help when setting up new functions and to troubleshoot strange behaviours.
 
 ```yaml
 template:
@@ -57,15 +76,15 @@ template:
         friendly_name: "Cube Action"
       state: >
         {{ trigger.event.data.friendly_name }} - 
-        {{ trigger.event.data.event }} - 
-        {{ trigger.event.data.side }}
+        {{ trigger.event.data.action }} - 
+        {{ trigger.event.data.side }} frm 
+        {{ trigger.event.data.last_side }}
 ```
 
 Event Sensor in Action:
 ![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubesensor.gif?raw=true "New sensor compared to the visual display of the action sensor")
 
-If you wish to 'store' these events you can add this sensor to recorder and it will
-save them for you.
+If you wish to 'store' these events you can add this sensor to recorder and it will save them for you.
 
 My 'suggestion' is that you do separate scripts for most, if not all of the actions you generate here. If you are using the UI editor for the simple things you are fine, but for more complicated things scripts may work better for you. This is my opinion and how I am using it, to each their own.  See my example dimmer script below...
 
@@ -74,7 +93,7 @@ _________________________
 > This was 'forked' from 'https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006'
 V1.2 project authored by luckypoppy and the friends he pulled together to create the base.  
 >
-> I sincerely thank Him (Them) for their work. I felt there needed to be more documentation for rookie users to properly set this up. I had quite a few questions and when I saw a few questions in that chat from people struggling, I wanted to help. I also had a better idea for troubleshooting info that didn't involve the log writes.
+> I sincerely thank Him (Them) for their work. I felt there needed to be more documentation for rookie users to properly set this up. I had quite a few questions and when I saw a few questions in that chat from people struggling, I wanted to help. I also had a better idea for troubleshooting info.
 
 _________________________
 
