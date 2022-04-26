@@ -2,8 +2,8 @@
 
 ## 📑 Changelog
 
-* **2022-04-26**: Re-configure to add 30 Action Methods
-  * Add 30 flip actions for any sode to any side addressing
+* **2022-04-26**: Re-configure to add 30 Action Methods  !!NOTICE!! If you are upgrading the Blueprint, upgrade the template sensor as well.  The variables are different...
+  * Add 30 flip actions for any side to any side addressing
   * Add 'last_side' variable to display sensor and code
   * Change variable named 'event' into 'action' fo clarity
   * Change variable named 'sub-event' into 'side' for clarity
@@ -13,7 +13,7 @@
   * Example code bug fix from [Michael Fischer](https://community.home-assistant.io/u/DagobahMike)
 * **2022-03-17**: Added 6 functions that do not care about side.  Makes it simple if you only want a couple of functions.
   * Added some aliases on some choose statements to improve Trace Diagrams and Troubleshooting.
-* **2022-03-12**: Changed debounce logic from not repeating the last action to single mode and added a 1 second delay at the end.  Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
+* **2022-03-12**: Changed de-bounce logic from not repeating the last action to single mode and added a 1 second delay at the end.  Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
 * **2022-02-15.1**: Later that same day realized that if you have more than 1 cube, the event will be lacking so added ID.
 * **2022-02-15**: Forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006 Version 1.2
   * Updated Documentation.
