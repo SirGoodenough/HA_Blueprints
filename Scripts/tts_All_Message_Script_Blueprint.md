@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2022-04-26**: Add an optional action selector before and after the main TTS
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
 * **2022-03-09**: First blueprint version 🎉
 
@@ -12,9 +13,10 @@ The main problem I had with this blueprint is that I do not have all TTS platfor
 
 ____________________________
 > I am visioning this as a community project. The Github files are available for forking and PR's. Also you can post suggestions in the community tab or on my Discord and we can make changes as changes need to be made.  I cannot install and pay for all the versions of TTS out there, and I have not covered any of the custom integrations because I simply do not now what there is a demand for.  
-> So if you have ideas and want to help test stuff or want to add some code, let's have fun!
->
-> All constructive help is encouraged.
+So if you have ideas and want to help test stuff or want to add some code, let's have fun!
+____________________________
+
+All constructive help is encouraged.
 ____________________________
 > **NOTE:** This blueprint replaces 2 other blueprints, so those have been removed from the repository.  All the functionality in those has been moved to this one.
 >
@@ -48,6 +50,8 @@ This blueprint **WILL NOT** set-up TTS for you. You will be given the opportunit
 
 The very basic requirements are for you to provide the *tts_say method that you have installed and tested, the entity that you want to send it to, and the message you want to send. Beyond that likely involves trial and error that may best be done in the Developer Tools Services area here:
 
+**NOTICE:** I have added an action statement both before and after the main TTS call.  You can choose to ignore these, or you can use them to change volume, add a media player to play a doorbell, turn on a light, add a delay, whatever you want to do.
+
 [![Open your Home Assistant instance and show your service developer tools.](https://my.home-assistant.io/badges/developer_services.svg)](https://my.home-assistant.io/redirect/developer_services/)
 
 🔥 ***This Blueprint makes the assumption that you already have a tested & proven TTS integration installed and you know how it works and how to use it.*** 🔥
@@ -78,11 +82,21 @@ This makes your automation very clean looking and you move all the 'noisy' code 
 
 ## 💡 Fun Ideas
 
+#### Random Response
+
 This is a very simple sample test case, I wanted to see if it would work. To my delight I have been replacing all the TTS instances in my configuration with blueprints. It puts all the mess in one place. To call a specific message, I just fire the calling script and I have a 1 liner, done.
 
 I have recently found that the !input will accept templates. Who knew, right? I have a few TTS instances that call for a random response, I just need the sound for timing of something I'm doing, and I found that something like this craziness works. It is the lyrics from a song and when triggered, it just picks one of them to play using random. It also picks a random language to speak the message from the list.  Pretty slick, right?
 
 ![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/TranslateSayExample.png?raw=true "Example showing Random Selection")
+
+#### Add MP3 File to TTS Call
+
+Here is an example of playing a sound right before the TTS announcement of a doorbell.  Below this picture (unseen) is all the TTS answers specific to your selected TTS and such.  This picture is of the top part, the 'Action before TTS' sample, that you can set-up. In this example the sound file is stored on the media folder so it can be picked from the gui.
+
+These action statements can also be used to change volume, flash a light, turn on a siren, anything you like.
+
+![Sample Media_Player Action](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Sample_play_media_action_in_TTS.png?raw=true "Sample Media_Player Action")
 
 # 🌐 All My Blueprints
 
