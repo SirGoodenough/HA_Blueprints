@@ -2,7 +2,7 @@
 
 ## 📑 Changelog
 
-* **2022-04-26**: Add an optional action selector before and after the main TTS
+* **2022-04-26**: Add an optional action selector before and after the main TTS for volume, mp3 sounders, sirens, etc.
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
 * **2022-03-09**: First blueprint version 🎉
 
