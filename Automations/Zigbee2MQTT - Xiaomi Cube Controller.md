@@ -61,7 +61,9 @@ Please be aware that ALL actions except the 2 listed above / 🍩 will trigger a
 
 There is sample code to make the template sensor in the help file on GitHib named the same as this one and in the community page related to this.
 
-Within this blueprint there is an event handler that will latch the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. Thie will help when setting up new functions and to troubleshoot strange behaviours.
+#### Seeing the cube commands for training the operator
+
+Within this blueprint there is an event handler that will latch the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. Thie will help when setting up new functions and to troubleshoot strange behaviours.  Add an entity card in your dashboard for sensor.cube_last_action to see what actions occur as you move the cube.
 
 ```yaml
 template:
@@ -81,13 +83,23 @@ template:
         {{ trigger.event.data.last_side }}
 ```
 
-Event Sensor in Action:
+#### Event Sensor in Action
+
 ![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubesensor.gif?raw=true "New sensor compared to the visual display of the action sensor")
 
 If you wish to 'store' these events you can add this sensor to recorder and it will save them for you.
 
+#### Programming actions
+
 My 'suggestion' is that you do separate scripts for most, if not all of the actions you generate here. If you are using the UI editor for the simple things you are fine, but for more complicated things scripts may work better for you. This is my opinion and how I am using it, to each their own.  See my example dimmer script below...
 
+#### Getting Tap and Flip actions to work
+
+I have had reports of the 'tap' action working.  It was due to the lack of instructions provided by the manfacturer of the cube.  Tap acrions on the cube are initiated by sharply tapping the cube 2x on a hard surface like this:
+
+![Demo of Tap Action](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Tap_Action.gif?raw=true "Demo of Tap Action")
+
+In a similar manner, flips need to tap the surface at the end of the 90 or 180 flip.  Setting up the template sensor above will help train you in the force needed for all the actions.
 _________________________
 
 > This was 'forked' from 'https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006'
