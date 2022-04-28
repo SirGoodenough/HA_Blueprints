@@ -1,8 +1,9 @@
-(74 actions!!) This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38 commands available from the Xiaomi Magic Cube. This gives you the ability to trigger actions using the remote. NOTICE: Using this Blueprint, this cube *can* be triggered 74 ways, but only 38 of them are unique...
+(98 possible actions!!) This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+ 24) commands available from the Xiaomi Magic Cube. This gives you the ability to trigger actions using the remote. NOTICE: Using this Blueprint and example scripts, this cube *can* be triggered 98 ways, but only 38(+ 24) of them are unique...
 
 ## 📑 Changelog
 
-* **2022-04-26**: Re-configure to add 30 Action Methods  !!NOTICE!! If you are upgrading the Blueprint, upgrade the template sensor as well.  The variables are different...
+* **2022-04-26 update-A** UPDATE: No code changes. Added examples to provide 24 more ways to trigger something using the rotate sensor as a device toggle, both long and short for each rotate sensor.
+* **2022-04-26**: Re-configure to add 30 Action Methods !!NOTICE!! If you are upgrading the Blueprint, upgrade the template sensor as well.  The variables are different...
   * Add 30 flip actions for any side to any side addressing
   * Add 'last_side' variable to display sensor and code
   * Change variable named 'event' into 'action' fo clarity
@@ -34,7 +35,7 @@ Click the badge to import this Blueprint
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FZigbee2MQTT%2520-%2520Xiaomi%2520Cube%2520Controller.yaml)
 
-# Please Click the 🧡 at the end of this Top Post if you find this Useful
+# Please Click the 🧡 at the end of the Top Post if you find this Useful
 
 ### Option 2: Direct Link
 
@@ -268,6 +269,86 @@ cube_green_color_control:
 
 This can be used over and over for as many lights as you want to control.  But you **will** need to repeat this and modify it for red and blue color octets.
 
+## 🔁 🔴 Using Rotate CW and CCW as a Short-Press / Long-Press Toggle
+
+Not enough switch positions for you?  **How about a posible 24 more?**  I came up with some scripts you can add to Home Assistant and call for more actions.  One is for CW rotation < 100 degrees, another for > 100 degrees.  Also the same for CCW.  These are can be called from the Group 1 🍎 rotate actions and the Group 2 🍊 rotate actions.  Match the CW call/recieve or the CCW call/receive pairs together or you are going to be sad. 😩
+
+Here is a sample of what you put into the script Blueprint UI.  It will need to be a manual YAML edit and contain your specific variables.  What you see here is one from my config.
+
+```yaml
+service: script.cube_long_cw_toggle
+data:
+  angle: '{{ trigger.to_state.attributes.action_angle }}'
+  entity: light.livingroomlight
+```
+
+And if you are editing it manually in an editor inside the Script calling yaml, this is the way it should look for rotate ce face 3, as an example.
+
+```yaml
+rotate_cw_face_3:
+  - service: cube_long_cw_toggle
+    data:
+      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      entity: light.livingroomlight
+```
+
+You can also do this buy going full gui and picking the matching template out of the below section and filling it in similar to this:
+
+![Full GUI Example](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/full_GUI_Example.png?raw=true "Full GUI Example")
+
+These are the standalone scripts that are 'called' from the Script calling yaml shown above.  If you don't need all of these only install the ones you will use.
+
+This is a [homeassistant.toggle action](https://www.home-assistant.io/integrations/homeassistant#service-homeassistanttoggle), so it can toggle anything that that service can handle.  Changing it to homeassistant.turn_on or homeassistant.turn_off would change the behavior slightly if this fits your needs better.  Using this integration, you can control lights, switches, locks, and lots of different things.
+
+```yaml
+script:
+cube_short_cw_toggle:
+  description: CW Short Press Toggle
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle > 0 <= 100 }}'
+    - service: homeassistant.toggle
+      target:
+        entity_id: '{{ entity }}'
+cube_long_cw_toggle:
+  description: CW Long Press Toggle
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle > 100 }}'
+    - service: homeassistant.toggle
+      target:
+        entity_id: '{{ entity }}'
+
+cube_short_ccw_toggle:
+  description: CCW Short Press Toggle
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle < 0 >= -100 }}'
+    - service: homeassistant.toggle
+      target:
+        entity_id: '{{ entity }}'
+cube_long_ccw_toggle:
+  description: CCW Long Press Toggle
+  variables:
+    entity:
+    angle:
+  sequence:
+    - condition: template
+      value_template: '{{ angle < -100 }}'
+    - service: homeassistant.toggle
+      target:
+        entity_id: '{{ entity }}'
+```
+
 # 🌐 All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
@@ -322,7 +403,7 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 #### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+24) commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
