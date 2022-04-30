@@ -1,7 +1,8 @@
-(98 possible actions!!) This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+ 24) commands available from the Xiaomi Magic Cube. This gives you the ability to trigger actions using the remote. NOTICE: Using this Blueprint and example scripts, this cube *can* be triggered 98 ways, but only 38(+ 24) of them are unique...
+(128 possible actions!!) This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54) commands available from the Xiaomi Magic Cube. This gives you the ability to trigger actions using the remote. NOTICE: Using this Blueprint and example scripts, this cube *can* be triggered 98 ways, but only 38(+54) of them are unique...
 
 ## 📑 Changelog
 
+* **2022-04-26 update-B** UPDATE: No code changes. Added examples to provide another 30 more ways to trigger something using conditionals in Group 3 🍐,
 * **2022-04-26 update-A** UPDATE: No code changes. Added examples to provide 24 more ways to trigger something using the rotate sensor as a device toggle, both long and short for each rotate sensor.
 * **2022-04-26**: Re-configure to add 30 Action Methods !!NOTICE!! If you are upgrading the Blueprint, upgrade the template sensor as well.  The variables are different...
   * Add 30 flip actions for any side to any side addressing
@@ -143,7 +144,12 @@ Once you have found the entity_id you can build the Automation. To build the aut
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
+_________________
+Code Samples for the items in the next few sections can be found in my Home-Assistant Config here:  
 
+* https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/automation2/Z2M-Xiaomi_Cube_A2.yaml
+* https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/script2/cube_script.yaml
+_________________
 ## 🌞 Dimmer Control
 
 If you are looking for a dimmer control to change brightness based on rotation, here's something I cobbled together from other community posts here and there. ( Credit https://community.home-assistant.io/u/yourigh/summary and others )
@@ -349,6 +355,42 @@ cube_long_ccw_toggle:
         entity_id: '{{ entity }}'
 ```
 
+## Method to use Group 3 🍐 actions and not interfere with Group 1 🍎
+
+Not enough switch positions for you still?  **How about another posible 30 more?** 
+
+This is another 'action' that I stumbled upon.  I noticed if you turn the cube from side to side very gently, it will internally register as being on a new side, but the flip action doesn't register.  Then if you slide the cube, it will send out an action of slide on side 5 from side 2, or whatever side combo's you choose.  I used 5 from 2 in the example, but you can use any of them.
+
+![Showing slide 5 from 2 on the Cube Action Sensor](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Slide5From2.png?raw=true "Showing slide 5 from 2 on the Cube Action Sensor")
+
+I'll be honest, this is the trickiest thing to do yet and I'm not sure it is worth the trouble, but if you want an action in your pocket as a secret action that only you know, this is the trick.  Using a soft surface like a towel helps to keep the flip from registering when you set it down.
+
+> NOTE: In this example the slide side 5 will also trigger. You may need to add a condition to prevent that from triggering. An example for this 5 from 2 example is to put this condition on the slide side 5 action ```{{ not last_side == 2 }}``` before the thing you want to do.  Or you can just not have a slide 5 action.
+
+It is as simple as adding a condition of let's say 'slide' in one of the Group 3 🍐 slots.
+
+Here is the GUI editor showing this.
+
+![Full GUI Example Conditional side to side](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/conditionalSide2Side.png?raw=true "Full GUI Example conditional side to side")
+
+Here is the YAML editor showing this:
+
+```yaml
+alias: Aqara Magic Cube test
+description: stuff happens here
+use_blueprint:
+  path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
+  input:
+    remote: sensor.yertle_action
+    5_from_2:
+      - condition: template
+        value_template: '{{ action == "slide" }}'
+      - service: light.toggle
+        data: {}
+        target:
+          entity_id: light.kitchensink
+```
+
 # 🌐 All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
@@ -403,7 +445,7 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 #### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+24) commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
