@@ -5,7 +5,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml
   domain: automation
   homeassistant:
-    min_version: 2021.7.0
+    min_version: 2022.4.0
   input:
     button_one:
       name: Button Press One

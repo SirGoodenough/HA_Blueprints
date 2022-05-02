@@ -5,7 +5,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   domain: automation
   homeassistant:
-    min_version: 2021.7.0
+    min_version: 2022.4.0
   input:
     fan_control:
       name: Toggle to turn the fan function off for when away or seasonally
