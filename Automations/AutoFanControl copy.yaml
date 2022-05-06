@@ -27,18 +27,6 @@ blueprint:
           multiple: false
     temp_gap:
       name: Temp Hysteresis
-      description: 'This keeps the fan from speed cycling too often. 
-        (Let''s call it Hysterisis)
-
-        Set it bigger if the fan goes on and off too much.
-
-        Set it smaller if the fan doesn''t change speeds fast enough.
-
-        0 is a good number if this area is not used in conjunction with a heating or 
-        cooling unit where you want to set them both to 21C (for instance).
-
-        I use the Temperature setting input_number as an input to climate and this at 
-        the same time, so I needed an offset.'
       default: 1.3
       selector:
         number:
