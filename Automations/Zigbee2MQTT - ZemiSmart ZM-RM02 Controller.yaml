@@ -28,7 +28,7 @@ blueprint:
       description: 'The entity to put here is the sensor that Z2M imported that is
         named like this> 
         
-        ```sensor.XXYour_HameXX_action```'
+        sensor.XXYour_HameXX_action'
       selector:
         entity:
           integration: mqtt

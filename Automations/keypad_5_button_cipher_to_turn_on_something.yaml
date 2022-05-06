@@ -1,6 +1,6 @@
 blueprint:
   name: Keypad 5 button cypher to turn on something_2022-05-05
-  description: "This will accept any 5 button presses or '```Binary Sensor``` detections and
+  description: "This will accept any 5 button presses or 'Binary Sensor detections and
     use them to preform an action.  RE open a lock, or whatever.
 
     [Community link for this blueprint](https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385)"
@@ -11,49 +11,49 @@ blueprint:
   input:
     button_one:
       name: Button Press One
-      description: '```Binary Sensor``` for First Button Pressed'
+      description: 'Binary Sensor for First Button Pressed'
       selector:
         entity:
           domain: binary_sensor
           multiple: false
     button_two:
       name: Button Press Two
-      description: '```Binary Sensor``` for Second Button Pressed'
+      description: 'Binary Sensor for Second Button Pressed'
       selector:
         entity:
           domain: binary_sensor
           multiple: false
     button_three:
       name: Button Press Three
-      description: '```Binary Sensor``` for Third Button Pressed'
+      description: 'Binary Sensor for Third Button Pressed'
       selector:
         entity:
           domain: binary_sensor
           multiple: false
     button_four:
       name: Button Press Four
-      description: '```Binary Sensor``` for Forth Button Pressed'
+      description: 'Binary Sensor for Forth Button Pressed'
       selector:
         entity:
           domain: binary_sensor
           multiple: false
     button_five:
       name: Button Press Five
-      description: '```Binary Sensor``` for Fifth Button Pressed'
+      description: 'Binary Sensor for Fifth Button Pressed'
       selector:
         entity:
           domain: binary_sensor
           multiple: false
     lock_control:
       name: Buffer for the Final Lock Enable
-      description: '```input_boolean``` - Final Enable to trigger your lock or action'
+      description: 'input_boolean - Final Enable to trigger your lock or action'
       selector:
         entity:
           domain: input_boolean
           multiple: false
     seq_status:
       name: Control Sequence Status Placeholder
-      description: '```input_number``` - The internal use lock sequence number (set range
+      description: 'input_number - The internal use lock sequence number (set range
         to 0 to 100) You will need one of these for every copy of this automation,  IE
         one for every lock code.'
       selector:
