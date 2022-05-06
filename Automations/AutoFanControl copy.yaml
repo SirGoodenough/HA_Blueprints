@@ -8,19 +8,16 @@ blueprint:
       selector:
         entity:
           domain: input_boolean
-          multiple: false
     room_temp_now:
       name: Room Temperature Sensor
       selector:
         entity:
           domain: sensor
-          multiple: false
     room_set_temp:
       name: Room Target Temperature
       selector:
         entity:
           domain: input_number
-          multiple: false
     temp_gap:
       name: Temp Hysteresis
       default: 1.3
