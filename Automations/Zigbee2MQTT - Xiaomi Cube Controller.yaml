@@ -84,13 +84,13 @@ blueprint:
       description: Face 0 is the one with the 'Aqara' LOGO
       default: []
       selector:
-        action: {}
+        action: 
     doubletap_face_0:
       name: Group 1 actions 🍎 Double tap the cube with face 0 up
       description: Face 0 is the one with the 'Aqara' LOGO
       default: []
       selector:
-        action: {}
+        action: 
     flipped90_face_0:
       name: Group 1 actions 🍎 Flip the cube 90 degrees to face 0
       description: Face 0 is the one with the 'Aqara' LOGO
@@ -104,50 +104,50 @@ blueprint:
         Face 0 is the one with the ''Aqara'' LOGO'
       default: []
       selector:
-        action: {}
+        action: 
     rotate_cw_face_0:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 0 up
       description: Face 0 is the one with the 'Aqara' LOGO
       default: []
       selector:
-        action: {}
+        action: 
     rotate_ccw_face_0:
       name: Group 1 actions 🍎 Rotate cube counter clockwise with face 0 up
       description: Face 0 is the one with the 'Aqara' LOGO
       default: []
       selector:
-        action: {}
+        action: 
     slide_face_1:
       name: Group 1 actions 🍎 Slide the cube with face 1 up
       default: []
       selector:
-        action: {}
+        action: 
     doubletap_face_1:
       name: Group 1 actions 🍎 Double tap the cube with face 1 up
       default: []
       selector:
-        action: {}
+        action: 
     flipped90_face_1:
       name: Group 1 actions 🍎 Flip the cube 90 degrees to face 1
       default: []
       selector:
-        action: {}
+        action: 
     flipped180_face_1:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 1
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
-        action: {}
+        action: 
     rotate_cw_face_1:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 1 up
       default: []
       selector:
-        action: {}
+        action: 
     rotate_ccw_face_1:
       name: Group 1 actions 🍎 Rotate cube counter clockwise with face 1 up
       default: []
       selector:
-        action: {}
+        action: 
     slide_face_2:
       name: Group 1 actions 🍎 Slide the cube with face 2 up
       default: []
@@ -157,59 +157,59 @@ blueprint:
       name: Group 1 actions 🍎 Double tap the cube with face 2 up
       default: []
       selector:
-        action: {}
+        action: 
     flipped90_face_2:
       name: Group 1 actions 🍎 Flip the cube 90 degrees to face 2
       default: []
       selector:
-        action: {}
+        action: 
     flipped180_face_2:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 2
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
-        action: {}
+        action: 
     rotate_cw_face_2:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 2 up
       default: []
       selector:
-        action: {}
+        action: 
     rotate_ccw_face_2:
       name: Group 1 actions 🍎 Rotate cube counter clockwise with face 2 up
       default: []
       selector:
-        action: {}
+        action: 
     slide_face_3:
       name: Group 1 actions 🍎 Slide the cube with face 3 up
       default: []
       selector:
-        action: {}
+        action: 
     doubletap_face_3:
       name: Group 1 actions 🍎 Double tap the cube with face 3 up
       default: []
       selector:
-        action: {}
+        action: 
     flipped90_face_3:
       name: Group 1 actions 🍎 Flip the cube 90 degrees to face 3
       default: []
       selector:
-        action: {}
+        action: 
     flipped180_face_3:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 3
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
-        action: {}
+        action: 
     rotate_cw_face_3:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 3 up
       default: []
       selector:
-        action: {}
+        action: 
     rotate_ccw_face_3:
       name: Group 1 actions 🍎 Rotate cube counter clockwise with face 3 up
       default: []
       selector:
-        action: {}
+        action: 
     slide_face_4:
       name: Group 1 actions 🍎 Slide the cube with face 4 up
       default: []
@@ -219,59 +219,59 @@ blueprint:
       name: Group 1 actions 🍎 Double tap the cube with face 4 up
       default: []
       selector:
-        action: {}
+        action: 
     flipped90_face_4:
       name: Group 1 actions 🍎 Flip the cube 90 degrees to face 4
       default: []
       selector:
-        action: {}
+        action: 
     flipped180_face_4:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 4
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
-        action: {}
+        action: 
     rotate_cw_face_4:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 4 up
       default: []
       selector:
-        action: {}
+        action: 
     rotate_ccw_face_4:
       name: Group 1 actions 🍎 Rotate cube counter clockwise with face 4 up
       default: []
       selector:
-        action: {}
+        action: 
     slide_face_5:
       name: Group 1 actions 🍎 Slide the cube with face 5 up
       default: []
       selector:
-        action: {}
+        action: 
     doubletap_face_5:
       name: Group 1 actions 🍎 Double tap the cube with face 5 up
       default: []
       selector:
-        action: {}
+        action: 
     flipped90_face_5:
       name: Group 1 actions 🍎 Flip the cube 90 degrees to face 5
       default: []
       selector:
-        action: {}
+        action: 
     flipped180_face_5:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 5
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
-        action: {}
+        action: 
     rotate_cw_face_5:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 5 up
       default: []
       selector:
-        action: {}
+        action: 
     rotate_ccw_face_5:
       name: Group 1 actions 🍎 Rotate cube counter clockwise with face 5 up
       default: []
       selector:
-        action: {}
+        action: 
     shake:
       name: Shake the cube 🍩
       description: 'This trigger only occurs once in the set-up. 
@@ -279,7 +279,7 @@ blueprint:
         It can be combined in any group.'
       default: []
       selector:
-        action: {}
+        action: 
     fall:
       name: Drop the cube 🍩
       description: 'This trigger only occurs once in the set-up. 
@@ -287,7 +287,7 @@ blueprint:
         It can be combined in any group.'
       default: []
       selector:
-        action: {}
+        action: 
     slide_any:
       name: Group 2 actions 🍊 Slide the cube with any side
       description: 'Side doesn''t matter on this one. 
@@ -297,7 +297,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     doubletap_any:
       name: Group 2 actions 🍊 Double tap the cube with any side
       description: 'Side doesn''t matter on this one. 
@@ -307,7 +307,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     flipped90_any:
       name: Group 2 actions 🍊 Flip the cube 90 degrees to any side
       description: 'Side doesn''t matter on this one. 
@@ -317,7 +317,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     flipped180_any:
       name: Group 2 actions 🍊 Flip the cube 180 degrees any side
       description: 'NOTE: This action is trick to master, and should be used sparingly...
@@ -328,7 +328,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     rotate_cw_any:
       name: Group 2 actions 🍊 Rotate cube clockwise with any side
       description: 'Side doesn''t matter on this one. 
@@ -338,7 +338,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     rotate_ccw_any:
       name: Group 2 actions 🍊 Rotate cube counter clockwise with any side
       description: 'Side doesn''t matter on this one. 
@@ -348,7 +348,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     0_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY 🍊
@@ -357,7 +357,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     0_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY 🍊
@@ -366,7 +366,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     0_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 3
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 0 and the ANY
@@ -375,7 +375,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     0_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY 🍊
@@ -384,7 +384,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     0_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY 🍊
@@ -393,7 +393,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     1_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 0
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY 🍊
@@ -402,7 +402,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     1_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY 🍊
@@ -411,7 +411,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     1_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY 🍊
@@ -420,7 +420,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     1_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 4
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
@@ -429,7 +429,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     1_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY 🍊
@@ -438,7 +438,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     2_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 0
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY 🍊
@@ -447,7 +447,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     2_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY 🍊
@@ -456,7 +456,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     2_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY 🍊
@@ -465,7 +465,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     2_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY 🍊
@@ -474,7 +474,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     2_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 5
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 2 and the ANY
@@ -483,7 +483,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     3_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 0
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
@@ -492,7 +492,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     3_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY 🍊
@@ -501,7 +501,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     3_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY 🍊
@@ -510,7 +510,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     3_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY 🍊
@@ -519,7 +519,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     3_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY 🍊
@@ -528,7 +528,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     4_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 0
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY 🍊
@@ -537,7 +537,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     4_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 1
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
@@ -546,7 +546,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     4_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY 🍊
@@ -555,7 +555,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     4_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY 🍊
@@ -564,7 +564,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     4_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY 🍊
@@ -573,7 +573,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     5_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 0
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY 🍊
@@ -582,7 +582,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     5_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY 🍊
@@ -591,7 +591,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     5_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 2
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 5 and the ANY
@@ -600,7 +600,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     5_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY 🍊
@@ -609,7 +609,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
     5_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY 🍊
@@ -618,7 +618,7 @@ blueprint:
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
       selector:
-        action: {}
+        action: 
 mode: single
 max_exceeded: silent
 trigger:
