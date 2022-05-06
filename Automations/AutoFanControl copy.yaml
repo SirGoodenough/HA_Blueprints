@@ -37,12 +37,6 @@ blueprint:
           step: 0.1
     temp_gap_1_to_2:
       name: Temp Gap between Low and Medium
-      description: 'This is the temp swing between Low and Medium.
-
-        If the sensor reads between the base temperature and this number of degrees 
-        warmer, the fan is on LOW.
-
-        Below the base temperature the fan is off.'
       default: 4.5
       selector:
         number:
