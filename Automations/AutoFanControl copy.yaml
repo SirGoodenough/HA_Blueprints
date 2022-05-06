@@ -21,9 +21,6 @@ blueprint:
           multiple: false
     room_set_temp:
       name: Room Target Temperature
-      description: 'input_number - This is the target temperature of the room.
-
-        This can be Metric or imperial, but the same scale as the temperature sensor.'
       selector:
         entity:
           domain: input_number
