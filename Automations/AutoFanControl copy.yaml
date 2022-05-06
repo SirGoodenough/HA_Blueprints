@@ -15,11 +15,6 @@ blueprint:
           multiple: false
     room_temp_now:
       name: Room Temperature Sensor
-      description: 'This is a temperature sensor or averaged temperature sensor 
-        preferrably within the path of the moving air from the fan.
-
-        Otherwise the action will be laggy where changes in temperature will
-        have a lower effect on fan speed.'
       selector:
         entity:
           domain: sensor
