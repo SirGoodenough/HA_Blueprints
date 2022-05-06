@@ -47,12 +47,6 @@ blueprint:
           step: 0.1
     temp_gap_2_to_3:
       name: Temp Gap between Medium and High
-      description: 'This is the temp change between Medium and High.
-
-        If the sensor reads between the base temperature plus the 1 to 2 temperature
-        and this number of degrees warmer, the fan is on MEDIUM.
-
-        Any warmer than this and the fan is set to HIGH.'
       default: 2.0
       selector:
         number:
