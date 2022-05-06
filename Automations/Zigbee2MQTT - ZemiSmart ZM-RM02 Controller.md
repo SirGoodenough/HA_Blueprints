@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions.
 * **2022-04-17**: 🎉 🎛 🔋 New Blueprint!
 
 ## 📩 Get Started

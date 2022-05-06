@@ -1,60 +1,69 @@
 blueprint:
-  name: Keypad 5 button cypher to turn on something_2021-11-20
-  description: This will accept any 5 button presses or binary sensor detections and use them to preform an action.  RE open a lock, or whatever.
-  # Community link for blueprint:  source_url: https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385
+  name: Keypad 5 button cypher to turn on something_2022-05-05
+  description: "This will accept any 5 button presses or '```Binary Sensor``` detections and
+    use them to preform an action.  RE open a lock, or whatever.
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385)"
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.4.0
+    min_version: 2022.5.0
   input:
     button_one:
       name: Button Press One
-      description: Binary Sensor for First Button Pressed
+      description: '```Binary Sensor``` for First Button Pressed'
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     button_two:
       name: Button Press Two
-      description: Binary Sensor for Second Button Pressed
+      description: '```Binary Sensor``` for Second Button Pressed'
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     button_three:
       name: Button Press Three
-      description: Binary Sensor for Third Button Pressed
+      description: '```Binary Sensor``` for Third Button Pressed'
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     button_four:
       name: Button Press Four
-      description: Binary Sensor for Forth Button Pressed
+      description: '```Binary Sensor``` for Forth Button Pressed'
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     button_five:
       name: Button Press Five
-      description: Binary Sensor for Fifth Button Pressed
+      description: '```Binary Sensor``` for Fifth Button Pressed'
       selector:
         entity:
           domain: binary_sensor
+          multiple: false
     lock_control:
       name: Buffer for the Final Lock Enable
-      description: input_boolean - Final Enable to trigger your lock or action
+      description: '```input_boolean``` - Final Enable to trigger your lock or action'
       selector:
         entity:
           domain: input_boolean
+          multiple: false
     seq_status:
       name: Control Sequence Status Placeholder
-      description: >-
-        input_number - The internal use lock sequence number (set range to 0 to 100)
-        You will need one of these for every copy of this automation, 
-        IE one for every lock code.
+      description: '```input_number``` - The internal use lock sequence number (set range
+        to 0 to 100) You will need one of these for every copy of this automation,  IE
+        one for every lock code.'
       selector:
         entity:
           domain: input_number
+          multiple: false
     on_timer:
       name: Lock On Time in Seconds
-      description: Time output signal is on in seconds.  Generally 5 seconds is good here.
+      description: Time output signal is on in seconds.  Generally 5 seconds is good
+        here.
       default: 60
       selector:
         number:
@@ -97,11 +106,10 @@ trigger:
   from: 'off'
   to: 'on'
 action:
-    # This one is always run every trigger as the watchdog.
 - alias: Reset seq number to 99 if timeout occurred
   service: input_number.set_value
   data:
-    entity_id: !input seq_status
+    entity_id: !input 'seq_status'
     value: >
       {% if seq_status_last < tnow - (5*60) %}
         {# It's been too long so reset the sequence #}
@@ -119,12 +127,11 @@ action:
     - alias: Set seq number to 1
       service: input_number.set_value
       data:
-        entity_id: !input seq_status
+        entity_id: !input 'seq_status'
         value: 1
   - alias: Button 2 pushed in correct sequence number order
     conditions:
-    - condition: and
-      conditions:
+    - and:
       - condition: trigger
         id: pad2
       - condition: template
@@ -135,11 +142,10 @@ action:
       data:
         value: 3
       target:
-        entity_id: !input seq_status
+        entity_id: !input 'seq_status'
   - alias: Button 3 pushed in correct sequence number order
     conditions:
-    - condition: and
-      conditions:
+    - and:
       - condition: trigger
         id: pad3
       - condition: template
@@ -150,11 +156,10 @@ action:
       data:
         value: 7
       target:
-        entity_id: !input seq_status
+        entity_id: !input 'seq_status'
   - alias: Button 4 pushed in correct sequence number order
     conditions:
-    - condition: and
-      conditions:
+    - and:
       - condition: trigger
         id: pad4
       - condition: template
@@ -165,11 +170,10 @@ action:
       data:
         value: 15
       target:
-        entity_id: !input seq_status
+        entity_id: !input 'seq_status'
   - alias: Button 5 pushed in correct sequence number order
     conditions:
-    - condition: and
-      conditions:
+    - and:
       - condition: trigger
         id: pad5
       - condition: template
@@ -180,28 +184,28 @@ action:
       data:
         value: 31
       target:
-        entity_id: !input seq_status
+        entity_id: !input 'seq_status'
     - alias: Enable the Lock
       service: input_boolean.turn_on
-      entity_id: !input lock_control
+      entity_id: !input 'lock_control'
     - alias: Leave the lock enabled for a time limit
-      delay: !input on_timer
+      delay: !input 'on_timer'
     - alias: Disable the Lock normal
       service: input_boolean.turn_off
-      entity_id: !input lock_control
+      entity_id: !input 'lock_control'
     - alias: Reset status number normal
       service: input_number.set_value
       data:
         value: 0
       target:
-        entity_id: !input seq_status
+        entity_id: !input 'seq_status'
   default:
   - alias: Reset status number on fail code
     service: input_number.set_value
     data:
       value: 0
     target:
-      entity_id: !input seq_status
+      entity_id: !input 'seq_status'
   - alias: Shut it down on fail code
     service: input_boolean.turn_off
-    entity_id: !input lock_control
+    entity_id: !input 'lock_control'

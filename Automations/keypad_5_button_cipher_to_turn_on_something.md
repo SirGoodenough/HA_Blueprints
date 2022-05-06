@@ -3,12 +3,12 @@ ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q
 
 ## 📑 Changelog
 
+* **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut and.
 * **2021-11-20**: Add Minimum Home Assistant version.
 * **2021-09-03**: Add Description.
 * **2021-08-04**: Add comments and cleanup.
 * **2021-07-21**: Add the watchdog timeout test.
-* **2021-07-11**: First blueprint version :tada:
-                        needs Home Assistant Core 2021.7 or higher for Trigger_ID to work
+* **2021-07-11**: First blueprint version :tada: Needs Home Assistant Core 2021.7 or higher for Trigger_ID to work
 
 ## 📩  Get Started
 

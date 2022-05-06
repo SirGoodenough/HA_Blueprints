@@ -2,13 +2,13 @@ This blueprint is set up to watch a binary sensor. When it goes from off to on (
 
 ## 📑 Changelog
 
+* **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions.
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
 * **2022-01-03**: Remove 'Door' restriction on input sensor, and expanded description.
 * **2021-12-24**: Add pick list of all the available languages and dialects.
 * **2021-10-29**: Add the ability to select the time-frame the announcement will be active
 * **2021-09-03**: Add Description
-* **2021-06-16**: First blueprint version :tada:
-                        needs Home Assistant Core 2021.3 or higher and Nabu-Casa to work
+* **2021-06-16**: First blueprint version :tada: Needs Home Assistant Core 2021.3 or higher and Nabu-Casa to work
 
 ## 📩 Get Started
 

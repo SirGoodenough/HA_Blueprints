@@ -1,8 +1,8 @@
 blueprint:
   domain: script
   homeassistant:
-    min_version: 2022.4.0
-  name: TTS_say_Message-2022-04-26
+    min_version: 2022.5.0
+  name: TTS_say_Message-2022-05-05
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   description: '📣 This is a script that can use any of the 11 integrated TTS Platforms
     in Home Assistant to send a message to a media player. Some will require Google
@@ -51,7 +51,9 @@ blueprint:
 
     In addition it puts all your TTS specific code in 1 spot, the blueprint, and that
     allows it to be called over and over. Plus it gives you one place, the blueprint,
-    to repair issues should they arrise. 🔚'
+    to repair issues should they arrise. 🔚
+
+    [Community link for this blueprint]()'
   input:
     b4_action:
       name: Action before TTS
@@ -445,9 +447,8 @@ variables:
   my_baidu_person: '{{ baidu_person_val | int(0) }}'
 sequence:
 - alias: Do something before the TTS Command
-  choose:
-  - conditions: '{{ not my_b4_action in (''none'', ''null'', ''unavailable'', '''') }}'
-    sequence: !input 'b4_action'
+  if: '{{ not my_b4_action in (''none'', ''null'', ''unavailable'', '''') }}'
+  then: !input 'b4_action'
 - alias: "Main TTS Choose Statement"
   choose:
   - conditions: '{{ my_tts == "tts.amazon_polly_say" }}'
@@ -537,6 +538,5 @@ sequence:
       message: '{{ my_message }}'
       language: !input 'GTS_language'
 - alias: Do something after the TTS Command
-  choose:
-  - conditions: '{{ not my_after_action in (''none'', ''null'', ''unavailable'', '''') }}'
-    sequence: !input 'after_action'
+  if: '{{ not my_after_action in (''none'', ''null'', ''unavailable'', '''') }}'
+  then: !input 'after_action'

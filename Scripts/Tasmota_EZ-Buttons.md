@@ -2,6 +2,7 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 
 ## 📑 Changelog
 
+* **2022-05-05**: Updated for 2022.5.0 HA. Added shortcut and.
 * **2022-02-07**: Add Retain flag to fix HA start-up bug.
 * **2022-02-04**: Add Automation suggestion to fix HA start-up bug.
 * **2022-01-07**: First blueprint version :tada:

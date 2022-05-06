@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut or.
 * **2022-04-26 update-B** UPDATE: No code changes. Added examples to provide another 30 more ways to trigger something using conditionals in Group 3 🍐,
 * **2022-04-26 update-A** UPDATE: No code changes. Added examples to provide 24 more ways to trigger something using the rotate sensor as a device toggle, both long and short for each rotate sensor.
 * **2022-04-26**: Re-configure to add 30 Action Methods !!NOTICE!! If you are upgrading the Blueprint, upgrade the template sensor as well.  The variables are different...
