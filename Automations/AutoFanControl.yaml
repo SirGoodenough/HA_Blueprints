@@ -100,12 +100,12 @@ blueprint:
       name: Time of day fan should start
       description: Set this for the time of day you want the fan function to be enabled.
       selector:
-        time: {}
+        time: 
     fan_off_time:
       name: Time of day fan should stop
       description: Set this for the time of day you want the fan function to end.
       selector:
-        time: {}
+        time: 
     mqtt_fan_topic:
       name: Fan Topic
       description: "This is the MQTT Topic needed to change the fan speed.
