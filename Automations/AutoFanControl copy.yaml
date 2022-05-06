@@ -1,14 +1,5 @@
 blueprint:
   name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_2022-05-05
-  description: 'This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)
-    based on a room temperature.
-
-
-    In fact any fan with 3 speeds designated in MQTT [as 0,1,2,3) will work with 
-    this blueprint.
-
-
-    [Community link for this blueprint](https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419)'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.yaml
   domain: automation
   homeassistant:
