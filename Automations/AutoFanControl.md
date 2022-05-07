@@ -2,13 +2,13 @@ This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  
 
 ## 📑 Changelog
 
+* **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut and & or.
 * **2022-02-07**: Add Default value to float filters (for HA Breaking change).
 * **2021-11-20**: Add Minimum Home Assistant version.
 * **2021-09-03**: Add Description.
 * **2021-08-19**: Remove negative Temp Gap hysteresis, logic wrong.
 * **2021-08-04**: Remove Default path as it made my fan beep for no reason.
-* **2021-08-02**: First blueprint version :tada:
-                        needs Home Assistant Core 2021.7 or higher for Trigger_ID to work
+* **2021-08-02**: First blueprint version :tada: needs Home Assistant Core 2021.7 or higher for Trigger_ID to work.
 
 ## 📩 Get Started
 

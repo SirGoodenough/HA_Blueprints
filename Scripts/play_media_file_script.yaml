@@ -3,8 +3,9 @@ blueprint:
   description: "This provides a way to play canned media files with the big 
       long list of YAML entries but keep the main script or automation clean. 
       All that is required there would be a simple line like:  
-        '- service: script.media_player_doorbell_sound'"
-  # Community link for blueprint:  source_url: https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988
+        '- service: script.media_player_doorbell_sound'
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988)"
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml
   domain: script
   homeassistant:
