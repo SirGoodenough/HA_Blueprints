@@ -61,14 +61,14 @@ blueprint:
         to do before sending the TTS message
       default: []
       selector:
-        action: 
+        action: {}
     after_action:
       name: Action after TTS
       description: This is intended to add a volume control action or whatever you want
         to do after sending the TTS message
       default: []
       selector:
-        action: 
+        action: {}
     TTS:
       name: Text to Speech Processor
       description: 'Required on ALL *_say platforms. Select the configured TTS engine
