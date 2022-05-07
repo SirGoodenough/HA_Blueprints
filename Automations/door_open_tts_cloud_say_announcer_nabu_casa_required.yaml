@@ -10,7 +10,7 @@ blueprint:
   domain: automation
   input:
     door_entity:
-      name: 'Door Sensor (or any binary_sensor will do...'
+      name: 'Door Sensor (or any binary_sensor will do...)'
       description: Entity that causes the announcement. Actually any entity that changes
         its state from off to on will work here, You would just need to enter the
         entity manually if it's not a binary sensor.
