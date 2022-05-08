@@ -1,8 +1,9 @@
-This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base. Restart All, Update a few, and Update all.
 
 ## 📑 Changelog
 
 * **2022-05-05**: Updated for 2022.5.0 HA. Added shortcut and.
+  * Add alternate MQTT topic format
 * **2022-02-07**: Add Retain flag to fix HA start-up bug.
 * **2022-02-04**: Add Automation suggestion to fix HA start-up bug.
 * **2022-01-07**: First blueprint version :tada:
@@ -12,7 +13,7 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 I was looking for a Home Assistant Related project and when chatting to Luma from the HASPOne Project a couple of days ago, he mentioned how he uses an MQTT Trick to Generate entities inside of a Blueprint.
 This spawned an idea in my head, and Voilia, we have this Blueprint.
 
-I have had these EZ buttons for quite a while on my system.  The idea of the 2 Update Buttons came from Digiblur.  Recently for 2021.12.0 the Home Assistant Team came out with buttons.  I converted my update scripts to buttons.
+I have had these EZ buttons for quite a while on my system.  The idea of the 2 Update Buttons came from Digiblur. Recently for 2021.12.0 the Home Assistant Team came out with buttons. I converted my update scripts to buttons.
 
 After chatting Luma, I put the 2 together, and here we have a Script Blueprint that uses MQTT Discovery to generate 3 buttons for your Tasmota Devices.
 
@@ -51,13 +52,13 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Bu
 
 ## 📖 Description
 
-First, let’s go over Blueprints and what they are.  Blueprints are a way to share scripts (in this case) and is built into Home Assistant.  Simple as that.  You can import my template code and a copy of it will reside in your configuration.  Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build a script.  It will collect the information needed based on your entities and your personal adjustments, and provide a working script.  You will have to have or add the required hardware and entities that the Blueprint needs to function.
+First, let’s go over Blueprints and what they are. Blueprints are a way to share scripts (in this case) and is built into Home Assistant. Simple as that. You can import my template code and a copy of it will reside in your configuration. Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build a script. It will collect the information needed based on your entities and your personal adjustments, and provide a working script. You will have to have or add the required hardware and entities that the Blueprint needs to function.
 
 ### ⚙️ Usage
 
 #### 🛠 Installation
 
-* Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
+* Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’. A selection box should pop up. Type blue and select the button to navigate to blueprints. You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 * Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
 * In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub:
 
@@ -69,8 +70,8 @@ First, let’s go over Blueprints and what they are.  Blueprints are a way to sh
 * Home Assistant 2021.12.0 or newer because that is where the MQTT Button Entity Debuts.
 * Home Assistant Tasmota Integration installed and talking to all yout Tasmota Devices.
 * The default GroupTopic of 'Tasmotas' is available on all your Tasmota Devices.
-* This assumes you have left your Tasmota Devices MQTT topic set as the default.  ```%prefix%/%topic%/```  If not you will need to edit this in a couple of places in the Blueprint to match your Tasmota topic.
-* Your Tasmota devices need to be updated to the same 'breaking change' generation as the Released version of Tasmota for this to be able to update.  Currently that is v9.1 minumum.
+* Tasmota Devices firmware default MQTT topic is set to: ```%prefix%/%topic%/``` If you did not change the topic in your Tasmota Devices then leave it as the default here as well. The other option available to you is to flip them as I do in my Home Assistant personally.
+* Your Tasmota devices need to be updated to the same 'breaking change' generation as the Released version of Tasmota for this to be able to update. Currently that is v9.1 minumum.
 
 #### ✈️ Extended Information
 
@@ -90,7 +91,7 @@ To build the script:
 > 1. Click on 'Create Script' [![Open your Home Assistant instance and show your scripts.](https://my.home-assistant.io/badges/scripts.svg)](https://my.home-assistant.io/redirect/scripts/)  and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Pick the names you want for your buttons or accept the defaults
-> 4. The 'ez_canary_grouptopic' selection MUST be in lower_case_chase format for this to function correctly.  Also you need to install this GroupTopic on a select number of your Tasmota Devices.  This allows you to update these first, and you can see if the update is going to work for you before pushing the Update-All Button.  What you put here has to exactly match what you put in your devices.
+> 4. The 'ez_canary_grouptopic' selection MUST be in lower_case_chase format for this to function correctly. Also you need to install this GroupTopic on a select number of your Tasmota Devices. This allows you to update these first, and you can see if the update is going to work for you before pushing the Update-All Button. What you put here has to exactly match what you put in your devices.
 > 5. The 'ez_canary' name must be changed from the default to enable this button.
 
 #### 🗣 Generating the Buttons
@@ -102,9 +103,9 @@ Look in your Devices list for 'Tasmota EZ Buttons'.
 
 #### 💡 Other Ideas
 
-You can effectively use the Tasmota Reset Button to 'reload' all of your Tasmota Devices shortly after you start/restart Home Assistant.  This will give Home assistant a current look at all the states and sensors without relying on retain as it starts up.
+You can effectively use the Tasmota Reset Button to 'reload' all of your Tasmota Devices shortly after you start/restart Home Assistant. This will give Home assistant a current look at all the states and sensors without relying on retain as it starts up.
 
-UPDATE:  I have noticed that the buttons become disabled after Home Assistant Restart.  Very annoying, but easy to fix.  I have added a start-up Automation to Home Assistant to refresh the buttons a little while after the HA system starts.  The delay is to ensure things are going well and the system is not too busy when this is run.  I have found 22 seconds to be a good number for this on my system, feel free to adjust as needed.  I am also pressing the Tasmota Restart button a little while after that to refresh all the  Tasmota's at boot and provide fresh data for HA to update it's register status. The script name and button name will need to be changed to reflect your choices when you built the blueprint control script.
+UPDATE:  I have noticed that the buttons become disabled after Home Assistant Restart. Very annoying, but easy to fix. I have added a start-up Automation to Home Assistant to refresh the buttons a little while after the HA system starts. The delay is to ensure things are going well and the system is not too busy when this is run. I have found 22 seconds to be a good number for this on my system, feel free to adjust as needed. I am also pressing the Tasmota Restart button a little while after that to refresh all the Tasmota's at boot and provide fresh data for HA to update it's register status. The script name and button name will need to be changed to reflect your choices when you built the blueprint control script.
 
 Example automation:
 
@@ -147,7 +148,7 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 
 #### 🧯Tasmota EZ Button Blueprint
 
-This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base. Restart All, Update a few, and Update all.
 
 https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
 
@@ -167,7 +168,7 @@ https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tt
 
 #### 🧯Auto Fan Control Blueprint
 
-This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  Intended for Ifan03/Ifan04 but useful other places.
+This Blueprint is for controlling a 3 speed fan based on a temperature sensor. Intended for Ifan03/Ifan04 but useful other places.
 
 https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
 

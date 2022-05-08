@@ -8,7 +8,7 @@ blueprint:
     Home Assistant Restart to get all current State and Sensor readings)  
 
     #### 2:
-
+    
     Press a button to update a couple of Tasmota devices to test that the 
     new version will not break something,  
     (Think of these units as your canary's in the coal mine.)  
@@ -17,7 +17,7 @@ blueprint:
 
     Press a button to update ALL Tasmota devices to the latest version.  
 
-    ## 🧿 There are a Requirements to allow this to work. 🧿  
+    ## 🧿 There are 5 Requirements to allow this to work. 🧿  
 
     #### A: ✔️
 
@@ -41,9 +41,10 @@ blueprint:
 
     #### D: ✔️
 
-    This assumes your Tasmota Devices MQTT topic is set to the default.  
-    ```%prefix%/%topic%/```  If not you will need to edit this in a couple of 
-    places in the Blueprint to match your Tasmota topic.
+    Tasmota Devices firmware default MQTT topic is set to: ```%prefix%/%topic%/```  
+    If you did not change the topic in your Tasmota Devices then leave it as the
+    default here as well.  The other option available to you is to flip them
+    as I do in my Home Assistant personally.
 
     #### E: ✔️
 
@@ -88,6 +89,20 @@ blueprint:
       default: "EZ Update Button Tasmota"
       selector:
         text:
+    topic_format:
+      name: Tasmota Topic Format
+      description: "The format of your Tasmota devides has a default that most people use:  
+      '%prefix%/%topic%/'.  I personally however use something else.  Everytime I modify this I have 
+      found myself manually editing the code to work with my system so I have changed it to
+      be able to set it in the inputs.  The default is set to the normal Tasmota default,"
+      default: '%prefix%/%topic%/'
+      selector:
+        select:
+          options:
+          - '%prefix%/%topic%/'
+          - '%topic%/%prefix%/'
+          custom_value: false
+          multiple: false
     ez_canary:
       name: EZ Canary Button Tasmota
       description: "This is the name of the button you want 
@@ -133,6 +148,24 @@ variables:
   ez_canary_var: "{{ ez_canary_v1 | lower | regex_replace('[ -]','_') | regex_replace('[^a-z0-9_]','') }}"
   ez_restart_var: "{{ ez_restart_v1 | lower | regex_replace('[ -]','_') | regex_replace('[^a-z0-9_]','') }}"
   ez_canary_grouptopic_v1:  "{{ ez_canary_grouptopic_var | lower | regex_replace('[ -]','_') | regex_replace('[^a-z0-9_]','') }}"
+  canary_topic: >
+    {% if topic_format == '%prefix%/%topic%/'%}
+      cmnd/{{ ez_canary_grouptopic_var }}/upgrade
+    {% else %}
+      {{ ez_canary_grouptopic_var }}/cmnd/upgrade
+    {% endif %}
+  restart_topic:  >
+    {% if topic_format == '%prefix%/%topic%/'%}
+      cmnd/tasmotas/restart
+    {% else %}
+      tasmotas/cmnd/restart
+    {% endif %}
+  upgrade_topic:  >
+    {% if topic_format == '%prefix%/%topic%/'%}
+      cmnd/tasmotas/upgrade
+    {% else %}
+      tasmotas/cmnd/upgrade
+    {% endif %}
 mode: single
 max_exceeded: silent
 sequence:
@@ -166,7 +199,7 @@ sequence:
                   "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
                   "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
               },
-              "cmd_t": "cmnd/{{ ez_canary_grouptopic_var }}/upgrade",
+              "cmd_t": "{{ canary_topic }}",
               "payload_press": "1"
             }
 - alias: Make the button 4 restart
@@ -188,7 +221,7 @@ sequence:
             "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
             "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
         },
-        "cmd_t": "cmnd/tasmotas/restart",
+        "cmd_t": "{{ restart_topic }}",
         "payload_press": "1"
       }
 - alias: Make the button 4 all update
@@ -210,6 +243,6 @@ sequence:
             "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
             "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
         },
-        "cmd_t": "cmnd/tasmotas/upgrade",
+        "cmd_t": "{{ upgrade_topic }}",
         "payload_press": "1"
       }
