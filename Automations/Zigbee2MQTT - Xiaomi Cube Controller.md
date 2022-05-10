@@ -138,6 +138,10 @@ If you do not see that sensor, 'LegacyAPI' might not be selected in the Zigbee2M
 
 ![Legacy API Selected Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-legacy.png?raw=true "Where to find Z2M Legacy API Setting")
 
+-- Another menu item --
+
+![Legacy API Selected Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-Legacy-Triggers.png?raw=true "Where to find Z2M Legacy API Setting")
+
 The other 4 imported sensors in this Device can be disabled as they will not be used.
 
 Once you have found the entity_id you can build the Automation. To build the automation:
