@@ -128,7 +128,7 @@ First, let’s go over Blueprints and what they are. Blueprints are a way to sha
 
 To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thri Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
 
-* sensor.xxDevice_Namexx_action
+* '''sensor.xxDevice_Namexx_action'''
 
 If you do not see that sensor, 'LegacyAPI' might not be selected in the Zigbee2MQTT settings -  settings - advanced menu. Please find and check/select that setting like so:
 
