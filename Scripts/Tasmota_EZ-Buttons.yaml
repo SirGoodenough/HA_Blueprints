@@ -69,7 +69,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
   domain: script
   homeassistant:
-    min_version: 2022.5.0
+    min_version: 2022.5.2
   input:
     ez_update:
       name: EZ Update Button Tasmota

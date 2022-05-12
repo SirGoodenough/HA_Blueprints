@@ -21,7 +21,7 @@ blueprint:
     '
   domain: automation
   homeassistant:
-    min_version: 2022.5.0
+    min_version: 2022.5.2
   input:
     remote:
       name: Remote
