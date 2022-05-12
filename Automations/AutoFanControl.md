@@ -3,7 +3,7 @@ This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  
 ## 📑 Changelog
 
 * **2022-05-12**: Added support for weekday control
-  * Added Action Selectors to the fan & 'all done' loops for controlling AirCon or Heat or anything.
+  * Added Action Selectors to the 'fan' & 'all done' loops for controlling AirCon or Heat or anything.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut and & or.
 * **2022-02-07**: Add Default value to float filters (for HA Breaking change).
 * **2021-11-20**: Add Minimum Home Assistant version.
@@ -89,7 +89,7 @@ _________________
 ## 🌞 ❄️ Adding a heating or Cooling resource to the loop
 
 Here is how I and controlling my AirCon within the fan loop.  I have a window unit that is WIFI enabled for Temperature and on/off.  I set this up to only trigger to the AirCon unit when it actually needs to change something to avoid rate limiting situations.
-Added to the 'loop' (#11) action selector:
+Added to the 'loop' (#11) action selector:  (YAML Mode)
 
 ```yaml
       - alias: "Start AirCon & limit to prevent rate limit outages"
@@ -126,7 +126,7 @@ bedroom_ac_set_temp:
         temperature: "{{ Temp }}"
 ```
 
-Added to the 'off_action' (#12) selector:
+Added to the 'off_action' (#12) selector: (YAML Mode)
 
 ```yaml
       - alias: call shut the AirCon down script
