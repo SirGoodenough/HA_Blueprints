@@ -2,6 +2,8 @@ This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  
 
 ## 📑 Changelog
 
+* **2022-05-12**: Added support for weekday control
+  * Added Action Selectors to the fan & 'all done' loops for controlling AirCon or Heat or anything.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut and & or.
 * **2022-02-07**: Add Default value to float filters (for HA Breaking change).
 * **2021-11-20**: Add Minimum Home Assistant version.
@@ -81,6 +83,70 @@ Walk-thru:
 > 3. The Variables section has several entries. These are converting !inputs to variables that can be used in templates.
 > 4. The triggers section has hooks for the listed things.  2 of them are used to stop the automation at the appropriate time, and the rest are used to start the automation or to adjust the fan speed on temperature changes.
 > 5. In the action the first test looks to see if the automation wants to stop.  If that is not the case, it will test the temperature reading against the set point and adjust the fan speed accordingly.
+> 
+_________________
+
+## 🌞 ❄️ Adding a heating or Cooling resource to the loop
+
+Here is how I and controlling my AirCon within the fan loop.  I have a window unit that is WIFI enabled for Temperature and on/off.  I set this up to only trigger to the AirCon unit when it actually needs to change something to avoid rate limiting situations.
+Added to the 'loop' (#11) action selector:
+
+```yaml
+      - alias: "Start AirCon & limit to prevent rate limit outages"
+        if: '{{ states(''climate.gemodule5384'') == ''off'' }}'
+        then:
+          service: script.bedroom_ac_start
+      - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
+        if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
+          and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
+          != states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+        then:
+          service: script.bedroom_ac_set_temp
+          data:
+            Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+```
+
+And the script called to set the temperature looks like this.  I use this script for multiple instances of AC control...
+
+```yaml
+script:
+#####################################################
+# Bedroom AC Set Temperature                        # 
+#  Looks for the variable 'Temp' to be passed in    #
+#   'Temp' is a float between 45 and 95 °F          #
+#####################################################
+bedroom_ac_set_temp:
+  variables:
+    Temp:
+  alias: Bedroom AC Set Temperature
+  sequence:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.gemodule5384
+        temperature: "{{ Temp }}"
+```
+
+Added to the 'off_action' (#12) selector:
+
+```yaml
+      - alias: call shut the AirCon down script
+        service: script.bedroom_cooling_off
+```
+
+And the script called to shut it down looks like this.  I use this script for multiple instances of AC control...
+
+```yaml
+#####################################################
+# Bedroom Cooling Off                               # 
+#####################################################
+bedroom_cooling_off:
+  alias: Bedroom Cooling OFF
+  sequence:
+    - alias: Stop the AirCon
+      service: climate.turn_off
+      target:
+        entity_id: climate.gemodule5384
+```
 
 # 🌐 All My Blueprints
 
