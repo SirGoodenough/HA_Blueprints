@@ -2,6 +2,7 @@ This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  
 
 ## 📑 Changelog
 
+* **2022-05-12.1**: Change MQTT QOS to 2
 * **2022-05-12**: Added support for weekday control
   * Added Action Selectors to the 'fan' & 'all done' loops for controlling AirCon or Heat or anything.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut and & or.
