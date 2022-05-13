@@ -106,6 +106,21 @@ Added to the 'loop' (#11) action selector:  (YAML Mode)
             Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
 ```
 
+The AirCon on script looks like this:
+
+```yaml
+#####################################################
+# Bedroom AC Start                                  # 
+#####################################################
+bedroom_ac_start:
+  alias: Bedroom AC Start
+  sequence:
+    - service: climate.turn_on
+      target:
+        entity_id: climate.gemodule5384
+
+```
+
 And the script called to set the temperature looks like this.  I use this script for multiple instances of AC control...
 
 ```yaml
