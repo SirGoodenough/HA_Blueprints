@@ -245,7 +245,7 @@ action:
       data:
         topic: !input 'mqtt_fan_topic'
         payload: 0
-        qos: 1
+        qos: 2
         retain: false
   - alias: Normal fan run sequence
     conditions:
@@ -267,6 +267,8 @@ action:
       service: mqtt.publish
       data:
         topic: !input 'mqtt_fan_topic'
+        qos: 2
+        retain: false
         payload: >
           {% if room_temp_now_val < room_set_temp_val %}
           {# Room is cooler than set temp so turn fan OFF. #}
@@ -281,5 +283,3 @@ action:
           {# Room is warm enough to be on HIGH speed, #}
             3
           {% endif %}
-        qos: 1
-        retain: false
