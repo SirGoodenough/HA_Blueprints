@@ -75,14 +75,19 @@ _______________
 
 This Blueprint is for controlling a 3 speed fan based on a temperature sensor.  Intended for Ifan03/Ifan04 but useful other places.
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FAutoFanControl.yaml)
+Click this badge to import this Blueprint.  This is the version that uses HA fan integration and 0%, 33%, 66%, & 100% values to control the fan:
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FAutoFanControl%2520HA_fan.yaml)
+
+Click this badge to import this Blueprint.  This is the version that uses MQTT speeds 0, 1, 2, 3 to control the fan:
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FAutoFanControl_MQTT.yaml)
 
 https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
 
 This functionality started as a way to help my Bedroom AC unit keep an even temperature throughout the bedroom over night.  My partner wanted the fan on, but not faster than it had to be.  I wanted it to change speeds following the temperature of the room.  So that's what I did.
 
 * [AutoFanControl.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
-* [AutoFanControl.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.yaml)
+* [AutoFanControl HA_fan.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl%20HA_fan.yaml)
+* [AutoFanControl_MQTT.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml)
 
 #### 🧯Door Open TTS Cloud-Say Message Blueprint
 
