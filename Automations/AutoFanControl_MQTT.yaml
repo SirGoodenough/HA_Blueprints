@@ -8,6 +8,10 @@ blueprint:
     blueprint.
 
 
+    ***NOTE:*** See the [Sister Blueprint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl%20HA_fan.yaml)
+    if you want to create a blueprint using the Home AssistantFan Entity.
+
+
     There are action selectors for both the cycle loop and the shutdown loop for
     adding control of heating / cooling sources, or anything else you want
     Home Assistant to do for you.

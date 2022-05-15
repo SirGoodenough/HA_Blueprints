@@ -4,8 +4,15 @@ blueprint:
     based on a room temperature.
 
 
-    In fact any fan with 3 speeds designated in MQTT [as 0,1,2,3) will work with this
-    blueprint.
+    In fact any fan with 3 speeds that is connected to the HA Fan Integration will
+    work with this blueprint.
+
+
+    ***NOTE:*** See the [Sister Blueprint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml)
+    if you want to create an automation using MQTT.
+
+
+    if you want to control this fan using the Home Assistant Fan Integration instead.
 
 
     There are action selectors for both the cycle loop and the shutdown loop for
@@ -14,7 +21,7 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419)'
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl%20HA_fan.yaml
   domain: automation
   homeassistant:
     min_version: 2022.5.2
