@@ -38,7 +38,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanCo
 MQTT Version: Version: Copy this link if you want to import the blueprint in your installation.
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yamll
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml
 
 ## 📖 Description
 
@@ -105,6 +105,8 @@ Added to the 'loop' (#11) action selector:  (YAML Mode)
         if: '{{ states(''climate.gemodule5384'') == ''off'' }}'
         then:
           service: script.bedroom_ac_start
+      - alias: Make sure the device is on before the temperature is set
+        delay: 00:00:05
       - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
         if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
           and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
