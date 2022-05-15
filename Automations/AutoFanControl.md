@@ -172,6 +172,27 @@ bedroom_cooling_off:
         entity_id: climate.gemodule5384
 ```
 
+## 🌞 ❄️ Troubleshooting tip
+
+If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issur is.
+
+```yaml
+alias: aaaaaaa office Fan Test
+description: 'See how to increase the number of Traces available''
+trace:
+  stored_traces: 10
+use_blueprint:
+  path: SirGoodenough/AutoFanControl HA_fan.yaml
+  input:
+    fan_off_time: '00:00:00'
+    fan_control: input_boolean.fantest1
+    room_temp_now: sensor.jen_temperature_temperature
+    room_set_temp: input_number.fantest1
+    fan_on_time: '00:00:01'
+    fan: fan.office_fan
+```
+
 # 🌐 All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
