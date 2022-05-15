@@ -1,5 +1,5 @@
 blueprint:
-  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_2022-05-12.1
+  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_HA_fan_2022-05-15
   description: 'This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)
     based on a room temperature.
 
@@ -147,19 +147,13 @@ blueprint:
             value: sun
           custom_value: false
           multiple: true
-    mqtt_fan_topic:
-      name: Fan Topic
-      description: '(#10) This is the MQTT Topic needed to change the fan speed.
-
-        Tasmota flashed IFANxx devices have a topic such as:
-
-        ```cmnd/Bedroom_Fan/FanSpeed```
-
-        You need to look at **YOUR device** and determine the exact correct topic
-        to send to the broker to make yours work.'
+    fan:
+      name: Fan Entity
+      description: '(#10) This is the Home Assistant Fan entity'
       selector:
-        text:
-          multiline: false
+        entity:
+          domain: fan
+          multiple: false
     loop_action:
       name: "User action for fan enabled condition (loop)"
       description: '(#11) This is intended to start / set temp on an AC unit or
@@ -241,12 +235,9 @@ action:
       if: '{{ not my_off_action in (''none'', ''null'', ''unavailable'', '''') }}'
       then: !input 'off_action'
     - alias: Stop the fan
-      service: mqtt.publish
-      data:
-        topic: !input 'mqtt_fan_topic'
-        payload: 0
-        qos: 2
-        retain: false
+      service: fan.turn_off
+      target:
+        entity_id: !input "fan"
   - alias: Normal fan run sequence
     conditions:
       and:
@@ -264,22 +255,21 @@ action:
       if: '{{ not my_loop_action in (''none'', ''null'', ''unavailable'', '''') }}'
       then: !input 'loop_action'
     - alias: Set the fan speed based on the sensor temperature
-      service: mqtt.publish
+      service: fan.set_percentage
+      target:
+        entity_id: !input "fan"
       data:
-        topic: !input 'mqtt_fan_topic'
-        qos: 2
-        retain: false
-        payload: >
+        percentage: >
           {% if room_temp_now_val < room_set_temp_val %}
           {# Room is cooler than set temp so turn fan OFF. #}
             0
           {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_var) %}
           {# Room is at the temp where the fan should be at LOW speed. #}
-            1
+            33
           {% elif room_temp_now_val < (room_set_temp_val + temp_gap_1_to_2_var + temp_gap_2_to_3_var) %} 
           {# Room is at the temp where the fan should be at MEDIUM speed. #}
-            2
+            66
           {% else %} 
           {# Room is warm enough to be on HIGH speed, #}
-            3
+            100
           {% endif %}
