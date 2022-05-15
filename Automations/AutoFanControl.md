@@ -1,4 +1,4 @@
-This Blueprint is for controlling a 3 speed fan based on a temperature sensor. There is a version for a 3 speed MQTT Fan and another that communicates thru a Home Assistant fan entity.
+This Blueprint is for controlling a 3 speed fan based on a temperature sensor. There is a version for a 3 speed MQTT Fan and another version that communicates thru a Home Assistant fan entity using speed percentages.
 
 ## 📑 Changelog
 
