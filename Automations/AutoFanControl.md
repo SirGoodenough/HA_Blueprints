@@ -1,4 +1,4 @@
-This Blueprint is for controlling a 3 speed fan based on a temperature sensor. There is a version for a 3 speed MQTT Fan and another version that communicates thru a Home Assistant fan entity using speed percentages.
+This Blueprint is for controlling a 3 speed fan based on a temp sensorreading. There is a version for a 3 speed MQTT Fan & another version that communicates thru a Home Assistant fan entity using speed percentages.
 
 ## 📑 Changelog
 
@@ -231,9 +231,9 @@ https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tt
 
 #### 🧯Auto Fan Control Blueprint
 
-This Blueprint is for controlling a 3 speed fan based on a temperature sensor. Intended for Ifan03/Ifan04 but useful other places.
+This Blueprint is for controlling a 3 speed fan based on a temperature sensor. Both fan% control & MQTT fan control versions.
 
-https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419
+https://community.home-assistant.io/t/auto-fan-temp-control-for-3-speed-fan-using-ha-fan-or-mqtt-integration/326419
 
 #### 🧯Door Open TTS Cloud-Say Message Blueprint
 
