@@ -88,7 +88,7 @@ template:
 
 #### Event Sensor in Action
 
-![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubesensor.gif?raw=true "New sensor compared to the visual display of the action sensor")
+![Sample Script Generation Dashboard Entry](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubesensor.gif?raw=true "Sensor in action")
 
 If you wish to 'store' these events you can add this sensor to recorder and it will save them for you.
 

@@ -30,6 +30,8 @@ This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the
 
 Within this code there is an event handler that will 'latch' the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. This will help  when setting up new functions and to troubleshoot strange behaviors. Here is a sample Template sensor to capture this event:
 
+![Sample Script Generation Dashboard Entry](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubesensor.gif?raw=true "Sensor in action")
+
 ```yaml
 template:
   - trigger:
