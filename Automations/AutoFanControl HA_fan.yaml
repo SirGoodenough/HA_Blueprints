@@ -203,7 +203,7 @@ variables:
   room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float(0.0) }}'
   room_set_temp_var: !input 'room_set_temp'
   room_set_temp_val: '{{ expand(room_set_temp_var)[0].state | float(0.0) - temp_gap_val
-    | float(0) }}'
+    | float(0.0) }}'
   my_loop_action: !input 'loop_action'
   my_off_action: !input 'off_action'
 mode: restart

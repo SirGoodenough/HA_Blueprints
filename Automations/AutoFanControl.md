@@ -101,20 +101,23 @@ Here is how I and controlling my AirCon within the fan loop. I have a window uni
 Added to the 'loop' (#11) action selector:  (YAML Mode)
 
 ```yaml
-      - alias: "Start AirCon & limit to prevent rate limit outages"
-        if: '{{ states(''climate.gemodule5384'') == ''off'' }}'
-        then:
-          service: script.bedroom_ac_start
-      - alias: Make sure the device is on before the temperature is set
-        delay: 00:00:05
-      - alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
-        if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
-          and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
-          != states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
-        then:
-          service: script.bedroom_ac_set_temp
-          data:
-            Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
+- alias: "Start AirCon if room is 2° warmer than setting & limit to prevent rate limit outages"
+  if: '{{ states(''climate.gemodule5384'') == ''off''
+    and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 2.0
+    >= states(''input_number.bedroom_auto_temp'') | float(73.1)
+    }}'
+  then:
+    service: script.bedroom_ac_start
+- delay: 00:00:05
+- alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
+  if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
+    and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
+    != states(''input_number.bedroom_auto_temp'') | float(73.1)
+    }}'
+  then:
+    service: script.bedroom_ac_set_temp
+    data:
+      Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
 ```
 
 The AirCon on script looks like this:
