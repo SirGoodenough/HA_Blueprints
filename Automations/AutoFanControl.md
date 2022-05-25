@@ -2,6 +2,8 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensorreading. T
 
 ## 📑 Changelog
 
+* **2022-05-15-A**: Minor code clean-up on Casting, no functional change.
+  * Updated AirCon Start Example code to include start AirCon only if warm enough in room.
 * **2022-05-15**: Add 2nd Blueprint triggered with HA fan entity, otherwise identical.
 * **2022-05-12.1**: Change MQTT QOS to 2
 * **2022-05-12**: Added support for weekday control
@@ -188,14 +190,7 @@ description: 'See how to increase the number of Traces available''
 trace:
   stored_traces: 10
 use_blueprint:
-  path: SirGoodenough/AutoFanControl HA_fan.yaml
-  input:
-    fan_off_time: '00:00:00'
-    fan_control: input_boolean.fantest1
-    room_temp_now: sensor.jen_temperature_temperature
-    room_set_temp: input_number.fantest1
-    fan_on_time: '00:00:01'
-    fan: fan.office_fan
+.....
 ```
 
 # 🌐 All My Blueprints
