@@ -66,7 +66,7 @@ There is sample code to make the template sensor in the help file on GitHib name
 
 #### Seeing the cube commands for training the operator
 
-Within this blueprint there is an event handler that will latch the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. Thie will help when setting up new functions and to troubleshoot strange behaviours.  Add an entity card in your dashboard for sensor.cube_last_action to see what actions occur as you move the cube.
+Within this blueprint there is an event handler that will latch the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. This will help when setting up new functions and to troubleshoot strange behaviors.  Add an entity card in your dashboard for sensor.cube_last_action to see what actions occur as you move the cube.
 
 ```yaml
 template:
@@ -394,6 +394,20 @@ use_blueprint:
         data: {}
         target:
           entity_id: light.kitchensink
+```
+
+## 🌞 ❄️ Troubleshooting tip
+
+If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+
+```yaml
+alias: aaaaaaa Test
+description: 'See how to increase the number of Traces available''
+trace:
+  stored_traces: 10
+use_blueprint:
+.....
 ```
 
 # 🌐 All My Blueprints
