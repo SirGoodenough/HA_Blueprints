@@ -46,10 +46,10 @@ If applicable, add screenshots to help explain your problem.
 [![Open your Home Assistant instance and show your blueprints.](https://my.home-assistant.io/badges/blueprints.svg)](https://my.home-assistant.io/redirect/blueprints/)
 
 **What was the version of Home Assistant Core?**
-[![Open your Home Assistant instance and show your Home Assistant version information.](https://my.home-assistant.io/badges/info.svg)](https://my.home-assistant.io/redirect/info/)
+[![Open your Home Assistant instance and show health information about your system.](https://my.home-assistant.io/badges/system_health.svg)](https://my.home-assistant.io/redirect/system_health/)
 
 **What type of installation are you running?**
-[![Open your Home Assistant instance and show your Home Assistant version information.](https://my.home-assistant.io/badges/info.svg)](https://my.home-assistant.io/redirect/info/)
+[![Open your Home Assistant instance and show health information about your system.](https://my.home-assistant.io/badges/system_health.svg)](https://my.home-assistant.io/redirect/system_health/)
 
 **YAML snippets INCLUDING the Script or Automation that you built to call the blueprint**
 (use 3 backticks before and after your code to format it properly)
