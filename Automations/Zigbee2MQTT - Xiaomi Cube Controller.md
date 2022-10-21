@@ -71,19 +71,20 @@ Within this blueprint there is an event handler that will latch the last command
 ```yaml
 template:
   - trigger:
-    - platform: event
-      event_type: cube_last_action
-  sensor:
-    - name: "Cube Last Action"
-      unique_id: Any-unique-string-here-MUST-be-unique
-      icon: mdi:eye-refresh-outline
-      attributes:
-        friendly_name: "Cube Action"
-      state: >
-        {{ trigger.event.data.friendly_name }} - 
-        {{ trigger.event.data.action }} - 
-        {{ trigger.event.data.side }} frm 
-        {{ trigger.event.data.last_side }}
+      - platform: event
+        event_type: cube_last_action
+    sensor:
+      - name: "Cube Last Action"
+        unique_id: Any-unique-string-here-MUST-be-unique
+        icon: mdi:eye-refresh-outline
+        attributes:
+          friendly_name: "Cube Action"
+        state: >
+          {{ trigger.event.data.friendly_name }} - 
+          {{ trigger.event.data.action }} - 
+          {{ trigger.event.data.side }} frm 
+          {{ trigger.event.data.last_side }}
+
 ```
 
 #### Event Sensor in Action
