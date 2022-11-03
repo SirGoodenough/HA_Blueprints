@@ -2,7 +2,31 @@
 
 This is the Home Assistant Blueprint Library I have created and am sharing with the community.  I have both Script and Automation Blueprints in separate folders.  Each Blueprint has a file with the .yaml suffix with all the code and a file with the .md suffix which is a markdown description for set-up and usage of the blueprint.  The .md file contains important information and if you want a successful install, you should read it.
 
-If you want to support my work, check the links below.
+## ⚙ Want to request a new feature request or found a BUG?
+
+[Open an issue on GitHub](https://github.com/SirGoodenough/HA_Blueprints/issues/new/choose).
+
+## 🫴 Support
+
+You can use the threads on the Home Assistant community for the blueprint you are interested in (links below) to ask any questions you have.  
+
+Also pop in there and say Thanks if you like my stuff!
+
+Or join me on (Sir_Goodenough#9683) Discord [Discord Server WhatAreWeFixingToday](https://discord.gg/3HaKN8UJgn).
+
+## 🤹🏾‍♂️ Contact Links or see my other work
+
+What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
+
+YouTube Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
+
+## 🧀 If you want to support me
+
+Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
+
+PayPal one-off donation link: https://www.paypal.me/SirGoodenough
+
+#WhatAreWeFixingToday  #SirGoodEnough
 
 Here is a list of each of my blueprints, a quick description, and an import link for import to home assistant, and jump links to the Blueprints Exchange post and the files in my GIT Repo...
 
@@ -141,25 +165,4 @@ The split out of functions gives you the ability to assign local scripts or func
 
 * [Zigbee2MQTT - ZemiSmart ZM-RM02 Controller.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20ZemiSmart%20ZM-RM02%20Controller.md)
 * [Zigbee2MQTT - ZemiSmart ZM-RM02 Controller.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20ZemiSmart%20ZM-RM02%20Controller.yaml)
-
-## 🤹🏾‍♂️ Contact Links or see my other work
-
-What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
-
-Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
-
-What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
-
-What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
-
-Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
-
-## 🧀 If you want to support me
-
-Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
-
-PayPal one-off donation link: https://www.paypal.me/SirGoodenough
-
-#WhatAreWeFixingToday
-
-#SirGoodEnough
+* 
