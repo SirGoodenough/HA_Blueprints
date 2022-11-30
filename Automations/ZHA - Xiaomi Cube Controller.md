@@ -149,12 +149,12 @@ Once you have found the device you can build the Automation. To build the automa
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
-_________________
+
 Code Samples for the items in the next few sections can be found in my Home-Assistant Config here:  
 
 * https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/automation2/ZHA-Xiaomi_Cube_A2.yaml
-* https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/script2/zha_cube_script.yaml
-_________________
+* https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/script2/cube_script.yaml
+
 ## 🌞 Dimmer Control
 
 If you are looking for a dimmer control to change brightness based on rotation, here's something I cobbled together from other community posts here and there. ( Credit https://community.home-assistant.io/u/yourigh/summary and others )
@@ -286,7 +286,7 @@ This can be used over and over for as many lights as you want to control.  But y
 
 ## 🔁 🔴 Using Rotate CW and CCW as a Short-Press / Long-Press Toggle
 
-Not enough switch positions for you?  **How about a posible 24 more?**  I came up with some scripts you can add to Home Assistant and call for more actions.  One is for CW rotation < 100 degrees, another for > 100 degrees.  Also the same for CCW.  These are can be called from the Group 1 🍎 rotate actions and the Group 2 🍊 rotate actions.  Match the CW call/recieve or the CCW call/receive pairs together or you are going to be sad. 😩
+Not enough switch positions for you?  **How about a possible 24 more?**  I came up with some scripts you can add to Home Assistant and call for more actions.  One is for CW rotation < 100 degrees, another for > 100 degrees.  Also the same for CCW.  These are can be called from the Group 1 🍎 rotate actions and the Group 2 🍊 rotate actions.  Match the CW call/recieve or the CCW call/receive pairs together or you are going to be sad. 😩
 
 Here is a sample of what you put into the script Blueprint UI.  It will need to be a manual YAML edit and contain your specific variables.  What you see here is one from my config.
 
