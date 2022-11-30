@@ -134,6 +134,14 @@ First, let’s go over Blueprints and what they are. Blueprints are a way to sha
 
 #### 🛠 Installation
 
+For this Blueprint to function properly, it must keep track of the last cube face that was triggered.  This is done with an input_number helper.  [![Open your Home Assistant instance and show your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/) Create a number helper with the following parameters:
+
+* Minimum 0
+* Maximum 6
+* Step 1
+  
+![Number Helper for this Blueprint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Number_Helper.png?raw=true "Sample Number Helper")
+  
 * Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 * Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
 * In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub:
