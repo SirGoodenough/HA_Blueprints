@@ -53,28 +53,23 @@ blueprint:
     that the blueprint finds and sends that to the event buss. From there a simple
     Template sensor can grab it and show you the last action sent. Thie will help
     when setting up new functions and to troubleshoot strange behaviours.
+    _________________________
 
-
-    > This was forked from 
+    > This was "forked" from 
     >> [Aqara Cube ZHA - Simplified face-based device control](https://community.home-assistant.io/t/aqara-cube-zha-simplified-face-based-device-control/388850)
-    > Project authored by EdwardTFN (Edward Firmo) and he based on on severalother giants that came up with most of the base code. 
-
+    > Project authored by EdwardTFN (Edward Firmo) and he based on on several other giants that came up with most of the base code.
+    >>
     >> [ZHA - Aqara Magic Cube (57 actions)](https://community.home-assistant.io/t/zha-aqara-magic-cube-57-actions/297012)
-
+    >>
     >> [Aqara Magic Cube ZHA (51 actions)](https://community.home-assistant.io/t/aqara-magic-cube-zha-51-actions/270829)
-
+    >>
     >> [ZHA - Aqara Magic Cube (24 actions)](https://community.home-assistant.io/t/zha-aqara-magic-cube-24-actions/377162)
-
-
-    I sincerely thank Them for their work. 
+    >
+    >I sincerely thank Them for their work. 
     I wanted to support a version that was virtually the same as my Z2M version, 
     and leverage all the documentation and code samples there but still port it 
     to ZHA. I also had a better idea for troubleshooting info.
-
-    **NOTE:** This blueprint references the sides from 0 to 5 like the 
-    Z2M integration does. *Most* ZHA blueprints reference the sides in the same
-    order but use 1 thru 6. This was so I could re-use my Z2M code as-is.
-    This does not affect the operation of the device.
+    _________________________
 
     '
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml

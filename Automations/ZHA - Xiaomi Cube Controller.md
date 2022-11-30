@@ -30,50 +30,42 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA%20-%2
 
 ## 📖 Description
 
-This Blueprint uses a ZHA Event Sensor to sort out the 38(+54)
-    unique actions available from the Xiaomi Magic Cube Remote. (Some unique actions
-    are available thru templating only. See the related document.)
+This Blueprint uses a ZHA Event Sensor to sort out the 38(+54) unique actions available from the Xiaomi Magic Cube Remote. (Some unique actions are available thru templating only. See the related document.)
 
-    The split out of functions gives you the ability to assign local scripts or functions
-    to do the things you want the remote to do.
+The split out of functions gives you the ability to assign local scripts or functions
+to do the things you want the remote to do.
 
-    Functions that are left empty will simply do nothing.
+Functions that are left empty will simply do nothing.
 
+### 🍎 There is a set of 36 event functions that will trigger on specific actions
+on specific sides that are listed as **Group 1 actions 🍎**.
 
-    ### 🍎 There is a set of 36 event functions that will trigger on specific actions
-    on specific sides that are listed as **Group 1 actions 🍎**.
+### 🍊 There is a set of 6 event functions that will trigger on specific actions
+on *ANY* side that are listed as **Group 2 sctions 🍊**.
 
+### 🍐 There is a set of 30 event functions that will trigger on cube flips to
+& froma specific sides that are listed as **Group 3 sctions 🍐**.
 
-    ### 🍊 There is a set of 6 event functions that will trigger on specific actions
-    on *ANY* side that are listed as **Group 2 sctions 🍊**.
+### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to
+be combined with any other group.
 
+Please be aware that ALL actions except the 2 listed above,
 
-    ### 🍐 There is a set of 30 event functions that will trigger on cube flips to
-    & froma specific sides that are listed as **Group 3 sctions 🍐**.
+🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore
+I suggest if you just have a couple of things you want this remote to do that
+you choose the *ANY / Group 2 / 🍊* events.
 
+If you want more than a few events, you should select actions in **Group 1 / 🍎
+OR Group 3 / 🍐**.
 
-    ### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to
-    be combined with any other group.
+With careful selection you can use mixed groups, but you run the risk of a single
+cube action triggering more than 1 Home Assistant action and making a mess of
+things 🍱.
 
-
-    Please be aware that ALL actions except the 2 listed above,
-
-    🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore
-    I suggest if you just have a couple of things you want this remote to do that
-    you choose the *ANY / Group 2 / 🍊* events.
-
-    If you want more than a few events, you should select actions in **Group 1 / 🍎
-    OR Group 3 / 🍐**.
-
-    With careful selection you can use mixed groups, but you run the risk of a single
-    cube action triggering more than 1 Home Assistant action and making a mess of
-    things 🍱.
-
-
-    **NOTE:** This blueprint references the sides from 0 to 5 like the 
-    ZHA integration does. *Most* ZHA blueprints reference the sides in the same
-    order but use 1 thru 6. This was so I could re-use my Z2M code as-is.
-    This does not affect the operation of the device.
+**NOTE:** This blueprint references the sides from 0 to 5 like the 
+ZHA integration does. *Most* ZHA blueprints reference the sides in the same
+order but use 1 thru 6. This was so I could re-use my Z2M code as-is.
+This does not affect the operation of the device.
 
 #### NOTICE: This cube *can* be triggered 74 ways, but only 38 of them are unique
 
@@ -123,14 +115,14 @@ _________________________
 > This was 'forked' from 
 >> [Aqara Cube ZHA - Simplified face-based device control](https://community.home-assistant.io/t/aqara-cube-zha-simplified-face-based-device-control/388850)
 > Project authored by EdwardTFN (Edward Firmo) and he based on on several other giants that came up with most of the base code.
-
+>>
 >> [ZHA - Aqara Magic Cube (57 actions)](https://community.home-assistant.io/t/zha-aqara-magic-cube-57-actions/297012)
-
+>>
 >> [Aqara Magic Cube ZHA (51 actions)](https://community.home-assistant.io/t/aqara-magic-cube-zha-51-actions/270829)
-
+>>
 >> [ZHA - Aqara Magic Cube (24 actions)](https://community.home-assistant.io/t/zha-aqara-magic-cube-24-actions/377162)
-
-I sincerely thank Them for their work. 
+>
+>I sincerely thank Them for their work. 
 I wanted to support a version that was virtually the same as my Z2M version, 
 and leverage all the documentation and code samples there but still port it 
 to ZHA. I also had a better idea for troubleshooting info.
@@ -240,12 +232,12 @@ In the blueprint automation:
 rotate_cw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
       light: light.grp_studio
 rotate_ccw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
       light: light.grp_studio
 ```
 
@@ -301,7 +293,7 @@ Here is a sample of what you put into the script Blueprint UI.  It will need to 
 ```yaml
 service: script.cube_long_cw_toggle
 data:
-  angle: '{{ trigger.to_state.attributes.action_angle }}'
+  angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
   entity: light.livingroomlight
 ```
 
@@ -311,7 +303,7 @@ And if you are editing it manually in an editor inside the Script calling yaml, 
 rotate_cw_face_3:
   - service: cube_long_cw_toggle
     data:
-      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
       entity: light.livingroomlight
 ```
 
