@@ -134,11 +134,11 @@ First, let’s go over Blueprints and what they are. Blueprints are a way to sha
 
 #### 🛠 Installation
 
-For this Blueprint to function properly, it must keep track of the last cube face that was triggered.  This is done with an input_number helper.  [![Open your Home Assistant instance and show your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/) Create a number helper with the following parameters:
-
-* Minimum 0
-* Maximum 6
-* Step 1
+* For this Blueprint to function properly, it must keep track of the last cube face that was triggered.  This is done with an input_number helper.  [![Open your Home Assistant instance and show your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/) 
+>Create a number helper with the following parameters:
+> * Minimum 0
+> * Maximum 6
+> * Step 1
   
 ![Number Helper for this Blueprint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Number_Helper.png?raw=true "Sample Number Helper")
   
@@ -157,6 +157,7 @@ Once you have found the device you can build the Automation. To build the automa
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
+> 4. Select the input_number Helper that you created above
 
 Code Samples for the items in the next few sections can be found in my Home-Assistant Config here:  
 
