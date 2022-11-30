@@ -2,7 +2,7 @@
 
 ## 📑 Changelog
 
-* **2022-11-30**: First Version
+* **2022-11-30**: 🎉📦🔋 First Version
 
 ## 📩 Get Started
 
