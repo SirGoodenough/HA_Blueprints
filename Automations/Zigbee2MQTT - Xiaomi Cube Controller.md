@@ -52,9 +52,9 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38 commands avail
 
 ### 🍎 There is a set of 36 event functions that will trigger on specific actions on specific sides that are listed as **Group 1 actions 🍎**
 
-### 🍊 There is a set of 6 event functions that will trigger on specific actions on *ANY* side that are listed as **Group 2 sctions 🍊**
+### 🍊 There is a set of 6 event functions that will trigger on specific actions on *ANY* side that are listed as **Group 2 actions 🍊**
 
-### 🍐 There is a set of 30 event functions that will trigger on cube flips to & froma specific sides that are listed as **Group 3 sctions 🍐**
+### 🍐 There is a set of 30 event functions that will trigger on cube flips to & froma specific sides that are listed as **Group 3 actions 🍐**
 
 ### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to be combined with any other group
 
@@ -99,7 +99,7 @@ My 'suggestion' is that you do separate scripts for most, if not all of the acti
 
 #### Getting Tap and Flip actions to work
 
-I have had reports of the 'tap' action working.  It was due to the lack of instructions provided by the manfacturer of the cube.  Tap acrions on the cube are initiated by sharply tapping the cube 2x on a hard surface like this:
+I have had reports of the 'tap' action working.  It was due to the lack of instructions provided by the manufacturer of the cube.  Tap actions on the cube are initiated by sharply tapping the cube 2x on a hard surface like this:
 
 ![Demo of Tap Action](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Tap_Action.gif?raw=true "Demo of Tap Action")
 
@@ -127,7 +127,7 @@ First, let’s go over Blueprints and what they are. Blueprints are a way to sha
 
 #### 🧬 To make the blueprint work it will need
 
-To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thri Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
+To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thru Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
 
 * '''sensor.xxDevice_Namexx_action'''
 
@@ -150,12 +150,12 @@ Once you have found the entity_id you can build the Automation. To build the aut
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
-_________________
+
 Code Samples for the items in the next few sections can be found in my Home-Assistant Config here:  
 
 * https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/automation2/Z2M-Xiaomi_Cube_A2.yaml
 * https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/script2/cube_script.yaml
-_________________
+
 ## 🌞 Dimmer Control
 
 If you are looking for a dimmer control to change brightness based on rotation, here's something I cobbled together from other community posts here and there. ( Credit https://community.home-assistant.io/u/yourigh/summary and others )
@@ -163,23 +163,25 @@ If you are looking for a dimmer control to change brightness based on rotation, 
 I did this with all the complicated stuff in a script that is called with data from the blueprint automation. Then the complicated part is all in 1 place and there is only 1 copy of it. The same script works for both increase and decrease of brightness because the angle in the cube goes positive when turning clockwise and negative when going counter clockwise.
 
 In the blueprint automation:
+[![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/)
 
 ```yaml
 rotate_cw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
       light: light.bulb1
 rotate_ccw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
       light: light.bulb1
 ```
 
 Then this is the script that's called to do the heavy lifting.   It works for both CW and CCW cube rotations.
 
-In the script intrgration:
+In the script integration:
+[![Open your Home Assistant instance and show your scripts.](https://my.home-assistant.io/badges/scripts.svg)](https://my.home-assistant.io/redirect/scripts/)
 
 ```yaml
 cube_dimmer_control:
@@ -221,27 +223,29 @@ cube_dimmer_control:
 
 ## 🚦 Color Control
 
-I also extended this to controlling the color one octet (color) at a time. Each color will use both rotations on one sude of the cube.  Colors are changed one at a time (Red or Green or Blue) and change the amount (positive ot negative) based on how far you rotate the cube.
+I also extended this to controlling the color one octet (color) at a time. Each color will use both rotations on one side of the cube.  Colors are changed one at a time (Red or Green or Blue) and change the amount (positive ot negative) based on how far you rotate the cube.
 
 In the blueprint automation:
+[![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/)
 
 ```yaml
 ## Side 5 green
 rotate_cw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
       light: light.grp_studio
 rotate_ccw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
       light: light.grp_studio
 ```
 
 Then this is the script that's called to do the heavy lifting. It works for both CW and CCW cube rotations.
 
-In the Script Intrgration:
+In the Script Integration:
+[![Open your Home Assistant instance and show your scripts.](https://my.home-assistant.io/badges/scripts.svg)](https://my.home-assistant.io/redirect/scripts/)
 
 ```yaml
 cube_green_color_control:
@@ -251,7 +255,7 @@ cube_green_color_control:
     angle:
   sequence:
     - service: light.turn_on
-      data_template:
+      data:
         entity_id: "{{ light }}"
         rgb_color: >
           {% set step_size = angle * 0.6 %}
@@ -283,14 +287,14 @@ This can be used over and over for as many lights as you want to control.  But y
 
 ## 🔁 🔴 Using Rotate CW and CCW as a Short-Press / Long-Press Toggle
 
-Not enough switch positions for you?  **How about a posible 24 more?**  I came up with some scripts you can add to Home Assistant and call for more actions.  One is for CW rotation < 100 degrees, another for > 100 degrees.  Also the same for CCW.  These are can be called from the Group 1 🍎 rotate actions and the Group 2 🍊 rotate actions.  Match the CW call/recieve or the CCW call/receive pairs together or you are going to be sad. 😩
+Not enough switch positions for you?  **How about a possible 24 more?**  I came up with some scripts you can add to Home Assistant and call for more actions.  One is for CW rotation < 100 degrees, another for > 100 degrees.  Also the same for CCW.  These are can be called from the Group 1 🍎 rotate actions and the Group 2 🍊 rotate actions.  Match the CW call/receive or the CCW call/receive pairs together or you are going to be sad. 😩
 
 Here is a sample of what you put into the script Blueprint UI.  It will need to be a manual YAML edit and contain your specific variables.  What you see here is one from my config.
 
 ```yaml
 service: script.cube_long_cw_toggle
 data:
-  angle: '{{ trigger.to_state.attributes.action_angle }}'
+  angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
   entity: light.livingroomlight
 ```
 
@@ -300,7 +304,7 @@ And if you are editing it manually in an editor inside the Script calling yaml, 
 rotate_cw_face_3:
   - service: cube_long_cw_toggle
     data:
-      angle: "{{ trigger.to_state.attributes.action_angle }}"
+      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
       entity: light.livingroomlight
 ```
 
@@ -447,7 +451,7 @@ https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tt
 
 #### 🧯Auto Fan Control Blueprint
 
-This Blueprint is for controlling a 3 speed fan based on a temperature sensor. Both fan% control & MQTT fan control versions.
+This Blueprint is for controlling a 3 speed fan based on a temperature sensor. Both fan % control & MQTT fan control versions.
 
 https://community.home-assistant.io/t/auto-fan-temp-control-for-3-speed-fan-using-ha-fan-or-mqtt-integration/326419
 
@@ -475,15 +479,17 @@ This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the
 
 https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
 
+#### 🧯ZHA - Xiaomi Cube Controller Blueprint
+
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+
+https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
+
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 
 Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
-
-What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
-
-What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
 
 Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 

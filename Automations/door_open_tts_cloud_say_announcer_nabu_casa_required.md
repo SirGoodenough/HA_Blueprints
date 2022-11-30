@@ -127,7 +127,7 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 #### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
@@ -137,15 +137,17 @@ This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the
 
 https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
 
+#### 🧯ZHA - Xiaomi Cube Controller Blueprint
+
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+
+https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
+
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 
 Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
-
-What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
-
-What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
 
 Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 

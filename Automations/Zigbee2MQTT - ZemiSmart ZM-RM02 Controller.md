@@ -51,7 +51,7 @@ template:
 If you wish to 'store' these events you can add this sensor to recorder and it will
 save them for you.
 
-My 'suggestion' is that you do separate scripts for most, if not all of the actions you generate here. If you are using the UI editor for the simple things you are fine, but for more complicated things scripts may work better for you. This is my opinion and how I am using it, to each their own.  Building functions within the uI is also available if you are more confortable with that.
+My 'suggestion' is that you do separate scripts for most, if not all of the actions you generate here. If you are using the UI editor for the simple things you are fine, but for more complicated things scripts may work better for you. This is my opinion and how I am using it, to each their own.  Building functions within the uI is also available if you are more comfortable with that.
 
 First, let’s go over Blueprints and what they are. Blueprints are a way to share automations and is built into Home Assistant. Simple as that. You can import my template code and a copy of it will reside in your configuration. Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build an automation. It will collect the information needed based on your entities and your personal adjustments, and provide a working automation. You will have to have or add the required hardware and entities that the Blueprint needs to function.
 
@@ -67,7 +67,7 @@ First, let’s go over Blueprints and what they are. Blueprints are a way to sha
 
 #### 🧬 To make the blueprint work it will need
 
-To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thri Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
+To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thru Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
 
 * sensor.xxDevice_Namexx_action
 
@@ -135,7 +135,7 @@ https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tt
 
 #### 🧯Auto Fan Control Blueprint
 
-TThis Blueprint is for controlling a 3 speed fan based on a temperature sensor. Both fan% control & MQTT fan control versions.
+TThis Blueprint is for controlling a 3 speed fan based on a temperature sensor. Both fan % control & MQTT fan control versions.
 
 https://community.home-assistant.io/t/auto-fan-temp-control-for-3-speed-fan-using-ha-fan-or-mqtt-integration/326419
 
@@ -163,15 +163,17 @@ This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the
 
 https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650
 
+#### 🧯ZHA - Xiaomi Cube Controller Blueprint
+
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+
+https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
+
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 
 Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingTodaysYT
-
-What are we Fixing Today Facebook page (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodaybFB
-
-What are we Fixing Today Twitter Account (Sir GoodEnough): https://bit.ly/WhatAreWeFixingTodayTW
 
 Discord Guild: (Sir_Goodenough#9683) https://discord.gg/Uhmhu3B
 
