@@ -491,7 +491,7 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 
 This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
 
-https://community.home-assistant.io
+https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
