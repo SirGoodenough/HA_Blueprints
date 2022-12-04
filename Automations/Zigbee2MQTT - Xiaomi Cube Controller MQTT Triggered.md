@@ -1,9 +1,11 @@
-DEPRECATED...   SEE 
+(128 possible actions!!) This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54) commands available from the Xiaomi Magic Cube. This gives you the ability to trigger actions using the remote. NOTICE: Using this Blueprint and example scripts, this cube *can* be triggered 98 ways, but only 38(+54) of them are unique...
+
 ## 📑 Changelog
 
 * **2022-12-04**: Re-did the backend to use MQTT instead of the Z2M Legacy configuration.
-* * See:  
+* * This removes the legacy trigger requirement and makes it respond much faster.
 * * Old version Deprecated and available on the original Github link but will be no longer supported.
+* * Old Github link still works if you need it for something...
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut or.
 * **2022-04-26 update-B**: UPDATE: No code changes. Added examples to provide another 30 more ways to trigger something using conditionals in Group 3 🍐,
 * **2022-04-26 update-A** UPDATE: No code changes. Added examples to provide 24 more ways to trigger something using the rotate sensor as a device toggle, both long and short for each rotate sensor.

@@ -1,24 +1,79 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT - 2022-05-05
-  description: ' THIS BLUEPRINT IS DEPRECATED AND IS NO LONGER SUPPORTED.
-    FOR REPLACEMENT SEE: 
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-01
+  description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
+    unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
+    are available thru templating only. See the related document.)
+
+    The split out of functions gives you the ability to assign local scripts or functions
+    to do the things you want the remote to do.
+
+    Functions that are left empty will simply do nothing.
+
+
+    ### 🍎 There is a set of 36 event functions that will trigger on specific actions
+    on specific sides that are listed as **Group 1 actions 🍎**.
+
+
+    ### 🍊 There is a set of 6 event functions that will trigger on specific actions
+    on *ANY* side that are listed as **Group 2 sctions 🍊**.
+
+
+    ### 🍐 There is a set of 30 event functions that will trigger on cube flips to
+    & froma specific sides that are listed as **Group 3 sctions 🍐**.
+
+
+    ### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to
+    be combined with any other group.
+
+
+    Please be aware that ALL actions except the 2 listed above,
+    🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore
+    I suggest if you just have a couple of things you want this remote to do that
+    you choose the *ANY / Group 2 / 🍊* events.
+
+    If you want more than a few events, you should select actions in **Group 1 / 🍎
+    OR Group 3 / 🍐**.
+
+    With careful selection you can use mixed groups, but you run the risk of a single
+    cube action triggering more than 1 Home Assistant action and making a mess of
+    things 🍱.
+
+
+    #### NOTICE: This cube *can* be triggered 124 ways, but only 38(+54) of them are
+    unique (with templating).
+
+
+    There is sample code to make the template sensor in the help file on GitHib named
+    [Zigbee2MQTT - Xiaomi Cube Controller.md](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.md)
+    & in the [community page related to this](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203).
+
+
+    Within this blueprint there is an event handler that will latch the last command
+    that the blueprint finds and sends that to the event buss. From there a simple
+    Template sensor can grab it and show you the last action sent. Thie will help
+    when setting up new functions and to troubleshoot strange behaviours.
+
+
+    > This was forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006
+    1.2 project authored by luckypoppy and the friends he pulled together to create
+    the base. I sincerely thank Him (Them) for their work. I felt there needed to
+    be more documentation for rookie users to properly set this up. I had quite a
+    few questions and when I saw a few questions in that chat from people struggling,
+    I wanted to help. I also had a better idea for troubleshooting info.
+
     '
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml
+  # source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.5.2
+    min_version: 2022.5.0
   input:
-    remote:
-      name: Remote
-      description: 'The entity to put here is the sensor that Z2M imported which is
-        named like this> sensor.XXYour_HameXX_action.
-
-        The other 4 sensors can be disabled, they will not be used.'
+    topic:
+      name: Topic
+      description: 'The main MQTT Topic for your cube.'
+      default: "zigbee2mqtt/?"
       selector:
-        entity:
-          integration: mqtt
-          domain: sensor
-          multiple: false
+        text:
+          multiline: false
     slide_face_0:
       name: Group 1 actions 🍎 Slide the cube with face 0 up
       description: Face 0 is the one with the 'Aqara' LOGO
@@ -214,7 +269,7 @@ blueprint:
         action: {}
     shake:
       name: Shake the cube 🍩
-      description: 'This trigger only occurs once in the set-up. 
+      description: 'This trigger only occurs once in the set-up.
 
         It can be combined in any group.'
       default: []
@@ -222,7 +277,7 @@ blueprint:
         action: {}
     fall:
       name: Drop the cube 🍩
-      description: 'This trigger only occurs once in the set-up. 
+      description: 'This trigger only occurs once in the set-up.
 
         It can be combined in any group.'
       default: []
@@ -230,9 +285,9 @@ blueprint:
         action: {}
     slide_any:
       name: Group 2 actions 🍊 Slide the cube with any side
-      description: 'Side doesn''t matter on this one. 
+      description: 'Side doesn''t matter on this one.
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐 
+        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -240,9 +295,9 @@ blueprint:
         action: {}
     doubletap_any:
       name: Group 2 actions 🍊 Double tap the cube with any side
-      description: 'Side doesn''t matter on this one. 
+      description: 'Side doesn''t matter on this one.
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐 
+        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -250,9 +305,9 @@ blueprint:
         action: {}
     flipped90_any:
       name: Group 2 actions 🍊 Flip the cube 90 degrees to any side
-      description: 'Side doesn''t matter on this one. 
+      description: 'Side doesn''t matter on this one.
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐 
+        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -261,9 +316,9 @@ blueprint:
     flipped180_any:
       name: Group 2 actions 🍊 Flip the cube 180 degrees any side
       description: 'NOTE: This action is trick to master, and should be used sparingly...
-        Side doesn''t matter on this one. 
+        Side doesn''t matter on this one.
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐 
+        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -271,9 +326,9 @@ blueprint:
         action: {}
     rotate_cw_any:
       name: Group 2 actions 🍊 Rotate cube clockwise with any side
-      description: 'Side doesn''t matter on this one. 
+      description: 'Side doesn''t matter on this one.
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐 
+        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -281,9 +336,9 @@ blueprint:
         action: {}
     rotate_ccw_any:
       name: Group 2 actions 🍊 Rotate cube counter clockwise with any side
-      description: 'Side doesn''t matter on this one. 
+      description: 'Side doesn''t matter on this one.
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐 
+        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -291,8 +346,8 @@ blueprint:
         action: {}
     0_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -300,8 +355,8 @@ blueprint:
         action: {}
     0_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -309,8 +364,8 @@ blueprint:
         action: {}
     0_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 3
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 0 and the ANY
-        🍊 automations will also trigger.
+      description: '**!!Warning!!** The flip 180 automations 🍎 for side 0 and the
+        ANY 🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -318,8 +373,8 @@ blueprint:
         action: {}
     0_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -327,8 +382,8 @@ blueprint:
         action: {}
     0_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -336,8 +391,8 @@ blueprint:
         action: {}
     1_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 0
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -345,8 +400,8 @@ blueprint:
         action: {}
     1_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -354,8 +409,8 @@ blueprint:
         action: {}
     1_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -363,8 +418,8 @@ blueprint:
         action: {}
     1_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 4
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
+      description: '**!!Warning!!** The flip 180 automations 🍎 for side 1 and the
+        ANY 🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -372,8 +427,8 @@ blueprint:
         action: {}
     1_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -381,8 +436,8 @@ blueprint:
         action: {}
     2_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 0
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -390,8 +445,8 @@ blueprint:
         action: {}
     2_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -399,8 +454,8 @@ blueprint:
         action: {}
     2_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -408,8 +463,8 @@ blueprint:
         action: {}
     2_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -417,8 +472,8 @@ blueprint:
         action: {}
     2_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 2 from side 5
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
+      description: '**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
+        ANY 🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -426,8 +481,8 @@ blueprint:
         action: {}
     3_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 0
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
+      description: '**!!Warning!!** The flip 180 automations 🍎 for side 3 and the
+        ANY 🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -435,8 +490,8 @@ blueprint:
         action: {}
     3_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -444,8 +499,8 @@ blueprint:
         action: {}
     3_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -453,8 +508,8 @@ blueprint:
         action: {}
     3_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -462,8 +517,8 @@ blueprint:
         action: {}
     3_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 3 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -471,8 +526,8 @@ blueprint:
         action: {}
     4_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 0
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -480,8 +535,8 @@ blueprint:
         action: {}
     4_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 1
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger. 
+      description: '**!!Warning!!** The flip 180 automations 🍎 for side 4 and the
+        ANY 🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -489,8 +544,8 @@ blueprint:
         action: {}
     4_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -498,8 +553,8 @@ blueprint:
         action: {}
     4_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -507,8 +562,8 @@ blueprint:
         action: {}
     4_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 4 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -516,8 +571,8 @@ blueprint:
         action: {}
     5_from_0:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 0
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -525,8 +580,8 @@ blueprint:
         action: {}
     5_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY 🍊
-        automations will also trigger. 🍎🍐 
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+        🍊 automations will also trigger. 🍎🍐
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -534,8 +589,8 @@ blueprint:
         action: {}
     5_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 2
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger. 
+      description: '**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
+        ANY 🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -543,8 +598,8 @@ blueprint:
         action: {}
     5_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -552,8 +607,8 @@ blueprint:
         action: {}
     5_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 5 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY 🍊
-        automations will also trigger.
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+        🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
       default: []
@@ -562,27 +617,72 @@ blueprint:
 mode: single
 max_exceeded: silent
 trigger:
-- platform: state
-  entity_id: !input 'remote'
+  - platform: mqtt
+    topic: !input topic
 condition:
-  condition: template
-  value_template: '{{ trigger.to_state.attributes.action in (''rotate_right'', ''rotate_left'',
-    ''flip90'', ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
+  - condition: template
+    value_template: '{{ trigger.payload_json is defined and 
+      trigger.payload_json.action is defined and 
+      trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
+      ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
 action:
 - variables:
-    action: '{{ trigger.to_state.attributes.action }}'
-    side: '{{ trigger.to_state.attributes.side }}'
-    last_side: '{{ trigger.from_state.attributes.side }}'
-    entity_id: !input 'remote'
-    friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+    action: '{{ trigger.payload_json.action }}'
+    side: '{{ trigger.payload_json.side }}'
+    topic_var: !input topic
+    friendly_name: '{{ topic_var.split(''/'')[1] }}'
+    device_id: '{{ device_id( friendly_name ) }}'
+    ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
+    ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
+    angle: '{{ trigger.payload_json.angle }}'
+    num_name: '{{ friendly_name + '' last side'' }}'
+    num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
+    last_side: '{{ states(num_ha_name) | int(0) }}'
+
+- alias: Make number helper to store last side
+  service: mqtt.publish
+  data:
+    "topic": "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
+    "retain": true
+    "payload": >
+      { "name": "{{ num_name }}",
+        "avty_t": "homeassistant/status",
+        "uniq_id": "{{ friendly_name + '_' + device_id }}",
+        "cmd_t": "{{ 'homeassistant/number/' + ieee_id + '/last_side/cmnd' }}",
+        "sta_t": "{{ 'homeassistant/number/' + ieee_id + '/last_side/state' }}",
+        "dev": {
+            "ids": [
+              "{{ device_id + 'num'}}",
+              "{{ 'num' + ieee_id_long }}"
+            ],
+            "name": "{{ friendly_name + ' Z2M Blueprint Helper' }}",
+            "mf": "SirGoodenough",
+            "mdl": "Number Helper for Z2M Cube Integration",
+            "sa": "home",
+            "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml",
+            "cu": "https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203"
+        },
+        "min": "0",
+        "max": "6",
+        "step": "1",
+        "ret": true
+      }
+- alias: 'Store the current_side as the last_side for the next trigger'
+  service: number.set_value
+  target:
+    entity_id: '{{ num_ha_name }}'
+  data:
+    value: '{{ side }}'
 - alias: Fire Last Action event
   event: cube_last_action
   event_data:
     action: '{{ action }}'
     side: '{{ side }}'
     last_side: '{{ last_side }}'
-    entity_id: '{{ entity_id }}'
     friendly_name: '{{ friendly_name }}'
+    device_id: '{{ device_id }}'
+    ieee_id: '{{ ieee_id }}'
+    angle: '{{ angle }}'
 - alias: Group 2 🍊 and No Group 🍩 These are action events for ANY Side
   choose:
   - conditions: '{{ action == "slide" }}'
@@ -785,5 +885,6 @@ action:
         sequence: !input '5_from_3'
       - conditions: '{{ last_side == 4 }}'
         sequence: !input '5_from_4'
-- alias: Delay ⏱ for debounce so toggle functions work. Also blueprint is in single mode.
+- alias: Delay ⏱ for debounce so toggle functions work. Also blueprint is in single
+    mode.
   delay: 00:00:01
