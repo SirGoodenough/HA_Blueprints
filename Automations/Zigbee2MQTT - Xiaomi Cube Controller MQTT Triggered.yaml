@@ -627,16 +627,27 @@ condition:
       ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
 action:
 - variables:
+      # Get the action command.
     action: '{{ trigger.payload_json.action }}'
+      # Get the side.
     side: '{{ trigger.payload_json.side }}'
+      # Get the topic as a variable.
     topic_var: !input topic
+      # Generate the Friendly_name from the Topic.
     friendly_name: '{{ topic_var.split(''/'')[1] }}'
+      # Generate the device_id from the Friendly_name.
     device_id: '{{ device_id( friendly_name ) }}'
+      # Pull out the ieee identifier.
     ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
+      # Generate just the number for the ieee.
     ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
+      # Get the angle.
     angle: '{{ trigger.payload_json.angle }}'
+      # Set the name of the Number entity.
     num_name: '{{ friendly_name + '' last side'' }}'
+      # Set the rntity_id of the Number entity.
     num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
+      # Get the last_side stored value from Home Assistant that was stored on the last run.
     last_side: '{{ states(num_ha_name) | int(0) }}'
 
 - alias: Make number helper to store last side
