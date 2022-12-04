@@ -46,9 +46,9 @@ Click the badge to import this Blueprint
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
-```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml```
+```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml
 
 ## 📖 Description
 
@@ -64,7 +64,7 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38 commands avail
 
 Please be aware that ALL actions except the 2 listed above / 🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore I suggest if you just have a couple of things you want this remote to do that you choose the *ANY / Group 2 / 🍊* events. If you want more than a few events, you should select actions in **Group 1 / 🍎 OR Group 3 / 🍐**. With careful selection you can use mixed groups, but you run the risk of a single cube action triggering more than 1 Home Assistant action and making a mess of things 🍱.  
 
-#### NOTICE: This cube *can* be triggered 74 ways, but only 38 of them are unique
+#### NOTICE: This cube *can* be triggered 74+ ways, but only 38 of them are unique
 
 There is sample code to make the template sensor in the help file on GitHib named the same as this one and in the community page related to this.
 
@@ -131,25 +131,9 @@ First, let’s go over Blueprints and what they are. Blueprints are a way to sha
 
 #### 🧬 To make the blueprint work it will need
 
-To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thru Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
+To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thru Zigbee2MQTT.
 
-* '''sensor.xxDevice_Namexx_action'''
-
-If you do not see that sensor, 'LegacyAPI' might not be selected in the Zigbee2MQTT settings -  settings - advanced menu. Please find and check/select that setting like so:
-
-![Z2M Menu Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-settings-advanced.png?raw=true "Where to find Z2M Legacy API Setting")
-
--- SCROLL DOWN --
-
-![Legacy API Selected Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-legacy.png?raw=true "Where to find Z2M Legacy API Setting")
-
--- Another menu item --
-
-![Legacy API Selected Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-Legacy-Triggers.png?raw=true "Where to find Z2M Legacy API Setting")
-
-The other 4 imported sensors in this Device can be disabled as they will not be used.
-
-Once you have found the entity_id you can build the Automation. To build the automation:
+This version of the Blueprint uses MQTT to deal with cube interface duties.  This means that if you have Legacy triggers enabled on your setup or not, it will still work.  It also created it's own number helper to track a variable needed to do all the tricks.  You as the user will not have to deal with that.
 
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
@@ -173,12 +157,12 @@ In the blueprint automation:
 rotate_cw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
+      angle: '{{ trigger.payload_json.angle }}'
       light: light.bulb1
 rotate_ccw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
+      angle: '{{ trigger.payload_json.angle }}'
       light: light.bulb1
 ```
 
@@ -237,12 +221,12 @@ In the blueprint automation:
 rotate_cw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
+      angle: '{{ trigger.payload_json.angle }}'
       light: light.grp_studio
 rotate_ccw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
+      angle: '{{ trigger.payload_json.angle }}'
       light: light.grp_studio
 ```
 
@@ -298,7 +282,7 @@ Here is a sample of what you put into the script Blueprint UI.  It will need to 
 ```yaml
 service: script.cube_long_cw_toggle
 data:
-  angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
+  angle: '{{ trigger.payload_json.angle }}'
   entity: light.livingroomlight
 ```
 
@@ -308,7 +292,7 @@ And if you are editing it manually in an editor inside the Script calling yaml, 
 rotate_cw_face_3:
   - service: cube_long_cw_toggle
     data:
-      angle: '{{ trigger.to_state.attributes.action_angle | default(0) | float(0) }}'
+      angle: '{{ trigger.payload_json.angle }}'
       entity: light.livingroomlight
 ```
 
@@ -393,7 +377,7 @@ Here is the YAML editor showing this:
 alias: Aqara Magic Cube test
 description: stuff happens here
 use_blueprint:
-  path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller.yaml
+  path: SirGoodenough/Zigbee2MQTT - Xiaomi Cube Controller MQTT Triggered.yaml
   input:
     remote: sensor.yertle_action
     5_from_2:

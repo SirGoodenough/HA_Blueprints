@@ -44,7 +44,7 @@ blueprint:
 
 
     There is sample code to make the template sensor in the help file on GitHib named
-    [Zigbee2MQTT - Xiaomi Cube Controller.md](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.md)
+    [Zigbee2MQTT - Xiaomi Cube Controller MQTT Triggered.md](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md)
     & in the [community page related to this](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203).
 
 
@@ -62,7 +62,7 @@ blueprint:
     I wanted to help. I also had a better idea for troubleshooting info.
 
     '
-  # source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml
   domain: automation
   homeassistant:
     min_version: 2022.5.0

@@ -1,8 +1,11 @@
-DEPRECATED...   SEE 
+# DEPRECATED...   
+
+SEE https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml
+
 ## 📑 Changelog
 
 * **2022-12-04**: Re-did the backend to use MQTT instead of the Z2M Legacy configuration.
-* * See:  
+* * See: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml 
 * * Old version Deprecated and available on the original Github link but will be no longer supported.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut or.
 * **2022-04-26 update-B**: UPDATE: No code changes. Added examples to provide another 30 more ways to trigger something using conditionals in Group 3 🍐,
