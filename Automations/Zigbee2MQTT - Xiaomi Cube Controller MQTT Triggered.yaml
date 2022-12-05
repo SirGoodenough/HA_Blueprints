@@ -69,7 +69,12 @@ blueprint:
   input:
     topic:
       name: Topic
-      description: 'The main MQTT Topic for your cube.'
+      description: 'The main MQTT Topic for your cube. 
+      
+      Details on finding the correct topic can be found here: 
+      
+      [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md#-to-make-the-blueprint-work-it-will-need)
+      '
       default: "zigbee2mqtt/?"
       selector:
         text:
