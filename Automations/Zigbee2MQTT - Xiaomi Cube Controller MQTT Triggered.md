@@ -135,6 +135,18 @@ To make the Blueprint work you will need a functional Magic Cube integrated to H
 
 This version of the Blueprint uses MQTT to deal with cube interface duties.  This means that if you have Legacy triggers enabled on your setup or not, it will still work.  It also created it's own number helper to track a variable needed to do all the tricks.  You as the user will not have to deal with that.
 
+You will also need the correct topic to talk to your device.
+
+That can be found by going into devices and finding your cube device. [![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
+![Find Device](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/FindDevice.png?raw=true "Find Device")
+
+Then clicking on ```MQTT INFO```:
+![Click MQTT INFO](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/MQTTInfo.png?raw=true "Click MQTT INFO")
+
+Then looking for the subscribed topic that looks like this... ```zigbee2nqtt/[your device name here]```:
+![Find the subscribed topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/MQTTTopic.png?raw=true "Find the subscribed topic")
+That is what belongs in the the topic question you get when setting up a new automation with this blueprint.
+
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
