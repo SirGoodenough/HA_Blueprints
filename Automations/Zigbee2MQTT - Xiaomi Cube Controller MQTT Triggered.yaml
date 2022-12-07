@@ -65,7 +65,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.5.0
+    min_version: 2022.11.0
   input:
     topic:
       name: Topic
@@ -639,7 +639,7 @@ action:
       # Get the topic as a variable.
     topic_var: !input topic
       # Generate the Friendly_name from the Topic.
-    friendly_name: '{{ topic_var.split(''/'')[1] }}'
+    friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9]", "") }}'
       # Generate the device_id from the Friendly_name.
     device_id: '{{ device_id( friendly_name ) }}'
       # Pull out the ieee identifier.
