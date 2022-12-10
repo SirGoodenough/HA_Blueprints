@@ -1,4 +1,4 @@
-This Blueprint accepts 5 actions & when done in the right order, flips an input_boolean.  Thisk a lock from a common keypad, or a puzzle to solve in a safe house.  
+This Blueprint accepts 5 actions & when done in the right order, flips an input_boolean.  Think a lock from a common keypad, or a puzzle to solve in a safe house.  
 ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q) about it here for detailed info!
 
 ## 📑 Changelog
