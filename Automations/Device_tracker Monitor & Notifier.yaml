@@ -3,13 +3,16 @@ blueprint:
   description: 'This is intended to be used with pfSense HACS Integration: 
     [GitHub - travisghansen/hass-pfsense: pfSense integration with Home Assistant](https://github.com/travisghansen/hass-pfsense)
 
+
     However it could be used with any device tracker that reports ```home``` when the 
     device is up and something else when it isn''t.
+
 
     It will create a persistent notification when triggered. 
     Triggers / notifications can be enabled for a time period each day and/or for 
     specific days of the week. There is also the ability to roll your own specific 
     notification or other action as an action statement.
+
 
     I also found that Awesome Blueprints Matt has a blueprint to send this stuff 
     to your phone, so I referenced that here to be helpful if you are looking for that.
