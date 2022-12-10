@@ -178,3 +178,16 @@ The split out of functions gives you the ability to assign local scripts or func
 
 * [Zigbee2MQTT - Xiaomi Cube Controller.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA%20-%20Xiaomi%20Cube%20Controller.md)
 * [Zigbee2MQTT - Xiaomi Cube Controller.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA%20-%20Xiaomi%20Cube%20Controller.yaml)
+
+#### 🧯Device_tracker Monitor & Notifier
+
+This Blueprint monitors device_tracker entities that you choose & notifies you if they go offline  
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FDevice_tracker%2520Monitor%2520%2526%2520Notifier.yaml)
+
+https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/495975
+
+It gives you the opportunity to devise an action to deal with it.  It started as a pfSense centered project but any device_tracker that has a state of home when it is running and something else when it is not available will work with this.
+
+* [Device_tracker Monitor & Notifier.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker%20Monitor%20%26%20Notifier.md)
+* [Device_tracker Monitor & Notifier.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker%20Monitor%20%26%20Notifier.yaml)
