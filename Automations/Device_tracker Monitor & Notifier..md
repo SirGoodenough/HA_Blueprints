@@ -84,10 +84,13 @@ Once you have the entities created or decided upon you can build the Automation.
 
 Here are some of the variables you might want if writing you're own notification thru notify, pushbullet, texting, notify, telegram, or whatever:
 
-*   * Name of the triggered entity: ```{{ states[trigger.to_state.entity_id].name }}```
-*   * State of the triggered entity: ```{{ states[trigger.to_state.entity_id].state }}```
-*   * Friendy_name of the triggered entity: ```{{ states[trigger.to_state.entity_id].friendly_name }}```
-*   * Others are available if you look at the persistent_notification because it shows you all that are available from that sensor:  
+> Name of the triggered entity: ```{{ states[trigger.to_state.entity_id].name }}```
+> 
+> State of the triggered entity: ```{{ states[trigger.to_state.entity_id].state }}```
+> 
+> Friendy_name of the triggered entity: ```{{ states[trigger.to_state.entity_id].friendly_name }}```
+> 
+> Others are available if you look at the persistent_notification because it shows you all that are available from that sensor:  
 ![Sample Persistent Notification result.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/device_tracker_picture_1.png?raw=true "Sample Persistent Notification") 
 ![Sample Persistent Notification result.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/device_tracker_picture_2.png?raw=true "Sample Persistent Notification")
 
