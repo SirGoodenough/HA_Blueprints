@@ -1,4 +1,4 @@
-This Blueprint Monitor's device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it.  It started as a pfSense centred project but and device_tracker that has a state of home when it is running and something else whei it is not available will work with this.
+This Blueprint monitors device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it.  It started as a pfSense centered project but any device_tracker that has a state of home when it is running and something else when it is not available will work with this.
 
 ## 📑 Changelog
 
@@ -16,28 +16,51 @@ Updates will be published on my [GIT repository](https://github.com/SirGoodenoug
 
 Click the link below to import this Blueprint: 
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2Fdoor_open_tts_cloud_say_announcer_nabu_casa_required.yaml)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FDevice_tracker%2520Monitor%2520%2526%2520Notifier.yaml)
 
-# Please Click the 🧡 at the end of the Post if you find this Useful
+# Please Click the 🧡 at the end of this top Post if you find this Useful
 
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
-```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml```
+```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker%20Monitor%20%26%20Notifier.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker%20Monitor%20%26%20Notifier.yaml
 
 ## 📖 Description
 
-This is a TTS.cloud-say version of another Door Announcer I found in the HA Blueprint Exchange.  For people that have Nabu-Casa, TTS.cloud-say is far superior to TTS.google_say as it adds languages and gender to the voices available.  If you are a Nabu-Casa subscriber, I highly recommend using this.
+This is intended to be used with pfSense HACS Integration: 
+[GitHub - travisghansen/hass-pfsense: pfSense integration with Home Assistant](https://github.com/travisghansen/hass-pfsense)
 
-This blueprint is set up to watch a binary sensor.  When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice.  The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message.  The delay time and all the other parameters are adjustable.
+However it could be used with any device tracker that reports ```home``` when the 
+device is up and something else when it isn't.
 
-You will need to select a country code as listed in the TTS.cloud_say documentation listed here:  https://www.nabucasa.com/config/tts/
+It will create a persistent notification when triggered. 
+Triggers / notifications can be enabled for a time period each day and/or for 
+specific days of the week. There is also the ability to roll your own specific 
+notification or other action as an action statement.
 
-### ⚙️ Usage
+I also found that Awesome Blueprints Matt has a blueprint to send this stuff 
+to your phone, so I referenced that here to be helpful if you are looking for that.
+If you want to send these notifications to a mobile device, i suggest you look at
+the following blueprint to use in conjunction with this blueprint. I am not 
+affiliated with that, but decided I didn't want to re-invent the wheel as 
+mobile HA is not something I do every day.
 
-#### 🛠 Installation
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FEPMatt%2Fawesome-ha-blueprints%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fpersistent_notification_to_mobile%2Fpersistent_notification_to_mobile.yaml)
+
+## 🐘 Requirements
+
+### Persistent Notification Integration Required
+
+You must have this integration enabled on your system to run the automation, since 
+the these notifications are generated by this integration. This should be 
+activated in yur HA Instance by default, so unless you tweaked the default 
+configuration, you''re good to go.
+
+### [Persistent Notification Integration Docs](https://www.home-assistant.io/integrations/persistent_notification/)
+
+##### 🛠 Installation
 
 * Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
 * Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
@@ -47,29 +70,27 @@ You will need to select a country code as listed in the TTS.cloud_say documentat
 
 #### 🧬 To make the blueprint work it will need
 
-> • 1 binary_sensor entities to sense the action you are announcing
->
-> • 1 media_player, group of media _players, or list of media_players to send the words to
->
-> • Pick a gender and language from https://www.nabucasa.com/config/tts/
-
 Once you have the entities created or decided upon you can build the Automation.  To build the automation:  
 
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
-> 3. Use the Drop-downs to select the Entities for the listed purposes
+> 3. Use the Drop-downs to select the Entities for the listed purposes.
 > 4. Set the time-frame that the automation will be active.  Default is always on.
-> 5. Select the speaker Gender and Language from the Nabu Casa website
-> 6. Enter the messages for when it is found open and when it finally closes
-> 7. Set the time delay before the first message and between the open messages
+> 5. Select the device you want to monitor.
+> 6. Write the yaml scripting to perform your own actions, or just use the persistent notification that's already written for you.
+> 
+![Sample UI Data entry screen with optional notification_id.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/ui_sample_screen.png?raw=true "Sample UI Data entry screen with optional notification_id")
 
-### 🧬 Walk-thru:
 
-> 1. The header of the Blueprint contains the required info plus the URL from where it came from.
-> 2. The input: section is where it gets the information it needs to fill in the blanks. This information is stored in the actual automation referencing this Blueprint when executing the task.
-> 3. The Trigger section will start everything when your Binary Sensor changes state from off to on.
-> 4. Once triggered it goes into a repeat loop that starts with the delay time selected.  This repeat loop will immediately abort if the  binary sensor flips back to off.  If the binary sensor stays on long enough to get passed the delay time, the initial announcement will be sent to the speaker and it will cycle back to the top and start the repeat loop again.
-> 5. When the binary_sensor flips to off it will play the closing message,
+Here are some of the variables you might want if writing you're own notification thru notify, pushbullet, texting, notify, telegram, or whatever:
+
+*   * Name of the triggered entity: ```{{ states[trigger.to_state.entity_id].name }}```
+*   * State of the triggered entity: ```{{ states[trigger.to_state.entity_id].state }}```
+*   * Friendy_name of the triggered entity: ```{{ states[trigger.to_state.entity_id].friendly_name }}```
+*   * Others are available if you look at the persistent_notification because it shows you all that are available from that sensor:  
+![Sample Persistent Notification result.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/device_tracker_picture_1.png?raw=true "Sample Persistent Notification") 
+![Sample Persistent Notification result.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/device_tracker_picture_2.png?raw=true "Sample Persistent Notification")
+
 
 ## 🌞 ❄️ Troubleshooting tip
 
@@ -159,7 +180,7 @@ https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
 This Blueprint Monitor's device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it.
 
-https://community.home-assistant.io/t/
+https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

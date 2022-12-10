@@ -6,17 +6,21 @@ blueprint:
     However it could be used with any device tracker that reports ```home``` when the 
     device is up and something else when it isn''t.
 
-    It will create a persistant notification when triggered. 
+    It will create a persistent notification when triggered. 
     Triggers / notifications can be enabled for a time period each day and/or for 
     specific days of the week. There is also the ability to roll your own specific 
     notification or other action as an action statement.
 
+    I also found that Awesome Blueprints Matt has a blueprint to send this stuff 
+    to your phone, so I referenced that here to be helpful if you are looking for that.
     If you want to send these notifications to a mobile device, i suggest you look at
-    the following blueprint to use in conjunction with this blueprint.
+    the following blueprint to use in conjunction with this blueprint. I am not 
+    affiliated with that, but decided I didn''t want to re-invent the wheel as 
+    mobile HA is not something I do every day.
 
     [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FEPMatt%2Fawesome-ha-blueprints%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fpersistent_notification_to_mobile%2Fpersistent_notification_to_mobile.yaml)
 
-    ## Requirements
+    ## 🐘 Requirements
 
     ### Persistent Notification Integration Required
 
@@ -34,7 +38,7 @@ blueprint:
 
     [koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
 
-    [Community link for this blueprint]()
+    [Community link for this blueprint](https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688)
     '
   domain: automation
   homeassistant:
