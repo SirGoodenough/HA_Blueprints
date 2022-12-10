@@ -5,6 +5,14 @@ This is a SCRIPT Blueprint. This provides a way to play canned media files with 
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
 * **2021-12-28**: First blueprint version :tada:
 
+## 📩 * Version Updates
+
+Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+
+🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
+
+[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
 ## 📩 Get Started
 
  I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file.  In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function.  The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario.
@@ -63,6 +71,20 @@ To build the script:
 > 3. Use the Drop-downs to select the Entities for the listed purposes
 > 4. The media_player field will pull from a pick list but you can extend that with multiple media_players or groups as needed by typing them in.  Use the links above to help get your system able to play media files.
 > 5. The media type is where you match how the content is encoded with how the player will play it.  Trial and error here can be your friend unless you are much better at figuring this stuff out than me.  I generally only use 'audio/mp3' and occasionally 'image/jpg'.  More detailed information available in the Google Developers link above.
+
+## 🌞 ❄️ Troubleshooting tip
+
+If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+
+```yaml
+alias: aaaaaaa office Fan Test
+description: 'See how to increase the number of Traces available''
+trace:
+  stored_traces: 10
+use_blueprint:
+.....
+```
 
 # 🌐 All My Blueprints
 
@@ -133,6 +155,12 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
+
+#### 🧯Device_tracker Monitor & Notifier
+
+This Blueprint Monitor's device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it.
+
+https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

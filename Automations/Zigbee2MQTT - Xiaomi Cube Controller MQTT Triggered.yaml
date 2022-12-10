@@ -61,7 +61,15 @@ blueprint:
     few questions and when I saw a few questions in that chat from people struggling,
     I wanted to help. I also had a better idea for troubleshooting info.
 
-    '
+    📩 There is not an official version control system for Blueprints.  However I have 
+    found something that comes pretty close.  It is not perfect, but for **MOST** 
+    Blueprints, it does just fine.  I encourage you to check this script out and use 
+    it to easily check if I have updated this blueprint. 🔗
+
+    [koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203)'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml
   domain: automation
   homeassistant:

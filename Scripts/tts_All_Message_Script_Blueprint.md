@@ -7,10 +7,17 @@
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
 * **2022-03-09**: First blueprint version 🎉
 
-## 📩 Get Started
+## 📩 * Version Updates
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
-The main problem I had with this blueprint is that I do not have all TTS platforms installed in my system, so there is no way I can test everything.  I installed what I could and tested those. Others I just have made available the basic configuration of the tts*_say flavor, speaker entity, and message. If the integration page gave me more specific information, I went with that as options.
+
+🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
+
+[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
+## 📩 Get Started
+
+he main problem I had with this blueprint is that I do not have all TTS platforms installed in my system, so there is no way I can test everything.  I installed what I could and tested those. Others I just have made available the basic configuration of the tts*_say flavor, speaker entity, and message. If the integration page gave me more specific information, I went with that as options.
 
 ____________________________
 > I am visioning this as a community project. The Github files are available for forking and PR's. Also you can post suggestions in the community tab or on my Discord and we can make changes as changes need to be made.  I cannot install and pay for all the versions of TTS out there, and I have not covered any of the custom integrations because I simply do not now what there is a demand for.  
@@ -99,6 +106,20 @@ These action statements can also be used to change volume, flash a light, turn o
 
 ![Sample Media_Player Action](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Sample_play_media_action_in_TTS.png?raw=true "Sample Media_Player Action")
 
+## 🌞 ❄️ Troubleshooting tip
+
+If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+
+```yaml
+alias: aaaaaaa office Fan Test
+description: 'See how to increase the number of Traces available''
+trace:
+  stored_traces: 10
+use_blueprint:
+.....
+```
+
 # 🌐 All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
@@ -168,6 +189,12 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
+
+#### 🧯Device_tracker Monitor & Notifier
+
+This Blueprint Monitor's device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it.
+
+https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

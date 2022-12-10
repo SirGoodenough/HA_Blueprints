@@ -53,7 +53,15 @@ blueprint:
     allows it to be called over and over. Plus it gives you one place, the blueprint,
     to repair issues should they arrise. 🔚
 
-    [Community link for this blueprint]()'
+    📩 There is not an official version control system for Blueprints.  However I have 
+    found something that comes pretty close.  It is not perfect, but for **MOST** 
+    Blueprints, it does just fine.  I encourage you to check this script out and use 
+    it to easily check if I have updated this blueprint. 🔗
+
+    [koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
+
+    [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)'
   input:
     b4_action:
       name: Action before TTS

@@ -10,9 +10,13 @@ This blueprint is set up to watch a binary sensor. When it goes from off to on (
 * **2021-09-03**: Add Description
 * **2021-06-16**: First blueprint version :tada: Needs Home Assistant Core 2021.3 or higher and Nabu-Casa to work
 
-## 📩 Get Started
+## 📩 * Version Updates
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+
+🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
+
+[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
 
 ### Option 1: My Home Assistant
 
@@ -72,6 +76,20 @@ Once you have the entities created or decided upon you can build the Automation.
 > 3. The Trigger section will start everything when your Binary Sensor changes state from off to on.
 > 4. Once triggered it goes into a repeat loop that starts with the delay time selected.  This repeat loop will immediately abort if the  binary sensor flips back to off.  If the binary sensor stays on long enough to get passed the delay time, the initial announcement will be sent to the speaker and it will cycle back to the top and start the repeat loop again.
 > 5. When the binary_sensor flips to off it will play the closing message,
+
+## 🌞 ❄️ Troubleshooting tip
+
+If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+
+```yaml
+alias: aaaaaaa office Fan Test
+description: 'See how to increase the number of Traces available''
+trace:
+  stored_traces: 10
+use_blueprint:
+.....
+```
 
 # 🌐 All My Blueprints
 
@@ -142,6 +160,19 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
+
+
+#### 🧯ZHA - Xiaomi Cube Controller Blueprint
+
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+
+https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
+
+#### 🧯Device_tracker Monitor & Notifier
+
+This Blueprint Monitor's device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it.
+
+https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

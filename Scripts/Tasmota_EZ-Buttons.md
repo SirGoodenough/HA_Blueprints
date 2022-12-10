@@ -8,6 +8,14 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 * **2022-02-04**: Add Automation suggestion to fix HA start-up bug.
 * **2022-01-07**: First blueprint version :tada:
 
+## 📩 * Version Updates
+
+Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+
+🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
+
+[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
 ## 📩 Get Started
 
 I was looking for a Home Assistant Related project and when chatting to Luma from the HASPOne Project a couple of days ago, he mentioned how he uses an MQTT Trick to Generate entities inside of a Blueprint.
@@ -132,6 +140,20 @@ Example automation:
         entity_id: button.ez_restart_button_tasmota
 ```
 
+## 🌞 ❄️ Troubleshooting tip
+
+If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+
+```yaml
+alias: aaaaaaa office Fan Test
+description: 'See how to increase the number of Traces available''
+trace:
+  stored_traces: 10
+use_blueprint:
+.....
+```
+
 # 🌐 All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
@@ -201,6 +223,12 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
+
+#### 🧯Device_tracker Monitor & Notifier
+
+This Blueprint Monitor's device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it.
+
+https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

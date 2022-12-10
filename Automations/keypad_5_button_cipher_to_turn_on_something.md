@@ -10,9 +10,14 @@ ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q
 * **2021-07-21**: Add the watchdog timeout test.
 * **2021-07-11**: First blueprint version :tada: Needs Home Assistant Core 2021.7 or higher for Trigger_ID to work
 
-## 📩  Get Started
+
+## 📩 * Version Updates
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+
+🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
+
+[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
 
 ### Option 1: My Home Assistant
 
@@ -100,6 +105,20 @@ To get your lock to open, build a simple automation using the UI (or manually) t
 > 5. In the action: section the always executed first part is the watchdog. It checks that the last time the sequence number was changed was within the last 5 minutes. Otherwise if the sequence was left at the 4th button for a week, all someone would have to do it hit the 5th button and it would open the lock.
 The rest is one big choose: statement. To get button 1 to be accepted you only need the button 1 trigger_ID and this changes the sequence code number. In order to get to stage 2 of the cipher, both the trigger_ID and the sequence number have to be correct, and once it is, it again changes the sequence number. This pattern is repeated until the fifth number is pressed with the correct sequence code set and that fires the input_boolean to open the lock. Should you press the numbers in the wrong order, the cipher resets and you need to know to start over. Pressing button 1 again will also reset the sequence via the default action in the choose code.
 
+## 🌞 ❄️ Troubleshooting tip
+
+If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+
+```yaml
+alias: aaaaaaa office Fan Test
+description: 'See how to increase the number of Traces available''
+trace:
+  stored_traces: 10
+use_blueprint:
+.....
+```
+
 # 🌐 All My Blueprints
 
 [Link to ALL my Blueprints](https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md)
@@ -169,6 +188,12 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
+
+#### 🧯Device_tracker Monitor & Notifier
+
+This Blueprint Monitor's device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it.
+
+https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

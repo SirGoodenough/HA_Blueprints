@@ -16,6 +16,13 @@ blueprint:
     control of heating / cooling sources, or anything else you want Home Assistant
     to do for you.
 
+    📩 There is not an official version control system for Blueprints.  However I have 
+    found something that comes pretty close.  It is not perfect, but for **MOST** 
+    Blueprints, it does just fine.  I encourage you to check this script out and use 
+    it to easily check if I have updated this blueprint. 🔗
+
+    [koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
 
     [Community link for this blueprint](https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419)'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml
