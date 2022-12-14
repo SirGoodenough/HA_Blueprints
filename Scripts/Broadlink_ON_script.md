@@ -2,7 +2,9 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 
 ## 📑 Changelog
 
-* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
+* **2022-12-12**: Add Update Method Note, minor code change.
+* * Name of Blueprint may have changed meaing you have to re-download with a new link.
+* * If name changed, it is similar. Variables have not changed.
 * **2022-04-11**: Add multiple to Entity Selections and changed minimum HA to 2022.4.0
 * **2021-11-20**: Changes because of release of Blueprint Script UI
   * Add Minimum Home Assistant 2021-11-0

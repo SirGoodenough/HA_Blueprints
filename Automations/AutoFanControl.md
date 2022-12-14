@@ -2,13 +2,15 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 
 ## 📑 Changelog
 
-* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
+* **2022-12-12**: Add Update Method Note, minor code change.
+* * Name of Blueprint may have changed meaing you have to re-download with a new link.
+* * If name changed, it is similar. Variables have not changed.
 * **2022-05-15-A**: Minor code clean-up on Casting, no functional change.
-  * Updated AirCon Start Example code to include start AirCon only if warm enough in room.
+* * Updated AirCon Start Example code to include start AirCon only if warm enough in room.
 * **2022-05-15**: Add 2nd Blueprint triggered with HA fan entity, otherwise identical.
 * **2022-05-12.1**: Change MQTT QOS to 2
 * **2022-05-12**: Added support for weekday control
-  * Added Action Selectors to the 'fan' & 'all done' loops for controlling AirCon or Heat or anything.
+* * Added Action Selectors to the 'fan' & 'all done' loops for controlling AirCon or Heat or anything.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut and & or.
 * **2022-02-07**: Add Default value to float filters (for HA Breaking change).
 * **2021-11-20**: Add Minimum Home Assistant version.

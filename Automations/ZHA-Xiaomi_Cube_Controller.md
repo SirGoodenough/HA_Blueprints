@@ -2,7 +2,9 @@
 
 ## 📑 Changelog
 
-* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
+* **2022-12-12**: Add Update Method Note, minor code change.
+* * Name of Blueprint may have changed meaing you have to re-download with a new link.
+* * If name changed, it is similar. Variables have not changed.
 * **2022-11-30**: 🎉📦🔋 First Version
 
 ## 📩 * Version Updates

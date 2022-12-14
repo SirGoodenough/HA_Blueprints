@@ -1,5 +1,5 @@
 blueprint:
-  name: Notify if selected Device_Tracker goes down and do something about it - 2022-12-10
+  name: Notify if selected Device_Tracker goes down and do something about it - 2022-12-12
   description: 'This is intended to be used with pfSense HACS Integration: 
     [GitHub - travisghansen/hass-pfsense: pfSense integration with Home Assistant](https://github.com/travisghansen/hass-pfsense)
 

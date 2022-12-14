@@ -2,7 +2,9 @@ This blueprint is set up to watch a binary sensor. When it goes from off to on (
 
 ## 📑 Changelog
 
-* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
+* **2022-12-12**: Add Update Method Note, minor code change.
+* * Name of Blueprint may have changed meaing you have to re-download with a new link.
+* * If name changed, it is similar. Variables have not changed.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions.
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
 * **2022-01-03**: Remove 'Door' restriction on input sensor, and expanded description.
