@@ -4,7 +4,7 @@ SEE https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbe
 
 ## 📑 Changelog
 
-* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
+* **2022-12-12**: Moved to Deprecated Folder
 * **2022-12-04**: Re-did the backend to use MQTT instead of the Z2M Legacy configuration.
 * * See: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml 
 * * Old version Deprecated and available on the original Github link but will be no longer supported.
