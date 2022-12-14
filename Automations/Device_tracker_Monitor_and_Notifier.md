@@ -16,16 +16,16 @@ Updates will be published on my [GIT repository](https://github.com/SirGoodenoug
 
 Click the link below to import this Blueprint: 
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_%26_Notifier.yaml)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.yaml)
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
 ### Option 2: Direct Link
 
 Copy this link if you want to import the blueprint in your installation.
-```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker%20Monitor%20%26%20Notifier.yaml```
+```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker%20Monitor%20%26%20Notifier.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.yaml
 
 ## 📖 Description
 
