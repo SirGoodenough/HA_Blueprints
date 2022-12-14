@@ -1,5 +1,5 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Nabu-Casa required) 2022-05-05
+  name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2022-12-12
   description: 'This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
     long and a door has been closed.
 
@@ -140,10 +140,10 @@ blueprint:
       default: Thank you for closing the barn door.
     cooldown:
       name: Announcement cooldown
-      description: The minimum number of seconds needed before AND between between
+      description: 'The minimum number of seconds needed before AND between between
         announcements.
 
-        This is your initial delay and pause between messages...
+        This is your initial delay and pause between messages...'
       default: 10
       selector:
         number:

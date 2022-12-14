@@ -3,6 +3,8 @@ ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q
 
 ## 📑 Changelog
 
+
+* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut and.
 * **2021-11-20**: Add Minimum Home Assistant version.
 * **2021-09-03**: Add Description.

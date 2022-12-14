@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT - 2022-05-05
+  name: Aqara Magic Cube Zigbee2MQTT - 2022-12-12
   description: ' # THIS BLUEPRINT IS DEPRECATED & IS NO LONGER SUPPORTED.
     ### FOR REPLACEMENT SEE: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.yaml
     '

@@ -2,6 +2,7 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 
 ## 📑 Changelog
 
+* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
 * **2022-05-15-A**: Minor code clean-up on Casting, no functional change.
   * Updated AirCon Start Example code to include start AirCon only if warm enough in room.
 * **2022-05-15**: Add 2nd Blueprint triggered with HA fan entity, otherwise identical.

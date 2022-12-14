@@ -2,6 +2,7 @@ This is a SCRIPT Blueprint. This provides a way to play canned media files with 
 
 ## 📑 Changelog
 
+* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
 * **2021-12-28**: First blueprint version :tada:
 

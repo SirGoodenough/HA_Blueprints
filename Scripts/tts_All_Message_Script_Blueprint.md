@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
 * **2022-05-05**: Updated for 2022.5.0 HA. Changed Choose to if / then statement.
 * **2022-04-26**: Add an optional action selector before and after the main TTS for volume, mp3 sounders, sirens, etc.
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0

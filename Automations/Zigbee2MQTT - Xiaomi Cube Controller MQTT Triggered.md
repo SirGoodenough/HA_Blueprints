@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2022-12-12**: Add Update Method Note, minor code change, no functional change.
 * **2022-12-04**: Re-did the backend to use MQTT instead of the Z2M Legacy configuration.
 * * This removes the legacy trigger requirement and makes it respond much faster.
 * * Old version Deprecated and available on the original Github link but will be no longer supported.
