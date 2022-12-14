@@ -27,7 +27,7 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650)'
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20ZemiSmart%20ZM-RM02%20Controller.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml
   domain: automation
   homeassistant:
     min_version: 2022.5.2
