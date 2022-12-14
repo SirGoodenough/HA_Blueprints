@@ -110,7 +110,7 @@ https://community.home-assistant.io/t/auto-fan-temp-control-for-3-speed-fan-usin
 This functionality started as a way to help my Bedroom AC unit keep an even temperature throughout the bedroom over night.  My partner wanted the fan on, but not faster than it had to be.  I wanted it to change speeds following the temperature of the room.  So that's what I did.
 
 * [AutoFanControl.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
-* [AutoFanControl HA_fan.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl%20HA_fan.yaml)
+* [AutoFanControl HA_fan.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_HA_fan.yaml)
 * [AutoFanControl_MQTT.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml)
 
 #### 🧯Door Open TTS Cloud-Say Message Blueprint
@@ -183,7 +183,7 @@ The split out of functions gives you the ability to assign local scripts or func
 
 This Blueprint monitors device_tracker entities that you choose & notifies you if they go offline  
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FDevice_tracker%2520Monitor%2520%2526%2520Notifier.yaml)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_%26_Notifier.yaml)
 
 https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
