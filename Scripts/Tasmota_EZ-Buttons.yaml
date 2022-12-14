@@ -73,7 +73,7 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934)
-"
+    "
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
   domain: script
   homeassistant:
@@ -100,9 +100,9 @@ blueprint:
     topic_format:
       name: Tasmota Topic Format
       description: "The format of your Tasmota devides has a default that most people use:  
-      '%prefix%/%topic%/'.  I personally however use something else.  Everytime I modify this I have 
-      found myself manually editing the code to work with my system so I have changed it to
-      be able to set it in the inputs.  The default is set to the normal Tasmota default,"
+        '%prefix%/%topic%/'.  I personally however use something else.  Everytime I modify this I have 
+        found myself manually editing the code to work with my system so I have changed it to
+        be able to set it in the inputs.  The default is set to the normal Tasmota default,"
       default: '%prefix%/%topic%/'
       selector:
         select:

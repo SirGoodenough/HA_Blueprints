@@ -31,7 +31,7 @@ blueprint:
       description: 'Time of day you want to enable the announcement each day.
 
 
-      Leave at 12:00:00 if you want it to always be on.'
+        Leave at 12:00:00 if you want it to always be on.'
       selector:
         time: {}
       default: 00:00:00
@@ -40,7 +40,7 @@ blueprint:
       description: 'Time of day you want to disable the announcement each day. 
 
 
-      Leave at 12:00:00 if you want it to always be on.'
+        Leave at 12:00:00 if you want it to always be on.'
       selector:
         time: {}
       default: 00:00:00

@@ -22,8 +22,8 @@ blueprint:
     speaker_target:
       name: Device(s) to send the file to
       description: "Add the media_player that you want to play this on. 
-      You can manually edit this to include multiple media players, or just
-      use the pick list to pick one."
+        You can manually edit this to include multiple media players, or just
+        use the pick list to pick one."
       selector:
         entity:
           multiple: true
