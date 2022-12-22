@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-12
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-22
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
     are available thru templating only. See the related document.)
@@ -655,7 +655,7 @@ action:
       # Generate just the number for the ieee.
     ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
       # Get the angle.
-    angle: '{{ trigger.payload_json.angle }}'
+    angle: '{{ trigger.payload_json.action_angle }}'
       # Set the name of the Number entity.
     num_name: '{{ friendly_name + '' last side'' }}'
       # Set the rntity_id of the Number entity.

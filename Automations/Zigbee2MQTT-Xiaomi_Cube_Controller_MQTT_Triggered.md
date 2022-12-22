@@ -2,8 +2,10 @@
 
 ## 📑 Changelog
 
+* **2022-12-22**: Change instances of the attribute ```angle``` to ```action_angle``` to fix non-legacy bug.
+* * Add note not to use spaces and non alpha in MQTT topics.
 * **2022-12-12**: Add Update Method Note, minor code change.
-* * Name of Blueprint may have changed meaing you have to re-download with a new link.
+* * Name of Blueprint may have changed meaning you have to re-download with a new link.
 * * If name changed, it is similar. Variables have not changed.
 * **2022-12-04**: Re-did the backend to use MQTT instead of the Z2M Legacy configuration.
 * * This removes the legacy trigger requirement and makes it respond much faster.
@@ -146,9 +148,21 @@ To make the Blueprint work you will need a functional Magic Cube integrated to H
 
 This version of the Blueprint uses MQTT to deal with cube interface duties.  This means that if you have Legacy triggers enabled on your setup or not, it will still work.  It also created it's own number helper to track a variable needed to do all the tricks.  You as the user will not have to deal with that.
 
-You will also need the correct topic to talk to your device.
+You will also need the correct MQTT topic to talk to your device.
 
-That can be found by going into devices and finding your cube device. [![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
+This blueprint has been known to freak out when there are spaces in the MQTT Topic.  Make sure there are no spaces and there are all ASCII characters in the topic, (```  /  ``` is ok)  
+If there are, you will need to change the name of the cube to remove those characters.
+>> Wise advice from: [HiveMQ](https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/):
+>>
+>> ### Never use spaces in a topic
+>>
+>> A space is the natural enemy of every programmer. When things are not going the way they should, spaces make it much harder to read and debug topics. Just because something is allowed, doesn’t mean it should be used. UTF-8 has many different white space types, such uncommon characters should be avoided.
+>>
+>> ### Use only ASCII characters, avoid non printable characters
+>>
+>> Because non-ASCII UTF-8 characters often display incorrectly, it is very difficult to find typos or issues related to the character set. Unless it is absolutely necessary, we recommend avoiding the use of non-ASCII characters in a topic.
+
+The topic can be found by going into devices and finding your cube device. [![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
 
 ![Find Device](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/FindDevice.png?raw=true "Find Device")
 
@@ -184,12 +198,12 @@ In the blueprint automation:
 rotate_cw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: '{{ trigger.payload_json.angle }}'
+      angle: '{{ trigger.payload_json.action_action_angle }}'
       light: light.bulb1
 rotate_ccw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: '{{ trigger.payload_json.angle }}'
+      angle: '{{ trigger.payload_json.action_action_angle }}'
       light: light.bulb1
 ```
 
@@ -248,12 +262,12 @@ In the blueprint automation:
 rotate_cw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: '{{ trigger.payload_json.angle }}'
+      angle: '{{ trigger.payload_json.action_angle }}'
       light: light.grp_studio
 rotate_ccw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: '{{ trigger.payload_json.angle }}'
+      angle: '{{ trigger.payload_json.action_angle }}'
       light: light.grp_studio
 ```
 
@@ -309,7 +323,7 @@ Here is a sample of what you put into the script Blueprint UI.  It will need to 
 ```yaml
 service: script.cube_long_cw_toggle
 data:
-  angle: '{{ trigger.payload_json.angle }}'
+  angle: '{{ trigger.payload_json.action_angle }}'
   entity: light.livingroomlight
 ```
 
@@ -319,7 +333,7 @@ And if you are editing it manually in an editor inside the Script calling yaml, 
 rotate_cw_face_3:
   - service: cube_long_cw_toggle
     data:
-      angle: '{{ trigger.payload_json.angle }}'
+      angle: '{{ trigger.payload_json.action_angle }}'
       entity: light.livingroomlight
 ```
 
