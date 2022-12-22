@@ -655,7 +655,7 @@ action:
       # Generate just the number for the ieee.
     ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
       # Get the angle.
-    angle: '{{ trigger.payload_json.action_angle }}'
+    angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
       # Set the name of the Number entity.
     num_name: '{{ friendly_name + '' last side'' }}'
       # Set the rntity_id of the Number entity.

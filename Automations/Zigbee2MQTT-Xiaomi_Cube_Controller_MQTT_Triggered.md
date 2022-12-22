@@ -198,12 +198,12 @@ In the blueprint automation:
 rotate_cw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: '{{ trigger.payload_json.action_angle }}'
+      angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
       light: light.bulb1
 rotate_ccw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: '{{ trigger.payload_json.action_angle }}'
+      angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
       light: light.bulb1
 ```
 
@@ -262,12 +262,12 @@ In the blueprint automation:
 rotate_cw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: '{{ trigger.payload_json.action_angle }}'
+      angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
       light: light.grp_studio
 rotate_ccw_face_5:
   - service: script.cube_green_color_control
     data:
-      angle: '{{ trigger.payload_json.action_angle }}'
+      angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
       light: light.grp_studio
 ```
 
@@ -323,7 +323,7 @@ Here is a sample of what you put into the script Blueprint UI.  It will need to 
 ```yaml
 service: script.cube_long_cw_toggle
 data:
-  angle: '{{ trigger.payload_json.action_angle }}'
+  angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
   entity: light.livingroomlight
 ```
 
@@ -333,7 +333,7 @@ And if you are editing it manually in an editor inside the Script calling yaml, 
 rotate_cw_face_3:
   - service: cube_long_cw_toggle
     data:
-      angle: '{{ trigger.payload_json.action_angle }}'
+      angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
       entity: light.livingroomlight
 ```
 
