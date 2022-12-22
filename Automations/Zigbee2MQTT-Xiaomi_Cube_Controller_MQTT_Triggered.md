@@ -198,12 +198,12 @@ In the blueprint automation:
 rotate_cw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: '{{ trigger.payload_json.action_action_angle }}'
+      angle: '{{ trigger.payload_json.action_angle }}'
       light: light.bulb1
 rotate_ccw_face_0:
   - service: script.cube_dimmer_control
     data:
-      angle: '{{ trigger.payload_json.action_action_angle }}'
+      angle: '{{ trigger.payload_json.action_angle }}'
       light: light.bulb1
 ```
 
