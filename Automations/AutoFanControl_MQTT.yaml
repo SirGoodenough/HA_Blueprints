@@ -1,5 +1,5 @@
 blueprint:
-  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_MQTT-2022-12-12
+  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_MQTT-2022-12-26
   description: 'This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)
     based on a room temperature.
 
