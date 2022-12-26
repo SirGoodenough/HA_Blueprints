@@ -2,7 +2,6 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 
 ## 📑 Changelog
 
-
 * **2022-12-26**: BugFix.  Time default no longer all zeros. Update default Tnx: [cappadanna](https://community.home-assistant.io/u/cappadanna)
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
