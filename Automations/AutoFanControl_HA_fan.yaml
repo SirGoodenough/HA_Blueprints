@@ -129,25 +129,29 @@ blueprint:
       name: Time of day fan should start
       description: (#7) Set this for the time of day you want the fan function to
         be enabled.
+      default:
+        00:00:00
       selector:
         time: {}
     fan_off_time:
       name: Time of day fan should stop
       description: (#8) Set this for the time of day you want the fan function to
         end.
+      default:
+        00:00:00
       selector:
         time: {}
     weekday:
       name: Day of the week to use the Automation
       description: (#9)
       default:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
-      - sat
-      - sun
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
       selector:
         select:
           options:
