@@ -2,6 +2,9 @@
 
 ## 📑 Changelog
 
+* **2022-12-28**: Code cleanup.
+* * Add note to fix configuration conflict template error: 
+* *  **Error while executing automation automation.friendly_name_automations: TemplateError: Must provide a device or entity ID**
 * **2022-12-22**: Change instances of the attribute ```angle``` to ```action_angle``` to fix non-legacy bug.
 * * Add note not to use spaces and non alpha in MQTT topics.
 * **2022-12-12**: Add Update Method Note, minor code change.
@@ -15,21 +18,21 @@
 * **2022-04-26 update-B**: UPDATE: No code changes. Added examples to provide another 30 more ways to trigger something using conditionals in Group 3 🍐,
 * **2022-04-26 update-A** UPDATE: No code changes. Added examples to provide 24 more ways to trigger something using the rotate sensor as a device toggle, both long and short for each rotate sensor.
 * **2022-04-26**: Re-configure to add 30 Action Methods !!NOTICE!! If you are upgrading the Blueprint, upgrade the template sensor as well.  The variables are different...
-  * Add 30 flip actions for any side to any side addressing
-  * Add 'last_side' variable to display sensor and code
-  * Change variable named 'event' into 'action' fo clarity
-  * Change variable named 'sub-event' into 'side' for clarity
-  * Added Group 1 🍎, Group 2 🍊, & Group 3 🍐 to help users decide which sensors to populate
-  * Added Emojis to help people visualize what action is in what Group
+* * Add 30 flip actions for any side to any side addressing
+* * Add 'last_side' variable to display sensor and code
+* * Change variable named 'event' into 'action' fo clarity
+* * Change variable named 'sub-event' into 'side' for clarity
+* * dded Group 1 🍎, Group 2 🍊, & Group 3 🍐 to help users decide which sensors to populate
+* * Added Emojis to help people visualize what action is in what Group
 * **2022-04-11**: No Code Change.  Added guidance to solve missing Action Sensor condition in this document.
-  * Example code bug fix from [Michael Fischer](https://community.home-assistant.io/u/DagobahMike)
+* * Example code bug fix from [Michael Fischer](https://community.home-assistant.io/u/DagobahMike)
 * **2022-03-17**: Added 6 functions that do not care about side.  Makes it simple if you only want a couple of functions.
-  * Added some aliases on some choose statements to improve Trace Diagrams and Troubleshooting.
+* * Added some aliases on some choose statements to improve Trace Diagrams and Troubleshooting.
 * **2022-03-12**: Changed de-bounce logic from not repeating the last action to single mode and added a 1 second delay at the end.  Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
 * **2022-02-15.1**: Later that same day realized that if you have more than 1 cube, the event will be lacking so added ID.
 * **2022-02-15**: Forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006 Version 1.2
-  * Updated Documentation.
-  * Added Latched event sensor.
+* * pdated Documentation.
+* * Added Latched event sensor.
 
 ## 📩 * Version Updates
 
@@ -78,6 +81,13 @@ This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38 commands avail
 Please be aware that ALL actions except the 2 listed above / 🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore I suggest if you just have a couple of things you want this remote to do that you choose the *ANY / Group 2 / 🍊* events. If you want more than a few events, you should select actions in **Group 1 / 🍎 OR Group 3 / 🍐**. With careful selection you can use mixed groups, but you run the risk of a single cube action triggering more than 1 Home Assistant action and making a mess of things 🍱.  
 
 #### NOTICE: This cube *can* be triggered 74+ ways, but only 38 of them are unique
+
+### IF YOU SEE --> TemplateError: Must provide a device or entity ID
+
+If you get an error like that, The friendly_name in Z2M likely does not match the 
+friendly_name on HA. To fix go into the Z2M ```Open web UI``` and set the 
+friendly_name there. Setting this in just HA or in Z2M without ticking the update HA
+box will cause this.
 
 There is sample code to make the template sensor in the help file on GitHib named the same as this one and in the community page related to this.
 
@@ -175,6 +185,20 @@ Then looking for the subscribed topic that looks like this... ```zigbee2nqtt/[yo
 ![Find the subscribed topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/MQTTTopic.png?raw=true "Find the subscribed topic")
 
 That is what belongs in the the topic question you get when setting up a new automation with this blueprint.
+
+If you see an error similar to: **Error while executing automation automation.magic_cube_automations: TemplateError: Must provide a device or entity ID** there is a way to fix it.  It happens (usually) because the friendly_name that is in HA does not match the friendly_name that is in Z2M.
+In order to fix I suggest you go into the Z2M web UI and change the friendly name.  Below is how to do this if you are using the Z2M Addon.
+
+1. Open the Z2M Web UI:
+![Open the Z2M Web UI](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-WebUI.png?raw=true)
+
+2: Select the change name icon in the row of the cube device:
+![Select the change namr icon in the row of the cube device](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-ChangeName.png?raw=true)
+
+3: Change the name and be certain to tick the box to update HA at the same time:
+![Change the name and be certain to tick the box to update HA at the same time](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-Devicename.png?raw=true)
+
+After this find the topic again the same way as above and it should work.
 
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
