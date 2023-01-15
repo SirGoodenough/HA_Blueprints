@@ -3,7 +3,8 @@
 ## 📑 Changelog
 
 * **2022-12-28**: Code cleanup.
-* * Add note to fix configuration conflict template error: 
+* * Add note to fix configuration conflict template error:
+* * Update angle configuration text to help with config errors.  No Code Change.
 * *  **Error while executing automation automation.friendly_name_automations: TemplateError: Must provide a device or entity ID**
 * **2022-12-22**: Change instances of the attribute ```angle``` to ```action_angle``` to fix non-legacy bug.
 * * Add note not to use spaces and non alpha in MQTT topics.
@@ -231,6 +232,10 @@ rotate_ccw_face_0:
       light: light.bulb1
 ```
 
+#### NOTICE...
+
+It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here.  Look in the Device listing for this cube and determine which version of angle is one of the listed sensors.  That would be the one to use here.
+
 Then this is the script that's called to do the heavy lifting.   It works for both CW and CCW cube rotations.
 
 In the script integration:
@@ -295,6 +300,10 @@ rotate_ccw_face_5:
       light: light.grp_studio
 ```
 
+#### NOTICE...
+
+It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here.  Look in the Device listing for this cube and determine which version of angle is one of the listed sensors.  That would be the one to use here.
+
 Then this is the script that's called to do the heavy lifting. It works for both CW and CCW cube rotations.
 
 In the Script Integration:
@@ -351,6 +360,10 @@ data:
   entity: light.livingroomlight
 ```
 
+#### NOTICE...
+
+It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here.  Look in the Device listing for this cube and determine which version of angle is one of the listed sensors.  That would be the one to use here.
+
 And if you are editing it manually in an editor inside the Script calling yaml, this is the way it should look for rotate ce face 3, as an example.
 
 ```yaml
@@ -360,6 +373,10 @@ rotate_cw_face_3:
       angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
       entity: light.livingroomlight
 ```
+
+#### NOTICE...
+
+It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here.  Look in the Device listing for this cube and determine which version of angle is one of the listed sensors.  That would be the one to use here.
 
 You can also do this buy going full gui and picking the matching template out of the below section and filling it in similar to this:
 
