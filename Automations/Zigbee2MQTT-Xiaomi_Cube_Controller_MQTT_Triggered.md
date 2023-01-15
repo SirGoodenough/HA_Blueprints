@@ -141,8 +141,6 @@ V1.2 project authored by luckypoppy and the friends he pulled together to create
 
 _________________________
 
-First, let’s go over Blueprints and what they are. Blueprints are a way to share automations and is built into Home Assistant. Simple as that. You can import my template code and a copy of it will reside in your configuration. Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build an automation. It will collect the information needed based on your entities and your personal adjustments, and provide a working automation. You will have to have or add the required hardware and entities that the Blueprint needs to function.
-
 ### ⚙️ Usage
 
 #### 🛠 Installation
@@ -300,10 +298,6 @@ rotate_ccw_face_5:
       light: light.grp_studio
 ```
 
-#### NOTICE...
-
-It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here.  Look in the Device listing for this cube and determine which version of angle is one of the listed sensors.  That would be the one to use here.
-
 Then this is the script that's called to do the heavy lifting. It works for both CW and CCW cube rotations.
 
 In the Script Integration:
@@ -374,17 +368,13 @@ rotate_cw_face_3:
       entity: light.livingroomlight
 ```
 
-#### NOTICE...
-
-It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here.  Look in the Device listing for this cube and determine which version of angle is one of the listed sensors.  That would be the one to use here.
-
 You can also do this buy going full gui and picking the matching template out of the below section and filling it in similar to this:
 
 ![Full GUI Example](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/full_GUI_Example.png?raw=true "Full GUI Example")
 
 These are the standalone scripts that are 'called' from the Script calling yaml shown above.  If you don't need all of these only install the ones you will use.
 
-This is a [homeassistant.toggle action](https://www.home-assistant.io/integrations/homeassistant#service-homeassistanttoggle), so it can toggle anything that that service can handle.  Changing it to homeassistant.turn_on or homeassistant.turn_off would change the behavior slightly if this fits your needs better.  Using this integration, you can control lights, switches, locks, and lots of different things.
+This is a [homeassistant.toggle action](https://www.home-assistant.io/integrations/homeassistant#service-homeassistanttoggle), so it can toggle anything that that service can handle.  Changing it to homeassistant.turn_on or homeassistant.turn_off would change the behavior slightly if this fits your needs better.
 
 ```yaml
 script:
@@ -443,8 +433,6 @@ This is another 'action' that I stumbled upon.  I noticed if you turn the cube f
 
 ![Showing slide 5 from 2 on the Cube Action Sensor](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Slide5From2.png?raw=true "Showing slide 5 from 2 on the Cube Action Sensor")
 
-I'll be honest, this is the trickiest thing to do yet and I'm not sure it is worth the trouble, but if you want an action in your pocket as a secret action that only you know, this is the trick.  Using a soft surface like a towel helps to keep the flip from registering when you set it down.
-
 > NOTE: In this example the slide side 5 will also trigger. You may need to add a condition to prevent that from triggering. An example for this 5 from 2 example is to put this condition on the slide side 5 action ```{{ not last_side == 2 }}``` before the thing you want to do.  Or you can just not have a slide 5 action.
 
 It is as simple as adding a condition of let's say 'slide' in one of the Group 3 🍐 slots.
@@ -474,7 +462,7 @@ use_blueprint:
 ## 🌞 ❄️ Troubleshooting tip
 
 If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
-Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.
 
 ```yaml
 alias: aaaaaaa Test
