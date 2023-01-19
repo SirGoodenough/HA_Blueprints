@@ -2,10 +2,20 @@
 
 ## 📑 Changelog
 
+* **2023-01-19**: Add instructions for new cube version ```Cube T1 Pro``` Action mode setup in Docs.
+* * Add note that Drop is no longer available if using the ```Cube T1 Pro``` cube version.
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
 * * If name changed, it is similar. Variables have not changed.
 * **2022-11-30**: 🎉📦🔋 First Version
+
+## 🔧 * Hardware Versions
+
+Aqara / Lumi has released a new version of the cube.  Box name listed as Cube T1 Pro. It is listed in your ZHA Device panel as ```lumi.remote.cagl02 by LUMI```.
+
+This device will work similar to the older versions if configured in the ```ACTION``` mode and NOT the ```SCENE``` mode.  The exception being that the ```Drop``` function is no longer available.
+
+If the only functions that you have available is rotate left/right and shake, your cube is in the wrong mode.  To change modes, push the ```LINK``` button 5x swiftly and the mode should flip to the ```ACTION``` mode where the functions should work normally.  You can test this by setting up the event sensor listed below and listening for 'zha_cube_last_action' events or by listening for 'zha_events' in the Developer event panel. [![Open your Home Assistant instance and show your event developer tools.](https://my.home-assistant.io/badges/developer_events.svg)](https://my.home-assistant.io/redirect/developer_events/)
 
 ## 📩 * Version Updates
 

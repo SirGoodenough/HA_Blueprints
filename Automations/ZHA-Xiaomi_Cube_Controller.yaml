@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube ZHA - 2022-12-12
+  name: Aqara Magic Cube ZHA - 2023-01-19
   description: 'This Blueprint uses a Z2M Event Sensor to sort out the 38(+54)
     unique actions available from the Xiaomi Magic Cube Remote. (Some unique actions
     are available thru templating only. See the related document.)
@@ -303,7 +303,8 @@ blueprint:
         action: {}
     drop:
       name: Drop the cube 🍩
-      description: 'This trigger only occurs once in the set-up.
+      description: '**NOTE: NOT available with the ```Cube T1 Pro``` version of the cube!!**
+        This trigger only occurs once in the set-up.
 
         It can be combined in any group.'
       default: []
