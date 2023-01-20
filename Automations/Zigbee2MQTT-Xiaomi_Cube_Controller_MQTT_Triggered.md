@@ -185,6 +185,8 @@ Then looking for the subscribed topic that looks like this... ```zigbee2nqtt/[yo
 
 That is what belongs in the the topic question you get when setting up a new automation with this blueprint.
 
+#### Template error
+
 If you see an error similar to: **Error while executing automation automation.magic_cube_automations: TemplateError: Must provide a device or entity ID** there is a way to fix it.  It happens (usually) because the friendly_name that is in HA does not match the friendly_name that is in Z2M.
 In order to fix I suggest you go into the Z2M web UI and change the friendly name.  Below is how to do this if you are using the Z2M Addon.
 
