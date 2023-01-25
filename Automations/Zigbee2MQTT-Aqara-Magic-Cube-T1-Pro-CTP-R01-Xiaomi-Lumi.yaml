@@ -655,7 +655,7 @@ blueprint:
 
 
 
-    scene_flip_to_side_face_1:
+    scene_flip_to_face_1:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 1
       description: '**NOTE:** This action is trick to master, and should be used sparingly...
 
@@ -675,7 +675,7 @@ blueprint:
       default: []
       selector:
         action: {}
-    scene_flip_to_side_face_2:
+    scene_flip_to_face_2:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 2
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
@@ -691,7 +691,7 @@ blueprint:
       default: []
       selector:
         action: {}
-    scene_flip_to_side_face_3:
+    scene_flip_to_face_3:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 3
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
@@ -707,7 +707,7 @@ blueprint:
       default: []
       selector:
         action: {}
-    scene_flip_to_side_face_4:
+    scene_flip_to_face_4:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 4
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
@@ -723,7 +723,7 @@ blueprint:
       default: []
       selector:
         action: {}
-    scene_flip_to_side_face_5:
+    scene_flip_to_face_5:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 5
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
@@ -739,7 +739,7 @@ blueprint:
       default: []
       selector:
         action: {}
-    scene_flip_to_side_face_6:
+    scene_flip_to_face_6:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 6
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
@@ -1403,7 +1403,7 @@ action:
           - conditions: '{{ last_side == 5 }}'
             sequence: !input 'action_6_from_5'
 
-    - conditions: '{{ op_mode == "scene_mode" }}'
+  - conditions: '{{ op_mode == "scene_mode" }}'
     sequence:
     - alias: Group 2 🍊 and No Group 🍩 These are action events for ANY Side
       choose:
