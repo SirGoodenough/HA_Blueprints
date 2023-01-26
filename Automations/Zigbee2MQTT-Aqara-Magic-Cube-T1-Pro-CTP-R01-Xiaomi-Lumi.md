@@ -56,17 +56,13 @@ to do the things you want the remote to do.
 
 Functions that are left empty will simply do nothing.
 
-### 🍎 There is a set of 36 + 18 event functions that will trigger on specific actions
-on specific sides that are listed as **Group 1 🍎**.
+#### 🍎 There is a set of 36 + 18 actions that will trigger on specific actions on specific sides that are listed as **Group 1 🍎**
 
-### 🍊 There is a set of 6 + 3 event functions that will trigger on specific actions
-on *ANY* side that are listed as **Group 2 🍊**.
+#### 🍊 There is a set of 6 + 3 actions that will trigger on specific actions on *ANY* side that are listed as **Group 2 🍊**
 
-### 🍐 There is a set of 30 + 30 event functions that will trigger on cube flips to
-& from specific sides that are listed as **Group 3 🍐**.
+#### 🍐 There is a set of 30 + 30 event functions that will trigger on cube flips to & from specific sides that are listed as **Group 3 🍐**
 
-### 🍩 There are 4 actions (shake and throw for each mode) that only occur once in each mode and are OK to
-be combined with any other group in that mode.
+#### 🍩 There are 4 actions (shake and throw for each mode) that only occur once in each mode and are OK to be combined with any other group in that mode. 🍩
 
 #### NOTICE: This cube *can* be triggered 118+ ways, but only 58+ are unique.
 
@@ -140,13 +136,13 @@ _________________________
 
 #### 🧬 To make the blueprint work it will need
 
-To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thru Zigbee2MQTT.
+To make the Blueprint work you will need a functional Magic Cube T1-PRO integrated to Home Assistant thru Zigbee2MQTT.
 
-This version of the Blueprint uses MQTT to deal with cube interface duties.  This means that if you have Legacy triggers enabled on your setup or not, it will still work.  It also created it's own number helper to track a variable needed to do all the tricks.  You as the user will not have to deal with that.
+This version of the Blueprint uses MQTT to deal with cube interface duties.  This means that if you have Legacy triggers enabled on your setup or not, it will still work.  It also creates it's own number helper to track a variable needed to do all the tricks.  You as the user will not have to deal with that either.
 
 You will also need the correct MQTT topic to talk to your device.
 
-This blueprint has been known to freak out when there are spaces in the MQTT Topic.  Make sure there are no spaces and there are all ASCII characters in the topic, (```  /  ``` is ok)  
+This blueprint has been known to freak out when there are spaces or any symbols in the MQTT Topic.  Make sure there are no spaces and there are all ASCII characters (upper case, lower case, & numbers) in the topic, (```  /  ``` is ok) (These are bad: _ = - > < .)
 If there are, you will need to change the name of the cube to remove those characters.
 >> Wise advice from: [HiveMQ](https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/):
 >>
@@ -197,9 +193,9 @@ Code Samples for the items in the next few sections can be found in my Home-Assi
 * https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/automation2/Z2M-Xiaomi_Cube_A2.yaml
 * https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/script2/cube_script.yaml
 
-#### Setting Action Mode or Scene Mode
+#### Setting Action Mode or Scene Mode on Cube
 
-To change the mode of the cube, there is a switch in the configuration section of the Device panel.  There is a configuration window, opens once an hour on itself, only during which the cube will respond to mode switch. Mode switch will be scheduled to take effect when the window becomes available. You can also give it a throw action to force a respond! Otherwise, you may open lid and click LINK once to make the cube respond immediately. [Hard Switch]: Open lid and click LINK button 5 times.
+To change the mode of the cube, there is a switch in the configuration section of the Device panel. This can be pulled into the Dashboard wherever you like as well. There is a configuration window, opens once an hour on itself, only during which the cube will respond to mode switch. Mode switch will be scheduled to take effect when the window becomes available. You can also give it a throw action to force a respond! Otherwise, you may open lid and click LINK once to make the cube respond immediately. [Hard Switch]: Open lid and click LINK button 5 times.
 
 ![Change the Cube Mode](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/pro_cube_mode_change.png?raw=true)
 
@@ -224,10 +220,6 @@ rotate_ccw_face_0:
       angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
       light: light.bulb1
 ```
-
-#### NOTICE...
-
-It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here.  Look in the Device listing for this cube and determine which version of angle is one of the listed sensors.  That would be the one to use here.
 
 Then this is the script that's called to do the heavy lifting.   It works for both CW and CCW cube rotations.
 
@@ -263,6 +255,8 @@ cube_dimmer_control:
             {{ new_brightness }}
           {% endif %}
 ```
+
+#### What this does...
 
 * The script reduces the angle number to 40% of the rotation angle (you can change this, but 40% works well for my needs).
 * It then grabs the current brightness from the light entity (as a % of the full scale 255 number).
@@ -327,6 +321,8 @@ cube_green_color_control:
           {% endif %}
 ```
 
+#### What this does...
+
 * The script reduces the angle number to 60% of the rotation angle (you can change this, but 60% works well for my needs).
 * It then grabs the current colors from the light entity and puts them into a list.
 * The new color target is then calculated.
@@ -348,10 +344,6 @@ data:
   angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
   entity: light.livingroomlight
 ```
-
-#### NOTICE...
-
-It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here.  Look in the Device listing for this cube and determine which version of angle is one of the listed sensors.  That would be the one to use here.
 
 And if you are editing it manually in an editor inside the Script calling yaml, this is the way it should look for rotate ce face 3, as an example.
 
@@ -422,7 +414,7 @@ cube_long_ccw_toggle:
 
 ## Method to use Group 3 🍐 actions and not interfere with Group 1 🍎
 
-Not enough switch positions for you still?  **How about another posible 30 more?** 
+Not enough switch positions for you still?  **How about another possible 30 + 30 more?** 
 
 This is another 'action' that I stumbled upon.  I noticed if you turn the cube from side to side very gently, it will internally register as being on a new side, but the flip action doesn't register.  Then if you slide the cube, it will send out an action of slide on side 5 from side 2, or whatever side combo's you choose.  I used 5 from 2 in the example, but you can use any of them.
 
