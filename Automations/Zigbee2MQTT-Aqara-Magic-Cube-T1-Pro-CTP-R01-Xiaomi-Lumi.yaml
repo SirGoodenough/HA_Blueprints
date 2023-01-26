@@ -1099,18 +1099,22 @@ trigger:
   - platform: mqtt
     topic: !input topic
 condition:
-  - condition: template
-    value_template: '{{ trigger.payload_json is defined and 
-      trigger.payload_json.action is defined and 
-      trigger.payload_json.operation_mode == ''action_mode'' and
-      trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
-      ''flip180'', ''slide'', ''tap'', ''shake'', ''throw'') }}'
-  - condition: template
-    value_template: '{{ trigger.payload_json is defined and 
-      trigger.payload_json.action is defined and 
-      trigger.payload_json.operation_mode == ''scene_mode'' and
-      trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
-      ''flip_to_side'', ''shake'', ''throw'') }}'
+  condition: or
+  conditions:
+    - condition: template
+      alias: Check for valid Action Mode triggers
+      value_template: '{{ trigger.payload_json is defined and 
+        trigger.payload_json.action is defined and 
+        trigger.payload_json.operation_mode == ''action_mode'' and
+        trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
+        ''flip180'', ''slide'', ''tap'', ''shake'', ''throw'') }}'
+    - condition: template
+      alias: Check for valid Scene Mode triggers
+      value_template: '{{ trigger.payload_json is defined and 
+        trigger.payload_json.action is defined and 
+        trigger.payload_json.operation_mode == ''scene_mode'' and
+        trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
+        ''flip_to_side'', ''shake'', ''throw'') }}'
 action:
 - variables:
       # Get the action command.
@@ -1125,7 +1129,7 @@ action:
       # Get the topic as a variable.
     topic_var: !input topic
       # Generate the Friendly_name from the Topic.
-    friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9]", "") }}'
+    friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9_/./-]", "") }}'
       # Generate the device_id from the Friendly_name.
     device_id: '{{ device_id( friendly_name ) }}'
       # Pull out the ieee identifier.
