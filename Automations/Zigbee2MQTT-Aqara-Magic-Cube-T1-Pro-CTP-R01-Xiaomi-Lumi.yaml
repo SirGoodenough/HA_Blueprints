@@ -1,10 +1,10 @@
 blueprint:
   name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-01-26
-  description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
-    unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
-    are available thru templating only. See the related document.)
+  description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
+    unique commands (118+ total) available from the Xiaomi Magic Cube Remote. (Some unique commands
+    listed as + are not counted & available thru templating only. See the related document.)
 
-    **NOTE:** This blueprint is for the PRO version ONLY and is not fully compatible
+    **NOTE:** This blueprint is for the PRO cube version ONLY and is not fully compatible
     with the original version of the cube.  Links for those are in my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints).
     As of the time of this writing, you need the
     PRO version of the cube running this Z2M Extension:
@@ -24,23 +24,23 @@ blueprint:
     Functions that are left empty will simply do nothing.
 
 
-    ### 🍎 There is a set of 36 event functions that will trigger on specific actions
+    ### 🍎 There is a set of 36 + 18 event functions that will trigger on specific actions
     on specific sides that are listed as **Group 1 🍎**.
 
 
-    ### 🍊 There is a set of 6 event functions that will trigger on specific actions
+    ### 🍊 There is a set of 6 + 3 event functions that will trigger on specific actions
     on *ANY* side that are listed as **Group 2 🍊**.
 
 
-    ### 🍐 There is a set of 30 event functions that will trigger on cube flips to
+    ### 🍐 There is a set of 30 + 30 event functions that will trigger on cube flips to
     & from specific sides that are listed as **Group 3 🍐**.
 
 
-    ### 🍩 There are 2 actions (shake and throw) that only occur once in each mode and are OK to
+    ### 🍩 There are 4 actions (shake and throw for each mode) that only occur once in each mode and are OK to
     be combined with any other group in that mode.
 
 
-    Please be aware that ALL actions except the 2 listed above,
+    Please be aware that ALL actions except the 4 listed above,
     🍩 will trigger an action in **ALL 3 groups in the matching mode at the same time** every time.
     Therefore I suggest if you just have a couple of things you want this remote to do that
     you choose the *ANY / Group 2 / 🍊* events. 
