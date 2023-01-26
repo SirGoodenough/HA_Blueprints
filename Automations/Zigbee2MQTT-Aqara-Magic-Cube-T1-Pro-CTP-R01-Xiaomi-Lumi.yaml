@@ -10,8 +10,13 @@ blueprint:
     PRO version of the cube running this Z2M Extension:
     [CTPR01.js Z2m Extension Link](https://github.com/JJPro/CTP-R01-converter)
 
-    The PRO version has an ''Action'' mode and a ''Scene'' mode.
+
+    This cube has an ''Action'' mode (Shown below with this graphic: 🫳 ACTION MODE ONLY 🫳 )
+    
+    and a ''Scene'' mode (Shown below with this graphic: 👀 SCENE MODE ONLY 👀 ).
+
     Make sure the cube is in the mode you think it is in when triggering it.
+    The functions are separate.  IE Action - Slide will do something different from Scene - slide.
 
     The split out of functions gives you the ability to assign local scripts or functions
     to do the things you want the remote to do.
@@ -31,14 +36,15 @@ blueprint:
     & froma specific sides that are listed as **Group 3 sctions 🍐**.
 
 
-    ### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to
-    be combined with any other group.
+    ### 🍩 There are 2 actions (shake and throw) that only occur once in each mode and are OK to
+    be combined with any other group in that mode.
 
 
     Please be aware that ALL actions except the 2 listed above,
-    🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore
-    I suggest if you just have a couple of things you want this remote to do that
-    you choose the *ANY / Group 2 / 🍊* events.
+    🍩 will trigger an action in **ALL 3 groups in the matchuing mode at the same time** every time.
+    Therefore I suggest if you just have a couple of things you want this remote to do that
+    you choose the *ANY / Group 2 / 🍊* events. 
+    Action events and Scene events are separate from each other.
 
     If you want more than a few events, you should select actions in **Group 1 / 🍎
     OR Group 3 / 🍐**.
@@ -88,7 +94,7 @@ blueprint:
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203)
     '
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
   domain: automation
   homeassistant:
     min_version: 2022.11.0
@@ -132,174 +138,174 @@ blueprint:
       selector:
         action: {}
     action_rotate_cw_face_1:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 1 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube clockwise with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_1:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 1 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube counter clockwise with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
         action: {}
     action_slide_face_2:
-      name: Group 1 actions 🍎 Slide the cube with face 2 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Slide the cube with face 2 up
       default: []
       selector:
         action: {}
     action_doubletap_face_2:
-      name: Group 1 actions 🍎 Double tap the cube with face 2 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Double tap the cube with face 2 up
       default: []
       selector:
         action: {}
     action_flipped90_face_2:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 2
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 90 degrees to face 2
       default: []
       selector:
         action: {}
     action_flipped180_face_2:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 2
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 180 degrees to face 2
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     action_rotate_cw_face_2:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 2 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube clockwise with face 2 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_2:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 2 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube counter clockwise with face 2 up
       default: []
       selector:
         action: {}
     action_slide_face_3:
-      name: Group 1 actions 🍎 Slide the cube with face 3 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Slide the cube with face 3 up
       default: []
       selector:
         action: {}
     action_doubletap_face_3:
-      name: Group 1 actions 🍎 Double tap the cube with face 3 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Double tap the cube with face 3 up
       default: []
       selector:
         action: {}
     action_flipped90_face_3:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 3
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 90 degrees to face 3
       default: []
       selector:
         action: {}
     action_flipped180_face_3:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 3
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 180 degrees to face 3
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     action_rotate_cw_face_3:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 3 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube clockwise with face 3 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_3:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 3 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube counter clockwise with face 3 up
       default: []
       selector:
         action: {}
     action_slide_face_4:
-      name: Group 1 actions 🍎 Slide the cube with face 4 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Slide the cube with face 4 up
       default: []
       selector:
         action: {}
     action_doubletap_face_4:
-      name: Group 1 actions 🍎 Double tap the cube with face 4 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Double tap the cube with face 4 up
       default: []
       selector:
         action: {}
     action_flipped90_face_4:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 4
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 90 degrees to face 4
       default: []
       selector:
         action: {}
     action_flipped180_face_4:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 4
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 180 degrees to face 4
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     action_rotate_cw_face_4:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 4 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube clockwise with face 4 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_4:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 4 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube counter clockwise with face 4 up
       default: []
       selector:
         action: {}
     action_slide_face_5:
-      name: Group 1 actions 🍎 Slide the cube with face 5 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Slide the cube with face 5 up
       default: []
       selector:
         action: {}
     action_doubletap_face_5:
-      name: Group 1 actions 🍎 Double tap the cube with face 5 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Double tap the cube with face 5 up
       default: []
       selector:
         action: {}
     action_flipped90_face_5:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 5
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 90 degrees to face 5
       default: []
       selector:
         action: {}
     action_flipped180_face_5:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 5
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 180 degrees to face 5
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     action_rotate_cw_face_5:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 5 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube clockwise with face 5 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_5:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 5 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube counter clockwise with face 5 up
       default: []
       selector:
         action: {}
     action_slide_face_6:
-      name: Group 1 actions 🍎 Slide the cube with face 6 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Slide the cube with face 6 up
       default: []
       selector:
         action: {}
     action_doubletap_face_6:
-      name: Group 1 actions 🍎 Double tap the cube with face 6 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Double tap the cube with face 6 up
       default: []
       selector:
         action: {}
     action_flipped90_face_6:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 6
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 90 degrees to face 6
       default: []
       selector:
         action: {}
     action_flipped180_face_6:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 6
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Flip the cube 180 degrees to face 6
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     action_rotate_cw_face_6:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 6 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube clockwise with face 6 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_6:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 6 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 actions 🍎 Rotate cube counter clockwise with face 6 up
       default: []
       selector:
         action: {}
     action_shake:
-      name: Shake the cube 🍩
+      name: 🫳 ACTION MODE ONLY 🫳 Shake the cube 🍩
       description: 'This trigger only occurs once in the set-up.
 
         It can be combined in any group.'
@@ -307,12 +313,15 @@ blueprint:
       selector:
         action: {}
     action_throw:
-      name: Throw the cube 🍩
+      name: 🫳 ACTION MODE ONLY 🫳 Throw the cube 🍩
       description: ' You don''t actually ''Throw'' the cube.  The action is as follows:
 
         > Pick up the cube firmly.
+
         > Make a throwung motion with it but do not motion back towards yourself.
+
         > Hold it there for a second.
+
         > Throw Trigger should be sent to Z2M.
 
         This trigger only occurs once in the set-up.
@@ -322,7 +331,7 @@ blueprint:
       selector:
         action: {}
     action_slide_any:
-      name: Group 2 actions 🍊 Slide the cube with any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 actions 🍊 Slide the cube with any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -332,7 +341,7 @@ blueprint:
       selector:
         action: {}
     action_doubletap_any:
-      name: Group 2 actions 🍊 Double tap the cube with any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 actions 🍊 Double tap the cube with any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -342,7 +351,7 @@ blueprint:
       selector:
         action: {}
     action_flipped90_any:
-      name: Group 2 actions 🍊 Flip the cube 90 degrees to any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 actions 🍊 Flip the cube 90 degrees to any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -352,7 +361,7 @@ blueprint:
       selector:
         action: {}
     action_flipped180_any:
-      name: Group 2 actions 🍊 Flip the cube 180 degrees any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 actions 🍊 Flip the cube 180 degrees any side
       description: 'NOTE: This action is trick to master, and should be used sparingly...
         Side doesn''t matter on this one.
 
@@ -363,7 +372,7 @@ blueprint:
       selector:
         action: {}
     action_rotate_cw_any:
-      name: Group 2 actions 🍊 Rotate cube clockwise with any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 actions 🍊 Rotate cube clockwise with any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -373,7 +382,7 @@ blueprint:
       selector:
         action: {}
     action_rotate_ccw_any:
-      name: Group 2 actions 🍊 Rotate cube counter clockwise with any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 actions 🍊 Rotate cube counter clockwise with any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -383,7 +392,7 @@ blueprint:
       selector:
         action: {}
     action_1_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 6
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 1 from side 6
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
@@ -392,7 +401,7 @@ blueprint:
       selector:
         action: {}
     action_1_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 2
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 1 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
@@ -401,7 +410,7 @@ blueprint:
       selector:
         action: {}
     action_1_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 3
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 1 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
@@ -410,7 +419,7 @@ blueprint:
       selector:
         action: {}
     action_1_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 4
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 1 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
         ANY 🍊 automations will also trigger.
 
@@ -419,7 +428,7 @@ blueprint:
       selector:
         action: {}
     action_1_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 5
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 1 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
@@ -428,7 +437,7 @@ blueprint:
       selector:
         action: {}
     action_2_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 1
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 2 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
@@ -437,7 +446,7 @@ blueprint:
       selector:
         action: {}
     action_2_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 3
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 2 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
@@ -446,7 +455,7 @@ blueprint:
       selector:
         action: {}
     action_2_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 4
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 2 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
@@ -455,7 +464,7 @@ blueprint:
       selector:
         action: {}
     action_2_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 5
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 2 from side 5
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
         ANY 🍊 automations will also trigger.
 
@@ -464,7 +473,7 @@ blueprint:
       selector:
         action: {}
     action_2_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 6
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 2 from side 6
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
@@ -473,7 +482,7 @@ blueprint:
       selector:
         action: {}
     action_3_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 1
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 3 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
@@ -482,7 +491,7 @@ blueprint:
       selector:
         action: {}
     action_3_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 2
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 3 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
@@ -491,7 +500,7 @@ blueprint:
       selector:
         action: {}
     action_3_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 4
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 3 from side 4
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
@@ -500,7 +509,7 @@ blueprint:
       selector:
         action: {}
     action_3_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 5
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 3 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
@@ -509,7 +518,7 @@ blueprint:
       selector:
         action: {}
     action_3_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 6
+      name: G🫳 ACTION MODE ONLY 🫳 roup 3 actions 🍐 Flip the cube to side 3 from side 6
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
         ANY 🍊 automations will also trigger.
 
@@ -518,7 +527,7 @@ blueprint:
       selector:
         action: {}
     action_4_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 1
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 4 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
         ANY 🍊 automations will also trigger.
 
@@ -527,7 +536,7 @@ blueprint:
       selector:
         action: {}
     action_4_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 2
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 4 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
@@ -536,7 +545,7 @@ blueprint:
       selector:
         action: {}
     action_4_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 3
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 4 from side 3
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
@@ -545,7 +554,7 @@ blueprint:
       selector:
         action: {}
     action_4_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 5
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 4 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
@@ -554,7 +563,7 @@ blueprint:
       selector:
         action: {}
     action_4_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 6
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 4 from side 6
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
@@ -563,7 +572,7 @@ blueprint:
       selector:
         action: {}
     action_5_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 1
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 5 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger. 🍎🍐
 
@@ -572,7 +581,7 @@ blueprint:
       selector:
         action: {}
     action_5_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 2
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 5 from side 2
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
         ANY 🍊 automations will also trigger.
 
@@ -581,7 +590,7 @@ blueprint:
       selector:
         action: {}
     action_5_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 3
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 5 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
@@ -590,7 +599,7 @@ blueprint:
       selector:
         action: {}
     action_5_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 4
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 5 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
@@ -599,7 +608,7 @@ blueprint:
       selector:
         action: {}
     action_5_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 6
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 5 from side 6
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
@@ -608,7 +617,7 @@ blueprint:
       selector:
         action: {}
     action_6_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 1
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 6 from side 1
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 0 and the ANY
         🍊 automations will also trigger.
 
@@ -617,7 +626,7 @@ blueprint:
       selector:
         action: {}
     action_6_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 2
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 6 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
         🍊 automations will also trigger.
 
@@ -626,7 +635,7 @@ blueprint:
       selector:
         action: {}
     action_6_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 3
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 6 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the
         ANY 🍊 automations will also trigger.
 
@@ -635,7 +644,7 @@ blueprint:
       selector:
         action: {}
     action_6_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 4
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 6 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
         🍊 automations will also trigger.
 
@@ -644,7 +653,7 @@ blueprint:
       selector:
         action: {}
     action_6_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 5
+      name: 🫳 ACTION MODE ONLY 🫳 Group 3 actions 🍐 Flip the cube to side 6 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
         🍊 automations will also trigger.
 
@@ -656,7 +665,7 @@ blueprint:
 
 
     scene_flip_to_face_1:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 1
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Flip the cube 180 degrees to face 1
       description: '**NOTE:** This action is trick to master, and should be used sparingly...
 
         Face 1 is the one with the ''Aqara'' LOGO'
@@ -664,99 +673,99 @@ blueprint:
       selector:
         action: {}
     scene_rotate_cw_face_1:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 1 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube clockwise with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_1:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 1 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube counter clockwise with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
         action: {}
     scene_flip_to_face_2:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 2
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Flip the cube 180 degrees to face 2
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     scene_rotate_cw_face_2:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 2 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube clockwise with face 2 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_2:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 2 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube counter clockwise with face 2 up
       default: []
       selector:
         action: {}
     scene_flip_to_face_3:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 3
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Flip the cube 180 degrees to face 3
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     scene_rotate_cw_face_3:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 3 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube clockwise with face 3 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_3:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 3 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube counter clockwise with face 3 up
       default: []
       selector:
         action: {}
     scene_flip_to_face_4:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 4
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Flip the cube 180 degrees to face 4
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     scene_rotate_cw_face_4:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 4 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube clockwise with face 4 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_4:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 4 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube counter clockwise with face 4 up
       default: []
       selector:
         action: {}
     scene_flip_to_face_5:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 5
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Flip the cube 180 degrees to face 5
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     scene_rotate_cw_face_5:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 5 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube clockwise with face 5 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_5:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 5 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube counter clockwise with face 5 up
       default: []
       selector:
         action: {}
     scene_flip_to_face_6:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 6
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Flip the cube 180 degrees to face 6
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
       default: []
       selector:
         action: {}
     scene_rotate_cw_face_6:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 6 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube clockwise with face 6 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_6:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 6 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 actions 🍎 Rotate cube counter clockwise with face 6 up
       default: []
       selector:
         action: {}
     scene_shake:
-      name: Shake the cube 🍩
+      name: 👀 SCENE MODE ONLY 👀 Shake the cube 🍩
       description: 'This trigger only occurs once in the set-up.
 
         It can be combined in any group.'
@@ -764,12 +773,15 @@ blueprint:
       selector:
         action: {}
     scene_throw:
-      name: Throw the cube 🍩
+      name: 👀 SCENE MODE ONLY 👀 Throw the cube 🍩
       description: ' You don''t actually ''Throw'' the cube.  The action is as follows:
 
         > Pick up the cube firmly.
+
         > Make a throwung motion with it but do not motion back towards yourself.
+
         > Hold it there for a second.
+
         > Throw Trigger should be sent to Z2M.
 
         This trigger only occurs once in the set-up.
@@ -779,7 +791,7 @@ blueprint:
       selector:
         action: {}
     scene_flip_to_side_any:
-      name: Group 2 actions 🍊 Flip the cube 180 degrees any side
+      name: 👀 SCENE MODE ONLY 👀 Group 2 actions 🍊 Flip the cube 180 degrees any side
       description: 'NOTE: This action is trick to master, and should be used sparingly...
         Side doesn''t matter on this one.
 
@@ -790,7 +802,7 @@ blueprint:
       selector:
         action: {}
     scene_rotate_cw_any:
-      name: Group 2 actions 🍊 Rotate cube clockwise with any side
+      name: 👀 SCENE MODE ONLY 👀 Group 2 actions 🍊 Rotate cube clockwise with any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -800,7 +812,7 @@ blueprint:
       selector:
         action: {}
     scene_rotate_ccw_any:
-      name: Group 2 actions 🍊 Rotate cube counter clockwise with any side
+      name: 👀 SCENE MODE ONLY 👀 Group 2 actions 🍊 Rotate cube counter clockwise with any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -810,7 +822,7 @@ blueprint:
       selector:
         action: {}
     scene_1_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 6
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 1 from side 6
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
@@ -819,7 +831,7 @@ blueprint:
       selector:
         action: {}
     scene_1_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 2
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 1 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
@@ -828,7 +840,7 @@ blueprint:
       selector:
         action: {}
     scene_1_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 3
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 1 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
@@ -837,7 +849,7 @@ blueprint:
       selector:
         action: {}
     scene_1_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 4
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 1 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
         ANY 🍊 automations will also trigger.
 
@@ -846,7 +858,7 @@ blueprint:
       selector:
         action: {}
     scene_1_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 5
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 1 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
@@ -855,7 +867,7 @@ blueprint:
       selector:
         action: {}
     scene_2_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 1
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 2 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
@@ -864,7 +876,7 @@ blueprint:
       selector:
         action: {}
     scene_2_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 3
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 2 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
@@ -873,7 +885,7 @@ blueprint:
       selector:
         action: {}
     scene_2_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 4
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 2 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
@@ -882,7 +894,7 @@ blueprint:
       selector:
         action: {}
     scene_2_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 5
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 2 from side 5
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
         ANY 🍊 automations will also trigger.
 
@@ -891,7 +903,7 @@ blueprint:
       selector:
         action: {}
     scene_2_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 6
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 2 from side 6
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
@@ -900,7 +912,7 @@ blueprint:
       selector:
         action: {}
     scene_3_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 1
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 3 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
@@ -909,7 +921,7 @@ blueprint:
       selector:
         action: {}
     scene_3_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 2
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 3 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
@@ -918,7 +930,7 @@ blueprint:
       selector:
         action: {}
     scene_3_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 4
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 3 from side 4
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
@@ -927,7 +939,7 @@ blueprint:
       selector:
         action: {}
     scene_3_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 5
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 3 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
@@ -936,7 +948,7 @@ blueprint:
       selector:
         action: {}
     scene_3_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 6
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 3 from side 6
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
         ANY 🍊 automations will also trigger.
 
@@ -945,7 +957,7 @@ blueprint:
       selector:
         action: {}
     scene_4_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 1
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 4 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
         ANY 🍊 automations will also trigger.
 
@@ -954,7 +966,7 @@ blueprint:
       selector:
         action: {}
     scene_4_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 2
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 4 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
@@ -963,7 +975,7 @@ blueprint:
       selector:
         action: {}
     scene_4_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 3
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 4 from side 3
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
@@ -972,7 +984,7 @@ blueprint:
       selector:
         action: {}
     scene_4_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 5
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 4 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
@@ -981,7 +993,7 @@ blueprint:
       selector:
         action: {}
     scene_4_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 6
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 4 from side 6
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
@@ -990,7 +1002,7 @@ blueprint:
       selector:
         action: {}
     scene_5_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 1
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 5 from side 1
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger. 🍎🍐
 
@@ -999,7 +1011,7 @@ blueprint:
       selector:
         action: {}
     scene_5_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 2
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 5 from side 2
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
         ANY 🍊 automations will also trigger.
 
@@ -1008,7 +1020,7 @@ blueprint:
       selector:
         action: {}
     scene_5_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 3
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 5 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
@@ -1017,7 +1029,7 @@ blueprint:
       selector:
         action: {}
     scene_5_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 4
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 5 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
@@ -1026,7 +1038,7 @@ blueprint:
       selector:
         action: {}
     scene_5_from_6:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 6
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 5 from side 6
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
@@ -1035,7 +1047,7 @@ blueprint:
       selector:
         action: {}
     scene_6_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 1
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 6 from side 1
       description: '**!!Warning!!** The flip 180 automations 🍎 for side 0 and the ANY
         🍊 automations will also trigger.
 
@@ -1044,7 +1056,7 @@ blueprint:
       selector:
         action: {}
     scene_6_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 2
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 6 from side 2
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
         🍊 automations will also trigger.
 
@@ -1053,7 +1065,7 @@ blueprint:
       selector:
         action: {}
     scene_6_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 3
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 6 from side 3
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the
         ANY 🍊 automations will also trigger.
 
@@ -1062,7 +1074,7 @@ blueprint:
       selector:
         action: {}
     scene_6_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 4
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 6 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
         🍊 automations will also trigger.
 
@@ -1071,7 +1083,7 @@ blueprint:
       selector:
         action: {}
     scene_6_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 6 from side 5
+      name: 👀 SCENE MODE ONLY 👀 Group 3 actions 🍐 Flip the cube to side 6 from side 5
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
         🍊 automations will also trigger.
 
