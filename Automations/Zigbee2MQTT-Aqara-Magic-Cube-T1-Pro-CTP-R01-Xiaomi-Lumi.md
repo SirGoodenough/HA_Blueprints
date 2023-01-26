@@ -201,7 +201,7 @@ Code Samples for the items in the next few sections can be found in my Home-Assi
 
 To change the mode of the cube, there is a switch in the configuration section of the Device panel.  There is a configuration window, opens once an hour on itself, only during which the cube will respond to mode switch. Mode switch will be scheduled to take effect when the window becomes available. You can also give it a throw action to force a respond! Otherwise, you may open lid and click LINK once to make the cube respond immediately. [Hard Switch]: Open lid and click LINK button 5 times.
 
-![Change the Cube Mode](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/pro_cube_mode_change.png)
+![Change the Cube Mode](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/pro_cube_mode_change.png?raw=true)
 
 ## 🌞 Dimmer Control
 
