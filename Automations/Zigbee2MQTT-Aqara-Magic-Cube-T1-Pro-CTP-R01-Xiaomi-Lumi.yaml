@@ -231,7 +231,7 @@ blueprint:
       default: []
       selector:
         action: {}
-    action_otate_ccw_face_4:
+    action_rotate_ccw_face_4:
       name: Group 1 actions 🍎 Rotate cube counter clockwise with face 4 up
       default: []
       selector:
@@ -409,7 +409,7 @@ blueprint:
       default: []
       selector:
         action: {}
-    action__from_4:
+    action_1_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 1 from side 4
       description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
         ANY 🍊 automations will also trigger.
@@ -778,7 +778,7 @@ blueprint:
       default: []
       selector:
         action: {}
-    scene_scene_flip_to_side_any:
+    scene_flip_to_side_any:
       name: Group 2 actions 🍊 Flip the cube 180 degrees any side
       description: 'NOTE: This action is trick to master, and should be used sparingly...
         Side doesn''t matter on this one.
