@@ -199,6 +199,12 @@ This Blueprint Monitor's device_tracker entities that you choose & notifies you 
 
 https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
+#### 🧯 Zigbee2MQTT Aqara Magic Cube T1-Pro CTP-R01 Xiaomi Lumi cagl02
+
+This Blueprint gives you literally hundreds of actions available on the new Magic Cube.
+
+https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111
+
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
