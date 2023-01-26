@@ -33,7 +33,7 @@ blueprint:
 
 
     ### 🍐 There is a set of 30 event functions that will trigger on cube flips to
-    & froma specific sides that are listed as **Group 3 🍐**.
+    & from specific sides that are listed as **Group 3 🍐**.
 
 
     ### 🍩 There are 2 actions (shake and throw) that only occur once in each mode and are OK to
@@ -138,13 +138,13 @@ blueprint:
       selector:
         action: {}
     action_rotate_cw_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate clockwise with face 1 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate counter clockwise with face 1 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
@@ -171,12 +171,12 @@ blueprint:
       selector:
         action: {}
     action_rotate_cw_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate clockwise with face 2 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 2 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate counter clockwise with face 2 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 2 up
       default: []
       selector:
         action: {}
@@ -202,12 +202,12 @@ blueprint:
       selector:
         action: {}
     action_rotate_cw_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate clockwise with face 3 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 3 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate counter clockwise with face 3 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 3 up
       default: []
       selector:
         action: {}
@@ -233,12 +233,12 @@ blueprint:
       selector:
         action: {}
     action_rotate_cw_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate clockwise with face 4 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 4 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate counter clockwise with face 4 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 4 up
       default: []
       selector:
         action: {}
@@ -264,12 +264,12 @@ blueprint:
       selector:
         action: {}
     action_rotate_cw_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate clockwise with face 5 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 5 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate counter clockwise with face 5 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 5 up
       default: []
       selector:
         action: {}
@@ -295,12 +295,12 @@ blueprint:
       selector:
         action: {}
     action_rotate_cw_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate clockwise with face 6 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 6 up
       default: []
       selector:
         action: {}
     action_rotate_ccw_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate counter clockwise with face 6 up
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 6 up
       default: []
       selector:
         action: {}
@@ -373,7 +373,7 @@ blueprint:
       selector:
         action: {}
     action_rotate_cw_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate clockwise on any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate CW on any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -383,7 +383,7 @@ blueprint:
       selector:
         action: {}
     action_rotate_ccw_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate counter clockwise on any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate CCW on any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -674,13 +674,13 @@ blueprint:
       selector:
         action: {}
     scene_rotate_cw_face_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube clockwise with face 1 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube counter clockwise with face 1 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
@@ -692,12 +692,12 @@ blueprint:
       selector:
         action: {}
     scene_rotate_cw_face_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube clockwise with face 2 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 2 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube counter clockwise with face 2 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 2 up
       default: []
       selector:
         action: {}
@@ -708,12 +708,12 @@ blueprint:
       selector:
         action: {}
     scene_rotate_cw_face_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube clockwise with face 3 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 3 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube counter clockwise with face 3 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 3 up
       default: []
       selector:
         action: {}
@@ -724,12 +724,12 @@ blueprint:
       selector:
         action: {}
     scene_rotate_cw_face_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube clockwise with face 4 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 4 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube counter clockwise with face 4 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 4 up
       default: []
       selector:
         action: {}
@@ -740,12 +740,12 @@ blueprint:
       selector:
         action: {}
     scene_rotate_cw_face_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube clockwise with face 5 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 5 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube counter clockwise with face 5 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 5 up
       default: []
       selector:
         action: {}
@@ -756,12 +756,12 @@ blueprint:
       selector:
         action: {}
     scene_rotate_cw_face_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube clockwise with face 6 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 6 up
       default: []
       selector:
         action: {}
     scene_rotate_ccw_face_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube counter clockwise with face 6 up
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 6 up
       default: []
       selector:
         action: {}
@@ -778,7 +778,7 @@ blueprint:
       description: ' You don''t actually ''Throw'' the cube.  The action is as follows:
 
           > Pick up the cube firmly.
-
+          
           > Make a throwing motion with it but do not motion back towards yourself.
 
           > Hold it there for a second.
@@ -804,7 +804,7 @@ blueprint:
       selector:
         action: {}
     scene_rotate_cw_any:
-      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube clockwise with any side
+      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube CW with any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
@@ -814,7 +814,7 @@ blueprint:
       selector:
         action: {}
     scene_rotate_ccw_any:
-      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube counter clockwise with any side
+      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube CCW with any side
       description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
