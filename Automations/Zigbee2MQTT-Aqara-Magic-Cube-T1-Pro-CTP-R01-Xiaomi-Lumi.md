@@ -3,6 +3,7 @@
 ## 📑 Changelog
 
 * **2023-01-26**: First Release.  Based on Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered Blueprint
+* **2023-01-26-1**: Add in the forgotten Scene Mode Hold function
 
 ## 📩 * Version Updates
 
@@ -60,9 +61,9 @@ Functions that are left empty will simply do nothing.
 
 #### 🍊 There is a set of 6 + 3 actions that will trigger on specific actions on *ANY* side that are listed as **Group 2 🍊**
 
-#### 🍐 There is a set of 30 + 30 event functions that will trigger on cube flips to & from specific sides that are listed as **Group 3 🍐**
+#### 🍐 There is a set of 30 + 30 actions that will trigger on cube flips to & from specific sides that are listed as **Group 3 🍐**
 
-#### 🍩 There are 4 actions (shake and throw for each mode) that only occur once in each mode and are OK to be combined with any other group in that mode. 🍩
+#### 🍩 There are 5 actions (shake & throw for each mode & hold in scene mode) that only occur once in each mode & are OK to be combined with any other group in that mode. 🍩
 
 #### NOTICE: This cube *can* be triggered 118+ ways, but only 58+ are unique.
 

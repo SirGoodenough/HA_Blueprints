@@ -28,7 +28,7 @@ blueprint:
 
     #### 🍐 There is a set of 30 + 30 event functions that will trigger on cube flips to & from specific sides that are listed as **Group 3 🍐**
 
-    #### 🍩 There are 4 actions (shake and throw for each mode) that only occur once in each mode and are OK to be combined with any other group in that mode. 🍩
+    #### 🍩 There are 5 actions (shake & throw for each mode & hold in scene mode) that only occur once in each mode & are OK to be combined with any other group in that mode. 🍩
 
     Please be aware that ALL actions except the 4 listed above,
     🍩 will trigger an action in **ALL 3 groups in the matching mode at the same time** every time.
@@ -755,6 +755,14 @@ blueprint:
       default: []
       selector:
         action: {}
+    scene_hold:
+      name: 👀 SCENE MODE ONLY 👀 Lift up the cube and hold it 🍩
+      description: 'This trigger only occurs once in the set-up.
+
+        It can be combined in any group.'
+      default: []
+      selector:
+        action: {}
     scene_shake:
       name: 👀 SCENE MODE ONLY 👀 Shake the cube 🍩
       description: 'This trigger only occurs once in the set-up.
@@ -1104,7 +1112,7 @@ condition:
         trigger.payload_json.action is defined and 
         trigger.payload_json.operation_mode == ''scene_mode'' and
         trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
-        ''flip_to_side'', ''shake'', ''throw'') }}'
+        ''flip_to_side'', ''shake'', ''throw'', ''hold'') }}'
 action:
 - variables:
       # Get the action command.
@@ -1148,7 +1156,7 @@ action:
     mdl: 'Number Helper for Z2M Cube Integration'
     mf: 'SirGoodenough'
     sa: 'house'
-    sw: '2023-01-26'
+    sw: '2023-01-26-1'
     hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
     cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
 
@@ -1421,6 +1429,8 @@ action:
         sequence: !input 'scene_rotate_cw_any'
       - conditions: '{{ action == "rotate_left" }}'
         sequence: !input 'scene_rotate_ccw_any'
+      - conditions: '{{ action == "hold" }}'
+        sequence: !input 'scene_hold'
       - conditions: '{{ action == "shake" }}'
         sequence: !input 'scene_shake'
       - conditions: '{{ action == "throw" }}'
