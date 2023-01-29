@@ -97,12 +97,6 @@ blueprint:
       selector:
         text:
           multiline: false
-    cycle_time:
-      name: Rate Limit memory writes to Tasmota
-      description: 'Wait between updates to save from wearing out memory in esp chip.'
-      default: '00:30:00'
-      selector:
-        duration:
 
 variables:
     # Convert !input to variable
@@ -118,16 +112,9 @@ variables:
     # Get current Humidity from Sensor
   humidity_now_val: '{{ expand(humidity_now_var)[0].state | float(set_val) }}'
     # Ratio actual to the target & apply that % against the max time allowed.
-  time_raw: '{% set time_raw = (1 - (humidity_now_val/set_val)) * max_t_var | float(40.8) %}'
+  time_raw: '{{ (1 - (humidity_now_val/set_val)) * max_t_var | float(40.8) }}'
     # If the calc'ed time < min or > max time, select the limits.  Else use calc'ed time.
-  time_out: >-
-    {% if time_raw < min_t_var %}
-      {{ min_t_var }}
-    {% elif time_raw > max_t_var %}
-      {{ max_t_var }}
-    {% else %}
-      {{ time_raw }}
-    {% endif %}
+  time_out: '{% if time_raw < min_t_var %}{{ min_t_var }}{% elif time_raw > max_t_var %}{{ max_t_var }}{% else %}{{ time_raw }}{% endif %}'
 
 mode: single
 max_exceeded: silent
@@ -147,14 +134,13 @@ trigger:
 condition:
   condition: and
   conditions:
-    - condition: state
-      alias: Make sure the integration is enabled
-      entity_id: !input 'humidifier'
-      state: 'on'
-    - condition: numeric_state
-      alias: Make sure it is asking for water
-      entity_id: !input 'humidity'
-      below: 42
+  - condition: state
+    alias: Make sure the integration is enabled
+    entity_id: !input 'humidifier'
+    state: 'on'
+  - condition: template
+    alias: Only if its calling for water
+    value_template: '{{ set_val > humidity_now_val }}'
 
 action:
   - alias: Send the water time.
@@ -163,4 +149,16 @@ action:
       topic: !input 'mqtt_topic'
       qos: 2
       retain: false
-      payload: '{{ ( time_out ) | round(1) }}' 
+      payload: '{{ time_out | round(1) }}'
+
+  - alias: 'Fire test event'
+    event: aatestg
+    event_data:
+      min_t_var: '{{ min_t_var }}'
+      max_t_var: '{{ max_t_var }}'
+      humidifier: '{{ humidifier }}'
+      set_val: '{{ set_val }}'
+      humidity_now_var: '{{ humidity_now_var }}'
+      humidity_now_val: '{{ humidity_now_val }}'
+      time_raw: '{{ time_raw }}'
+      time_out: '{{ time_out }}'
