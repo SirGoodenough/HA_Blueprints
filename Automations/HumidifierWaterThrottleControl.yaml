@@ -99,9 +99,8 @@ blueprint:
           multiline: false
     cycle_time:
       name: Rate Limit memory writes to Tasmota
-      description: 'Wait between updates to save from wearing out memory in esp chip.
-        '
-      default: 00:30:00
+      description: 'Wait between updates to save from wearing out memory in esp chip.'
+      default: '00:30:00'
       selector:
         duration:
 
@@ -116,10 +115,10 @@ variables:
   set_val: '{{ state_attr(humidifier, ''humidity'') | float(40.1) }}'
     # Convert !input to variable
   humidity_now_var: !input 'humidity'
-    # Get current Humidity from Sensoe
-  h_now_val: '{{ expand(humidity_now_var)[0].state | float(set_val) }}'
+    # Get current Humidity from Sensor
+  humidity_now_val: '{{ expand(humidity_now_var)[0].state | float(set_val) }}'
     # Ratio actual to the target & apply that % against the max time allowed.
-  time_raw: '{% set time_raw = (1 - (h_now_val/set_val)) * max_t_var %}'
+  time_raw: '{% set time_raw = (1 - (humidity_now_val/set_val)) * max_t_var | float(40.8) %}'
     # If the calc'ed time < min or > max time, select the limits.  Else use calc'ed time.
   time_out: >-
     {% if time_raw < min_t_var %}
@@ -137,11 +136,11 @@ trigger:
 - platform: state
   id: go if the humidifer was switched on or off
   entity_id: !input 'humidifier'
-- platform: numeric_state
+- platform: state
   id: go if the humidifier set point changes
   entity_id: !input 'humidifier'
   attribute: humidity
-- platform: numeric_state
+- platform: state
   id: go if the humidity changes
   entity_id: !input 'humidity'
 
@@ -152,12 +151,12 @@ condition:
       alias: Make sure the integration is enabled
       entity_id: !input 'humidifier'
       state: 'on'
-    - condition: template
+    - condition: numeric_state
       alias: Make sure it is asking for water
-      value_template: '{% h_now_val < set_val %}'
+      entity_id: !input 'humidity'
+      below: 42
 
 action:
-  sequence:
   - alias: Send the water time.
     service: mqtt.publish
     data:
