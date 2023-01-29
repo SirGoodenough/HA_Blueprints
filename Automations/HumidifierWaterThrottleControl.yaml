@@ -14,11 +14,17 @@ blueprint:
     My hardware is a Tasmota Sonoff SV sending the 24v to my humidifier water valve.
 
     ## Tasmota Rules:
+
       rule1
+
       ```on Time#Minute|2 do var1 %var2% endon```
+
       rule2
+
       ```on system#boot do backlog power2 0; var3 200; var2 %var2% endon on POWER2#state=0 do backlog power1 0; rule1 0 endon on POWER2#state=1 do rule1 1 endon```
+
       rule3
+
       ```on var1#state>110 do backlog power1 on;delay 1200;power1 off break on var1#state>100 do backlog power1 on;delay 1100;power1 off break on var1#state>90 do backlog power1 on;delay 1000;power1 off break on var1#state>80 do backlog power1 on;delay 900;power1 off break on var1#state>70 do backlog power1 on;delay 800;power1 off break on var1#state>60 do backlog power1 on;delay 700;power1 off break on var1#state>50 do backlog power1 on;delay 600;power1 off break on var1#state>40 do backlog power1 on;delay 500;power1 off break on var1#state>30 do backlog power1 on;delay 400;power1 off break on var1#state>20 do backlog power1 on;delay 300;power1 off break on var1#state<=20 do backlog power1 on;delay 200;power1 off endon```
 
     📩 There is not an official version control system for Blueprints.  However I have 
@@ -42,14 +48,13 @@ blueprint:
       description: Generic Hygrometer entity
       selector:
         entity:
-          device_class: humidifer
           multiple: false
     humidity:
       name: Humidity Sensor
       description: Sensor that contains the current actual Humidity
       selector:
         entity:
-          device_class: humidifer
+          domain: sensor
           multiple: false
     minimum_time:
       name: Floor for time value sent to Tasmota
