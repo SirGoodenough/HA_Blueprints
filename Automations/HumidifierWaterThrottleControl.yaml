@@ -119,12 +119,12 @@ variables:
     # Get current Humidity from Sensoe
   h_now_val: '{{ expand(humidity_now_var)[0].state | float(set_val) }}'
     # Ratio actual to the target & apply that % against the max time allowed.
-  time_raw: '{% (1 - (h_now_val/set_val)) * max_t_var %}'
+  time_raw: '{% set time_raw = (1 - (h_now_val/set_val)) * max_t_var %}'
     # If the calc'ed time < min or > max time, select the limits.  Else use calc'ed time.
   time_out: >-
     {% if time_raw < min_t_var %}
       {{ min_t_var }}
-    {% elseif time_raw > max_t_var %}
+    {% elif time_raw > max_t_var %}
       {{ max_t_var }}
     {% else %}
       {{ time_raw }}
