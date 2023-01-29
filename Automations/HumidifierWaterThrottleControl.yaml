@@ -1,0 +1,160 @@
+blueprint:
+  name: Throttle-your-water-flow-tasmota-2022-12-26
+  description: 'NOT FUNCTIONAL... WIP...
+    NOT FUNCTIONAL... WIP...
+    NOT FUNCTIONAL... WIP...
+
+    This sets the amount of water sent to your Humidifier. 
+    You provide a minimum time and maximum time you want the water to run and this will 
+    send a time to the tasmota device controlling the water flow proportional to 
+    the ratio of the current humidity VS the target humidity.  
+    
+    HA is using the Generic Hygrostat integration.  
+    
+    My hardware is a Tasmota Sonoff SV sending the 24v to my humidifier water valve.
+
+    ## Tasmota Rules:
+rule1
+```on Time#Minute|2 do var1 %var2% endon```
+rule2
+```on system#boot do backlog power2 0; var1=200 endon on POWER2#state=0 do backlog power1 0; rule1 0 endon on POWER2#state=1 do rule1 1 endon```
+rule3
+```on var1#state>70 do backlog power1 on;delay 800;power1 off break on var1#state>60 do backlog power1 on;delay 700;power1 off break on var1#state>50 do backlog power1 on;delay 600;power1 off break on var1#state>40 do backlog power1 on;delay 500;power1 off break on var1#state>30 do backlog power1 on;delay 400;power1 off break on var1#state>20 do backlog power1 on;delay 300;power1 off break on var1#state<=20 do backlog power1 on;delay 200;power1 off endon```
+
+    📩 There is not an official version control system for Blueprints.  However I have 
+    found something that comes pretty close.  It is not perfect, but for **MOST** 
+    Blueprints, it does just fine.  I encourage you to check this script out and use 
+    it to easily check if I have updated this blueprint. 🔗
+
+    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+
+    NOT FUNCTIONAL... WIP...
+    NOT FUNCTIONAL... WIP...
+    NOT FUNCTIONAL... WIP...
+    '
+  # source_url: 
+  domain: automation
+  homeassistant:
+    min_version: 2023.1.0
+  input:
+    humidifier:
+      name: Humidifier Entity
+      description: Generic Hygrometer entity
+      selector:
+        entity:
+          device_class: humidifer
+          multiple: false
+    humidity:
+      name: Humidity Sensor
+      description: Sensor that contains the current actual Humidity
+      selector:
+        entity:
+          device_class: humidifer
+          multiple: false
+    minimum_time:
+      name: Floor for time value sent to Tasmota
+      description: 'Minimum number of seconds you will allow the water to run.
+        Defaults are set around a 2 minute Tasmota Cycle
+        '
+      default: 10.0
+      selector:
+        number:
+          min: 0.0
+          max: 120.0
+          unit_of_measurement: seconds
+          mode: slider
+          step: 0.1
+    maximum_time:
+      name: Ceiling for time value sent to Tasmota
+      description: 'Maximum number of seconds you will allow the water to run. 
+        Defaults are set around a 2 minute Tasmota Cycle
+        '
+      default: 80.0
+      selector:
+        number:
+          min: 0.0
+          max: 120.0
+          unit_of_measurement: seconds
+          mode: slider
+          step: 0.1
+    mqtt_topic:
+      name: Topic to send the time value to the Tasmota device
+      description: 'This is the MQTT Topic needed.
+      
+        A topic such as this with your device top topic then ```/cmnd/EVENT```:
+
+        ```humidifier/cmnd/EVENT```
+
+        You need to look at **YOUR device** and determine the exact correct topic
+        to send to the broker to make yours work.'
+      selector:
+        text:
+          multiline: false
+    cycle_time:
+      name: Rate Limit memory writes to Tasmota
+      description: 'Wait between updates to save from wearing out memory in esp chip.
+        '
+      default: 00:30:00
+      selector:
+        duration:
+
+variables:
+    # Convert !input to variable
+  min_t_var: !input 'minimum_time'
+    # Convert !input to variable
+  max_t_var: !input 'maximum_time'
+    # Convert !input to variable
+  humidifier: !input 'humidifier'
+    # Get the target Humidity level
+  set_val: '{{ state_attr(humidifier, ''humidity'') | float(40.1) }}'
+    # Convert !input to variable
+  humidity_now_var: !input 'humidity'
+    # Get current Humidity from Sensoe
+  h_now_val: '{{ expand(humidity_now_var)[0].state | float(set_val) }}'
+    # Ratio actual to the target & apply that % against the max time allowed.
+  time_raw: '{% (1 - (h_now_val/set_val)) * max_t_var %}'
+    # If the calc'ed time < min or > max time, select the limits.  Else use calc'ed time.
+  time_out: >-
+    {% if time_raw < min_t_var %}
+      {{ min_t_var }}
+    {% elseif time_raw > max_t_var %}
+      {{ max_t_var }}
+    {% else %}
+      {{ time_raw }}
+    {% endif %}
+
+mode: single
+max_exceeded: silent
+
+trigger:
+- platform: state
+  id: go if the humidifer was switched on or off
+  entity_id: !input 'humidifier'
+- platform: numeric_state
+  id: go if the humidifier set point changes
+  entity_id: !input 'humidifier'
+  attribute: humidity
+- platform: numeric_state
+  id: go if the humidity changes
+  entity_id: !input 'humidity'
+
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      alias: Make sure the integration is enabled
+      entity_id: !input 'humidifier'
+      state: 'on'
+    - condition: template
+      alias: Make sure it is asking for water
+      value_template: '{% h_now_val < set_val %}'
+
+action:
+  sequence:
+  - alias: Send the water time. Tasmota wants tenths of a second as integer.
+    service: mqtt.publish
+    data:
+      topic: !input 'mqtt_topic'
+      qos: 2
+      retain: false
+      payload: '{{ ( time_out * 10 ) | round | int(397) }}' 
