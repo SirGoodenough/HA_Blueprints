@@ -14,12 +14,12 @@ blueprint:
     My hardware is a Tasmota Sonoff SV sending the 24v to my humidifier water valve.
 
     ## Tasmota Rules:
-rule1
-```on Time#Minute|2 do var1 %var2% endon```
-rule2
-```on system#boot do backlog power2 0; var1=200 endon on POWER2#state=0 do backlog power1 0; rule1 0 endon on POWER2#state=1 do rule1 1 endon```
-rule3
-```on var1#state>70 do backlog power1 on;delay 800;power1 off break on var1#state>60 do backlog power1 on;delay 700;power1 off break on var1#state>50 do backlog power1 on;delay 600;power1 off break on var1#state>40 do backlog power1 on;delay 500;power1 off break on var1#state>30 do backlog power1 on;delay 400;power1 off break on var1#state>20 do backlog power1 on;delay 300;power1 off break on var1#state<=20 do backlog power1 on;delay 200;power1 off endon```
+      rule1
+      ```on Time#Minute|2 do var1 %var2% endon```
+      rule2
+      ```on system#boot do backlog power2 0; var3 200; var2 %var2% endon on POWER2#state=0 do backlog power1 0; rule1 0 endon on POWER2#state=1 do rule1 1 endon```
+      rule3
+      ```on var1#state>110 do backlog power1 on;delay 1200;power1 off break on var1#state>100 do backlog power1 on;delay 1100;power1 off break on var1#state>90 do backlog power1 on;delay 1000;power1 off break on var1#state>80 do backlog power1 on;delay 900;power1 off break on var1#state>70 do backlog power1 on;delay 800;power1 off break on var1#state>60 do backlog power1 on;delay 700;power1 off break on var1#state>50 do backlog power1 on;delay 600;power1 off break on var1#state>40 do backlog power1 on;delay 500;power1 off break on var1#state>30 do backlog power1 on;delay 400;power1 off break on var1#state>20 do backlog power1 on;delay 300;power1 off break on var1#state<=20 do backlog power1 on;delay 200;power1 off endon```
 
     📩 There is not an official version control system for Blueprints.  However I have 
     found something that comes pretty close.  It is not perfect, but for **MOST** 
@@ -81,12 +81,13 @@ rule3
       name: Topic to send the time value to the Tasmota device
       description: 'This is the MQTT Topic needed.
       
-        A topic such as this with your device top topic then ```/cmnd/EVENT```:
+        A topic such as this with your device top topic. We are setting var2 vi cmnd:
 
-        ```humidifier/cmnd/EVENT```
+        ```cmnd/humidifier/var2```
 
         You need to look at **YOUR device** and determine the exact correct topic
-        to send to the broker to make yours work.'
+        to send to the broker to make yours work. See description file if you need more help.
+        '
       selector:
         text:
           multiline: false
@@ -151,10 +152,10 @@ condition:
 
 action:
   sequence:
-  - alias: Send the water time. Tasmota wants tenths of a second as integer.
+  - alias: Send the water time.
     service: mqtt.publish
     data:
       topic: !input 'mqtt_topic'
       qos: 2
       retain: false
-      payload: '{{ ( time_out * 10 ) | round | int(397) }}' 
+      payload: '{{ ( time_out ) | round(1) }}' 
