@@ -52,7 +52,7 @@ Begin by opening the webui of your Tasmotda SV switch
 ## How Do I Set-up My Sonoff SV?
 
 #### Add a ghost relay and button as relay and button #2.
-
+![Module Setup](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaModuleSetup.jpg)
 
 #### Add the Rules.
 
