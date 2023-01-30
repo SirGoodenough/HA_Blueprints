@@ -54,7 +54,7 @@ Requirements
 
 ## How Do I Set-up My Sonoff SV?
 
-#### Add a ghost relay and button as relay and button #2.
+#### Add a ghost relay and button as relay and button #2 in the Module Parameters & save it.
 
 ![Module Setup](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaModuleSetup.jpg)
 
@@ -71,7 +71,8 @@ Rule2 Provides set-up for boot and is the code for switching power1 on and off b
 ```text
 on system#boot do backlog power2 0; var3 200; var2 %var2% endon 
 on POWER2#state=0 do backlog power1 0; rule1 0 endon 
-on POWER2#state=1 do rule1 1 endon```
+on POWER2#state=1 do rule1 1 endon
+```
 
 Rule3 is the look-up table.  It selects the delay time, which is the amount of time that the water cycles on within the 2 minute cycle based on the input on var2 from the blueprint.
 
