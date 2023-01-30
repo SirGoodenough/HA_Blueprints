@@ -21,7 +21,7 @@ blueprint:
 
       rule2
 
-      ```on system#boot do backlog power2 0; var3 200; var2 %var2% endon on POWER2#state=0 do backlog power1 0; rule1 0 endon on POWER2#state=1 do rule1 1 endon```
+      ```on system#boot do backlog power2 0; var2 20 endon on POWER2#state=0 do backlog power1 0; rule1 0 endon on POWER2#state=1 do rule1 1 endon```
 
       rule3
 
