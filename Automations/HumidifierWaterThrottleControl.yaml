@@ -31,7 +31,9 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗
 
     [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+    
 
+    [Community link for this blueprint](https://community.home-assistant.io/t/humidifier-water-throttle-control/527583)
     '
   # source_url: 
   domain: automation
