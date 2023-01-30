@@ -42,21 +42,21 @@ Requirements
 
 #### Select the Configuration tab
 
-    ![Where is the Configuration TAB?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaConfig.jpg)
+![Where is the Configuration TAB?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaConfig.jpg)
 
 #### Select the MQTT tab
 
-    ![Where is the Configure MQTT TAB?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaMQTT.jpg)
+![Where is the Configure MQTT TAB?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaMQTT.jpg)
 
 #### Bottom of the screen is the friendly_name and the topic
 
-    ![Where is the TOPIC?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaTopic.jpg)
+![Where is the TOPIC?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaTopic.jpg)
 
 ## How Do I Set-up My Sonoff SV?
 
 #### Add a ghost relay and button as relay and button #2.
 
-    ![Module Setup](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaModuleSetup.jpg)
+![Module Setup](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaModuleSetup.jpg)
 
 #### Add the Rules.
 
