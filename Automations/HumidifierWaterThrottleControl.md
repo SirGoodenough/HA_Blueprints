@@ -51,21 +51,21 @@ Requirements
 
 #### Select the Configuration tab
 
-![Where is the Configuration TAB?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaConfig.png)
+![Where is the Configuration TAB?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaConfig.png?raw=true "Where is the Configuration TAB?")
 
 #### Select the MQTT tab
 
-![Where is the Configure MQTT TAB?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaMQTT.png)
+![Where is the Configure MQTT TAB?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaMQTT.png?raw=true "Where is the Configure MQTT TAB?")
 
 #### Bottom of the screen is the topic
 
-![Where is the TOPIC?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaTopic.png)
+![Where is the TOPIC?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaTopic.png?raw=true "Where is the TOPIC?")
 
 ## 🙊 How Do I Set-up My Sonoff SV?
 
 #### Add a ghost relay & button as relay & button #2 in the Module Parameters screen & save it.
 
-![Module Setup](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaModuleSetup.png)
+![Module Setup](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaModuleSetup.png?raw=true "Module Setup")
 
 #### Add the Rules
 
