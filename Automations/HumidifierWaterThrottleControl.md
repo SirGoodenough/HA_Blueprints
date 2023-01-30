@@ -63,22 +63,23 @@ Requirements
 
 ## 🙊 How Do I Set-up My Sonoff SV?
 
-#### Add a ghost relay and button as relay and button #2 in the Module Parameters screen & save it.
+#### Add a ghost relay & button as relay & button #2 in the Module Parameters screen & save it.
 
 ![Module Setup](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaModuleSetup.jpg)
 
 #### Add the Rules
 
-    Make sure you set all 3 rules to mode 4 after you oad them.
+    Make sure you set all 3 rules to mode 4 after you load them.
     Rule1 4
     Rule2 4
     Rule3 4
 
-    Also make sure you turn on the 2 rules. Rule1 will turn on and off as called in the program.
+    Also make sure you turn on the rules. Rule1 will turn on and off as called in the program & is best starting as off.
+    Rule1 0
     Rule2 1
     Rule3 1
 
-    Full line of text versions of these rules are available in the Blueprint Description.  These are layed out for clarity.
+    Full line of text versions of these rules are available in the Blueprint Description.  These are stacked for clarity.
 
 Rule1 is turned on and off based on the status of Power2. When Rule1 is enabled it sets the 2 minute timer cycle and starts the Rule3 items on schedule.  It sets variable 1 to the value of variable 2.  Variable 2 is set via MQTT from the Blueprint.
 
