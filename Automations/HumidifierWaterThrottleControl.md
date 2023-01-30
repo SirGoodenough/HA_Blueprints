@@ -7,8 +7,11 @@ This blueprint monitors a humidity sensor & by determining the error from the go
 ## 🔮 About this blueprint
 
 Type of blueprint: AUTOMATION
+
 HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FHumidifierWaterThrottleControl.yaml)
+
 Direct link to download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml```
+
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
 
 ## 📩 * Version Updates
@@ -24,7 +27,8 @@ Updates will be published on my [GIT repository](https://github.com/SirGoodenoug
 Requirements
 
     Tasmota SV Device set-up to receive the output of this blueprint.
-    Suitable Humidifier to control
+    Suitable Humidifier to control.
+    Generic hygrostat integration or something similar.
 
 ## 🗂 Input fields
 
@@ -43,7 +47,7 @@ Requirements
 
     The Blueprint needs to send the time value to var2 in your sonoff SV. On my system the MQTT topic to do this is cmnd/humidifier/var2.  Yours will be something similar. In order to determine exactly what your will be, follow these instructions.
 
-    Begin by opening the webui of your Tasmotda SV switch
+    Begin by opening the webui of your Tasmota SV switch.
 
 #### Select the Configuration tab
 
@@ -53,19 +57,30 @@ Requirements
 
 ![Where is the Configure MQTT TAB?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaMQTT.jpg)
 
-#### Bottom of the screen is the friendly_name and the topic
+#### Bottom of the screen is the topic
 
 ![Where is the TOPIC?](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaTopic.jpg)
 
 ## 🙊 How Do I Set-up My Sonoff SV?
 
-#### Add a ghost relay and button as relay and button #2 in the Module Parameters & save it.
+#### Add a ghost relay and button as relay and button #2 in the Module Parameters screen & save it.
 
 ![Module Setup](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/tasmotaModuleSetup.jpg)
 
-#### Add the Rules.
+#### Add the Rules
 
-Rule1 is turned on and off based on the status of switch #2. When enabled it sets the 2 minute timer cycle and starts the Rule3 items.
+    Make sure you set all 3 rules to mode 4 after you oad them.
+    Rule1 4
+    Rule2 4
+    Rule3 4
+
+    Also make sure you turn on the 2 rules. Rule1 will turn on and off as called in the program.
+    Rule2 1
+    Rule3 1
+
+    Full line of text versions of these rules are available in the Blueprint Description.  These are layed out for clarity.
+
+Rule1 is turned on and off based on the status of Power2. When Rule1 is enabled it sets the 2 minute timer cycle and starts the Rule3 items on schedule.  It sets variable 1 to the value of variable 2.  Variable 2 is set via MQTT from the Blueprint.
 
 ```text
 on Time#Minute|2 do var1 %var2% endon
@@ -74,7 +89,7 @@ on Time#Minute|2 do var1 %var2% endon
 Rule2 Provides set-up for boot and is the code for switching Rule1 on and off based on the status of Power2. Power1 is connected to the real relay and sends power to the water valve when on. Power2 (the ghost relay) is used by the Generic hygrostat to call for moisture or standby.
 
 ```text
-on system#boot do backlog power2 0; var3 200; var2 %var2% endon 
+on system#boot do backlog power2 0; var2 20 endon 
 on POWER2#state=0 do backlog power1 0; rule1 0 endon 
 on POWER2#state=1 do rule1 1 endon
 ```
