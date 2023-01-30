@@ -188,6 +188,12 @@ This Blueprint Monitor's device_tracker entities that you choose & notifies you 
 
 https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
+#### 🧯 Humidifier Water Throttle Control
+
+This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water.  This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
+
+https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
+
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
