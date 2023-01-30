@@ -1,8 +1,6 @@
 blueprint:
   name: Throttle-your-water-flow-tasmota-2023-01-30
-  description: 'NOT FUNCTIONAL... WIP...
-    NOT FUNCTIONAL... WIP...
-    NOT FUNCTIONAL... WIP...
+  description: '
 
     This sets the amount of water sent to your Humidifier. 
     You provide a minimum time and maximum time you want the water to run and this will 
@@ -34,9 +32,6 @@ blueprint:
 
     [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
-    NOT FUNCTIONAL... WIP...
-    NOT FUNCTIONAL... WIP...
-    NOT FUNCTIONAL... WIP...
     '
   # source_url: 
   domain: automation
