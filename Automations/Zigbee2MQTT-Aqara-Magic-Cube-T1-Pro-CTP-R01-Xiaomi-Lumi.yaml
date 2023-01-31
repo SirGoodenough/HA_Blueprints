@@ -1212,11 +1212,12 @@ action:
     entity_id: '{{ num_ha_name }}'
   data:
     value: '{{ side }}'
+
 - alias: 'Choose Action Mode or Scene Mode'
   choose:
   - conditions: '{{ op_mode == "action_mode" }}'
     sequence:
-    - alias: Group 2 🍊 and No Group 🍩 These are action events for ANY Side
+    - alias: 🫳 ACTION MODE 🫳 Group 2 🍊 and No Group 🍩 These are action events for ANY Side
       choose:
       - conditions: '{{ action == "slide" }}'
         sequence: !input 'action_slide_any'
@@ -1234,11 +1235,11 @@ action:
         sequence: !input 'action_shake'
       - conditions: '{{ action == "throw" }}'
         sequence: !input 'action_throw'
-    - alias: Group 1 🍎 These are action events based on the action broken down by side
+    - alias: 🫳 ACTION MODE 🫳 Group 1 🍎 These are action events based on the action broken down by side
       choose:
       - conditions: '{{ action == "slide" }}'
         sequence:
-        - alias: These are slide events
+        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are slide events
           choose:
           - conditions: '{{ side == 1 }}'
             sequence: !input 'action_slide_face_1'
@@ -1254,7 +1255,7 @@ action:
             sequence: !input 'action_slide_face_6'
       - conditions: '{{ action == "tap" }}'
         sequence:
-        - alias: These are doubletap events
+        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are doubletap events
           choose:
           - conditions: '{{ side == 1 }}'
             sequence: !input 'action_doubletap_face_1'
@@ -1270,7 +1271,7 @@ action:
             sequence: !input 'action_doubletap_face_6'
       - conditions: '{{ action == "flip90" }}'
         sequence:
-        - alias: These are flipped90 events
+        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are flipped90 events
           choose:
           - conditions: '{{ side == 1 }}'
             sequence: !input 'action_flipped90_face_1'
@@ -1286,7 +1287,7 @@ action:
             sequence: !input 'action_flipped90_face_6'
       - conditions: '{{ action == "flip180" }}'
         sequence:
-        - alias: These are flipped180 events
+        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are flipped180 events
           choose:
           - conditions: '{{ side == 1 }}'
             sequence: !input 'action_flipped180_face_1'
@@ -1302,7 +1303,7 @@ action:
             sequence: !input 'action_flipped180_face_6'
       - conditions: '{{ action == "rotate_right" }}'
         sequence:
-        - alias: These are rotate CW events
+        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are rotate CW events
           choose:
           - conditions: '{{ side == 1 }}'
             sequence: !input 'action_rotate_cw_face_1'
@@ -1318,7 +1319,7 @@ action:
             sequence: !input 'action_rotate_cw_face_6'
       - conditions: '{{ action == "rotate_left" }}'
         sequence:
-        - alias: These are rotate CCW events
+        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are rotate CCW events
           choose:
           - conditions: '{{ side == 1 }}'
             sequence: !input 'action_rotate_ccw_face_1'
@@ -1332,11 +1333,11 @@ action:
             sequence: !input 'action_rotate_ccw_face_5'
           - conditions: '{{ side == 6 }}'
             sequence: !input 'action_rotate_ccw_face_6'
-    - alias: Group 3 🍐 Side to side jump events
+    - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 Side to side jump events
       choose:
       - conditions: '{{ side == 1 }}'
         sequence:
-        - alias: To side 1 from any events
+        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 1 from any events
           choose:
           - conditions: '{{ last_side == 2 }}'
             sequence: !input 'action_1_from_2'
@@ -1350,7 +1351,7 @@ action:
             sequence: !input 'action_1_from_6'
       - conditions: '{{ side == 2 }}'
         sequence:
-        - alias: To side 2 from any events
+        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 2 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'action_2_from_1'
@@ -1364,7 +1365,7 @@ action:
             sequence: !input 'action_2_from_6'
       - conditions: '{{ side == 3 }}'
         sequence:
-        - alias: To side 3 from any events
+        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 3 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'action_3_from_1'
@@ -1378,7 +1379,7 @@ action:
             sequence: !input 'action_3_from_6'
       - conditions: '{{ side == 4 }}'
         sequence:
-        - alias: To side 4 from any events
+        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 4 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'action_4_from_1'
@@ -1392,7 +1393,7 @@ action:
             sequence: !input 'action_4_from_6'
       - conditions: '{{ side == 5 }}'
         sequence:
-        - alias: To side 5 from any events
+        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 5 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'action_5_from_1'
@@ -1406,7 +1407,7 @@ action:
             sequence: !input 'action_5_from_6'
       - conditions: '{{ side == 6 }}'
         sequence:
-        - alias: To side 0 from any events
+        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 0 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'action_6_from_1'
@@ -1421,7 +1422,7 @@ action:
 
   - conditions: '{{ op_mode == "scene_mode" }}'
     sequence:
-    - alias: Group 2 🍊 and No Group 🍩 These are action events for ANY Side
+    - alias: 👀 SCENE MODE 👀 Group 2 🍊 and No Group 🍩 These are action events for ANY Side
       choose:
       - conditions: '{{ action == "flip_to_side" }}'
         sequence: !input 'scene_flip_to_side_any'
@@ -1435,11 +1436,11 @@ action:
         sequence: !input 'scene_shake'
       - conditions: '{{ action == "throw" }}'
         sequence: !input 'scene_throw'
-    - alias: Group 1 🍎 These are action events based on the action broken down by side
+    - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are action events based on the action broken down by side
       choose:
       - conditions: '{{ action == "flip_to_side" }}'
         sequence:
-        - alias: These are flip_to_side events
+        - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are flip_to_side events
           choose:
           - conditions: '{{ side == 1 }}'
             sequence: !input 'scene_flip_to_face_1'
@@ -1455,7 +1456,7 @@ action:
             sequence: !input 'scene_flip_to_face_6'
       - conditions: '{{ action == "rotate_right" }}'
         sequence:
-        - alias: These are rotate CW events
+        - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are rotate CW events
           choose:
           - conditions: '{{ side == 1 }}'
             sequence: !input 'scene_rotate_cw_face_1'
@@ -1471,7 +1472,7 @@ action:
             sequence: !input 'scene_rotate_cw_face_6'
       - conditions: '{{ action == "rotate_left" }}'
         sequence:
-        - alias: These are rotate CCW events
+        - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are rotate CCW events
           choose:
           - conditions: '{{ side == 1 }}'
             sequence: !input 'scene_rotate_ccw_face_1'
@@ -1485,11 +1486,11 @@ action:
             sequence: !input 'scene_rotate_ccw_face_5'
           - conditions: '{{ side == 6 }}'
             sequence: !input 'scene_rotate_ccw_face_6'
-    - alias: Group 3 🍐 Side to side jump events
+    - alias: 👀 SCENE MODE 👀 Group 3 🍐 Side to side jump events
       choose:
       - conditions: '{{ side == 1 }}'
         sequence:
-        - alias: To side 1 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 1 from any events
           choose:
           - conditions: '{{ last_side == 2 }}'
             sequence: !input 'scene_1_from_2'
@@ -1503,7 +1504,7 @@ action:
             sequence: !input 'scene_1_from_6'
       - conditions: '{{ side == 2 }}'
         sequence:
-        - alias: To side 2 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 2 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_2_from_1'
@@ -1517,7 +1518,7 @@ action:
             sequence: !input 'scene_2_from_6'
       - conditions: '{{ side == 3 }}'
         sequence:
-        - alias: To side 3 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 3 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_3_from_1'
@@ -1531,7 +1532,7 @@ action:
             sequence: !input 'scene_3_from_6'
       - conditions: '{{ side == 4 }}'
         sequence:
-        - alias: To side 4 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 4 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_4_from_1'
@@ -1545,7 +1546,7 @@ action:
             sequence: !input 'scene_4_from_6'
       - conditions: '{{ side == 5 }}'
         sequence:
-        - alias: To side 5 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 5 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_5_from_1'
@@ -1559,7 +1560,7 @@ action:
             sequence: !input 'scene_5_from_6'
       - conditions: '{{ side == 6 }}'
         sequence:
-        - alias: To side 0 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 0 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_6_from_1'
