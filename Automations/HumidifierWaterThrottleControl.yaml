@@ -53,6 +53,21 @@ blueprint:
         entity:
           domain: sensor
           multiple: false
+    mqtt_topic:
+      name: Topic to send the time value to the Tasmota device
+      description: 'This is the MQTT Topic needed.
+      
+        A topic such as this with your device top topic. We are setting var2 vi cmnd:
+
+        ```cmnd/humidifier/var2```
+
+        You need to look at **YOUR device** and determine the exact correct topic
+        to send to the broker to make yours work. See description file if you need more help.
+        '
+      selector:
+        text:
+          multiline: false
+
     minimum_time:
       name: Floor for time value sent to Tasmota
       description: 'Minimum number of seconds you will allow the water to run.
@@ -79,20 +94,6 @@ blueprint:
           unit_of_measurement: seconds
           mode: slider
           step: 0.1
-    mqtt_topic:
-      name: Topic to send the time value to the Tasmota device
-      description: 'This is the MQTT Topic needed.
-      
-        A topic such as this with your device top topic. We are setting var2 vi cmnd:
-
-        ```cmnd/humidifier/var2```
-
-        You need to look at **YOUR device** and determine the exact correct topic
-        to send to the broker to make yours work. See description file if you need more help.
-        '
-      selector:
-        text:
-          multiline: false
 
 variables:
     # Convert !input to variable
