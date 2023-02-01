@@ -148,14 +148,15 @@ action:
       retain: false
       payload: '{{ time_out | round(1) }}'
 
-  - alias: 'Fire test event'
-    event: aatestg
-    event_data:
-      min_t_var: '{{ min_t_var }}'
-      max_t_var: '{{ max_t_var }}'
-      humidifier: '{{ humidifier }}'
-      set_val: '{{ set_val }}'
-      humidity_now_var: '{{ humidity_now_var }}'
-      humidity_now_val: '{{ humidity_now_val }}'
-      time_raw: '{{ time_raw }}'
-      time_out: '{{ time_out }}'
+    # Optional for Troubleshooting only...
+  # - alias: 'Fire test event'
+  #   event: Humidifier_event
+  #   event_data:
+  #     min_t_var: '{{ min_t_var }}'
+  #     max_t_var: '{{ max_t_var }}'
+  #     humidifier: '{{ humidifier }}'
+  #     set_val: '{{ set_val }}'
+  #     humidity_now_var: '{{ humidity_now_var }}'
+  #     humidity_now_val: '{{ humidity_now_val }}'
+  #     time_raw: '{{ time_raw }}'
+  #     time_out: '{{ time_out }}'
