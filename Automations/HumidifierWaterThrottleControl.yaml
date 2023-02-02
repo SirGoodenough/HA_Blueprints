@@ -1,5 +1,5 @@
 blueprint:
-  name: Throttle-your-water-flow-tasmota-2023-01-30
+  name: Throttle-your-water-flow-tasmota-2023-02-82
   description: '
 
     This sets the amount of water sent to your Humidifier. 
@@ -38,7 +38,7 @@ blueprint:
   domain: automation
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
   homeassistant:
-    min_version: 2023.1.0
+    min_version: 2023.2.0
   input:
     humidifier:
       name: Humidifier Entity
@@ -47,11 +47,21 @@ blueprint:
         entity:
           multiple: false
     humidity:
-      name: Humidity Sensor
-      description: Sensor that contains the current actual Humidity
+      name: Humidity Sensor Group
+      description: "Sensor that contains the current actual Humidity"
       selector:
         entity:
           domain: sensor
+          multiple: false
+    power_1:
+      name: Switch entity for switch 1 controlling the water
+      description: 'This needs to be the HA switch entity from the Sonoff SV 
+        that controls the water output valve so that this BP knows when the
+        water is actually on.
+        '
+      selector:
+        entity:
+          domain: switch
           multiple: false
     mqtt_topic:
       name: Topic to send the time value to the Tasmota device
@@ -67,7 +77,6 @@ blueprint:
       selector:
         text:
           multiline: false
-
     minimum_time:
       name: Floor for time value sent to Tasmota
       description: 'Minimum number of seconds you will allow the water to run.
@@ -107,11 +116,13 @@ variables:
     # Convert !input to variable
   humidity_now_var: !input 'humidity'
     # Get current Humidity from Sensor
-  humidity_now_val: '{{ expand(humidity_now_var)[0].state | float(set_val) }}'
+  humidity_now_val: '{{ states(humidity_now_var) | float(set_val) }}'
     # Ratio actual to the target & apply that % against the max time allowed.
-  time_raw: '{{ (1 - (humidity_now_val/set_val)**2) * max_t_var | float(40.8) }}'
+  time_raw: '{{ (1 - (humidity_now_val/set_val)**2) * max_t_var | float(1) }}'
     # If the calc'ed time < min or > max time, select the limits.  Else use calc'ed time.
   time_out: '{% if time_raw < min_t_var %}{{ min_t_var }}{% elif time_raw > max_t_var %}{{ max_t_var }}{% else %}{{ time_raw }}{% endif %}'
+    # Convert !input to variable
+  power_1_var: !input power_1
 
 mode: single
 max_exceeded: silent
@@ -140,6 +151,9 @@ condition:
     value_template: '{{ set_val > humidity_now_val }}'
 
 action:
+  - alias: "Wait until Humidifier is not sending water"
+    wait_template: '{{ is_state( power_1_var, ''off'' ) }}'
+    timeout: "00:01:50"
   - alias: Send the water time.
     service: mqtt.publish
     data:

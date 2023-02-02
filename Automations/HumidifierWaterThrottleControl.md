@@ -2,6 +2,9 @@ This blueprint monitors a humidity sensor & by determining the error from the go
 
 ## 📑 Changelog
 
+* **2023-02-92**: Add wait-to-send interrupt & new entity power_1
+* * Fix extraction of current humidity
+* * Comment out troubleshooting code
 * **2023-01-30**: 🎉 First Release
 
 ## 🔮 About this blueprint
@@ -38,6 +41,8 @@ Requirements
 
     mqtt_topic ✯ REQUIRED ✯: A topic such as this with your device top topic. We are setting var2 via cmnd: "cmnd/humidifier/var2" 
                              See below for more details.
+
+    power_1 ✯ REQUIRED ✯: I was finding that every time this BP updated the Sonoff during the water on (delay command) stage, the sequence stopped and the water time was cut short.  To clean this up I added a wait so that this BP only sends data when the water is not on.  That wait is looking to the entity imported to HA when you built the Sonoff SV switch to modulate the water output.
 
     minimum_time: Current default 20 seconds. Must be set lower than the maximum time. This it the shortest time that will be sent to the switch.
 
