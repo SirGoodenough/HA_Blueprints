@@ -11,6 +11,18 @@ This blueprint monitors a humidity sensor & by determining the error from the go
 
 Type of blueprint: AUTOMATION
 
+Why do I need this?
+
+> If you have an automatic humidifier on your central air heating system, you are likely wasting a lot of water. These systems often work by keeping some kind of wick wet and blowing some of the furnace air thru the wick, causing the water to evaporate and 'humidify' the house.  The problem is that it likely turns the water on until the humidity is where it needs to be, then turns the water off. To be effective the wick needs to be wet.  However if the water is applied 1/2 or 1/4 of the time, the wick will still be wet and effective, but you will use half or a quarter of the water that would have otherwise flowed passed the wick and down the drain.
+>
+> This Blueprint and system applies an intermittent stream of water to the humidifier allowing much less water to be flushed over the already wet wick and into the drain.  Lower % humidity readings will cause the water stream to be on proportionally more.  The closer to the target the less water is applied.  These actions help keep the humidity more constant than the original controller.
+>
+> If you want to see my original install of this humidifier, I have a video you can watch. 
+> 
+[WhatAreWeFixing.Today Humidifier Video](https://whatarewefixing.today/77/episode-8-humidistat-replacement-using-home-assistant-and-tasmota-with-a-sonoff-sv/)
+>
+>This could, however, apply to any flow over wick humidifier by simply splitting the wires that go to the water valve and powering the water valve thru a sonoff SV running tasmota.
+
 HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FHumidifierWaterThrottleControl.yaml)
 
 Direct link to download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml```
@@ -31,28 +43,42 @@ Requirements
 
     Tasmota SV Device set-up to receive the output of this blueprint.
     Suitable Humidifier to control.
+
     Generic hygrostat integration or something similar.
 
 ## 🗂 Input fields
 
-    humidifier ✯ REQUIRED ✯: This is the entity that represents the Generic hygrostat controlling the system.
+    humidifier ✯ REQUIRED ✯: This is the entity that represents the Generic 
+        hygrostat controlling the system.
 
-    humidity ✯ REQUIRED ✯: This is the entity used by the blueprint and Generic hygrostat to monitor the living area.
+    humidity ✯ REQUIRED ✯: This is the entity used by the blueprint and 
+        Generic hygrostat to monitor the living area.
 
-    mqtt_topic ✯ REQUIRED ✯: A topic such as this with your device top topic. We are setting var2 via cmnd: "cmnd/humidifier/var2" 
-                             See below for more details.
+    mqtt_topic ✯ REQUIRED ✯: A topic such as this with your device top topic. 
+        We are setting var2 via cmnd: "cmnd/humidifier/var2" 
+                See below for more details.
 
-    power_1 ✯ REQUIRED ✯: I was finding that every time this BP updated the Sonoff during the water on (delay command) stage, the sequence stopped and the water time was cut short.  To clean this up I added a wait so that this BP only sends data when the water is not on.  That wait is looking to the entity imported to HA when you built the Sonoff SV switch to modulate the water output.
+    power_1 ✯ REQUIRED ✯: I was finding that every time this BP updated the  
+        Sonoff during the water on (delay command) stage, the sequence 
+        stopped & the water time was cut short.  To clean this up I added a 
+        wait so that this BP only sends data when the water is not on.  T
+        hat wait is looking to the entity imported to HA when you built 
+        the Sonoff SV switch to modulate the water output.
 
-    minimum_time: Current default 20 seconds. Must be set lower than the maximum time. This it the shortest time that will be sent to the switch.
+    minimum_time: Current default 20 seconds. Must be set lower than the 
+        maximum time. This it the shortest time that will be sent to the 
+        switch.
 
-    maximum_time: Current default 80 seconds. Must be set higher than the minimum time. This it the longest time that will be sent to the switch. It is also used in the formula to calculate the time sent to the switch.
+    maximum_time: Current default 80 seconds. Must be set higher than the 
+        minimum time. This it the longest time that will be sent to the 
+        switch. It is also used in the formula to calculate the time sent 
+        to the switch.
 
 ## 👀 Where is My MQTT Topic?
 
-    The Blueprint needs to send the time value to var2 in your sonoff SV. On my system the MQTT topic to do this is cmnd/humidifier/var2.  Yours will be something similar. In order to determine exactly what your will be, follow these instructions.
+This Blueprint needs to send the time value to var2 in your sonoff SV. On my system the MQTT topic to do this is ```cmnd/humidifier/var2```.  Yours will be something similar. In order to determine exactly what your topic will be, follow these instructions.
 
-    Begin by opening the webui of your Tasmota SV switch.
+Begin by opening the ```WEBUI``` of your Tasmota SV switch.
 
 #### Select the Configuration tab
 
@@ -79,12 +105,14 @@ Requirements
     Rule2 4
     Rule3 4
 
-    Also make sure you turn on the rules. Rule1 will turn on and off as called in the program & is best starting as off.
+    Also make sure you turn on the rules. Rule1 will turn on and off as 
+    called in the program & is best starting as off.
     Rule1 0
     Rule2 1
     Rule3 1
 
-    Full line of text versions of these rules are available in the Blueprint Description.  These are stacked for clarity.
+    Full line of text versions of these rules are available in the Blueprint 
+    Description.  These are stacked for clarity.
 
 Rule1 is turned on and off based on the status of Power2. When Rule1 is enabled it sets the 2 minute timer cycle and starts the Rule3 items on schedule.  It sets variable 1 to the value of variable 2.  Variable 2 is set via MQTT from the Blueprint.
 
