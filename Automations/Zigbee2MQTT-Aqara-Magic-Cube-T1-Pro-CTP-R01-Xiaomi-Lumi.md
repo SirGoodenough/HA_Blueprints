@@ -135,7 +135,7 @@ _________________________
 
 > ◦ https://github.com/SirGoodenough/HA_Blueprints
 
-#### 🧬 To make the blueprint work it will need
+#### To make the blueprint work it will need
 
 To make the Blueprint work you will need a functional Magic Cube T1-PRO integrated to Home Assistant thru Zigbee2MQTT.
 
