@@ -97,7 +97,7 @@ blueprint:
         
         Details on finding the correct topic can be found here: 
         
-        [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.md#-to-make-the-blueprint-work-it-will-need)
+        [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.md#to-make-the-blueprint-work-it-will-need)
         '
       default: "zigbee2mqtt/?"
       selector:
