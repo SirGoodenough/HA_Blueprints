@@ -6,11 +6,6 @@ blueprint:
 
     **NOTE:** This blueprint is for the PRO cube version ONLY and is not fully compatible
     with the original version of the cube.  Links for those are in my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints).
-    As of the time of this writing, you need the
-    PRO version of the cube running this Z2M Extension:
-    [CTPR01.js Z2m Extension Link](https://github.com/JJPro/CTP-R01-converter)
-    **NOTE:** If your cube is recognized without adding this extension, you don''t need to load this.
-    At some point I will remove this info, but until then, I''m making this available.
 
     This cube has an ''Action'' mode (Shown below with this graphic: 🫳 ACTION MODE ONLY 🫳 )
 

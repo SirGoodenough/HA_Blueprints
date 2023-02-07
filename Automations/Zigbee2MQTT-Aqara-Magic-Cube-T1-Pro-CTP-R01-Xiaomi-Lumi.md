@@ -41,9 +41,9 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQ
 
 **NOTE:** This blueprint is for the PRO cube version ONLY and is not fully compatible
 with the original version of the cube.  Links for those are in my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints).
-As of the time of this writing, you need the
-PRO version of the cube running this Z2M Extension:
+If your cube is not recognized after pairing, you **may** need this:
 [CTPR01.js Z2m Extension Link](https://github.com/JJPro/CTP-R01-converter)
+The current versions of Z2M including the Add-on are functioning without this extension.
 
 This cube has an ''Action'' mode (Shown below with this graphic: 🫳 ACTION MODE ONLY 🫳 )
 
