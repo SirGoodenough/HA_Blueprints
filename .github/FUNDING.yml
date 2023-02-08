@@ -10,4 +10,4 @@ liberapay: # Replace with a single Liberapay username
 issuehunt: # Replace with a single IssueHunt username
 otechie: # Replace with a single Otechie username
 lfx_crowdfunding: # Replace with a single LFX Crowdfunding project-name e.g., cloud-foundry
-custom: [Buy me Coffee](https://www.buymeacoffee.com/SirGoodenough),[PayPal one-off donation link](https://www.paypal.me/SirGoodenough)
+custom: ['"https://www.buymeacoffee.com/SirGoodenough",Buy me Coffee'.'"https://www.paypal.me/SirGoodenough",PayPal one-off donation link']
