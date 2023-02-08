@@ -22,13 +22,13 @@ YouTube Channel Link URL: (WhatAreWeFixingToday) https://bit.ly/WhatAreWeFixingT
 
 ## 🧀 If you want to support me
 
-Buy me Coffee: https://www.buymeacoffee.com/SirGoodenough
+Buy me a Coffee: https://www.buymeacoffee.com/SirGoodenough
 
 PayPal one-off donation link: https://www.paypal.me/SirGoodenough
 
 #WhatAreWeFixingToday  #SirGoodEnough
 
-Here is a list of each of my blueprints, a quick description, and an import link for import to home assistant, and jump links to the Blueprints Exchange post and the files in my GIT Repo...
+Here is a list of each of my blueprints, a quick description, an import link for import to Home Assistant, and jump links to the Blueprints Exchange post and the files in my GIT Repo...
 
 ## 🌀 Scripts
 
