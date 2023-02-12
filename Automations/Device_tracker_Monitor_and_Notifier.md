@@ -5,6 +5,7 @@ This Blueprint monitors device_tracker entities that you choose & notifies you i
 * **2022-02-12**: Added 4 levels of optional delay to make this useful for firing restarts.
 * * Redid the Instruction file to new format.
 * * Added sample code 🔩 to turn this into an entity restart machine.
+* * This update will work with an automation created with the last version.
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
 * * If name changed, it is similar. Variables have not changed.
