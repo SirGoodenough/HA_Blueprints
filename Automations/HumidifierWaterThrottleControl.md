@@ -23,20 +23,6 @@ Why do I need this?
 >
 >This could, however, apply to any flow over wick humidifier by simply splitting the wires that go to the water valve and powering the water valve thru a sonoff SV running tasmota.
 
-HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FHumidifierWaterThrottleControl.yaml)
-
-Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml```
-
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
-
-## 📩 * Version Updates
-
-Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
-
-🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
-
-[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
-
 ## 🔧 Configuration
 
 Requirements
@@ -44,7 +30,8 @@ Requirements
     Tasmota SV Device set-up to receive the output of this blueprint.
     Suitable Humidifier to control.
 
-    Generic hygrostat integration or something similar.
+    Generic hygrostat integration or something similar. 
+    [Link to sample Generic hygrostat config file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/HumidifierWaterThrottleControl_SAMPLES.yaml)
 
 ## 🗂 Input fields
 
@@ -143,6 +130,22 @@ on var1#state>30 do backlog power1 on;delay 400;power1 off break
 on var1#state>20 do backlog power1 on;delay 300;power1 off break 
 on var1#state<=20 do backlog power1 on;delay 200;power1 off endon
 ```
+
+## 📩 **Version Updates**
+
+Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+
+🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
+
+[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+
+## 📲 **Software to Download** 💾
+
+HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FHumidifierWaterThrottleControl.yaml)
+
+Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml```
+
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
 
 # 🌐 All My Blueprints
 
