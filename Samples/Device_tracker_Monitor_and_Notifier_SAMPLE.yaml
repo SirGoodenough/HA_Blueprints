@@ -1,0 +1,211 @@
+# Sample Blueprint Automation File
+
+automation:
+  - id: '90299c2b-67ad-402b-ab05-77bf8e7f1220'
+    alias: Garage Reset
+    description: Reset the House MOCA to get the garage back online
+    use_blueprint:
+      path: SirGoodenough/Device_tracker_Monitor_and_Notifier.yaml
+      input:
+        trackees:
+        - device_tracker.moca_g
+        - device_tracker.moca_h
+        notification_id: GarageGoneReset
+        gone_for:
+          hours: 0
+          minutes: 10
+          seconds: 0
+        alt_notify:
+        - choose:
+          - conditions:
+            - condition: state
+              entity_id: device_tracker.moca_g
+              state: home
+            sequence:
+            - alias: Magically fixed itself
+              service: persistent_notification.dismiss
+              data:
+                notification_id: GarageGoneReset
+          - conditions:
+            - condition: not
+              conditions:
+              - condition: state
+                entity_id: device_tracker.moca_g
+                state: home
+            sequence:
+            - alias: Voice outage 1
+              service: script.say_a_thing
+              data:
+                message: "Garage outage 1. First try."
+                entities: media_player.kitchen_speaker
+            - alias: Turn off the house moca
+              service: switch.turn_off
+              data: {}
+              target:
+                entity_id: switch.moca_reset
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 10
+                milliseconds: 0
+            - alias: Turn on the house moca
+              service: switch.turn_on
+              data: {}
+              target:
+                entity_id: switch.moca_reset
+            - alias: Add a delay so notification stays up while things are rebooting
+              delay:
+                hours: 0
+                minutes: 3
+                seconds: 11
+                milliseconds: 4
+            - alias: Kill the notification assuming it's fixed
+              service: persistent_notification.dismiss
+              data:
+                notification_id: GarageGoneReset
+        gone_for_longer:
+          hours: 0
+          minutes: 25
+          seconds: 0
+        alt_notify_2:
+        - choose:
+          - conditions:
+            - condition: state
+              entity_id: device_tracker.moca_g
+              state: home
+            sequence:
+            - alias: Magically fixed itself
+              service: persistent_notification.dismiss
+              data:
+                notification_id: GarageGoneReset
+          - conditions:
+            - condition: not
+              conditions:
+              - condition: state
+                entity_id: device_tracker.moca_g
+                state: home
+            sequence:
+            - alias: Voice outage 2
+              service: script.say_a_thing
+              data:
+                message: "Garage outage 2. Second try."
+                entities: media_player.kitchen_speaker
+            - alias: Turn off the house moca 2
+              service: switch.turn_off
+              data: {}
+              target:
+                entity_id: switch.moca_reset
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 10
+                milliseconds: 0
+            - alias: Turn on the house moca 2
+              service: switch.turn_on
+              data: {}
+              target:
+                entity_id: switch.moca_reset
+            - alias: Add a delay so notification stays up while things are rebooting
+                2
+              delay:
+                hours: 0
+                minutes: 3
+                seconds: 11
+                milliseconds: 4
+            - alias: Kill the notification assuming it's fixed
+              service: persistent_notification.dismiss
+              data:
+                notification_id: GarageGoneReset
+        gone_for_still_longer:
+          hours: 0
+          minutes: 40
+          seconds: 0
+        alt_notify_3:
+        - choose:
+          - conditions:
+            - condition: state
+              entity_id: device_tracker.moca_g
+              state: home
+            sequence:
+            - alias: Magically fixed itself
+              service: persistent_notification.dismiss
+              data:
+                notification_id: GarageGoneReset
+          - conditions:
+            - condition: not
+              conditions:
+              - condition: state
+                entity_id: device_tracker.moca_g
+                state: home
+            sequence:
+            - alias: Voice outage 1
+              service: script.say_a_thing
+              data:
+                message: "Garage outage 3. Final try."
+                entities: media_player.kitchen_speaker
+            - alias: Reset house moca and the garage network as 3rd try
+              service: switch.turn_off
+              data: {}
+              target:
+                entity_id:
+                - switch.moca_reset
+                - switch.smart_plug_with_two_usb_ports
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 10
+                milliseconds: 0
+            - alias: Turn on the garage network
+              service: switch.turn_on
+              data: {}
+              target:
+                entity_id: switch.smart_plug_with_two_usb_ports
+            - alias: Wait longer because moca and router has to boot
+              delay:
+                hours: 0
+                minutes: 5
+                seconds: 10
+                milliseconds: 0
+            - alias: Turn on the house moca 3
+              service: switch.turn_on
+              data: {}
+              target:
+                entity_id: switch.moca_reset
+            - alias: Add a delay so notification stays up while things are rebooting
+                3
+              delay:
+                hours: 0
+                minutes: 3
+                seconds: 11
+                milliseconds: 4
+            - alias: Kill the notification assuming it''s fixed
+              service: persistent_notification.dismiss
+              data:
+                notification_id: GarageGoneReset
+        gone_for_still_more_longer:
+          hours: 0
+          minutes: 55
+          seconds: 0
+        alt_notify_4:
+            - alias: Voice outage 4
+              service: script.say_a_thing
+              data:
+                message: "Garage is dead!"
+                entities: media_player.kitchen_speaker
+
+# TTS Script being called
+
+script:
+  say_a_thing:
+    alias: Get some words from automation and say them
+    variables:
+      message:
+      entities:
+    sequence:
+      - service: tts.cloud_say
+        data:
+          entity_id: "{{ entities }}"
+          message: "{{ message }}"
+          options:
+            gender: female
+          language: en-US
