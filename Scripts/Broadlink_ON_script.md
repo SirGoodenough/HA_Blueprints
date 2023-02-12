@@ -24,7 +24,7 @@ Click the badge to import this Blueprint
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FBroadlink_ON_script.yaml)
 
-# Please Click the 🧡 at the end of the Post if you find this Useful
+# Please Click the 🧡 at the end of this top Post if you find this Useful
 
 ### Option 2: Direct Link
 
