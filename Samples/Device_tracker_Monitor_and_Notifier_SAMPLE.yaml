@@ -1,4 +1,6 @@
 # Sample Blueprint Automation File
+  # NOTE:  This file should work as a package if you choose to use ut that way.
+  #  else just copy the code out to their respective yaml files in your config...
 
 automation:
   - id: '90299c2b-67ad-402b-ab05-77bf8e7f1220'
