@@ -1,0 +1,26 @@
+# Add this template trigger to create a sensor to monitor
+#  the actions that the Blueprint is reacting to.
+# This is an optional thing for training the cube operator,
+#  and not required for the function of the device.
+#
+# This could be used as a package, or import the code into 
+#  your own configuration.yaml as you see fit.
+#
+# https://www.home-assistant.io/integrations/template/#trigger-based-template-binary-sensors-buttons-numbers-selects-and-sensors
+
+
+template:
+  - trigger:
+      - platform: event
+        event_type: cube_last_action
+    sensor:
+      - name: "Cube Last Action"
+        unique_id: Any-unique-string-here-MUST-be-unique
+        icon: mdi:eye-refresh-outline
+        attributes:
+          friendly_name: "Cube Action"
+        state: >
+          {{ trigger.event.data.friendly_name }} - 
+          {{ trigger.event.data.action }} - 
+          {{ trigger.event.data.side }} frm 
+          {{ trigger.event.data.last_side }}
