@@ -1,0 +1,72 @@
+# This is an action statement that you can use in your Blueprint Automation 
+#  to call a script (below) to dim a light when rotating the cube.
+#
+# In the blueprint automation:
+#   https://my.home-assistant.io/redirect/automations/
+
+rotate_cw_face_3:
+  - service: cube_long_cw_toggle
+    data:
+      angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
+      entity: light.livingroomlight
+  - service: cube_short_cw_toggle
+    data:
+      angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
+      entity: light.livingroomlight
+
+# These are the standalone scripts that are 'called' from the Script 
+#  calling yaml shown above.  
+# If you don't need all of these only install the ones you will use.
+#
+# This uses 
+#   https://www.home-assistant.io/integrations/homeassistant#service-homeassistanttoggle)
+#  so it can toggle anything that that service can handle.
+# Changing it to homeassistant.turn_on or homeassistant.turn_off would change the behavior 
+#  slightly if this fits your needs better.
+
+script:
+  cube_short_cw_toggle:
+    description: CW Short Press Toggle
+    variables:
+      entity:
+      angle:
+    sequence:
+      - condition: template
+        value_template: '{{ angle > 0 <= 100 }}'
+      - service: homeassistant.toggle
+        target:
+          entity_id: '{{ entity }}'
+  cube_long_cw_toggle:
+    description: CW Long Press Toggle
+    variables:
+      entity:
+      angle:
+    sequence:
+      - condition: template
+        value_template: '{{ angle > 100 }}'
+      - service: homeassistant.toggle
+        target:
+          entity_id: '{{ entity }}'
+
+  cube_short_ccw_toggle:
+    description: CCW Short Press Toggle
+    variables:
+      entity:
+      angle:
+    sequence:
+      - condition: template
+        value_template: '{{ angle < 0 >= -100 }}'
+      - service: homeassistant.toggle
+        target:
+          entity_id: '{{ entity }}'
+  cube_long_ccw_toggle:
+    description: CCW Long Press Toggle
+    variables:
+      entity:
+      angle:
+    sequence:
+      - condition: template
+        value_template: '{{ angle < -100 }}'
+      - service: homeassistant.toggle
+        target:
+          entity_id: '{{ entity }}'

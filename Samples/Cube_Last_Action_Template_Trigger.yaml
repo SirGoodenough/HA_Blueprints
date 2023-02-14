@@ -13,6 +13,8 @@ template:
   - trigger:
       - platform: event
         event_type: cube_last_action
+      - platform: event
+        event_type: zha_cube_last_action
     sensor:
       - name: "Cube Last Action"
         unique_id: Any-unique-string-here-MUST-be-unique
