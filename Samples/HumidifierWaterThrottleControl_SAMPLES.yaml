@@ -1,8 +1,10 @@
 # My Generic hygrostat Configuration:
 
----
+generic_hygrostat:
   - name: House Humidity
     humidifier: switch.tasmota2_2
+    # I use the new sensor group for an average of many sensors.
+    #  See https://www.home-assistant.io/integrations/group/#sensor-groups
     target_sensor: sensor.house_humidity_group
     min_humidity: 20
     max_humidity: 55
@@ -12,9 +14,12 @@
     device_class: "humidifier"
     min_cycle_duration:
       minutes: 1
+    # A keep_alive value is important to restart the 
+    #  hygrostat should the SV restart
     keep_alive:
       minutes: 10
     initial_state: true
-    # # away_humidity: 35
-    # # away_fixed: True
+    # sensor_stale_duration needs to be longer than 
+    #  you expect the sensor updates to happen.
+    #  Otherwise it freaks and shuts down the humidifier.
     sensor_stale_duration: 04:00:00

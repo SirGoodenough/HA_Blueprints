@@ -1,0 +1,27 @@
+# Sample Automation File
+  # NOTE:  This file should work as a package if you choose to use it that way.
+  #  Else just copy the code out to the automations.yaml file in your config...
+
+automation:
+  ####################################################
+  # MQTT Restart Tasmota                             #
+  ####################################################
+  ####    Use this automation to get all your devices in sync, including
+  ####     power state, immediately after Home Assistant is (re)started.
+  - id: Tasmota_Restart_Sequence-random-oisjg98uwr8ytjw9ut8344
+    alias: Power state on HA start-up
+    initial_state: on
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - alias: Wait until the start-up sequence is mostly done - adjust as needed
+        delay: 00:00:22
+      - alias: Generate the Buttons in case they don't exist
+        service: script.tasmota_ez_button_for_update_and_restart_all_2022_01_07a
+      - alias: Give it another short wait to make sure that completed - adjust as needed
+        delay: 00:00:13
+      - alias: Push the Tasmota Restart - One Button to Rule them All
+        service: button.press
+        target:
+          entity_id: button.ez_restart_button_tasmota
