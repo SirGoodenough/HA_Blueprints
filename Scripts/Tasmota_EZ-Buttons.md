@@ -37,7 +37,7 @@ Requirements
 * Home Assistant Tasmota Integration installed and talking to all yout Tasmota Devices.
 * The default GroupTopic of 'Tasmotas' is available on all your Tasmota Devices.
 * Tasmota Devices firmware default MQTT topic is set to: ```%prefix%/%topic%/``` If you did not change the topic in your Tasmota Devices then leave it as the default here as well. The other option available to you is to flip them as I do in my Home Assistant personally.
-* Your Tasmota devices need to be updated to the same 'breaking change' generation as the Released version of Tasmota for this to be able to update. Currently that is v9.1 minumum.
+* Your Tasmota devices need to be updated to the same 'breaking change' generation as the Released version of Tasmota for this to be able to update. Currently that is v9.1 minimum.
 
 ## 🗂 Input fields
 
@@ -70,11 +70,11 @@ Requirements
 
 ## 👀 ✈️ Extended Information
 
-This implementation is exactly the implementation in the Home Assistant Docs.
-For further information, reference the links below.
+For further information, reference these links below.
 
 >      https://www.home-assistant.io/integrations/button/
 >      https://www.home-assistant.io/docs/automation/using_blueprints/
+>      [![Open your Home Assistant instance and show your scripts.](https://my.home-assistant.io/badges/scripts.svg)](https://my.home-assistant.io/redirect/scripts/)
 >      https://www.home-assistant.io/integrations/tasmota/
 >      https://tasmota.github.io/docs/Upgrading/
 >      https://tasmota.github.io/docs/Commands/#mqtt

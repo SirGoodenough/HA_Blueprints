@@ -10,60 +10,102 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
   * Add Minimum Home Assistant 2021-11-0
 * **2021-09-14**: First blueprint version :tada:
 
-## 📩 * Version Updates
+## 🔮 About this blueprint
 
-Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+Type of blueprint: SCRIPT
 
-🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
+Why do I need this?
 
-[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+> This is a Script Blueprint that takes on the huge mess of scripts created by the Standard Broadlink Integration and script sequences them into functions.  IE: 'Turn on my Chromecast' or 'Start music on my receiver'
+> 
+> If you have a Broadlink that helps run your TV, you know exactly what I mean about a mess. Every button and function and button sequence on your remote becomes another script that must be called to get stuff done. It's hard enough to remember what button does what on the remote itself, remembering all the names of the buttons it impossible (for me).
+>
+> The scripts built with this Blueprint gives you a common scenario for turning your stuff on and putting the device in the correct mode to do the things you want to do. It's called programmed macros or the like on some remotes. I have a number instances of this blueprint script created in my system. Here is a shot of them:
+>
+> ![My Buttons in Lovelace](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Screenshot_2022-01-08_20-11-15.png?raw=true "Examples of this Blueprint in Lovelace")
 
-### Option 1: My Home Assistant
+## 🔧 Configuration
 
-Click the badge to import this Blueprint
+Requirements
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FBroadlink_ON_script.yaml)
+* Broadlink Integration happy and running in Home Assistant.
+* The remote buttons that you plan on using stored in HA as scripts ready to call.
+* An HA Dashboard set-up to store, present, and keep track of your Broadlink scripts.
 
-# Please Click the 🧡 at the end of this top Post if you find this Useful
+## 🗂 Input fields
 
-### Option 2: Direct Link
+    adapter_power:/name: Turn on the smart plug that powers the adapter
+        This is the switch entity for the device that powers the streaming device.
+        I have my Chromecast & Firestick connected thru a smart plug.
 
-Copy this link if you want to import the blueprint in your installation.
-```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml```
+    reciever_power:/name: Reciever Power
+        This is a call to the script that turns the Reciever Device ON.
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml
+    tv_power:/name: TV Power
+        This is a call to the script that turns on the TV Entity.
 
-## 📖 Description
+    tv_mode:/name: TV Input Mode
+        This is a call to the script to select the feed into the TV. 
 
-This is a Script Blueprint that takes on the huge mess of scripts created by the Standard Broadlink Integration.  If you have a Broadlink that helps run your TV, you know exactly what I mean.  Every button and function and button sequence on your remote becomes another script that must be called to get stuff done.  It's hard enough to remember what button does what on the remote itself, remembering all the names of the buttons it impoeeible (for me).
+    tv_ota_mode:/name: OTA Input Mode
+      description: 
+        This is a call to the script to select the Over The Air TV mode to put 
+          the TV Mode into a known state.  
+        Note- My TV uses multiple presses to select some inputs, 
+          so this is needed in my case. You may not need this.
+          Adjust sequence accordingly...
 
-The scripts built with this Blueprint gives you a common scenario for turning your stuff on and putting the device in the correct mode to do the things you want to do.  I have a number instances of this blueprint script created in my system.  Here is a shot of them:
+    reciever_input:/name: Reciever Input
+        This is a call to the script that turns the Receiver
+          Input to the correct adapter line
 
-![My Buttons in Lovelace](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Screenshot_2022-01-08_20-11-15.png?raw=true "Examples of this Blueprint in Lovelace")
+    reciever_out_mode:/name: Reciever Speaker Out Mode
+        This is a call to the script that turns the Reciever
+          Speakers into the desired output mode
 
-#### 🛠 Installation
+    cooldown:/name: Cooldown
+        The delay between IR Blasts...
+          My Broadlink sends stuff out faster than my equipment
+          can respond, so this gaps the commands.
 
-* Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
-* Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
-* In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub:
+## 👀 ✈️ Extended Information
 
-> ◦ https://github.com/SirGoodenough/HA_Blueprints
+For further information, reference these links.
 
-This is my version and has defaults specific to my system that will need to be changed for your system,  Also if an !input has a default, the calling script is not required to include input data for that !input, but if you want to change the input values without editing the blueprint defaults, then add more selectors to overwrite with your desired values.
+>      https://www.home-assistant.io/integrations/broadlink/
+>      https://www.home-assistant.io/docs/automation/using_blueprints/
+>      [![Open your Home Assistant instance and show your scripts.](https://my.home-assistant.io/badges/scripts.svg)](https://my.home-assistant.io/redirect/scripts/)
+
+## 💡 Other Thoughts
+
+This was set-up specifically for my instance and configured for my hardware.  Chances of you plugging this in as defaulted and it working for you are low.  My hope here is that you take what I am using anf adjust the BP main body script to do that you want it to do.  Since I don't have your hardware, this will need to be something that you do, but if you get stuck or want advice, look at the bottom of this post / file for contact info and contact me directly.
 
 ## 🌞 ❄️ Troubleshooting tip
 
 If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
 Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+[HA Docs on this here.](https://www.home-assistant.io/docs/automation/troubleshooting/#traces)
 
 ```yaml
-alias: aaaaaaa office Fan Test
-description: 'See how to increase the number of Traces available''
 trace:
   stored_traces: 10
-use_blueprint:
-.....
 ```
+
+## 📩 **Version Updates**
+
+Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+
+📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint.   [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+
+# Please Click the 🧡 at the end of this top Post if you find this Useful
+
+## 📲 **Software to Download** 💾
+
+HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2FBroadlink_ON_script.yaml)
+
+Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml```
+
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml
 
 # 🌐 All My Blueprints
 
