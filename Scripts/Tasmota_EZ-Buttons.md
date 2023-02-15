@@ -19,15 +19,14 @@ Why do I need this?
 
 > If you are not very good with Home Assistant script writing, but want help managing your Tasmota firmware devices, this is the Blueprint for you.
 >
-> This BP generates 3 scripts. It does this using MQTT Discovery. My assumption is that your Home Assistant Instance has access to an MQTT Broker because you are using Tasmota, which all but requires it. If you are not connected to an MQTT Broker, this BP will not work for you.  
+> This BP generates 3 buttons (scripts). It does this using MQTT Discovery. My assumption is that your Home Assistant Instance has access to an MQTT Broker because you are using Tasmota, which all but requires it. If you are not connected to an MQTT Broker, this BP will not work for you.  
 > 
-> Script one will simply restart all your Tasmota devices.  This comes in handy at HA re-boot to refresh the state of the devices in Home Assistant. This means all the temperature, etc. measurements are up to date and displayed on the dashboard right away, not after the refresh delay. Also good for troubleshooting problem devices, giving them a kick when they need it.
+> Button one will simply restart all your Tasmota devices.  This comes in handy at HA re-boot to refresh the state of the devices in Home Assistant. This means all the temperature, etc. measurements are up to date and displayed on the dashboard right away, not after the refresh delay. Also good for troubleshooting problem devices, giving them a kick when they need it.
 >
-> The second script will update a few of your Tasmota Devices to the latest firmware.  That is assuming you start out kind of caught up already and have followed the [upgrade path](https://tasmota.github.io/docs/Upgrading/)
-
-> The reason for upgrading a few is to verify that the upgrade is working with your things and prove to yourself that it is safe to upgrade them all. I have almost 40 devices, so I grab like 1 of each type and add them here. Then when a new Tasmota version shows up, I click this snd those 5 (in my case) devices upgrade. After that is working for a few days without problems, I click the next button.
+> The second Button will update a few of your Tasmota Devices to the latest firmware.  That is assuming you start out kind of caught up already and have followed the [upgrade path](https://tasmota.github.io/docs/Upgrading/)
+> The reason for upgrading a few is to verify that the upgrade is working with your things and prove to yourself that it is safe to upgrade them all. I have almost 40 devices, so I grab like 1 of each type and add them here. Then when a new Tasmota version shows up, I click this and those 5 (in my case) devices upgrade. After that is working for a few days without problems, I click the next button.
 >
-> The third script just upgrades everything to the latest version. I can upgrade all my devices in about 3 minutes like this.  [My Youtube Short](https://www.youtube.com/watch?v=OT5id_P2JVw)
+> The third Button just upgrades everything to the latest version. I can upgrade all my devices in about 3 minutes like this.  [My Youtube Short](https://www.youtube.com/watch?v=OT5id_P2JVw)
 
 ## 🔧 Configuration
 
