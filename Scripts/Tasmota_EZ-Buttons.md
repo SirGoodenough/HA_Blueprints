@@ -47,7 +47,7 @@ Requirements
         to send the update command to all devices. 
 
     topic_format:/name: Tasmota Topic Format
-        The format of your Tasmota devides has a default that most people use:  
+        The format of your Tasmota devices has a default that most people use:  
         '%prefix%/%topic%/'.  
 
     ez_canary:/name: EZ Canary Button Tasmota
@@ -59,7 +59,7 @@ Requirements
         
     ez_canary_grouptopic:/name: The GroupTopic name for the EZ Canary Button
         This is the name you assigned to the GroupTopics in the devices 
-        you chose as the first ones to recieve a firmware update.  
+        you chose as the first ones to receive a firmware update.  
         This needs to be set-up by you in the Tasmota Console of the devices 
         themselves. Leave this blank if you are not using this feature.
         The button will be created, but it won't do anything.
