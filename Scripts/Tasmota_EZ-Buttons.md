@@ -13,7 +13,7 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 
 ## 🔮 About this blueprint
 
-Type of blueprint: AUTOMATION
+Type of blueprint: SCRIPT
 
 Why do I need this?
 
