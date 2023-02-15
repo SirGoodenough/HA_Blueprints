@@ -23,7 +23,7 @@ Requirements
 
 * 1 or more functioning media_players
 * Media file(s) that are accessible to Home Assistant such that they can be played / displayed thru media_player.
-* The speakers you want to broadcast to must be working and integrated with the integration that makes them work.  This BP does not set-up speakers for you, it only sends files to the speakers.  See [Links](#%EF%B8%8F-extended-information)) below to help guide you thru speaker set-up.
+* The speakers you want to broadcast to must be working and integrated with the integration that makes them work.  This BP does not set-up speakers for you, it only sends files to the speakers.  See [Links](#%EF%B8%8F-extended-information) below to help guide you thru speaker set-up.
 
 ## 🗂 Input fields
 
@@ -49,7 +49,7 @@ Requirements
           (https://www.home-assistant.io/integrations/cast/)
           (https://developers.google.com/cast/docs/media/)
 
-## ✈️ <a name="E-Link">Extended Information</a>
+## ✈️ Extended Information
 
 For further information, reference these links below.
 
@@ -74,9 +74,11 @@ To build the script:
 > 4. The media_player field will pull from a pick list but you can extend that with multiple media_players or groups as needed by typing them in.  Use the links above to help get your system able to play media files.
 > 5. The media type is where you match how the content is encoded with how the player will play it.  Trial and error here can be your friend unless you are much better at figuring this stuff out than me.  I generally only use 'audio/mp3' and occasionally 'image/jpg'.  More detailed information available in the Google Developers link above.
 
-## 💡 Other Thoughts
+## 🥧 Example Usage
 
-This 
+This is a case I use this in my setup.  Instead of pasting all the media set-up code in an already busy automation, I set that stuff up with this blueprint and just call the script when I want to to play.  The added bonus is I can call on this script again where appripriate and the sounder is just a script call away.
+
+See YAML code in this [Samples file]()
 
 ## 🌞 ❄️ Troubleshooting tip
 

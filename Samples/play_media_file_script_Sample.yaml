@@ -1,0 +1,38 @@
+# Sample usage scenario for this blueprint
+#
+# This could be used as a package, or import the code into 
+#  your own configuration.yaml as you see fit.
+
+
+Script:
+  media_player_mail:
+    alias: Media Player Mail
+    use_blueprint:
+      path: SirGoodenough/play_media_file_script.yaml
+      input:
+        speaker_target: media_player.intercom_group
+        file_2_play: media-source://media_source/local/mp3/youGotmail.mp3
+    icon: mdi:email-fast
+
+automation:
+  #####################################################
+  # Mailbox                                           #
+  #####################################################
+  - id: 3b65d36e-abf9-4d46-8c69-1b231ffb8179
+    alias: You've Got Mail
+    initial_state: on
+    trigger:
+    - platform: state
+      entity_id: binary_sensor.mailbox
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 15
+    - platform: state
+      entity_id: binary_sensor.mailbox
+      from: 'on'
+      to: 'off'
+      for:
+        seconds: 15
+    action:
+    - service: script.media_player_mail
