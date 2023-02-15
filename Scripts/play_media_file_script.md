@@ -23,7 +23,7 @@ Requirements
 
 * 1 or more functioning media_players
 * Media file(s) that are accessible to Home Assistant such that they can be played / displayed thru media_player.
-* The speakers you want to broadcast to must be working and integrated with the integration that makes them work.  This BP does not set-up speakers for you, it only sends files to the speakers.  See [Links](#E-Link) below to help guide you thru speaker set-up.
+* The speakers you want to broadcast to must be working and integrated with the integration that makes them work.  This BP does not set-up speakers for you, it only sends files to the speakers.  See [Links](#%EF%B8%8F-extended-information)) below to help guide you thru speaker set-up.
 
 ## 🗂 Input fields
 
