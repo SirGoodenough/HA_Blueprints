@@ -14,7 +14,9 @@ Type of blueprint: SCRIPT
 
 Why do I need this?
 
-> I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file.  In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function.  The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario.
+> I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file.  
+> 
+> In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function.  The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario.
 >
 
 ## 🔧 Configuration
@@ -76,9 +78,9 @@ To build the script:
 
 ## 🥧 Example Usage
 
-This is a case I use this in my setup.  Instead of pasting all the media set-up code in an already busy automation, I set that stuff up with this blueprint and just call the script when I want to to play.  The added bonus is I can call on this script again where appripriate and the sounder is just a script call away.
+This is a case I use this in my setup.  Instead of pasting all the media set-up code in an already busy automation, I set that stuff up with this blueprint and just call the script when I want to to play.  The added bonus is I can call on this script again where appropriate and the sounder is just a script call away.
 
-See YAML code in this [Samples file]()
+See YAML code in this [Sample YAML file / package file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/play_media_file_script_Sample.yaml)
 
 ## 🌞 ❄️ Troubleshooting tip
 
