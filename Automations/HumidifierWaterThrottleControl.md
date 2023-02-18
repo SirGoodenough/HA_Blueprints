@@ -31,7 +31,7 @@ Requirements
     Suitable Humidifier to control.
 
     Generic hygrostat integration or something similar. 
-    [Link to sample Generic hygrostat config file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/HumidifierWaterThrottleControl_SAMPLES.yaml)
+    [Link to sample Generic hygrostat config file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/HumidifierWaterThrottleControl_SAMPLE.yaml)
 
 ## 🗂 Input fields
 

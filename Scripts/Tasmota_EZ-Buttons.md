@@ -92,7 +92,7 @@ You can effectively use the Tasmota Reset Button to 'reload' all of your Tasmota
 
 UPDATE:  I have noticed that the buttons become disabled after Home Assistant Restart. Very annoying, but easy to fix. I have added a start-up Automation to Home Assistant to refresh the buttons a little while after the HA system starts. The delay is to ensure things are going well and the system is not too busy when this is run. I have found 22 seconds to be a good number for this on my system, feel free to adjust as needed. I am also pressing the Tasmota Restart button a little while after that to refresh all the Tasmota's at boot and provide fresh data for HA to update it's register status. The script name and button name will need to be changed to reflect your choices when you built the blueprint control script.
 
-Example [automation code sample file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Tasmota_EZ-Buttons_Sample_Home_Assistant_Start-up_Automation.yaml).
+Example [automation code sample file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Tasmota_EZ-Buttons_Home_Assistant_Start-up_Automation_SAMPLE.yaml).
 
 ## 🌞 ❄️ Troubleshooting tip
 

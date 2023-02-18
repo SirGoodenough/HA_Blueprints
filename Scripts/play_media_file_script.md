@@ -80,7 +80,7 @@ To build the script:
 
 This is a case I use this in my setup.  Instead of pasting all the media set-up code in an already busy automation, I set that stuff up with this blueprint and just call the script when I want to to play.  The added bonus is I can call on this script again where appropriate and the sounder is just a script call away.
 
-See YAML code in this [Sample YAML file / package file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/play_media_file_script_Sample.yaml)
+See YAML code in this [Sample YAML file / package file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/play_media_file_script_SAMPLE.yaml)
 
 ## 🌞 ❄️ Troubleshooting tip
 
