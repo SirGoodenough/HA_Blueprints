@@ -37,22 +37,22 @@ blueprint:
   input:
     people2monitor:
       name: Person or People to follow
-      description: 'Select the Person(s) you want this BP to trigger on for this action.
-        Multiples are allowed.
+      description: 'Select the Person you want this BP to trigger on for this action.
+        Multiples are not allowed.
         '
       selector:
         entity:
-          multiple: true
+          multiple: false
           domain: person
     zone2monitor:
       name: Zone to watch
-      description: 'Select the Zone(s) you want this BP to trigger on when this person
+      description: 'Select the Zone you want this BP to trigger on when this person
         enters or leaves it.
-        Multiples are allowed.
+        Multiples are not allowed.
         '
       selector:
         entity:
-          multiple: true
+          multiple: false
           domain: zone
     enter_action:
       name: Enter the Zone Action
@@ -127,28 +127,36 @@ blueprint:
 trigger_variables:
   trigg_1: !input zone2monitor
 trigger: 
+      # These Don't work
   # - platform: zone
   #   id: enter_trigger
   #   entity_id: !input people2monitor
   #   zone: '{{ trigg_1 }}'
   #   event: enter
-  #
   # - platform: zone
   #   id: leave_trigger
   #   entity_id: !input people2monitor
   #   zone: !input zone2monitor
   #   event: leave
 
+      # These are for testing
+  - platform: state
+    id: enter_trigger
+    entity_id: input_boolean.test_color
+    from: 'off'
+    to: 'on'
   - platform: state
     id: leave_trigger
     entity_id: input_boolean.test_color
+    from: 'on'
+    to: 'off'
 
+      # These work fine
   - platform: zone
     id: enter_trigger
     entity_id: !input people2monitor
     zone: zone.katy_s_kloset
     event: enter
-
   - platform: zone
     id: leave_trigger
     entity_id: !input people2monitor
@@ -162,6 +170,13 @@ condition:
     before: !input 'disable_time'
     weekday: !input 'weekday'
 action:
+
+- alias: 'Fire variable reporting event. This is for optional troubleshooting data.'
+  event: person_alert_variables
+  event_data:
+    people2monitor: !input people2monitor
+    zone2monitor: !input zone2monitor
+
 - alias: Lets do an action based on the data we collected
   choose:
   - alias: Person has arrived
@@ -174,11 +189,5 @@ action:
     - condition: trigger
       id: leave_trigger
     sequence: !input leave_action
-
-- alias: 'Fire variable reporting event. This is for optional troubleshooting data.'
-  event: person_alert_variables
-  event_data:
-    people2monitor: !input people2monitor
-    zone2monitor: !input zone2monitor
 
 mode: queued
