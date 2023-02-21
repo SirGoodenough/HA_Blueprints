@@ -1,0 +1,33 @@
+Error Codes:
+
+Logger: homeassistant.components.automation
+Source: components/automation/config.py:207
+Integration: Automation (documentation, issues)
+First occurred: 21:01:43 (4 occurrences)
+Last logged: 21:56:35
+
+Blueprint 'Person Alert Honitor - 2023-02-22' generated invalid automation with inputs OrderedDict([('people2monitor', ['person.julie']), ('zone2monitor', ['zone.katy_s_kloset']), ('enter_action', [OrderedDict([('service', 'light.toggle'), ('data', OrderedDict()), ('target', OrderedDict([('entity_id', 'light.cabinetlight')]))])]), ('leave_action', [OrderedDict([('service', 'light.toggle'), ('data', OrderedDict()), ('target', OrderedDict([('entity_id', 'light.cabinetlight')]))])])]): Entity ID {{ trigg_1 }} is an invalid entity ID for dictionary value @ data['zone']. Got None
+Blueprint 'Person Alert Honitor - 2023-02-22' generated invalid automation with inputs OrderedDict([('people2monitor', ['person.julie']), ('zone2monitor', ['zone.katy_s_kloset']), ('enter_action', [OrderedDict([('service', 'light.toggle'), ('data', OrderedDict()), ('target', OrderedDict([('entity_id', 'light.cabinetlight')]))])]), ('leave_action', [OrderedDict([('service', 'light.toggle'), ('data', OrderedDict()), ('target', OrderedDict([('entity_id', 'light.cabinetlight')]))])])]): value should be a string for dictionary value @ data['zone']. Got None
+
+Calling Automation, generated 100% with GUI.:
+
+- id: '1676934491362'
+  alias: AAAAApresence
+  description: shssbheh25gwbbw  vs x
+  use_blueprint:
+    path: test/Person_alert_Blueprint.yaml
+    input:
+      people2monitor:
+      - person.julie
+      zone2monitor:
+      - zone.katy_s_kloset
+      enter_action:
+      - service: light.toggle
+        data: {}
+        target:
+          entity_id: light.cabinetlight
+      leave_action:
+      - service: light.toggle
+        data: {}
+        target:
+          entity_id: light.cabinetlight

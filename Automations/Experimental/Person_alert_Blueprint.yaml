@@ -132,14 +132,29 @@ trigger:
   #   entity_id: !input people2monitor
   #   zone: '{{ trigg_1 }}'
   #   event: enter
+  #
   # - platform: zone
   #   id: leave_trigger
   #   entity_id: !input people2monitor
   #   zone: !input zone2monitor
   #   event: leave
+
   - platform: state
     id: leave_trigger
     entity_id: input_boolean.test_color
+
+  - platform: zone
+    id: enter_trigger
+    entity_id: !input people2monitor
+    zone: zone.katy_s_kloset
+    event: enter
+
+  - platform: zone
+    id: leave_trigger
+    entity_id: !input people2monitor
+    zone: zone.katy_s_kloset
+    event: leave
+
 condition:
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
