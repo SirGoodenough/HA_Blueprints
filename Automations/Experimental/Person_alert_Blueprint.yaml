@@ -1,0 +1,169 @@
+blueprint:
+  name: Person Alert Honitor - 2023-02-22
+  description: 'This BluePrint will monitor a person or persons, and when they
+    ''enter'' or ''leave'' the zone you pick, it will trigger an action.
+
+    I use this BluePrint to follow family members around during their day so that
+    the family members at home know where their loved ones are.
+
+    The monitored areas need to be set up as zones in Home Assistant. SEE:
+      [HA ZONES LINK](https://www.home-assistant.io/integrations/zone/)
+      [![Open your Home Assistant instance and show your zones.](https://my.home-assistant.io/badges/zones.svg)](https://my.home-assistant.io/redirect/zones/)
+
+
+    The person needs something monitoring their location. I use Life360, but the
+    Home Assistant App running on their phone will also work. There are likely other
+    location monitoring methods but I am not aquainted with any of them. SEE:
+
+      [![Open your Home Assistant instance and show your people.](https://my.home-assistant.io/badges/people.svg)](https://my.home-assistant.io/redirect/people/)
+
+      [LIFE360 INTEGRATION LINK ](https://www.home-assistant.io/integrations/life360/)
+
+      [PERSON INTEGRATION LINK ](https://www.home-assistant.io/integrations/person/)
+
+
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint.  🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+
+
+    [Community link for this blueprint](NEW LINK)
+    '
+  # source_url: ""
+  homeassistant:
+    min_version: 2023.2.1
+  domain: automation
+  input:
+    people2monitor:
+      name: Person or People to follow
+      description: 'Select the Person(s) you want this BP to trigger on for this action.
+        Multiples are allowed.
+        '
+      selector:
+        entity:
+          multiple: true
+          domain: person
+    zone2monitor:
+      name: Zone to watch
+      description: 'Select the Zone(s) you want this BP to trigger on when this person
+        enters or leaves it.
+        Multiples are allowed.
+        '
+      selector:
+        entity:
+          multiple: true
+          domain: zone
+    enter_action:
+      name: Enter the Zone Action
+      description: 'Build the action here that you want to happen when they enter
+        this zone. There is a ''Persistant Notification'' example in [The Docs File.]()
+
+        If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
+
+        If you want to play a sound effect oe music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+        '
+      default: []
+      selector:
+        action: {}
+    leave_action:
+      name: Leave the Zone Action
+      description: 'Build the action here that you want to happen when they leave
+        this zone. There is a ''Persistant Notification'' example in [The Docs File.]()
+ 
+        If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
+
+        If you want to play a sound effect oe music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+        '
+      default: []
+      selector:
+        action: {}
+    enable_time:
+      name: Time of day to begin action(s)
+      description: 'Set this for the time of day you want to allow action(s) to begin.
+        Leave as is to always be enabled.'
+      default: 00:00:00
+      selector:
+        time: {}
+    disable_time:
+      name: Time of day to end action(s)
+      description: 'Set this for the time of day you want action(s) to end.
+        Leave as is to always be enabled.'
+      default: 00:00:00
+      selector:
+        time: {}
+    weekday:
+      name: Day of the week to allow action(s)
+      description: 'Change options if you want to include or exclude any specific day.
+        All days are selected by default.'
+      default:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+      - sun
+      selector:
+        select:
+          options:
+          - label: Monday
+            value: mon
+          - label: Tuesday
+            value: tue
+          - label: Wednesday
+            value: wed
+          - label: Thursday
+            value: thu
+          - label: Friday
+            value: fri
+          - label: Saturday
+            value: sat
+          - label: Sunday
+            value: sun
+          custom_value: false
+          multiple: true
+
+trigger_variables:
+  trigg_1: !input zone2monitor
+trigger: 
+  # - platform: zone
+  #   id: enter_trigger
+  #   entity_id: !input people2monitor
+  #   zone: '{{ trigg_1 }}'
+  #   event: enter
+  # - platform: zone
+  #   id: leave_trigger
+  #   entity_id: !input people2monitor
+  #   zone: !input zone2monitor
+  #   event: leave
+  - platform: state
+    id: leave_trigger
+    entity_id: input_boolean.test_color
+condition:
+  - alias: Only allow execution within selected Hours / Weekdays
+    condition: time
+    after: !input 'enable_time'
+    before: !input 'disable_time'
+    weekday: !input 'weekday'
+action:
+- alias: Lets do an action based on the data we collected
+  choose:
+  - alias: Person has arrived
+    conditions:
+    - condition: trigger
+      id: enter_trigger
+    sequence: !input enter_action
+  - alias: Person has left
+    conditions:
+    - condition: trigger
+      id: leave_trigger
+    sequence: !input leave_action
+
+- alias: 'Fire variable reporting event. This is for optional troubleshooting data.'
+  event: person_alert_variables
+  event_data:
+    people2monitor: !input people2monitor
+    zone2monitor: !input zone2monitor
+
+mode: queued
