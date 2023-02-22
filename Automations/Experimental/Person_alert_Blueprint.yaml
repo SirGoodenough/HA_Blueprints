@@ -73,7 +73,7 @@ blueprint:
       name: Leave the Zone Action
       description: 'Build the action here that you want to happen when they leave
         this zone. There is a ''Persistant Notification'' example in [The Docs File.]()
- 
+
         If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
 
         If you want to play a sound effect oe music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
