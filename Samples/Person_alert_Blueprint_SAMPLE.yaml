@@ -25,27 +25,13 @@ leave_action:
 script:
   personalert:
     alias: Drop a timed persistant_notification for person alert BP
-    variables:
-        # Collect variable data from script call & provide defaults
-      people: "placeholder1"
-      place: "placeholder2"
-      trigg: "enter_trigger"
-      notify_id: "cd08c61d-0b69-4e01-a1f2-5c26746c99ae"
-      flip: '{% if trigg == ''enter_trigger'' %}
-          They are located at:
-        {% else %}
-          They have left:
-        {% endif %}
-        '
     sequence:
-    - alias: Send the notification
+    - alias: Notify interested parties WITH notification_id
       service: persistent_notification.create
       data:
         title: '{{ people + '' Status'' }}'
-        message: '{{ ''Regarding: '' + people +
-        ''\n'' + flip + '' '' + place +
-        ''\n\nNotification_id: '' + notify_id }}
-        '
+        message: '{{ ''Regarding: '' + people + ''\n'' + flip + '' '' + place +
+        ''\n\nNotification_id:'' + notify_id }} '
         notification_id: '{{ notify_id }}'
     - alias: Add a delay so notification stays up a while
         # Pick your own delay time.  If you set it to 0 this script does nothing.
@@ -55,4 +41,14 @@ script:
       service: persistent_notification.dismiss
       data:
         notification_id: '{{ notify_id }}'
-
+    variables:
+        # Collect variable data and provide defaults
+      people: placeholder1
+      place: placeholder2
+      trigg: enter_trigger
+      notify_id: cd08c61d-0b69-4e01-a1f2-5c26746c99ae
+      flip: '{% if trigg == ''enter_trigger'' %} They are located at: {% else %}
+        They have left: {% endif %} '
+    mode: queued
+    icon: mdi:message-alert-outline
+    max: 10
