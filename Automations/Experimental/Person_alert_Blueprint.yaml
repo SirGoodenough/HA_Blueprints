@@ -38,11 +38,11 @@ blueprint:
     people2monitor:
       name: Person or People to follow
       description: 'Select the Person you want this BP to trigger on for this action.
-        Multiples are not allowed.
+        Multiples are allowed.
         '
       selector:
         entity:
-          multiple: false
+          multiple: true
           domain: person
     zone2monitor:
       name: Zone to watch
@@ -62,6 +62,9 @@ blueprint:
         If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
 
         If you want to play a sound effect oe music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+
+        There is also a built-in [Actionable Notification Script Blueprint](https://github.com/home-assistant/core/blob/master/homeassistant/components/script/blueprints/confirmable_notification.yaml)
+        that could work here.  It is included with Home Assistant.
         '
       default: []
       selector:
@@ -125,13 +128,15 @@ blueprint:
           multiple: true
 
 trigger_variables:
-  trigg_1: !input zone2monitor
+  people2monitor_var: !input people2monitor
+  zone2monitor_var: !input zone2monitor
+
 trigger: 
       # These Don't work
   # - platform: zone
   #   id: enter_trigger
   #   entity_id: !input people2monitor
-  #   zone: '{{ trigg_1 }}'
+  #   zone: '{{ zone2monitor_var }}'
   #   event: enter
   # - platform: zone
   #   id: leave_trigger
@@ -174,8 +179,9 @@ action:
 - alias: 'Fire variable reporting event. This is for optional troubleshooting data.'
   event: person_alert_variables
   event_data:
-    people2monitor: !input people2monitor
-    zone2monitor: !input zone2monitor
+    people2monitor: '{{ people2monitor_var }}'
+    zone2monitor: '{{ zone2monitor_var }}'
+    triggerid: '{{ trigger.id }}'
 
 - alias: Lets do an action based on the data we collected
   choose:
