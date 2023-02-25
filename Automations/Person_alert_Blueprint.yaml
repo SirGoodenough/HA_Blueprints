@@ -30,7 +30,7 @@ blueprint:
 
     [Community link for this blueprint](NEW LINK)
     '
-  # source_url: ""
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.yaml
   homeassistant:
     min_version: 2023.2.1
   domain: automation
