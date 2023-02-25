@@ -48,11 +48,11 @@ blueprint:
       name: Zone to watch
       description: 'Select the Zone you want this BP to trigger on when this person
         enters or leaves it.
-        Multiples are not allowed.
+        Multiples are allowed.
         '
       selector:
         entity:
-          multiple: false
+          multiple: true
           domain: zone
     enter_action:
       name: Enter the Zone Action
@@ -127,26 +127,20 @@ blueprint:
           custom_value: false
           multiple: true
 
-trigger_variables:
-  people2monitor_var: !input people2monitor
-  zone2monitor_var: !input zone2monitor
-
-variables:
-  friend_zone: '{{ state_attr(zone2monitor_var, ''friendly_name'') }}'
-  to_state: '{{ trigger.to_state.state }}'
-  from_state: '{{ trigger.from_state.state }}'
-
 trigger: 
   - platform: state
     id: Persons state has changed
     entity_id: !input people2monitor
 
 condition:
-  - alias: Make sure it's a Zone move not a Lost move
+  - alias: Make sure there even was a move
+    condition: template
+    value_template: '{{ to_state != from_state }}'
+  - alias: Make sure it's not an I'm Lost move
     condition: template
     value_template: '
-      {{ not to_state in (''unknown'', ''unavailable'', '''') and
-      not from_state in (''unknown'', ''unavailable'', '''') }}
+      {{ not to_state in (''unknown'',''unavailable'',''none'',''None'','''') and
+      not from_state in (''unknown'',''unavailable'',''none'',''None'','''') }}
       '
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
@@ -154,13 +148,25 @@ condition:
     before: !input 'disable_time'
     weekday: !input 'weekday'
 
+variables:
+  people2monitor_var: !input people2monitor
+  zone2monitor_var: !input zone2monitor
+  # friend_zone: '{{ state_attr( zone2monitor_var, ''friendly_name'' ) }}'
+  friend_zone: >
+    {% set ns = namespace(zone=[]) %}
+    {% for z in zone2monitor_var %}
+    {% set ns.zone = ns.zone + [states[z].attributes.friendly_name] %}
+    {% endfor %} 
+    {{ ns.zone }}
+  to_state: '{{ trigger.to_state.state }}'
+  from_state: '{{ trigger.from_state.state }}'
+
 action:
 - alias: 'Fire variable reporting event. This is for optional troubleshooting data.'
   event: person_alert_variables
   event_data:
     people2monitor: '{{ people2monitor_var }}'
     zone2monitor: '{{ zone2monitor_var }}'
-    triggerid: '{{ trigger.id }}'
     friend_zone: '{{ friend_zone }}'
     to_state: '{{ to_state }}'
     from_state: '{{ from_state }}'
@@ -181,10 +187,17 @@ action:
           '{{ not from_state in friend_zone }}'
     sequence: !input enter_action
   - conditions:
-    - alias: Person leaves Zone?
-      condition: template
-      value_template:
-        '{{ not to_state in friend_zone }}'
+    - alias: Person left Zone?
+      condition: and
+      conditions:
+      - alias: Person was in Zone
+        condition: template
+        value_template:
+          '{{ from_state in friend_zone }}'
+      - alias: Person not in zone now
+        condition: template
+        value_template:
+          '{{ not to_state in friend_zone }}'
     sequence: !input leave_action
 
 mode: queued

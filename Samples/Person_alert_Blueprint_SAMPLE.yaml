@@ -8,17 +8,17 @@
 enter_action:
 - service: script.personalert
   data:
-    people: '{{ trigger.to_state.attributes.friendly_name }}'
-    place: '{{ trigger.zone.attributes.friendly_name }}'
-    trigg: '{{ trigger.id }}'
+    person: '{{ states(trigger.to_state.attributes.friendly_name) }}'
+    place: '{{ trigger.to_state.state }}'
     notify_id: '{{ trigger.to_state.context.id }}'
+    phase: enter
 leave_action:
 - service: script.personalert
   data:
-    people: '{{ trigger.to_state.attributes.friendly_name }}'
-    place: '{{ trigger.zone.attributes.friendly_name }}'
-    trigg: '{{ trigger.id }}'
+    person: '{{ states(trigger.to_state.attributes.friendly_name) }}'
+    place: '{{ trigger.to_state.state }}'
     notify_id: '{{ trigger.to_state.context.id }}'
+    phase: leave
 
 
 # Script bring called
@@ -30,8 +30,8 @@ script:
       service: persistent_notification.create
       data:
         title: '{{ people + '' Status'' }}'
-        message: '{{ ''Regarding: '' + people + ''\n'' + flip + '' '' + place +
-        ''\n\nNotification_id:'' + notify_id }} '
+        message: '{{ ''Regarding: '' + people + ''\nThey are now located at: '' + place +
+          ''\n'' + flip + ''\n\nNotification_id: '' + notify_id }}'
         notification_id: '{{ notify_id }}'
     - alias: Add a delay so notification stays up a while
         # Pick your own delay time.  If you set it to 0 this script does nothing.
@@ -45,10 +45,12 @@ script:
         # Collect variable data and provide defaults
       people: placeholder1
       place: placeholder2
-      trigg: enter_trigger
-      notify_id: cd08c61d-0b69-4e01-a1f2-5c26746c99ae
-      flip: '{% if trigg == ''enter_trigger'' %} They are located at: {% else %}
-        They have left: {% endif %} '
+      notify_id: f7fa45c9-d780-475a-b5b0-8fca1dd57012
+      phase: enter
+      flip: >
+        {% if phase == ''leave'' %} They have left their previous location.
+        {% else %}
+        {% endif %}
     mode: queued
     icon: mdi:message-alert-outline
     max: 10
