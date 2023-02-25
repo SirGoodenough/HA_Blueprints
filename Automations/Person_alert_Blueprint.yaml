@@ -1,7 +1,7 @@
 blueprint:
-  name: Person Alert Honitor - 2023-02-22
+  name: Person Alert Honitor - 2023-02-26
   description: 'This BluePrint will monitor a person or persons, and when they
-    ''enter'' or ''leave'' the zone you pick, it will trigger an action.
+    ''enter'' or ''leave'' the zone or zones you pick, it will trigger an action.
 
     I use this BluePrint to follow family members around during their day so that
     the family members at home know where their loved ones are.
@@ -11,7 +11,7 @@ blueprint:
       [![Open your Home Assistant instance and show your zones.](https://my.home-assistant.io/badges/zones.svg)](https://my.home-assistant.io/redirect/zones/)
 
 
-    The person needs something monitoring their location. I use Life360, but the
+    The person need LAT/LOG software monitoring their location. I use Life360, but the
     Home Assistant App running on their phone will also work. There are likely other
     location monitoring methods but I am not aquainted with any of them. SEE:
 
