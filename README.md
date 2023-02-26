@@ -213,3 +213,14 @@ https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
 
 * [HumidifierWaterThrottleControl.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.md)
 * [HumidifierWaterThrottleControl.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml)
+
+#### 🧯 Person_alert_Blueprint
+
+This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FPerson_alert_Blueprint.yaml)
+
+Community Exchange Link TBD
+
+* [HumidifierWaterThrottleControl.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.md)
+* [HumidifierWaterThrottleControl.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.yaml)

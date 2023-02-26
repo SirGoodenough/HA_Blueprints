@@ -1,7 +1,9 @@
 blueprint:
   name: Person Alert Honitor - 2023-02-26
-  description: 'This BluePrint will monitor a person or persons, and when they
-    ''enter'' or ''leave'' the zone or zones you pick, it will trigger an action.
+  description: 'This is Blueprint that This BluePrint will monitor a person or
+    persons, and when they ''enter'' or ''leave'' the zone or zones you pick,
+    it will trigger an action for both enter and leave phases.
+    Yes, it will watch multiple people and multiple zones at the same time!
 
     I use this BluePrint to follow family members around during their day so that
     the family members at home know where their loved ones are.
@@ -11,9 +13,10 @@ blueprint:
       [![Open your Home Assistant instance and show your zones.](https://my.home-assistant.io/badges/zones.svg)](https://my.home-assistant.io/redirect/zones/)
 
 
-    The person need LAT/LOG software monitoring their location. I use Life360, but the
-    Home Assistant App running on their phone will also work. There are likely other
-    location monitoring methods but I am not aquainted with any of them. SEE:
+    The person needs LAT/LOG software running to report their location.
+    I use Life360, but the Home Assistant App running on their phone will also
+    work. There are likely other location monitoring methods but I am not aquainted
+    with any of them. SEE:
 
       [![Open your Home Assistant instance and show your people.](https://my.home-assistant.io/badges/people.svg)](https://my.home-assistant.io/redirect/people/)
 
@@ -28,11 +31,11 @@ blueprint:
     it to easily check if I have updated this blueprint.  🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](NEW LINK)
+    [Community link for this blueprint](TBD)
     '
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.yaml
   homeassistant:
-    min_version: 2023.2.1
+    min_version: 2023.2.0
   domain: automation
   input:
     people2monitor:
@@ -57,11 +60,11 @@ blueprint:
     enter_action:
       name: Enter the Zone Action
       description: 'Build the action here that you want to happen when they enter
-        this zone. There is a ''Persistant Notification'' example in [The Docs File.]()
+        this zone. There is a ''Persistent Notification'' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
 
         If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
 
-        If you want to play a sound effect oe music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+        If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
 
         There is also a built-in [Actionable Notification Script Blueprint](https://github.com/home-assistant/core/blob/master/homeassistant/components/script/blueprints/confirmable_notification.yaml)
         that could work here.  It is included with Home Assistant.
@@ -72,11 +75,11 @@ blueprint:
     leave_action:
       name: Leave the Zone Action
       description: 'Build the action here that you want to happen when they leave
-        this zone. There is a ''Persistant Notification'' example in [The Docs File.]()
+        this zone. There is a ''Persistent Notification'' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
 
         If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
 
-        If you want to play a sound effect oe music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+        If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
         '
       default: []
       selector:
@@ -151,7 +154,6 @@ condition:
 variables:
   people2monitor_var: !input people2monitor
   zone2monitor_var: !input zone2monitor
-  # friend_zone: '{{ state_attr( zone2monitor_var, ''friendly_name'' ) }}'
   friend_zone: >
     {% set ns = namespace(zone=[]) %}
     {% for z in zone2monitor_var %}
@@ -162,14 +164,14 @@ variables:
   from_state: '{{ trigger.from_state.state }}'
 
 action:
-- alias: 'Fire variable reporting event. This is for optional troubleshooting data.'
-  event: person_alert_variables
-  event_data:
-    people2monitor: '{{ people2monitor_var }}'
-    zone2monitor: '{{ zone2monitor_var }}'
-    friend_zone: '{{ friend_zone }}'
-    to_state: '{{ to_state }}'
-    from_state: '{{ from_state }}'
+# - alias: 'Fire variable reporting event. This is for optional troubleshooting data.'
+#   event: person_alert_variables
+#   event_data:
+#     people2monitor: '{{ people2monitor_var }}'
+#     zone2monitor: '{{ zone2monitor_var }}'
+#     friend_zone: '{{ friend_zone }}'
+#     to_state: '{{ to_state }}'
+#     from_state: '{{ from_state }}'
 
 - alias: Determine if there was an actionable event
   choose:

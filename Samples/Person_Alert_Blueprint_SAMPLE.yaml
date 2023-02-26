@@ -21,7 +21,7 @@ leave_action:
     phase: leave
 
 
-# Script bring called
+# Script being called
 script:
   personalert:
     alias: Person alert BP timed persistant_notification
@@ -54,3 +54,51 @@ script:
     mode: queued
     icon: mdi:message-alert-outline
     max: 10
+
+# Here is a way to push an audio message to your speakers
+#   It is taylored to be part of my Person Alert BP but with slight 
+#   tweaking it could be used for a lot of things. 
+
+
+# Add to 'enter_action' and/or the 'leave_action' inputs:  (YAML Mode)
+enter_action:
+- service: script.personalert_audio
+  data:
+    message: >
+      {{ states(trigger.to_state.attributes.friendly_name) +
+        ' has arrived at ' + trigger.to_state.state }}
+    entities: media_player.home_group
+leave_action:
+- service: script.personalert_audio
+  data:
+    message: >
+      {{ states(trigger.to_state.attributes.friendly_name) +
+        ' has left ' + trigger.to_state.state }}
+    entities: media_player.home_group
+
+
+# Script being called
+script:
+  personalert_audio:
+    alias: Person alert BP TTS Message & Sound
+    sequence:
+    - alias: TTS to Speakers
+      service: tts.cloud_say
+      data:
+        entity_id: "{{ entities }}"
+        message: "{{ message }}"
+        options:
+          gender: female
+        language: en-CA
+    - delay: 00:00:04
+    - alias: MP3 to Speakers
+      service: media_player.play_media
+      data:
+        entity_id: "{{ entities }}"
+        media_content_id: 
+          "media-source://media_source/local/mp3/OK_tone.wav"
+        media_content_type: audio/mp3
+    variables:
+        # Collect variable data and provide default
+      message: "I'm lost"
+      entities: media_player.kitchen_speaker
