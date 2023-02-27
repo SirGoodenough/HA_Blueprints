@@ -14,9 +14,9 @@ enter_action:
 leave_action:
 - service: script.personalert
   data:
-    person: '{{ trigger.to_state.attributes.friendly_name }}'
-    place: '{{ trigger.to_state.state }}'
-    notify_id: '{{ trigger.to_state.context.id }}'
+    person: '{{ trigger.from_state.attributes.friendly_name }}'
+    place: '{{ trigger.from_state.state }}'
+    notify_id: '{{ trigger.from_state.context.id }}'
     phase: leave
 
 # Script being called
@@ -72,7 +72,7 @@ leave_action:
   data:
     message: >
       {{ trigger.to_state.attributes.friendly_name +
-        ' has left ' + trigger.to_state.state }}
+        ' has left ' + trigger.from_state.state }}
     entities: media_player.home_group
 
 # Script being called
