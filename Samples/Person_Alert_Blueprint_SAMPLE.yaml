@@ -29,13 +29,13 @@ script:
       data:
         title: '{{ people + '' Status'' }}'
         message: >
-          {{ 'Regarding: ' + people + '\nThey are now located at: ' + place +
-          '\n' + flip + '\n\nNotification_id: ' + notify_id }}
+          {{ 'Regarding: ' + people + '\n' + flip + ' ' + place +
+          '\n\nNotification_id: ' + notify_id }}
         notification_id: '{{ notify_id }}'
     - alias: Add a delay so notification stays up a while
         # Pick your display time. If you set 0 this notification doesn't show.
       delay:
-        seconds: 37
+        minutes: 2
     - alias: Kill the notification
       service: persistent_notification.dismiss
       data:
@@ -47,17 +47,20 @@ script:
       notify_id: f7fa45c9-d780-475a-b5b0-8fca1dd57012
       phase: enter
       flip: >
-        {% if phase == 'leave' %} They have left their previous location.
+        {% if phase == 'leave' %} They have left:
         {% else %}
+          They are now located at:
         {% endif %}
     mode: queued
     icon: mdi:message-alert-outline
     max: 10
 
-
 # Here is a way to push an audio message to your speakers
 #   It is taylored to be part of my Person Alert BP but with slight 
 #   tweaking it could be used for a lot of things. 
+# The speaker entities entry needs to be a device on your network.
+# This is set-up with tts.cloud_say using Nabu-Casa, but
+#   tts.google_translate_say and others would also work at no cost.
 
 # Add to 'enter_action' and/or the 'leave_action' inputs:  (YAML Mode)
 enter_action:
@@ -71,7 +74,7 @@ leave_action:
 - service: script.personalert_audio
   data:
     message: >
-      {{ trigger.to_state.attributes.friendly_name +
+      {{ trigger.from_state.attributes.friendly_name +
         ' has left ' + trigger.from_state.state }}
     entities: media_player.home_group
 
