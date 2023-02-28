@@ -225,7 +225,7 @@ action:
     service: persistent_notification.create
     data:
       title: Condition Unknown
-      message: An nknown condition has occurred. Check the trace.
+      message: An unknown condition has occurred. Check the trace.
       notification_id: 41ef5597-221a-49f5-a986-1e9859aaa557
   - alias: Add a delay so notification stays up a while
       # Pick your display time. If you set 0 this notification doesn't show.
