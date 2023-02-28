@@ -2,7 +2,7 @@ This is Blueprint that This BluePrint will monitor a person or persons, and when
 
 ## 📑 Changelog
 
-* **2023-02-26**: 🎉 First release!
+* **2023-03-01**: 🎉 First release!
 
 ## 🔮 About this blueprint
 
@@ -54,6 +54,18 @@ Requirements
         Build the action here that you want to 
         happen when they leave this zone. 
         Samples and examples below.
+
+    jump_action/name: Jump known zone to known zone Action
+        Build the action here that you want to 
+        happen when both the zone they left and 
+        the zone they entered is known, but not 
+        the same zone.
+
+    default_action/name: It doesn't know what to do
+        I put this here as a catch-all, in case there 
+        is something I missed or if you want to report 
+        an error when nothing catches.
+        (Example in sample file)
 
     enable_time/name: Time of day to begin action(s)
         Set this for the time of day you want to 

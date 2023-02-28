@@ -1,5 +1,5 @@
 blueprint:
-  name: Person Alert Honitor - 2023-02-26
+  name: Person Alert Honitor - 2023-03-01
   description: 'This is Blueprint that This BluePrint will monitor a person or
     persons, and when they ''enter'' or ''leave'' the zone or zones you pick,
     it will trigger an action for both enter and leave phases.
@@ -80,6 +80,27 @@ blueprint:
         If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
 
         If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+        '
+      default: []
+      selector:
+        action: {}
+    jump_action:
+      name: Jump known zone to known zone Action
+      description: 'Build the action here that you want to happen when both the 
+        zone they left and the zone they entered is known, but not the same zone.
+        There is a ''Persistent Notification'' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
+
+        If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
+
+        If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+        '
+      default: []
+      selector:
+        action: {}
+    default_action:
+      name: It doesn't know what to do
+      description: 'I put this here as a catch-all, in case there is something I 
+        missed or if you want to report an error when nothing catches
         '
       default: []
       selector:
@@ -201,6 +222,19 @@ action:
         value_template:
           '{{ not to_state in friend_zone }}'
     sequence: !input leave_action
-
+  - conditions:
+    - alias: Person jumped from known zone to known zone
+      condition: and
+      conditions:
+      - alias: Person left known zone
+        condition: template
+        value_template:
+          '{{ from_state in friend_zone }}'
+      - alias: Person arrived in known zone
+        condition: template
+        value_template:
+          '{{ to_state in friend_zone }}'
+    sequence: !input jump_action
+  default: !input default_action
 mode: queued
 max: 10

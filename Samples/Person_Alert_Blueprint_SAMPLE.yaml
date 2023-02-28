@@ -5,31 +5,41 @@
 
 # Add to 'enter_action' and/or the 'leave_action' inputs:  (YAML Mode)
 enter_action:
-- service: script.personalert
+- service: script.personalert_notify
   data:
     person: '{{ trigger.to_state.attributes.friendly_name }}'
-    place: '{{ trigger.to_state.state }}'
+    place_to: '{{ trigger.to_state.state }}'
+    place_from: '{{ trigger.from_state.state }}'
     notify_id: '{{ trigger.to_state.context.id }}'
     phase: enter
 leave_action:
-- service: script.personalert
+- service: script.personalert_notify
   data:
     person: '{{ trigger.from_state.attributes.friendly_name }}'
-    place: '{{ trigger.from_state.state }}'
+    place_to: '{{ trigger.to_state.state }}'
+    place_from: '{{ trigger.from_state.state }}'
     notify_id: '{{ trigger.from_state.context.id }}'
     phase: leave
+jump_action:
+- service: script.personalert_notify
+  data:
+    person: '{{ trigger.to_state.attributes.friendly_name }}'
+    place_to: '{{ trigger.to_state.state }}'
+    place_from: '{{ trigger.from_state.state }}'
+    notify_id: '{{ trigger.to_state.context.id }}'
+    phase: jump
 
 # Script being called
 script:
   personalert_notify:
     alias: Person alert BP timed persistant_notification
     sequence:
-    - alias: Notify interested parties WITH notification_id
+    - alias: Notify interested parties with notification_id
       service: persistent_notification.create
       data:
         title: '{{ people + '' Status'' }}'
         message: >
-          {{ 'Regarding: ' + people + '\n' + flip + ' ' + place +
+          {{ 'Regarding: ' + people + '\n' + flip +
           '\n\nNotification_id: ' + notify_id }}
         notification_id: '{{ notify_id }}'
     - alias: Add a delay so notification stays up a while
@@ -43,17 +53,23 @@ script:
     variables:
         # Define variable data and provide defaults
       people: placeholder1
-      place: placeholder2
+      place_to: placeholder2
+      place_from: placeholder3
       notify_id: f7fa45c9-d780-475a-b5b0-8fca1dd57012
       phase: enter
       flip: >
-        {% if phase == 'leave' %} They have left:
+        {% if phase == 'jump' %}
+          'They have left: ' {{ place_from }} ' and are now located at: ' {{ place_to }}
+        {% elif phase == 'leave' %} 
+          'They have left: ' {{ place_from }}
         {% else %}
-          They are now located at:
+          'They are now located at: ' {{ place_to }}
         {% endif %}
     mode: queued
     icon: mdi:message-alert-outline
     max: 10
+
+
 
 # Here is a way to push an audio message to your speakers
 #   It is taylored to be part of my Person Alert BP but with slight 
@@ -66,32 +82,29 @@ script:
 enter_action:
 - service: script.personalert_audio
   data:
-    message: >
-      {{ trigger.to_state.attributes.friendly_name +
-        ' has arrived at ' + trigger.to_state.state }}
-    entities: media_player.home_group
+    message: "{{ trigger.to_state.attributes.friendly_name + ' has
+      arrived at ' + trigger.to_state.state }}\n"
+    entities: media_player.intercom_group
 leave_action:
 - service: script.personalert_audio
   data:
-    message: >
-      {{ trigger.from_state.attributes.friendly_name +
-        ' has left ' + trigger.from_state.state }}
-    entities: media_player.home_group
+    message: "{{ trigger.from_state.attributes.friendly_name + ' has
+      left ' + trigger.from_state.state }}\n"
+    entities: media_player.intercom_group
+jump_action:
+- service: script.personalert_audio
+  data:
+    message: "{{ trigger.to_state.attributes.friendly_name + ' has
+      left ' + trigger.from_state.state + ' and is located at: ' + 
+      trigger.to_state.state }}"
+    entities: media_player.intercom_group
+      notification_id: '{{ trigger.from_state.context.id }}'
 
 # Script being called
 script:
   personalert_audio:
     alias: Person alert BP TTS Message & Sound
     sequence:
-    - alias: script
-      service: tts.cloud_say
-      data:
-        entity_id: "{{ entities }}"
-        message: "{{ message }}"
-        options:
-          gender: female
-        language: en-CA
-    - delay: 00:00:04
     - alias: MP3 to Speakers
       service: media_player.play_media
       data:
@@ -99,10 +112,47 @@ script:
         media_content_id:
           "media-source://media_source/local/mp3/OK_tone.wav"
         media_content_type: audio/mp3
+    - delay: 00:00:02
+    - alias: script
+      service: tts.cloud_say
+      data:
+        entity_id: "{{ entities }}"
+        message: "{{ message }}"
+        options:
+          gender: female
+        language: en-GB
     variables:
-        # Define variable data & provide default (change entities 4 your system)
+        # Define variable data and provide default (change entities 4 your system)
       message: "I'm lost"
       entities: media_player.kitchen_speaker
     mode: queued
     icon: mdi:message-alert
     max: 10
+
+
+
+# This is a suggested Default action example
+
+default_action:
+- alias: Notify of an error condition
+  sequence:
+  - alias: Notify with notification_id
+    service: persistent_notification.create
+    data:
+      title: >
+        {{ 'Condition Unknown' }}
+      message: >
+        {{ 'An unknown condition has occurred. Check the trace.'
+        '\n\nperson: ' trigger.from_state.attributes.friendly_name 
+        '\n\nplace_to: ' trigger.to_state.state
+        '\n\nplace_from: ' trigger.from_state.state
+        '\n\nnotify_id: ' trigger.from_state.context.id }}
+      notification_id: >
+        {{ trigger.from_state.context.id }}
+  - alias: Add a delay so notification stays up a while
+      # Pick your display time. If you set 0 this notification doesn't show.
+    delay:
+      minutes: 30
+  - alias: Kill the notification
+    service: persistent_notification.dismiss
+    data:
