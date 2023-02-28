@@ -5,8 +5,11 @@ blueprint:
     it will trigger an action for both enter and leave phases.
     Yes, it will watch multiple people and multiple zones at the same time!
 
-    I use this BluePrint to follow family members around during their day so that
-    the family members at home know where their loved ones are.
+    I use this BluePrint to follow family members around during their day so
+      that the family members at home know where their loved ones are.
+      I used this to eliminate over 2 dozen separate Automations and Scripts 
+      in my Home set-up. The multiple person/multiple zone watch ability
+      is the key.
 
     The monitored areas need to be set up as zones in Home Assistant. SEE:
       [HA ZONES LINK](https://www.home-assistant.io/integrations/zone/)
@@ -15,8 +18,8 @@ blueprint:
 
     The person needs LAT/LOG software running to report their location.
     I use Life360, but the Home Assistant App running on their phone will also
-    work. There are likely other location monitoring methods but I am not aquainted
-    with any of them. SEE:
+      work. There are likely other location monitoring methods but I am not
+      aquainted with any of them. SEE:
 
       [![Open your Home Assistant instance and show your people.](https://my.home-assistant.io/badges/people.svg)](https://my.home-assistant.io/redirect/people/)
 
@@ -97,14 +100,6 @@ blueprint:
       default: []
       selector:
         action: {}
-    default_action:
-      name: It doesn't know what to do
-      description: 'I put this here as a catch-all, in case there is something I 
-        missed or if you want to report an error when nothing catches
-        '
-      default: []
-      selector:
-        action: {}
     enable_time:
       name: Time of day to begin action(s)
       description: 'Set this for the time of day you want to allow action(s) to begin.
@@ -162,10 +157,9 @@ condition:
     value_template: '{{ to_state != from_state }}'
   - alias: Make sure it's not an I'm Lost move
     condition: template
-    value_template: '
-      {{ not to_state in (''unknown'',''unavailable'',''none'',''None'','''') and
-      not from_state in (''unknown'',''unavailable'',''none'',''None'','''') }}
-      '
+    value_template: >
+      {{ not to_state in ('unknown','unavailable','none','None','') and
+      not from_state in ('unknown','unavailable','none','None','') }}
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
     after: !input 'enable_time'
@@ -185,15 +179,6 @@ variables:
   from_state: '{{ trigger.from_state.state }}'
 
 action:
-# - alias: 'Fire variable reporting event. This is for optional troubleshooting data.'
-#   event: person_alert_variables
-#   event_data:
-#     people2monitor: '{{ people2monitor_var }}'
-#     zone2monitor: '{{ zone2monitor_var }}'
-#     friend_zone: '{{ friend_zone }}'
-#     to_state: '{{ to_state }}'
-#     from_state: '{{ from_state }}'
-
 - alias: Determine if there was an actionable event
   choose:
   - conditions:
@@ -235,6 +220,20 @@ action:
         value_template:
           '{{ to_state in friend_zone }}'
     sequence: !input jump_action
-  default: !input default_action
+  default: 
+  - alias: Notify of an error condition
+    service: persistent_notification.create
+    data:
+      title: Condition Unknown
+      message: An nknown condition has occurred. Check the trace.
+      notification_id: 41ef5597-221a-49f5-a986-1e9859aaa557
+  - alias: Add a delay so notification stays up a while
+      # Pick your display time. If you set 0 this notification doesn't show.
+    delay:
+      minutes: 30
+  - alias: Kill the notification
+    service: persistent_notification.dismiss
+    data:
+      notification_id: 41ef5597-221a-49f5-a986-1e9859aaa557
 mode: queued
 max: 10

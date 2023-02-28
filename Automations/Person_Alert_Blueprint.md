@@ -10,7 +10,7 @@ Type of blueprint: AUTOMATION
 
 Why do I need this?
 
-> I use this BluePrint to follow family members around during their day so that the family members at home know where their loved ones are.
+> I use this BluePrint to follow family members around during their day so that the family members at home know where their loved ones are. I used this to eliminate over 2 dozen separate Automations and Scripts in my Home set-up. The multiple person/multiple zone watch ability is the key.
 >
 > The monitored areas need to be set up as zones in Home Assistant. SEE:
 >
@@ -60,12 +60,6 @@ Requirements
         happen when both the zone they left and 
         the zone they entered is known, but not 
         the same zone.
-
-    default_action/name: It doesn't know what to do
-        I put this here as a catch-all, in case there 
-        is something I missed or if you want to report 
-        an error when nothing catches.
-        (Example in sample file)
 
     enable_time/name: Time of day to begin action(s)
         Set this for the time of day you want to 
