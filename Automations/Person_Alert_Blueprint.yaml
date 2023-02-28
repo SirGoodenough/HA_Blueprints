@@ -220,20 +220,5 @@ action:
         value_template:
           '{{ to_state in friend_zone }}'
     sequence: !input jump_action
-  default: 
-  - alias: Notify of an error condition
-    service: persistent_notification.create
-    data:
-      title: Condition Unknown
-      message: An unknown condition has occurred. Check the trace.
-      notification_id: 41ef5597-221a-49f5-a986-1e9859aaa557
-  - alias: Add a delay so notification stays up a while
-      # Pick your display time. If you set 0 this notification doesn't show.
-    delay:
-      minutes: 30
-  - alias: Kill the notification
-    service: persistent_notification.dismiss
-    data:
-      notification_id: 41ef5597-221a-49f5-a986-1e9859aaa557
 mode: queued
 max: 10
