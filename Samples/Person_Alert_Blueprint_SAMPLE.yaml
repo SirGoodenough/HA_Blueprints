@@ -3,43 +3,45 @@
 #   my Person Alert BP but with slight tweaking it could be used
 #   for a lot of things. 
 
-# Add to 'enter_action' and/or the 'leave_action' inputs:  (YAML Mode)
+# Add to 'enter_action' and/or 'leave_action' and/or 'jump_action' inputs:  (YAML Mode)
 enter_action:
-- service: script.personalert_notify
-  data:
-    person: '{{ trigger.to_state.attributes.friendly_name }}'
-    place_to: '{{ trigger.to_state.state }}'
-    place_from: '{{ trigger.from_state.state }}'
-    notify_id: '{{ trigger.to_state.context.id }}'
-    phase: enter
+  - service: script.personalert_notify
+    data:
+      person: '{{ trigger.to_state.attributes.friendly_name }}'
+      place_to: '{{ trigger.to_state.state }}'
+      place_from: '{{ trigger.from_state.state }}'
+      notify_id: '{{ trigger.to_state.context.id }}'
+      phase: enter
 leave_action:
-- service: script.personalert_notify
-  data:
-    person: '{{ trigger.from_state.attributes.friendly_name }}'
-    place_to: '{{ trigger.to_state.state }}'
-    place_from: '{{ trigger.from_state.state }}'
-    notify_id: '{{ trigger.from_state.context.id }}'
-    phase: leave
+  - service: script.personalert_notify
+    data:
+      person: '{{ trigger.from_state.attributes.friendly_name }}'
+      place_to: '{{ trigger.to_state.state }}'
+      place_from: '{{ trigger.from_state.state }}'
+      notify_id: '{{ trigger.from_state.context.id }}'
+      phase: leave
 jump_action:
-- service: script.personalert_notify
-  data:
-    person: '{{ trigger.to_state.attributes.friendly_name }}'
-    place_to: '{{ trigger.to_state.state }}'
-    place_from: '{{ trigger.from_state.state }}'
-    notify_id: '{{ trigger.to_state.context.id }}'
-    phase: jump
+  - service: script.personalert_notify
+    data:
+      person: '{{ trigger.to_state.attributes.friendly_name }}'
+      place_to: '{{ trigger.to_state.state }}'
+      place_from: '{{ trigger.from_state.state }}'
+      notify_id: '{{ trigger.to_state.context.id }}'
+      phase: jump
 
 # Script being called
 script:
   personalert_notify:
+    trace:
+      stored_traces: 10
     alias: Person alert BP timed persistant_notification
     sequence:
     - alias: Notify interested parties with notification_id
       service: persistent_notification.create
       data:
-        title: '{{ people + '' Status'' }}'
+        title: '{{ person + '' Status'' }}'
         message: >
-          {{ 'Regarding: ' + people + '\n' + flip +
+          {{ 'Regarding: ' + person + '\n' + flip +
           '\n\nNotification_id: ' + notify_id }}
         notification_id: '{{ notify_id }}'
     - alias: Add a delay so notification stays up a while
@@ -52,10 +54,10 @@ script:
         notification_id: '{{ notify_id }}'
     variables:
         # Define variable data and provide defaults
-      people: placeholder1
+      person: placeholder1
       place_to: placeholder2
       place_from: placeholder3
-      notify_id: f7fa45c9-d780-475a-b5b0-8fca1dd57012
+      notify_id: 3479f317-f314-43bb-9e20-d6168b14f78c
       phase: enter
       flip: >
         {% if phase == 'jump' %}
@@ -65,9 +67,9 @@ script:
         {% else %}
           'They are now located at: ' {{ place_to }}
         {% endif %}
-    mode: queued
+    mode: single
+    max_exceeded: silent
     icon: mdi:message-alert-outline
-    max: 10
 
 
 
@@ -78,31 +80,35 @@ script:
 # This is set-up with tts.cloud_say using Nabu-Casa, but
 #   tts.google_translate_say and others would also work at no cost.
 
-# Add to 'enter_action' and/or the 'leave_action' inputs:  (YAML Mode)
+# Add to 'enter_action' and/or 'leave_action' and/or 'jump_action' inputs:  (YAML Mode)
 enter_action:
-- service: script.personalert_audio
-  data:
-    message: "{{ trigger.to_state.attributes.friendly_name + ' has
-      arrived at ' + trigger.to_state.state }}\n"
-    entities: media_player.intercom_group
+  - service: script.personalert_audio
+    data:
+      message: '{{ trigger.to_state.attributes.friendly_name +
+        '' has arrived at '' + trigger.to_state.state
+        }}'
+      entities: media_player.intercom_group
 leave_action:
-- service: script.personalert_audio
-  data:
-    message: "{{ trigger.from_state.attributes.friendly_name + ' has
-      left ' + trigger.from_state.state }}\n"
-    entities: media_player.intercom_group
+  - service: script.personalert_audio
+    data:
+      message: '{{ trigger.from_state.attributes.friendly_name +
+        '' has left '' + trigger.from_state.state
+        }}'
+      entities: media_player.intercom_group
 jump_action:
-- service: script.personalert_audio
-  data:
-    message: "{{ trigger.to_state.attributes.friendly_name + ' has
-      left ' + trigger.from_state.state + ' and is located at: ' + 
-      trigger.to_state.state }}"
-    entities: media_player.intercom_group
-      notification_id: '{{ trigger.from_state.context.id }}'
+  - service: script.personalert_audio
+    data:
+      message: '{{ trigger.to_state.attributes.friendly_name +
+        '' has left '' + trigger.from_state.state +
+        '' and is located at: '' + trigger.to_state.state
+        }}'
+      entities: media_player.intercom_group
 
 # Script being called
 script:
   personalert_audio:
+    trace:
+      stored_traces: 10
     alias: Person alert BP TTS Message & Sound
     sequence:
     - alias: MP3 to Speakers
@@ -113,7 +119,7 @@ script:
           "media-source://media_source/local/mp3/OK_tone.wav"
         media_content_type: audio/mp3
     - delay: 00:00:02
-    - alias: script
+    - alias: TTS script
       service: tts.cloud_say
       data:
         entity_id: "{{ entities }}"
@@ -125,6 +131,83 @@ script:
         # Define variable data and provide default (change entities 4 your system)
       message: "I'm lost"
       entities: media_player.kitchen_speaker
-    mode: queued
-    icon: mdi:message-alert
-    max: 10
+    mode: single
+    max_exceeded: silent
+    icon: mdi:message-alert-outline
+
+
+
+# Tying that all together, I thought I would share my complete BP call Automation here.
+#   Notice I parallel the action groups, just because I can I guess, and notice that
+#   it is running in single/silent mode.  I tried other modes with mixed results...
+
+automation:
+- id: 11562dc1-eedc-4490-9f55-c9fe787e7c8c
+  alias: ChaloupkAbode Alert Honitor
+  description: Alert when we go known places
+  trace:
+    stored_traces: 20
+  use_blueprint:
+    path: SirGoodenough/Person_Alert_Blueprint.yaml
+    input:
+      people2monitor:
+      - person.julie
+      - person.jen
+      - person.jim
+      zone2monitor:
+      - zone.home
+      - zone.katy_s_kloset
+      - zone.follicle_assembly_building
+      - zone.feed_store
+      - zone.nail_shop2
+      - zone.belva
+      - zone.clinic
+      - zone.expo
+      enter_action:
+      - parallel:
+        - service: script.personalert_notify
+          data:
+            person: '{{ trigger.to_state.attributes.friendly_name }}'
+            place_to: '{{ trigger.to_state.state }}'
+            place_from: '{{ trigger.from_state.state }}'
+            notify_id: '{{ trigger.to_state.context.id }}'
+            phase: enter
+        - service: script.personalert_audio
+          data:
+            message: '{{ trigger.to_state.attributes.friendly_name +
+              '' has arrived at '' + trigger.to_state.state
+              }}'
+            entities: media_player.intercom_group
+      leave_action:
+      - parallel:
+        - service: script.personalert_notify
+          data:
+            person: '{{ trigger.from_state.attributes.friendly_name }}'
+            place_to: '{{ trigger.to_state.state }}'
+            place_from: '{{ trigger.from_state.state }}'
+            notify_id: '{{ trigger.from_state.context.id }}'
+            phase: leave
+        - service: script.personalert_audio
+          data:
+            message: '{{ trigger.from_state.attributes.friendly_name +
+              '' has left '' + trigger.from_state.state
+              }}'
+            entities: media_player.intercom_group
+      jump_action:
+      - parallel:
+        - service: script.personalert_notify
+          data:
+            person: '{{ trigger.to_state.attributes.friendly_name }}'
+            place_to: '{{ trigger.to_state.state }}'
+            place_from: '{{ trigger.from_state.state }}'
+            notify_id: '{{ trigger.to_state.context.id }}'
+            phase: jump
+        - service: script.personalert_audio
+          data:
+            message: '{{ trigger.to_state.attributes.friendly_name +
+              '' has left '' + trigger.from_state.state +
+              '' and is located at: '' + trigger.to_state.state
+              }}'
+            entities: media_player.intercom_group
+  mode: single
+  max_exceeded: silent

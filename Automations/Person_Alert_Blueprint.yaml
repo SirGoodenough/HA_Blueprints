@@ -219,6 +219,6 @@ action:
         condition: template
         value_template:
           '{{ to_state in friend_zone }}'
-    sequence: !input jump_action
+    sequence: !input jump_action   
 mode: queued
 max: 10
