@@ -82,27 +82,34 @@ script:
 
 # Add to 'enter_action' and/or 'leave_action' and/or 'jump_action' inputs:  (YAML Mode)
 enter_action:
+- parallel:
   - service: script.personalert_audio
     data:
-      message: '{{ trigger.to_state.attributes.friendly_name +
+      entities: media_player.intercom_group
+      mess: '{{ trigger.to_state.attributes.friendly_name +
         '' has arrived at '' + trigger.to_state.state
         }}'
-      entities: media_player.intercom_group
+      lang: en-GB
+      gend: female
 leave_action:
   - service: script.personalert_audio
     data:
-      message: '{{ trigger.from_state.attributes.friendly_name +
+      entities: media_player.intercom_group
+      mess: '{{ trigger.from_state.attributes.friendly_name +
         '' has left '' + trigger.from_state.state
         }}'
-      entities: media_player.intercom_group
+      lang: en-GB
+      gend: female
 jump_action:
   - service: script.personalert_audio
     data:
-      message: '{{ trigger.to_state.attributes.friendly_name +
+      entities: media_player.intercom_group
+      mess: '{{ trigger.to_state.attributes.friendly_name +
         '' has left '' + trigger.from_state.state +
         '' and is located at: '' + trigger.to_state.state
         }}'
-      entities: media_player.intercom_group
+      lang: en-GB
+      gend: female
 
 # Script being called
 script:
@@ -123,14 +130,16 @@ script:
       service: tts.cloud_say
       data:
         entity_id: "{{ entities }}"
-        message: "{{ message }}"
+        message: "{{ mess }}"
+        language: "{{ lang }}"
         options:
-          gender: female
-        language: en-GB
+          gender: "{{ gend }}"
     variables:
-        # Define variable data and provide default (change entities 4 your system)
-      message: "I'm lost"
+        # Define variable data and provide default (change 'entities' 4 your system)
       entities: media_player.kitchen_speaker
+      mess: "I'm lost"
+      lang: en-US
+      gend: female
     mode: single
     max_exceeded: silent
     icon: mdi:message-alert-outline
@@ -174,10 +183,12 @@ automation:
             phase: enter
         - service: script.personalert_audio
           data:
-            message: '{{ trigger.to_state.attributes.friendly_name +
+            entities: media_player.intercom_group
+            mess: '{{ trigger.to_state.attributes.friendly_name +
               '' has arrived at '' + trigger.to_state.state
               }}'
-            entities: media_player.intercom_group
+            lang: en-GB
+            gend: female
       leave_action:
       - parallel:
         - service: script.personalert_notify
@@ -189,10 +200,12 @@ automation:
             phase: leave
         - service: script.personalert_audio
           data:
-            message: '{{ trigger.from_state.attributes.friendly_name +
+            entities: media_player.intercom_group
+            mess: '{{ trigger.from_state.attributes.friendly_name +
               '' has left '' + trigger.from_state.state
               }}'
-            entities: media_player.intercom_group
+            lang: en-GB
+            gend: female
       jump_action:
       - parallel:
         - service: script.personalert_notify
@@ -204,10 +217,12 @@ automation:
             phase: jump
         - service: script.personalert_audio
           data:
-            message: '{{ trigger.to_state.attributes.friendly_name +
+            entities: media_player.intercom_group
+            mess: '{{ trigger.to_state.attributes.friendly_name +
               '' has left '' + trigger.from_state.state +
               '' and is located at: '' + trigger.to_state.state
               }}'
-            entities: media_player.intercom_group
+            lang: en-GB
+            gend: female
   mode: single
   max_exceeded: silent
