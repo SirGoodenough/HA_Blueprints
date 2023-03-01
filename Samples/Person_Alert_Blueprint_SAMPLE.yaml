@@ -79,6 +79,9 @@ script:
 # The speaker entities entry needs to be a device on your network.
 # This is set-up with tts.cloud_say using Nabu-Casa, but
 #   tts.google_translate_say and others would also work at no cost.
+# Note that 'lang' (Language) and 'gend' (gender) or 'entities'
+#   (entity_ids of media players) does not have to be pushed if 
+#   you don't want to change it from the defaults set in the script.
 
 # Add to 'enter_action' and/or 'leave_action' and/or 'jump_action' inputs:  (YAML Mode)
 enter_action:
@@ -135,7 +138,7 @@ script:
           gender: "{{ gend }}"
     variables:
         # Define variable data and provide default (change 'entities' 4 your system)
-      entities: media_player.kitchen_speaker
+      entities: media_player.intercom_group
       mess: "I'm lost"
       lang: en-US
       gend: female
@@ -147,7 +150,9 @@ script:
 
 # Tying that all together, I thought I would share my complete BP call Automation here.
 #   Notice I parallel the action groups, just because I can I guess, and notice that
-#   it is running in single/silent mode.  I tried other modes with mixed results...
+#   it is running in single/silent mode.  I tried other modes with mixed results.
+#   Another thing to notice is I don't pass in variables to the script where the
+#   defaults are what I want.
 
 automation:
 - id: 11562dc1-eedc-4490-9f55-c9fe787e7c8c
@@ -182,12 +187,10 @@ automation:
             phase: enter
         - service: script.personalert_audio
           data:
-            entities: media_player.intercom_group
             mess: '{{ trigger.to_state.attributes.friendly_name +
               '' has arrived at '' + trigger.to_state.state
               }}'
             lang: en-GB
-            gend: female
       leave_action:
       - parallel:
         - service: script.personalert_notify
@@ -199,12 +202,10 @@ automation:
             phase: leave
         - service: script.personalert_audio
           data:
-            entities: media_player.intercom_group
             mess: '{{ trigger.from_state.attributes.friendly_name +
               '' has left '' + trigger.from_state.state
               }}'
             lang: en-GB
-            gend: female
       jump_action:
       - parallel:
         - service: script.personalert_notify
@@ -216,12 +217,10 @@ automation:
             phase: jump
         - service: script.personalert_audio
           data:
-            entities: media_player.intercom_group
             mess: '{{ trigger.to_state.attributes.friendly_name +
               '' has left '' + trigger.from_state.state +
               '' and is located at: '' + trigger.to_state.state
               }}'
             lang: en-GB
-            gend: female
   mode: single
   max_exceeded: silent
