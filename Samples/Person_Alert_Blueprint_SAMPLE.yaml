@@ -82,7 +82,6 @@ script:
 
 # Add to 'enter_action' and/or 'leave_action' and/or 'jump_action' inputs:  (YAML Mode)
 enter_action:
-- parallel:
   - service: script.personalert_audio
     data:
       entities: media_player.intercom_group
