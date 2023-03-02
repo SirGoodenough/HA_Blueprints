@@ -155,18 +155,17 @@ script:
 #   defaults are what I want.
 
 automation:
-- id: 11562dc1-eedc-4490-9f55-c9fe787e7c8c
-  alias: ChaloupkAbode Alert Honitor
-  description: Alert when we go known places
+- id: 9db79068-535d-46dc-b737-d8864e6802f9
+  alias: Ladies Alert Honitor
+  description: Alert when the ladies of the house go places
   trace:
-    stored_traces: 20
+    stored_traces: 10
   use_blueprint:
     path: SirGoodenough/Person_Alert_Blueprint.yaml
     input:
       people2monitor:
       - person.julie
       - person.jen
-      - person.jim
       zone2monitor:
       - zone.home
       - zone.katy_s_kloset
@@ -176,6 +175,12 @@ automation:
       - zone.belva
       - zone.clinic
       - zone.expo
+      - zone.lakewood
+      - zone.mountain
+      - zone.shawano
+      - zone.somerhome
+      - zone.suring
+      - zone.townsend
       enter_action:
       - parallel:
         - service: script.personalert_notify
@@ -187,9 +192,8 @@ automation:
             phase: enter
         - service: script.personalert_audio
           data:
-            mess: '{{ trigger.to_state.attributes.friendly_name +
-              '' has arrived at '' + trigger.to_state.state
-              }}'
+            mess: '{{ trigger.to_state.attributes.friendly_name + '' has arrived at
+              '' + trigger.to_state.state }}'
             lang: en-GB
       leave_action:
       - parallel:
@@ -202,9 +206,8 @@ automation:
             phase: leave
         - service: script.personalert_audio
           data:
-            mess: '{{ trigger.from_state.attributes.friendly_name +
-              '' has left '' + trigger.from_state.state
-              }}'
+            mess: '{{ trigger.from_state.attributes.friendly_name + '' has left ''
+              + trigger.from_state.state }}'
             lang: en-GB
       jump_action:
       - parallel:
@@ -217,10 +220,15 @@ automation:
             phase: jump
         - service: script.personalert_audio
           data:
-            mess: '{{ trigger.to_state.attributes.friendly_name +
-              '' has left '' + trigger.from_state.state +
-              '' and is located at: '' + trigger.to_state.state
+            mess: '{{ trigger.to_state.attributes.friendly_name + '' has left '' +
+              trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
               }}'
             lang: en-GB
+      enable_time: 05:30:18
+      disable_time: '20:27:36'
+      hold_period:
+        hours: 0
+        minutes: 5
+        seconds: 0
   mode: single
   max_exceeded: silent

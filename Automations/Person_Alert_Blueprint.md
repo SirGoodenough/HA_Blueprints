@@ -45,6 +45,12 @@ Requirements
         on when this person enters or leaves it. 
         Multiples are allowed.
 
+    hold_period/name: Hold Period
+        Sometimes devices want to disconnect and connect 
+        often. Home Assistant deals with this using a 
+        considered-on or considered-off time.
+        This is the same thing.
+
     enter_action/name: Enter the Zone Action
         Build the action here that you want to 
         happen when they enter this zone. Samples 
