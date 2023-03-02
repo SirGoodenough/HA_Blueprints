@@ -228,7 +228,7 @@ https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
 
 This is Blueprint that This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.yaml
+https://community.home-assistant.io/t/person-alert-blueprint/542209
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
