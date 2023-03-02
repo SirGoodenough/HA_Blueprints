@@ -1,5 +1,6 @@
 blueprint:
   name: Person Alert Honitor - 2023-03-01
+  author: Sir Goodenough
   description: 'This is Blueprint that This BluePrint will monitor a person or
     persons, and when they ''enter'' or ''leave'' the zone or zones you pick,
     it will trigger an action for both enter and leave phases.
@@ -38,7 +39,7 @@ blueprint:
     '
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.yaml
   homeassistant:
-    min_version: 2023.2.0
+    min_version: 2023.3.0
   domain: automation
   input:
     people2monitor:
@@ -60,6 +61,26 @@ blueprint:
         entity:
           multiple: true
           domain: zone
+    hold_period:
+      name: Hold Period
+      description: 'Sometimes devices want to disconnect and connect often, 
+        Home Assistant deals with this using a considered-on or considered-off time.
+        This is the same thing.
+
+        Sometimes you don''t need anything here.
+
+        I suggest you try the default 00:00:00 here and add time if you need it.
+        Using this means the automation will be running the entire time period 
+        that you select and will not be available for other triggers.
+
+        This time is delay is not effective if automation is in parallel mode.
+      '
+      default:
+        hours: 0
+        minutes: 0
+        seconds: 0
+      selector:
+        duration:
     enter_action:
       name: Enter the Zone Action
       description: 'Build the action here that you want to happen when they enter
@@ -219,6 +240,9 @@ action:
         condition: template
         value_template:
           '{{ to_state in friend_zone }}'
-    sequence: !input jump_action   
+    sequence: !input jump_action
+- alias: Time delay to hold on devices that disconnect often (if needed)
+  delay: !input hold_period
+
 mode: queued
 max: 10
