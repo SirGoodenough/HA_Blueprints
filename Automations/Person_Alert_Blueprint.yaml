@@ -1,6 +1,6 @@
 blueprint:
   name: Person Alert Honitor - 2023-03-01
-  author: Sir Goodenough
+  author: SirGoodenough
   description: 'This is Blueprint that This BluePrint will monitor a person or
     persons, and when they ''enter'' or ''leave'' the zone or zones you pick,
     it will trigger an action for both enter and leave phases.
