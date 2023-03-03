@@ -1,11 +1,13 @@
-This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water.  This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
+This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water. This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
 
 ## 📑 Changelog
 
+* **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2023-02-92**: Add wait-to-send interrupt & new entity power_1
 * * Fix extraction of current humidity
 * * Comment out troubleshooting code
 * **2023-01-30**: 🎉 First Release
+<base target="_blank">
 
 ## 🔮 About this blueprint
 
@@ -13,9 +15,9 @@ Type of blueprint: AUTOMATION
 
 Why do I need this?
 
-> If you have an automatic humidifier on your central air heating system, you are likely wasting a lot of water. These systems often work by keeping some kind of wick wet and blowing some of the furnace air thru the wick, causing the water to evaporate and 'humidify' the house.  The problem is that it likely turns the water on until the humidity is where it needs to be, then turns the water off. To be effective the wick needs to be wet.  However if the water is applied 1/2 or 1/4 of the time, the wick will still be wet and effective, but you will use half or a quarter of the water that would have otherwise flowed passed the wick and down the drain.
+> If you have an automatic humidifier on your central air heating system, you are likely wasting a lot of water. These systems often work by keeping some kind of wick wet and blowing some of the furnace air thru the wick, causing the water to evaporate and 'humidify' the house. The problem is that it likely turns the water on until the humidity is where it needs to be, then turns the water off. To be effective the wick needs to be wet. However if the water is applied 1/2 or 1/4 of the time, the wick will still be wet and effective, but you will use half or a quarter of the water that would have otherwise flowed passed the wick and down the drain.
 >
-> This Blueprint and system applies an intermittent stream of water to the humidifier allowing much less water to be flushed over the already wet wick and into the drain.  Lower % humidity readings will cause the water stream to be on proportionally more.  The closer to the target the less water is applied.  These actions help keep the humidity more constant than the original controller.
+> This Blueprint and system applies an intermittent stream of water to the humidifier allowing much less water to be flushed over the already wet wick and into the drain. Lower % humidity readings will cause the water stream to be on proportionally more. The closer to the target the less water is applied. These actions help keep the humidity more constant than the original controller.
 >
 > If you want to see my original install of this humidifier, I have a video you can watch. 
 > 
@@ -47,8 +49,8 @@ Requirements
 
     power_1 ✯ REQUIRED ✯: I was finding that every time this BP updated the  
         Sonoff during the water on (delay command) stage, the sequence 
-        stopped & the water time was cut short.  To clean this up I added a 
-        wait so that this BP only sends data when the water is not on.  T
+        stopped & the water time was cut short. To clean this up I added a 
+        wait so that this BP only sends data when the water is not on. T
         hat wait is looking to the entity imported to HA when you built 
         the Sonoff SV switch to modulate the water output.
 
@@ -63,7 +65,7 @@ Requirements
 
 ## 👀 Where is My MQTT Topic?
 
-This Blueprint needs to send the time value to var2 in your sonoff SV. On my system the MQTT topic to do this is ```cmnd/humidifier/var2```.  Yours will be something similar. In order to determine exactly what your topic will be, follow these instructions.
+This Blueprint needs to send the time value to var2 in your sonoff SV. On my system the MQTT topic to do this is ```cmnd/humidifier/var2```. Yours will be something similar. In order to determine exactly what your topic will be, follow these instructions.
 
 Begin by opening the ```WEBUI``` of your Tasmota SV switch.
 
@@ -99,9 +101,9 @@ Begin by opening the ```WEBUI``` of your Tasmota SV switch.
     Rule3 1
 
     Full line of text versions of these rules are available in the Blueprint 
-    Description.  These are stacked for clarity.
+    Description. These are stacked for clarity.
 
-Rule1 is turned on and off based on the status of Power2. When Rule1 is enabled it sets the 2 minute timer cycle and starts the Rule3 items on schedule.  It sets variable 1 to the value of variable 2.  Variable 2 is set via MQTT from the Blueprint.
+Rule1 is turned on and off based on the status of Power2. When Rule1 is enabled it sets the 2 minute timer cycle and starts the Rule3 items on schedule. It sets variable 1 to the value of variable 2. Variable 2 is set via MQTT from the Blueprint.
 
 ```text
 on Time#Minute|2 do var1 %var2% endon
@@ -135,7 +137,7 @@ on var1#state<=20 do backlog power1 on;delay 200;power1 off endon
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
-📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint.   [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
@@ -163,7 +165,7 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 
 #### 🧯Tasmota EZ Button Blueprint
 
-This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base. Restart All, Update a few, and Update all.
 
 https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
 
@@ -201,7 +203,7 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 #### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
@@ -213,7 +215,7 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 
 #### 🧯ZHA - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
@@ -231,9 +233,15 @@ https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r0
 
 #### 🧯 Humidifier Water Throttle Control
 
-This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water.  This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
+This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water. This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
 
 https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
+
+#### 🧯 Person_Alert_Blueprint
+
+This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
+
+https://community.home-assistant.io/t/person-alert-blueprint/542209
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

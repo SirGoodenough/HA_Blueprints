@@ -1,5 +1,6 @@
 blueprint:
-  name: Tasmota EZ-Button for Update and Restart All 2022-12-12
+  name: Tasmota EZ-Button for Update and Restart All 2023-03-01
+  author: SirGoodenough
   description: "## 🧿 This will create 3 buttons to help you. 🧿  
 
     #### 1:
@@ -15,45 +16,45 @@ blueprint:
 
     #### 3:
 
-    Press a button to update ALL Tasmota devices to the latest version.  
+    Press a button to update ALL Tasmota devices to the latest version. 
 
     ## 🧿 There are 5 Requirements to allow this to work. 🧿  
 
     #### A: ✔️
 
     You need the Home Assistant Tasmota Integration to be functional on your system
-    and HA needs to be able to see and interact with the devices.  
-    This Blueprint does not do that for you.  
+    and HA needs to be able to see and interact with the devices. 
+    This Blueprint does not do that for you. 
 
     #### B: ✔️
 
     This script makes the assumption that the default GroupTopic of 'Tasmotas' 
-    is available on all your Tasmota Devices.  
+    is available on all your Tasmota Devices. 
     If you have devices that have been upgraded from pre V7 or so, 
-    they may be missing this GroupTiopic.  
-    If this is the case you will have to add the GroupTopic 'Tasmotas' to your device.  
+    they may be missing this GroupTiopic. 
+    If this is the case you will have to add the GroupTopic 'Tasmotas' to your device. 
     'https://tasmota.github.io/docs/Commands/#control'
 
     #### C: ✔️
 
-    Your Home Assistant Instance needs to be or be communicating with an MQTT Broker.  
-    But this is easy because in order to have A: running, MQTT is a requirement for A:.  
+    Your Home Assistant Instance needs to be or be communicating with an MQTT Broker. 
+    But this is easy because in order to have A: running, MQTT is a requirement for A:. 
 
     #### D: ✔️
 
     Tasmota Devices firmware default MQTT topic is set to: ```%prefix%/%topic%/```  
     If you did not change the topic in your Tasmota Devices then leave it as the
-    default here as well.  The other option available to you is to flip them
+    default here as well. The other option available to you is to flip them
     as I do in my Home Assistant personally.
 
     #### E: ✔️
 
     Your Tasmota devices need to be updated to the same 'breaking change' generation 
-    as the Released version of Tasmota for this to be able to update.  
+    as the Released version of Tasmota for this to be able to update. 
     Again this is easy because in order to have A: running, 
-    Tasmota V9.2 minimum is a requirement for A:.  
-    Tasmota has had breaking changes in it's history.  Therefore you should never 
-    stray from the upgrade path listed in the Tasmota Docs when upgrading.  
+    Tasmota V9.2 minimum is a requirement for A:. 
+    Tasmota has had breaking changes in it's history. Therefore you should never 
+    stray from the upgrade path listed in the Tasmota Docs when upgrading. 
     To upgrade your Tasmota firmware, you need to follow the path, 
     or risk bad things happening:
 
@@ -64,12 +65,10 @@ blueprint:
     That means you currently need to manually update your firmware to v9.1 minimum 
     for these buttons to work going forward.
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934)
@@ -77,21 +76,21 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
   domain: script
   homeassistant:
-    min_version: 2022.5.2
+    min_version: 2023.3.0
   input:
     ez_update:
       name: EZ Update Button Tasmota
       description: "This is the name of the button you want 
-        to use for updating ALL your Tasmota instances.  
+        to use for updating ALL your Tasmota instances. 
         It will use the built-in groupTopics in Tasmota to send the update command 
-        to all devices.  
+        to all devices. 
         Note: in the tasmota console, the default setting for: 
-        'OTAUrl' is the current release location for the latest Tasmota Binary.  
+        'OTAUrl' is the current release location for the latest Tasmota Binary. 
         With devices that were upgraded from old firmware versions, you may have to 
         go to the Tasmota Console upgrade section and type this into the Ota Url field: 
-        'http://ota.tasmota.com/tasmota/release/tasmota.bin.gz'.  
+        'http://ota.tasmota.com/tasmota/release/tasmota.bin.gz'. 
         If you have a downloaded copy of a firmware file, you can change this value 
-        to that path instead (Advanced Users).  
+        to that path instead (Advanced Users). 
         'https://tasmota.github.io/docs/Upgrading/'  
         Leaving it Blank will cause errors. "
       default: "EZ Update Button Tasmota"
@@ -100,9 +99,9 @@ blueprint:
     topic_format:
       name: Tasmota Topic Format
       description: "The format of your Tasmota devides has a default that most people use:  
-        '%prefix%/%topic%/'.  I personally however use something else.  Everytime I modify this I have 
+        '%prefix%/%topic%/'. I personally however use something else. Everytime I modify this I have 
         found myself manually editing the code to work with my system so I have changed it to
-        be able to set it in the inputs.  The default is set to the normal Tasmota default,"
+        be able to set it in the inputs. The default is set to the normal Tasmota default,"
       default: '%prefix%/%topic%/'
       selector:
         select:
@@ -114,9 +113,9 @@ blueprint:
     ez_canary:
       name: EZ Canary Button Tasmota
       description: "This is the name of the button you want 
-        to use for the test new version select sample.  I suggest use 5 or less 
-        Tasmota devices for this list.  
-        Leave this as 'not_selected' if you do not plan on using this feature.  
+        to use for the test new version select sample. I suggest use 5 or less 
+        Tasmota devices for this list. 
+        Leave this as 'not_selected' if you do not plan on using this feature. 
         Leaving this Blank will cause errors. Will be converted to lower-case-chase"
       default: "not_selected"
       selector:
@@ -124,11 +123,11 @@ blueprint:
     ez_canary_grouptopic:
       name: The GroupTopic name for the EZ Canary Button
       description: "This is the name you assigned to the GroupTopics in the devices 
-        you chose as the first ones to recieve a firmware update.  
-        This needs to be set-up by you in the Tasmota Console of the devices themselves.  
-        Leave this blank if you are not using this feature.  The button will be created, 
-        but it won't do anything.  Use lower_case_chase formatting on 
-        this item and only numbers and letters.  REQUIRED or this button will not be created.
+        you chose as the first ones to recieve a firmware update. 
+        This needs to be set-up by you in the Tasmota Console of the devices themselves. 
+        Leave this blank if you are not using this feature. The button will be created, 
+        but it won't do anything. Use lower_case_chase formatting on 
+        this item and only numbers and letters. REQUIRED or this button will not be created.
         Leaving this Blank will cause errors. Will be converted to lower-case-chase"
       default: "firsts"
       selector:
@@ -138,11 +137,11 @@ blueprint:
       description: "This is the name of the button you want 
         to use for restarting all Tasmota devices. 
         Use this if you are having wierd problems and want to 
-        restart them with a fresh boot.  
+        restart them with a fresh boot. 
         I also suggest you add a 'Button Press' service for this button 
-        to execute a minute or so after Home Assistant restarts.  
+        to execute a minute or so after Home Assistant restarts. 
         It will update all the devices and pull fresh sensor and 
-        state readings into HA so things are working right away when you start.  
+        state readings into HA so things are working right away when you start. 
         Leaving this Blank will cause errors. Will be converted to lower-case-chase"
       default: "EZ Restart Button Tasmota"
       selector:

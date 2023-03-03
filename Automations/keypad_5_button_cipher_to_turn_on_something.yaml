@@ -1,21 +1,20 @@
 blueprint:
-  name: Keypad 5 button cypher to turn on something - 2022-12-12
+  name: Keypad 5 button cypher to turn on something - 2023-03-01
+  author: SirGoodenough
   description: "This will accept any 5 button presses or ```Binary Sensor``` detections and
-    use them to preform an action.  RE open a lock, or whatever.
+    use them to preform an action. RE open a lock, or whatever.
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385)"
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.5.2
+    min_version: 2023.3.0
   input:
     button_one:
       name: Button Press One
@@ -70,7 +69,7 @@ blueprint:
           multiple: false
     on_timer:
       name: Lock On Time in Seconds
-      description: Time output signal is on in seconds.  Generally 5 seconds is good
+      description: Time output signal is on in seconds. Generally 5 seconds is good
         here.
       default: 60
       selector:

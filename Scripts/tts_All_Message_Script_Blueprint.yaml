@@ -1,9 +1,6 @@
 blueprint:
-  domain: script
-  homeassistant:
-    min_version: 2022.5.2
-  name: TTS_say_Message-2022-12-12
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
+  name: TTS_say_Message-2023-03-01
+  author: SirGoodenough
   description: '📣 This is a script that can use any of the 11 integrated TTS Platforms
     in Home Assistant to send a message to a media player. Some will require Google
     Type Speakers, some will require Non-Google type speakers.
@@ -29,7 +26,7 @@ blueprint:
     [![Open your Home Assistant instance and show your service developer tools.](https://my.home-assistant.io/badges/developer_services.svg)](https://my.home-assistant.io/redirect/developer_services/)
 
 
-    I have added an action statement both before and after the main TTS call.  You
+    I have added an action statement both before and after the main TTS call. You
     can choose to ignore these, or you can use them to change volume, add a 
     media player to play a doorbell, turn on a light, add a delay, 
     whatever you want to do.
@@ -53,15 +50,17 @@ blueprint:
     allows it to be called over and over. Plus it gives you one place, the blueprint,
     to repair issues should they arrise. 🔚
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)'
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
+  domain: script
+  homeassistant:
+    min_version: 2023.3.0
   input:
     b4_action:
       name: Action before TTS

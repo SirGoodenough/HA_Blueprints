@@ -1,82 +1,31 @@
-(18 actions!!) This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the 6 buttons of a ZemiSmart ZM-RM02 Controller.  The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.  
+(18 actions!!) This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the 6 buttons of a ZemiSmart ZM-RM02 Controller. The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do. Functions that are left empty will simply do nothing. 
 
 ## 📑 Changelog
 
+* **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
 * * If name changed, it is similar. Variables have not changed.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions.
 * **2022-04-17**: 🎉 🎛 🔋 New Blueprint!
+<base target="_blank">
 
-## 📩 * Version Updates
 
-Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+## 🔮 About this blueprint
 
-🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
+Type of blueprint: AUTOMATION
 
-[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+Why do I need this?
 
-### Option 1: My Home Assistant
+> This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the 6 buttons of a ZemiSmart ZM-RM02 Controller. The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do. Functions that are left empty will simply do nothing.
 
-Click the badge to import this Blueprint
+## 🔧 Configuration
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml)
+Requirements
 
-# Please Click the 🧡 at the end of this Top Post if you find this Useful
-
-### Option 2: Direct Link
-
-Copy this link if you want to import the blueprint in your installation.
-```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml```
-
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml
-
-## 📖 Description
-
-This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the 6 buttons of a ZemiSmart ZM-RM02 Controller.  The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing.
-
-Within this code there is an event handler that will 'latch' the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. This will help  when setting up new functions and to troubleshoot strange behaviors. Here is a sample Template sensor to capture this event:
-
-![Sample Script Generation Dashboard Entry](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubesensor.gif?raw=true "Sensor in action")
-
-```yaml
-template:
-  - trigger:
-      - platform: event
-        event_type: rm02_last_action
-    sensor:
-      - name: "RM02 Last Action"
-        unique_id: Random-String-of-Gibberish-HERE
-        icon: mdi:eye-refresh-outline
-        attributes:
-          friendly_name: "RM02 Action"
-        state: >
-          {{ trigger.event.data.friendly_name }} - 
-          {{ trigger.event.data.event }}
-```
-
-If you wish to 'store' these events you can add this sensor to recorder and it will
-save them for you.
-
-My 'suggestion' is that you do separate scripts for most, if not all of the actions you generate here. If you are using the UI editor for the simple things you are fine, but for more complicated things scripts may work better for you. This is my opinion and how I am using it, to each their own.  Building functions within the uI is also available if you are more comfortable with that.
-
-First, let’s go over Blueprints and what they are. Blueprints are a way to share automations and is built into Home Assistant. Simple as that. You can import my template code and a copy of it will reside in your configuration. Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build an automation. It will collect the information needed based on your entities and your personal adjustments, and provide a working automation. You will have to have or add the required hardware and entities that the Blueprint needs to function.
-
-### ⚙️ Usage
-
-#### 🛠 Installation
-
-* Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’.  A selection box should pop up.  Type blue and select the button to navigate to blueprints.  You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
-* Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
-* In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub:
-
-> ◦ https://github.com/SirGoodenough/HA_Blueprints
-
-#### 🧬 To make the blueprint work it will need
-
-To make the Blueprint work you will need a functional Magic Cube integrated to Home Assistant thru Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
-
-* sensor.xxDevice_Namexx_action
+* My 'suggestion' is that you do separate scripts for most, if not all of the actions you generate here. If you are using the UI editor for the simple things you are fine, but for more complicated things scripts may work better for you. This is my opinion and how I am using it, to each their own. Building functions within the uI is also available if you are more comfortable with that.
+* To make the Blueprint work you will need a functional RM02 integrated to Home Assistant thru Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
+  + sensor.xxDevice_Namexx_action
 
 If you do not see that sensor, 'LegacyAPI' might not be selected in the Zigbee2MQTT settings -  settings - advanced menu. Please find and check/select that setting like so:
 
@@ -86,25 +35,102 @@ If you do not see that sensor, 'LegacyAPI' might not be selected in the Zigbee2M
 
 ![Legacy API Selected Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2M-legacy.png?raw=true "Where to find Z2M Legacy API Setting")
 
-Once you have found the entity_id you can build the Automation. To build the automation:
 
-> 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
-> 2. Add a Description so you can tell what this one is for
-> 3. Use the Drop-downs to select the Entities for the listed purposes
+
+## 🗂 Input fields
+
+    remote/name: Remote
+        The entity to put here is the sensor that Z2M imported that is
+        named like this ->  ```sensor.XXYour_HameXX_action```'
+
+    tap_1:
+      name: Single click on Button 1 action
+
+    doubletap_1:
+      name: Double click on Button 1 action
+
+    hold_1:
+      name: LongPress on Button 1 action
+
+    tap_2:
+      name: Single click on Button 2 action
+
+    doubletap_2:
+      name: Double click on Button 2 action
+
+    hold_2:
+      name: LongPress on Button 2 action
+
+    tap_3:
+      name: Single click on Button 3 action
+
+    doubletap_3:
+      name: Double click on Button 3 action
+
+    hold_3:
+      name: LongPress on Button 3 action
+
+    tap_4:
+      name: Single click on Button 4 action
+
+    doubletap_4:
+      name: Double click on Button 4 action
+
+    hold_4:
+      name: LongPress on Button 4 action
+
+    tap_5:
+      name: Single click on Button 5 action
+
+    doubletap_5:
+      name: Double click on Button 5 action
+
+    hold_5:
+      name: LongPress on Button 5 action
+
+    tap_6:
+      name: Single click on Button 6 action
+
+    doubletap_6:
+      name: Double click on Button 6 action
+
+    hold_6:
+      name: LongPress on Button 6 action
+
+## 🔧 It won't work.. Are my Button presses working?
+
+There is sample code to make the template sensor in the help file on GitHub Repo.
+
+Within this blueprint there is an event handler that will latch the last command that the blueprint finds and sends that to the event buss. From there a simple Template sensor can grab it and show you the last action sent. This will help when setting up new functions and to troubleshoot strange behaviors. Add an entity card in your dashboard for sensor.cube_last_action to see what actions occur as you press the buttons.
+
+[Yaml file that contains the sample code here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/RM02_Last_Action_Template_Trigger_SAMPLE.yaml)
 
 ## 🌞 ❄️ Troubleshooting tip
 
 If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
-Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5. Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+[HA Docs on this here.](https://www.home-assistant.io/docs/automation/troubleshooting/#traces)
 
 ```yaml
-alias: aaaaaaa Test
-description: 'See how to increase the number of Traces available''
 trace:
   stored_traces: 10
-use_blueprint:
-.....
 ```
+
+## 📩 **Version Updates**
+
+Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
+
+📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+
+# Please Click the 🧡 at the end of this top Post if you find this Useful
+
+## 📲 **Software to Download** 💾
+
+HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml)
+
+Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml```
+
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml
 
 # 🌐 All My Blueprints
 
@@ -122,7 +148,7 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 
 #### 🧯Tasmota EZ Button Blueprint
 
-This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base. Restart All, Update a few, and Update all.
 
 https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
 
@@ -160,7 +186,7 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 #### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
@@ -172,7 +198,7 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 
 #### 🧯ZHA - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
@@ -190,9 +216,15 @@ https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r0
 
 #### 🧯 Humidifier Water Throttle Control
 
-This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water.  This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
+This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water. This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
 
 https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
+
+#### 🧯 Person_Alert_Blueprint
+
+This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
+
+https://community.home-assistant.io/t/person-alert-blueprint/542209
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

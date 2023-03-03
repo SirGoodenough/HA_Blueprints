@@ -1,23 +1,22 @@
 blueprint:
-  name: Media Player Script Blueprint 2022-12-12
+  name: Media Player Script Blueprint 2023-03-01
+  author: SirGoodenough
   description: "This provides a way to play canned media files with the big 
       long list of YAML entries but keep the main script or automation clean. 
       All that is required there would be a simple line like:  
         '- service: script.media_player_doorbell_sound'
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988)"
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml
   domain: script
   homeassistant:
-    min_version: 2022.5.2
+    min_version: 2023.3.0
   input:
     speaker_target:
       name: Device(s) to send the file to
@@ -43,7 +42,7 @@ blueprint:
     media_type:
       name: Media_Content_type
       description: "This is where you match how the content is encoded with 
-        how the player will play it.  Trial and error here can be your friend 
+        how the player will play it. Trial and error here can be your friend 
         unless you are much better at figuring this stuff out than me. 
         I generally only use 'audio/mp3' and occasionally 'image/jpg'. 
         More detailed information available here: 

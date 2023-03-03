@@ -2,6 +2,7 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 
 ## 📑 Changelog
 
+* **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
 * * If name changed, it is similar. Variables have not changed.
@@ -9,7 +10,8 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 * * Add alternate MQTT topic format
 * **2022-02-07**: Add Retain flag to fix HA start-up bug.
 * **2022-02-04**: Add Automation suggestion to fix HA start-up bug.
-* **2022-01-07**: First blueprint version :tada:
+* **2022-01-07**: First blueprint version 🎉
+<base target="_blank">
 
 ## 🔮 About this blueprint
 
@@ -19,14 +21,14 @@ Why do I need this?
 
 > If you are not very good with Home Assistant script writing, but want help managing your Tasmota firmware devices, this is the Blueprint for you.
 >
-> This BP generates 3 buttons (scripts). It does this using MQTT Discovery. My assumption is that your Home Assistant Instance has access to an MQTT Broker because you are using Tasmota, which all but requires it. If you are not connected to an MQTT Broker, this BP will not work for you.  
+> This BP generates 3 buttons (scripts). It does this using MQTT Discovery. My assumption is that your Home Assistant Instance has access to an MQTT Broker because you are using Tasmota, which all but requires it. If you are not connected to an MQTT Broker, this BP will not work for you. 
 > 
-> Button one will simply restart all your Tasmota devices.  This comes in handy at HA re-boot to refresh the state of the devices in Home Assistant. This means all the temperature, etc. measurements are up to date and displayed on the dashboard right away, not after the refresh delay. Also good for troubleshooting problem devices, giving them a kick when they need it.
+> Button one will simply restart all your Tasmota devices. This comes in handy at HA re-boot to refresh the state of the devices in Home Assistant. This means all the temperature, etc. measurements are up to date and displayed on the dashboard right away, not after the refresh delay. Also good for troubleshooting problem devices, giving them a kick when they need it.
 >
-> The second Button will update a few of your Tasmota Devices to the latest firmware.  That is assuming you start out kind of caught up already and have followed the [upgrade path](https://tasmota.github.io/docs/Upgrading/)
+> The second Button will update a few of your Tasmota Devices to the latest firmware. That is assuming you start out kind of caught up already and have followed the [upgrade path](https://tasmota.github.io/docs/Upgrading/)
 > The reason for upgrading a few is to verify that the upgrade is working with your things and prove to yourself that it is safe to upgrade them all. I have almost 40 devices, so I grab like 1 of each type and add them here. Then when a new Tasmota version shows up, I click this and those 5 (in my case) devices upgrade. After that is working for a few days without problems, I click the next button.
 >
-> The third Button just upgrades everything to the latest version. I can upgrade all my devices in about 3 minutes like this.  [My Youtube Short](https://www.youtube.com/watch?v=OT5id_P2JVw)
+> The third Button just upgrades everything to the latest version. I can upgrade all my devices in about 3 minutes like this. [My Youtube Short](https://www.youtube.com/watch?v=OT5id_P2JVw)
 
 ## 🔧 Configuration
 
@@ -48,18 +50,18 @@ Requirements
 
     topic_format:/name: Tasmota Topic Format
         The format of your Tasmota devices has a default that most people use:  
-        '%prefix%/%topic%/'.  
+        '%prefix%/%topic%/'. 
 
     ez_canary:/name: EZ Canary Button Tasmota
         This is the name of the button you want to use for the test new version
-        select sample.  I suggest use 5 or less Tasmota devices for this list.  
-        Leave this as 'not_selected' if you do not plan on using this feature.  
+        select sample. I suggest use 5 or less Tasmota devices for this list. 
+        Leave this as 'not_selected' if you do not plan on using this feature. 
         Leaving this Blank will cause errors.
         Will be converted to lower-case-chase
         
     ez_canary_grouptopic:/name: The GroupTopic name for the EZ Canary Button
         This is the name you assigned to the GroupTopics in the devices 
-        you chose as the first ones to receive a firmware update.  
+        you chose as the first ones to receive a firmware update. 
         This needs to be set-up by you in the Tasmota Console of the devices 
         themselves. Leave this blank if you are not using this feature.
         The button will be created, but it won't do anything.
@@ -97,7 +99,7 @@ Example [automation code sample file here](https://github.com/SirGoodenough/HA_B
 ## 🌞 ❄️ Troubleshooting tip
 
 If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
-Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5. Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
 [HA Docs on this here.](https://www.home-assistant.io/docs/automation/troubleshooting/#traces)
 
 ```yaml
@@ -109,7 +111,7 @@ trace:
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
-📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint.   [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
@@ -175,7 +177,7 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 #### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
@@ -187,7 +189,7 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 
 #### 🧯ZHA - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
@@ -205,9 +207,15 @@ https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r0
 
 #### 🧯 Humidifier Water Throttle Control
 
-This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water.  This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
+This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water. This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
 
 https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
+
+#### 🧯 Person_Alert_Blueprint
+
+This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
+
+https://community.home-assistant.io/t/person-alert-blueprint/542209
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

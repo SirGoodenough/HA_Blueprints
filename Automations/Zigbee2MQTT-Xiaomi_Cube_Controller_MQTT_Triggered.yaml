@@ -1,5 +1,6 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-12-28
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2023-03-01
+  author: SirGoodenough
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
     are available thru templating only. See the related document.)
@@ -69,12 +70,10 @@ blueprint:
     few questions and when I saw a few questions in that chat from people struggling,
     I wanted to help. I also had a better idea for troubleshooting info.
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203)
@@ -82,7 +81,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.11.0
+    min_version: 2023.3.0
   input:
     topic:
       name: Topic

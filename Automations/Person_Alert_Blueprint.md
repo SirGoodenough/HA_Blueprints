@@ -3,6 +3,7 @@ This is Blueprint will monitor a person or persons, and when they 'enter' or 'le
 ## 📑 Changelog
 
 * **2023-03-01**: 🎉 First release!
+<base target="_blank">
 
 ## 🔮 About this blueprint
 
@@ -91,7 +92,7 @@ For further information, reference these links.
 
 ## 🪄 How do I use this to send a Persistent Notification
 
-I have created a sample script as one possible example of how to do this. I grabs values from the Automation itself and generates a Persistent Notification that the trigger person entered or left the triggered zone. The notification is set to clear itself. You can use this as-is or use it to help you write the exact action you want to take when the Automation calls for it.  
+I have created a sample script as one possible example of how to do this. I grabs values from the Automation itself and generates a Persistent Notification that the trigger person entered or left the triggered zone. The notification is set to clear itself. You can use this as-is or use it to help you write the exact action you want to take when the Automation calls for it. 
 
 Sample file here: [Sample file containing Persistent Notification sample code](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Person_Alert_Blueprint_SAMPLE.yaml)
 
@@ -101,9 +102,11 @@ For this to work you will need Persistent Notification Integration. You must hav
 
 ## 🎤 How do I use this to send a message to my Google Speakers
 
-I have created a sample script as one possible example of how to do this. I grabs values from the Automation itself and generates a TTS message that the trigger person entered or left the triggered zone. It will also play an MP3 file that you provide to make the announcement more fun. You can use this as-is or use it to help you write the exact action you want to take when the Automation calls for it.  
+I have created a sample script as one possible example of how to do this. I grabs values from the Automation itself and generates a TTS message that the trigger person entered or left the triggered zone. It will also play an MP3 file that you provide to make the announcement more fun. You can use this as-is or use it to help you write the exact action you want to take when the Automation calls for it. 
 
 Sample file here: [Sample file containing cloud_say & media_player sample code](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Person_Alert_Blueprint_SAMPLE.yaml)
+
+[Here is a link to the free sound file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OK_tone_med.wav) I used, but PLEASE download it to your local system and play it from there, don't try to run it live from my Github. That just isn't going to work properly and that's not the kind of bandwidth usage I signed up for.
 
 For this to work you can use the provided Home Assistant integration(s) or install another TTS Integration. There are many available.
 
@@ -124,7 +127,7 @@ trace:
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
-📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint.   [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
@@ -152,7 +155,7 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 
 #### 🧯Tasmota EZ Button Blueprint
 
-This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base. Restart All, Update a few, and Update all.
 
 https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
 
@@ -190,7 +193,7 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 #### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
@@ -202,7 +205,7 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 
 #### 🧯ZHA - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
@@ -220,13 +223,13 @@ https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r0
 
 #### 🧯 Humidifier Water Throttle Control
 
-This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water.  This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
+This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water. This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
 
 https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
 
 #### 🧯 Person_Alert_Blueprint
 
-This is Blueprint that This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
+BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
 
 https://community.home-assistant.io/t/person-alert-blueprint/542209
 

@@ -1,5 +1,6 @@
 blueprint:
-  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2022-12-12
+  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2023-03-01
+  author: SirGoodenough
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 18
     commands from the ZemiSmart ZM-RM02 Remote. 
 
@@ -18,19 +19,17 @@ blueprint:
     Template sensor can grab it and show you the last action sent. Thie will help  when
     setting up new functions and to troubleshoot strange behaviours.
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650)'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.5.2
+    min_version: 2023.3.0
   input:
     remote:
       name: Remote

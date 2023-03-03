@@ -1,20 +1,20 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2022-12-12
+  name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2023-03-01
+  author: SirGoodenough
   description: 'This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
     long and a door has been closed.
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046)'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   homeassistant:
-    min_version: 2022.5.2
+    min_version: 2023.3.0
   domain: automation
   input:
     door_entity:

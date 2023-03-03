@@ -1,7 +1,8 @@
-This Blueprint monitors device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it.  It started as a pfSense centered project but any device_tracker that has a state of home when it is running and something else when it is not available will work with this.
+This Blueprint monitors device_tracker entities that you choose & notifies you if they go offline. Then it gives you the opportunity to devise an action to deal with it. It started as a pfSense centered project but any device_tracker that has a state of home when it is running and something else when it is not available will work with this.
 
 ## 📑 Changelog
 
+* **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-02-12**: Added 4 levels of optional delay to make this useful for firing restarts.
 * * Redid the Instruction file to new format.
 * * Added sample code 🔩 to turn this into an entity restart machine.
@@ -10,6 +11,7 @@ This Blueprint monitors device_tracker entities that you choose & notifies you i
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
 * * If name changed, it is similar. Variables have not changed.
 * **2022-12-10**: 🎉 First Released Version.
+<base target="_blank">
 
 ## 🔮 About this blueprint
 
@@ -58,7 +60,7 @@ Requirements
         Left as-is they will have no visible action.
 
     notification_id:/name: Optional Notification ID
-        See instructions explaining this.  It is not required & is blank
+        See instructions explaining this. It is not required & is blank
         in most use cases.
 
     skip_p_notifcation:/name: Choose to send persistent notification (or not)
@@ -78,12 +80,12 @@ Requirements
 
 ## 👀 Installation example
 
-Once you have the entities created or decided upon you can build the Automation.  To build the automation:  
+Once you have the entities created or decided upon you can build the Automation. To build the automation:  
 
 > 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes.
-> 4. Set the time-frame that the automation will be active.  Default is always on.
+> 4. Set the time-frame that the automation will be active. Default is always on.
 > 5. Select the device you want to monitor.
 > 6. Write the yaml scripting to perform your own actions, or just use the persistent notification that's already written for you.
 > 
@@ -93,7 +95,7 @@ Once you have the entities created or decided upon you can build the Automation.
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
-📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint.   [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
@@ -107,7 +109,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tr
 
 ## 🏹 Example from my Configuration to use this as a Restart Tool 🔩
 
-I use thie blueprint to keep the 2 MOCA adapters feeding my garage connected.  Here is a file with a static sample of this code:
+I use thie blueprint to keep the 2 MOCA adapters feeding my garage connected. Here is a file with a static sample of this code:
 
 [Sample Code for entity restart](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Device_tracker_Monitor_and_Notifier_SAMPLE.yaml)
 
@@ -131,7 +133,7 @@ Here are some of the variables you might want if writing you're own notification
 ## 🌞 ❄️ Troubleshooting tip
 
 If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
-Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5. Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
 
 ```yaml
 alias: aaaaaaa office Fan Test
@@ -158,7 +160,7 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 
 #### 🧯Tasmota EZ Button Blueprint
 
-This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base. Restart All, Update a few, and Update all.
 
 https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
 
@@ -208,7 +210,7 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 
 #### 🧯ZHA - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
@@ -220,9 +222,15 @@ https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688
 
 #### 🧯 Humidifier Water Throttle Control
 
-This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water.  This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
+This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water. This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
 
 https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
+
+#### 🧯 Person_Alert_Blueprint
+
+This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
+
+https://community.home-assistant.io/t/person-alert-blueprint/542209
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

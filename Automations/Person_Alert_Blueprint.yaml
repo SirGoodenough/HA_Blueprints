@@ -32,7 +32,7 @@ blueprint:
     📩 There is not an official version control system for Blueprints. However I have
     found something that comes pretty close. It is not perfect, but for **MOST**
     Blueprints, it does just fine. I encourage you to check this script out and use
-    it to easily check if I have updated this blueprint.  🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/person-alert-blueprint/542209)
@@ -91,7 +91,7 @@ blueprint:
         If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
 
         There is also a built-in [Actionable Notification Script Blueprint](https://github.com/home-assistant/core/blob/master/homeassistant/components/script/blueprints/confirmable_notification.yaml)
-        that could work here.  It is included with Home Assistant.
+        that could work here. It is included with Home Assistant.
         '
       default: []
       selector:

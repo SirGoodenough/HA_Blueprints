@@ -1,5 +1,6 @@
 blueprint:
-  name: Notify if selected Device_Tracker goes down and do something about it - 2023-02-12
+  name: Notify if selected Device_Tracker goes down and do something about it - 2023-03-01
+  author: SirGoodenough
   description: 'This is intended to be used with pfSense HACS Integration: 
     [GitHub - travisghansen/hass-pfsense: pfSense integration with Home Assistant ](https://github.com/travisghansen/hass-pfsense)
     . However it could be used with any device tracker that reports ```home``` when the 
@@ -16,7 +17,7 @@ blueprint:
     If you want to send these notifications to a mobile device, i suggest you look at
     the following blueprint to use in conjunction with this blueprint. I am not 
     affiliated with that, but decided I didn''t want to re-invent the wheel as 
-    mobile HA is not something I do every day.   
+    mobile HA is not something I do every day. 
     [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FEPMatt%2Fawesome-ha-blueprints%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fpersistent_notification_to_mobile%2Fpersistent_notification_to_mobile.yaml)
     
     ## 🐘 Requirements
@@ -30,19 +31,18 @@ blueprint:
 
     ### [Persistent Notification Integration Docs ](https://www.home-assistant.io/integrations/persistent_notification/)
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
+    📩 There is not an official version control system for Blueprints. However I have 
+    found something that comes pretty close. It is not perfect, but for **MOST** 
     Blueprints, it does just fine. I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint.   [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+    it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint ](https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688)
-
     '
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.11.0
+    min_version: 2023.3.0
   input:
     trackees:
       name: Devices to Track

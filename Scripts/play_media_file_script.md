@@ -2,11 +2,13 @@ This is a SCRIPT Blueprint. This provides a way to play canned media files with 
 
 ## 📑 Changelog
 
+* **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
 * * If name changed, it is similar. Variables have not changed.
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
-* **2021-12-28**: First blueprint version :tada:
+* **2021-12-28**: First blueprint version 🎉
+<base target="_blank">
 
 ## 🔮 About this blueprint
 
@@ -14,9 +16,9 @@ Type of blueprint: SCRIPT
 
 Why do I need this?
 
-> I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file.  
+> I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file. 
 > 
-> In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function.  The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario.
+> In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function. The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario.
 >
 
 ## 🔧 Configuration
@@ -25,7 +27,7 @@ Requirements
 
 * 1 or more functioning media_players
 * Media file(s) that are accessible to Home Assistant such that they can be played / displayed thru media_player.
-* The speakers you want to broadcast to must be working and integrated with the integration that makes them work.  This BP does not set-up speakers for you, it only sends files to the speakers.  See [Links](#%EF%B8%8F-extended-information) below to help guide you thru speaker set-up.
+* The speakers you want to broadcast to must be working and integrated with the integration that makes them work. This BP does not set-up speakers for you, it only sends files to the speakers. See [Links](#%EF%B8%8F-extended-information) below to help guide you thru speaker set-up.
 
 ## 🗂 Input fields
 
@@ -44,7 +46,7 @@ Requirements
 
     media_type:/ name: Media_Content_type
         This is where you match how the content is encoded with 
-        how the player will play it.  Trial and error here can be your friend 
+        how the player will play it. Trial and error here can be your friend 
         unless you are much better at figuring this stuff out than me. 
         I generally only use 'audio/mp3' and occasionally 'image/jpg'. 
         More detailed information available here: 
@@ -73,19 +75,19 @@ To build the script:
 > 1. Click on 'Create Script' [![Open your Home Assistant instance and show your scripts.](https://my.home-assistant.io/badges/scripts.svg)](https://my.home-assistant.io/redirect/scripts/)  and 'Use Blueprint'
 > 2. Add a Description so you can tell what this one is for
 > 3. Use the Drop-downs to select the Entities for the listed purposes
-> 4. The media_player field will pull from a pick list but you can extend that with multiple media_players or groups as needed by typing them in.  Use the links above to help get your system able to play media files.
-> 5. The media type is where you match how the content is encoded with how the player will play it.  Trial and error here can be your friend unless you are much better at figuring this stuff out than me.  I generally only use 'audio/mp3' and occasionally 'image/jpg'.  More detailed information available in the Google Developers link above.
+> 4. The media_player field will pull from a pick list but you can extend that with multiple media_players or groups as needed by typing them in. Use the links above to help get your system able to play media files.
+> 5. The media type is where you match how the content is encoded with how the player will play it. Trial and error here can be your friend unless you are much better at figuring this stuff out than me. I generally only use 'audio/mp3' and occasionally 'image/jpg'. More detailed information available in the Google Developers link above.
 
 ## 🥧 Example Usage
 
-This is a case I use this in my setup.  Instead of pasting all the media set-up code in an already busy automation, I set that stuff up with this blueprint and just call the script when I want to to play.  The added bonus is I can call on this script again where appropriate and the sounder is just a script call away.
+This is a case I use this in my setup. Instead of pasting all the media set-up code in an already busy automation, I set that stuff up with this blueprint and just call the script when I want to to play. The added bonus is I can call on this script again where appropriate and the sounder is just a script call away.
 
 See YAML code in this [Sample YAML file / package file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/play_media_file_script_SAMPLE.yaml)
 
 ## 🌞 ❄️ Troubleshooting tip
 
 If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
-Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5. Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
 [HA Docs on this here.](https://www.home-assistant.io/docs/automation/troubleshooting/#traces)
 
 ```yaml
@@ -97,7 +99,7 @@ trace:
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
-📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint.   [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
@@ -125,7 +127,7 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 
 #### 🧯Tasmota EZ Button Blueprint
 
-This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base.  Restart All, Update a few, and Update all.
+This Script Blueprint generates 3 Buttons to help you manage your Tasmota installed base. Restart All, Update a few, and Update all.
 
 https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934
 
@@ -163,7 +165,7 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 #### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
@@ -175,7 +177,7 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 
 #### 🧯ZHA - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
@@ -193,9 +195,15 @@ https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r0
 
 #### 🧯 Humidifier Water Throttle Control
 
-This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water.  This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
+This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water. This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
 
 https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
+
+#### 🧯 Person_Alert_Blueprint
+
+This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
+
+https://community.home-assistant.io/t/person-alert-blueprint/542209
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

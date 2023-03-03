@@ -15,7 +15,7 @@ rotate_cw_face_3:
       entity: light.livingroomlight
 
 # These are the standalone scripts that are 'called' from the Script 
-#  calling yaml shown above.  
+#  calling yaml shown above. 
 # If you don't need all of these only install the ones you will use.
 #
 # This uses 

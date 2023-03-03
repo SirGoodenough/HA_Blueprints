@@ -1,13 +1,14 @@
 blueprint:
-  name: Throttle-your-water-flow-tasmota-2023-02-82
+  name: Throttle-your-water-flow-tasmota-2023-03-01
+  author: SirGoodenough
   description: '
 
     This sets the amount of water sent to your Humidifier. 
     You provide a minimum time and maximum time you want the water to run and this will 
     send a time to the tasmota device controlling the water flow proportional to 
-    the ratio of the current humidity VS the target humidity.  
+    the ratio of the current humidity VS the target humidity. 
     
-    HA is using the Generic Hygrostat integration.  
+    HA is using the Generic Hygrostat integration. 
     
     My hardware is a Tasmota Sonoff SV sending the 24v to my humidifier water valve.
 
@@ -25,12 +26,10 @@ blueprint:
 
       ```on var1#state>110 do backlog power1 on;delay 1200;power1 off break on var1#state>100 do backlog power1 on;delay 1100;power1 off break on var1#state>90 do backlog power1 on;delay 1000;power1 off break on var1#state>80 do backlog power1 on;delay 900;power1 off break on var1#state>70 do backlog power1 on;delay 800;power1 off break on var1#state>60 do backlog power1 on;delay 700;power1 off break on var1#state>50 do backlog power1 on;delay 600;power1 off break on var1#state>40 do backlog power1 on;delay 500;power1 off break on var1#state>30 do backlog power1 on;delay 400;power1 off break on var1#state>20 do backlog power1 on;delay 300;power1 off break on var1#state<=20 do backlog power1 on;delay 200;power1 off endon```
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/humidifier-water-throttle-control/527583)
@@ -38,7 +37,7 @@ blueprint:
   domain: automation
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
   homeassistant:
-    min_version: 2023.2.0
+    min_version: 2023.3.0
   input:
     humidifier:
       name: Humidifier Entity
@@ -119,7 +118,7 @@ variables:
   humidity_now_val: '{{ states(humidity_now_var) | float(set_val) }}'
     # Ratio actual to the target & apply that % against the max time allowed.
   time_raw: '{{ (1 - (humidity_now_val/set_val)**2) * max_t_var | float(1) }}'
-    # If the calc'ed time < min or > max time, select the limits.  Else use calc'ed time.
+    # If the calc'ed time < min or > max time, select the limits. Else use calc'ed time.
   time_out: '{% if time_raw < min_t_var %}{{ min_t_var }}{% elif time_raw > max_t_var %}{{ max_t_var }}{% else %}{{ time_raw }}{% endif %}'
     # Convert !input to variable
   power_1_var: !input power_1

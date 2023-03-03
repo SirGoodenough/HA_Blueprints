@@ -1,5 +1,6 @@
 blueprint:
-  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_MQTT-2022-12-26
+  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_MQTT-2023-03-01
+  author: SirGoodenough
   description: 'This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)
     based on a room temperature.
 
@@ -16,19 +17,17 @@ blueprint:
     control of heating / cooling sources, or anything else you want Home Assistant
     to do for you.
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419)'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.5.2
+    min_version: 2023.3.0
   input:
     fan_control:
       name: Toggle to turn the fan function off for when away or seasonally

@@ -1,20 +1,19 @@
 blueprint:
-  name: Broadlink_ON_script_2022-12-12
+  name: Broadlink_ON_script_2023-03-01
+  author: SirGoodenough
   description: "A script that gets my TV on and Reciever set-up to correct mode.
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755)"
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml
   domain: script
   homeassistant:
-    min_version: 2022.5.2
+    min_version: 2023.3.0
   input:
     adapter_power:
       name: Turn on the smart plug that powers the adapter
@@ -42,7 +41,7 @@ blueprint:
           domain: script
     tv_mode:
       name: TV Input Mode
-      description: Select the feed into the TV.  Clicked after the OTA mode below.
+      description: Select the feed into the TV. Clicked after the OTA mode below.
       selector:
         entity:
           multiple: true
@@ -50,9 +49,9 @@ blueprint:
     tv_ota_mode:
       name: OTA Input Mode
       description: 
-        Select the Over The Air TV mode to put the TV Mode into a known state.  
+        Select the Over The Air TV mode to put the TV Mode into a known state. 
         Note- My TV uses multiple presses to select some inputs, so this is needed in my case.
-        You may not need this.  Adjust sequence accordingly...
+        You may not need this. Adjust sequence accordingly...
       default: script.vizio_j_tv
       selector:
         entity:

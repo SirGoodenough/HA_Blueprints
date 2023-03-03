@@ -1,5 +1,5 @@
 # Here is a way to push a persistant notification to your screen
-#   that will sit for a short time.  It is taylored to be part of
+#   that will sit for a short time. It is taylored to be part of
 #   my Person Alert BP but with slight tweaking it could be used
 #   for a lot of things. 
 
@@ -57,15 +57,15 @@ script:
       person: placeholder1
       place_to: placeholder2
       place_from: placeholder3
-      notify_id: 3479f317-f314-43bb-9e20-d6168b14f78c
+      notify_id: 6681d33b-c9d7-4678-a6cd-bc4113571806
       phase: enter
       flip: >
-        {% if phase == 'jump' %}
-          'They have left: ' {{ place_from }} ' and are now located at: ' {{ place_to }}
-        {% elif phase == 'leave' %} 
-          'They have left: ' {{ place_from }}
+        {% if phase == 'leave' %}
+          They have left: {{ place_from }}
+        {% elif phase == 'enter' %} 
+          They are now located at: {{ place_to }}
         {% else %}
-          'They are now located at: ' {{ place_to }}
+          They have left: {{ place_from }} and are now located at: {{ place_to }}
         {% endif %}
     mode: single
     max_exceeded: silent
@@ -75,7 +75,7 @@ script:
 
 # Here is a way to push an audio message to your speakers
 #   It is taylored to be part of my Person Alert BP but with slight 
-#   tweaking it could be used for a lot of things. 
+#   tweaking it could be used for a lot of things.
 # The speaker entities entry needs to be a device on your network.
 # This is set-up with tts.cloud_say using Nabu-Casa, but
 #   tts.google_translate_say and others would also work at no cost.
@@ -120,15 +120,16 @@ script:
       stored_traces: 10
     alias: Person alert BP TTS Message & Sound
     sequence:
-    - alias: MP3 to Speakers
+    - alias: Send sound file to Media Player
       service: media_player.play_media
       data:
         entity_id: "{{ entities }}"
         media_content_id:
           "media-source://media_source/local/mp3/OK_tone.wav"
         media_content_type: audio/mp3
-    - delay: 00:00:02
-    - alias: TTS script
+    - alias: Delay to let sounder to complete. Adjust as needed.
+      delay: 00:00:03
+    - alias: TTS action call
       service: tts.cloud_say
       data:
         entity_id: "{{ entities }}"
@@ -147,10 +148,9 @@ script:
     icon: mdi:message-alert-outline
 
 
-
 # Tying that all together, I thought I would share my complete BP call Automation here.
 #   Notice I parallel the action groups, just because I can I guess, and notice that
-#   it is running in single/silent mode.  I tried other modes with mixed results.
+#   it is running in single/silent mode. I tried other modes with mixed results.
 #   Another thing to notice is I don't pass in variables to the script where the
 #   defaults are what I want.
 

@@ -2,7 +2,8 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 
 ## 📑 Changelog
 
-* **2022-12-26**: BugFix.  Time default no longer all zeros. Update default Tnx: [cappadanna](https://community.home-assistant.io/u/cappadanna)
+* **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
+* **2022-12-26**: BugFix. Time default no longer all zeros. Update default Tnx: [cappadanna](https://community.home-assistant.io/u/cappadanna)
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
 * * If name changed, it is similar. Variables have not changed.
@@ -18,27 +19,140 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 * **2021-09-03**: Add Description.
 * **2021-08-19**: Remove negative Temp Gap hysteresis, logic wrong.
 * **2021-08-04**: Remove Default path as it made my fan beep for no reason.
-* **2021-08-02**: First blueprint version :tada: needs Home Assistant Core 2021.7 or higher for Trigger_ID to work.
+* **2021-08-02**: First blueprint version 🎉 needs Home Assistant Core 2021.7 or higher for Trigger_ID to work.
+<base target="_blank">
 
-## 📩 * Version Updates
+## 🔮 About this blueprint
+
+Type of blueprint: AUTOMATION
+
+Why do I need this?
+
+> This functionality started as a way to help my Bedroom AC unit keep an even temperature throughout the bedroom over night. My partner wanted the fan on, but not faster than it had to be. I wanted it to change speeds following the temperature of the room. So that's what I did.
+>
+> I continue to use this functionality in a slightly different way in my home system. If you want to see my use the automation form of this look at my [HA Configuration GitHub repository](https://github.com/SirGoodenough/Home-Assistant-Config). You will see that I have combined the control of the AC unit climate entity with this fan speed function and also have an 'on demand' version of this for when the room needs to be used during the day. My feeling was that I wanted to make this accessible to a wider audience, so I created this blueprint.
+>
+> If you are looking to tweak the function here or are looking for something the same but different, hit me up on my [Discord](https://discord.gg/Uhmhu3B) and we can work on that! If you see problems or have questions and don't want to use Discord, Comments here are also welcome.
+>
+
+## 🔧 Configuration
+
+Requirements
+
+* 1 input_boolean entity as the feature so you can enable or disable the automation easily. [![Open your Home Assistant instance and show your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
+* 1 input_number used as the target temperature for the area you will be in.
+* 1 temperature sensor or temp average sensor or filtered temp sensor. This should be located physically within the breeze area of the fan for maximum desired affect.
+
+## 🗂 Input fields
+
+    people2monitor/name: Person or People to follow
+        Select the Person you want this BP to trigger 
+        on for this action. Multiples are allowed.
+
+    fan_control/name: Toggle to turn the fan function off for when away or seasonally
+        (#1) ```input_boolean``` - If this is set to off, the Automation
+        will be disabled.
+
+    room_temp_now/name: Room Temperature Sensor
+        (#2) This is a temperature sensor or averaged temperature sensor
+        preferrably within the path of the moving air from the fan.
+
+    room_set_temp/name: Room Target Temperature
+        (#3) ```input_number``` - This is the target temperature of the
+        room.
+
+    temp_gap/name: Temp Hysteresis
+        (#4) This keeps the fan from speed cycling too often. (Let''s
+        call it Hysterisis)
+
+    temp_gap_1_to_2/name: Temp Gap between Low and Medium
+        (#5) This is the temp swing between Low and Medium.
+
+    temp_gap_2_to_3/name: Temp Gap between Medium and High
+        (#6) This is the temp change between Medium and High.
+
+    fan_on_time/name: Time of day fan should start
+        (#7) Set this for the time of day you want the fan function to
+        be enabled.
+
+    fan_off_time/name: Time of day fan should stop
+        (#8) Set this for the time of day you want the fan function to
+        end.
+
+    weekday/name: Day of the week to use the Automation
+        (#9) Enable it these days only
+
+    loop_action/name: User action for fan enabled condition (loop)
+        (#11) This is intended to start / set temp on an AC unit or whatever
+        you want to do. It is executed on every successful trigger that does not send
+        the operation to off.
+
+    off_action/name: User action for fan off condition (off_action)
+        (#12) This is intended to disable an AirCon unit or whatever you
+        want to do. It is executed on every successful operation off trigger.
+
+    **AutomationFanControl_HA_fan.yaml ONLY:**
+
+    fan/name: Fan Entity
+        (#10) This is the Home Assistant Fan entity
+
+    **AutomationFanControl_MQTT.yaml ONLY:**
+
+    mqtt_fan_topic/name: Fan Topic
+        (#10) This is the MQTT Topic needed to change the fan speed.
+
+
+## 👀 ✈️ Extended Information
+
+Questions:
+
+>  1. You can use either Metric or Imperial, but the sensor and the input_number have to be using the same scale.
+>  2. The Hysteresis offset can be '0' for the simplest operation. If you hare using the input_number to control both this and a climate integration, you may want an offset so the fan does not quick cycle. It basically move the input_number set point by the amount you pick
+>  3. You can have multiple automations running off of this with the same or different temp settings or times, but I suggest the times on 'ENABLED' versions do not overlap, or it will get very confused.
+
+## 🛠 HOW the Blueprint / Automation works
+
+Walk-thru:
+
+> 1. The header of the Blueprint contains the required info plus the URL from where it came from.
+> 2. The input: section is where it gets the information it needs to fill in the blanks. This information is stored in the actual automation referencing this Blueprint when executing the task.
+> 3. The Variables section has several entries. These are converting !inputs to variables that can be used in templates.
+> 4. The triggers section has hooks for the listed things. 2 of them are used to stop the automation at the appropriate time, and the rest are used to start the automation or to adjust the fan speed on temperature changes.
+> 5. In the action the first test looks to see if the automation wants to stop. If that is not the case, it will test the temperature reading against the set point and adjust the fan speed accordingly.
+>
+
+## 🪄 How do I use this
+
+In the yaml file linked below I show how I and controlling my AirCon within the fan loop. I have a window unit that is WIFI enabled for Temperature and on/off. I set this up to only trigger to the AirCon unit when it actually needs to change something to avoid rate limiting situations. Follow the comments and see the [example yaml code here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/AutoFanControl_Aircon_Control_SAMPLE_Files.yaml)
+
+## 🌞 ❄️ Troubleshooting tip
+
+If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5. Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+[HA Docs on this here.](https://www.home-assistant.io/docs/automation/troubleshooting/#traces)
+
+```yaml
+trace:
+  stored_traces: 10
+```
+
+## 📩 **Version Updates**
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
 
-🔗 There is not an official version control system for Blueprints.  However I have found something that comes pretty close.  It is not perfect, but for **MOST** Blueprints, it does just fine.  I encourage you to check this script out and use it to easily check if I have updated this blueprint.
+📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
-[koter84 Blueprint Update Script](https://gist.github.com/koter84/86790850aa63354bda56d041de31dc70#file-readme-md)
+# Please Click the 🧡 at the end of this top Post if you find this Useful
 
-### Option 1: My Home Assistant
+## 📲 **Software to Download** 💾
 
-Click this badge to import this Blueprint.  This is the version that uses HA fan integration and 0%, 33%, 66%, & 100% values to control the fan:
+Click this badge to import this Blueprint. This is the version that uses HA fan integration and 0%, 33%, 66%, & 100% values to control the fan:
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_HA_fan.yaml)
 
-Click this badge to import this Blueprint.  This is the version that uses MQTT speeds 0, 1, 2, 3 to control the fan:
+Click this badge to import this Blueprint. This is the version that uses MQTT speeds 0, 1, 2, 3 to control the fan:
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml)
 
-# Please Click the 🧡 at the end of the Post if you find this Useful
-
-### Option 2: Direct Link
+Direct link to  download Blueprint:
 
 HA Fan Entity Version: Version: Copy this link if you want to import the blueprint in your installation.
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_HA_fan.yaml```
@@ -50,156 +164,6 @@ MQTT Version: Version: Copy this link if you want to import the blueprint in you
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml
 
-## 📖 Description
-
-This functionality started as a way to help my Bedroom AC unit keep an even temperature throughout the bedroom over night. My partner wanted the fan on, but not faster than it had to be. I wanted it to change speeds following the temperature of the room.  So that's what I did.
-
-I continue to use this functionality in a slightly different way in my home system. If you want to see my use the automation form of this look at my [HA Configuration GitHub repository](https://github.com/SirGoodenough/Home-Assistant-Config). You will see that I have combined the control of the AC unit climate entity with this fan speed function and also have an 'on demand' version of this for when the room needs to be used during the day.  My feeling was that I wanted to make this accessible to a wider audience, so I created this blueprint.
-
-If you are looking to tweak the function here or are looking for something the same but different, hit me up on my [Discord](https://discord.gg/Uhmhu3B) and we can work on that! If you see problems or have questions and don't want to use Discord, Comments here are also welcome.
-
-First, let’s go over Blueprints and what they are. Blueprints are a way to share automations and is built into Home Assistant. Simple as that.You can import my template code and a copy of it will reside in your configuration. Once there, you can can edit it (if you need changes only) or you can call up that Blueprint to build an automation. It will collect the information needed based on your entities and your personal adjustments, and provide a working automation. You will have to have or add the required hardware and entities that the Blueprint needs to function.
-
-### ⚙️ Usage
-
-#### 🛠 Installation
-
-* Open Home Assistant with administrator privileges and on a Lovelace screen, click anywhere in the main entity area and type the letter ‘c’. A selection box should pop up. Type blue and select the button to navigate to blueprints. You can also find blueprints by selecting configuration from the left menu and then blueprints from the center menu.
-* Once there, click on the ‘Import Blueprint’ button in the lower right side of the main screen.
-* In the ‘URL of the blueprint’ line type or paste in the URL of my Blueprint. I have the blueprint stored on my Public GitHub:
-
-> ◦ https://github.com/SirGoodenough/HA_Blueprints
-
-#### 🧬 To make the blueprint work it will need
-
-> • 1 input_boolean entity as the feature so you can enable or disable the automation easily. [![Open your Home Assistant instance and show your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
->
-> • 1 input_number used as the target temperature for the area you will be in. 
->
-> • 1 temperature sensor or temp average sensor or filtered temp sensor. This should be located physically within the breeze area of the fan for maximum desired affect.
-
-Once you have the entities created or decided upon you can build the Automation. To build the automation:  
-
-> 1. Click on 'Create Automation'  [![Open your Home Assistant instance and show your automations.](https://my.home-assistant.io/badges/automations.svg)](https://my.home-assistant.io/redirect/automations/) and 'Use Blueprint'
-> 2. Add a Description so you can tell what this one is for
-> 3. Use the Drop-downs to select the Entities and values for the listed purposes. If you have questions trial and error or hit me up on Discord.
-> 4. Test that your fan works by changing the input number and the input boolean
-
-### 🛠 FAQ for blueprint
-
-Questions:
-
->  1. You can use either Metric or Imperial, but the sensor and the input_number have to be using the same scale.
->  2. The Hysteresis offset can be '0' for the simplest operation. If you hare using the input_number to control both this and a climate integration, you may want an offset so the fan does not quick cycle. It basically move the input_number set point by the amount you pick
->  3. You can have multiple automations running off of this with the same or different temp settings or times, but I suggest the times on 'ENABLED' versions do not overlap, or it will get very confused.
-
-### 🛠 HOW the Blueprint / Automation works
-
-Walk-thru:
-
-> 1. The header of the Blueprint contains the required info plus the URL from where it came from.
-> 2. The input: section is where it gets the information it needs to fill in the blanks. This information is stored in the actual automation referencing this Blueprint when executing the task.
-> 3. The Variables section has several entries. These are converting !inputs to variables that can be used in templates.
-> 4. The triggers section has hooks for the listed things. 2 of them are used to stop the automation at the appropriate time, and the rest are used to start the automation or to adjust the fan speed on temperature changes.
-> 5. In the action the first test looks to see if the automation wants to stop. If that is not the case, it will test the temperature reading against the set point and adjust the fan speed accordingly.
-> 
-_________________
-
-## 🌞 ❄️ Adding a heating or Cooling resource to the loop
-
-Here is how I and controlling my AirCon within the fan loop. I have a window unit that is WIFI enabled for Temperature and on/off. I set this up to only trigger to the AirCon unit when it actually needs to change something to avoid rate limiting situations.
-Added to the 'loop' (#11) action selector:  (YAML Mode)
-
-```yaml
-- alias: "Start AirCon if room is 2° warmer than setting & limit to prevent rate limit outages"
-  if: '{{ states(''climate.gemodule5384'') == ''off''
-    and state_attr(''climate.gemodule5384'', ''current_temperature'') | float(73.1) - 2.0
-    >= states(''input_number.bedroom_auto_temp'') | float(73.1)
-    }}'
-  then:
-    service: script.bedroom_ac_start
-- delay: 00:00:05
-- alias: "call bedroom ac set temperature & limit to prevent rate limit outages"
-  if: '{{ is_number(state_attr(''climate.gemodule5384'', ''temperature''))
-    and state_attr(''climate.gemodule5384'', ''temperature'') | float(73.1)
-    != states(''input_number.bedroom_auto_temp'') | float(73.1)
-    }}'
-  then:
-    service: script.bedroom_ac_set_temp
-    data:
-      Temp: '{{ states(''input_number.bedroom_auto_temp'') | float(73.1) }}'
-```
-
-The AirCon on script looks like this:
-
-```yaml
-#####################################################
-# Bedroom AC Start                                  # 
-#####################################################
-bedroom_ac_start:
-  alias: Bedroom AC Start
-  sequence:
-    - service: climate.turn_on
-      target:
-        entity_id: climate.gemodule5384
-
-```
-
-And the script called to set the temperature looks like this. I use this script for multiple instances of AC control...
-
-```yaml
-script:
-#####################################################
-# Bedroom AC Set Temperature                        # 
-#  Looks for the variable 'Temp' to be passed in    #
-#   'Temp' is a float between 45 and 95 °F          #
-#####################################################
-bedroom_ac_set_temp:
-  variables:
-    Temp:
-  alias: Bedroom AC Set Temperature
-  sequence:
-    - service: climate.set_temperature
-      data:
-        entity_id: climate.gemodule5384
-        temperature: "{{ Temp }}"
-```
-
-Added to the 'off_action' (#12) selector: (YAML Mode)
-
-```yaml
-      - alias: call shut the AirCon down script
-        service: script.bedroom_cooling_off
-```
-
-And the script called to shut it down looks like this. I use this script for multiple instances of AC control...
-
-```yaml
-#####################################################
-# Bedroom Cooling Off                               # 
-#####################################################
-bedroom_cooling_off:
-  alias: Bedroom Cooling OFF
-  sequence:
-    - alias: Stop the AirCon
-      service: climate.turn_off
-      target:
-        entity_id: climate.gemodule5384
-```
-
-## 🌞 ❄️ Troubleshooting tip
-
-If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
-Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.  Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
-
-```yaml
-alias: aaaaaaa office Fan Test
-description: 'See how to increase the number of Traces available''
-trace:
-  stored_traces: 10
-use_blueprint:
-.....
-```
 
 # 🌐 All My Blueprints
 
@@ -255,7 +219,7 @@ https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-be
 
 #### 🧯Zigbee2MQTT - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a Zigbee2MQTT built sensor to sort out the multitude of commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203
 
@@ -267,7 +231,7 @@ https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/4
 
 #### 🧯ZHA - Xiaomi Cube Controller Blueprint
 
-This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote.  
+This Blueprint uses a ZHA built sensor to sort out the 38(+54) commands from the Xiaomi Magic Cube Remote. 
 
 https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
@@ -285,9 +249,15 @@ https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r0
 
 #### 🧯 Humidifier Water Throttle Control
 
-This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water.  This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
+This blueprint monitors a humidity sensor & by determining the error from the goal, sends info to a humidifier as to how long to flow the water. This saves water & has a minimal effect on function. Requires a Sonoff SV, Generic hygrostat Integration, & a suitable humidifier.
 
 https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
+
+#### 🧯 Person_Alert_Blueprint
+
+This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!
+
+https://community.home-assistant.io/t/person-alert-blueprint/542209
 
 ## 🤹🏾‍♂️ Contact Links or see my other work
 

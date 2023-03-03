@@ -1,5 +1,6 @@
 blueprint:
-  name: Aqara Magic Cube ZHA - 2023-01-19
+  name: Aqara Magic Cube ZHA - 2023-03-01
+  author: SirGoodenough
   description: 'This Blueprint uses a Z2M Event Sensor to sort out the 38(+54)
     unique actions available from the Xiaomi Magic Cube Remote. (Some unique actions
     are available thru templating only. See the related document.)
@@ -71,19 +72,17 @@ blueprint:
     to ZHA. I also had a better idea for troubleshooting info.
     _________________________
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975)'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA-Xiaomi_Cube_Controller.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.11.0
+    min_version: 2023.3.0
   input:
     last_side_input:
       name: Last side up numeric helper
@@ -650,7 +649,7 @@ trigger:
     device_id: !input cube
 condition:
   condition: template
-    # Only allow valid commands.  Sorts out any weirdness.
+    # Only allow valid commands. Sorts out any weirdness.
   value_template: '{{ trigger.event.data.command in (''rotate_right'', ''rotate_left'', ''flip'', ''slide'', ''knock'', ''shake'', ''drop'') }}'
 action:
 - variables:
@@ -660,14 +659,14 @@ action:
     friendly_name: '{{ state_attr( device_entities( cube )[0], ''friendly_name'').split('' '')[0] }}'
       # Get the command from the trigger and use as action_input.
     action_input: '{{ trigger.event.data.command }}'
-      # Get the flip degrees.  Assume 90 if it's not known.
+      # Get the flip degrees. Assume 90 if it's not known.
     flip_degrees: '{{ trigger.event.data.args.flip_degrees | default(90) | int(90) }}'
       # Convert the generic flip command into 2 seperate commands for 90 & 180.
       #  If it can't figure it out, make the command something that will not trigger.
     action: '{{ iif(action_input == ''flip'', iif(flip_degrees == 180, ''flip180'', ''flip90''), action_input ) | default(failsafe) }}'
-      # Get the angle degrees.  Assume 0 if it's not known.
+      # Get the angle degrees. Assume 0 if it's not known.
     angle: '{{ trigger.event.data.args.relative_degrees | default(0) | float(0) }}'
-      # Get the activated_face. Assume 0 if not known.  Also convert to 0 based numbering.
+      # Get the activated_face. Assume 0 if not known. Also convert to 0 based numbering.
     current_side: '{{ (trigger.event.data.args.activated_face | default(1) | int(1)) - 1 }}'
       # Get the last side stored in the input_number helper.
     last_side_input: !input last_side_input

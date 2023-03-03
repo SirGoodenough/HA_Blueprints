@@ -1,18 +1,19 @@
 blueprint:
-  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-01-26
+  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-03-01
+  author: SirGoodenough
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
     unique commands (118+ total) available from the Xiaomi Magic Cube Remote. (Some unique commands
     listed as + are not counted & available thru templating only. See the related document.)
 
     **NOTE:** This blueprint is for the PRO cube version ONLY and is not fully compatible
-    with the original version of the cube.  Links for those are in my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints).
+    with the original version of the cube. Links for those are in my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints).
 
     This cube has an ''Action'' mode (Shown below with this graphic: 🫳 ACTION MODE ONLY 🫳 )
 
     and a ''Scene'' mode (Shown below with this graphic: 👀 SCENE MODE ONLY 👀 ).
 
     Make sure the cube is in the mode you think it is in when triggering it.
-    The functions are separate.  IE ''Action - slide'' will do something different from ''Scene - slide''.
+    The functions are separate. IE ''Action - slide'' will do something different from ''Scene - slide''.
 
     The split out of functions gives you the ability to assign local scripts or functions
     to do the things you want the remote to do.
@@ -71,12 +72,10 @@ blueprint:
     few questions and when I saw a few questions in that chat from people struggling,
     I wanted to help. I also had a better idea for troubleshooting info.
 
-    📩 There is not an official version control system for Blueprints.  However I have 
-    found something that comes pretty close.  It is not perfect, but for **MOST** 
-    Blueprints, it does just fine.  I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. 🔗
-
-    [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111)
@@ -84,7 +83,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
   domain: automation
   homeassistant:
-    min_version: 2022.11.0
+    min_version: 2023.3.0
   input:
     topic:
       name: Topic
@@ -301,7 +300,7 @@ blueprint:
         action: {}
     action_throw:
       name: 🫳 ACTION MODE ONLY 🫳 Throw the cube 🍩
-      description: ' You don''t actually ''Throw'' the cube.  The action is as follows:
+      description: ' You don''t actually ''Throw'' the cube. The action is as follows:
 
           > Pick up the cube firmly.
 
@@ -770,7 +769,7 @@ blueprint:
         action: {}
     scene_throw:
       name: 👀 SCENE MODE ONLY 👀 Throw the cube 🍩
-      description: ' You don''t actually ''Throw'' the cube.  The action is as follows:
+      description: ' You don''t actually ''Throw'' the cube. The action is as follows:
 
           > Pick up the cube firmly.
           
