@@ -2,6 +2,7 @@ This is Blueprint will monitor a person or persons, and when they 'enter' or 'le
 
 ## 📑 Changelog
 
+* **2023-03-01.1**: Minor adjustments to sample script files for smoother operation
 * **2023-03-01**: 🎉 First release!
 <base target="_blank">
 
