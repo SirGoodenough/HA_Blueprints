@@ -74,7 +74,7 @@ blueprint:
         that you select and will not be available for other triggers.
 
         This time is delay is not effective if automation is in parallel mode.
-      '
+        '
       default:
         hours: 0
         minutes: 0
