@@ -48,6 +48,27 @@ blueprint:
       selector:
         text:
           multiple: false
+    home_button: 
+      name: Custom command for Home Button
+      description: 'Use this to send a custom GCode command to the printer.'
+      default: '["x", "y", "z"]'
+      selector:
+        text:
+          multiple: false
+    bed_level_button: 
+      name: Custom GCode command for the Bed Level Button
+      description: 'Use this to send a custom GCode command to the printer.'
+      default: G29
+      selector:
+        text:
+          multiple: false
+    present_button: 
+      name: Custom jog command for the Presentation Button
+      description: 'Use this to send a custom GCode command to the printer.'
+      default: '{"x": 0, "y": 200, "z": 40, "speed": 10, "absolute": true}'
+      selector:
+        text:
+          multiple: false
     aux_1: 
       name: Custom GCode command for Aux Button 1
       description: 'Use this to send a custom GCode command to the printer.'
@@ -80,13 +101,16 @@ trigger:
   for: 00:01:00
 
 variables:
-  aux1: !input aux_1
-  aux2: !input aux_2
+  h_b_cmnd: !input home_button
+  bl_b_cmnd: !input bed_level_button
+  p_b_cmnd: !input present_button
+  a1_b_cmnd: !input aux_1
+  a2_b_cmnd: !input aux_2
   printer_topic: !input base_topic
   dv_id: !input device_id
   dv_name: !input device_name
   ha_topic: 'homeassistant/button/{{ dv_id }}'
-    # Device Parameters
+    # Device Parameters for MQTT Discovery
   avty_t: '~mqtt'
   pl_avail: 'connected'
   pl_not_avail: 'disconnected'
@@ -98,51 +122,55 @@ variables:
   sw: '2023-03-14'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Discovery_Helper.yaml'
   cu: 'https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934'
-    # Button Parameters
+    # Button Parameters for MQTT Discovery
       # Home Button
-  h_c_topic: '{{ ha_topic }}/home_button/config'
-  h_uniq_id: '{{ dv_id }}_home_button'
-  h_bname: '{{ dv_name }}_home_button'
+  h_local: home_button
+  h_c_topic: '{{ ha_topic }}/{{ h_local }}/config'
+  h_uniq_id: '{{ dv_id }}_{{ h_local }}'
+  h_bname: '{{ dv_name }}_{{ h_local }}'
   h_ic: mdi:home
   h_cmd_t: '~hassControl/home'
-  h_pl_prs: '["x", "y", "z"]'
+  h_pl_prs: '{{ h_b_cmnd }}'
       # Bed Level Button
+  bl_local: bed_level_button
   bl_c_topic: '{{ ha_topic }}/bed_level_button/config'
   bl_uniq_id: '{{ dv_id }}_bed_level_button'
   bl_bname: '{{ dv_name }}_bed_level_button'
   bl_ic: mdi-spirit-level
   bl_cmd_t: '~hassControl/commands'
-  bl_pl_prs: G29
+  bl_pl_prs: '{{ bl_b_cmnd }}'
       # Presentation Button
+  p_local: present_button
   p_c_topic: '{{ ha_topic }}/present_button/config'
   p_uniq_id: '{{ dv_id }}_present_button'
   p_bname: '{{ dv_name }}_present_button'
   p_ic: mdi-gift
   p_cmd_t: '~hassControl/jog'
-  p_pl_prs: '{"x": 0, "y": 200, "z": 40, "speed": 10, "absolute": true}'
+  p_pl_prs: '{{ p_b_cmnd }}'
       # User Aux 1 Button
+  a1_local: _aux_1_button
   a1_c_topic: '{{ ha_topic }}/aux_1_button/config'
   a1_uniq_id: '{{ dv_id }}_aux_1_button'
   a1_bname: '{{ dv_name }}_aux_1_button'
   a1_ic: mdi-hand-extended-outline
   a1_cmd_t: '~hassControl/commands'
-  a1_pl_prs: '{{ aux1 }}'
+  a1_pl_prs: '{{ a1_b_cmnd }}'
       # User aux 2 Button
+  a2_local: aux_2_button
   a2_c_topic: '{{ ha_topic }}/aux_2_button/config'
   a2_uniq_id: '{{ dv_id }}_aux_2_button'
   a2_bname: '{{ dv_name }}_aux_2_button'
   a2_ic: mdi-hand-extended
   a2_cmd_t: '~hassControl/commands'
-  a2_pl_prs: '{{ aux2 }}'
+  a2_pl_prs: '{{ a2_b_cmnd }}'
       # Safe Shutdown Button
+  sd_local: safe_shutdown_button
   sd_c_topic: '{{ ha_topic }}/safe_shutdown_button/config'
   sd_uniq_id: '{{ dv_id }}_safe_shutdown_button'
   sd_bname: '{{ dv_name }}_safe_shutdown_button'
   sd_ic: mdi-power
   sd_cmd_t: '~/blueprint/shutdown'
   sd_pl_prs: '1'
-
-
 
 action:
 - alias: Home Button Create
@@ -187,9 +215,9 @@ action:
 #   "sw": "HomeAssistant Discovery for OctoPrint 3.6.2"}
 # "ic": "mdi:alert-octagon"
 
-G90 ;Absolute positioning
+# G90 ;Absolute positioning
 
-G1 Z40 X0 Y{machine_depth}
+# G1 Z40 X0 Y{machine_depth}
 
 # Homing a printer from Lovelace
 
