@@ -1152,7 +1152,7 @@ action:
     mdl: 'Number Helper for Z2M Cube Integration'
     mf: 'SirGoodenough'
     sa: 'house'
-    sw: '2023-01-26-1'
+    sw: '2023-03-01'
     hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
     cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
 
