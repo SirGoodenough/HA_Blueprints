@@ -27,7 +27,6 @@ blueprint:
         '
       selector:
         text:
-          multiple: false
     device_id: 
       name: Valuee of the Home Assistant Discovery device_id
       description: 'This needs to be the 
@@ -37,7 +36,6 @@ blueprint:
         '
       selector:
         text:
-          multiple: false
     device_name: 
       name: Name of the Home Assistant Discovery Device
       description: 'This needs to be the 
@@ -47,7 +45,6 @@ blueprint:
         '
       selector:
         text:
-          multiple: false
     home_button: 
       name: Custom command for Home Button
       description: 'Use this to send a custom GCode command to the printer.'
@@ -61,14 +58,12 @@ blueprint:
       default: G29
       selector:
         text:
-          multiple: false
     present_button: 
       name: Custom jog command for the Presentation Button
       description: 'Use this to send a custom GCode command to the printer.'
       default: '{"x": 0, "y": 200, "z": 40, "speed": 10, "absolute": true}'
       selector:
         text:
-          multiple: false
     aux_1: 
       name: Custom GCode command for Aux Button 1
       description: 'Use this to send a custom GCode command to the printer.'
@@ -82,7 +77,6 @@ blueprint:
       default: 'M117 Aux2'
       selector:
         text:
-          multiple: false
 
 trigger_variables:
   printer_topic: !input base_topic
