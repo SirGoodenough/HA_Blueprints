@@ -84,21 +84,24 @@ blueprint:
         text:
           multiple: false
 
-
-# trigger_variables:
-#   device_name_var: !input device_name
-#   status_value: '{{ ''states.sensor.'' device_name_var ''_print_status'' }}'
+trigger_variables:
+  printer_topic: !input base_topic
+  sd_trigger_topic: '{{ printer_topic }}/blueprint/shutdown'
 
 trigger:
 - platform: state
   entity_id: sensor.tarantulapro_print_status
+  id: start_up
   to: "Operational"
-
 - platform: numeric_state
   entity_id: sensor.tarantulapro_tool_0_temperature
+  id: in_range
   below: "40.0"
   above: "35.0"
   for: 00:01:00
+- platform: mqtt
+  topic: '{{ sd_trigger_topic }}'
+  id: shutdown_pressed
 
 variables:
   h_b_cmnd: !input home_button
@@ -106,15 +109,14 @@ variables:
   p_b_cmnd: !input present_button
   a1_b_cmnd: !input aux_1
   a2_b_cmnd: !input aux_2
-  printer_topic: !input base_topic
-  dv_id: !input device_id
   dv_name: !input device_name
+  dv_id: !input device_id
   ha_topic: 'homeassistant/button/{{ dv_id }}'
     # Device Parameters for MQTT Discovery
   avty_t: '~mqtt'
   pl_avail: 'connected'
   pl_not_avail: 'disconnected'
-  ids: '{{ dv_id }}_Blueprint'
+  ids: '{{ dv_id }}_discovery_blueprint'
   dname: '{{ dv_name }}'
   mf: 'SirGoodenough'
   mdl: 'Octoprint_Discovery_Helper'
@@ -165,14 +167,45 @@ variables:
   a2_pl_prs: '{{ a2_b_cmnd }}'
       # Safe Shutdown Button
   sd_local: safe_shutdown_button
-  sd_c_topic: '{{ ha_topic }}/safe_shutdown_button/config'
-  sd_uniq_id: '{{ dv_id }}_safe_shutdown_button'
-  sd_bname: '{{ dv_name }}_safe_shutdown_button'
+  sd_c_topic: '{{ ha_topic }}/{{ sd_local }}/config'
+  sd_bname: '{{ dv_name }}_{{ sd_local }}'
+  sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
   sd_ic: mdi-power
   sd_cmd_t: '~/blueprint/shutdown'
-  sd_pl_prs: '1'
+  sd_pl_prs: 'press'
+
+mode: parallel
+max: 5
+max_exceeded: silent
 
 action:
+  choose:
+  - conditions:
+    alias: 'Do I execute the auto Shutdown?'
+    and:
+    - or:  
+      - condition: trigger
+        id: in_range
+      - condition: trigger
+        id: shutdown_pressed
+    - not:
+      - condition: state
+        entity_id: 'binary_sensor.{{ printer_topic }}_printing'
+        state: "on"
+    sequence:
+      - alias: Shut down Octoprint
+        service: button.press
+        entity_id: 'button.{{ printer_topic }}_shutdown_system'
+      - alias: Hold for the MQTT connection do go away
+        wait_template: "{{ is_state('sensor.'printer_topic'_print_status', 'unavailable') }}"
+        timeout: "00:05:00"
+      - alias: Hold a bit longer to make sure the PI has stopped
+        delay: 00:00:59
+      - alias: Kill the wall plug
+        service: switch.turn_off
+        entity_id: switch.sonoff_s40lite_switch_2
+
+default:
 - alias: Home Button Create
   service: mqtt.publish
   data:
@@ -183,7 +216,7 @@ action:
         "avty_t": "{{ avty_t }}",
         "pl_avail": "{{ pl_avail }}",
         "pl_not_avail": "{{ pl_not_avail }}",        
-        "dev":
+        "dev": {
           "ids": "{{ ids }}",
           "name":  "{{ dname }}",
           "mf": "{{ mf }}",
@@ -199,6 +232,193 @@ action:
         "cmd_t": "{{ h_cmd_t }}",
         "pl_prs": "{{ h_pl_prs }}",
       }
+- alias: Bed Level Button Create
+  service: mqtt.publish
+  data:
+    "topic": "{{ bl_c_topic }}"
+    "retain": true
+    "payload": >
+      { "~": "{{ printer_topic }}"
+        "avty_t": "{{ avty_t }}",
+        "pl_avail": "{{ pl_avail }}",
+        "pl_not_avail": "{{ pl_not_avail }}",        
+        "dev": {
+          "ids": "{{ ids }}",
+          "name":  "{{ dname }}",
+          "mf": "{{ mf }}",
+          "mdl": "{{ mdl }}",
+          "sa": "{{ sa }}",
+          "sw": "{{ sw }}",
+          "hw": "{{ hw }}",
+          "cu": "{{ cu }}"
+        },
+        "name": "{{ bl_bname }}",
+        "uniq_id": "{{ bl_uniq_id }}",
+        "ic": "{{ bl_ic }}",
+        "cmd_t": "{{ bl_cmd_t }}",
+        "pl_prs": "{{ bl_pl_prs }}",
+      }
+- alias: Presentation Button Create
+  service: mqtt.publish
+  data:
+    "topic": "{{ p_c_topic }}"
+    "retain": true
+    "payload": >
+      { "~": "{{ printer_topic }}"
+        "avty_t": "{{ avty_t }}",
+        "pl_avail": "{{ pl_avail }}",
+        "pl_not_avail": "{{ pl_not_avail }}",        
+        "dev": {
+          "ids": "{{ ids }}",
+          "name":  "{{ dname }}",
+          "mf": "{{ mf }}",
+          "mdl": "{{ mdl }}",
+          "sa": "{{ sa }}",
+          "sw": "{{ sw }}",
+          "hw": "{{ hw }}",
+          "cu": "{{ cu }}"
+        },
+        "name": "{{ p_bname }}",
+        "uniq_id": "{{ p_uniq_id }}",
+        "ic": "{{ p_ic }}",
+        "cmd_t": "{{ p_cmd_t }}",
+        "pl_prs": "{{ p_pl_prs }}",
+      }
+- alias: User Aux 1 Button Create
+  service: mqtt.publish
+  data:
+    "topic": "{{ a1_c_topic }}"
+    "retain": true
+    "payload": >
+      { "~": "{{ printer_topic }}"
+        "avty_t": "{{ avty_t }}",
+        "pl_avail": "{{ pl_avail }}",
+        "pl_not_avail": "{{ pl_not_avail }}",        
+        "dev": {
+          "ids": "{{ ids }}",
+          "name":  "{{ dname }}",
+          "mf": "{{ mf }}",
+          "mdl": "{{ mdl }}",
+          "sa": "{{ sa }}",
+          "sw": "{{ sw }}",
+          "hw": "{{ hw }}",
+          "cu": "{{ cu }}"
+        },
+        "name": "{{ a1_bname }}",
+        "uniq_id": "{{ a1_uniq_id }}",
+        "ic": "{{ a1_ic }}",
+        "cmd_t": "{{ a1_cmd_t }}",
+        "pl_prs": "{{ a1_pl_prs }}",
+      }
+- alias: User Aux 2 Button Create
+  service: mqtt.publish
+  data:
+    "topic": "{{ a2_c_topic }}"
+    "retain": true
+    "payload": >
+      { "~": "{{ printer_topic }}"
+        "avty_t": "{{ avty_t }}",
+        "pl_avail": "{{ pl_avail }}",
+        "pl_not_avail": "{{ pl_not_avail }}",        
+        "dev": {
+          "ids": "{{ ids }}",
+          "name":  "{{ dname }}",
+          "mf": "{{ mf }}",
+          "mdl": "{{ mdl }}",
+          "sa": "{{ sa }}",
+          "sw": "{{ sw }}",
+          "hw": "{{ hw }}",
+          "cu": "{{ cu }}"
+        },
+        "name": "{{ a2_bname }}",
+        "uniq_id": "{{ a2_uniq_id }}",
+        "ic": "{{ a2_ic }}",
+        "cmd_t": "{{ a2_cmd_t }}",
+        "pl_prs": "{{ a2_pl_prs }}",
+      }
+- alias: Safe Shutdown Button Create
+  service: mqtt.publish
+  data:
+    "topic": "{{ sd_c_topic }}"
+    "retain": true
+    "payload": >
+      { "~": "{{ printer_topic }}"
+        "avty_t": "{{ avty_t }}",
+        "pl_avail": "{{ pl_avail }}",
+        "pl_not_avail": "{{ pl_not_avail }}",        
+        "dev": {
+          "ids": "{{ ids }}",
+          "name":  "{{ dname }}",
+          "mf": "{{ mf }}",
+          "mdl": "{{ mdl }}",
+          "sa": "{{ sa }}",
+          "sw": "{{ sw }}",
+          "hw": "{{ hw }}",
+          "cu": "{{ cu }}"
+        },
+        "name": "{{ sd_bname }}",
+        "uniq_id": "{{ sd_uniq_id }}",
+        "ic": "{{ sd_ic }}",
+        "cmd_t": "{{ sd_cmd_t }}",
+        "pl_prs": "{{ sd_pl_prs }}",
+      }
+
+
+
+# Auto-shutdown once the printer has cooled down
+
+# - id: "1592949271183"
+#   alias: PRINTER - Ender 3 - Shutdown when cool
+#   description: Shutdown the printer once is has cooled down
+#   trigger:
+#     - below: "40.0"
+#       entity_id: sensor.ender_3_tool_0_temperature
+#       for: 00:01:00
+#       platform: numeric_state
+#   condition:
+#     - condition: not
+#       conditions:
+#         - condition: state
+#           entity_id: binary_sensor.ender_3_printing
+#           state: "On"
+#   action:
+#     - data: {}
+#       # This is the safe shutdown script, see example below
+#       service: script.1592948735781
+#     - data: {}
+#       entity_id: automation.printer_ender_3_shutdown_when_cool
+#       service: automation.turn_off
+
+# Safe shutdown of Raspberry Pi, then printer
+
+# Sometimes the SD card can be thrashed when not shutting down the RPI gracefully, this automation calls system shutdown in OctoPrint, waits 2 minutes, then turns off the printer's switch.
+# Caveat
+
+# One user (thanks @pinkywafer) tested shutdown time and found it took from 5 seconds to 2+ minutes. Adjust the timeout to your needs, keep a backup if you use shorter values.
+
+# "1592948735781":
+#   alias: Ender 3 Safe Shutdown
+#   sequence:
+#     - device_id: 5573a438b2af4ca5b93ac58e09f21f71
+#       domain: switch
+#       entity_id: switch.ender_3_shutdown_system
+#       type: turn_on
+#     - wait_template: "{{ is_state('sensor.ender_3_print_status', 'unavailable') }}"
+#     - delay: 00:02:00
+#     - device_id: 179ae3ecd31f4798abe05436a3f04d43
+#       domain: switch
+#       entity_id: switch.ender3
+#       type: turn_off
+#
+  #     # Safe Shutdown Button
+  # sd_local: safe_shutdown_button
+  # sd_c_topic: '{{ ha_topic }}/safe_shutdown_button/config'
+  # sd_uniq_id: '{{ dv_id }}_safe_shutdown_button'
+  # sd_bname: '{{ dv_name }}_safe_shutdown_button'
+  # sd_ic: mdi-power
+  # sd_cmd_t: '~/blueprint/shutdown'
+  # sd_pl_prs: '1'
+
 
 # "~": "octoPrint/tarantula/"
 # "avty_t": "~mqtt"
@@ -251,48 +471,3 @@ action:
 #   service_data:
 #     topic: octoPrint/hassControl/commands
 #     payload: "G29"
-
-# Auto-shutdown once the printer has cooled down
-
-# - id: "1592949271183"
-#   alias: PRINTER - Ender 3 - Shutdown when cool
-#   description: Shutdown the printer once is has cooled down
-#   trigger:
-#     - below: "40.0"
-#       entity_id: sensor.ender_3_tool_0_temperature
-#       for: 00:01:00
-#       platform: numeric_state
-#   condition:
-#     - condition: not
-#       conditions:
-#         - condition: state
-#           entity_id: binary_sensor.ender_3_printing
-#           state: "On"
-#   action:
-#     - data: {}
-#       # This is the safe shutdown script, see example below
-#       service: script.1592948735781
-#     - data: {}
-#       entity_id: automation.printer_ender_3_shutdown_when_cool
-#       service: automation.turn_off
-
-# Safe shutdown of Raspberry Pi, then printer
-
-# Sometimes the SD card can be thrashed when not shutting down the RPI gracefully, this automation calls system shutdown in OctoPrint, waits 2 minutes, then turns off the printer's switch.
-# Caveat
-
-# One user (thanks @pinkywafer) tested shutdown time and found it took from 5 seconds to 2+ minutes. Adjust the timeout to your needs, keep a backup if you use shorter values.
-
-# "1592948735781":
-#   alias: Ender 3 Safe Shutdown
-#   sequence:
-#     - device_id: 5573a438b2af4ca5b93ac58e09f21f71
-#       domain: switch
-#       entity_id: switch.ender_3_shutdown_system
-#       type: turn_on
-#     - wait_template: "{{ is_state('sensor.ender_3_print_status', 'unavailable') }}"
-#     - delay: 00:02:00
-#     - device_id: 179ae3ecd31f4798abe05436a3f04d43
-#       domain: switch
-#       entity_id: switch.ender3
-#       type: turn_off
