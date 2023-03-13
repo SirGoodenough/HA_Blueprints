@@ -1,11 +1,12 @@
 blueprint:
+  source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/Octoprint/Automations/Octoprint_Discovery_Helper.yaml'
   name: Octoprint_Discovery_Helper - 2023-03-14
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
     Octoprint Plugin called [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant).
     Within that Plugin there are several suggested Home Assistant Scripts &
     automations, and this will build them all for you.
-    
+
 
     📩 There is not an official version control system for Blueprints. However I have
     found something that comes pretty close. It is not perfect, but for **MOST**
@@ -15,7 +16,7 @@ blueprint:
 
     [Community link for this blueprint](https://community.home-assistant.io/t/person-alert-blueprint/542209)
     '
-  # source_url: 
+  source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/Octoprint/Automations/Octoprint_Discovery_Helper.yaml'
   homeassistant:
     min_version: 2023.3.0
   domain: automation
@@ -95,95 +96,94 @@ trigger:
   topic: '{{ sd_trigger_topic }}'
   id: shutdown_pressed
 
-variables:
-  h_b_cmnd: !input home_button
-  bl_b_cmnd: !input bed_level_button
-  p_b_cmnd: !input present_button
-  a1_b_cmnd: !input aux_1
-  a2_b_cmnd: !input aux_2
-  dv_name_val: !input device_name
-  dv_name: '{{ dv_name_val | lower }}'
-  dv_id: !input device_id
-  ha_topic: 'homeassistant/button/{{ dv_id }}'
-    # Device Parameters for MQTT Discovery
-  avty_t: '~mqtt'
-  pl_avail: 'connected'
-  pl_not_avail: 'disconnected'
-  ids: '{{ dv_id }}_discovery_blueprint'
-  dname: '{{ dv_name }}'
-  mf: 'SirGoodenough'
-  mdl: 'Octoprint_Discovery_Helper'
-  sa: 'home'
-  sw: '2023-03-14'
-  hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Discovery_Helper.yaml'
-  cu: 'https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934'
-    # Button Parameters for MQTT Discovery
-      # Home Button
-  h_local: home_button
-  h_c_topic: '{{ ha_topic }}/{{ h_local }}/config'
-  h_uniq_id: '{{ dv_id }}_{{ h_local }}'
-  h_bname: '{{ dv_name }}_{{ h_local }}'
-  h_ic: mdi:home
-  h_cmd_t: '~hassControl/home'
-  h_pl_prs: '{{ h_b_cmnd }}'
-      # Bed Level Button
-  bl_local: bed_level_button
-  bl_c_topic: '{{ ha_topic }}/bed_level_button/config'
-  bl_uniq_id: '{{ dv_id }}_bed_level_button'
-  bl_bname: '{{ dv_name }}_bed_level_button'
-  bl_ic: mdi-spirit-level
-  bl_cmd_t: '~hassControl/commands'
-  bl_pl_prs: '{{ bl_b_cmnd }}'
-      # Presentation Button
-  p_local: present_button
-  p_c_topic: '{{ ha_topic }}/present_button/config'
-  p_uniq_id: '{{ dv_id }}_present_button'
-  p_bname: '{{ dv_name }}_present_button'
-  p_ic: mdi-gift
-  p_cmd_t: '~hassControl/jog'
-  p_pl_prs: '{{ p_b_cmnd }}'
-      # User Aux 1 Button
-  a1_local: _aux_1_button
-  a1_c_topic: '{{ ha_topic }}/aux_1_button/config'
-  a1_uniq_id: '{{ dv_id }}_aux_1_button'
-  a1_bname: '{{ dv_name }}_aux_1_button'
-  a1_ic: mdi-hand-extended-outline
-  a1_cmd_t: '~hassControl/commands'
-  a1_pl_prs: '{{ a1_b_cmnd }}'
-      # User aux 2 Button
-  a2_local: aux_2_button
-  a2_c_topic: '{{ ha_topic }}/aux_2_button/config'
-  a2_uniq_id: '{{ dv_id }}_aux_2_button'
-  a2_bname: '{{ dv_name }}_aux_2_button'
-  a2_ic: mdi-hand-extended
-  a2_cmd_t: '~hassControl/commands'
-  a2_pl_prs: '{{ a2_b_cmnd }}'
-      # Safe Shutdown Button
-  sd_local: safe_shutdown_button
-  sd_c_topic: '{{ ha_topic }}/{{ sd_local }}/config'
-  sd_bname: '{{ dv_name }}_{{ sd_local }}'
-  sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
-  sd_ic: mdi-power
-  sd_cmd_t: '~/blueprint/shutdown'
-  sd_pl_prs: 'press'
-
-mode: parallel
-max: 5
-max_exceeded: silent
+  variables:
+    h_b_cmnd: !input home_button
+    bl_b_cmnd: !input bed_level_button
+    p_b_cmnd: !input present_button
+    a1_b_cmnd: !input aux_1
+    a2_b_cmnd: !input aux_2
+    dv_name_val: !input device_name
+    dv_name: '{{ dv_name_val | lower }}'
+    dv_id: !input device_id
+    ha_topic: 'homeassistant/button/{{ dv_id }}'
+      # Device Parameters for MQTT Discovery
+    avty_t: '~mqtt'
+    pl_avail: 'connected'
+    pl_not_avail: 'disconnected'
+    ids: '{{ dv_id }}_discovery_blueprint'
+    dname: '{{ dv_name }}'
+    mf: 'SirGoodenough'
+    mdl: 'Octoprint_Discovery_Helper'
+    sa: 'home'
+    sw: '2023-03-14'
+    hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Discovery_Helper.yaml'
+    cu: 'https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934'
+      # Button Parameters for MQTT Discovery
+        # Home Button
+    h_local: home_button
+    h_c_topic: '{{ ha_topic }}/{{ h_local }}/config'
+    h_uniq_id: '{{ dv_id }}_{{ h_local }}'
+    h_bname: '{{ dv_name }}_{{ h_local }}'
+    h_ic: mdi:home
+    h_cmd_t: '~hassControl/home'
+    h_pl_prs: '{{ h_b_cmnd }}'
+        # Bed Level Button
+    bl_local: bed_level_button
+    bl_c_topic: '{{ ha_topic }}/bed_level_button/config'
+    bl_uniq_id: '{{ dv_id }}_bed_level_button'
+    bl_bname: '{{ dv_name }}_bed_level_button'
+    bl_ic: mdi-spirit-level
+    bl_cmd_t: '~hassControl/commands'
+    bl_pl_prs: '{{ bl_b_cmnd }}'
+        # Presentation Button
+    p_local: present_button
+    p_c_topic: '{{ ha_topic }}/present_button/config'
+    p_uniq_id: '{{ dv_id }}_present_button'
+    p_bname: '{{ dv_name }}_present_button'
+    p_ic: mdi-gift
+    p_cmd_t: '~hassControl/jog'
+    p_pl_prs: '{{ p_b_cmnd }}'
+        # User Aux 1 Button
+    a1_local: _aux_1_button
+    a1_c_topic: '{{ ha_topic }}/aux_1_button/config'
+    a1_uniq_id: '{{ dv_id }}_aux_1_button'
+    a1_bname: '{{ dv_name }}_aux_1_button'
+    a1_ic: mdi-hand-extended-outline
+    a1_cmd_t: '~hassControl/commands'
+    a1_pl_prs: '{{ a1_b_cmnd }}'
+        # User aux 2 Button
+    a2_local: aux_2_button
+    a2_c_topic: '{{ ha_topic }}/aux_2_button/config'
+    a2_uniq_id: '{{ dv_id }}_aux_2_button'
+    a2_bname: '{{ dv_name }}_aux_2_button'
+    a2_ic: mdi-hand-extended
+    a2_cmd_t: '~hassControl/commands'
+    a2_pl_prs: '{{ a2_b_cmnd }}'
+        # Safe Shutdown Button
+    sd_local: safe_shutdown_button
+    sd_c_topic: '{{ ha_topic }}/{{ sd_local }}/config'
+    sd_bname: '{{ dv_name }}_{{ sd_local }}'
+    sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
+    sd_ic: mdi-power
+    sd_cmd_t: '~/blueprint/shutdown'
+    sd_pl_prs: 'press'
 
 action:
+- alias: Determine if there was an actionable event
   choose:
-  conditions:
-    and:
-    - or:  
-      - condition: trigger
-        id: in_range
-      - condition: trigger
-        id: shutdown_pressed
-    - not:
-      - condition: state
-        entity_id: 'binary_sensor.{{ dv_name }}_printing'
-        state: "on"
+  - conditions:
+    - alias: Not the start-up trigger
+      condition: and
+      conditions:
+      - or:  
+        - condition: trigger
+          id: in_range
+        - condition: trigger
+          id: shutdown_pressed
+      - not:
+        - condition: state
+          entity_id: 'binary_sensor.{{ dv_name }}_printing'
+          state: "on"
     sequence:
       - alias: Shut down Octoprint
         service: button.press
@@ -197,269 +197,163 @@ action:
         service: switch.turn_off
         entity_id: switch.sonoff_s40lite_switch_2
 
-default:
-- alias: Home Button Create
-  service: mqtt.publish
-  data:
-    "topic": "{{ h_c_topic }}"
-    "retain": true
-    "payload": >
-      { "~": "{{ printer_topic }}"
-        "avty_t": "{{ avty_t }}",
-        "pl_avail": "{{ pl_avail }}",
-        "pl_not_avail": "{{ pl_not_avail }}",        
-        "dev": {
-          "ids": "{{ ids }}",
-          "name":  "{{ dname }}",
-          "mf": "{{ mf }}",
-          "mdl": "{{ mdl }}",
-          "sa": "{{ sa }}",
-          "sw": "{{ sw }}",
-          "hw": "{{ hw }}",
-          "cu": "{{ cu }}"
-        },
-        "name": "{{ h_bname }}",
-        "uniq_id": "{{ h_uniq_id }}",
-        "ic": "{{ h_ic }}",
-        "cmd_t": "{{ h_cmd_t }}",
-        "pl_prs": "{{ h_pl_prs }}",
-      }
-- alias: Bed Level Button Create
-  service: mqtt.publish
-  data:
-    "topic": "{{ bl_c_topic }}"
-    "retain": true
-    "payload": >
-      { "~": "{{ printer_topic }}"
-        "avty_t": "{{ avty_t }}",
-        "pl_avail": "{{ pl_avail }}",
-        "pl_not_avail": "{{ pl_not_avail }}",        
-        "dev": {
-          "ids": "{{ ids }}",
-          "name":  "{{ dname }}",
-          "mf": "{{ mf }}",
-          "mdl": "{{ mdl }}",
-          "sa": "{{ sa }}",
-          "sw": "{{ sw }}",
-          "hw": "{{ hw }}",
-          "cu": "{{ cu }}"
-        },
-        "name": "{{ bl_bname }}",
-        "uniq_id": "{{ bl_uniq_id }}",
-        "ic": "{{ bl_ic }}",
-        "cmd_t": "{{ bl_cmd_t }}",
-        "pl_prs": "{{ bl_pl_prs }}",
-      }
-- alias: Presentation Button Create
-  service: mqtt.publish
-  data:
-    "topic": "{{ p_c_topic }}"
-    "retain": true
-    "payload": >
-      { "~": "{{ printer_topic }}"
-        "avty_t": "{{ avty_t }}",
-        "pl_avail": "{{ pl_avail }}",
-        "pl_not_avail": "{{ pl_not_avail }}",        
-        "dev": {
-          "ids": "{{ ids }}",
-          "name":  "{{ dname }}",
-          "mf": "{{ mf }}",
-          "mdl": "{{ mdl }}",
-          "sa": "{{ sa }}",
-          "sw": "{{ sw }}",
-          "hw": "{{ hw }}",
-          "cu": "{{ cu }}"
-        },
-        "name": "{{ p_bname }}",
-        "uniq_id": "{{ p_uniq_id }}",
-        "ic": "{{ p_ic }}",
-        "cmd_t": "{{ p_cmd_t }}",
-        "pl_prs": "{{ p_pl_prs }}",
-      }
-- alias: User Aux 1 Button Create
-  service: mqtt.publish
-  data:
-    "topic": "{{ a1_c_topic }}"
-    "retain": true
-    "payload": >
-      { "~": "{{ printer_topic }}"
-        "avty_t": "{{ avty_t }}",
-        "pl_avail": "{{ pl_avail }}",
-        "pl_not_avail": "{{ pl_not_avail }}",        
-        "dev": {
-          "ids": "{{ ids }}",
-          "name":  "{{ dname }}",
-          "mf": "{{ mf }}",
-          "mdl": "{{ mdl }}",
-          "sa": "{{ sa }}",
-          "sw": "{{ sw }}",
-          "hw": "{{ hw }}",
-          "cu": "{{ cu }}"
-        },
-        "name": "{{ a1_bname }}",
-        "uniq_id": "{{ a1_uniq_id }}",
-        "ic": "{{ a1_ic }}",
-        "cmd_t": "{{ a1_cmd_t }}",
-        "pl_prs": "{{ a1_pl_prs }}",
-      }
-- alias: User Aux 2 Button Create
-  service: mqtt.publish
-  data:
-    "topic": "{{ a2_c_topic }}"
-    "retain": true
-    "payload": >
-      { "~": "{{ printer_topic }}"
-        "avty_t": "{{ avty_t }}",
-        "pl_avail": "{{ pl_avail }}",
-        "pl_not_avail": "{{ pl_not_avail }}",        
-        "dev": {
-          "ids": "{{ ids }}",
-          "name":  "{{ dname }}",
-          "mf": "{{ mf }}",
-          "mdl": "{{ mdl }}",
-          "sa": "{{ sa }}",
-          "sw": "{{ sw }}",
-          "hw": "{{ hw }}",
-          "cu": "{{ cu }}"
-        },
-        "name": "{{ a2_bname }}",
-        "uniq_id": "{{ a2_uniq_id }}",
-        "ic": "{{ a2_ic }}",
-        "cmd_t": "{{ a2_cmd_t }}",
-        "pl_prs": "{{ a2_pl_prs }}",
-      }
-- alias: Safe Shutdown Button Create
-  service: mqtt.publish
-  data:
-    "topic": "{{ sd_c_topic }}"
-    "retain": true
-    "payload": >
-      { "~": "{{ printer_topic }}"
-        "avty_t": "{{ avty_t }}",
-        "pl_avail": "{{ pl_avail }}",
-        "pl_not_avail": "{{ pl_not_avail }}",        
-        "dev": {
-          "ids": "{{ ids }}",
-          "name":  "{{ dname }}",
-          "mf": "{{ mf }}",
-          "mdl": "{{ mdl }}",
-          "sa": "{{ sa }}",
-          "sw": "{{ sw }}",
-          "hw": "{{ hw }}",
-          "cu": "{{ cu }}"
-        },
-        "name": "{{ sd_bname }}",
-        "uniq_id": "{{ sd_uniq_id }}",
-        "ic": "{{ sd_ic }}",
-        "cmd_t": "{{ sd_cmd_t }}",
-        "pl_prs": "{{ sd_pl_prs }}",
-      }
-
-
-
-# Auto-shutdown once the printer has cooled down
-
-# - id: "1592949271183"
-#   alias: PRINTER - Ender 3 - Shutdown when cool
-#   description: Shutdown the printer once is has cooled down
-#   trigger:
-#     - below: "40.0"
-#       entity_id: sensor.ender_3_tool_0_temperature
-#       for: 00:01:00
-#       platform: numeric_state
-#   condition:
-#     - condition: not
-#       conditions:
-#         - condition: state
-#           entity_id: binary_sensor.ender_3_printing
-#           state: "On"
-#   action:
-#     - data: {}
-#       # This is the safe shutdown script, see example below
-#       service: script.1592948735781
-#     - data: {}
-#       entity_id: automation.printer_ender_3_shutdown_when_cool
-#       service: automation.turn_off
-
-# Safe shutdown of Raspberry Pi, then printer
-
-# Sometimes the SD card can be thrashed when not shutting down the RPI gracefully, this automation calls system shutdown in OctoPrint, waits 2 minutes, then turns off the printer's switch.
-# Caveat
-
-# One user (thanks @pinkywafer) tested shutdown time and found it took from 5 seconds to 2+ minutes. Adjust the timeout to your needs, keep a backup if you use shorter values.
-
-# "1592948735781":
-#   alias: Ender 3 Safe Shutdown
-#   sequence:
-#     - device_id: 5573a438b2af4ca5b93ac58e09f21f71
-#       domain: switch
-#       entity_id: switch.ender_3_shutdown_system
-#       type: turn_on
-#     - wait_template: "{{ is_state('sensor.ender_3_print_status', 'unavailable') }}"
-#     - delay: 00:02:00
-#     - device_id: 179ae3ecd31f4798abe05436a3f04d43
-#       domain: switch
-#       entity_id: switch.ender3
-#       type: turn_off
-#
-  #     # Safe Shutdown Button
-  # sd_local: safe_shutdown_button
-  # sd_c_topic: '{{ ha_topic }}/safe_shutdown_button/config'
-  # sd_uniq_id: '{{ dv_id }}_safe_shutdown_button'
-  # sd_bname: '{{ dv_name }}_safe_shutdown_button'
-  # sd_ic: mdi-power
-  # sd_cmd_t: '~/blueprint/shutdown'
-  # sd_pl_prs: '1'
-
-
-# "~": "octoPrint/tarantula/"
-# "avty_t": "~mqtt"
-# "pl_avail": "connected"
-# "pl_not_avail": "disconnected"
-# "name": "TarantulaPro Emergency Stop"
-# "uniq_id": "7fcb2b57-4fac-42c2-93ba-1b2a4b54d366_STOP"
-# "cmd_t": "~hassControl/stop"
-# "dev": {
-#   "ids": "7fcb2b57-4fac-42c2-93ba-1b2a4b54d366"
-#   "name": "TarantulaPro"
-#   "mf": "Clifford Roche"
-#   "mdl": "HomeAssistant Discovery for OctoPrint"
-#   "sw": "HomeAssistant Discovery for OctoPrint 3.6.2"}
-# "ic": "mdi:alert-octagon"
-
-# G90 ;Absolute positioning
-
-# G1 Z40 X0 Y{machine_depth}
-
-# Homing a printer from Lovelace
-
-# type: entity-button
-# name: Home all axes
-# tap_action:
-#   action: call-service
-#   service: mqtt.publish
-#   service_data:
-#     topic: octoPrint/hassControl/home
-#     payload: '["x", "y", "z"]'
-
-# Jogging the tool from Lovelace
-
-# type: entity-button
-# name: Jog X 0.1
-# tap_action:
-#   action: call-service
-#   service: mqtt.publish
-#   service_data:
-#     topic: octoPrint/hassControl/jog
-#     payload: '{"x": 0.1, "speed": 1.0 }'
-
-# Send GCODE from Lovelace
-
-# type: entity-button
-# name: Level Bed
-# tap_action:
-#   action: call-service
-#   service: mqtt.publish
-#   service_data:
-#     topic: octoPrint/hassControl/commands
-#     payload: "G29"
+  default:
+  - alias: Home Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ h_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}"
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name":  "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ h_bname }}",
+          "uniq_id": "{{ h_uniq_id }}",
+          "ic": "{{ h_ic }}",
+          "cmd_t": "{{ h_cmd_t }}",
+          "pl_prs": "{{ h_pl_prs }}",
+        }
+  - alias: Bed Level Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ bl_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}"
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name":  "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ bl_bname }}",
+          "uniq_id": "{{ bl_uniq_id }}",
+          "ic": "{{ bl_ic }}",
+          "cmd_t": "{{ bl_cmd_t }}",
+          "pl_prs": "{{ bl_pl_prs }}",
+        }
+  - alias: Presentation Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ p_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}"
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name":  "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ p_bname }}",
+          "uniq_id": "{{ p_uniq_id }}",
+          "ic": "{{ p_ic }}",
+          "cmd_t": "{{ p_cmd_t }}",
+          "pl_prs": "{{ p_pl_prs }}",
+        }
+  - alias: User Aux 1 Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ a1_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}"
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name":  "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ a1_bname }}",
+          "uniq_id": "{{ a1_uniq_id }}",
+          "ic": "{{ a1_ic }}",
+          "cmd_t": "{{ a1_cmd_t }}",
+          "pl_prs": "{{ a1_pl_prs }}",
+        }
+  - alias: User Aux 2 Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ a2_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}"
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name":  "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ a2_bname }}",
+          "uniq_id": "{{ a2_uniq_id }}",
+          "ic": "{{ a2_ic }}",
+          "cmd_t": "{{ a2_cmd_t }}",
+          "pl_prs": "{{ a2_pl_prs }}",
+        }
+  - alias: Safe Shutdown Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ sd_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}"
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name":  "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ sd_bname }}",
+          "uniq_id": "{{ sd_uniq_id }}",
+          "ic": "{{ sd_ic }}",
+          "cmd_t": "{{ sd_cmd_t }}",
+          "pl_prs": "{{ sd_pl_prs }}",
+        }
+mode: parallel
+max: 5
+max_exceeded: silent
