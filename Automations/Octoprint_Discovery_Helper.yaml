@@ -101,7 +101,8 @@ variables:
   p_b_cmnd: !input present_button
   a1_b_cmnd: !input aux_1
   a2_b_cmnd: !input aux_2
-  dv_name: !input device_name
+  dv_name_val: !input device_name
+  dv_name: '{{ dv_name_val | lower }}'
   dv_id: !input device_id
   ha_topic: 'homeassistant/button/{{ dv_id }}'
     # Device Parameters for MQTT Discovery
@@ -181,7 +182,7 @@ action:
         id: shutdown_pressed
     - not:
       - condition: state
-        entity_id: 'binary_sensor.{{ printer_topic }}_printing'
+        entity_id: 'binary_sensor.{{ dv_name }}_printing'
         state: "on"
     sequence:
       - alias: Shut down Octoprint
