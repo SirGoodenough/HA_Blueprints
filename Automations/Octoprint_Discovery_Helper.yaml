@@ -51,7 +51,6 @@ blueprint:
       default: '["x", "y", "z"]'
       selector:
         text:
-          multiple: false
     bed_level_button: 
       name: Custom GCode command for the Bed Level Button
       description: 'Use this to send a custom GCode command to the printer.'
@@ -70,7 +69,6 @@ blueprint:
       default: 'M117 Aux1'
       selector:
         text:
-          multiple: false
     aux_2: 
       name: Custom GCode command for Aux Button 2
       description: 'Use this to send a custom GCode command to the printer.'
