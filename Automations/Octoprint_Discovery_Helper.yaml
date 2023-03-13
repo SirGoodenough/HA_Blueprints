@@ -1,5 +1,4 @@
 blueprint:
-  source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/Octoprint/Automations/Octoprint_Discovery_Helper.yaml'
   name: Octoprint_Discovery_Helper - 2023-03-14
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
@@ -14,7 +13,7 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/person-alert-blueprint/542209)
+    [Community link for this blueprint](https://here)
     '
   source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/Octoprint/Automations/Octoprint_Discovery_Helper.yaml'
   homeassistant:
@@ -167,35 +166,36 @@ trigger:
     sd_ic: mdi-power
     sd_cmd_t: '~/blueprint/shutdown'
     sd_pl_prs: 'press'
+    octoprint_sd_button: '{{ ''button.'' dv_name ''_shutdown_system'' }}'
+    printing_state: '{{ ''binary_sensor.'' dv_name ''_printing'' }}'
+    printer_status: '{{ ''sensor.''dv_name''_print_status'' }}'
 
 action:
 - alias: Determine if there was an actionable event
   choose:
   - conditions:
-    - alias: Not the start-up trigger
-      condition: and
-      conditions:
-      - or:  
-        - condition: trigger
-          id: in_range
-        - condition: trigger
-          id: shutdown_pressed
-      - not:
-        - condition: state
-          entity_id: 'binary_sensor.{{ dv_name }}_printing'
-          state: "on"
+    - alias: Printer NOT running
+      and:
+        - condition: template
+          value_template: '{{ states( printing_state ) != "on" }}'
+        - alias: NOT the start-up trigger
+          or:
+          - condition: trigger
+            id: in_range
+          - condition: trigger
+            id: shutdown_pressed
     sequence:
-      - alias: Shut down Octoprint
-        service: button.press
-        entity_id: 'button.{{ printer_topic }}_shutdown_system'
-      - alias: Hold for the MQTT connection do go away
-        wait_template: "{{ is_state('sensor.'printer_topic'_print_status', 'unavailable') }}"
-        timeout: "00:05:00"
-      - alias: Hold a bit longer to make sure the PI has stopped
-        delay: 00:00:59
-      - alias: Kill the wall plug
-        service: switch.turn_off
-        entity_id: switch.sonoff_s40lite_switch_2
+        - alias: Shut down Octoprint
+          service: button.press
+          entity_id: '{{ octoprint_sd_button }}'
+        - alias: Hold for the MQTT connection do go away
+          wait_template: "{{ is_state( printer_status, 'unavailable' ) }}"
+          timeout: "00:05:00"
+        - alias: Hold a bit longer to make sure the PI has stopped
+          delay: 00:00:59
+        - alias: Kill the wall plug
+          service: homeassistant.turn_off
+          entity_id: switch.sonoff_s40lite_switch_2
 
   default:
   - alias: Home Button Create
@@ -276,7 +276,7 @@ action:
           "cmd_t": "{{ p_cmd_t }}",
           "pl_prs": "{{ p_pl_prs }}",
         }
-  - alias: User Aux 1 Button Create
+  - alias: User Aux 1 Button Createtemperature
     service: mqtt.publish
     data:
       "topic": "{{ a1_c_topic }}"
