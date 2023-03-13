@@ -173,7 +173,7 @@ max_exceeded: silent
 
 action:
   choose:
-  - conditions:
+  conditions:
     and:
     - or:  
       - condition: trigger
