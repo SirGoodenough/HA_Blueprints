@@ -2,7 +2,7 @@ blueprint:
   name: Octoprint_Discovery_Helper - 2023-03-14
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
-    Octopeint Plugin called [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant).
+    Octoprint Plugin called [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant).
     Within that Plugin there are several suggested Home Assistant Scripts &
     automations, and this will build them all for you.
     
@@ -173,7 +173,6 @@ max_exceeded: silent
 action:
   choose:
   - conditions:
-    alias: 'Do I execute the auto Shutdown?'
     and:
     - or:  
       - condition: trigger
