@@ -112,14 +112,14 @@ blueprint:
     home_button: 
       name: Custom command for Home Button
       description: 'Use this to send a custom GCode command to the printer.'
-      default: '["x", "y", "z"]'
+      default: ["x", "y", "z"]
       selector:
         text:
           multiline: false
     bed_level_button:
       name: Custom GCode command for the Bed Level Button
       description: 'Use this to send a custom GCode command to the printer.'
-      default: 'G29'
+      default: G29
       selector:
         text:
           multiline: false
@@ -133,14 +133,14 @@ blueprint:
     aux_1:
       name: Custom GCode command for Aux Button 1
       description: 'Use this to send a custom GCode command to the printer.'
-      default: 'M117 Test Aux1 button'
+      default: M117 Test Aux1 button
       selector:
         text:
           multiline: false
     aux_2:
       name: Custom GCode command for Aux Button 2
       description: 'Use this to send a custom GCode command to the printer.'
-      default: 'M117 Test Aux2 button'
+      default: M117 Test Aux2 button
       selector:
         text:
           multiline: false
@@ -169,48 +169,49 @@ variables:
   cu: 'https://TBD'
     # Button Parameters for MQTT Discovery
       # Home Button
-  h_local: home_button
-  h_c_topic: '{{ ha_topic }}_{{ h_local }}/config'
+  h_local: home
+  h_c_topic: '{{ ha_topic }}_{{ h_local | upper }}/config'
   h_bname: '{{ dv_name }} {{ h_local }}'
   h_uniq_id: '{{ dv_id }}_{{ h_local }}'
   h_ic: mdi:home
   h_cmd_t: '~hassControl/home'
-  h_pl_prs: '{{ h_b_cmnd }}'
+  h_pl_prs: '["x", "y", "z"]'
+  # h_pl_prs: '{{ h_b_cmnd }}'
       # Bed Level Button
-  bl_local: bed_level_button
-  bl_c_topic: '{{ ha_topic }}_{{ bl_local }}/config'
+  bl_local: bed_level
+  bl_c_topic: '{{ ha_topic }}_{{ bl_local | upper }}/config'
   bl_bname: '{{ dv_name }} {{ bl_local }}'
   bl_uniq_id: '{{ dv_id }}_{{ bl_local }}'
   bl_ic: mdi-spirit-level
   bl_cmd_t: '~hassControl/commands'
   bl_pl_prs: '{{ bl_b_cmnd }}'
       # Presentation Button
-  p_local: presentation_button
-  p_c_topic: '{{ ha_topic }}_{{ p_local }}/config'
+  p_local: presentation
+  p_c_topic: '{{ ha_topic }}_{{ p_local | upper }}/config'
   p_bname: '{{ dv_name }} {{ p_local }}'
   p_uniq_id: '{{ dv_id }}_{{ p_local }}'
   p_ic: mdi-gift
   p_cmd_t: '~hassControl/jog'
   p_pl_prs: '{{ p_b_cmnd }}'
       # User Aux 1 Button
-  a1_local: aux_1_button
-  a1_c_topic: '{{ ha_topic }}_{{ a1_local }}/config'
+  a1_local: aux_1
+  a1_c_topic: '{{ ha_topic }}_{{ a1_local | upper }}/config'
   a1_bname: '{{ dv_name }} {{ a1_local }}'
   a1_uniq_id: '{{ dv_id }}_{{ a1_local }}'
   a1_ic: mdi-hand-extended-outline
   a1_cmd_t: '~hassControl/commands'
   a1_pl_prs: '{{ a1_b_cmnd }}'
       # User _aux 2 Button
-  a2_local: aux_2_button
-  a2_c_topic: '{{ ha_topic }}_{{ a2_local }}/config'
+  a2_local: aux_2
+  a2_c_topic: '{{ ha_topic }}_{{ a2_local | upper }}/config'
   a2_bname: '{{ dv_name }} {{ a2_local }}'
   a2_uniq_id: '{{ dv_id }}_{{ a2_local }}'
   a2_ic: mdi-hand-extended
   a2_cmd_t: '~hassControl/commands'
   a2_pl_prs: '{{ a2_b_cmnd }}'
       # Safe Shutdown Button
-  sd_local: safe_shutdown_button
-  sd_c_topic: '{{ ha_topic }}_{{ sd_local }}/config'
+  sd_local: safe_shutdown
+  sd_c_topic: '{{ ha_topic }}_{{ sd_local | upper }}/config'
   sd_bname: '{{ dv_name }} {{ sd_local }}'
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
   sd_ic: mdi-power
@@ -263,32 +264,6 @@ action:
         entity_id: switch.sonoff_s40lite_switch_2
 
   default:
-  - alias: User Aux 1 Button Create
-    service: mqtt.publish
-    data:
-      "topic": "{{ a1_c_topic }}"
-      "retain": true
-      "payload": >
-        { "~": "{{ printer_topic }}",
-          "avty_t": "{{ avty_t }}",
-          "pl_avail": "{{ pl_avail }}",
-          "pl_not_avail": "{{ pl_not_avail }}",
-          "dev": {
-            "ids": "{{ ids }}",
-            "name": "{{ dname }}",
-            "mf": "{{ mf }}",
-            "mdl": "{{ mdl }}",
-            "sa": "{{ sa }}",
-            "sw": "{{ sw }}",
-            "hw": "{{ hw }}",
-            "cu": "{{ cu }}"
-          },
-          "name": "{{ a1_bname }}",
-          "uniq_id": "{{ a1_uniq_id }}",
-          "ic": "{{ a1_ic }}",
-          "cmd_t": "{{ a1_cmd_t }}",
-          "pl_prs": "{{ a1_pl_prs }}"
-        }
   - alias: Home Button Create
     service: mqtt.publish
     data:
@@ -366,6 +341,32 @@ action:
           "ic": "{{ p_ic }}",
           "cmd_t": "{{ p_cmd_t }}",
           "pl_prs": "{{ p_pl_prs }}"
+        }
+  - alias: User Aux 1 Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ a1_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}",
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ a1_bname }}",
+          "uniq_id": "{{ a1_uniq_id }}",
+          "ic": "{{ a1_ic }}",
+          "cmd_t": "{{ a1_cmd_t }}",
+          "pl_prs": "{{ a1_pl_prs }}"
         }
   - alias: User Aux 2 Button Create
     service: mqtt.publish
