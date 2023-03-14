@@ -112,35 +112,35 @@ blueprint:
     home_button: 
       name: Custom command for Home Button
       description: 'Use this to send a custom GCode command to the printer.'
-      default: ["x", "y", "z"]
+      default: '["x", "y", "z"]'
       selector:
         text:
           multiline: false
     bed_level_button:
       name: Custom GCode command for the Bed Level Button
       description: 'Use this to send a custom GCode command to the printer.'
-      default: G29
+      default: 'G29'
       selector:
         text:
           multiline: false
     present_button:
       name: Custom jog command for the Presentation Button
       description: 'Use this to send a custom GCode command to the printer.'
-      default: {"x": 0, "y": 200, "z": 40, "speed": 10, "absolute": true}
+      default: '{"x": 0, "y": 180, "z": 80, "absolute": 1}'
       selector:
         text:
           multiline: false
     aux_1:
       name: Custom GCode command for Aux Button 1
       description: 'Use this to send a custom GCode command to the printer.'
-      default: M117 Aux1
+      default: 'M117 Test Aux1 button'
       selector:
         text:
           multiline: false
     aux_2:
       name: Custom GCode command for Aux Button 2
       description: 'Use this to send a custom GCode command to the printer.'
-      default: M117 Aux2
+      default: 'M117 Test Aux2 button'
       selector:
         text:
           multiline: false
@@ -171,7 +171,7 @@ variables:
       # Home Button
   h_local: home_button
   h_c_topic: '{{ ha_topic }}_{{ h_local }}/config'
-  h_bname: '{{ h_local }}'
+  h_bname: '{{ dv_name }} {{ h_local }}'
   h_uniq_id: '{{ dv_id }}_{{ h_local }}'
   h_ic: mdi:home
   h_cmd_t: '~hassControl/home'
@@ -179,7 +179,7 @@ variables:
       # Bed Level Button
   bl_local: bed_level_button
   bl_c_topic: '{{ ha_topic }}_{{ bl_local }}/config'
-  bl_bname: '{{ bl_local }}'
+  bl_bname: '{{ dv_name }} {{ bl_local }}'
   bl_uniq_id: '{{ dv_id }}_{{ bl_local }}'
   bl_ic: mdi-spirit-level
   bl_cmd_t: '~hassControl/commands'
@@ -187,7 +187,7 @@ variables:
       # Presentation Button
   p_local: presentation_button
   p_c_topic: '{{ ha_topic }}_{{ p_local }}/config'
-  p_bname: '{{ p_local }}'
+  p_bname: '{{ dv_name }} {{ p_local }}'
   p_uniq_id: '{{ dv_id }}_{{ p_local }}'
   p_ic: mdi-gift
   p_cmd_t: '~hassControl/jog'
@@ -195,7 +195,7 @@ variables:
       # User Aux 1 Button
   a1_local: aux_1_button
   a1_c_topic: '{{ ha_topic }}_{{ a1_local }}/config'
-  a1_bname: '{{ a1_local }}'
+  a1_bname: '{{ dv_name }} {{ a1_local }}'
   a1_uniq_id: '{{ dv_id }}_{{ a1_local }}'
   a1_ic: mdi-hand-extended-outline
   a1_cmd_t: '~hassControl/commands'
@@ -203,7 +203,7 @@ variables:
       # User _aux 2 Button
   a2_local: aux_2_button
   a2_c_topic: '{{ ha_topic }}_{{ a2_local }}/config'
-  a2_bname: '{{ a2_local }}'
+  a2_bname: '{{ dv_name }} {{ a2_local }}'
   a2_uniq_id: '{{ dv_id }}_{{ a2_local }}'
   a2_ic: mdi-hand-extended
   a2_cmd_t: '~hassControl/commands'
@@ -211,7 +211,7 @@ variables:
       # Safe Shutdown Button
   sd_local: safe_shutdown_button
   sd_c_topic: '{{ ha_topic }}_{{ sd_local }}/config'
-  sd_bname: '{{ sd_local }}'
+  sd_bname: '{{ dv_name }} {{ sd_local }}'
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
   sd_ic: mdi-power
   sd_cmd_t: '~/blueprint/shutdown'
