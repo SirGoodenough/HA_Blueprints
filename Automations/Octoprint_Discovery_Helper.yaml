@@ -20,7 +20,7 @@ blueprint:
     min_version: 2023.3.0
   domain: automation
   input:
-    base_topic: 
+    base_topic:
       name: MQTT Topic for the printer
       description: 'This needs to be the base topic that you added into the Octoprint
         MQTT Plug-in. Use the instruction file for details where to find it.
@@ -28,7 +28,7 @@ blueprint:
       selector:
         text:
           multiline: false
-    device_id: 
+    device_id:
       name: Valuee of the Home Assistant Discovery node id
       description: 'This needs to be the 
         ```Discovery settings - Node ID``` 
@@ -38,7 +38,7 @@ blueprint:
       selector:
         text:
           multiline: false
-    device_name: 
+    device_name:
       name: Name of the Home Assistant Discovery Device
       description: 'This needs to be the 
         ```Device settings - Device name``` 
@@ -79,7 +79,7 @@ blueprint:
       default: sensor.[octoprint device name]_tool_0_temperature
       selector:
         entity:
-          multiple: false
+          multiple: true
           domain: sensor
     octoprint_shutdown:
       name: octoprint shutdown button
@@ -289,6 +289,7 @@ action:
           "cmd_t": "{{ h_cmd_t }}",
           "pl_prs": "{{ h_pl_prs }}"
         }
+  - delay: 00:00:15
   - alias: Bed Level Button Create
     service: mqtt.publish
     data:
@@ -315,6 +316,7 @@ action:
           "cmd_t": "{{ bl_cmd_t }}",
           "pl_prs": "{{ bl_pl_prs }}"
         }
+  - delay: 00:00:15
   - alias: Presentation Button Create
     service: mqtt.publish
     data:
@@ -341,6 +343,7 @@ action:
           "cmd_t": "{{ p_cmd_t }}",
           "pl_prs": "{{ p_pl_prs }}"
         }
+  - delay: 00:00:15
   - alias: User Aux 1 Button Create
     service: mqtt.publish
     data:
@@ -367,6 +370,7 @@ action:
           "cmd_t": "{{ a1_cmd_t }}",
           "pl_prs": "{{ a1_pl_prs }}"
         }
+  - delay: 00:00:15
   - alias: User Aux 2 Button Create
     service: mqtt.publish
     data:
@@ -393,6 +397,7 @@ action:
           "cmd_t": "{{ a2_cmd_t }}",
           "pl_prs": "{{ a2_pl_prs }}"
         }
+  - delay: 00:00:15
   - alias: Safe Shutdown Button Create
     service: mqtt.publish
     data:
