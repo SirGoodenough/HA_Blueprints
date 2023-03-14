@@ -15,7 +15,7 @@ blueprint:
 
     [Community link for this blueprint](https://here)
     '
-  source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/Octoprint/Automations/Octoprint_Discovery_Helper.yaml'
+  # source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/Octoprint/Automations/Octoprint_Discovery_Helper.yaml'
   homeassistant:
     min_version: 2023.3.0
   domain: automation
@@ -126,7 +126,7 @@ blueprint:
     present_button:
       name: Custom jog command for the Presentation Button
       description: 'Use this to send a custom GCode command to the printer.'
-      default: '{"x": 0, "y": 180, "z": 80, "absolute": 1}'
+      default: { "x": 0, "y": 180, "z": 80, "absolute": 1 }
       selector:
         text:
           multiline: false
@@ -263,87 +263,6 @@ action:
         entity_id: switch.sonoff_s40lite_switch_2
 
   default:
-  - alias: Home Button Create
-    service: mqtt.publish
-    data:
-      "topic": "{{ h_c_topic }}"
-      "retain": true
-      "payload": >
-        { "~": "{{ printer_topic }}",
-          "avty_t": "{{ avty_t }}",
-          "pl_avail": "{{ pl_avail }}",
-          "pl_not_avail": "{{ pl_not_avail }}",
-          "dev": {
-            "ids": "{{ ids }}",
-            "name": "{{ dname }}",
-            "mf": "{{ mf }}",
-            "mdl": "{{ mdl }}",
-            "sa": "{{ sa }}",
-            "sw": "{{ sw }}",
-            "hw": "{{ hw }}",
-            "cu": "{{ cu }}"
-          },
-          "name": "{{ h_bname }}",
-          "uniq_id": "{{ h_uniq_id }}",
-          "ic": "{{ h_ic }}",
-          "cmd_t": "{{ h_cmd_t }}",
-          "pl_prs": "{{ h_pl_prs }}"
-        }
-  - delay: 00:00:15
-  - alias: Bed Level Button Create
-    service: mqtt.publish
-    data:
-      "topic": "{{ bl_c_topic }}"
-      "retain": true
-      "payload": >
-        { "~": "{{ printer_topic }}",
-          "avty_t": "{{ avty_t }}",
-          "pl_avail": "{{ pl_avail }}",
-          "pl_not_avail": "{{ pl_not_avail }}",
-          "dev": {
-            "ids": "{{ ids }}",
-            "name": "{{ dname }}",
-            "mf": "{{ mf }}",
-            "mdl": "{{ mdl }}",
-            "sa": "{{ sa }}",
-            "sw": "{{ sw }}",
-            "hw": "{{ hw }}",
-            "cu": "{{ cu }}"
-          },
-          "name": "{{ bl_bname }}",
-          "uniq_id": "{{ bl_uniq_id }}",
-          "ic": "{{ bl_ic }}",
-          "cmd_t": "{{ bl_cmd_t }}",
-          "pl_prs": "{{ bl_pl_prs }}"
-        }
-  - delay: 00:00:15
-  - alias: Presentation Button Create
-    service: mqtt.publish
-    data:
-      "topic": "{{ p_c_topic }}"
-      "retain": true
-      "payload": >
-        { "~": "{{ printer_topic }}",
-          "avty_t": "{{ avty_t }}",
-          "pl_avail": "{{ pl_avail }}",
-          "pl_not_avail": "{{ pl_not_avail }}",
-          "dev": {
-            "ids": "{{ ids }}",
-            "name": "{{ dname }}",
-            "mf": "{{ mf }}",
-            "mdl": "{{ mdl }}",
-            "sa": "{{ sa }}",
-            "sw": "{{ sw }}",
-            "hw": "{{ hw }}",
-            "cu": "{{ cu }}"
-          },
-          "name": "{{ p_bname }}",
-          "uniq_id": "{{ p_uniq_id }}",
-          "ic": "{{ p_ic }}",
-          "cmd_t": "{{ p_cmd_t }}",
-          "pl_prs": "{{ p_pl_prs }}"
-        }
-  - delay: 00:00:15
   - alias: User Aux 1 Button Create
     service: mqtt.publish
     data:
@@ -370,7 +289,84 @@ action:
           "cmd_t": "{{ a1_cmd_t }}",
           "pl_prs": "{{ a1_pl_prs }}"
         }
-  - delay: 00:00:15
+  - alias: Home Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ h_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}",
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ h_bname }}",
+          "uniq_id": "{{ h_uniq_id }}",
+          "ic": "{{ h_ic }}",
+          "cmd_t": "{{ h_cmd_t }}",
+          "pl_prs": "{{ h_pl_prs }}"
+        }
+  - alias: Bed Level Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ bl_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}",
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ bl_bname }}",
+          "uniq_id": "{{ bl_uniq_id }}",
+          "ic": "{{ bl_ic }}",
+          "cmd_t": "{{ bl_cmd_t }}",
+          "pl_prs": "{{ bl_pl_prs }}"
+        }
+  - alias: Presentation Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ p_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}",
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ p_bname }}",
+          "uniq_id": "{{ p_uniq_id }}",
+          "ic": "{{ p_ic }}",
+          "cmd_t": "{{ p_cmd_t }}",
+          "pl_prs": "{{ p_pl_prs }}"
+        }
   - alias: User Aux 2 Button Create
     service: mqtt.publish
     data:
@@ -397,7 +393,6 @@ action:
           "cmd_t": "{{ a2_cmd_t }}",
           "pl_prs": "{{ a2_pl_prs }}"
         }
-  - delay: 00:00:15
   - alias: Safe Shutdown Button Create
     service: mqtt.publish
     data:
