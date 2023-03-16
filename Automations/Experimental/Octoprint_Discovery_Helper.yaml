@@ -182,7 +182,7 @@ variables:
   bl_c_topic: '{{ ha_topic }}_{{ bl_local | upper }}/config'
   bl_bname: '{{ dv_name }} {{ bl_local }}'
   bl_uniq_id: '{{ dv_id }}_{{ bl_local }}'
-  bl_ic: mdi-spirit-level
+  bl_ic: mdi:spirit-level
   bl_cmd_t: '~hassControl/commands'
   bl_pl_prs: '{{ bl_b_cmnd }}'
       # Presentation Button
@@ -190,7 +190,7 @@ variables:
   p_c_topic: '{{ ha_topic }}_{{ p_local | upper }}/config'
   p_bname: '{{ dv_name }} {{ p_local }}'
   p_uniq_id: '{{ dv_id }}_{{ p_local }}'
-  p_ic: mdi-gift
+  p_ic: mdi:gift
   p_cmd_t: '~hassControl/jog'
   p_pl_prs: '{{ p_b_cmnd }}'
       # User Aux 1 Button
@@ -198,7 +198,7 @@ variables:
   a1_c_topic: '{{ ha_topic }}_{{ a1_local | upper }}/config'
   a1_bname: '{{ dv_name }} {{ a1_local }}'
   a1_uniq_id: '{{ dv_id }}_{{ a1_local }}'
-  a1_ic: mdi-hand-extended-outline
+  a1_ic: mdi:hand-extended-outline
   a1_cmd_t: '~hassControl/commands'
   a1_pl_prs: '{{ a1_b_cmnd }}'
       # User _aux 2 Button
@@ -206,7 +206,7 @@ variables:
   a2_c_topic: '{{ ha_topic }}_{{ a2_local | upper }}/config'
   a2_bname: '{{ dv_name }} {{ a2_local }}'
   a2_uniq_id: '{{ dv_id }}_{{ a2_local }}'
-  a2_ic: mdi-hand-extended
+  a2_ic: mdi:hand-extended
   a2_cmd_t: '~hassControl/commands'
   a2_pl_prs: '{{ a2_b_cmnd }}'
       # Safe Shutdown Button
@@ -214,7 +214,7 @@ variables:
   sd_c_topic: '{{ ha_topic }}_{{ sd_local | upper }}/config'
   sd_bname: '{{ dv_name }} {{ sd_local }}'
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
-  sd_ic: mdi-power
+  sd_ic: mdi:power
   sd_cmd_t: '~/blueprint/shutdown'
   sd_pl_prs: 'press'
     # Action variables
