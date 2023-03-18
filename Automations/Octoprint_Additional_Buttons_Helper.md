@@ -98,25 +98,24 @@ For further information, reference these links.
 
 ## 👀 How do I find the info for the first 3 inputs?
 
-This information for these is located in your OctoPrint Dashboard.  The assumption is that you have the 2 required plugins installed and OctoPrint-Homeassistant is set-up and working first.
+The information for these is located in your OctoPrint Dashboard.  The assumption is that you have the 2 required plugins installed and OctoPrint-Homeassistant is set-up and working first.
 
 Start by opening your OctoPrint Dashboard.  Click the wrench and find the MQTT Plugin.
-
+![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintWrench.png?raw=true "Find OctoPrint Wrench")
+![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintMQTTMenu.png?raw=true "Find OctoPrint Wrench")
 
 Once here, click the Topics Tab.
-
-
 Copy exactly the text located in the ```Base topic``` box.  All capitalization, punctuation, & spaces are required to match up the Blueprint buttons with the original installation. Plug that into the first input for MQTT Topic.
-
+![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintBaseTopic.png?raw=true "Find OctoPrint Wrench")
 
 Next select the HomeAssistant Discovery tab on the left
-
+![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintHAMenu.png?raw=true "Find OctoPrint Wrench")
 
 Copy all the text in the Node ID box and plug that into the second input for the Device_ID / Node ID Input in the Blueprint.
-
+![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintNodeID.png?raw=true "Find OctoPrint Wrench")
 
 Finally locate the Device name in the same tab. Copy that for the third input device name.
-
+![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintDeviceName.png?raw=true "Find OctoPrint Wrench")
 
 
 ## 🌞 ❄️ Troubleshooting tip
