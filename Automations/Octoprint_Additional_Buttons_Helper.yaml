@@ -20,7 +20,13 @@ blueprint:
     feature requires you to have mains power switch(s) to control power to the
     printer and perfilials.
     There is also a Presentation button that raises the Z and moves the print
-    out for !secret 
+    out for better access.  Caution, this button assumes that the printer knows
+    where home is and moves to an absolure position.  The intention is to use it
+    after a print has happened and you want access to get the item off the platter.
+    If pressed when HOME is unknown it might bump into the end of the Y axis.
+    Also id the Z is very high, it blindly moves the Z up 40 mm so make sure it 
+    looks like there is room.
+    These values can be adjusted by editing the Blueprint itself if needed.
 
     📩 There is not an official version control system for Blueprints. However I have
     found something that comes pretty close. It is not perfect, but for **MOST**
