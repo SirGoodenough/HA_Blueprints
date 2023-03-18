@@ -8,7 +8,7 @@ blueprint:
 
     To use this you will need the [OctoPrint-MQTT](https://plugins.octoprint.org/plugins/mqtt/) plug-in installed
     along with the [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant) plugin.
-    You will also need to be connected to a MQTT Broker that your Home Assistant
+    You will also need to be connected to an MQTT Broker that your Home Assistant
     instance is also connected to. Set-up for all that is covered within those
     packages.
 
