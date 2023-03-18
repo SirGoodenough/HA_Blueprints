@@ -203,7 +203,8 @@ sequence:
                   "mf": "SirGoodenough",
                   "mdl": "Home Assistant EZ Buttons for Tasmota",
                   "sa": "home",
-                  "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
+                  "sw": "2023-03-01"
+                  "hw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
                   "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
               },
               "cmd_t": "{{ canary_topic }}",
@@ -225,7 +226,8 @@ sequence:
             "mf": "SirGoodenough",
             "mdl": "Home Assistant EZ Buttons for Tasmota",
             "sa": "home",
-            "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
+            "sw": "2023-03-01"
+            "hw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
             "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
         },
         "cmd_t": "{{ restart_topic }}",
@@ -247,7 +249,8 @@ sequence:
             "mf": "SirGoodenough",
             "mdl": "Home Assistant EZ Buttons for Tasmota",
             "sa": "home",
-            "sw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
+            "sw": "2023-03-01"
+            "hw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
             "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
         },
         "cmd_t": "{{ upgrade_topic }}",
