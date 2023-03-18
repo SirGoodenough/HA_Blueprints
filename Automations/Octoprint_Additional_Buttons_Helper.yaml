@@ -1,5 +1,5 @@
 blueprint:
-  name: Octoprint_Safe_Shutdown_Helper- 2023-03-31
+  name: Octoprint_Safe_Shutdown_Helper- 2023-03-18
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
     Octoprint Plugin called [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant).
