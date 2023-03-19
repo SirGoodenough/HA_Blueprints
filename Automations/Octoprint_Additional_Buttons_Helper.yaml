@@ -1,10 +1,18 @@
 blueprint:
-  name: Octoprint_Additional_Buttons_Helper- 2023-03-18
+  source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
+  name: Octoprint_Additional_Buttons_Helper- 2023-03-19
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
     Octoprint Plugin called OctoPrint-HomeAssistant.
     What this does is add 6 buttons, 4 of which you as the user can set your own
     G-Codes to for customizing. Also adds safe shutdown and presentation functions.
+
+
+    The first thing to remember is ANYTIME you make ANY changes to this Blueprint,
+    you MUST restart the server so that the button entities can rebuild in the
+    configuration you have selected. If you don''t restart OctoPrint,
+    the change may not be seen and you will wonder why and what is happening.
+
 
     To use this you will need the [OctoPrint-MQTT](https://plugins.octoprint.org/plugins/mqtt/) plug-in installed
     along with the [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant) plugin.
@@ -220,6 +228,7 @@ variables:
   dv_name: !input device_name
   dv_id: !input device_id
   ha_topic: 'homeassistant/button/{{ dv_id }}'
+  ha_select_topic: 'homeassistant/select/{{ dv_id }}'
     # Device Parameters for MQTT Discovery
   avty_t: '~mqtt'
   pl_avail: 'connected'
@@ -229,8 +238,8 @@ variables:
   mf: 'SirGoodenough'
   mdl: 'Octoprint_Discovery_Helper'
   sa: 'home'
-  sw: '2023-03-18'
-  hw: 'https://TBD'
+  sw: '2023-03-19'
+  hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
   cu: 'https://TBD'
     # Button Parameters for MQTT Discovery
       # Home Button
@@ -247,13 +256,6 @@ variables:
   bl_uniq_id: '{{ dv_id }}_{{ bl_local }}'
   bl_ic: mdi:spirit-level
   bl_pl_prs: !input bed_level_button
-      # Presentation Button
-  p_local: presentation
-  p_c_topic: '{{ ha_topic }}_{{ p_local | upper }}/config'
-  p_bname: '{{ dv_name }} {{ p_local }}'
-  p_uniq_id: '{{ dv_id }}_{{ p_local }}'
-  p_ic: mdi:gift
-  p_pl_prs: 'PRESS'
       # User Aux 1 Button
   a1_local: aux_1
   a1_c_topic: '{{ ha_topic }}_{{ a1_local | upper }}/config'
@@ -268,6 +270,13 @@ variables:
   a2_uniq_id: '{{ dv_id }}_{{ a2_local }}'
   a2_ic: mdi:hand-extended
   a2_pl_prs: !input aux_2
+      # Presentation Button
+  p_local: presentation
+  p_c_topic: '{{ ha_topic }}_{{ p_local | upper }}/config'
+  p_bname: '{{ dv_name }} {{ p_local }}'
+  p_uniq_id: '{{ dv_id }}_{{ p_local }}'
+  p_ic: mdi:gift
+  p_pl_prs: 'PRESS'
       # Safe Shutdown Button
   sd_local: safe_shutdown
   sd_c_topic: '{{ ha_topic }}_{{ sd_local | upper }}/config'
@@ -275,18 +284,27 @@ variables:
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
   sd_dev_cla: restart
   sd_pl_prs: 'PRESS'
+      # Auto Shutdown Control
+  asdc_local: auto_shutdown_ctrl
+  asdc_c_topic: '{{ ha_select_topic }}_{{ asdc_local | upper }}/config'
+  asdc_bname: '{{ dv_name }} {{ asdc_local }}'
+  asdc_uniq_id: '{{ dv_id }}_{{ asdc_local }}'
+  asdc_ic: mdi:yin-yang
+  asdc_ent_cat: config
+  asdc_ops: '{{ ["enable", "disable"] | to_json }}'
     # Action variables
   printing_state: !input print_state
   printer_status: !input print_status
 
 trigger_variables:
   printer_topic: !input base_topic
-  h_cmd_t: '{{ printer_topic }}hassControl/commands'
-  bl_cmd_t: '{{ printer_topic }}hassControl/commands'
+  h_cmd_t: '~hassControl/commands'
+  bl_cmd_t: '~hassControl/commands'
+  a1_cmd_t: '~hassControl/commands'
+  a2_cmd_t: '~hassControl/commands'
   p_cmd_t: '{{ printer_topic }}BluePrint/presentation'
-  a1_cmd_t: '{{ printer_topic }}hassControl/commands'
-  a2_cmd_t: '{{ printer_topic }}hassControl/commands'
   sd_cmd_t: '{{ printer_topic }}BluePrint/safeShutdown'
+  asdc_cmd_t: '{{ printer_topic }}BluePrint/autoShutdownControl'
 
 trigger:
 - platform: state
@@ -320,9 +338,12 @@ action:
         - alias: NOT the start-up trigger or the presentation trigger
           or:
           - condition: trigger
-            id: asd_in_range
-          - condition: trigger
             id: shutdown_pressed
+          - alias: Temp is in the zone and auto is enabled
+            and:
+              - condition: trigger
+                id: asd_in_range
+              - '{{ states("select."~dv_name~"_auto_shutdown_ctrl") == "enable" }}'
     sequence:
       - alias: Shut down Octoprint
         service: button.press
@@ -439,32 +460,6 @@ action:
           "cmd_t": "{{ bl_cmd_t }}",
           "pl_prs": "{{ bl_pl_prs }}"
         }
-  - alias: Presentation Button Create
-    service: mqtt.publish
-    data:
-      "topic": "{{ p_c_topic }}"
-      "retain": true
-      "payload": >
-        { "~": "{{ printer_topic }}",
-          "avty_t": "{{ avty_t }}",
-          "pl_avail": "{{ pl_avail }}",
-          "pl_not_avail": "{{ pl_not_avail }}",
-          "dev": {
-            "ids": "{{ ids }}",
-            "name": "{{ dname }}",
-            "mf": "{{ mf }}",
-            "mdl": "{{ mdl }}",
-            "sa": "{{ sa }}",
-            "sw": "{{ sw }}",
-            "hw": "{{ hw }}",
-            "cu": "{{ cu }}"
-          },
-          "name": "{{ p_bname }}",
-          "uniq_id": "{{ p_uniq_id }}",
-          "ic": "{{ p_ic }}",
-          "cmd_t": "{{ p_cmd_t }}",
-          "pl_prs": "{{ p_pl_prs }}"
-        }
   - alias: User Aux 1 Button Create
     service: mqtt.publish
     data:
@@ -517,6 +512,32 @@ action:
           "cmd_t": "{{ a2_cmd_t }}",
           "pl_prs": "{{ a2_pl_prs }}"
         }
+  - alias: Presentation Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ p_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}",
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ p_bname }}",
+          "uniq_id": "{{ p_uniq_id }}",
+          "ic": "{{ p_ic }}",
+          "cmd_t": "{{ p_cmd_t }}",
+          "pl_prs": "{{ p_pl_prs }}"
+        }
   - alias: Safe Shutdown Button Create
     service: mqtt.publish
     data:
@@ -542,6 +563,33 @@ action:
           "dev_cla": "{{ sd_dev_cla }}",
           "cmd_t": "{{ sd_cmd_t }}",
           "pl_prs": "{{ sd_pl_prs }}"
+        }
+  - alias: Auto Shutdown Control
+    service: mqtt.publish
+    data:
+      "topic": "{{ asdc_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}",
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ asdc_bname }}",
+          "uniq_id": "{{ asdc_uniq_id }}",
+          "ic": "{{ asdc_ic }}",
+          "ent_cat": "{{ asdc_ent_cat }}",
+          "cmd_t": "{{ asdc_cmd_t }}",
+          "ops": {{ asdc_ops }}
         }
 mode: parallel
 max: 5
