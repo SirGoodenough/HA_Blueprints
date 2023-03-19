@@ -1,5 +1,5 @@
 blueprint:
-  name: Octoprint_Safe_Shutdown_Helper- 2023-03-18
+  name: Octoprint_Additional_Buttons_Helper- 2023-03-18
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
     Octoprint Plugin called OctoPrint-HomeAssistant.
@@ -229,7 +229,7 @@ variables:
   mf: 'SirGoodenough'
   mdl: 'Octoprint_Discovery_Helper'
   sa: 'home'
-  sw: '2023-03-14'
+  sw: '2023-03-18'
   hw: 'https://TBD'
   cu: 'https://TBD'
     # Button Parameters for MQTT Discovery
@@ -546,9 +546,3 @@ action:
 mode: parallel
 max: 5
 max_exceeded: silent
-
-# G91 ;relative positioning
-# G1 Z+40 X-20 Y-20 F9000 ;move Z up & x=y away a bit
-# G90 ;absolute positioning
-# G1 X0 Y180 F3600 ;move extruder out of the way by moving the baseplate to the front for easier access to printed object
-# M84 ;steppers off
