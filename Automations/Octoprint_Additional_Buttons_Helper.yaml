@@ -42,7 +42,7 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://here)
+    [Community link for this blueprint](https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826)
     '
   # source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/Octoprint/Automations/Octoprint_Discovery_Helper.yaml'
   homeassistant:
@@ -240,7 +240,7 @@ variables:
   sa: 'home'
   sw: '2023-03-19'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
-  cu: 'https://TBD'
+  cu: 'https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826'
     # Button Parameters for MQTT Discovery
       # Home Button
   h_local: home
