@@ -1,0 +1,371 @@
+# This is a copy of my lovelace that I use with Octoprinr-HomeAssistant Plugin.
+# Feel free to copy any or all of it for your needs...
+# Based on: https://github.com/cmroche/OctoPrint-HomeAssistant
+#
+# I have 2 printers.  This Dashboard (set) includes 1 main page for all the printers
+#  and a secondary page 1 for each of the printers.
+
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.tarantulapro_bed_temperature
+          - entity: sensor.tarantulapro_tool_0_temperature
+          - entity: sensor.tarantulapro_bed_target
+          - entity: sensor.tarantulapro_tool_0_target
+          - entity: sensor.tarantulapro_soc_temperature
+        refresh_interval: 1
+        title: Tarantula Temps
+        type: history-graph
+        hours_to_show: 8
+      - hours_to_show: 24
+        graph: none
+        entity: sensor.tarantulapro_bed_temperature
+        theme: Dark - Green
+        type: sensor
+        unit: °C
+        detail: 1
+      - hours_to_show: 24
+        graph: none
+        entity: sensor.tarantulapro_tool_0_temperature
+        theme: Dark - Green
+        type: sensor
+        unit: °C
+        detail: 1
+        name: TarantulaPro Extruder Temperature
+      - type: entity
+        entity: sensor.tarantula_print_file_short
+        icon: mdi:file-check
+      - type: entities
+        entities:
+          - entity: button.tarantulapro_cancel_print
+            name: Cancel Print
+          - entity: switch.tarantulapro_connect_to_printer
+            name: Connect to printer
+          - entity: button.tarantulapro_emergency_stop
+            name: Emergency Stop
+          - entity: switch.tarantulapro_pause_print
+            name: Pause Print
+          - entity: button.tarantulapro_reboot_system
+            name: Reboot System
+          - entity: button.tarantulapro_restart_server
+            name: Restart Server
+          - entity: button.tarantulapro_shutdown_system
+            name: Shutdown System
+          - entity: button.tarantulapro_aux_1
+          - entity: button.tarantulapro_aux_2
+          - entity: button.tarantulapro_bed_level
+          - entity: button.tarantulapro_home
+          - entity: button.tarantulapro_presentation
+          - entity: button.tarantulapro_safe_shutdown
+          - entity: select.tarantulapro_auto_shutdown_ctrl
+        title: TarantulaPro Buttons
+        show_header_toggle: false
+      - entities:
+          - entity: sensor.shark_bed_temperature
+          - entity: sensor.shark_tool_0_temperature
+          - entity: sensor.shark_bed_target
+          - entity: sensor.shark_tool_0_target
+          - entity: sensor.shark_soc_temperature
+        refresh_interval: 1
+        type: history-graph
+        hours_to_show: 8
+        title: Shark Temps
+      - hours_to_show: 24
+        graph: none
+        entity: sensor.shark_bed_temperature
+        theme: Dark - Green
+        type: sensor
+        unit: °C
+        detail: 1
+      - hours_to_show: 24
+        graph: none
+        entity: sensor.shark_tool_1_temperature
+        theme: Dark - Green
+        type: sensor
+        unit: °C
+        detail: 1
+        name: Shark Extruder Temperature
+      - type: entity
+        entity: sensor.shark_print_file_short
+        icon: mdi:file-check
+      - type: entities
+        entities:
+          - entity: button.shark_cancel_print
+            name: Cancel Print
+          - entity: switch.shark_connect_to_printer
+            name: Connect to printer
+          - entity: button.shark_emergency_stop
+            name: Emergency Stop
+          - entity: switch.shark_pause_print
+            name: Pause Print
+          - entity: button.shark_reboot_system
+            name: Reboot System
+          - entity: button.shark_restart_server
+            name: Restart Server
+          - entity: button.shark_shutdown_system
+            name: Shutdown System
+          - entity: button.shark_aux_1
+          - entity: button.shark_aux_2
+          - entity: button.shark_bed_level
+          - entity: button.shark_home
+          - entity: button.shark_presentation
+          - entity: button.shark_safe_shutdown
+          - entity: select.shark_auto_shutdown_ctrl
+        title: Shark Buttons
+        show_header_toggle: false
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: toggle
+        entity: switch.vacuum_sealer_switch
+        icon_height: 50px
+        icon: mdi:vacuum
+        hold_action:
+          action: call-service
+          service: switch.turn_off
+          data: {}
+          target:
+            entity_id: switch.vacuum_sealer_switch
+      - type: horizontal-stack
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/3d
+            theme: Dark - Red
+            icon: mdi:backburger
+            name: Back
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/tarantula
+            name: Tarantula Tank
+            icon: mdi:spider
+            theme: Dark - Blue
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/shark
+            icon: mdi:shark
+            name: Shark
+            theme: Dark - Yellow
+    path: 3d
+    title: 3D
+
+
+
+  - theme: Dark - Orange
+    subview: true
+    title: Shark
+    path: shark
+    icon: mdi:shark
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.shark_approximate_completion_time
+            name: Approximate Completion Time
+          - entity: sensor.shark_approximate_total_print_time
+            name: Approximate Total Print Time
+          - entity: sensor.shark_bed_target
+            name: Bed Target
+          - entity: sensor.shark_bed_temperature
+            name: Bed Temperature
+          - entity: binary_sensor.shark_connected
+            name: Connected
+          - entity: sensor.shark_current_z
+            name: Current Z
+          - entity: sensor.shark_last_event
+            name: Last Event
+          - entity: sensor.shark_print_file
+            name: Print File
+          - entity: sensor.shark_print_progress
+            name: Print Progress
+          - entity: sensor.shark_print_status
+            name: Print Status
+          - entity: sensor.shark_print_time
+            name: Print Time
+          - entity: sensor.shark_print_time_left
+            name: Print Time Left
+          - entity: binary_sensor.shark_printing
+            name: Printing
+          - entity: sensor.shark_soc_temperature
+            name: SoC Temperature
+          - entity: sensor.shark_tool_0_target
+            name: Tool 0 Target
+          - entity: sensor.shark_tool_0_temperature
+            name: Tool 0 Temperature
+        title: Shark
+      - show_name: true
+        show_icon: true
+        entity: switch.sonoff_s40lite_switch_2
+        hold_action:
+          action: call-service
+          service: script.shark_shutdown
+          data: {}
+          target: {}
+        icon: mdi:printer-3d
+        name: Turn Shark ON
+        tap_action:
+          action: call-service
+          service: switch.turn_on
+          data: {}
+          target:
+            entity_id: switch.sonoff_s40lite_switch_2
+        type: button
+        theme: dark_orange
+        icon_height: 90px
+        show_state: true
+      - camera_view: live
+        aspect_ratio: 0%
+        camera_image: camera.octoprint
+        entities:
+          - entity: sensor.octoprint_approximate_completion_time
+        entity: script.show_tarantula_home_hub_video
+        image: http://192.168.57.2:8080/?action=snapshot
+        tap_action:
+          action: toggle
+        title: Shark
+        type: picture-glance
+      - type: horizontal-stack
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/3d
+            theme: Dark - Red
+            icon: mdi:backburger
+            name: Back
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/tarantula
+            name: Tarantula Tank
+            icon: mdi:spider
+            theme: Dark - Blue
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/shark
+            icon: mdi:shark
+            name: Shark
+            theme: Dark - Yellow
+
+
+
+  - theme: Backend-selected
+    subview: true
+    title: Tarantula
+    path: tarantula
+    icon: mdi:spider
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.tarantulapro_approximate_completion_time
+            name: Approximate Completion Time
+          - entity: sensor.tarantulapro_approximate_total_print_time
+            name: Approximate Total Print Time
+          - entity: sensor.tarantulapro_bed_target
+            name: Bed Target
+          - entity: sensor.tarantulapro_bed_temperature
+            name: Bed Temperature
+          - entity: binary_sensor.tarantulapro_connected
+            name: Connected
+          - entity: sensor.tarantulapro_current_z
+            name: Current Z
+          - entity: sensor.tarantulapro_last_event
+            name: Last Event
+          - entity: sensor.tarantulapro_print_file
+            name: Print File
+          - entity: sensor.tarantulapro_print_progress
+            name: Print Progress
+          - entity: sensor.tarantulapro_print_status
+            name: Print Status
+          - entity: sensor.tarantulapro_print_time
+            name: Print Time
+          - entity: sensor.tarantulapro_print_time_left
+            name: Print Time Left
+          - entity: binary_sensor.tarantulapro_printing
+            name: Printing
+          - entity: sensor.tarantulapro_soc_temperature
+            name: SoC Temperature
+          - entity: sensor.tarantulapro_tool_0_target
+            name: Tool 0 Target
+          - entity: sensor.tarantulapro_tool_0_temperature
+            name: Tool 0 Temperature
+        title: TarantulaPro
+      - show_name: true
+        show_icon: true
+        entity: switch.tarantula_power
+        hold_action:
+          action: call-service
+          service: script.tarantula_shutdown
+          service_data: {}
+          target: {}
+        icon: mdi:printer-3d
+        name: Turn Tarantula ON
+        tap_action:
+          action: call-service
+          service: switch.turn_on
+          service_data: {}
+          target:
+            entity_id:
+              - switch.plug2
+              - switch.tarantula_power
+        type: button
+        theme: dark_orange
+        icon_height: 90px
+      - aspect_ratio: 0%
+        camera_image: camera.octoprint
+        camera_view: live
+        entities:
+          - entity: sensor.octoprint_approximate_completion_time
+        entity: script.show_tarantula_home_hub_video
+        image: http://192.168.57.2:8080/?action=snapshot
+        tap_action:
+          action: toggle
+        title: Tarantula
+        type: picture-glance
+      - type: horizontal-stack
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/3d
+            theme: Dark - Red
+            icon: mdi:backburger
+            name: Back
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/tarantula
+            name: Tarantula Tank
+            icon: mdi:spider
+            theme: Dark - Blue
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/shark
+            icon: mdi:shark
+            name: Shark
+            theme: Dark - Yellow
