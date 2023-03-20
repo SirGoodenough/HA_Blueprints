@@ -226,6 +226,12 @@ This BluePrint will monitor a person or persons, and when they 'enter' or 'leave
 
 https://community.home-assistant.io/t/person-alert-blueprint/542209
 
+#### 🧯 Octoprint_Additional_Buttons_Helper
+
+This is Blueprint is provided as a helper for people using the Octoprint Plugin called OctoPrint-HomeAssistant. What this does is add 6 buttons, 4 of which you as the user can set your own G-Codes to for customizing. Also adds safe shutdown and presentation functions.
+
+https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826
+
 ## 🤹🏾‍♂️ Contact Links or see my other work
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/

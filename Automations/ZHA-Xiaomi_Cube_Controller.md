@@ -405,6 +405,12 @@ This blueprint monitors a humidity sensor & by determining the error from the go
 
 https://community.home-assistant.io/t/humidifier-water-throttle-control/527583
 
+#### 🧯 Octoprint_Additional_Buttons_Helper
+
+This is Blueprint is provided as a helper for people using the Octoprint Plugin called OctoPrint-HomeAssistant. What this does is add 6 buttons, 4 of which you as the user can set your own G-Codes to for customizing. Also adds safe shutdown and presentation functions.
+
+https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826
+
 #### 🧯 Person_Alert_Blueprint
 
 This BluePrint will monitor a person or persons, and when they 'enter' or 'leave' the zone or zones you pick, it will trigger an action for both enter and leave phases. Yes, it will watch multiple people and multiple zones at the same time!

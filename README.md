@@ -224,3 +224,14 @@ https://community.home-assistant.io/t/person-alert-blueprint/542209
 
 * [HumidifierWaterThrottleControl.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.md)
 * [HumidifierWaterThrottleControl.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.yaml)
+
+#### 🧯 Octoprint_Additional_Buttons_Helper
+
+This is Blueprint is provided as a helper for people using the Octoprint Plugin called OctoPrint-HomeAssistant. What this does is add 6 buttons, 4 of which you as the user can set your own G-Codes to for customizing. Also adds safe shutdown and presentation functions.
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FOctoprint_Additional_Buttons_Helper.yaml)
+
+https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826
+
+* [HumidifierWaterThrottleControl.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.md)
+* [HumidifierWaterThrottleControl.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml)
