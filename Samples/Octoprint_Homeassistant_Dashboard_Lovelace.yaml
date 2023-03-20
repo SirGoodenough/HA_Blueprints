@@ -208,9 +208,10 @@
         entity: switch.sonoff_s40lite_switch_2
         hold_action:
           action: call-service
-          service: script.shark_shutdown
+          service: button.press
+          target:
+            entity_id: button.tarantulapro_safe_shutdown
           data: {}
-          target: {}
         icon: mdi:printer-3d
         name: Turn Shark ON
         tap_action:
@@ -225,14 +226,16 @@
         show_state: true
       - camera_view: live
         aspect_ratio: 0%
-        camera_image: camera.octoprint
+        camera_image: camera.shark
         entities:
-          - entity: sensor.octoprint_approximate_completion_time
+          - entity: sensor.shark_print_time_left
+          - entity: sensor.shark_print_file_short
         entity: script.show_tarantula_home_hub_video
-        image: http://192.168.57.2:8080/?action=snapshot
         tap_action:
           action: toggle
         title: Shark
+        type: picture-glance
+        image: '!secret Shark_Snapshot'
         type: picture-glance
       - type: horizontal-stack
         cards:
@@ -313,9 +316,11 @@
         entity: switch.tarantula_power
         hold_action:
           action: call-service
-          service: script.tarantula_shutdown
-          service_data: {}
-          target: {}
+          service: button.press
+          target:
+            entity_id:
+              - button.tarantulapro_safe_shutdown
+          data: {}
         icon: mdi:printer-3d
         name: Turn Tarantula ON
         tap_action:
@@ -329,17 +334,18 @@
         type: button
         theme: dark_orange
         icon_height: 90px
-      - aspect_ratio: 0%
-        camera_image: camera.octoprint
-        camera_view: live
+      - camera_view: live
+        aspect_ratio: 0%
+        camera_image: camera.tarantula_pro
         entities:
-          - entity: sensor.octoprint_approximate_completion_time
+          - entity: sensor.tarantulapro_print_time_left
+          - entity: sensor.tarantula_print_file_short
         entity: script.show_tarantula_home_hub_video
-        image: http://192.168.57.2:8080/?action=snapshot
         tap_action:
           action: toggle
         title: Tarantula
         type: picture-glance
+        image: '!secret Tarantula_Snapshot'
       - type: horizontal-stack
         cards:
           - show_name: true
@@ -369,3 +375,27 @@
             icon: mdi:shark
             name: Shark
             theme: Dark - Yellow
+
+#
+# Template for Shortened print File name:
+#
+Template:
+  - sensor:
+    #####################################################
+    ## 3D Printer Template Sensors                     ##
+    #####################################################
+    - name: "tarantula_print_file_short"
+      unique_id: 80c2f947-57e2-4be7-ba5b-01c64e36a987
+      state: >
+        {{ states('sensor.tarantulapro_print_file') | replace('TEVOTPRO-','')
+          | replace('.gcode','') }}
+      attributes:
+        friendly_name: "Tarantula Print File"
+
+    - name: "shark_print_file_short"
+      unique_id: 8e9c70ec-a1c6-4025-966a-7f55a5e30067
+      state: >
+        {{ states('sensor.shark_print_file') | replace('Lotmaxx-','')
+          | replace('.gcode','') }}
+      attributes:
+        friendly_name: "Shark Print File"
