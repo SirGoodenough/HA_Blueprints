@@ -106,6 +106,7 @@ For further information, reference these links.
 The information for these is located in your OctoPrint Dashboard.  The assumption is that you have the 2 required plugins installed and OctoPrint-Homeassistant is set-up and working first.
 
 Start by opening your OctoPrint Dashboard.  Click the wrench and find the MQTT Plugin.
+
 ![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintWrench.png?raw=true "Find OctoPrint Wrench")
 ![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintMQTTMenu.png?raw=true "Find OctoPrint Wrench")
 
@@ -125,15 +126,26 @@ Finally locate the Device name in the same tab. Copy that for the third input de
 ## 🪄 How do I turn off the Auto-Shutdown Thing?
 
 The BluePrint creates a data select entity which gives you the ability to enable or disable the Auto-Shutdown Feature.  On first run, the state of this entity will be 'unknown' and will likely disable the feature. I highly suggest you head over to Devices and select either enabled or disabled to make it more certain what the state is. [![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
+
 ![Find the BluePrint Device page](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintAutoEnable1.png?raw=true "Find the BluePrint Device page")
 
 Once you open the Device page, go to the entity znd select one of the 2 options.  If you change your mind at any time, you can change this.  It can even be an automated change as the entity is available.
+
 ![Click the arrow](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintAutoEnable2.png?raw=true "Click the arrow") ![Select the Mode](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintAutoEnable3.png?raw=true "Select the Mode")
 
 ## ⛈🚨🛟 Why do the changes I make to the buttons never show up at all???
 
 Yes, I know I'm putting the same information in here twice, but that is because I know I'm going to get service calls about this but trust me, there is nothing I can do...
 **NOTE!!!  WARNING!!!** The first thing to remember is *ANYTIME* you make *ANY* changes to this Blueprint, you *MUST* restart the server so that the button entities can rebuild with the configuration you have selected. If you don't restart OctoPrint, the change may not be seen and you will wonder why and what is happening.
+
+## 🎰 What Can My Dashboard Look Like?
+
+Here is a copy of my Dashboard (Lovelace) that you can use as you like or be inspired by.  It's a bit busy for some people, but I LIKE busy dashboards. It lives in my home and [on GitHub](https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/.storage/lovelace) if you need more information.
+[My Sample Dashboard YAML code](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Octoprint_Homeassistant_Dashboard_Lovelace.yaml)
+
+![Main Dashboard Image](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintDashboardMain.png?raw=true "Main Dashboard Image")
+
+![Secondary Dashboard Image](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintDashboardSecondary.png?raw=true "Secondary Dashboard Image")
 
 ## 🌞 ❄️ Troubleshooting tip
 
