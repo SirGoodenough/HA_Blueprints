@@ -210,7 +210,7 @@
           action: call-service
           service: button.press
           target:
-            entity_id: button.tarantulapro_safe_shutdown
+            entity_id: button.shark_safe_shutdown
           data: {}
         icon: mdi:printer-3d
         name: Turn Shark ON
