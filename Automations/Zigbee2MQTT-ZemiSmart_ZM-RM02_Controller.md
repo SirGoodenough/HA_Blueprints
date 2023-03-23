@@ -26,6 +26,7 @@ Requirements
 * My 'suggestion' is that you do separate scripts for most, if not all of the actions you generate here. If you are using the UI editor for the simple things you are fine, but for more complicated things scripts may work better for you. This is my opinion and how I am using it, to each their own. Building functions within the uI is also available if you are more comfortable with that.
 * To make the Blueprint work you will need a functional RM02 integrated to Home Assistant thru Zigbee2MQTT and find the sensor entity in the Home Assistant Device tab that Z2M imported which is named similar this:
   + sensor.xxDevice_Namexx_action
+  + [![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
 
 If you do not see that sensor, 'LegacyAPI' might not be selected in the Zigbee2MQTT settings -  settings - advanced menu. Please find and check/select that setting like so:
 
