@@ -18,6 +18,9 @@ rotate_cw_face_3:
 #  calling yaml shown above. 
 # If you don't need all of these only install the ones you will use.
 #
+# NOTE: More information on setting this up can be found in this thread:
+#   https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111/27
+#
 # This uses 
 #   https://www.home-assistant.io/integrations/homeassistant#service-homeassistanttoggle)
 #  so it can toggle anything that that service can handle.

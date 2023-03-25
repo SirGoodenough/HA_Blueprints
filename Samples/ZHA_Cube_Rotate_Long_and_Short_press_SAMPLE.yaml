@@ -1,6 +1,9 @@
 # This is an action statement that you can use in your Blueprint Automation 
 #  to call a script (below) to dim a light when rotating the cube.
 #
+# NOTE: More information on setting this up can be found in this thread:
+#   https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111/27
+#
 # In the blueprint automation:
 #   https://my.home-assistant.io/redirect/automations/
 
