@@ -2,6 +2,9 @@ This is Blueprint is provided as a helper for people using the Octoprint Plugin 
 
 ## 📑 Changelog
 
+* **2023-04-12**: Add Filament Change Button and Filament Load Button
+* * Add ability to change the end of the Y axis for the Presentation Button
+* * Code cleanup
 * **2023-03-19**: 🎉 First release!
 <base target="_blank">
 
@@ -11,12 +14,12 @@ Type of blueprint: AUTOMATION
 
 Why do I need this?
 
-> This is Blueprint is provided as a helper for people using the Octoprint Plugin called [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant).  Within that Plugin there are several suggested Home Assistant Lovelace/Dashboard based functions, and this will build them all for you.
+> This is Blueprint is provided as a helper for people using the Octoprint Plugin called [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant). Within that Plugin there are several suggested Home Assistant Lovelace/Dashboard based functions, and this will build them all for you.
 >
 > This gives you those optional features suggested in this plug-in's README plus gives you Home Assistant buttons you can call from scripts and automations to activate them.
 >
 >
-> NOTE!!!  WARNING!!! The first thing to remember is ANYTIME you make ANY changes to this Blueprint, you MUST restart the server so that the button entities can rebuild in the configuration you have selected. If you don't restart OctoPrint, the change may not be seen and you will wonder why and what is happening.
+> NOTE!!! WARNING!!! The first thing to remember is ANYTIME you make ANY changes to this Blueprint, you MUST restart the server so that the button entities can rebuild in the configuration you have selected. If you don't restart OctoPrint, the change may not be seen and you will wonder why and what is happening.
 >
 >
 
@@ -27,11 +30,11 @@ Requirements
 * The [OctoPrint-MQTT](https://plugins.octoprint.org/plugins/mqtt/) plug-in installed.
 * The [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant) plugin installed.
 * You will also need to be connected to an MQTT Broker that your Home Assistant instance is also connected to. Set-up for all that is covered within those packages.
-* Mains power to the printer, Pi, and associated equipment connectd thru one or more Home Assistant controllable smart switches.
+* Mains power to the printer, Pi, and associated equipment connected thru one or more Home Assistant controllable smart switches.
 
 ## 🗂 Input fields
 
-    base_topic/name: MQTT Topic for the printer
+   base_topic/name: MQTT Topic for the printer
         This needs to be the base topic that you added into the Octoprint
         MQTT Plug-in.
 
@@ -80,9 +83,16 @@ Requirements
         This is the timer that starts as soon as the Extruder temperature
         is in the range between the Upper Trigger and the Lower Trigger.
 
-    home_button: 
-      name: Custom command for Home Button
-        This is the Marlin Home Command, change as you see fit.
+    fil_feed/name: Feed Length for loading filament
+        Measure the distance the filament travels from the time it
+        starts feeding into the feed tube until a bit before it enters the
+        heater.
+
+    max_y/name: Depth of Y axis
+        This is the size of your printer bed in the 'Y' axis.
+
+    home_button/name: Custom command for Home Button
+        This is the Marlin Home GCode Command, change as you see fit.
 
     bed_level_button/name: Custom GCode command for the Bed Level Button
         This is the Marlin Bed Level Command, change as you see fit
@@ -103,15 +113,15 @@ For further information, reference these links.
 
 ## 👀 How do I find the info for the first 3 inputs?
 
-The information for these is located in your OctoPrint Dashboard.  The assumption is that you have the 2 required plugins installed and OctoPrint-Homeassistant is set-up and working first.
+The information for these is located in your OctoPrint Dashboard. The assumption is that you have the 2 required plugins installed and OctoPrint-Homeassistant is set-up and working first.
 
-Start by opening your OctoPrint Dashboard.  Click the wrench and find the MQTT Plugin.
+Start by opening your OctoPrint Dashboard. Click the wrench and find the MQTT Plugin.
 
 ![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintWrench.png?raw=true "Find OctoPrint Wrench")
 ![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintMQTTMenu.png?raw=true "Find OctoPrint Wrench")
 
 Once here, click the Topics Tab.
-Copy exactly the text located in the ```Base topic``` box.  All capitalization, punctuation, & spaces are required to match up the Blueprint buttons with the original installation. Plug that into the first input for MQTT Topic.
+Copy exactly the text located in the ```Base topic``` box. All capitalization, punctuation, & spaces are required to match up the Blueprint buttons with the original installation. Plug that into the first input for MQTT Topic.
 ![Find OctoPrint Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintBaseTopic.png?raw=true "Find OctoPrint Wrench")
 
 Next select the HomeAssistant Discovery tab on the left
@@ -125,27 +135,40 @@ Finally locate the Device name in the same tab. Copy that for the third input de
 
 ## 🪄 How do I turn off the Auto-Shutdown Thing?
 
-The BluePrint creates a data select entity which gives you the ability to enable or disable the Auto-Shutdown Feature.  On first run, the state of this entity will be 'unknown' and will likely disable the feature. I highly suggest you head over to Devices and select either enabled or disabled to make it more certain what the state is. [![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
+The BluePrint creates a data select entity which gives you the ability to enable or disable the Auto-Shutdown Feature. On first run, the state of this entity will be 'unknown' and will likely disable the feature. I highly suggest you head over to Devices and select either enabled or disabled to make it more certain what the state is. [![Open your Home Assistant instance and show your devices.](https://my.home-assistant.io/badges/devices.svg)](https://my.home-assistant.io/redirect/devices/)
 
 ![Find the BluePrint Device page](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintAutoEnable1.png?raw=true "Find the BluePrint Device page")
 
-Once you open the Device page, go to the entity znd select one of the 2 options.  If you change your mind at any time, you can change this.  It can even be an automated change as the entity is available.
+Once you open the Device page, go to the entity znd select one of the 2 options. If you change your mind at any time, you can change this. It can even be an automated change as the entity is available.
 
 ![Click the arrow](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintAutoEnable2.png?raw=true "Click the arrow") ![Select the Mode](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintAutoEnable3.png?raw=true "Select the Mode")
 
 ## ⛈🚨🛟 Why do the changes I make to the buttons never show up at all???
 
 Yes, I know I'm putting the same information in here twice, but that is because I know I'm going to get service calls about this but trust me, there is nothing I can do...
-**NOTE!!!  WARNING!!!** The first thing to remember is *ANYTIME* you make *ANY* changes to this Blueprint, you *MUST* restart the server so that the button entities can rebuild with the configuration you have selected. If you don't restart OctoPrint, the change may not be seen and you will wonder why and what is happening.
+**NOTE!!! WARNING!!!** The first thing to remember is *ANYTIME* you make *ANY* changes to this Blueprint, you *MUST* restart the server so that the button entities can rebuild with the configuration you have selected. If you don't restart OctoPrint, the change may not be seen and you will wonder why and what is happening.
 
 ## 🎰 What Can My Dashboard Look Like?
 
-Here is a copy of my Dashboard (Lovelace) that you can use as you like or be inspired by.  It's a bit busy for some people, but I LIKE busy dashboards. It lives in my home and [on GitHub](https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/.storage/lovelace) if you need more information.
+Here is a copy of my Dashboard (Lovelace) that you can use as you like or be inspired by. It's a bit busy for some people, but I LIKE busy dashboards. It lives in my home and [on GitHub](https://github.com/SirGoodenough/Home-Assistant-Config/blob/master/.storage/lovelace) if you need more information.
 [My Sample Dashboard YAML code](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Octoprint_Homeassistant_Dashboard_Lovelace.yaml)
 
 ![Main Dashboard Image](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintDashboardMain.png?raw=true "Main Dashboard Image")
 
 ![Secondary Dashboard Image](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintDashboardSecondary.png?raw=true "Secondary Dashboard Image")
+
+## ✌🏼 How do I answer that 'Y' axis question?
+
+If you don't know the number for your 'Y' axis size, here is where to find it...
+
+First open Octoprint amd find the wrench in the top toolbar.
+![Find the Wrench](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintWrench2.png?raw=true "Find the Wrench")
+
+Select the Printer Profile item. Then find the pencil for the printer you are controlling.
+![Select Your Printer](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintPrinterProfile.png?raw=true "Select Your Printer")
+
+Select the 'Print Bed & Build Volume' tab. Look down for the 'Y' Axis size.
+![Select Your Printer](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintYAxis.png?raw=true "Select Your Printer")
 
 ## 🌞 ❄️ Troubleshooting tip
 
@@ -153,10 +176,10 @@ If you are troubleshooting and you want to see more traces back when doing so, h
 Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5. Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
 [HA Docs on this here.](https://www.home-assistant.io/docs/automation/troubleshooting/#traces)
 
-```yaml
-trace:
-  stored_traces: 10
-```
+    ```yaml
+    trace:
+    stored_traces: 10
+    ```
 
 ## 📩 **Version Updates**
 

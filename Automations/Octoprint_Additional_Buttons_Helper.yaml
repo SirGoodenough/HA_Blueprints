@@ -1,6 +1,6 @@
 blueprint:
-  source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
-  name: Octoprint_Additional_Buttons_Helper- 2023-03-19
+  # source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
+  name: Octoprint_Additional_Buttons_Helper- 2023-04-12
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
     Octoprint Plugin called OctoPrint-HomeAssistant.
@@ -44,7 +44,7 @@ blueprint:
 
     [Community link for this blueprint](https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826)
     '
-  # source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/Octoprint/Automations/Octoprint_Discovery_Helper.yaml'
+  source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/Octoprint/Automations/Octoprint_Discovery_Helper.yaml'
   homeassistant:
     min_version: 2023.3.0
   domain: automation
@@ -187,7 +187,7 @@ blueprint:
         If the time is too short, the Auto Shutdown will trigger as the Extruder
         heats up for a print, so *some delay is required* for proper results.
 
-        Some trial and error may me needed to get the result you want.
+        Some trial and error may be needed to get the result you want.
         '
       default:
         hours: 0
@@ -195,31 +195,68 @@ blueprint:
         seconds: 0
       selector:
         duration:
+    fil_feed:
+      name: Feed Length for loading filament
+      description: 'Measure the distance the filament travels from the time it
+        starts feeding into the feed tube until a bit before it enters the
+        heater.
+        
+        Start shorter and try bigger to prevent filament grinding during setup.
+        This will be the distance that the Load Filament button will move the
+        filament for you. The Change Filament button always moves the full 400.
+        '
+      default: 200
+      selector:
+        number:
+          min: 0
+          max: 400
+          step: 1
+    max_y:
+      name: "Depth of Y axis"
+      description: 'This is the size of your printer bed in the ''Y'' axis.
+
+        It is used for the Presentation Button to move the bed out to the front.
+        If you do not plan to use the Presentation Button, this can stay at the
+        default.
+
+        If you don''t know what this value should be, look in the
+        [instruction file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.md) for how to find it.
+        '
+      default: 100
+      selector:
+        number:
+          min: 0
+          max: 500
+          step: 1
     home_button: 
       name: Custom command for Home Button
-      description: 'This is the Marlin Home Command, change as you see fit.'
+      description: 'This is the Marlin Home Gcode Command, Change as you see fit.'
       default: G28
       selector:
         text:
           multiline: false
     bed_level_button:
       name: Custom GCode command for the Bed Level Button
-      description: 'This is the Marlin Bed Level Command, change as you see fit.'
+      description: 'This is the Marlin Bed Level Command, Change as you see fit.'
       default: G29
       selector:
         text:
           multiline: false
     aux_1:
       name: Custom GCode command for Aux Button 1
-      description: 'Use this to send a custom GCode command to the printer.'
+      description: 'Use this to send a custom GCode command to the printer.
+        The default sends a message, but change it to whatever you like.
+        '
       default: M117 Test Aux1 button
       selector:
         text:
           multiline: false
     aux_2:
       name: Custom GCode command for Aux Button 2
-      description: 'Use this to send a custom GCode command to the printer.'
-      default: M117 Test Aux2 button
+      description: 'Use this to send a custom GCode command to the printer.
+        The default sends a Beep, but change it to whatever you like.
+        '
+      default: M300 P524
       selector:
         text:
           multiline: false
@@ -238,10 +275,10 @@ variables:
   mf: 'SirGoodenough'
   mdl: 'Octoprint_Discovery_Helper'
   sa: 'home'
-  sw: '2023-03-19'
+  sw: '2023-04-12'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
   cu: 'https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826'
-    # Button Parameters for MQTT Discovery
+  # Button Parameters for MQTT Discovery
       # Home Button
   h_local: home
   h_c_topic: '{{ ha_topic }}_{{ h_local | upper }}/config'
@@ -292,9 +329,31 @@ variables:
   asdc_ic: mdi:yin-yang
   asdc_ent_cat: config
   asdc_ops: '{{ ["enable", "disable"] | to_json }}'
+      # Load Filament Button
+  lf_local: load_filament
+  lf_c_topic: '{{ ha_topic }}_{{ lf_local | upper }}/config'
+  lf_bname: '{{ dv_name }} {{ lf_local }}'
+  lf_uniq_id: '{{ dv_id }}_{{ lf_local }}'
+  lf_ic: mdi:waves-arrow-right
+  lf_pl_prs: 'PRESS'
+      # Change Filament Button
+  cf_local: change_filament
+  cf_c_topic: '{{ ha_topic }}_{{ cf_local | upper }}/config'
+  cf_bname: '{{ dv_name }} {{ cf_local }}'
+  cf_uniq_id: '{{ dv_id }}_{{ cf_local }}'
+  cf_ic: mdi:waves-arrow-up
+  cf_pl_prs: 'PRESS'
     # Action variables
   printing_state: !input print_state
   printer_status: !input print_status
+  fil_feed: !input fil_feed
+  fil_feed_1st: '
+    {# Split 1st time because max-at-a-time feed is 200 #}
+    {% if fil_feed < 201 %}{{ fil_feed | int(0) }}{% else %}200{% endif %}'
+  fil_feed_2nd: '
+    {# Split 2nd half because max-at-a-time feed is 200 #}
+    {% if fil_feed > 200 %}{{ fil_feed - 200 | int(0) }}{% else %}0{% endif %}'
+  max_y: !input max_y
 
 trigger_variables:
   printer_topic: !input base_topic
@@ -305,6 +364,8 @@ trigger_variables:
   p_cmd_t: '{{ printer_topic }}BluePrint/presentation'
   sd_cmd_t: '{{ printer_topic }}BluePrint/safeShutdown'
   asdc_cmd_t: '{{ printer_topic }}BluePrint/autoShutdownControl'
+  lf_cmd_t: '{{ printer_topic }}BluePrint/filLoad'
+  cf_cmd_t: '{{ printer_topic }}BluePrint/filChange'
 
 trigger:
 - platform: state
@@ -325,6 +386,14 @@ trigger:
   topic: '{{ sd_cmd_t }}'
   payload: "PRESS"
   id: 'shutdown_pressed'
+- platform: mqtt
+  topic: '{{ lf_cmd_t }}'
+  payload: "PRESS"
+  id: 'load_filament'
+- platform: mqtt
+  topic: '{{ cf_cmd_t }}'
+  payload: "PRESS"
+  id: 'change_filament'
 
 action:
 - alias: Determine if there was an actionable event
@@ -364,6 +433,7 @@ action:
           qos: "1"
           retain: false
   - conditions:
+    - alias: Present the object front and center
       and:
         - alias: Printer NOT running
           condition: template
@@ -376,7 +446,7 @@ action:
         service: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/jog'
-          payload_template: "{{ { \"z\": 40, \"speed\": 400 } | to_json }}"
+          payload: "{{ { \"z\": 40, \"speed\": 2500 } | to_json }}"
           qos: "1"
           retain: false
       - alias: Set to absolute positioning mode
@@ -390,7 +460,7 @@ action:
         service: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
-          payload: G1 X1 Y100 F2500
+          payload: G0 X1 Y{{ max_y }} F2500
           qos: "1"
           retain: false
       - alias: Release the motors
@@ -404,6 +474,138 @@ action:
         service: mqtt.publish
         data:
           topic: '{{ p_cmd_t }}'
+          payload: ""
+          qos: "1"
+          retain: false
+  - conditions:
+    - alias: Load new Filament
+      and:
+        - alias: Printer NOT running
+          condition: template
+          value_template: '{{ states( printing_state ) != "on" }}'
+        - alias: Load Filament Button Pushed
+          condition: trigger
+          id: load_filament
+    sequence:
+      - alias: Marlin allow Extruder jog when cold
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M302 P1
+          qos: "1"
+          retain: false
+      - alias: Extruder into relative mode
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M83
+          qos: "1"
+          retain: false
+      - alias: Move the extruder into hotend
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: G1 E{{fil_feed_1st}} F2500
+          qos: "1"
+          retain: false
+      - alias: Move the extruder into hotend
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: G1 E{{fil_feed_2nd}} F2500
+          qos: "1"
+          retain: false
+      - alias: Marlin dis-allow Extruder jog when cold
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M302 P2
+          qos: "1"
+          retain: false
+      - alias: Extruder into absolute mode
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M82
+          qos: "1"
+          retain: false
+      - alias: Extruder Motor release
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M18 E3
+          qos: "1"
+          retain: false
+      - alias: Clear the PRESS
+        service: mqtt.publish
+        data:
+          topic: '{{ lf_cmd_t }}'
+          payload: ""
+          qos: "1"
+          retain: false
+  - conditions:
+    - alias: Pull the filament out of extruder
+      and:
+        - alias: Printer NOT running
+          condition: template
+          value_template: '{{ states( printing_state ) != "on" }}'
+        - alias: Change Filament Button Pushed
+          condition: trigger
+          id: change_filament
+    sequence:
+      - alias: Marlin allow Extruder jog when cold
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M302 P1
+          qos: "1"
+          retain: false
+      - alias: Extruder into relative mode
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M83
+          qos: "1"
+          retain: false
+      - alias: Move the extruder out
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: G1 E-200 F2500
+          qos: "1"
+          retain: false
+      - alias: Move the extruder out
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: G1 E-200 F2500
+          qos: "1"
+          retain: false
+      - alias: Marlin dis-allow Extruder jog when cold
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M302 P2
+          qos: "1"
+          retain: false
+      - alias: Extruder into absolute mode
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M82
+          qos: "1"
+          retain: false
+      - alias: Extruder Motor release
+        service: mqtt.publish
+        data:
+          topic: '{{ printer_topic }}hassControl/commands'
+          payload: M18 E3
+          qos: "1"
+          retain: false
+      - alias: Clear the PRESS
+        service: mqtt.publish
+        data:
+          topic: '{{ cf_cmd_t }}'
           payload: ""
           qos: "1"
           retain: false
@@ -591,6 +793,59 @@ action:
           "cmd_t": "{{ asdc_cmd_t }}",
           "ops": {{ asdc_ops }}
         }
+  - alias: Load Filament Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ lf_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}",
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ lf_bname }}",
+          "uniq_id": "{{ lf_uniq_id }}",
+          "ic": "{{ lf_ic }}",
+          "cmd_t": "{{ lf_cmd_t }}",
+          "pl_prs": "{{ lf_pl_prs }}"
+        }
+  - alias: Change Filament Button Create
+    service: mqtt.publish
+    data:
+      "topic": "{{ cf_c_topic }}"
+      "retain": true
+      "payload": >
+        { "~": "{{ printer_topic }}",
+          "avty_t": "{{ avty_t }}",
+          "pl_avail": "{{ pl_avail }}",
+          "pl_not_avail": "{{ pl_not_avail }}",
+          "dev": {
+            "ids": "{{ ids }}",
+            "name": "{{ dname }}",
+            "mf": "{{ mf }}",
+            "mdl": "{{ mdl }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}"
+          },
+          "name": "{{ cf_bname }}",
+          "uniq_id": "{{ cf_uniq_id }}",
+          "ic": "{{ cf_ic }}",
+          "cmd_t": "{{ cf_cmd_t }}",
+          "pl_prs": "{{ cf_pl_prs }}"
+        }
+
 mode: parallel
 max: 5
 max_exceeded: silent
