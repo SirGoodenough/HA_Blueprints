@@ -58,7 +58,7 @@ blueprint:
         text:
           multiline: false
     device_id:
-      name: Valuee of the Home Assistant Discovery node id
+      name: Value of the Home Assistant Discovery node id
       description: 'This needs to be the
         ```Discovery settings - Node ID```
         that you added into the Octoprint Homeassistant Discovery Plug-in.
