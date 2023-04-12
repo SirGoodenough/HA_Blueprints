@@ -1,5 +1,4 @@
 blueprint:
-  # source_url: 'https://raw.githubusercontent.com/SirGoodenough/HA_Blueprints/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
   name: Octoprint_Additional_Buttons_Helper- 2023-04-12
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
