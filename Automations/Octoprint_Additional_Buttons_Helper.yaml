@@ -2,9 +2,10 @@ blueprint:
   name: Octoprint_Additional_Buttons_Helper- 2023-04-12
   author: SirGoodenough
   description: 'This is Blueprint is provided as a helper for people using the
-    Octoprint Plugin called OctoPrint-HomeAssistant.
-    What this does is add 6 buttons, 4 of which you as the user can set your own
-    G-Codes to for customizing. Also adds safe shutdown and presentation functions.
+    Octoprint Plugin called OctoPrint-HomeAssistant. What this does is add 8 buttons,
+    4 of which you as the user can set your own G-Codes to for customizing.
+    Also adds safe shutdown and presentation functions along with
+    Change Filament and Load Filament.
 
 
     The first thing to remember is ANYTIME you make ANY changes to this Blueprint,
