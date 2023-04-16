@@ -61,7 +61,8 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)'
+    [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)
+    '
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   domain: script
   homeassistant:
@@ -69,49 +70,53 @@ blueprint:
   input:
     b4_action:
       name: Action before TTS
-      description: This is intended to add a volume control action or whatever you want
+      description:
+        This is intended to add a volume control action or whatever you want
         to do before sending the TTS message
       default: []
       selector:
         action: {}
     after_action:
       name: Action after TTS
-      description: This is intended to add a volume control action or whatever you want
+      description:
+        This is intended to add a volume control action or whatever you want
         to do after sending the TTS message
       default: []
       selector:
         action: {}
     TTS:
       name: Text to Speech Processor
-      description: 'Required on ALL *_say platforms. Select the configured TTS engine
+      description:
+        "Required on ALL *_say platforms. Select the configured TTS engine
         for media_player notifications. SEE for details: ( https://www.home-assistant.io/integrations/#text-to-speech
-        )'
+        )"
       selector:
         select:
           options:
-          - tts.amazon_polly_say
-          - tts.baidu_say
-          - tts.cloud_say
-          - tts.google_cloud_say
-          - tts.google_translate_say
-          - tts.marytts_say
-          - tts.microsoft_say
-          - tts.picotts_say
-          - tts.voicerss_say
-          - tts.watson_tts_say
-          - tts.yandextts_say
+            - tts.amazon_polly_say
+            - tts.baidu_say
+            - tts.cloud_say
+            - tts.google_cloud_say
+            - tts.google_translate_say
+            - tts.marytts_say
+            - tts.microsoft_say
+            - tts.picotts_say
+            - tts.voicerss_say
+            - tts.watson_tts_say
+            - tts.yandextts_say
           custom_value: false
           multiple: false
     announcement_message:
       name: Spoken Message
-      description: 'Required on ALL *_say platforms. Type your message here:'
+      description: "Required on ALL *_say platforms. Type your message here:"
       default: '{{ ("Random test one","Random test two","Random test three") | random }}'
       selector:
         text:
           multiline: true
     speaker_target:
       name: Entity(s) to speak thru
-      description: Required on ALL *_say platforms. Be sure to select the correct
+      description:
+        Required on ALL *_say platforms. Be sure to select the correct
         type / brand of device for the TTS you are using. Not All speakers work with
         all TTS engines
       selector:
@@ -120,107 +125,112 @@ blueprint:
           domain: media_player
     speaker_gender:
       name: Speaker Gender
-      description: Used on most *_say platforms. Select speaker gender male or female.
+      description:
+        Used on most *_say platforms. Select speaker gender male or female.
         May not work with all TTS engines.
       default: []
       selector:
         select:
           options:
-          - female
-          - male
+            - female
+            - male
           custom_value: false
           multiple: false
     baidu_person:
       name: Baidu Person Code
-      description: Used only on most tts_baidu_say platform. This is the voice code
+      description:
+        Used only on most tts_baidu_say platform. This is the voice code
         of the speaker.
       default: []
       selector:
         select:
           options:
-          - '0'
-          - '1'
-          - '3'
-          - '4'
-          - '5'
-          - '103'
-          - '106'
-          - '110'
-          - '111'
+            - "0"
+            - "1"
+            - "3"
+            - "4"
+            - "5"
+            - "103"
+            - "106"
+            - "110"
+            - "111"
           custom_value: false
           multiple: false
     cloud_language:
       name: TTS Cloud Language
-      description: 'This is for Nabu-Casa tts.cloud_say & tts.google_cloud_say. Select
+      description:
+        "This is for Nabu-Casa tts.cloud_say & tts.google_cloud_say. Select
         Language code. See-> ( https://www.nabucasa.com/config/tts ) This defaults
         to en-US as english/US. However all the languages available on 2021-12-24
         were put into the pick list. NOTE: It is possible that not all Languages will
-        give you both Genders.'
+        give you both Genders."
       default: []
       selector:
         select:
           options:
-          - ar-EG
-          - ar-SA
-          - bg-BG
-          - ca-ES
-          - zh-HK
-          - zh-CN
-          - zh-TW
-          - hr-HR
-          - cs-CZ
-          - da-DK
-          - nl-NL
-          - en-AU
-          - en-CA
-          - en-IN
-          - en-IE
-          - en-GB
-          - en-US
-          - fi-FI
-          - fr-CA
-          - fr-FR
-          - fr-CH
-          - de-AT
-          - de-DE
-          - de-CH
-          - el-GR
-          - he-IL
-          - hi-IN
-          - hu-HU
-          - id-ID
-          - it-IT
-          - ja-JP
-          - ko-KR
-          - ms-MY
-          - nb-NO
-          - pl-PL
-          - pt-BR
-          - pt-PT
-          - ro-RO
-          - ru-RU
-          - sk-SK
-          - sl-SI
-          - es-MX
-          - es-ES
-          - sv-SE
-          - ta-IN
-          - te-IN
-          - th-TH
-          - tr-TR
-          - vi-VN
+            - ar-EG
+            - ar-SA
+            - bg-BG
+            - ca-ES
+            - zh-HK
+            - zh-CN
+            - zh-TW
+            - hr-HR
+            - cs-CZ
+            - da-DK
+            - nl-NL
+            - en-AU
+            - en-CA
+            - en-IN
+            - en-IE
+            - en-GB
+            - en-US
+            - fi-FI
+            - fr-CA
+            - fr-FR
+            - fr-CH
+            - de-AT
+            - de-DE
+            - de-CH
+            - el-GR
+            - he-IL
+            - hi-IN
+            - hu-HU
+            - id-ID
+            - it-IT
+            - ja-JP
+            - ko-KR
+            - ms-MY
+            - nb-NO
+            - pl-PL
+            - pt-BR
+            - pt-PT
+            - ro-RO
+            - ru-RU
+            - sk-SK
+            - sl-SI
+            - es-MX
+            - es-ES
+            - sv-SE
+            - ta-IN
+            - te-IN
+            - th-TH
+            - tr-TR
+            - vi-VN
           custom_value: false
           multiple: false
     Google_Cloud_Voice:
       name: Google Cloud Voice Code
-      description: 'Used only with tts.google_cloud_say platform. Pick from here-
+      description:
+        'Used only with tts.google_cloud_say platform. Pick from here-
         ( https://cloud.google.com/text-to-speech/docs/voices ) This is the voice
         code of the speaker. The default is: "en-US-Wavenet-F". Refer to ( https://www.home-assistant.io/integrations/google_cloud
         ) for more information.'
       default: []
     Google_Cloud_Profile:
       name: Google Cloud Profile
-      description: Used only on most tts.google_cloud_say platform. Pick from here-
+      description:
+        Used only on most tts.google_cloud_say platform. Pick from here-
         ( https://cloud.google.com/text-to-speech/docs/audio-profiles ) This is a
         parameter to match the output to the sound of the speaker. Refer to ( https://www.home-assistant.io/integrations/google_cloud
         ) for more information.
@@ -228,18 +238,19 @@ blueprint:
       selector:
         select:
           options:
-          - headphone-class-device
-          - large-automotive-class-device
-          - large-home-entertainment-class-device
-          - medium-bluetooth-speaker-class-device
-          - small-bluetooth-speaker-class-device
-          - telephony-class-application
-          - wearable-class-device
+            - headphone-class-device
+            - large-automotive-class-device
+            - large-home-entertainment-class-device
+            - medium-bluetooth-speaker-class-device
+            - small-bluetooth-speaker-class-device
+            - telephony-class-application
+            - wearable-class-device
           custom_value: false
           multiple: false
     GTS_language:
       name: TTS Google Translate Say Language
-      description: This is for tts.google_translate_say only. Check the complete list
+      description:
+        This is for tts.google_translate_say only. Check the complete list
         of [supported languages] for allowed values. ( https://cloud.google.com/text-to-speech/docs/voices
         ) The 2 letter lead acronym [example- en for english] is all that is used
         here. The 3 letter ones do not work...] This defaults to en [english]
@@ -247,209 +258,213 @@ blueprint:
       selector:
         select:
           options:
-          - af
-          - ar
-          - bg
-          - bn
-          - ca
-          - ca
-          - da
-          - de
-          - el
-          - en
-          - es
-          - fr
-          - gu
-          - hi
-          - hu
-          - id
-          - is
-          - it
-          - ja
-          - kn
-          - ko
-          - lv
-          - ml
-          - ms
-          - nb
-          - nl
-          - pa
-          - pl
-          - pt
-          - ro
-          - ru
-          - sk
-          - sr
-          - sv
-          - ta
-          - te
-          - th
-          - tr
-          - uk
-          - vi
+            - af
+            - ar
+            - bg
+            - bn
+            - ca
+            - ca
+            - da
+            - de
+            - el
+            - en
+            - es
+            - fr
+            - gu
+            - hi
+            - hu
+            - id
+            - is
+            - it
+            - ja
+            - kn
+            - ko
+            - lv
+            - ml
+            - ms
+            - nb
+            - nl
+            - pa
+            - pl
+            - pt
+            - ro
+            - ru
+            - sk
+            - sr
+            - sv
+            - ta
+            - te
+            - th
+            - tr
+            - uk
+            - vi
           custom_value: false
           multiple: false
     marytts_language:
       name: Language option for tts.marytts_say
-      description: 'Used only on tts.marytts_say. Select speaker Language:'
+      description: "Used only on tts.marytts_say. Select speaker Language:"
       default: []
       selector:
         select:
           options:
-          - de
-          - en_GB
-          - en_US
-          - fr
-          - it
-          - lb
-          - ru
-          - sv
-          - te
-          - tr
+            - de
+            - en_GB
+            - en_US
+            - fr
+            - it
+            - lb
+            - ru
+            - sv
+            - te
+            - tr
           custom_value: false
           multiple: false
     picotts_language:
       name: Language option for tts.picotts_say
-      description: 'Used only on tts.picotts_say. Select speaker Language:'
+      description: "Used only on tts.picotts_say. Select speaker Language:"
       default: []
       selector:
         select:
           options:
-          - en-US
-          - en-GB
-          - de-DE
-          - es-ES
-          - fr-FR
-          - it-IT
+            - en-US
+            - en-GB
+            - de-DE
+            - es-ES
+            - fr-FR
+            - it-IT
           custom_value: false
           multiple: false
     voicerss_language:
       name: Language option for tts.voicerss_say
-      description: Used only on tts.voicerss_say. Select speaker Language. SEE ( https://www.voicerss.org/api
+      description:
+        Used only on tts.voicerss_say. Select speaker Language. SEE ( https://www.voicerss.org/api
         ) for details.
       default: []
       selector:
         select:
           options:
-          - ar-eg
-          - ar-sa
-          - bg-bg
-          - ca-es
-          - zh-cn
-          - zh-hk
-          - zh-tw
-          - hr-hr
-          - cs-cz
-          - da-dk
-          - nl-be
-          - nl-nl
-          - en-au
-          - en-ca
-          - en-gb
-          - en-in
-          - en-ie
-          - en-us
-          - fi-fi
-          - fr-ca
-          - fr-fr
-          - fr-ch
-          - de-at
-          - de-de
-          - de-ch
-          - el-gr
-          - he-il
-          - hi-in
-          - hu-hu
-          - id-id
-          - it-it
-          - ja-jp
-          - ko-kr
-          - ms-my
-          - nb-no
-          - pl-pl
-          - pt-br
-          - pt-pt
-          - ro-ro
-          - ru-ru
-          - sk-sk
-          - sl-si
-          - es-mx
-          - es-es
-          - sv-se
-          - ta-in
-          - th-th
-          - tr-tr
-          - vi-vn
+            - ar-eg
+            - ar-sa
+            - bg-bg
+            - ca-es
+            - zh-cn
+            - zh-hk
+            - zh-tw
+            - hr-hr
+            - cs-cz
+            - da-dk
+            - nl-be
+            - nl-nl
+            - en-au
+            - en-ca
+            - en-gb
+            - en-in
+            - en-ie
+            - en-us
+            - fi-fi
+            - fr-ca
+            - fr-fr
+            - fr-ch
+            - de-at
+            - de-de
+            - de-ch
+            - el-gr
+            - he-il
+            - hi-in
+            - hu-hu
+            - id-id
+            - it-it
+            - ja-jp
+            - ko-kr
+            - ms-my
+            - nb-no
+            - pl-pl
+            - pt-br
+            - pt-pt
+            - ro-ro
+            - ru-ru
+            - sk-sk
+            - sl-si
+            - es-mx
+            - es-es
+            - sv-se
+            - ta-in
+            - th-th
+            - tr-tr
+            - vi-vn
           custom_value: false
           multiple: false
     voicerss_format:
       name: Message format option for tts.voicerss_say
-      description: Used only on tts.voicerss_say. Select message format. There were
+      description:
+        Used only on tts.voicerss_say. Select message format. There were
         too many to do a selector. SEE ( https://www.voicerss.org/api ) for details
       default: []
     yandextts_language:
       name: Language option for tts.yandextts_say
-      description: Used only on tts.yandextts_say. Select speaker Language. SEE (
+      description:
+        Used only on tts.yandextts_say. Select speaker Language. SEE (
         https://www.home-assistant.io/integrations/yandextts ) for Details.
       default: []
       selector:
         select:
           options:
-          - en-US
-          - ru-RU
-          - uk-UK
-          - tr-TR
+            - en-US
+            - ru-RU
+            - uk-UK
+            - tr-TR
           custom_value: false
           multiple: false
     yandextts_voice:
       name: Voice option for tts.yandextts_say
-      description: Used only on tts.yandextts_say. Select speaker Voice. SEE ( https://www.home-assistant.io/integrations/yandextts
+      description:
+        Used only on tts.yandextts_say. Select speaker Voice. SEE ( https://www.home-assistant.io/integrations/yandextts
         ) for Details.
       default: []
       selector:
         select:
           options:
-          - jane
-          - oksana
-          - alyss
-          - omazh
-          - silaerkan
-          - nastya
-          - sasha
-          - tanya
-          - tatyana_abramova
-          - voicesearch
-          - zombie
-          - zahar
-          - ermil
-          - levitan
-          - ermilov
-          - kolya
-          - kostya
-          - nick
-          - erkanyavas
-          - zhenya
-          - anton_samokhvalov
-          - ermil_with_tuning
-          - robot
-          - dude
-          - smoky
+            - jane
+            - oksana
+            - alyss
+            - omazh
+            - silaerkan
+            - nastya
+            - sasha
+            - tanya
+            - tatyana_abramova
+            - voicesearch
+            - zombie
+            - zahar
+            - ermil
+            - levitan
+            - ermilov
+            - kolya
+            - kostya
+            - nick
+            - erkanyavas
+            - zhenya
+            - anton_samokhvalov
+            - ermil_with_tuning
+            - robot
+            - dude
+            - smoky
           custom_value: false
           multiple: false
     yandextts_emotion:
       name: Emotion option for tts.yandextts_say
-      description: Used only on tts.yandextts_say. Select speaker Emotion. SEE ( https://www.home-assistant.io/integrations/yandextts
+      description:
+        Used only on tts.yandextts_say. Select speaker Emotion. SEE ( https://www.home-assistant.io/integrations/yandextts
         ) for Details.
       default: []
       selector:
         select:
           options:
-          - neutral
-          - evil
-          - good
+            - neutral
+            - evil
+            - good
           custom_value: false
           multiple: false
-mode: queued
 fields:
   live_message:
     name: Live Message
@@ -469,107 +484,113 @@ fields:
         multiple: true
         domain: media_player
 variables:
+    # Do something before sending the TTS
   my_b4_action: !input "b4_action"
+    # Do something after sending the TTS
   my_after_action: !input "after_action"
+    # Get the Integration for templating
   my_tts: !input "TTS"
+    # Get the message to select default or live data
   announcement_message: !input "announcement_message"
   my_message: '{% if live_message %} {{ live_message }} {% else %} {{ announcement_message }} {% endif %}'
-  speaker_target: !input 'speaker_target'
+    # Get the speaker to select default or live data
+  speaker_target: !input speaker_target
   my_speaker:  '{% if live_speaker %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}'
-  baidu_person_val: !input 'baidu_person'
-  my_baidu_person: '{{ baidu_person_val | int(0) }}'
+    # Get the value for templating
+  baidu_person_val: !input "baidu_person"
+  my_baidu_person: "{{ baidu_person_val | int(0) }}"
 sequence:
-- alias: Do something before the TTS Command
-  if: '{{ not my_b4_action in (''none'', ''null'', ''unavailable'', '''') }}'
-  then: !input 'b4_action'
-- alias: "Main TTS Choose Statement"
-  choose:
-  - conditions: '{{ my_tts == "tts.amazon_polly_say" }}'
-    sequence:
-    - service: tts.amazon_polly_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-  - conditions: '{{ my_tts == "tts.baidu_say" }}'
-    sequence:
-    - service: tts.baidu_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-        options:
-          person: '{{ my_baidu_person }}'
-  - conditions: '{{ my_tts == "tts.cloud_say" }}'
-    sequence:
-    - service: tts.cloud_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-        options:
-          gender: !input 'speaker_gender'
-        language: !input 'cloud_language'
-  - conditions: '{{ my_tts == "tts.google_cloud_say" }}'
-    sequence:
-    - service: tts.google_cloud_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-        options:
-          voice: !input 'Google_Cloud_Voice'
-          gender: !input 'speaker_gender'
-          profiles: !input 'Google_Cloud_Profile'
-        language: !input 'cloud_language'
-  - conditions: '{{ my_tts == "tts.marytts_say" }}'
-    sequence:
-    - service: tts.marytts_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-        language: !input 'marytts_language'
-  - conditions: '{{ my_tts == "tts.microsoft_say" }}'
-    sequence:
-    - service: tts.microsoft_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-  - conditions: '{{ my_tts == "tts.picotts_say" }}'
-    sequence:
-    - service: tts.picotts_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-        language: !input 'picotts_language'
-  - conditions: '{{ my_tts == "tts.voicerss_say" }}'
-    sequence:
-    - service: tts.voicerss_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-        options:
-          format: !input 'voicerss_format'
-        language: !input 'voicerss_language'
-  - conditions: '{{ my_tts == "tts.watson_tts_say" }}'
-    sequence:
-    - service: tts.watson_tts_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-  - conditions: '{{ my_tts == "tts.yandextts_say" }}'
-    sequence:
-    - service: tts.yandextts_say
-      data:
-        entity_id: '{{ my_speaker }}'
-        message: '{{ my_message }}'
-        options:
-          voice: !input 'yandextts_voice'
-          emotion: !input 'yandextts_emotion'
-        language: !input 'yandextts_language'
-  default:
-  - alias: Home Assistant Default tts.google_translate_say selected
-    service: tts.google_translate_say
-    data:
-      entity_id: '{{ my_speaker }}'
-      message: '{{ my_message }}'
-      language: !input 'GTS_language'
-- alias: Do something after the TTS Command
-  if: '{{ not my_after_action in (''none'', ''null'', ''unavailable'', '''') }}'
-  then: !input 'after_action'
+  - alias: Do something before the TTS Command
+    if: "{{ not my_b4_action in ('none', 'null', 'unavailable', '') }}"
+    then: !input "b4_action"
+  - alias: "Main TTS Choose Statement"
+    choose:
+      - conditions: '{{ my_tts == "tts.amazon_polly_say" }}'
+        sequence:
+          - service: tts.amazon_polly_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+      - conditions: '{{ my_tts == "tts.baidu_say" }}'
+        sequence:
+          - service: tts.baidu_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+              options:
+                person: "{{ my_baidu_person }}"
+      - conditions: '{{ my_tts == "tts.cloud_say" }}'
+        sequence:
+          - service: tts.cloud_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+              options:
+                gender: !input "speaker_gender"
+              language: !input "cloud_language"
+      - conditions: '{{ my_tts == "tts.google_cloud_say" }}'
+        sequence:
+          - service: tts.google_cloud_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+              options:
+                voice: !input "Google_Cloud_Voice"
+                gender: !input "speaker_gender"
+                profiles: !input "Google_Cloud_Profile"
+              language: !input "cloud_language"
+      - conditions: '{{ my_tts == "tts.marytts_say" }}'
+        sequence:
+          - service: tts.marytts_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+              language: !input "marytts_language"
+      - conditions: '{{ my_tts == "tts.microsoft_say" }}'
+        sequence:
+          - service: tts.microsoft_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+      - conditions: '{{ my_tts == "tts.picotts_say" }}'
+        sequence:
+          - service: tts.picotts_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+              language: !input "picotts_language"
+      - conditions: '{{ my_tts == "tts.voicerss_say" }}'
+        sequence:
+          - service: tts.voicerss_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+              options:
+                format: !input "voicerss_format"
+              language: !input "voicerss_language"
+      - conditions: '{{ my_tts == "tts.watson_tts_say" }}'
+        sequence:
+          - service: tts.watson_tts_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+      - conditions: '{{ my_tts == "tts.yandextts_say" }}'
+        sequence:
+          - service: tts.yandextts_say
+            data:
+              entity_id: '{{ my_speaker }}'
+              message: "{{ my_message }}"
+              options:
+                voice: !input "yandextts_voice"
+                emotion: !input "yandextts_emotion"
+              language: !input "yandextts_language"
+    default:
+      - alias: Home Assistant Default tts.google_translate_say selected
+        service: tts.google_translate_say
+        data:
+          entity_id: '{{ my_speaker }}'
+          message: "{{ my_message }}"
+          language: !input "GTS_language"
+  - alias: Do something after the TTS Command
+    if: "{{ not my_after_action in ('none', 'null', 'unavailable', '') }}"
+    then: !input "after_action"
