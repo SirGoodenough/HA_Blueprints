@@ -509,13 +509,13 @@ sequence:
         sequence:
           - service: tts.amazon_polly_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
       - conditions: '{{ my_tts == "tts.baidu_say" }}'
         sequence:
           - service: tts.baidu_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               options:
                 person: "{{ my_baidu_person }}"
@@ -523,7 +523,7 @@ sequence:
         sequence:
           - service: tts.cloud_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               options:
                 gender: !input "speaker_gender"
@@ -532,7 +532,7 @@ sequence:
         sequence:
           - service: tts.google_cloud_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               options:
                 voice: !input "Google_Cloud_Voice"
@@ -543,27 +543,27 @@ sequence:
         sequence:
           - service: tts.marytts_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               language: !input "marytts_language"
       - conditions: '{{ my_tts == "tts.microsoft_say" }}'
         sequence:
           - service: tts.microsoft_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
       - conditions: '{{ my_tts == "tts.picotts_say" }}'
         sequence:
           - service: tts.picotts_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               language: !input "picotts_language"
       - conditions: '{{ my_tts == "tts.voicerss_say" }}'
         sequence:
           - service: tts.voicerss_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               options:
                 format: !input "voicerss_format"
@@ -572,13 +572,13 @@ sequence:
         sequence:
           - service: tts.watson_tts_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
       - conditions: '{{ my_tts == "tts.yandextts_say" }}'
         sequence:
           - service: tts.yandextts_say
             data:
-              entity_id: '{{ my_speaker }}'
+              entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               options:
                 voice: !input "yandextts_voice"
@@ -588,7 +588,7 @@ sequence:
       - alias: Home Assistant Default tts.google_translate_say selected
         service: tts.google_translate_say
         data:
-          entity_id: '{{ my_speaker }}'
+          entity_id: "{{ my_speaker }}"
           message: "{{ my_message }}"
           language: !input "GTS_language"
   - alias: Do something after the TTS Command
