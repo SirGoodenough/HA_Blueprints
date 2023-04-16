@@ -1,4 +1,4 @@
-📣 This is a script that can use any of 11 integrated TTS Platforms in Home Assistant to send a message to a media player. Some will require Google Type Speakers, some will require Non-Google type speakers.
+📣 This is a script that can use any of 11 integrated TTS Platforms in Home Assistant to send a message to a media player. Some will require Google Type Speakers, some will require Non-Google type speakers. This BP can now be called on-the-fly and change the message & medis_player when called.
 
 ## 📑 Changelog
 
