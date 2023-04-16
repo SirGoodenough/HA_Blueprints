@@ -594,3 +594,4 @@ sequence:
   - alias: Do something after the TTS Command
     if: "{{ not my_after_action in ('none', 'null', 'unavailable', '') }}"
     then: !input "after_action"
+mode: queued
