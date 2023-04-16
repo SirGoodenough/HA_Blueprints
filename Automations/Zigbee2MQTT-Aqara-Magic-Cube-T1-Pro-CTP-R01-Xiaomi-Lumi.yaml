@@ -58,7 +58,7 @@ blueprint:
     [Zigbee2MQTT - Xiaomi Cube Controller MQTT Triggered.md](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md)
     & in the [community page related to this](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203).
 
-(https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.md)#fields)
+
     Within this blueprint there is an event handler that will latch the last command
     that the blueprint finds and sends that to the event buss. From there a simple
     Template sensor can grab it and show you the last action sent. Thie will help
