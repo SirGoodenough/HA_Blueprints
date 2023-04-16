@@ -445,11 +445,32 @@ blueprint:
           custom_value: false
           multiple: false
 mode: queued
+fields:
+  live_message:
+    name: Live Message
+    description: This will change the default message on-the-fly
+    required: false
+    example: This is where to put your message to be spoken
+    selector:
+      text:
+        multiline: true
+        type: text
+  live_speaker:
+    name: Live Media Player
+    description: Change the default media player on the fly
+    required: false
+    selector:
+      entity:
+        multiple: true
+        domain: media_player
 variables:
-  my_b4_action: !input 'b4_action'
-  my_after_action: !input 'after_action'
-  my_tts: !input 'TTS'
-  my_message: !input 'announcement_message'
+  my_b4_action: !input "b4_action"
+  my_after_action: !input "after_action"
+  my_tts: !input "TTS"
+  announcement_message: !input "announcement_message"
+  my_message: '{% if live_message %} {{ live_message }} {% else %} {{ announcement_message }} {% endif %}'
+  speaker_target: !input speaker_target
+  my_speaker:  '{% if live_speaker %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}'
   baidu_person_val: !input 'baidu_person'
   my_baidu_person: '{{ baidu_person_val | int(0) }}'
 sequence:

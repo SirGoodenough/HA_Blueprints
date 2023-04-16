@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2023-04-15**: Add ability to feed message and media_player change to script on the fly.
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
@@ -28,6 +29,16 @@ Requirements
 
 * Some Version od TTS Installed on your HA instance
 * You know how to deal with TTS messaging
+
+## <a name="fields">🗂 Field variables to feed variables from calling automation</a>
+
+    live_message/name: Live Message
+        This will change the default message on-the-fly
+        required: false
+
+    live_speaker/name: Live Media Player
+        Change the default media player on-the-fly
+        required: false
 
 ## 🗂 Input fields
 
@@ -118,7 +129,6 @@ Requirements
         https://www.home-assistant.io/integrations/yandextts
         for Details.
 
-
 ## 👀 ✈️ Extended Information
 
 The main problem I had with building this blueprint is that I do not have all TTS platforms installed in my system, so there is no way I can test everything. I installed what I could and tested those. Others I just have made available the basic configuration of the tts*_say flavor, speaker entity, and message. If the integration page gave me more specific information, I went with that as options.
@@ -167,6 +177,17 @@ After that, where ever you want this TTS to sound off in another script or an au
 
 This makes your automation very clean looking and you move all the 'noisy' code elsewhere. It has greatly improved my ability to think out automations. This also keeps me from having to write the same code over and over for every TTS I want to send out. I have almost 30 different messages in my [Home Assistant Configuration](https://github.com/SirGoodenough/Home-Assistant-Config)
 
+## 👩‍🍳 Sending TTS messages based on the Calling Automation
+
+As of Version 2021-04-15, thanks to the script Blueprint from [Grumblezz](https://github.com/Grumblezz/Home-Assistant-Notify-Mobile-Companion-App-Devices/blob/main/notify_devices.yaml) I have found a way to feed data into a Script Blueprint. This uses the Key 'fields:'.
+Aside from that, what you need to know is you can use this to generate a 'live' TTS response by feeding data into it from an automation that calls this script with data.
+
+To do this, your first step is setting up the Blueprint input fields so that it all works properly with your system. Next you add the input parameters that that you need in order to have the test message coming out of the speaker of your choice. Then save and close the Blueprint Editor. Then you will be able to 'call' this script with a data statement that includes the [field variables in this section](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.md#fields). If you need help formatting the YAML for this you can get some help in the [HA Docs here](https://www.home-assistant.io/integrations/script/#passing-variables-to-scripts). You can also contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.md#contacts).
+
+If you create an automation that calls the script that you created with this BluePrint, yu will be able or manually add text or change the speaker. Advanced users will be able to vreate variables in the automation that can be passed directly to the script to send the TTS messabe exactly as required.
+
+![Main Dashboard Image](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintDashboardMain.png?raw=true "Main Dashboard Image")
+
 ## 💡 Fun Ideas
 
 #### Random Response
@@ -175,7 +196,7 @@ This is a very simple sample test case, I wanted to see if it would work. To my 
 
 I have recently found that the !input will accept templates. Who knew, right? I have a few TTS instances that call for a random response, I just need the sound for timing of something I'm doing, and I found that something like this craziness works. It is the lyrics from a song and when triggered, it just picks one of them to play using random. It also picks a random language to speak the message from the list. Pretty slick, right?
 
-![Sample Script Generation Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/TranslateSayExample.png?raw=true "Example showing Random Selection")
+![Sample Script UI Editor Screen](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/TTS_All_Message_on-the-fly.png?raw=true "Example showing Selections in Script UI Editor")
 
 #### Add MP3 File to TTS Call
 
@@ -312,7 +333,7 @@ This is Blueprint is provided as a helper for people using the Octoprint Plugin 
 
 https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## ## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 
