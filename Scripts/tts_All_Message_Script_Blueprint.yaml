@@ -1,5 +1,5 @@
 blueprint:
-  name: TTS_say_Message-2023-03-01
+  name: TTS_say_Message-2023-04-15
   author: SirGoodenough
   description: '📣 This is a script that can use any of the 11 integrated TTS Platforms
     in Home Assistant to send a message to a media player. Some will require Google
@@ -30,6 +30,11 @@ blueprint:
     can choose to ignore these, or you can use them to change volume, add a 
     media player to play a doorbell, turn on a light, add a delay, 
     whatever you want to do.
+
+
+    The Scripts produced by this blueprint can be called from an automation & variable
+    values for the message and the media_player can be sent on the fly. For details
+    [check out the instructions here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.md#calling).
 
 
     ### ⚠️ This Blueprint makes the assumption that you already have a tested & proven
@@ -469,7 +474,7 @@ variables:
   my_tts: !input "TTS"
   announcement_message: !input "announcement_message"
   my_message: '{% if live_message %} {{ live_message }} {% else %} {{ announcement_message }} {% endif %}'
-  speaker_target: !input speaker_target
+  speaker_target: !input 'speaker_target'
   my_speaker:  '{% if live_speaker %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}'
   baidu_person_val: !input 'baidu_person'
   my_baidu_person: '{{ baidu_person_val | int(0) }}'
@@ -483,13 +488,13 @@ sequence:
     sequence:
     - service: tts.amazon_polly_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
   - conditions: '{{ my_tts == "tts.baidu_say" }}'
     sequence:
     - service: tts.baidu_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
         options:
           person: '{{ my_baidu_person }}'
@@ -497,7 +502,7 @@ sequence:
     sequence:
     - service: tts.cloud_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
         options:
           gender: !input 'speaker_gender'
@@ -506,7 +511,7 @@ sequence:
     sequence:
     - service: tts.google_cloud_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
         options:
           voice: !input 'Google_Cloud_Voice'
@@ -517,27 +522,27 @@ sequence:
     sequence:
     - service: tts.marytts_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
         language: !input 'marytts_language'
   - conditions: '{{ my_tts == "tts.microsoft_say" }}'
     sequence:
     - service: tts.microsoft_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
   - conditions: '{{ my_tts == "tts.picotts_say" }}'
     sequence:
     - service: tts.picotts_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
         language: !input 'picotts_language'
   - conditions: '{{ my_tts == "tts.voicerss_say" }}'
     sequence:
     - service: tts.voicerss_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
         options:
           format: !input 'voicerss_format'
@@ -546,13 +551,13 @@ sequence:
     sequence:
     - service: tts.watson_tts_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
   - conditions: '{{ my_tts == "tts.yandextts_say" }}'
     sequence:
     - service: tts.yandextts_say
       data:
-        entity_id: !input 'speaker_target'
+        entity_id: '{{ my_speaker }}'
         message: '{{ my_message }}'
         options:
           voice: !input 'yandextts_voice'
@@ -562,7 +567,7 @@ sequence:
   - alias: Home Assistant Default tts.google_translate_say selected
     service: tts.google_translate_say
     data:
-      entity_id: !input 'speaker_target'
+      entity_id: '{{ my_speaker }}'
       message: '{{ my_message }}'
       language: !input 'GTS_language'
 - alias: Do something after the TTS Command

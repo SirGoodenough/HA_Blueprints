@@ -177,16 +177,24 @@ After that, where ever you want this TTS to sound off in another script or an au
 
 This makes your automation very clean looking and you move all the 'noisy' code elsewhere. It has greatly improved my ability to think out automations. This also keeps me from having to write the same code over and over for every TTS I want to send out. I have almost 30 different messages in my [Home Assistant Configuration](https://github.com/SirGoodenough/Home-Assistant-Config)
 
-## 👩‍🍳 Sending TTS messages based on the Calling Automation
+## <a name="calling">👩‍🍳 Sending TTS messages based on the Calling Automation</a>
 
 As of Version 2021-04-15, thanks to the script Blueprint from [Grumblezz](https://github.com/Grumblezz/Home-Assistant-Notify-Mobile-Companion-App-Devices/blob/main/notify_devices.yaml) I have found a way to feed data into a Script Blueprint. This uses the Key 'fields:'.
 Aside from that, what you need to know is you can use this to generate a 'live' TTS response by feeding data into it from an automation that calls this script with data.
 
 To do this, your first step is setting up the Blueprint input fields so that it all works properly with your system. Next you add the input parameters that that you need in order to have the test message coming out of the speaker of your choice. Then save and close the Blueprint Editor. Then you will be able to 'call' this script with a data statement that includes the [field variables in this section](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.md#fields). If you need help formatting the YAML for this you can get some help in the [HA Docs here](https://www.home-assistant.io/integrations/script/#passing-variables-to-scripts). You can also contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.md#contacts).
 
-If you create an automation that calls the script that you created with this BluePrint, yu will be able or manually add text or change the speaker. Advanced users will be able to vreate variables in the automation that can be passed directly to the script to send the TTS messabe exactly as required.
+If you create an automation that calls the script that you created with this BluePrint, you will be able to manually add text or change the speaker. Advanced users will be able to create variables in the automation that can be passed directly to the script to send the TTS message exactly as required.
 
-![Main Dashboard Image](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/OctoprintDashboardMain.png?raw=true "Main Dashboard Image")
+```yaml
+  - service: script.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatts_say_testing
+    data:
+      live_message: |-
+        Type something here.
+        This is a 2nd line for text. Keep typing for more
+```
+
+![Script UI Editor Sample](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/TTS_All_Message_on-the-fly.png?raw=true "Script UI Editor Sample")
 
 ## 💡 Fun Ideas
 
