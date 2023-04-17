@@ -30,9 +30,26 @@ rotate_cw_face_3:
 script:
   cube_short_cw_toggle:
     description: CW Short Press Toggle
-    variables:
-      entity:
+    fields:
       angle:
+        name: Angle to represent new switch function
+        description:
+          This is the new angle to be used in the calculation for switch function
+        required: true
+        example: "120.7"
+        selector:
+          number:
+            min: -360
+            max: 360
+            step: 0.1
+            mode: box
+      entity:
+        name: Entity to control
+        description: Add the entity you want to control here
+        required: true
+        selector:
+          entity:
+            multiple: false
     sequence:
       - condition: template
         value_template: '{{ angle > 0 <= 100 }}'
@@ -41,9 +58,26 @@ script:
           entity_id: '{{ entity }}'
   cube_long_cw_toggle:
     description: CW Long Press Toggle
-    variables:
-      entity:
+    fields:
       angle:
+        name: Angle to represent new switch function
+        description:
+          This is the new angle to be used in the calculation for switch function
+        required: true
+        example: "120.7"
+        selector:
+          number:
+            min: -360
+            max: 360
+            step: 0.1
+            mode: box
+      entity:
+        name: Entity to control
+        description: Add the entity you want to control here
+        required: true
+        selector:
+          entity:
+            multiple: false
     sequence:
       - condition: template
         value_template: '{{ angle > 100 }}'
@@ -53,9 +87,26 @@ script:
 
   cube_short_ccw_toggle:
     description: CCW Short Press Toggle
-    variables:
-      entity:
+    fields:
       angle:
+        name: Angle to represent new switch function
+        description:
+          This is the new angle to be used in the calculation for switch function
+        required: true
+        example: "120.7"
+        selector:
+          number:
+            min: -360
+            max: 360
+            step: 0.1
+            mode: box
+      entity:
+        name: Entity to control
+        description: Add the entity you want to control here
+        required: true
+        selector:
+          entity:
+            multiple: false
     sequence:
       - condition: template
         value_template: '{{ angle < 0 >= -100 }}'
@@ -64,9 +115,26 @@ script:
           entity_id: '{{ entity }}'
   cube_long_ccw_toggle:
     description: CCW Long Press Toggle
-    variables:
-      entity:
+    fields:
       angle:
+        name: Angle to represent new switch function
+        description:
+          This is the new angle to be used in the calculation for switch function
+        required: true
+        example: "120.7"
+        selector:
+          number:
+            min: -360
+            max: 360
+            step: 0.1
+            mode: box
+      entity:
+        name: Entity to control
+        description: Add the entity you want to control here
+        required: true
+        selector:
+          entity:
+            multiple: false
     sequence:
       - condition: template
         value_template: '{{ angle < -100 }}'

@@ -29,17 +29,34 @@ rotate_ccw_face_0:
 script:
   cube_dimmer_control:
     description: Template Dimmer Control
-    variables:
+    fields:
       angle:
+        name: Angle to represent new brightness
+        description:
+          This is the new angle to be used in the calculation for Brightness
+        required: true
+        example: "-120.7"
+        selector:
+          number:
+            min: -360
+            max: 360
+            step: 0.1
+            mode: box
       light:
+        name: Light entity to control
+        description: Add the light entity you want to control here
+        required: true
+        selector:
+          entity:
+            multiple: false
+            domain: light
     sequence:
       - service: light.turn_on
-        data_template:
+        data:
           entity_id: "{{ light }}"
           brightness_pct: >
             {% set step_size = angle * 0.4 %}
-              {# Use the 0.4 above to change the sensitivity of the action. #}
-              {# Get brightness as a percent. #}
+            {# Get brightness as a percent. #}
             {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
             {% set new_brightness = cb | int(10) + step_size %}
             {% if new_brightness < 5 %}

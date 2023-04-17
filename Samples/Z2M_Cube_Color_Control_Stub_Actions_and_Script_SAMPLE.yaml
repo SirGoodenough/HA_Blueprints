@@ -53,17 +53,34 @@ rotate_ccw_face_4:
 #  https://my.home-assistant.io/redirect/scripts/
 
 script:
-
   cube_red_color_control:
     description: Control the red part of the color
-    variables:
-      light:
+    fields:
       angle:
+        name: Angle to represent new brightness
+        description:
+          This is the new angle to be used in the calculation for Red Color
+        required: true
+        example: "120.7"
+        selector:
+          number:
+            min: -360
+            max: 360
+            step: 0.1
+            mode: box
+      light:
+        name: Light entity to control
+        description: Add the light entity you want to control here
+        required: true
+        selector:
+          entity:
+            multiple: false
+            domain: light
     sequence:
       - service: light.turn_on
         data_template:
           entity_id: "{{ light }}"
-          rgb_color: >
+          rgb_color: >-
             {% set step_size = angle * 0.6 %}
                 {# Use the 0.6 above to change the sensitivity of the action. #}
                 {# create color variable #}
@@ -89,14 +106,32 @@ script:
 
   cube_green_color_control:
     description: Control the green part of the color
-    variables:
-      light:
+    fields:
       angle:
+        name: Angle to represent new brightness
+        description:
+          This is the new angle to be used in the calculation for green color
+        required: true
+        example: "120.7"
+        selector:
+          number:
+            min: -360
+            max: 360
+            step: 0.1
+            mode: box
+      light:
+        name: Light entity to control
+        description: Add the light entity you want to control here
+        required: true
+        selector:
+          entity:
+            multiple: false
+            domain: light
     sequence:
       - service: light.turn_on
-        data:
+        data_template:
           entity_id: "{{ light }}"
-          rgb_color: >
+          rgb_color: >-
             {% set step_size = angle * 0.6 %}
               {# Use the 0.6 above to change the sensitivity of the action. #}
               {# create color variable #}
@@ -122,14 +157,32 @@ script:
 
   cube_blue_color_control:
     description: Control the blue part of the color
-    variables:
-      light:
+    fields:
       angle:
+        name: Angle to represent new brightness
+        description:
+          This is the new angle to be used in the calculation for blue color
+        required: true
+        example: "120.7"
+        selector:
+          number:
+            min: -360
+            max: 360
+            step: 0.1
+            mode: box
+      light:
+        name: Light entity to control
+        description: Add the light entity you want to control here
+        required: true
+        selector:
+          entity:
+            multiple: false
+            domain: light
     sequence:
       - service: light.turn_on
         data_template:
           entity_id: "{{ light }}"
-          rgb_color: >
+          rgb_color: >-
             {% set step_size = angle * 0.6 %}
                 {# Use the 0.6 above to change the sensitivity of the action. #}
                 {# create color variable #}
