@@ -39,7 +39,7 @@ script:
         example: "120.7"
         selector:
           number:
-            min: -360
+            min: 0
             max: 360
             step: 0.1
             mode: box
@@ -67,7 +67,7 @@ script:
         example: "120.7"
         selector:
           number:
-            min: -360
+            min: 0
             max: 360
             step: 0.1
             mode: box
@@ -93,11 +93,11 @@ script:
         description:
           This is the new angle to be used in the calculation for switch function
         required: true
-        example: "120.7"
+        example: "-120.7"
         selector:
           number:
             min: -360
-            max: 360
+            max: 0
             step: 0.1
             mode: box
       entity:
@@ -121,11 +121,11 @@ script:
         description:
           This is the new angle to be used in the calculation for switch function
         required: true
-        example: "120.7"
+        example: "-120.7"
         selector:
           number:
             min: -360
-            max: 360
+            max: 0
             step: 0.1
             mode: box
       entity:
