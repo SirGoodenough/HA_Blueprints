@@ -32,32 +32,71 @@ jump_action:
 # Script being called
 script:
   personalert_notify:
+    alias: Person alert BP timed persistant_notification
     trace:
       stored_traces: 10
-    alias: Person alert BP timed persistant_notification
-    sequence:
-    - alias: Notify interested parties with notification_id
-      service: persistent_notification.create
-      data:
-        title: '{{ person + '' Status'' }}'
-        message: >
-          {{ 'Regarding: ' + person + '\n' + flip +
-          '\n\nNotification_id: ' + notify_id }}
-        notification_id: '{{ notify_id }}'
-    - alias: Add a delay so notification stays up a while
-        # Pick your display time. If you set 0 this notification doesn't show.
-      delay:
-        minutes: 2
-    - alias: Kill the notification
-      service: persistent_notification.dismiss
-      data:
-        notification_id: '{{ notify_id }}'
+    fields:
+      person:
+        name: People to watch
+        description:
+          People Entity names to watch,
+          Usually picked by the calling entity.
+        required: false
+        selector:
+          entity:
+            multiple: false
+            domain: person
+      place_to:
+        name: Where you just arrived
+        description:
+          Place you are arriving at. Is generally one of your zones.
+          Usually picked by the calling entity.
+        required: false
+        example: home
+        selector:
+          text:
+            multiline: false
+            type: text
+      place_from:
+        name: Where you are last from
+        description:
+          Place you left from. Is generally one of your zones.
+          Usually picked by the calling entity.
+        required: false
+        example: school
+        selector:
+          text:
+            multiline: false
+            type: text
+      notify_id:
+        name: ID used to clear the notification
+        description:
+          This is a random text string that is used to clear the notification as needed.
+          Usually picked by the calling entity.
+        required: false
+        example: 6681d33b-c9d7-4678-a6cd-bc4113571806
+        selector:
+          text:
+            multiline: false
+            type: text
+      phase:
+        name: Phase Action
+        description:
+          Type of action this resolves to.
+          Usually picked by the calling entity.
+        required: false
+        selector:
+          select:
+            options:
+              - enter
+              - leave
+              - jump
     variables:
         # Define variable data and provide defaults
       person: placeholder1
       place_to: placeholder2
       place_from: placeholder3
-      notify_id: 6681d33b-c9d7-4678-a6cd-bc4113571806
+      notify_id: 3479f317-f314-43bb-9e20-d6168b14f78c
       phase: enter
       flip: >
         {% if phase == 'leave' %}
@@ -67,10 +106,6 @@ script:
         {% else %}
           They have left: {{ place_from }} and are now located at: {{ place_to }}
         {% endif %}
-    mode: single
-    max_exceeded: silent
-    icon: mdi:message-alert-outline
-
 
 
 # Here is a way to push an audio message to your speakers
@@ -116,36 +151,54 @@ jump_action:
 # Script being called
 script:
   personalert_audio:
+    alias: Person alert BP TTS Message & Sound
     trace:
       stored_traces: 10
-    alias: Person alert BP TTS Message & Sound
-    sequence:
-    - alias: Send sound file to Media Player
-      service: media_player.play_media
-      data:
-        entity_id: "{{ entities }}"
-        media_content_id:
-          "media-source://media_source/local/mp3/OK_tone.wav"
-        media_content_type: audio/mp3
-    - alias: Delay to let sounder to complete. Adjust as needed.
-      delay: 00:00:03
-    - alias: TTS action call
-      service: tts.cloud_say
-      data:
-        entity_id: "{{ entities }}"
-        message: "{{ mess }}"
-        language: "{{ lang }}"
-        options:
-          gender: "{{ gend }}"
+    fields:
+      entities:
+        name: Media Player
+        description: Set the media player
+        required: false
+        selector:
+          entity:
+            multiple: true
+            domain: media_player
+      mess:
+        name: Message
+        description: This will set the message
+        required: false
+        example: "I'm lost"
+        selector:
+          text:
+            multiline: true
+            type: text
+      lang:
+        name: Language
+        description:
+          Language code. Has to be one that matches the integration used.
+          Usually picked by the calling entity.
+        required: false
+        example: en-US
+        selector:
+          text:
+            multiline: false
+            type: text
+      gend:
+        name: Gender
+        description:
+          The genter, male or female, of the voice.
+        required: false
+        selector:
+          select:
+            options:
+              - female
+              - male
     variables:
         # Define variable data and provide default (change 'entities' 4 your system)
       entities: media_player.intercom_group
       mess: "I'm lost"
       lang: en-US
       gend: female
-    mode: single
-    max_exceeded: silent
-    icon: mdi:message-alert-outline
 
 
 # Tying that all together, I thought I would share my complete BP call Automation here.
