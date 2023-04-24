@@ -105,7 +105,7 @@ sequence:
     data:
       entity_id: "{{ light }}"
       brightness_pct: >-
-        {% set step_size = angle * sensi_var %}
+        {% set step_size = angle * sens_d %}
         {# Get brightness as a percent. #}
         {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
         {% set new_brightness = cb | int(10) + step_size %}
