@@ -338,7 +338,7 @@ It has been found that some set-ups use ```trigger.payload_json.action_angle``` 
 I also extended this to controlling the color one octet (color) at a time. Each color will use both rotations on one side of the cube. Colors are changed one at a time (Red or Green or Blue) and change the amount (positive ot negative) based on how far you rotate the cube.
 
 [Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Z2M_Cube_Color_Control_Stub_Actions_and_Script_SAMPLE.yaml)
-If you want to create the clor change script file using a script BluePrint, I have that for you right here: [Coloe Change BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control_4_magic_cube.yaml)
+If you want to create the color change script file using a script BluePrint, I have that for you right here: [Color Change BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control_4_magic_cube.yaml)
 
 * The script reduces the angle number to 60% of the rotation angle (you can change this, but 60% works well for my needs).
 * It then grabs the current colors from the light entity and puts them into a list.
@@ -360,6 +360,7 @@ Not enough switch positions for you?  **How about a possible 24 more?**  I came 
 Here is a sample of what you put into the script Blueprint UI. It will need to be a manual YAML edit and contain your specific variables. What you see here is one from my config.
 
 [Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Z2M_Cube_Rotate_Long_and_Short_press_SAMPLE.yaml)
+If you want to create the long / short rotation switch script file using a script BluePrint, I have that for you right here: [Long Short Rotation Switch BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml)
 
 You can also do this buy going full gui and picking the matching template out of the below section and filling it in similar to this:
 
@@ -370,6 +371,7 @@ These are the standalone scripts that are 'called' from the Script calling yaml 
 This is a [homeassistant.toggle action](https://www.home-assistant.io/integrations/homeassistant#service-homeassistanttoggle), so it can toggle anything that that service can handle. Changing it to homeassistant.turn_on or homeassistant.turn_off would change the behavior slightly if this fits your needs better. Using this integration, you can control lights, switches, locks, and lots of different things.
 
 [Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/ZHA_Cube_Rotate_Long_and_Short_press_SAMPLE.yaml)
+If you want to create the long / short rotation switch script file using a script BluePrint, I have that for you right here: [Long Short Rotation Switch BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml)
 
 #### NOTICE when building action scripts...
 

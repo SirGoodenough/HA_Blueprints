@@ -228,6 +228,7 @@ If you are looking for a dimmer control to change brightness based on rotation, 
 I did this with all the complicated stuff in a script that is called with data from the blueprint automation. Then the complicated part is all in 1 place and there is only 1 copy of it. The same script works for both increase and decrease of brightness because the angle in the cube goes positive when turning clockwise and negative when going counter clockwise.
 
 [Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/ZHA_Cube_Dimmer_Control_Stub_Actions_and_Script_SAMPLE.yaml)
+If you want to create the script file using a script BluePrint, I have that for you right here: [Dimmer Control BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/dimmer_control_4_magic_cube.yaml)
 
 * The script reduces the angle number to 40% of the rotation angle (you can change this, but 40% works well for my needs).
 * It then grabs the current brightness from the light entity (as a % of the full scale 255 number).
@@ -242,6 +243,7 @@ I did this with all the complicated stuff in a script that is called with data f
 I also extended this to controlling the color one octet (color) at a time. Each color will use both rotations on one side of the cube. Colors are changed one at a time (Red or Green or Blue) and change the amount (positive or negative) based on how far you rotate the cube.
 
 [Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/ZHA_Cube_Color_Control_Stub_Actions_and_Script_SAMPLE.yaml)
+If you want to create the color change script file using a script BluePrint, I have that for you right here: [Color Change BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control_4_magic_cube.yaml)
 
 * The script reduces the angle number to 60% of the rotation angle (you can change this, but 60% works well for my needs).
 * It then grabs the current colors from the light entity and puts them into a list.
@@ -259,6 +261,7 @@ Not enough switch positions for you?  **How about a possible 24 more?**  I came 
 Here is a sample of what you put into the script Blueprint UI. It will need to be a manual YAML edit and contain your specific variables. What you see here is one from my config.
 
 [Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/ZHA_Cube_Rotate_Long_and_Short_press_SAMPLE.yaml)
+If you want to create the long / short rotation switch script file using a script BluePrint, I have that for you right here: [Long Short Rotation Switch BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml)
 
 You can also do this buy going full gui and picking the matching template out of the below section and filling it in similar to this:
 
@@ -269,6 +272,7 @@ These are the standalone scripts that are 'called' from the Script calling yaml 
 This is a [homeassistant.toggle action](https://www.home-assistant.io/integrations/homeassistant#service-homeassistanttoggle), so it can toggle anything that that service can handle. Changing it to homeassistant.turn_on or homeassistant.turn_off would change the behavior slightly if this fits your needs better. Using this integration, you can control lights, switches, locks, and lots of different things.
 
 [Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/ZHA_Cube_Rotate_Long_and_Short_press_SAMPLE.yaml)
+If you want to create the long / short rotation switch script file using a script BluePrint, I have that for you right here: [Long Short Rotation Switch BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml)
 
 ## Method to use Group 3 🍐 actions and not interfere with Group 1 🍎
 

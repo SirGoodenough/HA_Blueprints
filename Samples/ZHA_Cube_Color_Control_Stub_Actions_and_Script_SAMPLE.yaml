@@ -13,11 +13,13 @@ rotate_cw_face_1:
     data:
       angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
       light: light.grp_studio
+      t_color: red
 rotate_ccw_face_1:
   - service: script.cube_red_color_control
     data:
       angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
       light: light.grp_studio
+      t_color: red
 
 ## Side 5 green
 rotate_cw_face_5:
@@ -25,11 +27,13 @@ rotate_cw_face_5:
     data:
       angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
       light: light.grp_studio
+      t_color: green
 rotate_ccw_face_5:
   - service: script.cube_green_color_control
     data:
       angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
       light: light.grp_studio
+      t_color: green
 
 # Side 4 blue
 rotate_cw_face_4:
@@ -37,171 +41,154 @@ rotate_cw_face_4:
     data:
       angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
       light: light.grp_studio
+      t_color: blue
 rotate_ccw_face_4:
   - service: script.cube_blue_color_control
     data:
       angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
       light: light.grp_studio
+      t_color: blue
 
 
 # Then these are the scripts that are called to do the heavy lifting.
 #  They work for both CW and CCW cube rotations.
 # Adjust the number (0.6) below to make the movement more
 #  sensitive or less sensitive. (bigger = more sensitive)
+#
+# If you want to create the script file using a script BluePrint, 
+#  I have that for you right here: 
+#  Color Change BluePrint:
+#  https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control_4_magic_cube.yaml
+#
 
 # In the script integration:
 #  https://my.home-assistant.io/redirect/scripts/
 
-script:
-  cube_red_color_control:
-    description: Control the red part of the color
-    fields:
-      angle:
-        name: Angle to represent new brightness
-        description:
-          This is the new angle to be used in the calculation for Red Color
-        required: true
-        example: "120.7"
-        selector:
-          number:
-            min: -360
-            max: 360
-            step: 0.1
-            mode: box
-      light:
-        name: Light entity to control
-        description: Add the light entity you want to control here
-        required: true
-        selector:
-          entity:
-            multiple: false
-            domain: light
-    sequence:
-      - service: light.turn_on
-        data_template:
-          entity_id: "{{ light }}"
-          rgb_color: >-
-            {% set step_size = angle * 0.6 %}
-                {# Use the 0.6 above to change the sensitivity of the action. #}
-                {# create color variable #}
-            {% set color = state_attr(light, 'rgb_color') %}
-                {# create R (red) variable #}
-              {% set R = color[0] %}
-                {# create G (green) variable #}
-              {% set G = color[1] %}
-                {# create B (blue) variable #}
-              {% set B = color[2] %}
-                {# Increment red number based on cube movement #}
-            {% set new_red = R + step_size | int(0) %}
-            {% if new_red < 0 %}
-              {# Make sure it doesn't go negative #}
-              {{ 0, B, G }}
-            {% elif new_red > 255 %}
-              {# Make sure it doesn't go over 255 #}
-              {{ 255, B, G }}
-            {% else %}
-              {# Send the value calculated #}
-              {{ new_red, B, G }}
-            {% endif %}
-
-  cube_green_color_control:
-    description: Control the green part of the color
-    fields:
-      angle:
-        name: Angle to represent new brightness
-        description:
-          This is the new angle to be used in the calculation for green color
-        required: true
-        example: "120.7"
-        selector:
-          number:
-            min: -360
-            max: 360
-            step: 0.1
-            mode: box
-      light:
-        name: Light entity to control
-        description: Add the light entity you want to control here
-        required: true
-        selector:
-          entity:
-            multiple: false
-            domain: light
-    sequence:
-      - service: light.turn_on
-        data_template:
-          entity_id: "{{ light }}"
-          rgb_color: >-
-            {% set step_size = angle * 0.6 %}
-              {# Use the 0.6 above to change the sensitivity of the action. #}
-              {# create color variable #}
-            {% set color = state_attr(light, 'rgb_color') %}
-              {# create R (red) variable #}
-            {% set R = color[0] %}
-              {# create G (green) variable #}
-            {% set G = color[1] %}
-              {# create B (blue) variable #}
-            {% set B = color[2] %}
-              {# Increment green number based on cube movement #}
-            {% set new_green = G + step_size | int(0) %}
-            {% if new_green < 0 %}
-              {# Make sure it doesn't go negative #}
-              {{ R, 0, B }}
-            {% elif new_green > 255 %}
-              {# Make sure it doesn't go over 255 #}
-              {{ R, 255, B }}
-            {% else %}
-              {# Send the value calculated #}
-              {{ R, new_green, B }}
-            {% endif %}
-
-  cube_blue_color_control:
-    description: Control the blue part of the color
-    fields:
-      angle:
-        name: Angle to represent new brightness
-        description:
-          This is the new angle to be used in the calculation for blue color
-        required: true
-        example: "120.7"
-        selector:
-          number:
-            min: -360
-            max: 360
-            step: 0.1
-            mode: box
-      light:
-        name: Light entity to control
-        description: Add the light entity you want to control here
-        required: true
-        selector:
-          entity:
-            multiple: false
-            domain: light
-    sequence:
-      - service: light.turn_on
-        data_template:
-          entity_id: "{{ light }}"
-          rgb_color: >-
-            {% set step_size = angle * 0.6 %}
-                {# Use the 0.6 above to change the sensitivity of the action. #}
-                {# create color variable #}
-            {% set color = state_attr(light, 'rgb_color') %}
-                {# create R (red) variable #}
-              {% set R = color[0] %}
-                {# create G (green) variable #}
-              {% set G = color[1] %}
-                {# create B (blue) variable #}
-              {% set B = color[2] %}
-                {# Increment blue number based on cube movement #}
-            {% set new_blue = B + step_size | int(0) %}
-            {% if new_blue < 0 %}
-              {# Make sure it doesn't go negative #}
-              {{ R, G, 0 }}
-            {% elif new_blue > 255 %}
-              {# Make sure it doesn't go over 255 #}
-              {{ R, G, 255 }}
-            {% else %}
-              {# Send the value calculated #}
-              {{ R, G, new_blue }}
-            {% endif %}
+cube_color_control:
+  description: "Control red, green, or blue on a light using the cube"
+  fields:
+    angle:
+      name: Angle to represent new brightness
+      description:
+        This is the new angle to be used in the calculation for blue color
+      required: true
+      example: "120.7"
+      selector:
+        number:
+          min: -360
+          max: 360
+          step: 0.1
+          mode: box
+    light:
+      name: Light entity to control
+      description: Add the light entity you want to control here
+      required: true
+      selector:
+        entity:
+          multiple: false
+          domain: light
+    t_color:
+      name: Target Color
+      description:
+        Pixk the  Red, Green, or Blue as the color you want to tweak.
+      required: false
+      selector:
+        select:
+          options:
+            - red
+            - green
+            - blue
+    sensi:
+      name: Sensitivity of the cube rotational motion.
+      description: >-
+        This sets how 'fast' the changes happen compared to how far you move
+        the cube.
+        Higher percentage is faster, lower is slower.
+        I have found that 60% is a good number, but you can adjust as desired.
+      required: false
+      example: 60
+      # unit_of_measurement: "%"
+      selector:
+        number:
+          min: 1
+          max: 200
+          step: 1
+          mode: box
+  variables:
+    sensi: 60
+      # Convert raw percentage to decimal for calculations. Default to 0.6.
+    sens_d: "{{ sensi / 100 | default( 0.6 ) }}"
+      # Set step size based on sensitivity input
+    step_size: "{{ angle * sens_d }}"
+      # Create color variable from our light info
+    color: "{{ state_attr(light, 'rgb_color') }}"
+      # Create color variable s
+    R: "{{ color[0] }}"
+    G: "{{ color[1] }}"
+    B: "{{ color[2] }}"
+      # Set new step sizes
+    new_red: "{{ R + step_size | int(0) }}"
+    new_green: "{{ G + step_size | int(0) }}"
+    new_blue: "{{ B + step_size | int(0) }}"
+  sequence:
+    - choose:
+      - conditions:
+        - alias: Red Light processing
+          condition: template
+          value_template: "{{ t_color == 'red' }}"
+        sequence:
+          - service: light.turn_on
+            data:
+              rgb_color: >-
+                {% if new_red < 0 %}
+                  {# Make sure it doesn't go negative #}
+                  {{ 0, B, G }}
+                {% elif new_red > 255 %}
+                  {# Make sure it doesn't go over 255 #}
+                  {{ 255, B, G }}
+                {% else %}
+                  {# Send the value calculated #}
+                  {{ new_red, B, G }}
+                {% endif %}
+            target:
+              entity_id: "{{ light }}"
+      - conditions:
+        - alias: Green Light processing
+          condition: template
+          value_template: "{{ t_color == 'green' }}"
+        sequence:
+          - service: light.turn_on
+            data:
+              rgb_color: >-
+                {% if new_green < 0 %}
+                  {# Make sure it doesn't go negative #}
+                  {{ R, 0, B }}
+                {% elif new_green > 255 %}
+                  {# Make sure it doesn't go over 255 #}
+                  {{ R, 255, B }}
+                {% else %}
+                  {# Send the value calculated #}
+                  {{ R, new_green, B }}
+                {% endif %}
+            target:
+              entity_id: "{{ light }}"
+      - conditions:
+        - alias: Blue Light processing
+          condition: template
+          value_template: "{{ t_color == 'blue' }}"
+        sequence:
+          - service: light.turn_on
+            data:
+              rgb_color: >-
+                {% if new_blue < 0 %}
+                  {# Make sure it doesn't go negative #}
+                  {{ R, G, 0 }}
+                {% elif new_blue > 255 %}
+                  {# Make sure it doesn't go over 255 #}
+                  {{ R, G, 255 }}
+                {% else %}
+                  {# Send the value calculated #}
+                  {{ R, G, new_blue }}
+                {% endif %}
+            target:
+              entity_id: "{{ light }}"

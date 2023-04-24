@@ -5,18 +5,19 @@
 #   https://my.home-assistant.io/redirect/automations/
 
 rotate_cw_face_3:
-  - service: cube_long_cw_toggle
+  - service: script.cube_long_short_toggle
     data:
       angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
-      entity: light.livingroomlight
-  - service: cube_short_cw_toggle
-    data:
-      angle: '{{ trigger.payload_json.action_angle | float(0.0)}}'
-      entity: light.livingroomlight
+      short_entity: light.kitchen_down_lights
+      long_entity: light.kitchensink
 
 # These are the standalone scripts that are 'called' from the Script 
 #  calling yaml shown above. 
-# If you don't need all of these only install the ones you will use.
+#
+# If you want to create the long / short rotation switch script file using a script BluePrint, 
+#  I have that for you right here: 
+#  Long Short Rotation Switch BluePrint:
+#  https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml
 #
 # NOTE: More information on setting this up can be found in this thread:
 #   https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111/27
@@ -27,117 +28,53 @@ rotate_cw_face_3:
 # Changing it to homeassistant.turn_on or homeassistant.turn_off would change the behavior 
 #  slightly if this fits your needs better.
 
-script:
-  cube_short_cw_toggle:
-    description: CW Short Press Toggle
-    fields:
-      angle:
-        name: Angle to represent new switch function
-        description:
-          This is the new angle to be used in the calculation for switch function
-        required: true
-        example: "20.7"
-        selector:
-          number:
-            min: 0
-            max: 360
-            step: 0.1
-            mode: box
-      entity:
-        name: Entity to control
-        description: Add the entity you want to control here
-        required: true
-        selector:
-          entity:
-            multiple: false
-    sequence:
-      - condition: template
-        value_template: '{{ angle > 0 <= 100 }}'
-      - service: homeassistant.toggle
-        target:
-          entity_id: '{{ entity }}'
-  cube_long_cw_toggle:
-    description: CW Long Press Toggle
-    fields:
-      angle:
-        name: Angle to represent new switch function
-        description:
-          This is the new angle to be used in the calculation for switch function
-        required: true
-        example: "120.7"
-        selector:
-          number:
-            min: 0
-            max: 360
-            step: 0.1
-            mode: box
-      entity:
-        name: Entity to control
-        description: Add the entity you want to control here
-        required: true
-        selector:
-          entity:
-            multiple: false
-    sequence:
-      - condition: template
-        value_template: '{{ angle > 100 }}'
-      - service: homeassistant.toggle
-        target:
-          entity_id: '{{ entity }}'
-
-  cube_short_ccw_toggle:
-    description: CCW Short Press Toggle
-    fields:
-      angle:
-        name: Angle to represent new switch function
-        description:
-          This is the new angle to be used in the calculation for switch function
-        required: true
-        example: "-20.7"
-        selector:
-          number:
-            min: -360
-            max: 0
-            step: 0.1
-            mode: box
-      entity:
-        name: Entity to control
-        description: Add the entity you want to control here
-        required: true
-        selector:
-          entity:
-            multiple: false
-    sequence:
-      - condition: template
-        value_template: '{{ angle < 0 >= -100 }}'
-      - service: homeassistant.toggle
-        target:
-          entity_id: '{{ entity }}'
-  cube_long_ccw_toggle:
-    description: CCW Long Press Toggle
-    fields:
-      angle:
-        name: Angle to represent new switch function
-        description:
-          This is the new angle to be used in the calculation for switch function
-        required: true
-        example: "-120.7"
-        selector:
-          number:
-            min: -360
-            max: 0
-            step: 0.1
-            mode: box
-      entity:
-        name: Entity to control
-        description: Add the entity you want to control here
-        required: true
-        selector:
-          entity:
-            multiple: false
-    sequence:
-      - condition: template
-        value_template: '{{ angle < -100 }}'
-      - service: homeassistant.toggle
-        target:
-          entity_id: '{{ entity }}'
+cube_long_short_toggle:
+  description: CW Short Press Toggle
+  fields:
+    angle:
+      name: Angle to represent switch function
+      description: >-
+        This is the angle to be used in the calculation for switch function
+      required: true
+      example: "20.7"
+      selector:
+        number:
+          min: -360
+          max: 360
+          step: 0.1
+          mode: box
+    short_entity:
+      name: Entity to control with short rotation
+      description: >-
+        Add the entity you want to control here with a short rotation of cube.
+        One of the long or the short entities are required but not both.
+        If neither are provided it will error.
+      required: false
+      selector:
+        entity:
+          multiple: true
+    long_entity:
+      name: Entity to control with long rotation
+      description: >-
+        Add the entity you want to control here with a long rotation of the cube.
+        One of the long or the short entities are required but not both.
+        If neither are provided it will error.
+      required: false
+      selector:
+        entity:
+          multiple: true
+  sequence:
+    - choose:
+      - conditions:
+        - alias: "Pseudo short press with abs(angle) <= 100"
+          condition: template
+          value_template: "{{ abs(angle) <= 100 }}"
+        sequence:
+          - service: homeassistant.toggle
+            target:
+              entity_id: '{{ short_entity }}'
+      default:
+        - alias: "Pseudo long press with abs(angle) > 100"
+          service: homeassistant.toggle
+          target:
+            entity_id: '{{ long_entity }}'
