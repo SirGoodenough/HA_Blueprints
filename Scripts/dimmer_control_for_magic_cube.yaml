@@ -1,0 +1,127 @@
+blueprint:
+  name: dimmer_control_for_magic_cube_and_other_things - 2023-04-23
+  author: SirGoodenough
+  domain: script
+  homeassistant:
+    min_version: 2023.3.0
+  # source_url: 
+  description: '
+    This script was invented to be used with my Magic Cube Blueprints. I released
+    it as a standalone Script Blueprint because I saw others struggling with how
+    so convert cube rotation to light dimming in other places.
+
+
+    To use this b;ueprint, install it from the source in the normal way.
+    After that add your unique name for the Scrpt, and add an icon and change
+    the entity_id if desired.
+    You should only need to run the blueprint once, as you will be calling the
+    unique name/entity you added above to use the code.
+    This script has no inputs in the Blueprint screen because all the data is
+    added to control the action live at each use.
+
+
+    This requires you call this script wth 2 data values. One is a positive or
+    negative number between 360 and -360 that in the original, represents the
+    input angle from the cube movement. The other data point is the entity of
+    the light or light group that you are trying to control.
+    
+    ***NOTE:*** the trigger variable below will be different for Z2M and ZHA
+    and others. Look at my documentation for that cube integration help if
+    you need it.
+
+    Sample call / use of this script:
+      ```yaml
+      - service: script.cube_dimmer_control
+        data:
+          angle: "{{ trigger.event.data.args.relative_degrees | float(0.0)}}"
+          light: light.bulb1
+      ```
+  '
+  input:
+    sensi:
+      name: Sensitivity of the cube rotational motion.
+      description: '
+        This sets how ''fast'' the changes happen compared to how far you move
+        the cube.
+        Higher percentage is faster, lower is slower.
+
+        I have found that 40% is a good number, but you can adjust as desired.
+        '
+      default: 40
+      selector:
+        number:
+          min: 1
+          max: 200
+          step: 1
+          mode: box
+    min_b:
+      name: Minimum Brighness
+      description: '
+        This sets the lowest brightness it will set before it turns off.
+        Some bulbs react poorly below a certain percent, you can adjust that here.
+
+        I have found that 10% is a good number, but you can adjust as desired.
+        '
+      default: 10
+      selector:
+        number:
+          min: 5
+          max: 90
+          step: 1
+          mode: slider
+
+fields:
+  angle:
+    name: Angle to represent new brightness
+    description: '
+      This is the new angle to be used in the calculation for Brightness'
+    required: true
+    example: "-120.7"
+    selector:
+      number:
+        min: -360
+        max: 360
+        step: 0.1
+        mode: box
+  light:
+    name: Light entity to control
+    description: Add the light entity you want to control here
+    required: true
+    selector:
+      entity:
+        multiple: false
+        domain: light
+
+variables:
+    # Get the sensitivity input
+  sensi_var: !input sensi
+    # Convert raw percentage to decimal for calculations. Default to 0.4.
+  sens_d: "{{ sensi_var / 100 | default( 0.4 ) }}"
+    # Get the minimum brightness input
+  min_b_var: !input min_b
+
+sequence:
+  - service: light.turn_on
+    data:
+      entity_id: "{{ light }}"
+      brightness_pct: >-
+        {% set step_size = angle * sensi_var %}
+        {# Get brightness as a percent. #}
+        {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
+        {% set new_brightness = cb | int(10) + step_size %}
+        {% if new_brightness < 5 %}
+          {# If it gets really low set to 0. Adjust if needed for your lights. #}
+          0
+        {% elif new_brightness <= min_b_var %}
+          {# If it's not quite 0, set to a minimum working brightness. #}
+          {{ min_b_var }}
+        {% elif 91 <= new_brightness < (90 + step_size) %}
+          {# If it's almost full brightness, set to 100%. #}
+          100
+        {% else %}
+          {# Send actual calculated value. #}
+          {{ new_brightness }}
+        {% endif %}
+icon: mdi:lightbulb-on-50
+mode: queued
+max: 10
