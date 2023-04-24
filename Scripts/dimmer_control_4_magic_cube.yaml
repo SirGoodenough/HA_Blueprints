@@ -5,7 +5,7 @@ blueprint:
   homeassistant:
     min_version: 2023.3.0
   # source_url: 
-  description: '
+  description: >
     This script was invented to be used with my Magic Cube Blueprints. I released
     it as a standalone Script Blueprint because I saw others struggling with how
     so convert cube rotation to light dimming in other places.
@@ -33,10 +33,10 @@ blueprint:
       ```yaml
       - service: script.cube_dimmer_control
         data:
-          angle: "{{ trigger.event.data.args.relative_degrees | float(0.0)}}"
+          angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
           light: light.bulb1
       ```
-  '
+
   input:
     sensi:
       name: Sensitivity of the cube rotational motion.
