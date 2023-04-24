@@ -319,6 +319,7 @@ If you are looking for a dimmer control to change brightness based on rotation, 
 I did this with all the complicated stuff in a script that is called with data from the blueprint automation. Then the complicated part is all in 1 place and there is only 1 copy of it. The same script works for both increase and decrease of brightness because the angle in the cube goes positive when turning clockwise and negative when going counter clockwise.
 
 [Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Z2M_Cube_Dimmer_Control_Stub_Actions_and_Script_SAMPLE.yaml)
+If you want to create the script file using a script BluePrint, I have that for you right here: [Dimmer Control BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/dimmer_control_4_magic_cube.yaml)
 
 * The script reduces the angle number to 40% of the rotation angle (you can change this, but 40% works well for my needs).
 * It then grabs the current brightness from the light entity (as a % of the full scale 255 number).
@@ -337,6 +338,7 @@ It has been found that some set-ups use ```trigger.payload_json.action_angle``` 
 I also extended this to controlling the color one octet (color) at a time. Each color will use both rotations on one side of the cube. Colors are changed one at a time (Red or Green or Blue) and change the amount (positive ot negative) based on how far you rotate the cube.
 
 [Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/Z2M_Cube_Color_Control_Stub_Actions_and_Script_SAMPLE.yaml)
+If you want to create the clor change script file using a script BluePrint, I have that for you right here: [Coloe Change BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control_4_magic_cube.yaml)
 
 * The script reduces the angle number to 60% of the rotation angle (you can change this, but 60% works well for my needs).
 * It then grabs the current colors from the light entity and puts them into a list.
