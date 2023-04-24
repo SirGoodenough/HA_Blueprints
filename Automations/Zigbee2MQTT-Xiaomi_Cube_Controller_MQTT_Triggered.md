@@ -322,14 +322,7 @@ You can also do this buy going full gui and picking the matching template out of
 
 ![Full GUI Example](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/full_GUI_Example.png?raw=true "Full GUI Example")
 
-These are the standalone scripts that are 'called' from the Script calling yaml shown above. If you don't need all of these only install the ones you will use.
-
 This is a [homeassistant.toggle action](https://www.home-assistant.io/integrations/homeassistant#service-homeassistanttoggle), so it can toggle anything that that service can handle. Changing it to homeassistant.turn_on or homeassistant.turn_off would change the behavior slightly if this fits your needs better. Using this integration, you can control lights, switches, locks, and lots of different things.
-
-[Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/ZHA_Cube_Rotate_Long_and_Short_press_SAMPLE.yaml)
-If you want to create the long / short rotation switch script file using a script BluePrint, I have that for you right here: [Long Short Rotation Switch BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml)
-
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Flong_short_toggle_4_magic_cube.yaml)
 
 #### NOTICE when building action scripts...
 
@@ -369,8 +362,6 @@ trace:
 ## 📩 **Version Updates**
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
-
-📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 

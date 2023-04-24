@@ -375,11 +375,6 @@ These are the standalone scripts that are 'called' from the Script calling yaml 
 
 This is a [homeassistant.toggle action](https://www.home-assistant.io/integrations/homeassistant#service-homeassistanttoggle), so it can toggle anything that that service can handle. Changing it to homeassistant.turn_on or homeassistant.turn_off would change the behavior slightly if this fits your needs better. Using this integration, you can control lights, switches, locks, and lots of different things.
 
-[Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/ZHA_Cube_Rotate_Long_and_Short_press_SAMPLE.yaml)
-If you want to create the long / short rotation switch script file using a script BluePrint, I have that for you right here: [Long Short Rotation Switch BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml)
-
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Flong_short_toggle_4_magic_cube.yaml)
-
 #### NOTICE when building action scripts...
 
 It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here. Look in the Device listing for this cube and determine which version of angle is one of the listed sensors. That would be the one to use here.
@@ -407,7 +402,7 @@ Here is the GUI editor showing this.
 ## 🌞 ❄️ Troubleshooting tip
 
 If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
-Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5. Then if the automation is triggering often, you can see the last 10 traces to help you decide what the issue is.
+Manually edit the automation created with the ui editor (or manually with a text editor) and add the following to have this automation contain 10 traces instead of the normal 5.
 [HA Docs on this here.](https://www.home-assistant.io/docs/automation/troubleshooting/#traces)
 
 ```yaml
@@ -418,8 +413,6 @@ trace:
 ## 📩 **Version Updates**
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
-
-📩 There is not an official version control system for Blueprints. However I have found something that comes pretty close. It is not perfect, but for **MOST** Blueprints, it does just fine. I encourage you to check this script out and use it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
