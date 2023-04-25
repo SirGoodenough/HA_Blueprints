@@ -12,7 +12,7 @@ blueprint:
 
 
     To use this blueprint, install it from the source in the normal way.
-    After that add your unique name for the Scrpt, and add an icon and change
+    After that add your unique name for the Script, and add an icon and change
     the entity_id if desired.
     You should only need to run the blueprint once, as you will be calling the
     unique name/entity you added above to use the code.
