@@ -59,6 +59,7 @@ fields:
       Add the entity you want to control here with a short rotation of cube.
       One of the long or the short entities are required but not both.
     required: false
+    example: light.kitchen_down_lights
     selector:
       entity:
         multiple: true
@@ -68,6 +69,7 @@ fields:
       Add the entity you want to control here with a long rotation of the cube.
       One of the long or the short entities are required but not both.
     required: false
+    example: switch.dust_collector
     selector:
       entity:
         multiple: true

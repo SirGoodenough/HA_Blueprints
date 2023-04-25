@@ -87,6 +87,7 @@ fields:
     name: Light entity to control
     description: Add the light entity you want to control here
     required: true
+    example: light.grp_studio
     selector:
       entity:
         multiple: false
