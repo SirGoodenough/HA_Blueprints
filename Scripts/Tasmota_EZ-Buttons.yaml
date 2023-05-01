@@ -1,5 +1,5 @@
 blueprint:
-  name: Tasmota EZ-Button for Update and Restart All 2023-03-01
+  name: Tasmota EZ-Button for Update and Restart All 2023-05-01
   author: SirGoodenough
   description: "## 🧿 This will create 3 buttons to help you. 🧿  
 
@@ -173,6 +173,20 @@ variables:
     {% else %}
       tasmotas/cmnd/upgrade
     {% endif %}
+  dv_name: 'Tasmota EZ Buttons'
+  dv_id: '9NS7GaU5U9533erK'
+  ha_topic: 'homeassistant/button/{{ dv_id }}_'
+    # Device Parameters for MQTT Discovery
+  avty_t: 'homeassistant/status'
+  ids: '{{ dv_id }}'
+  dname: '{{ dv_name }}'
+  mf: 'SirGoodenough'
+  mdl: 'Home Assistant EZ Buttons for Tasmota'
+  sa: 'home'
+  sw: '2023-05-01'
+  hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml'
+  cu: 'https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934'
+
 mode: single
 max_exceeded: silent
 sequence:
@@ -190,22 +204,22 @@ sequence:
       - alias: Make the button 4 canary update
         service: mqtt.publish
         data:
-          "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_canary_var }}/config"
+          "topic": "{{ ha_topic }}{{ ez_canary_var }}/config"
           "retain": true
           "payload": >
             { "name": "{{ ez_canary_var }}",
-              "avty_t": "homeassistant/status",
-              "uniq_id": "9NS7GaU5U9533erK_{{ ez_canary_var }}",
+              "avty_t": "{{ avty_t }}",
+              "uniq_id": "{{ dv_id }}_{{ ez_canary_var }}",
               "dev_cla":"update",
               "dev": {
-                  "ids": "9NS7GaU5U9533erK",
-                  "name": "Tasmota EZ Buttons",
-                  "mf": "SirGoodenough",
-                  "mdl": "Home Assistant EZ Buttons for Tasmota",
-                  "sa": "home",
-                  "sw": "2023-03-01"
-                  "hw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
-                  "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
+                "ids": "{{ ids }}",
+                "name": "{{ dname }}",
+                "mf": "{{ mf }}",
+                "mdl": "{{ mdl }}",
+                "sa": "{{ sa }}",
+                "sw": "{{ sw }}",
+                "hw": "{{ hw }}",
+                "cu": "{{ cu }}"
               },
               "cmd_t": "{{ canary_topic }}",
               "payload_press": "1"
@@ -213,22 +227,22 @@ sequence:
 - alias: Make the button 4 restart
   service: mqtt.publish
   data:
-    "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_restart_var }}/config"
+    "topic": "{{ ha_topic }}{{ ez_restart_var }}/config"
     "retain": true
     "payload": >
       { "name": "{{ ez_restart_var }}",
-        "avty_t": "homeassistant/status",
-        "uniq_id": "9NS7GaU5U9533erK_{{ ez_restart_var }}",
+        "avty_t": "{{ avty_t }}",
+        "uniq_id": "{{ dv_id }}_{{ ez_restart_var }}",
         "dev_cla":"restart",
         "dev": {
-            "ids": "9NS7GaU5U9533erK",
-            "name": "Tasmota EZ Buttons",
-            "mf": "SirGoodenough",
-            "mdl": "Home Assistant EZ Buttons for Tasmota",
-            "sa": "home",
-            "sw": "2023-03-01"
-            "hw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
-            "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
+          "ids": "{{ ids }}",
+          "name": "{{ dname }}",
+          "mf": "{{ mf }}",
+          "mdl": "{{ mdl }}",
+          "sa": "{{ sa }}",
+          "sw": "{{ sw }}",
+          "hw": "{{ hw }}",
+          "cu": "{{ cu }}"
         },
         "cmd_t": "{{ restart_topic }}",
         "payload_press": "1"
@@ -236,22 +250,22 @@ sequence:
 - alias: Make the button 4 all update
   service: mqtt.publish
   data:
-    "topic": "homeassistant/button/9NS7GaU5U9533erK_{{ ez_update_var }}/config"
+    "topic": "{{ ha_topic }}{{ ez_update_var }}/config"
     "retain": true
     "payload": >
       { "name": "{{ ez_update_var }}",
-        "avty_t": "homeassistant/status",
-        "uniq_id": "9NS7GaU5U9533erK_{{ ez_update_var }}",
-        "dev_cla": "update",
+        "avty_t": "{{ avty_t }}",
+        "uniq_id": "{{ dv_id }}_{{ ez_update_var }}",
+        "dev_cla":"update",
         "dev": {
-            "ids": "9NS7GaU5U9533erK",
-            "name": "Tasmota EZ Buttons",
-            "mf": "SirGoodenough",
-            "mdl": "Home Assistant EZ Buttons for Tasmota",
-            "sa": "home",
-            "sw": "2023-03-01"
-            "hw": "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml",
-            "cu": "https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934"
+          "ids": "{{ ids }}",
+          "name": "{{ dname }}",
+          "mf": "{{ mf }}",
+          "mdl": "{{ mdl }}",
+          "sa": "{{ sa }}",
+          "sw": "{{ sw }}",
+          "hw": "{{ hw }}",
+          "cu": "{{ cu }}"
         },
         "cmd_t": "{{ upgrade_topic }}",
         "payload_press": "1"

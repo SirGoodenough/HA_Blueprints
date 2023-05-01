@@ -2,6 +2,7 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 
 ## 📑 Changelog
 
+* **2023-05-01**: Bug Fix missing commas
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
