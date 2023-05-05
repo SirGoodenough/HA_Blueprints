@@ -106,6 +106,26 @@ script:
         {% else %}
           They have left: {{ place_from }} and are now located at: {{ place_to }}
         {% endif %}
+    sequence:
+    - alias: Notify interested parties with notification_id
+      service: persistent_notification.create
+      data:
+        title: '{{ person + '' Status'' }}'
+        message: >
+          {{ 'Regarding: ' + person + '\n' + flip +
+          '\n\nNotification_id: ' + notify_id }}
+        notification_id: '{{ notify_id }}'
+    - alias: Add a delay so notification stays up a while
+        # Pick your display time. If you set 0 this notification doesn't show.
+      delay:
+        minutes: 2
+    - alias: Kill the notification
+      service: persistent_notification.dismiss
+      data:
+        notification_id: '{{ notify_id }}'
+    mode: single
+    max_exceeded: silent
+    icon: mdi:message-alert-outline
 
 
 # Here is a way to push an audio message to your speakers
@@ -199,6 +219,27 @@ script:
       mess: "I'm lost"
       lang: en-US
       gend: female
+    sequence:
+    - alias: Send sound file to Media Player
+      service: media_player.play_media
+      data:
+        entity_id: "{{ entities }}"
+        media_content_id:
+          "media-source://media_source/local/mp3/OK_tone.wav"
+        media_content_type: audio/mp3
+    - alias: Delay to let sounder to complete. Adjust as needed.
+      delay: 00:00:03
+    - alias: TTS action call
+      service: tts.cloud_say
+      data:
+        entity_id: "{{ entities }}"
+        message: "{{ mess }}"
+        language: "{{ lang }}"
+        options:
+          gender: "{{ gend }}"
+    mode: single
+    max_exceeded: silent
+    icon: mdi:message-alert-outline
 
 
 # Tying that all together, I thought I would share my complete BP call Automation here.
