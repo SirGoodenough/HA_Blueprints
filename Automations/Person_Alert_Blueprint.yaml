@@ -1,7 +1,7 @@
 blueprint:
   name: Person Alert Honitor - 2023-03-01.1
   author: SirGoodenough
-  description: 'This is Blueprint that This BluePrint will monitor a person or
+  description: 'This BluePrint will monitor a person or
     persons, and when they ''enter'' or ''leave'' the zone or zones you pick,
     it will trigger an action for both enter and leave phases.
     Yes, it will watch multiple people and multiple zones at the same time!
@@ -193,11 +193,11 @@ variables:
   friend_zone: >
     {% set ns = namespace(zone=[]) %}
     {% for z in zone2monitor_var %}
-    {% set ns.zone = ns.zone + [states[z].attributes.friendly_name] %}
+    {% set ns.zone = ns.zone + [states[z].attributes.friendly_name | lower] %}
     {% endfor %} 
     {{ ns.zone }}
-  to_state: '{{ trigger.to_state.state }}'
-  from_state: '{{ trigger.from_state.state }}'
+  to_state: '{{ trigger.to_state.state | lower }}'
+  from_state: '{{ trigger.from_state.state | lower }}'
 
 action:
 - alias: Determine if there was an actionable event
