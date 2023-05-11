@@ -2,6 +2,9 @@ This is Blueprint will monitor a person or persons, and when they 'enter' or 'le
 
 ## 📑 Changelog
 
+* **2023-05-11**: Fix for some devices that think home is spelled Home. (IOS I think...)
+* * Issue link: https://github.com/SirGoodenough/HA_Blueprints/issues/10
+* * Fix Typo's in header and title.  May affect your calling Automation (M not H)
 * **2023-03-01.1**: Minor adjustments to sample script files for smoother operation
 * **2023-03-01**: 🎉 First release!
 <base target="_blank">
