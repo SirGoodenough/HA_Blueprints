@@ -70,7 +70,7 @@ You will also need the correct MQTT topic to talk to your device.
 >>
 >> A space is the natural enemy of every programmer. When things are not going the way they should, spaces make it much harder to read and debug topics. Just because something is allowed, doesn’t mean it should be used. UTF-8 has many different white space types, such uncommon characters should be avoided.
 >>
->> ### Use only ASCII characters, avoid non printable characters
+>> ### Use only ASCII characters, avoid punctuation and non printable characters
 >>
 >> Because non-ASCII UTF-8 characters often display incorrectly, it is very difficult to find typos or issues related to the character set. Unless it is absolutely necessary, we recommend avoiding the use of non-ASCII characters in a topic.
 
