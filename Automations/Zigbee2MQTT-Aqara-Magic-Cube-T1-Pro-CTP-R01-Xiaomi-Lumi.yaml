@@ -45,6 +45,11 @@ blueprint:
     #### NOTICE: This cube *can* be triggered 124 ways, but only 38(+54) of them are
     unique (with templating).
 
+    ##### This blueprint has been known to freak out when there are spaces or odd characters
+    in the MQTT Topic. Make sure there are no spaces, ONLY a single word,
+    and ONLY A thru Z, a thru z, and 0 thru 9 in the topic.
+    (```  /  ``` is ok between device and topic) If there are,
+    you will need to change the name of the cube to remove those characters.
 
     ### IF YOU SEE --> TemplateError: Must provide a device or entity ID
 
@@ -1152,7 +1157,7 @@ action:
     mdl: 'Number Helper for Z2M Cube Integration'
     mf: 'SirGoodenough'
     sa: 'house'
-    sw: '2023-03-01'
+    sw: '2022-03-01-A'
     hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
     cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
 

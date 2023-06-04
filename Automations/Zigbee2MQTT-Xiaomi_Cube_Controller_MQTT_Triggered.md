@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2022-03-01-A**: Beef-up the note not to use spaces and non alpha in MQTT topics.
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-28**: Code cleanup.
 * * Add note to fix configuration conflict template error:
@@ -61,8 +62,8 @@ Requirements
 
 You will also need the correct MQTT topic to talk to your device.
 
-This blueprint has been known to freak out when there are spaces in the MQTT Topic. Make sure there are no spaces and there are all ASCII characters in the topic, (```  /  ``` is ok)  
-If there are, you will need to change the name of the cube to remove those characters.
+##### This blueprint has been known to freak out when there are spaces or odd characters in the MQTT Topic. Make sure there are no spaces, ONLY a single word, and ONLY A thru Z, a thru z, and 0 thru 9 in the topic. (```  /  ``` is ok between device and topic) If there are, you will need to change the name of the cube to remove those characters.
+
 >> Wise advice from: [HiveMQ](https://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices/):
 >>
 >> ### Never use spaces in a topic
