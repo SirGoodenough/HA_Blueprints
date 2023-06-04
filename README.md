@@ -222,8 +222,8 @@ This BluePrint will monitor a person or persons, and when they 'enter' or 'leave
 
 https://community.home-assistant.io/t/person-alert-blueprint/542209
 
-* [HumidifierWaterThrottleControl.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.md)
-* [HumidifierWaterThrottleControl.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.yaml)
+* [Person_alert_Blueprint.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.md)
+* [Person_alert_Blueprint.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_alert_Blueprint.yaml)
 
 #### 🧯 Octoprint_Additional_Buttons_Helper
 
@@ -233,5 +233,5 @@ This is Blueprint is provided as a helper for people using the Octoprint Plugin 
 
 https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826
 
-* [HumidifierWaterThrottleControl.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.md)
-* [HumidifierWaterThrottleControl.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml)
+* [Octoprint_Additional_Buttons_Helper.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.md)
+* [Octoprint_Additional_Buttons_Helper.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml)
