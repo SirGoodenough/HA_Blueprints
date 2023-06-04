@@ -27,7 +27,7 @@ blueprint:
     o control. Only 1 of the short_entity or long_entity is required 4 this
     Blueprint to work.
     
-    ***NOTE:*** the trigger variable belos will be different for Z2M and ZHA
+    ***NOTE:*** the trigger variable below will be different for Z2M and ZHA
     and others. Look at my documentation for that cube integration help if
     you need it.
 
