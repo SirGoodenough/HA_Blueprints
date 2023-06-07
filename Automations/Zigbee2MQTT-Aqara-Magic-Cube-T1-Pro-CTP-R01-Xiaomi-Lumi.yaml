@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-03-01
+  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2022-03-01-A
   author: SirGoodenough
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
     unique commands (118+ total) available from the Xiaomi Magic Cube Remote. (Some unique commands

@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2023-03-01
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-03-01-A
   author: SirGoodenough
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
