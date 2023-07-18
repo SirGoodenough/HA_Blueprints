@@ -1,5 +1,5 @@
 blueprint:
-  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2023-03-01
+  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2023-07-17
   author: SirGoodenough
   description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 18
     commands from the ZemiSmart ZM-RM02 Remote. 
@@ -34,13 +34,14 @@ blueprint:
     remote:
       name: Remote
       description: 'The entity to put here is the sensor that Z2M imported that is
-        named like this> 
-        
+        named like this>
+
         ```sensor.XXYour_HameXX_action```'
       selector:
         entity:
           integration: mqtt
-          domain: sensor
+          domain:
+          - sensor
           multiple: false
     tap_1:
       name: Single click on Button 1 action
@@ -134,20 +135,32 @@ blueprint:
         action: {}
 mode: queued
 max: 2
+
 trigger:
 - platform: state
-  entity_id: !input 'remote'
+  entity_id: !input remote
+
+variables:
+  event: >
+    {# This covers an anomaly found while testing. #}
+    {% if trigger.to_state.state | default('') %}
+      {{ trigger.to_state.state }}
+    {% else %}
+      {{ trigger.to_state.attributes.action }}
+    {% endif %}
+  entity_id: !input remote
+  friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
+
 condition:
   condition: template
-  value_template: '{{ trigger.to_state.attributes.action in ( ''button_1_single'',''button_2_single'',''button_3_single'',''button_4_single'',''button_5_single'',''button_6_single'',
-    ''button_1_double'',''button_2_double'',''button_3_double'',''button_4_double'',''button_5_double'',''button_6_double'',
-    ''button_1_hold'',''button_2_hold'',''button_3_hold'',''button_4_hold'',''button_5_hold'',''button_6_hold'')
-    }}'
+  value_template: >-
+    {{ event in (
+    'button_1_single','button_2_single','button_3_single','button_4_single','button_5_single','button_6_single',
+    'button_1_double','button_2_double','button_3_double','button_4_double','button_5_double','button_6_double',
+    'button_1_hold','button_2_hold','button_3_hold','button_4_hold','button_5_hold','button_6_hold')
+    }}
+
 action:
-- variables:
-    event: '{{ trigger.to_state.attributes.action }}'
-    entity_id: !input 'remote'
-    friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
 - alias: Fire Last Action event
   event: rm02_last_action
   event_data:
@@ -157,38 +170,38 @@ action:
 - alias: Button Events
   choose:
   - conditions: '{{ event == "button_1_single" }}'
-    sequence: !input 'tap_1'
+    sequence: !input tap_1
   - conditions: '{{ event == "button_1_double" }}'
-    sequence: !input 'doubletap_1'
+    sequence: !input doubletap_1
   - conditions: '{{ event == "button_1_hold" }}'
-    sequence: !input 'hold_1'
+    sequence: !input hold_1
   - conditions: '{{ event == "button_2_single" }}'
-    sequence: !input 'tap_2'
+    sequence: !input tap_2
   - conditions: '{{ event == "button_2_double" }}'
-    sequence: !input 'doubletap_2'
+    sequence: !input doubletap_2
   - conditions: '{{ event == "button_2_hold" }}'
-    sequence: !input 'hold_2'
+    sequence: !input hold_2
   - conditions: '{{ event == "button_3_single" }}'
-    sequence: !input 'tap_3'
+    sequence: !input tap_3
   - conditions: '{{ event == "button_3_double" }}'
-    sequence: !input 'doubletap_3'
+    sequence: !input doubletap_3
   - conditions: '{{ event == "button_3_hold" }}'
-    sequence: !input 'hold_3'
+    sequence: !input hold_3
   - conditions: '{{ event == "button_4_single" }}'
-    sequence: !input 'tap_4'
+    sequence: !input tap_4
   - conditions: '{{ event == "button_4_double" }}'
-    sequence: !input 'doubletap_4'
+    sequence: !input doubletap_4
   - conditions: '{{ event == "button_4_hold" }}'
-    sequence: !input 'hold_4'
+    sequence: !input hold_4
   - conditions: '{{ event == "button_5_single" }}'
-    sequence: !input 'tap_5'
+    sequence: !input tap_5
   - conditions: '{{ event == "button_5_double" }}'
-    sequence: !input 'doubletap_5'
+    sequence: !input doubletap_5
   - conditions: '{{ event == "button_5_hold" }}'
-    sequence: !input 'hold_5'
+    sequence: !input hold_5
   - conditions: '{{ event == "button_6_single" }}'
-    sequence: !input 'tap_6'
+    sequence: !input tap_6
   - conditions: '{{ event == "button_6_double" }}'
-    sequence: !input 'doubletap_6'
+    sequence: !input doubletap_6
   - conditions: '{{ event == "button_6_hold" }}'
-    sequence: !input 'hold_6'
+    sequence: !input hold_6

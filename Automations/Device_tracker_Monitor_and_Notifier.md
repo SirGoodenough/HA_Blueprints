@@ -17,6 +17,10 @@ This Blueprint monitors device_tracker entities that you choose & notifies you i
 
 Type of blueprint: AUTOMATION
 
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.md#contacts).
+
 Why do I need this?
 
 > In it's simplest form, this blueprint will monitor an entity and put up a persistent notification that the entity is no longer home.
@@ -150,7 +154,7 @@ use_blueprint:
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

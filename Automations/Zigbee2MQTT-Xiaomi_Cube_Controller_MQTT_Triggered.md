@@ -46,6 +46,10 @@ Aqara / Lumi has released a new version of the cube. Box name listed as Cube T1 
 
 Type of blueprint: AUTOMATION
 
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.md#contacts).
+
 Why do I need this?
 
 > The Cube remote/switch device has a lot of ways to trigger it. This Blueprint makes it a bit easier to figure out what you are doing and remembering that in the future. It also makes sure the trigger is as clean and repeatable as possible, screening out false triggers and making the log clean and the experience good overall.
@@ -380,7 +384,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQ
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

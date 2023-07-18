@@ -20,6 +20,10 @@ ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q
 
 Type of blueprint: AUTOMATION
 
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.md#contacts).
+
 Why do I need this?
 
 > This all started out with my <a href="https://whatarewefixing.today/125/tasmota-based-drop-pin-door-lock/" target="_blank">Less Than $30 Drop Pin Lock</a> Project that I installed a couple of years ago in my house. These locks had the unfortunate problem of not having a way to unlock them from the outside without Google Home or the Home Assistant App on your phone. I always wanted to create a keypad that would function in this manner, and until the addition of the Trigger_ID feature in Home Assistant 2021.7, the Automation while possible, would involve extensive use of complicated templating that I was not in the mood to build. Trigger_ID’s made it simple!
@@ -145,7 +149,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

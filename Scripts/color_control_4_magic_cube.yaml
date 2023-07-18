@@ -63,6 +63,7 @@ fields:
     description: This is the new angle to be used in the calculation for blue color
     required: true
     example: "120.7"
+    default: 120.7
     selector:
       number:
         min: -360
@@ -74,6 +75,7 @@ fields:
     description: Add the light entity you want to control here
     required: true
     example: light.grp_studio
+    default: light.grp_studio
     selector:
       entity:
         multiple: false
@@ -83,6 +85,7 @@ fields:
     description: Pick the  Red, Green, or Blue as the color you want to tweak.
     required: false
     example: red
+    default: red
     selector:
       select:
         options:

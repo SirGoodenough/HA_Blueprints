@@ -2,6 +2,7 @@ This is a SCRIPT Blueprint. This provides a way to play canned media files with 
 
 ## 📑 Changelog
 
+* **2023-07-17**: Add ability to feed message and media_player & file type change to script on the fly.
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
@@ -13,6 +14,10 @@ This is a SCRIPT Blueprint. This provides a way to play canned media files with 
 ## 🔮 About this blueprint
 
 Type of blueprint: SCRIPT
+
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.md#contacts).
 
 Why do I need this?
 
@@ -28,6 +33,20 @@ Requirements
 * 1 or more functioning media_players
 * Media file(s) that are accessible to Home Assistant such that they can be played / displayed thru media_player.
 * The speakers you want to broadcast to must be working and integrated with the integration that makes them work. This BP does not set-up speakers for you, it only sends files to the speakers. See [Links](#%EF%B8%8F-extended-information) below to help guide you thru speaker set-up.
+
+## <a name="fields">🗂 Field variables to feed variables from calling automation</a>
+
+    otf_speaker_target: On-The-Fly Device(s) to send the file to
+        Change the default media player on the fly
+        required: false
+
+    otf_file_2_play: On-The-Fly Media File to play
+        This will change the default sound file on-the-fly
+        required: false
+      
+    otf_media_type: On-The-Fly Media_Content_type
+        This will change the default Media_Content_type on-the-fly
+        required: false
 
 ## 🗂 Input fields
 
@@ -84,6 +103,25 @@ This is a case I use this in my setup. Instead of pasting all the media set-up c
 
 See YAML code in this [Sample YAML file / package file](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/play_media_file_script_SAMPLE.yaml)
 
+## <a name="calling">👩‍🍳 Sending TTS messages based on the Calling Automation</a>
+
+As of Version 2023-07-17, thanks to the script Blueprint from [Grumblezz](https://github.com/Grumblezz/Home-Assistant-Notify-Mobile-Companion-App-Devices/blob/main/notify_devices.yaml) I have found a way to feed data into a Script Blueprint. This uses the Key 'fields:'.
+Aside from that, what you need to know is you can use this to generate a 'live' TTS response by feeding data into it from an automation that calls this script with data.
+
+To do this, your first step is setting up the Blueprint input fields so that it all works properly with your system. Next you add the input parameters that that you need in order to have the test message coming out of the speaker of your choice. Then save and close the Blueprint Editor. Then you will be able to 'call' this script with a data statement that includes the [field variables in this section](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.md#fields). If you need help formatting the YAML for this you can get some help in the [HA Docs here](https://www.home-assistant.io/integrations/script/#passing-variables-to-scripts). You can also contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.md#contacts).
+
+If you create an automation that calls the script that you created with this BluePrint, you will be able to manually add text or change the speaker. Advanced users will be able to create variables in the automation that can be passed directly to the script to send the TTS message exactly as required.
+
+```yaml
+  - service: script.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatts_say_testing
+    data:
+      otf_speaker_target: media_player.jen_group
+      otf_file_2_play: "media-source://media_source/local/mp3/Door-chime-sound.mp3"
+      otf_media_type: "audio/mp3"
+```
+
+![Script UI Editor Sample](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/PlayMediaOTF.png?raw=true "Script UI Editor Sample")
+
 ## 🌞 ❄️ Troubleshooting tip
 
 If you are troubleshooting and you want to see more traces back when doing so, here is a TIP I've found.
@@ -117,7 +155,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_fi
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

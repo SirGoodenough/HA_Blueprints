@@ -13,6 +13,10 @@ This is Blueprint will monitor a person or persons, and when they 'enter' or 'le
 
 Type of blueprint: AUTOMATION
 
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md#contacts).
+
 Why do I need this?
 
 > I use this BluePrint to follow family members around during their day so that the family members at home know where their loved ones are. I used this to eliminate over 2 dozen separate Automations and Scripts in my Home set-up. The multiple person/multiple zone watch ability is the key.
@@ -149,7 +153,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Al
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

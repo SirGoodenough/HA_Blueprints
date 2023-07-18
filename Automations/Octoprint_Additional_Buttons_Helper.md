@@ -12,6 +12,10 @@ This is Blueprint is provided as a helper for people using the Octoprint Plugin 
 
 Type of blueprint: AUTOMATION
 
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.md#contacts).
+
 Why do I need this?
 
 > This is Blueprint is provided as a helper for people using the Octoprint Plugin called [OctoPrint-HomeAssistant](https://github.com/cmroche/OctoPrint-HomeAssistant). Within that Plugin there are several suggested Home Assistant Lovelace/Dashboard based functions, and this will build them all for you.
@@ -203,7 +207,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

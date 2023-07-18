@@ -47,6 +47,7 @@ fields:
       This is the angle to be used in the calculation for switch function
     required: true
     example: "20.7"
+    default: 20.7
     selector:
       number:
         min: -360
@@ -60,6 +61,7 @@ fields:
       One of the long or the short entities are required but not both.
     required: false
     example: light.kitchen_down_lights
+    default: light.kitchen_down_lights
     selector:
       entity:
         multiple: true
@@ -70,6 +72,7 @@ fields:
       One of the long or the short entities are required but not both.
     required: false
     example: switch.dust_collector
+    default: switch.dust_collector
     selector:
       entity:
         multiple: true

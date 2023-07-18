@@ -51,11 +51,53 @@ blueprint:
       default: "audio/mp3"
       selector:
         text:
+
+fields:
+  otf_speaker_target:
+    name: on-the-fly Device(s) to send the file to
+    description: Change the default media player on the fly
+    required: false
+    selector:
+      entity:
+        multiple: true
+        domain: media_player
+  otf_file_2_play:
+    name: on-the-fly Media File to play
+    description: This will change the default sound file on-the-fly
+    required: false
+    example: "media-source://media_source/local/mp3/Door-chime-sound.mp3"
+    default: "media-source://media_source/local/mp3/Door-chime-sound.mp3"
+    selector:
+      text:
+        multiline: false
+        type: text
+  otf_media_type:
+    name: on-the-fly Media_Content_type
+    description: This will change the default Media_Content_type on-the-fly
+    required: false
+    example: "audio/mp3"
+    default: "audio/mp3"
+    selector:
+      text:
+        multiline: false
+        type: text
+
+variables:
+    # Get the speaker to select from !input or live data
+  speaker_target: !input speaker_target
+  my_speaker: '{% if otf_speaker_target %} {{ otf_speaker_target }} {% else %} {{ speaker_target }} {% endif %}'
+    # Get the media file to select from !input or live data
+  file_2_play: !input file_2_play
+  my_file_2_play: '{% if otf_file_2_play %} {{ otf_file_2_play }} {% else %} {{ file_2_play }} {% endif %}'
+    # Get the media type to select from !input or live data
+  media_type: !input media_type
+  my_media_type: '{% if otf_media_type %} {{ otf_media_type }} {% else %} {{ media_type }} {% endif %}'
+
 mode: queued
 sequence:
 - alias: Media Player Blueprint Script
   service: media_player.play_media
   data:
-    entity_id: !input 'speaker_target'
-    media_content_id: !input 'file_2_play'
-    media_content_type: !input 'media_type'
+    entity_id: "{{my_speaker}}"
+    media_content_id: "{{my_file_2_play}}"
+    media_content_type: "{{my_media_type}}"

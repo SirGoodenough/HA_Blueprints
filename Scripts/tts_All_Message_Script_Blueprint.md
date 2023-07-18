@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2023-07-17**: Updated language lists, external links, formatting, & field default.
 * **2023-04-15**: Add ability to feed message and media_player change to script on the fly.
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
@@ -16,6 +17,10 @@
 ## 🔮 About this blueprint
 
 Type of blueprint: SCRIPT
+
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.md#contacts).
 
 Why do I need this?
 
@@ -247,7 +252,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Messa
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## ## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

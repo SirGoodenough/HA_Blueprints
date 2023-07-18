@@ -19,6 +19,10 @@ This blueprint is set up to watch a binary sensor. When it goes from off to on (
 
 Type of blueprint: AUTOMATION
 
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.md#contacts).
+
 Why do I need this?
 
 > This is a TTS.cloud-say version of another Door Announcer I found in the HA Blueprint Exchange. For people that have Nabu-Casa, TTS.cloud-say is far superior to TTS.google_say as it adds languages and gender to the voices available. If you are a Nabu-Casa subscriber, I highly recommend using this.
@@ -116,7 +120,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

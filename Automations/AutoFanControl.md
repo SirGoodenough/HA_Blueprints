@@ -26,6 +26,10 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 
 Type of blueprint: AUTOMATION
 
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md#contacts).
+
 Why do I need this?
 
 > This functionality started as a way to help my Bedroom AC unit keep an even temperature throughout the bedroom over night. My partner wanted the fan on, but not faster than it had to be. I wanted it to change speeds following the temperature of the room. So that's what I did.
@@ -171,7 +175,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanCo
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

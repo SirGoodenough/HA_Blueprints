@@ -13,6 +13,10 @@ This blueprint monitors a humidity sensor & by determining the error from the go
 
 Type of blueprint: AUTOMATION
 
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.md#contacts).
+
 Why do I need this?
 
 > If you have an automatic humidifier on your central air heating system, you are likely wasting a lot of water. These systems often work by keeping some kind of wick wet and blowing some of the furnace air thru the wick, causing the water to evaporate and 'humidify' the house. The problem is that it likely turns the water on until the humidity is where it needs to be, then turns the water off. To be effective the wick needs to be wet. However if the water is applied 1/2 or 1/4 of the time, the wick will still be wet and effective, but you will use half or a quarter of the water that would have otherwise flowed passed the wick and down the drain.
@@ -155,7 +159,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Humidifie
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

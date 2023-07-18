@@ -16,6 +16,10 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 
 Type of blueprint: SCRIPT
 
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.md#contacts).
+
 Why do I need this?
 
 > This is a Script Blueprint that takes on the huge mess of scripts created by the Standard Broadlink Integration and script sequences them into functions. IE: 'Turn on my Chromecast' or 'Start music on my receiver'
@@ -115,7 +119,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 
