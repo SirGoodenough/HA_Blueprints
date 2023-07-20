@@ -1144,13 +1144,9 @@ action:
     num_ha_val: '{{ states(num_ha_name) | int(0) }}'
 
       # Get the last_side for use in logic below.
-    last_side: '
+    last_side: >-
       {# The first time it will not be there, so make sure its 0 instead of undefined. #}
-      {% if not num_ha_val in (''none'', ''null'', ''unavailable'', '''') %}
-        {{ num_ha_val }}
-      {% else %}
-        0
-      {% endif %}'
+      {{ num_ha_val | default(0) }}
 
       # Set-up for Device parameters once
     name: '{{ friendly_name + ''_Number_Helper''}}'

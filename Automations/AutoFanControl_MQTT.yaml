@@ -1,7 +1,8 @@
 blueprint:
   name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_MQTT-2023-03-01
   author: SirGoodenough
-  description: 'This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)
+  description: >
+    This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)
     based on a room temperature.
 
 
@@ -23,7 +24,7 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419)'
+    [Community link for this blueprint](https://community.home-assistant.io/t/auto-fan-temperature-control-for-3-speed-fan-ifanxx-tasmota/326419)
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_MQTT.yaml
   domain: automation
   homeassistant:
@@ -31,47 +32,51 @@ blueprint:
   input:
     fan_control:
       name: Toggle to turn the fan function off for when away or seasonally
-      description: '(#1) ```input_boolean``` - If this is set to off, the Automation
+      description: >
+        (#1) ```input_boolean``` - If this is set to off, the Automation
         will be disabled.
 
         This Helper has to be set up in [![Open your Home Assistant instance and show
-        your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/) '
+        your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
       selector:
         entity:
           domain: input_boolean
           multiple: false
     room_temp_now:
       name: Room Temperature Sensor
-      description: '(#2) This is a temperature sensor or averaged temperature sensor
+      description: >
+        (#2) This is a temperature sensor or averaged temperature sensor
         preferrably within the path of the moving air from the fan.
 
         Otherwise the action will be laggy where changes in temperature will have
-        a lower effect on fan speed.'
+        a lower effect on fan speed.
       selector:
         entity:
           domain: sensor
           multiple: false
     room_set_temp:
       name: Room Target Temperature
-      description: '(#3) ```input_number``` - This is the target temperature of the
+      description: >
+        (#3) ```input_number``` - This is the target temperature of the
         room.
 
         This can be Metric or imperial, but the same scale as the temperature sensor.
 
         This Helper has to be set up in [![Open your Home Assistant instance and show
-        your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/) '
+        your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
       selector:
         entity:
           domain: input_number
           multiple: false
     temp_gap:
       name: Temp Hysteresis
-      description: '(#4) This keeps the fan from speed cycling too often. (Let''s
+      description: >
+        (#4) This keeps the fan from speed cycling too often. (Let's
         call it Hysterisis)
 
         Set it bigger if the fan goes on and off too much.
 
-        Set it smaller if the fan doesn''t change speeds fast enough.
+        Set it smaller if the fan doesn't change speeds fast enough.
 
         0 is a good number if this area is not used in conjunction with a heating
         or cooling unit where you want to set them both to 21C (for instance).
@@ -80,7 +85,7 @@ blueprint:
         at the same time, so I needed an offset.
 
         My AirCon (or a heat source) is triggered using the 2 action sensors provived.
-        See examples in the [Documentation Here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md) '
+        See examples in the [Documentation Here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
       default: 1.3
       selector:
         number:
@@ -91,12 +96,13 @@ blueprint:
           step: 0.1
     temp_gap_1_to_2:
       name: Temp Gap between Low and Medium
-      description: '(#5) This is the temp swing between Low and Medium.
+      description: >
+        (#5) This is the temp swing between Low and Medium.
 
         If the sensor reads between the base temperature and this number of degrees
         warmer, the fan is on LOW.
 
-        Below the base temperature the fan is off.'
+        Below the base temperature the fan is off.
       default: 4.5
       selector:
         number:
@@ -107,12 +113,13 @@ blueprint:
           step: 0.1
     temp_gap_2_to_3:
       name: Temp Gap between Medium and High
-      description: '(#6) This is the temp change between Medium and High.
+      description: >
+        (#6) This is the temp change between Medium and High.
 
         If the sensor reads between the base temperature plus the 1 to 2 temperature
         and this number of degrees warmer, the fan is on MEDIUM.
 
-        Any warmer than this and the fan is set to HIGH.'
+        Any warmer than this and the fan is set to HIGH.
       default: 2.0
       selector:
         number:
@@ -123,16 +130,16 @@ blueprint:
           step: 0.1
     fan_on_time:
       name: Time of day fan should start
-      description: (#7) Set this for the time of day you want the fan function to
-        be enabled.
+      description: >
+        (#7) Set this for the time of day you want the fan function to be enabled.
       default:
         00:00:00
       selector:
         time: {}
     fan_off_time:
       name: Time of day fan should stop
-      description: (#8) Set this for the time of day you want the fan function to
-        end.
+      description: >
+        (#8) Set this for the time of day you want the fan function to end.
       default:
         00:00:00
       selector:
@@ -169,77 +176,105 @@ blueprint:
           multiple: true
     mqtt_fan_topic:
       name: Fan Topic
-      description: '(#10) This is the MQTT Topic needed to change the fan speed.
+      description: >
+        (#10) This is the MQTT Topic needed to change the fan speed.
 
         Tasmota flashed IFANxx devices have a topic such as:
 
         ```cmnd/Bedroom_Fan/FanSpeed```
 
         You need to look at **YOUR device** and determine the exact correct topic
-        to send to the broker to make yours work.'
+        to send to the broker to make yours work.
       selector:
         text:
           multiline: false
     loop_action:
       name: User action for fan enabled condition (loop)
-      description: '(#11) This is intended to start / set temp on an AC unit or whatever
+      description: >
+        (#11) This is intended to start / set temp on an AC unit or whatever
         you want to do. It is executed on every successful trigger that does not send
         the operation to off.
 
         See the [Example](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
         that is added as YAML mode here.
 
-        Leave it empty to do nothing extra.'
+        Leave it empty to do nothing extra.
       default: []
       selector:
         action: {}
     off_action:
       name: User action for fan off condition (off_action)
-      description: '(#12) This is intended to disable an AirCon unit or whatever you
+      description: >
+        (#12) This is intended to disable an AirCon unit or whatever you
         want to do. It is executed on every successful operation off trigger.
 
         See the [Example](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
         that is added as YAML mode here.
 
-        Leave it empty to do nothing extra.'
+        Leave it empty to do nothing extra.
       default: []
       selector:
         action: {}
+    temp_off_offset:
+      name: Temp Off Offset
+      description: >
+        (#13) This is a request by users.
+
+        This number can be positive or negative and is be an offset applied against
+        the Room Target Temperature for turning the fan off. It essentually allows
+        the fan shut-off temp to be different from the fan turn-on temp.
+
+        The potential to have a fan that never turns on or never turns off is large.
+        Because of this I suggest this value stay at 0 which is the default.
+      default: 0
+      selector:
+        number:
+          min: -10.0
+          max: 10.0
+          unit_of_measurement: Degrees
+          mode: slider
+          step: 0.1
+
 variables:
-  temp_gap_var: !input 'temp_gap'
+  temp_gap_var: !input temp_gap
   temp_gap_val: '{{ temp_gap_var | float(1.3) }}'
-  temp_gap_1_to_2_var: !input 'temp_gap_1_to_2'
+  temp_gap_1_to_2_var: !input temp_gap_1_to_2
   temp_gap_1_to_2_val: '{{ temp_gap_1_to_2_var | float(4.5) }}'
-  temp_gap_2_to_3_var: !input 'temp_gap_2_to_3'
+  temp_gap_2_to_3_var: !input temp_gap_2_to_3
   temp_gap_2_to_3_val: '{{ temp_gap_2_to_3_var | float(2.0) }}'
-  room_set_temp_var: !input 'room_set_temp'
+  room_set_temp_var: !input room_set_temp
   room_set_temp_val: '{{ expand(room_set_temp_var)[0].state | float(73.1) - temp_gap_val }}'
-  room_temp_now_var: !input 'room_temp_now'
+  room_temp_now_var: !input room_temp_now
   room_temp_now_val: '{{ expand(room_temp_now_var)[0].state | float(room_set_temp_val) }}'
-  my_loop_action: !input 'loop_action'
-  my_off_action: !input 'off_action'
+  my_loop_action: !input loop_action
+  my_off_action: !input off_action
+  temp_off_offset_var: !input temp_off_offset
+  temp_off_offset_val: '{{ temp_off_offset_var | float(0) }}'
+
 mode: restart
+
 trigger:
 - platform: time
   id: go_if_the_stop_time_occurs
-  at: !input 'fan_off_time'
+  at: !input fan_off_time
 - platform: state
   id: go_if_the_control_is_switched_off
-  entity_id: !input 'fan_control'
+  entity_id: !input fan_control
   to: 'off'
 - platform: state
   id: go_on_any_sensor_temp_changes
-  entity_id: !input 'room_temp_now'
+  entity_id: !input room_temp_now
 - platform: state
   id: go_on_any_set_temp_changes
-  entity_id: !input 'room_set_temp'
+  entity_id: !input room_set_temp
 - platform: time
   id: go_if_the_start_time_occurs
-  at: !input 'fan_on_time'
+  at: !input fan_on_time
 - platform: state
   id: go_if_the_control_is_switched_on
-  entity_id: !input 'fan_control'
+  entity_id: !input fan_control
   to: 'on'
+
 action:
 - choose:
   - alias: Fan normal turn off sequence
@@ -253,12 +288,12 @@ action:
         id: go_if_the_control_is_switched_off
     sequence:
     - alias: Do something when the fan stop condition triggers
-      if: '{{ not my_off_action in (''none'', ''null'', ''unavailable'', '''') }}'
-      then: !input 'off_action'
+      if: '{{ my_off_action | default("") }}'
+      then: !input off_action
     - alias: Stop the fan
       service: mqtt.publish
       data:
-        topic: !input 'mqtt_fan_topic'
+        topic: !input mqtt_fan_topic
         payload: 0
         qos: 2
         retain: false
@@ -267,25 +302,25 @@ action:
       and:
       - alias: Make sure the Fan is enabled
         condition: state
-        entity_id: !input 'fan_control'
+        entity_id: !input fan_control
         state: 'on'
       - alias: Only allow execution within selected Hours / Weekdays
         condition: time
-        after: !input 'fan_on_time'
-        before: !input 'fan_off_time'
-        weekday: !input 'weekday'
+        after: !input fan_on_time
+        before: !input fan_off_time
+        weekday: !input weekday
     sequence:
     - alias: Do something on every fan set speed condition trigger
-      if: '{{ not my_loop_action in (''none'', ''null'', ''unavailable'', '''') }}'
-      then: !input 'loop_action'
+      if: '{{ my_loop_action | default("") }}'
+      then: !input loop_action
     - alias: Set the fan speed based on the sensor temperature
       service: mqtt.publish
       data:
-        topic: !input 'mqtt_fan_topic'
+        topic: !input mqtt_fan_topic
         qos: 2
         retain: false
         payload: >-
-          {% if room_temp_now_val < room_set_temp_val %}
+          {% if room_temp_now_val < (room_set_temp_val + temp_off_offset_val) %}
           {# Room is cooler than set temp so turn fan OFF. #}
             0
 
