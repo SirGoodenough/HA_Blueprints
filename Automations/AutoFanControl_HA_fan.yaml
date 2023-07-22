@@ -285,8 +285,8 @@ action:
         id: go_if_the_control_is_switched_off
     sequence:
     - alias: Do something when the fan stop condition triggers
-      if: '{{ my_off_action | default("") }}'
-      then: !input off_action
+      if: '{{ not my_off_action in (''none'', ''null'', ''unavailable'', '''') }}'
+      then: !input 'off_action'
     - alias: Stop the fan
       service: fan.turn_off
       target:
@@ -304,9 +304,9 @@ action:
         before: !input fan_off_time
         weekday: !input weekday
     sequence:
-    - alias: Do something on every fan set speed condition trigger
-      if: '{{ my_loop_action | default("") }}'
-      then: !input loop_action
+    - alias: Do something when the fan stop condition triggers
+      if: '{{ not my_loop_action in (''none'', ''null'', ''unavailable'', '''') }}'
+      then: !input 'loop_action'
     - alias: Set the fan speed based on the sensor temperature
       service: fan.set_percentage
       target:
