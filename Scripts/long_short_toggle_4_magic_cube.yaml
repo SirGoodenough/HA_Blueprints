@@ -31,14 +31,23 @@ blueprint:
     and others. Look at my documentation for that cube integration help if
     you need it.
 
-    Sample call / use of this script:
-      ```yaml
-      - service: script.cube_long_short_toggle
-        data:
-          angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
-          short_entity: light.kitchen_down_lights
-          long_entity: light.kitchensink
-      ```
+      Sample call / use of this script with ZHA:
+        ```yaml
+        - service: script.cube_long_short_toggle
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
+            short_entity: light.kitchen_down_lights
+            long_entity: light.kitchensink
+        ```
+
+      Sample call / use of this script with Z2M:
+        ```yaml
+        - service: script.cube_long_short_toggle
+          data:
+            angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
+            short_entity: light.kitchen_down_lights
+            long_entity: light.kitchensink
+        ```
 
 fields:
   angle:

@@ -16,8 +16,15 @@ blueprint:
     the entity_id if desired.
     You should only need to run the blueprint once, as you will be calling the
     unique name/entity you added above to use the code.
-    This script has no inputs in the Blueprint screen because all the data is
-    added to control the action live at each use.
+    This script has 2 inputs in the Blueprint screen to set the sensitivity
+    of the rotation action and the minimum bbrightness level for your lights.
+    If the rotation is too sensitive the lights will change from dim to bright
+    in too short of a rotation so make it less sensitive.
+    If the lights flicker at low brightness, raise the minimum brightness
+    level to stop it.
+    The data is sent to the generated script to control the action live at
+    each use. You only need to ececute this blueprint generator script if you
+    wish to change in input values or create another dimmer script.
 
 
     This requires you call this script wth 2 data values. One is a positive or
@@ -29,13 +36,21 @@ blueprint:
     and others. Look at my documentation for that cube integration help if
     you need it.
 
-    Sample call / use of this script:
-      ```yaml
-      - service: script.cube_dimmer_control
-        data:
-          angle: '{{ trigger.event.data.args.relative_degrees | float(0.0)}}'
-          light: light.bulb1
-      ```
+      Sample call / use of this script for ZHA:
+        ```yaml
+        - service: script.cube_dimmer_control_bp
+          data:
+            angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
+            light: light.grp_studio
+        ```
+
+      Sample call / use of this script for Z2M:
+        ```yaml
+        - service: script.cube_dimmer_control_bp
+          data:
+            angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
+            light: light.grp_kitch
+        ```
 
   input:
     sensi:
