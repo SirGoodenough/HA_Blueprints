@@ -101,7 +101,7 @@ sequence:
     data_template:
       volume_level: >-
         {% set v = state_attr(mp, 'volume_level') %}
-        {{ v + 0.0000625 * delta | round(2)}}
+        {{ v + 0.0000625 * delta }}
     target:
         entity_id: "{{ mp }}"
 

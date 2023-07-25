@@ -1,0 +1,73 @@
+# This is an action statement that you can use in your Blueprint Automation 
+#  to call a script (below) to change volume on a media player when rotating the cube.
+#
+# In the blueprint automation:
+#   https://my.home-assistant.io/redirect/automations/
+
+
+  scene_rotate_cw_face_3:
+    - service: script.aaaaaaaaabbbbbtestvolume
+      data:
+        angle: "{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}"
+        mp: media_player.kitchen_speaker
+  scene_rotate_ccw_face_3:
+    - service: script.aaaaaaaaabbbbbtestvolume
+      data:
+        angle: "{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}"
+        mp: media_player.kitchen_speaker
+
+# Then this is the script that's called to do the heavy lifting.
+#  It works for both CW and CCW cube rotations.
+# Adjust the scalar below to make the movement more
+#  sensitive or less sensitive. (bigger = more sensitive)
+#
+# If you want to create the script file using a script BluePrint, 
+#  I have that for you right here: 
+#  Dimmer Control BluePrint:
+#  https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml
+#
+
+# In the script integration:
+#  https://my.home-assistant.io/redirect/scripts/
+
+cube_dimmer_control:
+  description: Template Volume Control
+  fields:
+    mp:
+      name: Media Player entity to control
+      description: >
+        Add the media_player entity you want to control here
+      required: true
+      example: media_player.kitchen_speaker
+      selector:
+        entity:
+          multiple: false
+          domain: media_player
+    angle:
+      name: Angle to represent new volume
+      description: >
+        This is the new angle to be used in the calculation for Volume
+      required: true
+      example: "-120.4"
+      default: -.0.4
+      selector:
+        number:
+          min: -360
+          max: 360
+          step: 0.1
+          mode: box
+
+  variables:
+      # Set the sensitivity. Change as needed to adjusst rotation sensitivity.
+    scalar_var: 30
+      # Apply scaler to the actual angle
+    delta: "{{ scalar_var * angle | default(0.1) | float(0.2) }}"
+
+  sequence:
+    - service: media_player.volume_set
+      data_template:
+        volume_level: >-
+          {% set v = state_attr(mp, 'volume_level') %}
+          {{ v + 0.0000625 * delta }}
+      target:
+          entity_id: "{{ mp }}"
