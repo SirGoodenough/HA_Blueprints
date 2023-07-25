@@ -4,7 +4,7 @@ blueprint:
   domain: script
   homeassistant:
     min_version: 2023.3.0
-  source_url: https://gist.github.com/SirGoodenough/b244809ff4f220f3db9927bd7f09776c
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml
   description: >
     This script was invented to be used with my Magic Cube Blueprints. I released
     it as a standalone Script Blueprint because because of requests to extend the
