@@ -82,7 +82,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA-Xiaomi_Cube_Controller.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     last_side_input:
       name: Last side up numeric helper
@@ -101,6 +101,14 @@ blueprint:
             - integration: zha
               manufacturer: LUMI
           multiple: false
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
     slide_face_0:
       name: Group 1 actions 🍎 Slide the cube with face 0 up
       description: Face 0 is the one with the 'Aqara' LOGO
@@ -650,9 +658,12 @@ trigger:
   event_data:
     device_id: !input cube
 condition:
-  condition: template
-    # Only allow valid commands. Sorts out any weirdness.
-  value_template: '{{ trigger.event.data.command in (''rotate_right'', ''rotate_left'', ''flip'', ''slide'', ''knock'', ''shake'', ''drop'') }}'
+  - condition: template
+      # Only allow valid commands. Sorts out any weirdness.
+    value_template: '{{ trigger.event.data.command in (''rotate_right'', ''rotate_left'', ''flip'', ''slide'', ''knock'', ''shake'', ''drop'') }}'
+
+  - condition: !input additional_conditions
+
 action:
 - variables:
       # Get the Cube DeviceID.

@@ -29,7 +29,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     remote:
       name: Remote
@@ -43,6 +43,14 @@ blueprint:
             - integration: mqtt
               domain: sensor
           multiple: false
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
     tap_1:
       name: Single click on Button 1 action
       default: []
@@ -133,6 +141,7 @@ blueprint:
       default: []
       selector:
         action: {}
+
 mode: queued
 max: 2
 
@@ -152,13 +161,15 @@ variables:
   friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
 
 condition:
-  condition: template
-  value_template: >-
-    {{ event in (
-    'button_1_single','button_2_single','button_3_single','button_4_single','button_5_single','button_6_single',
-    'button_1_double','button_2_double','button_3_double','button_4_double','button_5_double','button_6_double',
-    'button_1_hold','button_2_hold','button_3_hold','button_4_hold','button_5_hold','button_6_hold')
-    }}
+  - condition: template
+    value_template: >-
+      {{ event in (
+      'button_1_single','button_2_single','button_3_single','button_4_single','button_5_single','button_6_single',
+      'button_1_double','button_2_double','button_3_double','button_4_double','button_5_double','button_6_double',
+      'button_1_hold','button_2_hold','button_3_hold','button_4_hold','button_5_hold','button_6_hold')
+      }}
+
+  - condition: !input additional_conditions
 
 action:
 - alias: Fire Last Action event

@@ -88,7 +88,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     topic:
       name: Topic
@@ -102,6 +102,14 @@ blueprint:
       selector:
         text:
           multiline: false
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
     action_slide_face_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
@@ -1098,22 +1106,25 @@ trigger:
   - platform: mqtt
     topic: !input topic
 condition:
-  condition: or
-  conditions:
-    - condition: template
-      alias: Check for valid Action Mode triggers
-      value_template: '{{ trigger.payload_json is defined and 
-        trigger.payload_json.action is defined and 
-        trigger.payload_json.operation_mode == ''action_mode'' and
-        trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
-        ''flip180'', ''slide'', ''tap'', ''shake'', ''throw'') }}'
-    - condition: template
-      alias: Check for valid Scene Mode triggers
-      value_template: '{{ trigger.payload_json is defined and 
-        trigger.payload_json.action is defined and 
-        trigger.payload_json.operation_mode == ''scene_mode'' and
-        trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
-        ''flip_to_side'', ''shake'', ''throw'', ''hold'') }}'
+  - condition: or
+    conditions:
+      - condition: template
+        alias: Check for valid Action Mode triggers
+        value_template: '{{ trigger.payload_json is defined and 
+          trigger.payload_json.action is defined and 
+          trigger.payload_json.operation_mode == ''action_mode'' and
+          trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
+          ''flip180'', ''slide'', ''tap'', ''shake'', ''throw'') }}'
+      - condition: template
+        alias: Check for valid Scene Mode triggers
+        value_template: '{{ trigger.payload_json is defined and 
+          trigger.payload_json.action is defined and 
+          trigger.payload_json.operation_mode == ''scene_mode'' and
+          trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
+          ''flip_to_side'', ''shake'', ''throw'', ''hold'') }}'
+
+  - condition: !input additional_conditions
+
 action:
 - variables:
       # Get the action command.

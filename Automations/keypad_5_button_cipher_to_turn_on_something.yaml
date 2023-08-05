@@ -14,7 +14,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     button_one:
       name: Button Press One
@@ -86,6 +86,14 @@ blueprint:
           unit_of_measurement: seconds
           mode: slider
           step: 1.0
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
 variables:
   seq_status_ent: !input 'seq_status'
   seq_status_last: '{{ expand(seq_status_ent)[0].last_changed | as_timestamp }}'
@@ -119,6 +127,9 @@ trigger:
   id: pad5
   from: 'off'
   to: 'on'
+
+condition: !input additional_conditions
+
 action:
 - alias: Reset seq number to 99 if timeout occurred
   service: input_number.set_value

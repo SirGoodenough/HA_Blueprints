@@ -14,7 +14,7 @@ blueprint:
     [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046)'
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   domain: automation
   input:
     door_entity:
@@ -154,6 +154,14 @@ blueprint:
           unit_of_measurement: seconds
           step: 1.0
           mode: slider
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
 mode: single
 trigger:
   platform: state
@@ -161,10 +169,13 @@ trigger:
   from: 'off'
   to: 'on'
 condition:
-  alias: Active time for the announcement
-  condition: time
-  after: !input 'start_time'
-  before: !input 'end_time'
+  - alias: Active time for the announcement
+    condition: time
+    after: !input 'start_time'
+    before: !input 'end_time'
+
+  - condition: !input additional_conditions
+
 action:
 - alias: Repeat the sequence UNTIL the door is closed
   repeat:

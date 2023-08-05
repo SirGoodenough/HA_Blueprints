@@ -37,7 +37,7 @@ blueprint:
   domain: automation
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     humidifier:
       name: Humidifier Entity
@@ -104,6 +104,14 @@ blueprint:
           unit_of_measurement: seconds
           mode: slider
           step: 0.1
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
 
 variables:
     # Convert !input to variable
@@ -141,15 +149,17 @@ trigger:
   entity_id: !input 'humidity'
 
 condition:
-  condition: and
-  conditions:
-  - condition: state
-    alias: Make sure the integration is enabled
-    entity_id: !input 'humidifier'
-    state: 'on'
-  - condition: template
-    alias: Only if its calling for water
-    value_template: '{{ set_val > humidity_now_val }}'
+  - condition: and
+    conditions:
+    - condition: state
+      alias: Make sure the integration is enabled
+      entity_id: !input 'humidifier'
+      state: 'on'
+    - condition: template
+      alias: Only if its calling for water
+      value_template: '{{ set_val > humidity_now_val }}'
+
+  - condition: !input additional_conditions
 
 action:
   - alias: "Wait until Humidifier is not sending water"

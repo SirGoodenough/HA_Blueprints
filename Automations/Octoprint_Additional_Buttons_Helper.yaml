@@ -46,7 +46,7 @@ blueprint:
     '
   source_url: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   domain: automation
   input:
     base_topic:

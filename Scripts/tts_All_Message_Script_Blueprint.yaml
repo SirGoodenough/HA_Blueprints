@@ -66,7 +66,7 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   domain: script
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     b4_action:
       name: Action before TTS
