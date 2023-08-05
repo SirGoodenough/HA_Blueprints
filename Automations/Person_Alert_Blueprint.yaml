@@ -50,7 +50,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: person
+          filter:
+            - domain: person
     zone2monitor:
       name: Zone to watch
       description: 'Select the Zone you want this BP to trigger on when this person
@@ -60,7 +61,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: zone
+          filter:
+            - domain: zone
     hold_period:
       name: Hold Period
       description: 'Sometimes devices want to disconnect and connect often, 

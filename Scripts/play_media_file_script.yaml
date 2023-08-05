@@ -26,7 +26,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: media_player
+          filter:
+            - domain: media_player
     file_2_play:
       name: Media File to play
       description: "The file name needs to be put here. 

@@ -25,7 +25,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
     start_time:
       name: StartTime
       description: 'Time of day you want to enable the announcement each day.
@@ -49,7 +50,8 @@ blueprint:
       description: Entity to announce event on
       selector:
         entity:
-          domain: media_player
+          filter:
+            - domain: media_player
           multiple: true
     speaker_gender:
       name: Speaker Gender

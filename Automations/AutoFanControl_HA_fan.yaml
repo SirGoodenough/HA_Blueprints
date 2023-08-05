@@ -43,7 +43,8 @@ blueprint:
         your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
       selector:
         entity:
-          domain: input_boolean
+          filter:
+            - domain: input_boolean
           multiple: false
     room_temp_now:
       name: Room Temperature Sensor
@@ -55,7 +56,8 @@ blueprint:
         a lower effect on fan speed.
       selector:
         entity:
-          domain: sensor
+          filter:
+            - domain: sensor
           multiple: false
     room_set_temp:
       name: Room Target Temperature
@@ -69,7 +71,8 @@ blueprint:
         your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
       selector:
         entity:
-          domain: input_number
+          filter:
+            - domain: input_number
           multiple: false
     temp_gap:
       name: Temp Hysteresis
@@ -182,8 +185,9 @@ blueprint:
       description: >
         (#10) This is the Home Assistant Fan entity
       selector:
-        entity:
-          domain: fan
+          entity:
+          filter:
+            - domain: fan
           multiple: false
     loop_action:
       name: User action for fan enabled condition (loop)

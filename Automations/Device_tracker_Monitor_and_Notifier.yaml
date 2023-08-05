@@ -51,7 +51,8 @@ blueprint:
         '
       selector:
         entity:
-          domain: device_tracker
+          filter:
+            - domain: device_tracker
           multiple: true
     gone_for:
       name: Time delay before reporting outage 1st time

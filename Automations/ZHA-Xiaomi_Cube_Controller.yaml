@@ -89,15 +89,17 @@ blueprint:
       description: Please select a Numeric Helper to be used to record the last side that saw action.
       selector:
         entity:
-          domain: input_number
+          filter:
+            - domain: input_number
           multiple: false
     cube:
       name: Aqara Cube
       description: Select the Aqara Cube device
       selector:
         device:
-          integration: zha
-          manufacturer: LUMI
+          filter:
+            - integration: zha
+              manufacturer: LUMI
           multiple: false
     slide_face_0:
       name: Group 1 actions 🍎 Slide the cube with face 0 up

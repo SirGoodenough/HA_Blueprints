@@ -89,7 +89,8 @@ blueprint:
       selector:
         entity:
           multiple: false
-          domain: sensor
+          filter:
+            - domain: sensor
     print_state:
       name: print status sensor
       description: 'Sensor that looks like this:
@@ -102,7 +103,8 @@ blueprint:
       selector:
         entity:
           multiple: false
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
     printhead_temp:
       name: printhead temperature sensor
       description: 'Sensor that looks like this:
@@ -115,7 +117,8 @@ blueprint:
       selector:
         entity:
           multiple: false
-          domain: sensor
+          filter:
+            - domain: sensor
     octoprint_shutdown:
       name: octoprint shutdown button
       description: 'Button that looks like this:
@@ -128,7 +131,8 @@ blueprint:
       selector:
         entity:
           multiple: false
-          domain: button
+          filter:
+            - domain: button
     printer_power_switch:
       name: Mains switch that controls the printer and/or pi mains power
       description: 'This needs to be the Home Assistant name of the switch that
@@ -142,7 +146,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: switch
+          filter:
+            - domain: switch
     asd_u_trig_temp:
       name: Auto Shutdown Upper Trigger
       description: 'Set this to the temperature that you want the extruder

@@ -21,42 +21,48 @@ blueprint:
       description: '```Binary Sensor``` for First Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     button_two:
       name: Button Press Two
       description: '```Binary Sensor``` for Second Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     button_three:
       name: Button Press Three
       description: '```Binary Sensor``` for Third Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     button_four:
       name: Button Press Four
       description: '```Binary Sensor``` for Forth Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     button_five:
       name: Button Press Five
       description: '```Binary Sensor``` for Fifth Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     lock_control:
       name: Buffer for the Final Lock Enable
       description: '```input_boolean``` - Final Enable to trigger your lock or action'
       selector:
         entity:
-          domain: input_boolean
+          filter:
+            - domain: input_boolean
           multiple: false
     seq_status:
       name: Control Sequence Status Placeholder
@@ -65,7 +71,8 @@ blueprint:
         one for every lock code.'
       selector:
         entity:
-          domain: input_number
+          filter:
+            - domain: input_number
           multiple: false
     on_timer:
       name: Lock On Time in Seconds

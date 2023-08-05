@@ -126,7 +126,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: media_player
+          filter:
+            - domain: media_player
     speaker_gender:
       name: Speaker Gender
       description: >

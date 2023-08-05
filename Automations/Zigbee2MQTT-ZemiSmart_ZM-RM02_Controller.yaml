@@ -39,9 +39,9 @@ blueprint:
         ```sensor.XXYour_HameXX_action```'
       selector:
         entity:
-          integration: mqtt
-          domain:
-          - sensor
+          filter:
+            - integration: mqtt
+              domain: sensor
           multiple: false
     tap_1:
       name: Single click on Button 1 action

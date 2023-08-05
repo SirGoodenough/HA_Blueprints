@@ -22,7 +22,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: switch
+          filter:
+            - domain: switch
     reciever_power:
       name: Reciever Power
       description: Turn the Reciever Device ON
@@ -30,7 +31,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     tv_power:
       name: TV Power
       description: Turn the TV Device ON
@@ -38,14 +40,16 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     tv_mode:
       name: TV Input Mode
       description: Select the feed into the TV. Clicked after the OTA mode below.
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     tv_ota_mode:
       name: OTA Input Mode
       description: 
@@ -56,14 +60,16 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     reciever_input:
       name: Reciever Input
       description: Turn the Reciever Input to the correct adapter line
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     reciever_out_mode:
       name: Reciever Speaker Out Mode
       description: Turn the Reciever Speakers into the desired output mode
@@ -71,7 +77,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     cooldown:
       name: Cooldown
       description: The between IR Blasts...

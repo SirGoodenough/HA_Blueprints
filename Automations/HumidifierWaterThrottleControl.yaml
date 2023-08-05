@@ -50,7 +50,8 @@ blueprint:
       description: "Sensor that contains the current actual Humidity"
       selector:
         entity:
-          domain: sensor
+          filter:
+            - domain: sensor
           multiple: false
     power_1:
       name: Switch entity for switch 1 controlling the water
@@ -60,7 +61,8 @@ blueprint:
         '
       selector:
         entity:
-          domain: switch
+          filter:
+            - domain: switch
           multiple: false
     mqtt_topic:
       name: Topic to send the time value to the Tasmota device
