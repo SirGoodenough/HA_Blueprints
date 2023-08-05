@@ -138,8 +138,12 @@ blueprint:
       selector:
         select:
           options:
-            - female
-            - male
+          - label: Female
+            value: female
+          - label: Male
+            value: male
+          - label: Neutral (Does not work on all flavors)
+            value: neutral
           custom_value: false
           multiple: false
     baidu_person:
