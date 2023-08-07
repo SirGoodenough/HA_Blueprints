@@ -55,13 +55,13 @@ blueprint:
   input:
     sensi:
       name: Sensitivity of the cube rotational motion.
-      description: '
-        This sets how ''fast'' the changes happen compared to how far you move
+      description: >
+        This sets how 'fast' the changes happen compared to how far you move
         the cube.
         Higher percentage is faster, lower is slower.
 
         I have found that 40% is a good number, but you can adjust as desired.
-        '
+
       default: 40
       selector:
         number:
@@ -71,12 +71,12 @@ blueprint:
           mode: box
     min_b:
       name: Minimum Brighness
-      description: '
+      description: >
         This sets the lowest brightness it will set before it turns off.
         Some bulbs react poorly below a certain percent, you can adjust that here.
 
         I have found that 10% is a good number, but you can adjust as desired.
-        '
+
       default: 10
       selector:
         number:
@@ -140,6 +140,7 @@ sequence:
           {# Send actual calculated value. #}
           {{ new_brightness }}
         {% endif %}
+
 icon: mdi:lightbulb-on-50
 mode: queued
 max: 10

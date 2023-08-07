@@ -1,7 +1,8 @@
 blueprint:
   name: TTS_say_Message-2023-07-17
   author: SirGoodenough
-  description: '📣 This is a script that can use any of the 11 integrated TTS Platforms
+  description: >
+    📣 This is a script that can use any of the 11 integrated TTS Platforms
     in Home Assistant to send a message to a media player. Some will require Google
     Type Speakers, some will require Non-Google type speakers.
 
@@ -62,7 +63,7 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)
-    '
+
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   domain: script
   homeassistant:
@@ -564,6 +565,7 @@ blueprint:
             - good
           custom_value: false
           multiple: false
+
 fields:
   live_message:
     name: Live Message
@@ -583,6 +585,7 @@ fields:
       entity:
         multiple: true
         domain: media_player
+
 variables:
     # Do something before sending the TTS
   my_b4_action: !input "b4_action"
@@ -599,6 +602,7 @@ variables:
     # Get the value for templating
   baidu_person_val: !input "baidu_person"
   my_baidu_person: "{{ baidu_person_val | int(0) }}"
+
 sequence:
   - alias: Do something before the TTS Command
     if: "{{ not my_b4_action in ('none', 'null', 'unavailable', '') }}"
@@ -694,4 +698,6 @@ sequence:
   - alias: Do something after the TTS Command
     if: "{{ not my_after_action in ('none', 'null', 'unavailable', '') }}"
     then: !input "after_action"
+
 mode: queued
+icon: mdi-message-processing-outline

@@ -1,7 +1,8 @@
 blueprint:
   name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2023-03-01
   author: SirGoodenough
-  description: 'This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
+  description: >
+    This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
     long and a door has been closed.
 
     📩 There is not an official version control system for Blueprints. However I have
@@ -10,8 +11,7 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-
-    [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046)'
+    [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046)
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   homeassistant:
     min_version: 2023.8.0
@@ -19,7 +19,8 @@ blueprint:
   input:
     door_entity:
       name: 'Door Sensor (or any binary_sensor will do...)'
-      description: Entity that causes the announcement. Actually any entity that changes
+      description: >
+        Entity that causes the announcement. Actually any entity that changes
         its state from off to on will work here, You would just need to enter the
         entity manually if it's not a binary sensor.
       selector:
@@ -29,19 +30,21 @@ blueprint:
             - domain: binary_sensor
     start_time:
       name: StartTime
-      description: 'Time of day you want to enable the announcement each day.
+      description: >
+        Time of day you want to enable the announcement each day.
 
 
-        Leave at 12:00:00 if you want it to always be on.'
+        Leave at 12:00:00 if you want it to always be on.
       selector:
         time: {}
       default: 00:00:00
     end_time:
       name: EndTime
-      description: 'Time of day you want to disable the announcement each day. 
+      description: >
+        Time of day you want to disable the announcement each day. 
 
 
-        Leave at 12:00:00 if you want it to always be on.'
+        Leave at 12:00:00 if you want it to always be on.
       selector:
         time: {}
       default: 00:00:00
@@ -66,13 +69,14 @@ blueprint:
           multiple: false
     speaker_language:
       name: Speaker Language
-      description: 'Select Language code. [See here for Details](https://www.nabucasa.com/config/tts/)
+      description: >
+        Select Language code. [See here for Details](https://www.nabucasa.com/config/tts/)
 
         This defaults to en-US (english/US). However all the languages available on
         2021-12-24 were put into the pick list. 
 
 
-        ***NOTE: It is possible that not all Languages will give you both Genders.***'
+        ***NOTE: It is possible that not all Languages will give you both Genders.***
       default: en-US
       selector:
         select:
@@ -130,22 +134,25 @@ blueprint:
           multiple: false
     announcement_message:
       name: Announcement message
-      description: 'What to say when door is opened
+      description: >  
+        What to say when door is opened
 
-        This can be set to "" if you do not want a message while sensor is active.'
+        This can be set to "" if you do not want a message while sensor is active.
       default: Your Barn Door has been left open.
     final_message:
       name: Final message
-      description: 'What to say when door is closed.
+      description: >
+        What to say when door is closed.
 
-        This can be set to "" if you do not want a message after the sensor is reset.'
+        This can be set to "" if you do not want a message after the sensor is reset.
       default: Thank you for closing the barn door.
     cooldown:
       name: Announcement cooldown
-      description: 'The minimum number of seconds needed before AND between between
+      description: >
+        The minimum number of seconds needed before AND between between
         announcements.
 
-        This is your initial delay and pause between messages...'
+        This is your initial delay and pause between messages...
       default: 10
       selector:
         number:
@@ -162,18 +169,18 @@ blueprint:
       default: []
       selector:
         condition:
-mode: single
+
 trigger:
   platform: state
   entity_id: !input 'door_entity'
   from: 'off'
   to: 'on'
+
 condition:
   - alias: Active time for the announcement
     condition: time
     after: !input 'start_time'
     before: !input 'end_time'
-
   - condition: !input additional_conditions
 
 action:
@@ -199,3 +206,6 @@ action:
     options:
       gender: !input 'speaker_gender'
     language: !input 'speaker_language'
+
+mode: single
+max_exceeded: silent

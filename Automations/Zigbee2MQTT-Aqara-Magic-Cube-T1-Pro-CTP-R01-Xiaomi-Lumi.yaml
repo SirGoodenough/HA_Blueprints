@@ -1,19 +1,20 @@
 blueprint:
   name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2022-03-01-A
   author: SirGoodenough
-  description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
+  description: >
+    This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
     unique commands (118+ total) available from the Xiaomi Magic Cube Remote. (Some unique commands
     listed as + are not counted & available thru templating only. See the related document.)
 
     **NOTE:** This blueprint is for the PRO cube version ONLY and is not fully compatible
     with the original version of the cube. Links for those are in my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints).
 
-    This cube has an ''Action'' mode (Shown below with this graphic: 🫳 ACTION MODE ONLY 🫳 )
+    This cube has an 'Action' mode (Shown below with this graphic: 🫳 ACTION MODE ONLY 🫳 )
 
-    and a ''Scene'' mode (Shown below with this graphic: 👀 SCENE MODE ONLY 👀 ).
+    and a 'Scene' mode (Shown below with this graphic: 👀 SCENE MODE ONLY 👀 ).
 
     Make sure the cube is in the mode you think it is in when triggering it.
-    The functions are separate. IE ''Action - slide'' will do something different from ''Scene - slide''.
+    The functions are separate. IE 'Action - slide' will do something different from 'Scene - slide'.
 
     The split out of functions gives you the ability to assign local scripts or functions
     to do the things you want the remote to do.
@@ -84,7 +85,7 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111)
-    '
+
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
   domain: automation
   homeassistant:
@@ -92,12 +93,13 @@ blueprint:
   input:
     topic:
       name: Topic
-      description: 'The main MQTT Topic for your cube. 
+      description: >
+        The main MQTT Topic for your cube. 
         
         Details on finding the correct topic can be found here: 
         
         [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.md#to-make-the-blueprint-work-it-will-need)
-        '
+
       default: "zigbee2mqtt/?"
       selector:
         text:
@@ -1100,30 +1102,10 @@ blueprint:
       default: []
       selector:
         action: {}
-mode: single
-max_exceeded: silent
+
 trigger:
   - platform: mqtt
     topic: !input topic
-condition:
-  - condition: or
-    conditions:
-      - condition: template
-        alias: Check for valid Action Mode triggers
-        value_template: '{{ trigger.payload_json is defined and 
-          trigger.payload_json.action is defined and 
-          trigger.payload_json.operation_mode == ''action_mode'' and
-          trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
-          ''flip180'', ''slide'', ''tap'', ''shake'', ''throw'') }}'
-      - condition: template
-        alias: Check for valid Scene Mode triggers
-        value_template: '{{ trigger.payload_json is defined and 
-          trigger.payload_json.action is defined and 
-          trigger.payload_json.operation_mode == ''scene_mode'' and
-          trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
-          ''flip_to_side'', ''shake'', ''throw'', ''hold'') }}'
-
-  - condition: !input additional_conditions
 
 variables:
     # Get the action command.
@@ -1173,6 +1155,25 @@ variables:
     # Set Topics once
   config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
   topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
+
+condition:
+  - condition: or
+    conditions:
+      - condition: template
+        alias: Check for valid Action Mode triggers
+        value_template: '{{ trigger.payload_json is defined and 
+          trigger.payload_json.action is defined and 
+          trigger.payload_json.operation_mode == ''action_mode'' and
+          trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
+          ''flip180'', ''slide'', ''tap'', ''shake'', ''throw'') }}'
+      - condition: template
+        alias: Check for valid Scene Mode triggers
+        value_template: '{{ trigger.payload_json is defined and 
+          trigger.payload_json.action is defined and 
+          trigger.payload_json.operation_mode == ''scene_mode'' and
+          trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
+          ''flip_to_side'', ''shake'', ''throw'', ''hold'') }}'
+  - condition: !input additional_conditions
 
 action:
 - alias: Make number helper to store last side
@@ -1587,3 +1588,6 @@ action:
 - alias: Delay ⏱ for debounce so toggle functions work. Also blueprint is in single
     mode.
   delay: 00:00:01
+
+mode: single
+max_exceeded: silent

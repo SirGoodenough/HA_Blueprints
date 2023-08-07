@@ -1,7 +1,8 @@
 blueprint:
   name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2023-07-17
   author: SirGoodenough
-  description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 18
+  description: >
+    This Blueprint uses a Zigbee2MQTT built sensor to sort out the 18
     commands from the ZemiSmart ZM-RM02 Remote. 
 
     The split out of functions gives you the ability to assign local scripts or 
@@ -25,7 +26,7 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650)'
+    [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-zemismart-zm-rm02-controller/412650)
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml
   domain: automation
   homeassistant:
@@ -33,10 +34,11 @@ blueprint:
   input:
     remote:
       name: Remote
-      description: 'The entity to put here is the sensor that Z2M imported that is
+      description: >
+        The entity to put here is the sensor that Z2M imported that is
         named like this>
 
-        ```sensor.XXYour_HameXX_action```'
+        ```sensor.XXYour_HameXX_action```
       selector:
         entity:
           filter:
@@ -142,9 +144,6 @@ blueprint:
       selector:
         action: {}
 
-mode: queued
-max: 2
-
 trigger:
 - platform: state
   entity_id: !input remote
@@ -168,7 +167,6 @@ condition:
       'button_1_double','button_2_double','button_3_double','button_4_double','button_5_double','button_6_double',
       'button_1_hold','button_2_hold','button_3_hold','button_4_hold','button_5_hold','button_6_hold')
       }}
-
   - condition: !input additional_conditions
 
 action:
@@ -216,3 +214,6 @@ action:
     sequence: !input doubletap_6
   - conditions: '{{ event == "button_6_hold" }}'
     sequence: !input hold_6
+
+mode: queued
+max: 2

@@ -1,7 +1,8 @@
 blueprint:
   name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-03-01-A
   author: SirGoodenough
-  description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
+  description: >
+    This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
     are available thru templating only. See the related document.)
 
@@ -82,7 +83,7 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203)
-    '
+
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.yaml
   domain: automation
   homeassistant:
@@ -90,12 +91,13 @@ blueprint:
   input:
     topic:
       name: Topic
-      description: 'The main MQTT Topic for your cube. 
+      description: >
+        The main MQTT Topic for your cube. 
         
         Details on finding the correct topic can be found here: 
         
         [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md#-to-make-the-blueprint-work-it-will-need)
-        '
+
       default: "zigbee2mqtt/?"
       selector:
         text:
@@ -648,18 +650,17 @@ blueprint:
       default: []
       selector:
         action: {}
-mode: single
-max_exceeded: silent
+
 trigger:
   - platform: mqtt
     topic: !input topic
+
 condition:
   - condition: template
     value_template: '{{ trigger.payload_json is defined and 
       trigger.payload_json.action is defined and 
       trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
       ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
-
   - condition: !input additional_conditions
 
 variables:
@@ -965,3 +966,6 @@ action:
 - alias: Delay ⏱ for debounce so toggle functions work. Also blueprint is in single
     mode.
   delay: 00:00:01
+
+mode: single
+max_exceeded: silent

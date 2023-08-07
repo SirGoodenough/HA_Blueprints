@@ -107,6 +107,7 @@ sequence:
             service: homeassistant.toggle
             target:
               entity_id: '{{ long_entity }}'
+
 icon: mdi-toggle-switch-outline
 mode: queued
 max: 10

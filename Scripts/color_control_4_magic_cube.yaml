@@ -52,12 +52,12 @@ blueprint:
   input:
     sensi:
       name: Sensitivity of the cube rotational motion.
-      description: '
-        This sets how ''fast'' the changes happen compared to how far you move
+      description: >
+        This sets how 'fast' the changes happen compared to how far you move
         the cube.
         Higher percentage is faster, lower is slower.
         I have found that 60% is a good number, but you can adjust as desired.
-        '
+
       default: 60
       selector:
         number:
