@@ -179,7 +179,6 @@ variables:
     # Device Parameters for MQTT Discovery
   avty_t: 'homeassistant/status'
   ids: '{{ dv_id }}'
-  dname: '{{ dv_name }}'
   mf: 'SirGoodenough'
   mdl: 'Home Assistant EZ Buttons for Tasmota'
   sa: 'home'
@@ -213,7 +212,7 @@ sequence:
               "dev_cla":"update",
               "dev": {
                 "ids": "{{ ids }}",
-                "name": "{{ dname }}",
+                "name": "{{ dv_name }}",
                 "mf": "{{ mf }}",
                 "mdl": "{{ mdl }}",
                 "sa": "{{ sa }}",
@@ -236,7 +235,7 @@ sequence:
         "dev_cla":"restart",
         "dev": {
           "ids": "{{ ids }}",
-          "name": "{{ dname }}",
+          "name": "{{ dv_name }}",
           "mf": "{{ mf }}",
           "mdl": "{{ mdl }}",
           "sa": "{{ sa }}",
@@ -259,7 +258,7 @@ sequence:
         "dev_cla":"update",
         "dev": {
           "ids": "{{ ids }}",
-          "name": "{{ dname }}",
+          "name": "{{ dv_name }}",
           "mf": "{{ mf }}",
           "mdl": "{{ mdl }}",
           "sa": "{{ sa }}",

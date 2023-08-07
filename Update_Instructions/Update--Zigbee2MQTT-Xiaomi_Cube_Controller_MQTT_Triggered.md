@@ -7,7 +7,7 @@ For this change to complete, you will need to remove the old one manually as it 
 First navigate to Devices and find the number helper created by this blueprint. It should look like the cube friendly_name followed by:
     ```_Number_Helper```
 
-![Find the Device to remove](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/cubeNumberHelper.png?raw=true "Find the Device to remove")
+![Find the Device to remove](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Z2MHelperDevice.png?raw=true "Find the Device to remove")
 
 Click on the row.
 

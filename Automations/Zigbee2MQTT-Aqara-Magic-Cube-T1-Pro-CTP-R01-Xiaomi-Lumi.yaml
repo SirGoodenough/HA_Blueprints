@@ -1125,53 +1125,56 @@ condition:
 
   - condition: !input additional_conditions
 
+variables:
+    # Get the action command.
+  action: '{{ trigger.payload_json.action }}'
+    # Get the angle.
+  angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
+    # Get the side.
+  side: '{{ trigger.payload_json.side }}'
+    # Get the operation_mode.
+  op_mode: '{{ trigger.payload_json.operation_mode }}'
+
+    # Get the topic as a variable.
+  topic_var: !input topic
+    # Generate the Friendly_name from the Topic.
+  friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9_/./-]", "") }}'
+    # Generate the device_id from the Friendly_name.
+  device_id: '{{ device_id( friendly_name ) }}'
+    # Pull out the ieee identifier.
+  ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
+    # Generate just the number for the ieee.
+  ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
+
+    # Set the name of the Number entity.
+  num_name: 'last side'
+    # Set the entity_id of the Number entity.
+  num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
+    # Get the value of this entity from HA
+  num_ha_val: '{{ states(num_ha_name) | default(0) | int(0) }}'
+
+    # Get the last_side for use in logic below.
+  last_side: '
+    {# The first time it will not be there, so make sure its 0 instead of undefined. #}
+    {% if not num_ha_val in (''none'', ''null'', ''unavailable'', '''') %}
+      {{ num_ha_val }}
+    {% else %}
+      0
+    {% endif %}'
+
+    # Set-up for Device parameters once
+  mdl: 'Number Helper for Z2M Cube T1-Pro Integration'
+  mf: 'SirGoodenough'
+  sa: 'house'
+  sw: '2022-03-01-A'
+  hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml'
+  cu: 'https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111'
+
+    # Set Topics once
+  config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
+  topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
+
 action:
-- variables:
-      # Get the action command.
-    action: '{{ trigger.payload_json.action }}'
-      # Get the angle.
-    angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
-      # Get the side.
-    side: '{{ trigger.payload_json.side }}'
-      # Get the operation_mode.
-    op_mode: '{{ trigger.payload_json.operation_mode }}'
-
-      # Get the topic as a variable.
-    topic_var: !input topic
-      # Generate the Friendly_name from the Topic.
-    friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9_/./-]", "") }}'
-      # Generate the device_id from the Friendly_name.
-    device_id: '{{ device_id( friendly_name ) }}'
-      # Pull out the ieee identifier.
-    ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
-      # Generate just the number for the ieee.
-    ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
-
-      # Set the name of the Number entity.
-    num_name: '{{ friendly_name + '' last side'' }}'
-      # Set the entity_id of the Number entity.
-    num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
-      # Get the value of this entity from HA
-    num_ha_val: '{{ states(num_ha_name) | int(0) }}'
-
-      # Get the last_side for use in logic below.
-    last_side: >-
-      {# The first time it will not be there, so make sure its 0 instead of undefined. #}
-      {{ num_ha_val | default(0) }}
-
-      # Set-up for Device parameters once
-    name: '{{ friendly_name + ''_Number_Helper''}}'
-    mdl: 'Number Helper for Z2M Cube Integration'
-    mf: 'SirGoodenough'
-    sa: 'house'
-    sw: '2022-03-01-A'
-    hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
-    cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
-
-      # Set Topics once
-    config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
-    topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
-
 - alias: Make number helper to store last side
   service: mqtt.publish
   data:
@@ -1189,7 +1192,7 @@ action:
         "mode": "box",
         "ret": true,
         "dev": {
-          "name": "{{ name }}",
+          "name": "{{ friendly_name }}",
           "mdl": "{{ mdl }}",
           "mf": "{{ mf }}",
           "sa": "{{ sa }}",

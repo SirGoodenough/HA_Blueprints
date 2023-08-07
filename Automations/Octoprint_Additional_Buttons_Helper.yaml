@@ -276,7 +276,6 @@ variables:
   pl_avail: 'connected'
   pl_not_avail: 'disconnected'
   ids: 'octoprint-BP-{{ dv_id }}'
-  dname: '{{ dv_name }} Blueprint Helper'
   mf: 'SirGoodenough'
   mdl: 'Octoprint_Discovery_Helper'
   sa: 'home'
@@ -287,49 +286,49 @@ variables:
       # Home Button
   h_local: home
   h_c_topic: '{{ ha_topic }}_{{ h_local | upper }}/config'
-  h_bname: '{{ dv_name }} {{ h_local }}'
+  h_bname: '{{ h_local }}'
   h_uniq_id: '{{ dv_id }}_{{ h_local }}'
   h_ic: mdi:home-switch
   h_pl_prs: !input home_button
       # Bed Level Button
   bl_local: bed_level
   bl_c_topic: '{{ ha_topic }}_{{ bl_local | upper }}/config'
-  bl_bname: '{{ dv_name }} {{ bl_local }}'
+  bl_bname: '{{ bl_local }}'
   bl_uniq_id: '{{ dv_id }}_{{ bl_local }}'
   bl_ic: mdi:spirit-level
   bl_pl_prs: !input bed_level_button
       # User Aux 1 Button
   a1_local: aux_1
   a1_c_topic: '{{ ha_topic }}_{{ a1_local | upper }}/config'
-  a1_bname: '{{ dv_name }} {{ a1_local }}'
+  a1_bname: '{{ a1_local }}'
   a1_uniq_id: '{{ dv_id }}_{{ a1_local }}'
   a1_ic: mdi:hand-extended
   a1_pl_prs: !input aux_1
       # User _aux 2 Button
   a2_local: aux_2
   a2_c_topic: '{{ ha_topic }}_{{ a2_local | upper }}/config'
-  a2_bname: '{{ dv_name }} {{ a2_local }}'
+  a2_bname: '{{ a2_local }}'
   a2_uniq_id: '{{ dv_id }}_{{ a2_local }}'
   a2_ic: mdi:hand-extended
   a2_pl_prs: !input aux_2
       # Presentation Button
   p_local: presentation
   p_c_topic: '{{ ha_topic }}_{{ p_local | upper }}/config'
-  p_bname: '{{ dv_name }} {{ p_local }}'
+  p_bname: '{{ p_local }}'
   p_uniq_id: '{{ dv_id }}_{{ p_local }}'
   p_ic: mdi:gift
   p_pl_prs: 'PRESS'
       # Safe Shutdown Button
   sd_local: safe_shutdown
   sd_c_topic: '{{ ha_topic }}_{{ sd_local | upper }}/config'
-  sd_bname: '{{ dv_name }} {{ sd_local }}'
+  sd_bname: '{{ sd_local }}'
   sd_uniq_id: '{{ dv_id }}_{{ sd_local }}'
   sd_dev_cla: restart
   sd_pl_prs: 'PRESS'
       # Auto Shutdown Control
   asdc_local: auto_shutdown_ctrl
   asdc_c_topic: '{{ ha_select_topic }}_{{ asdc_local | upper }}/config'
-  asdc_bname: '{{ dv_name }} {{ asdc_local }}'
+  asdc_bname: '{{ asdc_local }}'
   asdc_uniq_id: '{{ dv_id }}_{{ asdc_local }}'
   asdc_ic: mdi:yin-yang
   asdc_ent_cat: config
@@ -337,14 +336,14 @@ variables:
       # Load Filament Button
   lf_local: load_filament
   lf_c_topic: '{{ ha_topic }}_{{ lf_local | upper }}/config'
-  lf_bname: '{{ dv_name }} {{ lf_local }}'
+  lf_bname: '{{ lf_local }}'
   lf_uniq_id: '{{ dv_id }}_{{ lf_local }}'
   lf_ic: mdi:waves-arrow-right
   lf_pl_prs: 'PRESS'
       # Change Filament Button
   cf_local: change_filament
   cf_c_topic: '{{ ha_topic }}_{{ cf_local | upper }}/config'
-  cf_bname: '{{ dv_name }} {{ cf_local }}'
+  cf_bname: '{{ cf_local }}'
   cf_uniq_id: '{{ dv_id }}_{{ cf_local }}'
   cf_ic: mdi:waves-arrow-up
   cf_pl_prs: 'PRESS'
@@ -627,7 +626,7 @@ action:
           "pl_not_avail": "{{ pl_not_avail }}",
           "dev": {
             "ids": "{{ ids }}",
-            "name": "{{ dname }}",
+            "name": "{{ dv_name }}",
             "mf": "{{ mf }}",
             "mdl": "{{ mdl }}",
             "sa": "{{ sa }}",
@@ -653,7 +652,7 @@ action:
           "pl_not_avail": "{{ pl_not_avail }}",
           "dev": {
             "ids": "{{ ids }}",
-            "name": "{{ dname }}",
+            "name": "{{ dv_name }}",
             "mf": "{{ mf }}",
             "mdl": "{{ mdl }}",
             "sa": "{{ sa }}",
@@ -679,7 +678,7 @@ action:
           "pl_not_avail": "{{ pl_not_avail }}",
           "dev": {
             "ids": "{{ ids }}",
-            "name": "{{ dname }}",
+            "name": "{{ dv_name }}",
             "mf": "{{ mf }}",
             "mdl": "{{ mdl }}",
             "sa": "{{ sa }}",
@@ -705,7 +704,7 @@ action:
           "pl_not_avail": "{{ pl_not_avail }}",
           "dev": {
             "ids": "{{ ids }}",
-            "name": "{{ dname }}",
+            "name": "{{ dv_name }}",
             "mf": "{{ mf }}",
             "mdl": "{{ mdl }}",
             "sa": "{{ sa }}",
@@ -731,7 +730,7 @@ action:
           "pl_not_avail": "{{ pl_not_avail }}",
           "dev": {
             "ids": "{{ ids }}",
-            "name": "{{ dname }}",
+            "name": "{{ dv_name }}",
             "mf": "{{ mf }}",
             "mdl": "{{ mdl }}",
             "sa": "{{ sa }}",
@@ -757,7 +756,7 @@ action:
           "pl_not_avail": "{{ pl_not_avail }}",
           "dev": {
             "ids": "{{ ids }}",
-            "name": "{{ dname }}",
+            "name": "{{ dv_name }}",
             "mf": "{{ mf }}",
             "mdl": "{{ mdl }}",
             "sa": "{{ sa }}",
@@ -783,7 +782,7 @@ action:
           "pl_not_avail": "{{ pl_not_avail }}",
           "dev": {
             "ids": "{{ ids }}",
-            "name": "{{ dname }}",
+            "name": "{{ dv_name }}",
             "mf": "{{ mf }}",
             "mdl": "{{ mdl }}",
             "sa": "{{ sa }}",
@@ -810,7 +809,7 @@ action:
           "pl_not_avail": "{{ pl_not_avail }}",
           "dev": {
             "ids": "{{ ids }}",
-            "name": "{{ dname }}",
+            "name": "{{ dv_name }}",
             "mf": "{{ mf }}",
             "mdl": "{{ mdl }}",
             "sa": "{{ sa }}",
@@ -836,7 +835,7 @@ action:
           "pl_not_avail": "{{ pl_not_avail }}",
           "dev": {
             "ids": "{{ ids }}",
-            "name": "{{ dname }}",
+            "name": "{{ dv_name }}",
             "mf": "{{ mf }}",
             "mdl": "{{ mdl }}",
             "sa": "{{ sa }}",
