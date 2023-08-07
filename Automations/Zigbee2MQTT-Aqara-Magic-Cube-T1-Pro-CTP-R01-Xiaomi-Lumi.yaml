@@ -1173,7 +1173,8 @@ condition:
           trigger.payload_json.operation_mode == ''scene_mode'' and
           trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
           ''flip_to_side'', ''shake'', ''throw'', ''hold'') }}'
-  - condition: !input additional_conditions
+  - alias: User pick
+    condition: !input additional_conditions
 
 action:
 - alias: Make number helper to store last side

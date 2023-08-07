@@ -687,7 +687,8 @@ condition:
   - condition: template
       # Only allow valid commands. Sorts out any weirdness.
     value_template: '{{ trigger.event.data.command in (''rotate_right'', ''rotate_left'', ''flip'', ''slide'', ''knock'', ''shake'', ''drop'') }}'
-  - condition: !input additional_conditions
+  - alias: User pick
+    condition: !input additional_conditions
 
 action:
 - alias: 'Store the current_side as the last_side for the next trigger'

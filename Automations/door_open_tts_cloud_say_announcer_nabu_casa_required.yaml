@@ -181,7 +181,8 @@ condition:
     condition: time
     after: !input 'start_time'
     before: !input 'end_time'
-  - condition: !input additional_conditions
+  - alias: User pick
+    condition: !input additional_conditions
 
 action:
 - alias: Repeat the sequence UNTIL the door is closed

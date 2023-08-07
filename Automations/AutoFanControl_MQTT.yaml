@@ -246,8 +246,6 @@ blueprint:
       selector:
         condition:
 
-mode: restart
-
 trigger:
 - platform: time
   id: go_if_the_stop_time_occurs
@@ -350,3 +348,5 @@ action:
             3
 
           {% endif %}
+
+mode: restart

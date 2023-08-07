@@ -157,7 +157,8 @@ condition:
     - condition: template
       alias: Only if its calling for water
       value_template: '{{ set_val > humidity_now_val }}'
-  - condition: !input additional_conditions
+  - alias: User pick
+    condition: !input additional_conditions
 
 action:
   - alias: "Wait until Humidifier is not sending water"

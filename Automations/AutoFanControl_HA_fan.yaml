@@ -185,7 +185,7 @@ blueprint:
       description: >
         (#10) This is the Home Assistant Fan entity
       selector:
-          entity:
+        entity:
           filter:
             - domain: fan
           multiple: false
@@ -244,8 +244,6 @@ blueprint:
       default: []
       selector:
         condition:
-
-mode: restart
 
 trigger:
 - platform: time
@@ -345,3 +343,5 @@ action:
             100
 
           {% endif %}
+
+mode: restart

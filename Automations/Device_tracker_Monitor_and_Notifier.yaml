@@ -311,7 +311,8 @@ condition:
     after: !input 'notify_enable_time'
     before: !input 'notify_disable_time'
     weekday: !input 'weekday'
-  - condition: !input additional_conditions
+  - alias: User pick
+    condition: !input additional_conditions
 
 action:
 - alias: 'Persistent Notifications. Options are skip it, use a notification_id, or default to no id'

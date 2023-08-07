@@ -218,7 +218,8 @@ condition:
     after: !input 'enable_time'
     before: !input 'disable_time'
     weekday: !input 'weekday'
-  - condition: !input additional_conditions
+  - alias: User pick
+    condition: !input additional_conditions
 
 action:
 - alias: Determine if there was an actionable event

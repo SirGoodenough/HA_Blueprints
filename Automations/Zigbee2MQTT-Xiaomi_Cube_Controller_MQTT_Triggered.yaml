@@ -661,7 +661,8 @@ condition:
       trigger.payload_json.action is defined and 
       trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
       ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
-  - condition: !input additional_conditions
+  - alias: User pick
+    condition: !input additional_conditions
 
 variables:
     # Get the action command.
