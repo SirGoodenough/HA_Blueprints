@@ -1,5 +1,5 @@
 blueprint:
-  name: Throttle-your-water-flow-tasmota-2023-03-01
+  name: Throttle-your-water-flow-tasmota-2023-08-07
   author: SirGoodenough
   description: >
     This sets the amount of water sent to your Humidifier. 

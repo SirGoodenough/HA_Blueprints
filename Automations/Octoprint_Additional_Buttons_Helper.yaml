@@ -1,5 +1,5 @@
 blueprint:
-  name: Octoprint_Additional_Buttons_Helper- 2023-04-12
+  name: Octoprint_Additional_Buttons_Helper- 2023-08-07
   author: SirGoodenough
   description: >
     This is Blueprint is provided as a helper for people using the
@@ -335,7 +335,7 @@ variables:
   mf: 'SirGoodenough'
   mdl: 'Octoprint_Discovery_Helper'
   sa: 'home'
-  sw: '2023-04-12'
+  sw: '2023-08-07'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
   cu: 'https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826'
   # Button Parameters for MQTT Discovery

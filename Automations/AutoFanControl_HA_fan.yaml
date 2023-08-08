@@ -1,5 +1,5 @@
 blueprint:
-  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_HA_fan-2023-07-19
+  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_HA_fan-2023-08-07
   author: SirGoodenough
   description: >
     This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)

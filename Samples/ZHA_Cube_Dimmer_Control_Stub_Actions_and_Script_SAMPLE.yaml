@@ -54,7 +54,8 @@ cube_dimmer_control:
       selector:
         entity:
           multiple: false
-          domain: light
+          filter:
+            domain: light
   sequence:
     - service: light.turn_on
       data:

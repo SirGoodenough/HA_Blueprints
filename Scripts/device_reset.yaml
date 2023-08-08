@@ -1,0 +1,54 @@
+blueprint:
+  name: device_reset_script - 2023.08.07
+  author: SirGoodenough
+  domain: script
+  homeassistant:
+    min_version: 2023.8.0
+  # source_url: 
+  description: >
+    This script was invented to be used with my Device Tracker-Monitor-Notifier
+    Blueprint. I released it as a standalone Script Blueprint because I saw
+    an opportunity to add another tool to my toolbox, and possibly to others
+    toolboxes
+    There are other places in my HA config where I need to reset something 
+    and now I can use this thing.
+
+  input:
+    target_entity:
+      name: The thing to toggle
+      description: The Switch or Boolean or whatever that you want to toggle
+        with a delay.
+      selector:
+        entity:
+          multiple: true
+    time_off:
+      name: How long the thing should be off 
+      description: >
+        How long the thing should be off to make certain it gets a
+        proper reset. I'm defaulting at 30 seconds,
+        but anything is reasonable depending on the device.
+        After the delay the thing will be turned back on.
+      default:
+        days: 0
+        hours: 0
+        minutes: 0
+        seconds: 59
+      selector:
+        duration:
+          enable_day: true
+
+sequence:
+  - alias: Turn off the device
+    service: homeassistant.turn_off
+    data: {}
+    target:
+      entity_id: !input target_entity
+  - delay: !input time_off
+  - alias: Turn on the device
+    service: homeassistant.turn_on
+    data: {}
+    target:
+      entity_id: !input target_entity
+icon: mdi:restart-alert
+mode: queued
+max: 10

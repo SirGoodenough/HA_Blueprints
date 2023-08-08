@@ -42,7 +42,8 @@ cube_dimmer_control:
       selector:
         entity:
           multiple: false
-          domain: media_player
+          filter:
+            domain: media_player
     angle:
       name: Angle to represent new volume
       description: >

@@ -2,6 +2,12 @@
 
 ## 📑 Changelog
 
+* **2023-08-07**: Updates for Home Assistant 2023.8
+* * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.md) FOR IMPORTANT UPDATE INSTRUCTIONS
+* * Selector syntax change
+* * Condition Selector addition (where applicable)
+* * MQTT Discovery name changes (where applicable)
+* * Clean-up code formatting
 * **2022-03-01-A**: Beef-up the note not to use spaces and non alpha in MQTT topics.
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2023-01-26-1**: Add in the forgotten Scene Mode Hold function

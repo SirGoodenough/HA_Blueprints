@@ -217,7 +217,8 @@ script:
         selector:
           entity:
             multiple: true
-            domain: media_player
+            filter:
+              domain: media_player
     sequence:
       - service: tts.cloud_say
         data:

@@ -1,5 +1,5 @@
 blueprint:
-  name: Tasmota EZ-Button for Update and Restart All 2023-05-01
+  name: Tasmota EZ-Button for Update and Restart All 2023-08-07
   author: SirGoodenough
   description: >
     ## 🧿 This will create 3 buttons to help you. 🧿  
@@ -189,7 +189,7 @@ variables:
   mf: 'SirGoodenough'
   mdl: 'Home Assistant EZ Buttons for Tasmota'
   sa: 'home'
-  sw: '2023-05-01'
+  sw: '2023-08-07'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml'
   cu: 'https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934'
 

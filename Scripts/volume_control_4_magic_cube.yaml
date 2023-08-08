@@ -1,5 +1,5 @@
 blueprint:
-  name: volume_control_4_magic_cube_and_other_things - 2023-07-23
+  name: volume_control_4_magic_cube_and_other_things - 2023-08-07
   author: SirGoodenough
   domain: script
   homeassistant:
@@ -88,7 +88,8 @@ fields:
     selector:
       entity:
         multiple: false
-        domain: media_player
+        filter:
+          domain: media_player
 
 variables:
     # Get the sensitivity input

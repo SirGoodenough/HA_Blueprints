@@ -2,6 +2,11 @@ This blueprint monitors a humidity sensor & by determining the error from the go
 
 ## 📑 Changelog
 
+* **2023-08-07**: Updates for Home Assistant 2023.8
+* * Selector syntax change
+* * Condition Selector addition (where applicable)
+* * MQTT Discovery name changes (where applicable)
+* * Clean-up code formatting
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2023-02-92**: Add wait-to-send interrupt & new entity power_1
 * * Fix extraction of current humidity

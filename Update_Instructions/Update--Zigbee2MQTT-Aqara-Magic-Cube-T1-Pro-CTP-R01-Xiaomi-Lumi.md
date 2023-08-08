@@ -1,4 +1,4 @@
-# Update NewRev from 2022-03-01-A
+# Update 2023-08-07 from 2022-03-01-A
 
 Home Assistant changed the naming convention of Discovery MQTT entries in the back end. In order to facilitate that change, a new entity for the side number storage is required.
 

@@ -1,5 +1,5 @@
 blueprint:
-  name: Keypad 5 button cypher to turn on something - 2023-03-01
+  name: Keypad 5 button cypher to turn on something - 2023-08-07
   author: SirGoodenough
   description: >
     This will accept any 5 button presses or ```Binary Sensor``` detections and

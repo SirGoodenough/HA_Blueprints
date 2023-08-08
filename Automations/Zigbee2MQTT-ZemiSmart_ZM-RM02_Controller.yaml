@@ -1,5 +1,5 @@
 blueprint:
-  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2023-07-17
+  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2023-08-07
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 18

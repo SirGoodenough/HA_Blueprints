@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube ZHA - 2023-03-01
+  name: Aqara Magic Cube ZHA - 2023-08-07
   author: SirGoodenough
   description: >
     This Blueprint uses a Z2M Event Sensor to sort out the 38(+54)
