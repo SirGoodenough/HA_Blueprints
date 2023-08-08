@@ -100,6 +100,10 @@ Once you have the entities created or decided upon you can build the Automation.
 > 
 ![Sample UI Data entry screen with optional notification_id.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/ui_sample_screen.png?raw=true "Sample UI Data entry screen with optional notification_id")
 
+## 🦿 **Device Reset**
+
+As I was making this, I decided that instead of re-writing the code and timing to 'reset' a stuck device, why not make a BP to do that for me. So I did. Here's a script blueprint that accepts an entity name and a delay time, will take that and shut something off, wait the delay, and turn it back on. How about that for a shortcut for you?  [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fdevice_reset.yaml)
+
 ## 📩 **Version Updates**
 
 Updates will be published on my [GIT repository](https://github.com/SirGoodenough/HA_Blueprints) with the rest of my Home Assistant Blueprint collection.
