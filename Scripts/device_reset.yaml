@@ -4,7 +4,7 @@ blueprint:
   domain: script
   homeassistant:
     min_version: 2023.8.0
-  # source_url: 
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/device_reset.yaml
   description: >
     This script was invented to be used with my Device Tracker-Monitor-Notifier
     Blueprint. I released it as a standalone Script Blueprint because I saw
@@ -25,7 +25,7 @@ blueprint:
       name: How long the thing should be off 
       description: >
         How long the thing should be off to make certain it gets a
-        proper reset. I'm defaulting at 30 seconds,
+        proper reset. I'm defaulting at 59 seconds,
         but anything is reasonable depending on the device.
         After the delay the thing will be turned back on.
       default:
