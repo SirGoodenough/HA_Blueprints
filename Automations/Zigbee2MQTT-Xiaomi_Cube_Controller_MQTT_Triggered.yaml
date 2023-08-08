@@ -655,15 +655,6 @@ trigger:
   - platform: mqtt
     topic: !input topic
 
-condition:
-  - condition: template
-    value_template: '{{ trigger.payload_json is defined and 
-      trigger.payload_json.action is defined and 
-      trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
-      ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
-  - alias: User pick
-    condition: !input additional_conditions
-
 variables:
     # Get the action command.
   action: '{{ trigger.payload_json.action }}'
@@ -712,6 +703,15 @@ variables:
     # Set Topics once
   config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
   topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
+
+condition:
+  - condition: template
+    value_template: '{{ trigger.payload_json is defined and 
+      trigger.payload_json.action is defined and 
+      trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
+      ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
+  - alias: User pick
+    condition: !input additional_conditions
 
 action:
 - alias: Make number helper to store last side

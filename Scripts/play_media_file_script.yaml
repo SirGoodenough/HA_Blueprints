@@ -65,7 +65,8 @@ fields:
     selector:
       entity:
         multiple: true
-        domain: media_player
+        filter:
+          domain: media_player
   otf_file_2_play:
     name: on-the-fly Media File to play
     description: This will change the default sound file on-the-fly

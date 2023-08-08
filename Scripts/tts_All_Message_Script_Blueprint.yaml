@@ -347,7 +347,7 @@ blueprint:
             - my
             - ne
             - nl
-            - no
+            - "no"
             - ny
             - om
             - or
@@ -584,7 +584,8 @@ fields:
     selector:
       entity:
         multiple: true
-        domain: media_player
+        filter:
+          domain: media_player
 
 variables:
     # Do something before sending the TTS
