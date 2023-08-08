@@ -111,6 +111,9 @@ Requirements
     mqtt_fan_topic/name: Fan Topic
         (#10) This is the MQTT Topic needed to change the fan speed.
 
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
 
 ## 👀 ✈️ Extended Information
 

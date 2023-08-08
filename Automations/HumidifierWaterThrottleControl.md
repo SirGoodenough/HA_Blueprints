@@ -72,6 +72,10 @@ Requirements
         switch. It is also used in the formula to calculate the time sent 
         to the switch.
 
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+
 ## 👀 Where is My MQTT Topic?
 
 This Blueprint needs to send the time value to var2 in your sonoff SV. On my system the MQTT topic to do this is ```cmnd/humidifier/var2```. Yours will be something similar. In order to determine exactly what your topic will be, follow these instructions.

@@ -87,6 +87,10 @@ Requirements
         Change options if you want to include or exclude any specific day.
         All days are selected by default.
 
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+
 ## 👀 Installation example
 
 Once you have the entities created or decided upon you can build the Automation. To build the automation:  

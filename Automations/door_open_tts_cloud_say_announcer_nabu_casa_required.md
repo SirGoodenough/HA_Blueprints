@@ -83,6 +83,10 @@ Requirements
         The minimum number of seconds needed before AND between between
         announcements.
 
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+
 ### 🧬 Walk-thru:
 
 > 1. The header of the Blueprint contains the required info plus the URL from where it came from.

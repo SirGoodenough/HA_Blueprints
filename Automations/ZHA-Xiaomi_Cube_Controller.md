@@ -59,6 +59,10 @@ Requirements
 
     cube/name: Aqara Cube
         Select the Aqara Cube device
+
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
 ______________
 
     shake:

@@ -75,6 +75,10 @@ Requirements
         Time output signal is on in seconds.
         Generally 5 seconds is good here.
 
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+
 ## 👀 ✈️ Extended Information
 
 > The binary sensors can be the inputs from a device like I have OR it can be existing devices. For instance if you want to walk into your back porch and use the PIR as button one, then in sequence you trigger the freezer door, the light switch on the wall, the doorbell, and the fridge door, then that can be your door unlock sequence. No keypad needed! 

@@ -54,6 +54,10 @@ If you do not see that sensor, 'LegacyAPI' might not be selected in the Zigbee2M
         The entity to put here is the sensor that Z2M imported that is
         named like this ->  ```sensor.XXYour_HameXX_action```'
 
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+
     tap_1:
       name: Single click on Button 1 action
 

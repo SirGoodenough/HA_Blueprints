@@ -118,6 +118,10 @@ After this find the topic again the same way as above and it should work.
 
     topic/name: Topic
         The main MQTT Topic for your cube. 
+
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
 ______________
 
     shake:

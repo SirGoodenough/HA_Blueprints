@@ -93,6 +93,10 @@ Requirements
         Change options if you want to include or 
         exclude any specific day.
 
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+
 ## 👀 ✈️ Extended Information
 
 For further information, reference these links.
