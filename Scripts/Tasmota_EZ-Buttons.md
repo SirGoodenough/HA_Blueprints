@@ -3,6 +3,7 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 ## 📑 Changelog
 
 * **2023-08-07**: Updates for Home Assistant 2023.8
+* * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Tasmota_EZ-Buttons.md) FOR IMPORTANT UPDATE INSTRUCTIONS
 * * Selector syntax change
 * * Condition Selector addition (where applicable)
 * * MQTT Discovery name changes (where applicable)
