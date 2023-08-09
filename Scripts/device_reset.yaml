@@ -10,8 +10,17 @@ blueprint:
     Blueprint. I released it as a standalone Script Blueprint because I saw
     an opportunity to add another tool to my toolbox, and possibly to others
     toolboxes
+
     There are other places in my HA config where I need to reset something 
     and now I can use this thing.
+
+    It asks for the entity or list of entities that you want to reset and how
+    long you want them to be off for the reset.
+
+    When a Script using this Blueprint is called, it will use Homeassistant
+    turn off to shut them off, wait the delay, then turn them back on.
+    Simple Simple, but if you are doing it over and over in an automation,
+    this cleans up the code quite a bit.
 
   input:
     target_entity:

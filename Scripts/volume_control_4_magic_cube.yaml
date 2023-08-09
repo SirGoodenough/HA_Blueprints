@@ -38,16 +38,20 @@ blueprint:
     you need it.
 
       Sample call / use of this script for ZHA:
+        ```yaml
         - service: script.cube_dimmer_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
             mp: media_player.farg
+        ```
 
       Sample call / use of this script for Z2M:
+        ```yaml
         - service: script.cube_dimmer_control_bp
           data:
             angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
             mp: media_player.farg
+        ```
 
   input:
     scalar:
