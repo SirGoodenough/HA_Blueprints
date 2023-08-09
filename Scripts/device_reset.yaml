@@ -50,5 +50,4 @@ sequence:
     target:
       entity_id: !input target_entity
 icon: mdi:restart-alert
-mode: queued
-max: 10
+mode: parallel
