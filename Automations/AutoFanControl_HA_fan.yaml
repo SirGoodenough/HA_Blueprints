@@ -221,7 +221,7 @@ blueprint:
       description: >
         (#13) This is a request by users.
 
-        This number can be positive or negative and is be an offset applied against
+        This number must be zero or negative and is be an offset applied against
         the Room Target Temperature for turning the fan off. It essentually allows
         the fan shut-off temp to be different from the fan turn-on temp.
 
@@ -232,7 +232,7 @@ blueprint:
       selector:
         number:
           min: -10.0
-          max: 10.0
+          max: 0
           unit_of_measurement: Degrees
           mode: slider
           step: 0.1
