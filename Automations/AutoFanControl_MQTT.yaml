@@ -110,7 +110,7 @@ blueprint:
       selector:
         number:
           min: 1.0
-          max: 20.0
+          max: 100.0
           unit_of_measurement: Degrees
           mode: slider
           step: 0.1
@@ -126,8 +126,8 @@ blueprint:
       default: 2.0
       selector:
         number:
-          min: 1.0
-          max: 20.0
+          min: 2.0
+          max: 100.0
           unit_of_measurement: Degrees
           mode: slider
           step: 0.1
