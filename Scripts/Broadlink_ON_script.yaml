@@ -1,7 +1,8 @@
 blueprint:
-  name: Broadlink_ON_script_2023-03-01
+  name: Broadlink_ON_script_2023-08-07
   author: SirGoodenough
-  description: "A script that gets my TV on and Reciever set-up to correct mode.
+  description: >
+    A script that gets my TV on and Reciever set-up to correct mode.
 
     📩 There is not an official version control system for Blueprints. However I have
     found something that comes pretty close. It is not perfect, but for **MOST**
@@ -9,11 +10,11 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755)"
+    [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-turn-my-tv-on-and-put-it-into-the-correct-mode-for-the-input-device-i-want/338755)
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.yaml
   domain: script
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     adapter_power:
       name: Turn on the smart plug that powers the adapter
@@ -22,7 +23,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: switch
+          filter:
+            - domain: switch
     reciever_power:
       name: Reciever Power
       description: Turn the Reciever Device ON
@@ -30,7 +32,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     tv_power:
       name: TV Power
       description: Turn the TV Device ON
@@ -38,17 +41,19 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     tv_mode:
       name: TV Input Mode
       description: Select the feed into the TV. Clicked after the OTA mode below.
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     tv_ota_mode:
       name: OTA Input Mode
-      description: 
+      description: >
         Select the Over The Air TV mode to put the TV Mode into a known state. 
         Note- My TV uses multiple presses to select some inputs, so this is needed in my case.
         You may not need this. Adjust sequence accordingly...
@@ -56,14 +61,16 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     reciever_input:
       name: Reciever Input
       description: Turn the Reciever Input to the correct adapter line
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     reciever_out_mode:
       name: Reciever Speaker Out Mode
       description: Turn the Reciever Speakers into the desired output mode
@@ -71,7 +78,8 @@ blueprint:
       selector:
         entity:
           multiple: true
-          domain: script
+          filter:
+            - domain: script
     cooldown:
       name: Cooldown
       description: The between IR Blasts...
@@ -83,7 +91,7 @@ blueprint:
           unit_of_measurement: seconds
           step: 0.5
           mode: slider
-mode: queued
+
 sequence:
   - service: switch.turn_on
     target:
@@ -111,3 +119,7 @@ sequence:
   - service: script.turn_on
     target:
       entity_id: !input 'tv_mode'
+
+mode: queued
+icon: mdi-remote-tv
+max: 5

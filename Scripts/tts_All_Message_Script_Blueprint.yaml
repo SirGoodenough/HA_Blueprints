@@ -1,7 +1,8 @@
 blueprint:
-  name: TTS_say_Message-2023-04-15
+  name: TTS_say_Message-2023-08-07
   author: SirGoodenough
-  description: '📣 This is a script that can use any of the 11 integrated TTS Platforms
+  description: >
+    📣 This is a script that can use any of the 11 integrated TTS Platforms
     in Home Assistant to send a message to a media player. Some will require Google
     Type Speakers, some will require Non-Google type speakers.
 
@@ -62,15 +63,15 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)
-    '
+
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   domain: script
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     b4_action:
       name: Action before TTS
-      description:
+      description: >
         This is intended to add a volume control action or whatever you want
         to do before sending the TTS message
       default: []
@@ -78,7 +79,7 @@ blueprint:
         action: {}
     after_action:
       name: Action after TTS
-      description:
+      description: >
         This is intended to add a volume control action or whatever you want
         to do after sending the TTS message
       default: []
@@ -86,10 +87,10 @@ blueprint:
         action: {}
     TTS:
       name: Text to Speech Processor
-      description:
-        "Required on ALL *_say platforms. Select the configured TTS engine
-        for media_player notifications. SEE for details: ( https://www.home-assistant.io/integrations/#text-to-speech
-        )"
+      description: >
+        ### Required on ALL \*_say platforms
+
+        Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
       selector:
         select:
           options:
@@ -108,39 +109,50 @@ blueprint:
           multiple: false
     announcement_message:
       name: Spoken Message
-      description: "Required on ALL *_say platforms. Type your message here:"
+      description: >
+        ### Required on ALL \*_say platforms
+
+        Type your message here:
       default: '{{ ("Random test one","Random test two","Random test three") | random }}'
       selector:
         text:
           multiline: true
     speaker_target:
       name: Entity(s) to speak thru
-      description:
-        Required on ALL *_say platforms. Be sure to select the correct
-        type / brand of device for the TTS you are using. Not All speakers work with
-        all TTS engines
+      description: >
+        ### Required on ALL \*_say platforms
+
+        Be sure to select the correct type / brand of device for the TTS you are using. 
+        Not All speakers work with all TTS engines
       selector:
         entity:
           multiple: true
-          domain: media_player
+          filter:
+            - domain: media_player
     speaker_gender:
       name: Speaker Gender
-      description:
-        Used on most *_say platforms. Select speaker gender male or female.
+      description: >
+        ### Required on MOST \*_say platforms
+
+        Select speaker gender male or female.
         May not work with all TTS engines.
       default: []
       selector:
         select:
           options:
-            - female
-            - male
+          - label: Female
+            value: female
+          - label: Male
+            value: male
+          - label: Neutral (Does not work on all flavors)
+            value: neutral
           custom_value: false
           multiple: false
     baidu_person:
       name: Baidu Person Code
-      description:
-        Used only on most tts_baidu_say platform. This is the voice code
-        of the speaker.
+      description: >
+        Used only on tts_baidu_say platform. [More Info here.](https://www.home-assistant.io/integrations/baidu/)
+        This is the voice code of the speaker.
       default: []
       selector:
         select:
@@ -158,12 +170,13 @@ blueprint:
           multiple: false
     cloud_language:
       name: TTS Cloud Language
-      description:
-        "This is for Nabu-Casa tts.cloud_say & tts.google_cloud_say. Select
-        Language code. See-> ( https://www.nabucasa.com/config/tts ) This defaults
-        to en-US as english/US. However all the languages available on 2021-12-24
-        were put into the pick list. NOTE: It is possible that not all Languages will
-        give you both Genders."
+      description: >
+        This is for Nabu-Casa tts.cloud_say & tts.google_cloud_say. Select
+        Language code. [See this.](https://www.nabucasa.com/config/tts) This defaults
+        to en-US as english/US. All the languages available on 2023-7-17
+        were put into the pick list. 
+        
+        *NOTE: It is possible that not all Languages will give you both Genders.*
       default: []
       selector:
         select:
@@ -185,6 +198,7 @@ blueprint:
             - en-IE
             - en-GB
             - en-US
+            - et-EE
             - fi-FI
             - fr-CA
             - fr-FR
@@ -221,88 +235,171 @@ blueprint:
           multiple: false
     Google_Cloud_Voice:
       name: Google Cloud Voice Code
-      description:
-        'Used only with tts.google_cloud_say platform. Pick from here-
-        ( https://cloud.google.com/text-to-speech/docs/voices ) This is the voice
-        code of the speaker. The default is: "en-US-Wavenet-F". Refer to ( https://www.home-assistant.io/integrations/google_cloud
-        ) for more information.'
+      description: >
+        Used only with tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/voices)
+        This is the voice code of the speaker. The default is: "en-US-Wavenet-F". 
+        [Refer here](https://www.home-assistant.io/integrations/google_cloud) for more information.
       default: []
     Google_Cloud_Profile:
       name: Google Cloud Profile
-      description:
-        Used only on most tts.google_cloud_say platform. Pick from here-
-        ( https://cloud.google.com/text-to-speech/docs/audio-profiles ) This is a
-        parameter to match the output to the sound of the speaker. Refer to ( https://www.home-assistant.io/integrations/google_cloud
-        ) for more information.
+      description: >
+        Used only on tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/audio-profiles)
+        This is a parameter to match the output to the sound of the speaker. [Refer here](https://www.home-assistant.io/integrations/google_cloud)
+        for more information.
       default: []
       selector:
         select:
           options:
-            - headphone-class-device
-            - large-automotive-class-device
-            - large-home-entertainment-class-device
-            - medium-bluetooth-speaker-class-device
-            - small-bluetooth-speaker-class-device
-            - telephony-class-application
             - wearable-class-device
+            - handset-class-device
+            - headphone-class-device
+            - small-bluetooth-speaker-class-device
+            - medium-bluetooth-speaker-class-device
+            - large-home-entertainment-class-device
+            - large-automotive-class-device
+            - telephony-class-application
           custom_value: false
           multiple: false
     GTS_language:
       name: TTS Google Translate Say Language
-      description:
+      description: >
         This is for tts.google_translate_say only. Check the complete list
-        of [supported languages] for allowed values. ( https://cloud.google.com/text-to-speech/docs/voices
-        ) The 2 letter lead acronym [example- en for english] is all that is used
-        here. The 3 letter ones do not work...] This defaults to en [english]
+        of [supported languages](https://cloud.google.com/text-to-speech/docs/voices) for allowed values.
+        The 2 letter lead acronym [example- en for english] is all that is used
+        here. The >2 letter ones do not work...]  All the languages available on 2023-7-17
+        were put into the pick list.
+        
+        This defaults to ```en``` [english]
       default: en
       selector:
         select:
           options:
             - af
+            - ak
+            - am
             - ar
+            - as
+            - ay
+            - az
+            - be
             - bg
+            - bm
             - bn
+            - bs
             - ca
-            - ca
+            - co
+            - cs
+            - cy
             - da
             - de
+            - dv
+            - ee
             - el
             - en
+            - eo
             - es
+            - et
+            - eu
+            - fa
+            - fi
             - fr
+            - fy
+            - ga
+            - gd
+            - gl
+            - gn
             - gu
+            - ha
             - hi
+            - hr
+            - ht
             - hu
+            - hy
             - id
+            - ig
             - is
             - it
             - ja
+            - jv
+            - jw
+            - ka
+            - kk
+            - km
             - kn
             - ko
+            - ku
+            - ky
+            - la
+            - lb
+            - lg
+            - ln
+            - lo
+            - lt
             - lv
+            - mg
+            - mi
+            - mk
             - ml
+            - mn
+            - mr
             - ms
-            - nb
+            - mt
+            - my
+            - ne
             - nl
+            - "no"
+            - ny
+            - om
+            - or
             - pa
             - pl
+            - ps
             - pt
+            - qu
             - ro
             - ru
+            - rw
+            - sa
+            - sd
+            - si
             - sk
+            - sl
+            - sm
+            - sn
+            - so
+            - sq
             - sr
+            - st
+            - su
             - sv
+            - sw
             - ta
             - te
+            - tg
             - th
+            - ti
+            - tk
+            - tl
             - tr
+            - ts
+            - tt
+            - ug
             - uk
+            - ur
+            - uz
             - vi
-          custom_value: false
+            - xh
+            - yi
+            - yo
+            - zu
+          custom_value: true
           multiple: false
     marytts_language:
       name: Language option for tts.marytts_say
-      description: "Used only on tts.marytts_say. Select speaker Language:"
+      description:  >
+        Used only on tts.marytts_say. [More Info Here](https://www.home-assistant.io/integrations/marytts)
+        All the languages available on 2023-7-17 were put into the pick list.
+        Select speaker Language:
       default: []
       selector:
         select:
@@ -321,7 +418,10 @@ blueprint:
           multiple: false
     picotts_language:
       name: Language option for tts.picotts_say
-      description: "Used only on tts.picotts_say. Select speaker Language:"
+      description: >
+        Used only on tts.picotts_say. [More Info Here](https://www.home-assistant.io/integrations/picotts)
+        All the languages available on 2023-7-17 were put into the pick list.
+        Select speaker Language:
       default: []
       selector:
         select:
@@ -336,9 +436,10 @@ blueprint:
           multiple: false
     voicerss_language:
       name: Language option for tts.voicerss_say
-      description:
-        Used only on tts.voicerss_say. Select speaker Language. SEE ( https://www.voicerss.org/api
-        ) for details.
+      description: >
+        Used only on tts.voicerss_say. [More Info Here](https://www.home-assistant.io/integrations/voicerss)
+        All the languages available on 2023-7-17 were put into the pick list.
+        Select speaker Language. [SEE for details](https://www.voicerss.org/api).
       default: []
       selector:
         select:
@@ -396,15 +497,16 @@ blueprint:
           multiple: false
     voicerss_format:
       name: Message format option for tts.voicerss_say
-      description:
-        Used only on tts.voicerss_say. Select message format. There were
-        too many to do a selector. SEE ( https://www.voicerss.org/api ) for details
+      description: >
+        Used only on tts.voicerss_say. Select message format. [More Info Here](https://www.home-assistant.io/integrations/voicerss)
+        There were too many to do a selector. [SEE for details](https://www.voicerss.org/api).
       default: []
     yandextts_language:
       name: Language option for tts.yandextts_say
-      description:
-        Used only on tts.yandextts_say. Select speaker Language. SEE (
-        https://www.home-assistant.io/integrations/yandextts ) for Details.
+      description: >
+        Used only on tts.yandextts_say. 
+        All the languages available on 2023-7-17 were put into the pick list.
+        Select speaker Language. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
       default: []
       selector:
         select:
@@ -417,9 +519,8 @@ blueprint:
           multiple: false
     yandextts_voice:
       name: Voice option for tts.yandextts_say
-      description:
-        Used only on tts.yandextts_say. Select speaker Voice. SEE ( https://www.home-assistant.io/integrations/yandextts
-        ) for Details.
+      description: >
+        Used only on tts.yandextts_say. Select speaker Voice. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
       default: []
       selector:
         select:
@@ -453,9 +554,8 @@ blueprint:
           multiple: false
     yandextts_emotion:
       name: Emotion option for tts.yandextts_say
-      description:
-        Used only on tts.yandextts_say. Select speaker Emotion. SEE ( https://www.home-assistant.io/integrations/yandextts
-        ) for Details.
+      description: >
+        Used only on tts.yandextts_say. Select speaker Emotion. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
       default: []
       selector:
         select:
@@ -465,12 +565,14 @@ blueprint:
             - good
           custom_value: false
           multiple: false
+
 fields:
   live_message:
     name: Live Message
     description: This will change the default message on-the-fly
     required: false
     example: This is where to put your message to be spoken
+    default: This is where to put your message to be spoken
     selector:
       text:
         multiline: true
@@ -482,7 +584,9 @@ fields:
     selector:
       entity:
         multiple: true
-        domain: media_player
+        filter:
+          domain: media_player
+
 variables:
     # Do something before sending the TTS
   my_b4_action: !input "b4_action"
@@ -490,15 +594,16 @@ variables:
   my_after_action: !input "after_action"
     # Get the Integration for templating
   my_tts: !input "TTS"
-    # Get the message to select default or live data
+    # Get the message to select from !input or live data
   announcement_message: !input "announcement_message"
   my_message: '{% if live_message %} {{ live_message }} {% else %} {{ announcement_message }} {% endif %}'
-    # Get the speaker to select default or live data
+    # Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
   my_speaker:  '{% if live_speaker %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}'
     # Get the value for templating
   baidu_person_val: !input "baidu_person"
   my_baidu_person: "{{ baidu_person_val | int(0) }}"
+
 sequence:
   - alias: Do something before the TTS Command
     if: "{{ not my_b4_action in ('none', 'null', 'unavailable', '') }}"
@@ -594,4 +699,6 @@ sequence:
   - alias: Do something after the TTS Command
     if: "{{ not my_after_action in ('none', 'null', 'unavailable', '') }}"
     then: !input "after_action"
+
 mode: queued
+icon: mdi-message-processing-outline

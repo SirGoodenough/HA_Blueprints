@@ -2,6 +2,11 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 
 ## 📑 Changelog
 
+* **2023-08-07**: Updates for Home Assistant 2023.8
+* * Selector syntax change
+* * Condition Selector addition (where applicable)
+* * MQTT Discovery name changes (where applicable)
+* * Clean-up code formatting
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
@@ -15,6 +20,10 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 ## 🔮 About this blueprint
 
 Type of blueprint: SCRIPT
+
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_script.md#contacts).
 
 Why do I need this?
 
@@ -115,7 +124,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Broadlink_ON_
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

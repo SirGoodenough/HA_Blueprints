@@ -2,6 +2,11 @@
 
 ## 📑 Changelog
 
+* **2023-08-07**: Updates for Home Assistant 2023.8
+* * Selector syntax change
+* * Condition Selector addition (where applicable)
+* * MQTT Discovery name changes (where applicable)
+* * Clean-up code formatting
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2023-01-19**: Add instructions for new cube version ```Cube T1 Pro``` Action mode setup in Docs.
 * * Add note that Drop is no longer available if using the ```Cube T1 Pro``` cube version.
@@ -23,6 +28,10 @@ If the only functions that you have available is rotate left/right and shake, yo
 ## 🔮 About this blueprint
 
 Type of blueprint: AUTOMATION
+
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA-Xiaomi_Cube_Controller.md#contacts).
 
 Why do I need this?
 
@@ -50,6 +59,10 @@ Requirements
 
     cube/name: Aqara Cube
         Select the Aqara Cube device
+
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
 ______________
 
     shake:
@@ -283,6 +296,23 @@ If you want to create the long / short rotation switch script file using a scrip
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Flong_short_toggle_4_magic_cube.yaml)
 
+## 🎧 Volume Control
+
+This script was invented to be used with my Magic Cube Blueprints. I released it as a standalone Script Blueprint because because of requests to extend the function of my BP's with how to convert cube rotation to volume in other places. Research found me this [Post from Petro](https://community.home-assistant.io/t/cant-seem-to-set-volume-level-based-on-itself-from-data-template/237089/11?u=sir_goodenough) which had a very elegant solution to the problem, It was very easy decision to adopt it here.
+
+[Code Examples are found in the Yaml file here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Samples/ZHA_Cube_Volume_Control_Stub_Actions_and_Script_SAMPLE.yaml)
+If you want to create the script file using a script BluePrint, I have that for you right here: [Dimmer Control BluePrint](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_4_magic_cube.yaml)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fvolume_4_magic_cube.yaml)
+
+* The script scales the angle number of the rotation angle (you can change this, but 30 works well for my needs).
+* You send the script the media_player that you want to adjust.
+* You use a template (examples in the script BP description) to send the angle to the script.
+* Some math happens and it uses the amount you turn the cube to adjust the volume.
+
+#### NOTICE when building action scripts...
+
+It has been found that some set-ups use ```trigger.payload_json.action_angle``` here and others only accept ```trigger.payload_json.angle``` here. I have not been able to determine which attributes are available in which version of firmware and/or configurations, so it is up to you to determine the one you need here. Look in the Device listing for this cube and determine which version of angle is one of the listed sensors. That would be the one to use here.
+
 ## Method to use Group 3 🍐 actions and not interfere with Group 1 🍎
 
 Not enough switch positions for you still?  **How about another posible 30 more?** 
@@ -336,7 +366,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA-Xiaom
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

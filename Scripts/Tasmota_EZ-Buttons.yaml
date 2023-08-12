@@ -1,7 +1,8 @@
 blueprint:
-  name: Tasmota EZ-Button for Update and Restart All 2023-05-01
+  name: Tasmota EZ-Button for Update and Restart All 2023-08-07
   author: SirGoodenough
-  description: "## 🧿 This will create 3 buttons to help you. 🧿  
+  description: >
+    ## 🧿 This will create 3 buttons to help you. 🧿  
 
     #### 1:
 
@@ -72,15 +73,16 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934)
-    "
+
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml
   domain: script
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     ez_update:
       name: EZ Update Button Tasmota
-      description: "This is the name of the button you want 
+      description: >
+        This is the name of the button you want 
         to use for updating ALL your Tasmota instances. 
         It will use the built-in groupTopics in Tasmota to send the update command 
         to all devices. 
@@ -92,16 +94,17 @@ blueprint:
         If you have a downloaded copy of a firmware file, you can change this value 
         to that path instead (Advanced Users). 
         'https://tasmota.github.io/docs/Upgrading/'  
-        Leaving it Blank will cause errors. "
+        Leaving it Blank will cause errors.
       default: "EZ Update Button Tasmota"
       selector:
         text:
     topic_format:
       name: Tasmota Topic Format
-      description: "The format of your Tasmota devides has a default that most people use:  
+      description: >
+        The format of your Tasmota devides has a default that most people use:  
         '%prefix%/%topic%/'. I personally however use something else. Everytime I modify this I have 
         found myself manually editing the code to work with my system so I have changed it to
-        be able to set it in the inputs. The default is set to the normal Tasmota default,"
+        be able to set it in the inputs. The default is set to the normal Tasmota default,
       default: '%prefix%/%topic%/'
       selector:
         select:
@@ -112,29 +115,32 @@ blueprint:
           multiple: false
     ez_canary:
       name: EZ Canary Button Tasmota
-      description: "This is the name of the button you want 
+      description: >
+        This is the name of the button you want 
         to use for the test new version select sample. I suggest use 5 or less 
         Tasmota devices for this list. 
         Leave this as 'not_selected' if you do not plan on using this feature. 
-        Leaving this Blank will cause errors. Will be converted to lower-case-chase"
+        Leaving this Blank will cause errors. Will be converted to lower-case-chase
       default: "not_selected"
       selector:
         text:
     ez_canary_grouptopic:
       name: The GroupTopic name for the EZ Canary Button
-      description: "This is the name you assigned to the GroupTopics in the devices 
+      description: >
+        This is the name you assigned to the GroupTopics in the devices 
         you chose as the first ones to recieve a firmware update. 
         This needs to be set-up by you in the Tasmota Console of the devices themselves. 
         Leave this blank if you are not using this feature. The button will be created, 
         but it won't do anything. Use lower_case_chase formatting on 
         this item and only numbers and letters. REQUIRED or this button will not be created.
-        Leaving this Blank will cause errors. Will be converted to lower-case-chase"
+        Leaving this Blank will cause errors. Will be converted to lower-case-chase
       default: "firsts"
       selector:
         text:
     ez_restart:
       name: EZ Restart Button Tasmota
-      description: "This is the name of the button you want 
+      description: >
+        This is the name of the button you want 
         to use for restarting all Tasmota devices. 
         Use this if you are having wierd problems and want to 
         restart them with a fresh boot. 
@@ -142,10 +148,11 @@ blueprint:
         to execute a minute or so after Home Assistant restarts. 
         It will update all the devices and pull fresh sensor and 
         state readings into HA so things are working right away when you start. 
-        Leaving this Blank will cause errors. Will be converted to lower-case-chase"
+        Leaving this Blank will cause errors. Will be converted to lower-case-chase
       default: "EZ Restart Button Tasmota"
       selector:
         text:
+
 variables:
   ez_update_v1: !input ez_update
   ez_canary_v1: !input ez_canary
@@ -179,16 +186,13 @@ variables:
     # Device Parameters for MQTT Discovery
   avty_t: 'homeassistant/status'
   ids: '{{ dv_id }}'
-  dname: '{{ dv_name }}'
   mf: 'SirGoodenough'
   mdl: 'Home Assistant EZ Buttons for Tasmota'
   sa: 'home'
-  sw: '2023-05-01'
+  sw: '2023-08-07'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.yaml'
   cu: 'https://community.home-assistant.io/t/script-blueprint-that-generates-3-ez-buttons-to-manage-your-tasmota-cluster/376934'
 
-mode: single
-max_exceeded: silent
 sequence:
 - choose:
   - alias: 'Don''t make this button unless these conditions are met:'
@@ -213,7 +217,7 @@ sequence:
               "dev_cla":"update",
               "dev": {
                 "ids": "{{ ids }}",
-                "name": "{{ dname }}",
+                "name": "{{ dv_name }}",
                 "mf": "{{ mf }}",
                 "mdl": "{{ mdl }}",
                 "sa": "{{ sa }}",
@@ -236,7 +240,7 @@ sequence:
         "dev_cla":"restart",
         "dev": {
           "ids": "{{ ids }}",
-          "name": "{{ dname }}",
+          "name": "{{ dv_name }}",
           "mf": "{{ mf }}",
           "mdl": "{{ mdl }}",
           "sa": "{{ sa }}",
@@ -259,7 +263,7 @@ sequence:
         "dev_cla":"update",
         "dev": {
           "ids": "{{ ids }}",
-          "name": "{{ dname }}",
+          "name": "{{ dv_name }}",
           "mf": "{{ mf }}",
           "mdl": "{{ mdl }}",
           "sa": "{{ sa }}",
@@ -270,3 +274,7 @@ sequence:
         "cmd_t": "{{ upgrade_topic }}",
         "payload_press": "1"
       }
+
+mode: single
+max_exceeded: silent
+icon: mdi-radiobox-marked

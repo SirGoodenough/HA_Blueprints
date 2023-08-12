@@ -182,7 +182,8 @@ script:
         selector:
           entity:
             multiple: true
-            domain: media_player
+            filter:
+              domain: media_player
       mess:
         name: Message
         description: This will set the message
@@ -206,13 +207,17 @@ script:
       gend:
         name: Gender
         description:
-          The genter, male or female, of the voice.
+          The gender, male, female, or other of the voice.
         required: false
         selector:
           select:
             options:
-              - female
-              - male
+            - label: Female
+              value: female
+            - label: Male
+              value: male
+            - label: Neutral (Does not work on all flavors)
+              value: neutral
     variables:
         # Define variable data and provide default (change 'entities' 4 your system)
       entities: media_player.intercom_group

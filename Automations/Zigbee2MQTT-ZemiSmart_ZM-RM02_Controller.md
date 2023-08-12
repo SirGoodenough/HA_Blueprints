@@ -2,6 +2,12 @@
 
 ## 📑 Changelog
 
+* **2023-08-07**: Updates for Home Assistant 2023.8
+* * Selector syntax change
+* * Condition Selector addition (where applicable)
+* * MQTT Discovery name changes (where applicable)
+* * Clean-up code formatting
+* **2023-07-17**: Adjust trigger-to statement
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
@@ -14,6 +20,10 @@
 ## 🔮 About this blueprint
 
 Type of blueprint: AUTOMATION
+
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.md#contacts).
 
 Why do I need this?
 
@@ -43,6 +53,10 @@ If you do not see that sensor, 'LegacyAPI' might not be selected in the Zigbee2M
     remote/name: Remote
         The entity to put here is the sensor that Z2M imported that is
         named like this ->  ```sensor.XXYour_HameXX_action```'
+
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
 
     tap_1:
       name: Single click on Button 1 action
@@ -139,7 +153,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQ
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

@@ -1,8 +1,9 @@
 blueprint:
-  name: Person Alert Monitor - 2023-05-11
+  name: Person Alert Monitor - 2023-08-07
   author: SirGoodenough
-  description: 'This BluePrint will monitor a person or
-    persons, and when they ''enter'' or ''leave'' the zone or zones you pick,
+  description: >
+    This BluePrint will monitor a person or
+    persons, and when they 'enter' or 'leave' the zone or zones you pick,
     it will trigger an action for both enter and leave phases.
     Yes, it will watch multiple people and multiple zones at the same time!
 
@@ -36,45 +37,50 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/person-alert-blueprint/542209)
-    '
+
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.yaml
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   domain: automation
   input:
     people2monitor:
       name: Person or People to follow
-      description: 'Select the Person you want this BP to trigger on for this action.
+      description: >
+        Select the Person you want this BP to trigger on for this action.
         Multiples are allowed.
-        '
+
       selector:
         entity:
           multiple: true
-          domain: person
+          filter:
+            - domain: person
     zone2monitor:
       name: Zone to watch
-      description: 'Select the Zone you want this BP to trigger on when this person
+      description: >
+        Select the Zone you want this BP to trigger on when this person
         enters or leaves it.
         Multiples are allowed.
-        '
+
       selector:
         entity:
           multiple: true
-          domain: zone
+          filter:
+            - domain: zone
     hold_period:
       name: Hold Period
-      description: 'Sometimes devices want to disconnect and connect often, 
+      description: >
+        Sometimes devices want to disconnect and connect often, 
         Home Assistant deals with this using a considered-on or considered-off time.
         This is the same thing.
 
-        Sometimes you don''t need anything here.
+        Sometimes you don't need anything here.
 
         I suggest you try the default 00:00:00 here and add time if you need it.
         Using this means the automation will be running the entire time period 
         that you select and will not be available for other triggers.
 
         This time is delay is not effective if automation is in parallel mode.
-        '
+
       default:
         hours: 0
         minutes: 0
@@ -83,8 +89,9 @@ blueprint:
         duration:
     enter_action:
       name: Enter the Zone Action
-      description: 'Build the action here that you want to happen when they enter
-        this zone. There is a ''Persistent Notification'' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
+      description: >
+        Build the action here that you want to happen when they enter
+        this zone. There is a 'Persistent Notification' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
 
         If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
 
@@ -92,53 +99,58 @@ blueprint:
 
         There is also a built-in [Actionable Notification Script Blueprint](https://github.com/home-assistant/core/blob/master/homeassistant/components/script/blueprints/confirmable_notification.yaml)
         that could work here. It is included with Home Assistant.
-        '
+
       default: []
       selector:
         action: {}
     leave_action:
       name: Leave the Zone Action
-      description: 'Build the action here that you want to happen when they leave
-        this zone. There is a ''Persistent Notification'' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
+      description: >
+        Build the action here that you want to happen when they leave
+        this zone. There is a 'Persistent Notification' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
 
         If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
 
         If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
-        '
+
       default: []
       selector:
         action: {}
     jump_action:
       name: Jump known zone to known zone Action
-      description: 'Build the action here that you want to happen when both the 
+      description: >
+        Build the action here that you want to happen when both the 
         zone they left and the zone they entered is known, but not the same zone.
-        There is a ''Persistent Notification'' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
+        There is a 'Persistent Notification' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
 
         If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
 
         If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
-        '
+
       default: []
       selector:
         action: {}
     enable_time:
       name: Time of day to begin action(s)
-      description: 'Set this for the time of day you want to allow action(s) to begin.
-        Leave as is to always be enabled.'
+      description: >
+        Set this for the time of day you want to allow action(s) to begin.
+        Leave as is to always be enabled.
       default: 00:00:00
       selector:
         time: {}
     disable_time:
       name: Time of day to end action(s)
-      description: 'Set this for the time of day you want action(s) to end.
-        Leave as is to always be enabled.'
+      description: >
+        Set this for the time of day you want action(s) to end.
+        Leave as is to always be enabled.
       default: 00:00:00
       selector:
         time: {}
     weekday:
       name: Day of the week to allow action(s)
-      description: 'Change options if you want to include or exclude any specific day.
-        All days are selected by default.'
+      description: >
+        Change options if you want to include or exclude any specific day.
+        All days are selected by default.
       default:
       - mon
       - tue
@@ -166,11 +178,31 @@ blueprint:
             value: sun
           custom_value: false
           multiple: true
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
 
 trigger: 
   - platform: state
     id: Persons state has changed
     entity_id: !input people2monitor
+
+variables:
+  people2monitor_var: !input people2monitor
+  zone2monitor_var: !input zone2monitor
+  friend_zone: >
+    {% set ns = namespace(zone=[]) %}
+    {% for z in zone2monitor_var %}
+    {% set ns.zone = ns.zone + [states[z].attributes.friendly_name | lower] %}
+    {% endfor %} 
+    {{ ns.zone }}
+  to_state: '{{ trigger.to_state.state | lower }}'
+  from_state: '{{ trigger.from_state.state | lower }}'
 
 condition:
   - alias: Make sure there even was a move
@@ -186,18 +218,8 @@ condition:
     after: !input 'enable_time'
     before: !input 'disable_time'
     weekday: !input 'weekday'
-
-variables:
-  people2monitor_var: !input people2monitor
-  zone2monitor_var: !input zone2monitor
-  friend_zone: >
-    {% set ns = namespace(zone=[]) %}
-    {% for z in zone2monitor_var %}
-    {% set ns.zone = ns.zone + [states[z].attributes.friendly_name | lower] %}
-    {% endfor %} 
-    {{ ns.zone }}
-  to_state: '{{ trigger.to_state.state | lower }}'
-  from_state: '{{ trigger.from_state.state | lower }}'
+  - alias: User pick
+    condition: !input additional_conditions
 
 action:
 - alias: Determine if there was an actionable event

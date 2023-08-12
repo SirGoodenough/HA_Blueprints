@@ -1,7 +1,8 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2022-03-01-A
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 22023-08-07
   author: SirGoodenough
-  description: 'This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
+  description: >
+    This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
     unique commands available from the Xiaomi Magic Cube Remote. (Some unique commands
     are available thru templating only. See the related document.)
 
@@ -82,24 +83,33 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203)
-    '
+
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     topic:
       name: Topic
-      description: 'The main MQTT Topic for your cube. 
+      description: >
+        The main MQTT Topic for your cube. 
         
         Details on finding the correct topic can be found here: 
         
         [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md#-to-make-the-blueprint-work-it-will-need)
-        '
+
       default: "zigbee2mqtt/?"
       selector:
         text:
           multiline: false
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
     slide_face_0:
       name: Group 1 actions 🍎 Slide the cube with face 0 up
       description: Face 0 is the one with the 'Aqara' LOGO
@@ -640,66 +650,70 @@ blueprint:
       default: []
       selector:
         action: {}
-mode: single
-max_exceeded: silent
+
 trigger:
   - platform: mqtt
     topic: !input topic
+
+variables:
+    # Get the action command.
+  action: '{{ trigger.payload_json.action }}'
+    # Get the angle.
+  angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
+    # Get the side.
+  side: '{{ trigger.payload_json.side }}'
+    # Get the operation_mode.
+  op_mode: '{{ trigger.payload_json.operation_mode }}'
+
+    # Get the topic as a variable.
+  topic_var: !input topic
+    # Generate the Friendly_name from the Topic.
+  friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9_/./-]", "") }}'
+    # Generate the device_id from the Friendly_name.
+  device_id: '{{ device_id( friendly_name ) }}'
+    # Pull out the ieee identifier.
+  ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
+    # Generate just the number for the ieee.
+  ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
+
+    # Set the name of the Number entity.
+  num_name: 'last side'
+    # Set the entity_id of the Number entity.
+  num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
+    # Get the value of this entity from HA
+  num_ha_val: '{{ states(num_ha_name) | default(0) | int(0) }}'
+
+    # Get the last_side for use in logic below.
+  last_side: '
+    {# The first time it will not be there, so make sure its 0 instead of undefined. #}
+    {% if not num_ha_val in (''none'', ''null'', ''unavailable'', '''') %}
+      {{ num_ha_val }}
+    {% else %}
+      0
+    {% endif %}'
+
+    # Set-up for Device parameters once
+  mdl: 'Number Helper for Z2M Cube Integration'
+  mf: 'SirGoodenough'
+  sa: 'house'
+  sw: '2023-08-07'
+  hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
+  cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
+
+    # Set Topics once
+  config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
+  topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
+
 condition:
   - condition: template
     value_template: '{{ trigger.payload_json is defined and 
       trigger.payload_json.action is defined and 
       trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
       ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
+  - alias: User pick
+    condition: !input additional_conditions
+
 action:
-- variables:
-      # Get the action command.
-    action: '{{ trigger.payload_json.action }}'
-      # Get the angle.
-    angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
-      # Get the side.
-    side: '{{ trigger.payload_json.side }}'
-
-      # Get the topic as a variable.
-    topic_var: !input topic
-      # Generate the Friendly_name from the Topic.
-    friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9]", "") }}'
-      # Generate the device_id from the Friendly_name.
-    device_id: '{{ device_id( friendly_name ) }}'
-      # Pull out the ieee identifier.
-    ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
-      # Generate just the number for the ieee.
-    ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
-
-      # Set the name of the Number entity.
-    num_name: '{{ friendly_name + '' last side'' }}'
-      # Set the entity_id of the Number entity.
-    num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
-      # Get the value of this entity from HA
-    num_ha_val: '{{ states(num_ha_name) | int(0) }}'
-
-      # Get the last_side for use in logic below.
-    last_side: '
-      {# The first time it will not be there, so make sure its 0 instead of undefined. #}
-      {% if not num_ha_val in (''none'', ''null'', ''unavailable'', '''') %}
-        {{ num_ha_val }}
-      {% else %}
-        0
-      {% endif %}'
-
-      # Set-up for Device parameters once
-    name: '{{ friendly_name + ''_Number_Helper''}}'
-    mdl: 'Number Helper for Z2M Cube Integration'
-    mf: 'SirGoodenough'
-    sa: 'house'
-    sw: '2022-03-01-A'
-    hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
-    cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
-
-      # Set Topics once
-    config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
-    topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
-
 - alias: Make number helper to store last side
   service: mqtt.publish
   data:
@@ -717,7 +731,7 @@ action:
         "mode": "box",
         "ret": true,
         "dev": {
-          "name": "{{ name }}",
+          "name": "{{ friendly_name }}",
           "mdl": "{{ mdl }}",
           "mf": "{{ mf }}",
           "sa": "{{ sa }}",
@@ -953,3 +967,6 @@ action:
 - alias: Delay ⏱ for debounce so toggle functions work. Also blueprint is in single
     mode.
   delay: 00:00:01
+
+mode: single
+max_exceeded: silent

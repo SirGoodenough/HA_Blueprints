@@ -2,6 +2,12 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 
 ## 📑 Changelog
 
+* **2023-08-07**: Updates for Home Assistant 2023.8
+* * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Tasmota_EZ-Buttons.md) FOR IMPORTANT UPDATE INSTRUCTIONS
+* * Selector syntax change
+* * Condition Selector addition (where applicable)
+* * MQTT Discovery name changes (where applicable)
+* * Clean-up code formatting
 * **2023-05-01**: Bug Fix missing commas
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
@@ -17,6 +23,10 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 ## 🔮 About this blueprint
 
 Type of blueprint: SCRIPT
+
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Buttons.md#contacts).
 
 Why do I need this?
 
@@ -130,7 +140,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Tasmota_EZ-Bu
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

@@ -1,7 +1,8 @@
 blueprint:
-  name: Media Player Script Blueprint 2023-03-01
+  name: Media Player Script Blueprint 2023-08-07
   author: SirGoodenough
-  description: "This provides a way to play canned media files with the big 
+  description: >
+    This provides a way to play canned media files with the big 
       long list of YAML entries but keep the main script or automation clean. 
       All that is required there would be a simple line like:  
         '- service: script.media_player_doorbell_sound'
@@ -12,50 +13,100 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988)"
+    [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988)
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml
   domain: script
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     speaker_target:
       name: Device(s) to send the file to
-      description: "Add the media_player that you want to play this on. 
+      description: >
+        Add the media_player that you want to play this on. 
         You can manually edit this to include multiple media players, or just
-        use the pick list to pick one."
+        use the pick list to pick one.
       selector:
         entity:
           multiple: true
-          domain: media_player
+          filter:
+            - domain: media_player
     file_2_play:
       name: Media File to play
-      description: "The file name needs to be put here. 
+      description: >
+        The file name needs to be put here. 
         Please include the path that is accessable to the media player. 
         A sample path may be 'media-source://media_source/local/sample_file.mp3'.
         See more information here: 
           (https://www.home-assistant.io/more-info/local-media/add-media/)
           (https://www.home-assistant.io/more-info/local-media/setup-media/)
-          (https://www.home-assistant.io/integrations/media_source/)"
+          (https://www.home-assistant.io/integrations/media_source/)
       default: "media-source://media_source/local/mp3/Door-chime-sound.mp3"
       selector:
         text:
     media_type:
       name: Media_Content_type
-      description: "This is where you match how the content is encoded with 
+      description: >
+        This is where you match how the content is encoded with 
         how the player will play it. Trial and error here can be your friend 
         unless you are much better at figuring this stuff out than me. 
         I generally only use 'audio/mp3' and occasionally 'image/jpg'. 
         More detailed information available here: 
           (https://www.home-assistant.io/integrations/cast/)
-          (https://developers.google.com/cast/docs/media/)"
+          (https://developers.google.com/cast/docs/media/)
       default: "audio/mp3"
       selector:
         text:
-mode: queued
+
+fields:
+  otf_speaker_target:
+    name: on-the-fly Device(s) to send the file to
+    description: Change the default media player on the fly
+    required: false
+    selector:
+      entity:
+        multiple: true
+        filter:
+          domain: media_player
+  otf_file_2_play:
+    name: on-the-fly Media File to play
+    description: This will change the default sound file on-the-fly
+    required: false
+    example: "media-source://media_source/local/mp3/Door-chime-sound.mp3"
+    default: "media-source://media_source/local/mp3/Door-chime-sound.mp3"
+    selector:
+      text:
+        multiline: false
+        type: text
+  otf_media_type:
+    name: on-the-fly Media_Content_type
+    description: This will change the default Media_Content_type on-the-fly
+    required: false
+    example: "audio/mp3"
+    default: "audio/mp3"
+    selector:
+      text:
+        multiline: false
+        type: text
+
+variables:
+    # Get the speaker to select from !input or live data
+  speaker_target: !input speaker_target
+  my_speaker: '{% if otf_speaker_target %} {{ otf_speaker_target }} {% else %} {{ speaker_target }} {% endif %}'
+    # Get the media file to select from !input or live data
+  file_2_play: !input file_2_play
+  my_file_2_play: '{% if otf_file_2_play %} {{ otf_file_2_play }} {% else %} {{ file_2_play }} {% endif %}'
+    # Get the media type to select from !input or live data
+  media_type: !input media_type
+  my_media_type: '{% if otf_media_type %} {{ otf_media_type }} {% else %} {{ media_type }} {% endif %}'
+
 sequence:
 - alias: Media Player Blueprint Script
   service: media_player.play_media
   data:
-    entity_id: !input 'speaker_target'
-    media_content_id: !input 'file_2_play'
-    media_content_type: !input 'media_type'
+    entity_id: "{{my_speaker}}"
+    media_content_id: "{{my_file_2_play}}"
+    media_content_type: "{{my_media_type}}"
+
+mode: queued
+icon: mdi-music-clef-bass
+max: 2

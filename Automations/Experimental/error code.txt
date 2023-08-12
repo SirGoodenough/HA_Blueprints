@@ -31,3 +31,5 @@ Calling Automation, generated 100% with GUI.:
         data: {}
         target:
           entity_id: light.cabinetlight
+
+test

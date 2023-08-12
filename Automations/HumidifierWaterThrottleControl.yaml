@@ -1,8 +1,7 @@
 blueprint:
-  name: Throttle-your-water-flow-tasmota-2023-03-01
+  name: Throttle-your-water-flow-tasmota-2023-08-07
   author: SirGoodenough
-  description: '
-
+  description: >
     This sets the amount of water sent to your Humidifier. 
     You provide a minimum time and maximum time you want the water to run and this will 
     send a time to the tasmota device controlling the water flow proportional to 
@@ -33,11 +32,11 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/humidifier-water-throttle-control/527583)
-    '
+
   domain: automation
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     humidifier:
       name: Humidifier Entity
@@ -47,24 +46,28 @@ blueprint:
           multiple: false
     humidity:
       name: Humidity Sensor Group
-      description: "Sensor that contains the current actual Humidity"
+      description: Sensor that contains the current actual Humidity
       selector:
         entity:
-          domain: sensor
+          filter:
+            - domain: sensor
           multiple: false
     power_1:
       name: Switch entity for switch 1 controlling the water
-      description: 'This needs to be the HA switch entity from the Sonoff SV 
+      description: >
+        This needs to be the HA switch entity from the Sonoff SV 
         that controls the water output valve so that this BP knows when the
         water is actually on.
-        '
+
       selector:
         entity:
-          domain: switch
+          filter:
+            - domain: switch
           multiple: false
     mqtt_topic:
       name: Topic to send the time value to the Tasmota device
-      description: 'This is the MQTT Topic needed.
+      description: >
+        This is the MQTT Topic needed.
       
         A topic such as this with your device top topic. We are setting var2 vi cmnd:
 
@@ -72,15 +75,16 @@ blueprint:
 
         You need to look at **YOUR device** and determine the exact correct topic
         to send to the broker to make yours work. See description file if you need more help.
-        '
+
       selector:
         text:
           multiline: false
     minimum_time:
       name: Floor for time value sent to Tasmota
-      description: 'Minimum number of seconds you will allow the water to run.
+      description: >
+        Minimum number of seconds you will allow the water to run.
         Defaults are set around a 2 minute Tasmota Cycle
-        '
+
       default: 10.0
       selector:
         number:
@@ -102,6 +106,26 @@ blueprint:
           unit_of_measurement: seconds
           mode: slider
           step: 0.1
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
+
+trigger:
+- platform: state
+  id: go if the humidifer was switched on or off
+  entity_id: !input 'humidifier'
+- platform: state
+  id: go if the humidifier set point changes
+  entity_id: !input 'humidifier'
+  attribute: humidity
+- platform: state
+  id: go if the humidity changes
+  entity_id: !input 'humidity'
 
 variables:
     # Convert !input to variable
@@ -123,31 +147,18 @@ variables:
     # Convert !input to variable
   power_1_var: !input power_1
 
-mode: single
-max_exceeded: silent
-
-trigger:
-- platform: state
-  id: go if the humidifer was switched on or off
-  entity_id: !input 'humidifier'
-- platform: state
-  id: go if the humidifier set point changes
-  entity_id: !input 'humidifier'
-  attribute: humidity
-- platform: state
-  id: go if the humidity changes
-  entity_id: !input 'humidity'
-
 condition:
-  condition: and
-  conditions:
-  - condition: state
-    alias: Make sure the integration is enabled
-    entity_id: !input 'humidifier'
-    state: 'on'
-  - condition: template
-    alias: Only if its calling for water
-    value_template: '{{ set_val > humidity_now_val }}'
+  - condition: and
+    conditions:
+    - condition: state
+      alias: Make sure the integration is enabled
+      entity_id: !input 'humidifier'
+      state: 'on'
+    - condition: template
+      alias: Only if its calling for water
+      value_template: '{{ set_val > humidity_now_val }}'
+  - alias: User pick
+    condition: !input additional_conditions
 
 action:
   - alias: "Wait until Humidifier is not sending water"
@@ -173,3 +184,6 @@ action:
   #     humidity_now_val: '{{ humidity_now_val }}'
   #     time_raw: '{{ time_raw }}'
   #     time_out: '{{ time_out }}'
+
+mode: single
+max_exceeded: silent

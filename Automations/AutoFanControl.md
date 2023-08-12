@@ -2,10 +2,16 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 
 ## 📑 Changelog
 
+* **2023-08-07**: Updates for Home Assistant 2023.8
+* * Selector syntax change
+* * Condition Selector addition (where applicable)
+* * MQTT Discovery name changes (where applicable)
+* * Clean-up code formatting
+* **2023-07-19**: Remove Helper on MQTT version
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-26**: BugFix. Time default no longer all zeros. Update default Tnx: [cappadanna](https://community.home-assistant.io/u/cappadanna)
 * **2022-12-12**: Add Update Method Note, minor code change.
-* * Name of Blueprint may have changed meaing you have to re-download with a new link.
+* * Name of Blueprint may have changed meaning you have to re-download with a new link.
 * * If name changed, it is similar. Variables have not changed.
 * **2022-05-15-A**: Minor code clean-up on Casting, no functional change.
 * * Updated AirCon Start Example code to include start AirCon only if warm enough in room.
@@ -25,6 +31,10 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 ## 🔮 About this blueprint
 
 Type of blueprint: AUTOMATION
+
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md#contacts).
 
 Why do I need this?
 
@@ -101,6 +111,9 @@ Requirements
     mqtt_fan_topic/name: Fan Topic
         (#10) This is the MQTT Topic needed to change the fan speed.
 
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
 
 ## 👀 ✈️ Extended Information
 
@@ -171,7 +184,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanCo
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

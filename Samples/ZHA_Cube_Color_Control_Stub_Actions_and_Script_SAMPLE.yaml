@@ -86,7 +86,8 @@ cube_color_control:
       selector:
         entity:
           multiple: false
-          domain: light
+          filter:
+            domain: light
     t_color:
       name: Target Color
       description:

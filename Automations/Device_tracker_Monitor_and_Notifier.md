@@ -2,6 +2,11 @@ This Blueprint monitors device_tracker entities that you choose & notifies you i
 
 ## 📑 Changelog
 
+* **2023-08-07**: Updates for Home Assistant 2023.8
+* * Selector syntax change
+* * Condition Selector addition (where applicable)
+* * MQTT Discovery name changes (where applicable)
+* * Clean-up code formatting
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-02-12**: Added 4 levels of optional delay to make this useful for firing restarts.
 * * Redid the Instruction file to new format.
@@ -16,6 +21,10 @@ This Blueprint monitors device_tracker entities that you choose & notifies you i
 ## 🔮 About this blueprint
 
 Type of blueprint: AUTOMATION
+
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.md#contacts).
 
 Why do I need this?
 
@@ -78,6 +87,10 @@ Requirements
         Change options if you want to include or exclude any specific day.
         All days are selected by default.
 
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+
 ## 👀 Installation example
 
 Once you have the entities created or decided upon you can build the Automation. To build the automation:  
@@ -90,6 +103,10 @@ Once you have the entities created or decided upon you can build the Automation.
 > 6. Write the yaml scripting to perform your own actions, or just use the persistent notification that's already written for you.
 > 
 ![Sample UI Data entry screen with optional notification_id.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/ui_sample_screen.png?raw=true "Sample UI Data entry screen with optional notification_id")
+
+## 🦿 **Device Reset**
+
+As I was making this, I decided that instead of re-writing the code and timing to 'reset' a stuck device, why not make a BP to do that for me. So I did. Here's a script blueprint that accepts an entity name and a delay time, will take that and shut something off, wait the delay, and turn it back on. How about that for a shortcut for you?  [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fdevice_reset.yaml)
 
 ## 📩 **Version Updates**
 
@@ -150,7 +167,7 @@ use_blueprint:
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

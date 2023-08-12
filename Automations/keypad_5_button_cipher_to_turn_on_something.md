@@ -3,7 +3,11 @@ ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q
 
 ## 📑 Changelog
 
-
+* **2023-08-07**: Updates for Home Assistant 2023.8
+* * Selector syntax change
+* * Condition Selector addition (where applicable)
+* * MQTT Discovery name changes (where applicable)
+* * Clean-up code formatting
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
 * * Name of Blueprint may have changed meaing you have to re-download with a new link.
@@ -19,6 +23,10 @@ ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q
 ## 🔮 About this blueprint
 
 Type of blueprint: AUTOMATION
+
+What if I am having problems getting it going?
+
+> You can contact me for help, [see the links below](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.md#contacts).
 
 Why do I need this?
 
@@ -66,6 +74,10 @@ Requirements
     on_timer/name: Lock On Time in Seconds
         Time output signal is on in seconds.
         Generally 5 seconds is good here.
+
+    additional_conditions:
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
 
 ## 👀 ✈️ Extended Information
 
@@ -145,7 +157,7 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_
 
 ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/README.md```
 
-## 🤹🏾‍♂️ Contact Links or see my other work
+## <a name="contacts">🤹🏾‍♂️ Contact Links or see my other work</a>
 
 What are we Fixing Today Homepage / Website: https://www.WhatAreWeFixing.Today/
 

@@ -1,7 +1,8 @@
 blueprint:
-  name: Keypad 5 button cypher to turn on something - 2023-03-01
+  name: Keypad 5 button cypher to turn on something - 2023-08-07
   author: SirGoodenough
-  description: "This will accept any 5 button presses or ```Binary Sensor``` detections and
+  description: >
+    This will accept any 5 button presses or ```Binary Sensor``` detections and
     use them to preform an action. RE open a lock, or whatever.
 
     📩 There is not an official version control system for Blueprints. However I have
@@ -10,62 +11,70 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385)"
+    [Community link for this blueprint](https://community.home-assistant.io/t/keypad-cipher-code-for-5-button-presses-before-you-turn-on-an-input-boolean/322385)
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.3.0
+    min_version: 2023.8.0
   input:
     button_one:
       name: Button Press One
       description: '```Binary Sensor``` for First Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     button_two:
       name: Button Press Two
       description: '```Binary Sensor``` for Second Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     button_three:
       name: Button Press Three
       description: '```Binary Sensor``` for Third Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     button_four:
       name: Button Press Four
       description: '```Binary Sensor``` for Forth Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     button_five:
       name: Button Press Five
       description: '```Binary Sensor``` for Fifth Button Pressed'
       selector:
         entity:
-          domain: binary_sensor
+          filter:
+            - domain: binary_sensor
           multiple: false
     lock_control:
       name: Buffer for the Final Lock Enable
       description: '```input_boolean``` - Final Enable to trigger your lock or action'
       selector:
         entity:
-          domain: input_boolean
+          filter:
+            - domain: input_boolean
           multiple: false
     seq_status:
       name: Control Sequence Status Placeholder
-      description: '```input_number``` - The internal use lock sequence number (set range
+      description: >
+        ```input_number``` - The internal use lock sequence number (set range
         to 0 to 100) You will need one of these for every copy of this automation,  IE
-        one for every lock code.'
+        one for every lock code.
       selector:
         entity:
-          domain: input_number
+          filter:
+            - domain: input_number
           multiple: false
     on_timer:
       name: Lock On Time in Seconds
@@ -79,13 +88,15 @@ blueprint:
           unit_of_measurement: seconds
           mode: slider
           step: 1.0
-variables:
-  seq_status_ent: !input 'seq_status'
-  seq_status_last: '{{ expand(seq_status_ent)[0].last_changed | as_timestamp }}'
-  seq_status_val: '{{ expand(seq_status_ent)[0].state }}'
-  tnow: '{{ as_timestamp(now()) }}'
-mode: single
-max_exceeded: silent
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: Home occupied, TV on, etc)
+      default: []
+      selector:
+        condition:
+
 trigger:
 - platform: state
   entity_id: !input 'button_one'
@@ -112,6 +123,15 @@ trigger:
   id: pad5
   from: 'off'
   to: 'on'
+
+variables:
+  seq_status_ent: !input 'seq_status'
+  seq_status_last: '{{ expand(seq_status_ent)[0].last_changed | as_timestamp }}'
+  seq_status_val: '{{ expand(seq_status_ent)[0].state }}'
+  tnow: '{{ as_timestamp(now()) }}'
+
+condition: !input additional_conditions
+
 action:
 - alias: Reset seq number to 99 if timeout occurred
   service: input_number.set_value
@@ -216,3 +236,6 @@ action:
   - alias: Shut it down on fail code
     service: input_boolean.turn_off
     entity_id: !input 'lock_control'
+
+mode: single
+max_exceeded: silent
