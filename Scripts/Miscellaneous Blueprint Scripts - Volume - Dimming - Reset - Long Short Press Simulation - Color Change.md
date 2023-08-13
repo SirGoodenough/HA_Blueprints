@@ -42,6 +42,65 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/device_reset.
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
+## 🔊 Volume Control 4 Magic Cube
+
+This script was invented to be used with my Magic Cube Blueprints. I released
+it as a standalone Script Blueprint because because of requests to extend the
+function of my BP's with how to convert cube rotation to volume in other places.
+Research found me this [Post from Petro](https://community.home-assistant.io/t/cant-seem-to-set-volume-level-based-on-itself-from-data-template/237089/11?u=sir_goodenough)
+which had a very elegant solution to the problem, It was very easy decision
+to adopt it here.
+
+
+To use this blueprint, install it from the source in the normal way.
+After that add your unique name for the Script, and add an icon and change
+the entity_id if desired.
+You should only need to run the blueprint once, as you will be calling the
+unique name/entity you added above to use the code and provide action data.
+This script has one !input in the Blueprint screen to set the sensitivity
+of the rotation to volume changes. 30 seemed about right, but adjust as
+needed.
+
+
+Because all the data is added to control the action live at each use this
+is the only !input.
+This requires you call this generated script wth 2 data values when you want
+it to run. One is a positive or negative number between 360 and -360 that in
+the original, represents the input angle from the cube movement.
+The other data point is the entity of the media_player that you are
+trying to control.
+
+
+***NOTE:*** the trigger variable below will be different for Z2M and ZHA
+and others. Look at my documentation for that cube integration help if
+you need it.
+
+Sample call / use of this script for ZHA:
+```yaml
+- service: script.cube_dimmer_control_bp
+    data:
+    angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
+    mp: media_player.farg
+```
+
+Sample call / use of this script for Z2M:
+```yaml
+- service: script.cube_dimmer_control_bp
+    data:
+    angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
+    mp: media_player.farg
+```
+
+### 📲 **Software to Download** 💾
+
+HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fvolume_control_4_magic_cube.yaml)
+
+Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml```
+
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml
+
+# Please Click the 🧡 at the end of this top Post if you find this Useful
+
 ## 🌈 Color Control 4 Magic Cube
 
 This script was invented to be used with my Magic Cube Blueprints. I released
@@ -207,65 +266,6 @@ HA link to download blueprint: [![Open your Home Assistant instance and show the
 Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml```
 
 https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml
-
-# Please Click the 🧡 at the end of this top Post if you find this Useful
-
-## 🔊 Volume Control 4 Magic Cube
-
-This script was invented to be used with my Magic Cube Blueprints. I released
-it as a standalone Script Blueprint because because of requests to extend the
-function of my BP's with how to convert cube rotation to volume in other places.
-Research found me this [Post from Petro](https://community.home-assistant.io/t/cant-seem-to-set-volume-level-based-on-itself-from-data-template/237089/11?u=sir_goodenough)
-which had a very elegant solution to the problem, It was very easy decision
-to adopt it here.
-
-
-To use this blueprint, install it from the source in the normal way.
-After that add your unique name for the Script, and add an icon and change
-the entity_id if desired.
-You should only need to run the blueprint once, as you will be calling the
-unique name/entity you added above to use the code and provide action data.
-This script has one !input in the Blueprint screen to set the sensitivity
-of the rotation to volume changes. 30 seemed about right, but adjust as
-needed.
-
-
-Because all the data is added to control the action live at each use this
-is the only !input.
-This requires you call this generated script wth 2 data values when you want
-it to run. One is a positive or negative number between 360 and -360 that in
-the original, represents the input angle from the cube movement.
-The other data point is the entity of the media_player that you are
-trying to control.
-
-
-***NOTE:*** the trigger variable below will be different for Z2M and ZHA
-and others. Look at my documentation for that cube integration help if
-you need it.
-
-Sample call / use of this script for ZHA:
-```yaml
-- service: script.cube_dimmer_control_bp
-    data:
-    angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
-    mp: media_player.farg
-```
-
-Sample call / use of this script for Z2M:
-```yaml
-- service: script.cube_dimmer_control_bp
-    data:
-    angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
-    mp: media_player.farg
-```
-
-### 📲 **Software to Download** 💾
-
-HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fvolume_control_4_magic_cube.yaml)
-
-Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml```
-
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
