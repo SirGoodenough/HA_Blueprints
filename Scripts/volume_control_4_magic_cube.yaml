@@ -99,13 +99,13 @@ variables:
     # Get the sensitivity input
   scalar_var: !input scalar
     # Apply scaler to the actual angle
-  delta: "{{ scalar_var * angle | default(0.1) | float(0.2) }}"
+  delta: "{{ scalar_var * angle | default(0.2) | float(0.3) }}"
 
 sequence:
   - service: media_player.volume_set
     data_template:
       volume_level: >-
-        {% set v = state_attr(mp, 'volume_level') %}
+        {% set v = state_attr(mp, 'volume_level') | float(0.4) %}
         {{ v + 0.0000625 * delta }}
     target:
         entity_id: "{{ mp }}"
