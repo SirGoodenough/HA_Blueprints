@@ -1,5 +1,5 @@
 blueprint:
-  name: volume_control_4_magic_cube_and_other_things - 2023-08-07
+  name: volume_control_4_magic_cube_and_other_things - 2023-08-07-A
   author: SirGoodenough
   domain: script
   homeassistant:
