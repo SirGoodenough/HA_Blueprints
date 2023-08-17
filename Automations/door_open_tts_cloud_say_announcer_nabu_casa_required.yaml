@@ -1,5 +1,5 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2023-08-07
+  name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2023-08-17
   author: SirGoodenough
   description: >
     This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
