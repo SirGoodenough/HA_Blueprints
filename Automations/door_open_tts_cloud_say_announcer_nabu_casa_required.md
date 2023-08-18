@@ -44,42 +44,50 @@ Requirements
 * 1 binary_sensor entities to sense the action you are announcing
 * 1 media_player, group of media _players, or list of media_players to send the words to
 * Pick a gender and language from https://www.nabucasa.com/config/tts/
+* Pick a voice from https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py
 
 ## 🗂 Input fields
 
-    people2monitor/name: Person or People to follow
+    people2monitor: Person or People to follow
         Select the Person you want this BP to trigger 
         on for this action. Multiples are allowed.
 
-    door_entity/name: 'Door Sensor (or any binary_sensor will do...)'
+    door_entity: 'Door Sensor (or any binary_sensor will do...)'
         Entity that causes the announcement. Actually any entity that 
         changes its state from off to on will work here, You would
         just need to enter the entity manually if it's not a
         binary sensor.
 
-    start_time/name: StartTime
+    start_time: StartTime
         Time of day you want to enable the announcement each day.
 
-    end_time/name: EndTime
+    end_time: EndTime
         Time of day you want to disable the announcement each day. 
 
-    speaker_target/Speaker
+    speaker_target: Speaker
         Entity to announce event on
 
-    speaker_gender/name: Speaker Gender
+    speaker_gender: Speaker Gender
         Select speaker gender male or female
 
-    speaker_language/name: Speaker Language
+    speaker_language: Speaker Language
         Select Language code.
         [See here for Details](https://www.nabucasa.com/config/tts/)
 
-    announcement_message/name: Announcement message
+    speaker_voice: tts_cloud (Nabu Casa) Voice
+        ***Here you need to be careful.***
+        If you are OK with the default voice then just leave this field empty.
+        If you want to change the voice, you need to pick from [This List, TTS_VOICES section](https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py)
+        being certain to match the country code you picked above with one of
+        the voices available for that country code on that list.
+
+    announcement_message: Announcement message
         What to say when door is opened
 
-    final_message/name: Final message
+    final_message: Final message
         What to say when door is closed.
 
-    cooldown/name: Announcement cooldown
+    cooldown: Announcement cooldown
         The minimum number of seconds needed before AND between between
         announcements.
 
