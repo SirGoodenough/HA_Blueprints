@@ -2,6 +2,10 @@ This blueprint is set up to watch a binary sensor. When it goes from off to on (
 
 ## 📑 Changelog
 
+* **2023-08-17**: Add voice ability
+* * Fix language list
+* * Add Weekday ability
+* * Set door close timing to soon after door closes
 * **2023-08-07**: Updates for Home Assistant 2023.8
 * * Selector syntax change
 * * Condition Selector addition (where applicable)
@@ -34,7 +38,7 @@ Why do I need this?
 >
 > This blueprint is set up to watch a binary sensor. When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice. The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message. The delay time and all the other parameters are adjustable.
 >
-> You will need to select a country code as listed in the TTS.cloud_say documentation listed here:  https://www.nabucasa.com/config/tts/
+> There are ways to enable the announcement only during time slots and/or specific weekdays, so you **could** have a different message every day of the week...
 >
 
 ## 🔧 Configuration

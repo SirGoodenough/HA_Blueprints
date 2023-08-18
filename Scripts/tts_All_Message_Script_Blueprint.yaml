@@ -1,5 +1,5 @@
 blueprint:
-  name: TTS_say_Message-2023-08-23-b1
+  name: TTS_say_Message-2023-08-23
   author: SirGoodenough
   description: >
     📣 This is a script that can use any of the 11 integrated TTS Platforms
