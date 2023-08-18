@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2023-08-23**: Add voice option for the Nabu-Casa tts-cloud
 * **2023-08-07**: Updates for Home Assistant 2023.8
 * * Selector syntax change
 * * Condition Selector addition (where applicable)
@@ -42,99 +43,110 @@ Requirements
 
 ## <a name="fields">🗂 Field variables to feed variables from calling automation</a>
 
-    live_message/name: Live Message
+    live_message: Live Message
         This will change the default message on-the-fly
         required: false
 
-    live_speaker/name: Live Media Player
+    live_speaker: Live Media Player
         Change the default media player on-the-fly
         required: false
 
 ## 🗂 Input fields
 
-    b4_action/name: Action before TTS
+    b4_action: Action before TTS
         This is intended to add a volume
         control action or whatever you want
         to do before sending the TTS message.
 
-    after_action/name: Action after TTS
+    after_action: Action after TTS
         This is intended to add a volume
         control action or whatever you want
         to do after sending the TTS message.
 
-    TTS/name: Text to Speech Processor
+    TTS: Text to Speech Processor
         Required on ALL *_say platforms.
         Select the configured TTS engine for
         media_player notifications.
         SEE for details: 
         https://www.home-assistant.io/integrations/#text-to-speech
 
-    announcement_message/name: Spoken Message
+    announcement_message: Spoken Message
         Required on ALL *_say platforms.
 
-    speaker_target/name: Entity(s) to speak thru
+    speaker_target: Entity(s) to speak thru
         Required on ALL *_say platforms.
         Be sure to select the correct type / brand
         of device for the TTS you are using.
         Not All speakers work with all TTS engines.
 
-    speaker_gender/name: Speaker Gender
+    speaker_gender: Speaker Gender
         Used on most *_say platforms.
         Select speaker gender male or female.
         May not work with all TTS engines.
 
-    baidu_person/name: Baidu Person Code
+    baidu_person: Baidu Person Code
         Used only on most tts_baidu_say platform.
         This is the voice code of the speaker.
 
-    cloud_language/name: TTS Cloud Language
-        This is for Nabu-Casa tts.cloud_say & tts.google_cloud_say.
-        See-> https://www.nabucasa.com/config/tts
+    nabu_azure_language: tts_cloud (Nabu Casa) Language
+        Select Language code.
+        [See here for Details](https://www.nabucasa.com/config/tts/)
+
+    nabu_azure_voice: tts_cloud (Nabu Casa) Voice
+        ***Here you need to be careful.***
+        If you are OK with the default voice then just leave this field empty.
+        If you want to change the voice, you need to pick from [This List, TTS_VOICES section](https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py)
+        being certain to match the country code you picked above with one of
+        the voices available for that country code on that list.
+
+    cloud_language: TTS Cloud Language
+        This is for tts.google_cloud_say.
+        See-> https://cloud.google.com/text-to-speech/docs/voices
         NOTE: Not all Language options will have all Genders.
 
-    Google_Cloud_Voice/name: Google Cloud Voice Code
+    Google_Cloud_Voice: Google Cloud Voice Code
         Used only with tts.google_cloud_say platform. Pick from here-
         https://cloud.google.com/text-to-speech/docs/voices
         This is the voice code of the speaker.
         See-> https://www.home-assistant.io/integrations/google_cloud
         for more information.
 
-    Google_Cloud_Profile/name: Google Cloud Profile
+    Google_Cloud_Profile: Google Cloud Profile
         Used only on most tts.google_cloud_say platform. Pick from here-
         https://cloud.google.com/text-to-speech/docs/audio-profiles
         See-> https://www.home-assistant.io/integrations/google_cloud
         for more information.
 
-    GTS_language/name: TTS Google Translate Say Language
+    GTS_language: TTS Google Translate Say Language
         This is for tts.google_translate_say only. See-> 
         https://cloud.google.com/text-to-speech/docs/voices
         
 
-    marytts_language/name: Language option for tts.marytts_say
+    marytts_language: Language option for tts.marytts_say
         Used only on tts.marytts_say.
 
-    picotts_language/name: Language option for tts.picotts_say
+    picotts_language: Language option for tts.picotts_say
         Used only on tts.picotts_say.
 
-    voicerss_language/name: Language option for tts.voicerss_say
+    voicerss_language: Language option for tts.voicerss_say
         Used only on tts.voicerss_say.
         See-> https://www.voicerss.org/api for details.
 
-    voicerss_format/name: Message format option for tts.voicerss_say
+    voicerss_format: Message format option for tts.voicerss_say
         Used only on tts.voicerss_say. See->
         https://www.voicerss.org/api for details.
 
-    yandextts_language/name: Language option for tts.yandextts_say
+    yandextts_language: Language option for tts.yandextts_say
         Used only on tts.yandextts_say. See->
         https://www.home-assistant.io/integrations/yandextts
         for Details.
 
-    yandextts_voice/name: Voice option for tts.yandextts_say
+    yandextts_voice: Voice option for tts.yandextts_say
         Used only on tts.yandextts_say. See->
         https://www.home-assistant.io/integrations/yandextts
         for Details.
 
-    yandextts_emotion/name: Emotion option for tts.yandextts_say
+    yandextts_emotion: Emotion option for tts.yandextts_say
         Used only on tts.yandextts_say. See->
         https://www.home-assistant.io/integrations/yandextts
         for Details.
