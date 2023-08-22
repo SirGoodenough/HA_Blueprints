@@ -382,7 +382,8 @@ blueprint:
         were put into the pick list. 
         
         *NOTE: It is possible that not all Languages will give you both Genders.*
-      default: []
+
+      default: en-US
       selector:
         select:
           options:
