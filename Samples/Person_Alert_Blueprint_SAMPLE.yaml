@@ -275,7 +275,7 @@ script:
       _mess: "I'm lost"
       _lang: en-US
       _gend: female
-      _voice: ""
+      _voice: []
 
     sequence:
     - alias: Send sound file to Media Player
