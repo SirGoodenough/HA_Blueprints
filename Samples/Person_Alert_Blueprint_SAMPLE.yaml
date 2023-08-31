@@ -296,7 +296,7 @@ script:
         options:
           gender: "{{ gend | default(_gend) }}"
           voice: "{{ voice | default(_voice) }}"
-          
+
     mode: single
     max_exceeded: silent
     icon: mdi:message-alert-outline
@@ -378,7 +378,6 @@ automation:
             phase: jump
         - service: script.personalert_audio
           data:
-            entities: media_player.home_group
             mess: '{{ trigger.to_state.attributes.friendly_name + '' has left '' +
               trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
               }}'
