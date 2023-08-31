@@ -179,6 +179,7 @@ script:
         name: Media Player
         description: Set the media player
         required: false
+        example: media_player.intercom_group
         selector:
           entity:
             multiple: true
@@ -207,28 +208,80 @@ script:
       gend:
         name: Gender
         description:
-          The gender, male, female, or other of the voice.
+          The gender, male or female, of the voice.
         required: false
+        default: female
         selector:
           select:
             options:
-            - label: Female
-              value: female
-            - label: Male
-              value: male
-            - label: Neutral (Does not work on all flavors)
-              value: neutral
+              - female
+              - male
+      voice:
+        name: tts_cloud (nabu Casa) Voice
+        description: >  
+          ***Here you need to be careful.***
+
+          If you are OK with the default voice then just leave this field empty.
+
+          If you want to change the voice, you need to pick from [This List, TTS_VOICES section](https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py)
+          being certain to match the country code you picked above with one of
+          the voices available for that country code on that list.
+
+          Failure to do so will result in no voice being heard.
+
+
+          Also picking a voice here results in your pick for Gender to be ignored.
+
+          If you want to know what these sound like, well, you are just going to
+          have to try them and see what you like.
+
+          If you are en-US, you might want to paste this in there for some fun:
+
+            {{ ("JennyNeural",
+            "AIGenerate1Neural",
+            "AIGenerate2Neural",
+            "AmberNeural",
+            "AnaNeural",
+            "AriaNeural",
+            "AshleyNeural",
+            "BrandonNeural",
+            "ChristopherNeural",
+            "CoraNeural",
+            "DavisNeural",
+            "ElizabethNeural",
+            "EricNeural",
+            "GuyNeural",
+            "JacobNeural",
+            "JaneNeural",
+            "JasonNeural",
+            "JennyMultilingualNeural",
+            "MichelleNeural",
+            "MonicaNeural",
+            "NancyNeural",
+            "RogerNeural",
+            "SaraNeural",
+            "SteffanNeural",
+            "TonyNeural") | random }}
+        required: false
+        example: JennyNeural
+        default: []
+        selector:
+          text:
+            multiline: true
+
     variables:
         # Define variable data and provide default (change 'entities' 4 your system)
-      entities: media_player.intercom_group
-      mess: "I'm lost"
-      lang: en-US
-      gend: female
+      _entities: media_player.intercom_group
+      _mess: "I'm lost"
+      _lang: en-US
+      _gend: female
+      _voice: ""
+
     sequence:
     - alias: Send sound file to Media Player
       service: media_player.play_media
       data:
-        entity_id: "{{ entities }}"
+        entity_id: "{{ entities | default(_entities)}}"
         media_content_id:
           "media-source://media_source/local/mp3/OK_tone.wav"
         media_content_type: audio/mp3
@@ -237,11 +290,13 @@ script:
     - alias: TTS action call
       service: tts.cloud_say
       data:
-        entity_id: "{{ entities }}"
-        message: "{{ mess }}"
-        language: "{{ lang }}"
+        entity_id: "{{ entities | default(_entities) }}"
+        message: "{{ mess | default(_mess) }}"
+        language: "{{ lang | default(_lang) }}"
         options:
-          gender: "{{ gend }}"
+          gender: "{{ gend | default(_gend) }}"
+          voice: "{{ voice | default(_voice) }}"
+          
     mode: single
     max_exceeded: silent
     icon: mdi:message-alert-outline
