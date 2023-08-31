@@ -346,9 +346,11 @@ automation:
             phase: enter
         - service: script.personalert_audio
           data:
+            entities: media_player.home_group
             mess: '{{ trigger.to_state.attributes.friendly_name + '' has arrived at
               '' + trigger.to_state.state }}'
             lang: en-GB
+            voice: BellaNeural
       leave_action:
       - parallel:
         - service: script.personalert_notify
@@ -360,9 +362,11 @@ automation:
             phase: leave
         - service: script.personalert_audio
           data:
+            entities: media_player.home_group
             mess: '{{ trigger.from_state.attributes.friendly_name + '' has left ''
               + trigger.from_state.state }}'
             lang: en-GB
+            voice: MaisieNeural
       jump_action:
       - parallel:
         - service: script.personalert_notify
@@ -374,10 +378,12 @@ automation:
             phase: jump
         - service: script.personalert_audio
           data:
+            entities: media_player.home_group
             mess: '{{ trigger.to_state.attributes.friendly_name + '' has left '' +
               trigger.from_state.state + '' and is located at: '' + trigger.to_state.state
               }}'
             lang: en-GB
+            voice: EthanNeural
       enable_time: 05:30:18
       disable_time: '20:27:36'
       hold_period:
