@@ -366,7 +366,6 @@ automation:
             mess: '{{ trigger.from_state.attributes.friendly_name + '' has left ''
               + trigger.from_state.state }}'
             lang: en-GB
-            voice: MaisieNeural
       jump_action:
       - parallel:
         - service: script.personalert_notify
