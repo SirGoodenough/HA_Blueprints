@@ -2,6 +2,7 @@ This blueprint is set up to watch a binary sensor. When it goes from off to on (
 
 ## 📑 Changelog
 
+* **2023-09-22**: Add silencing ability if the warning never triggers.
 * **2023-08-17**: Add voice ability
 * * Fix language list
 * * Add Weekday ability
@@ -52,15 +53,23 @@ Requirements
 
 ## 🗂 Input fields
 
-    people2monitor: Person or People to follow
-        Select the Person you want this BP to trigger 
-        on for this action. Multiples are allowed.
-
     door_entity: 'Door Sensor (or any binary_sensor will do...)'
         Entity that causes the announcement. Actually any entity that 
         changes its state from off to on will work here, You would
         just need to enter the entity manually if it's not a
         binary sensor.
+
+    reminded:
+      name: 'Did I remind you?'
+        This is optional.
+        You can leave this at the default (empty) and the behavior of the BP will
+        be exactly what it was in the past. This ensures your old set-up will not
+        break if you upgrade the BluePrint.
+        Or if you create an 'input_boolean'/'toggle' helper and put the name in
+        here, the behavior will be the door is silent as long as you do not
+        exceed the time it takes to get to the warning message that the door is
+        open. If that warning message triggers once, it will then thank you after
+        you close it.
 
     start_time: StartTime
         Time of day you want to enable the announcement each day.
