@@ -1,5 +1,5 @@
 blueprint:
-  name: TTS_say_Message-2023-08-23
+  name: TTS_say_Message-2023-09-29-beta
   author: SirGoodenough
   description: >
     📣 This is a script that can use any of the 11 integrated TTS Platforms
@@ -646,6 +646,20 @@ blueprint:
             - it-IT
           custom_value: false
           multiple: false
+    piper_language:
+      name: Language option for the Piper addon played thru Whisper
+      description: >
+        Used only on Piper.
+        [Language List Here](https://huggingface.co/rhasspy/piper-voices/tree/main)
+        Select speaker Language:
+      default: []
+    piper_voice:
+      name: Voice option for the Piper addon played thru Whisper
+      description: >
+        Used only on Piper.
+        [Voice List Here](https://huggingface.co/rhasspy/piper-voices/tree/main)
+        Select speaker voice:
+      default: []
     voicerss_language:
       name: Language option for tts.voicerss_say
       description: >
@@ -877,6 +891,18 @@ sequence:
               entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               language: !input picotts_language
+      - conditions: '{{ my_tts == "tts.picotts_say" }}'
+        sequence:
+          - service: tts.speak
+            data:
+              cache: false
+              media_player_entity_id: "{{ my_speaker }}"
+              message: "{{ my_message }}"
+              language: "{{ piper_language }}"
+              options:
+                voice: "{{ piper_voice }}"
+            target:
+              entity_id: tts.piper
       - conditions: '{{ my_tts == "tts.voicerss_say" }}'
         sequence:
           - service: tts.voicerss_say
