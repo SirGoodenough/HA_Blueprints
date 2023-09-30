@@ -647,13 +647,52 @@ blueprint:
             - it-IT
           custom_value: false
           multiple: false
+    piper_language:
+      name: Language option for the Piper addon played thru Whisper
+      description: >
+        Used only on Piper.
+        [Language List Here](https://huggingface.co/rhasspy/piper-voices/tree/main)
+        Select speaker Language:
+      default: []
+      selector:
+        select:
+          options:
+            - ar
+            - ca
+            - cs
+            - da
+            - de
+            - el
+            - en
+            - es
+            - fi
+            - fr
+            - hu
+            - ls
+            - it
+            - kk
+            - ka
+            - nb
+            - nl
+            - "no"
+            - pl
+            - pt
+            - ro
+            - ru
+            - sk
+            - sr
+            - sw
+            - tr
+            - uk
+            - vi
+            - zh
     piper_voice:
       name: Voice option for the Piper addon played thru Whisper
       description: >
         Used only on Piper.
         [Voice List Here](https://huggingface.co/rhasspy/piper-voices/tree/main)
-        Select speaker Language:
-      default: [ en_US-arctic-medium ]
+        Select speaker voice:
+      default: en_US-arctic-medium
     voicerss_language:
       name: Language option for tts.voicerss_say
       description: >
@@ -892,7 +931,9 @@ sequence:
               cache: false
               media_player_entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
-              language: "{{ piper_language }}"
+              # language: "{{ piper_language }}"
+              # options:
+              #   voice: "{{ piper_voice }}"
             target:
               entity_id: tts.piper
       - conditions: '{{ my_tts == "tts.voicerss_say" }}'
