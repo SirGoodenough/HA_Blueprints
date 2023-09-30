@@ -102,6 +102,7 @@ blueprint:
             - tts.marytts_say
             - tts.microsoft_say
             - tts.picotts_say
+            - Piper
             - tts.voicerss_say
             - tts.watson_tts_say
             - tts.yandextts_say
@@ -891,7 +892,7 @@ sequence:
               entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               language: !input picotts_language
-      - conditions: '{{ my_tts == "tts.picotts_say" }}'
+      - conditions: '{{ my_tts == "Piper" }}'
         sequence:
           - service: tts.speak
             data:
