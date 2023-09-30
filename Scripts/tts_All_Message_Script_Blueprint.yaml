@@ -88,7 +88,7 @@ blueprint:
     TTS:
       name: Text to Speech Processor
       description: >
-        ### Required on ALL \*_say platforms
+        ### Required on ALL platforms
 
         Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
       selector:
@@ -647,20 +647,13 @@ blueprint:
             - it-IT
           custom_value: false
           multiple: false
-    piper_language:
-      name: Language option for the Piper addon played thru Whisper
-      description: >
-        Used only on Piper.
-        [Language List Here](https://huggingface.co/rhasspy/piper-voices/tree/main)
-        Select speaker Language:
-      default: []
     piper_voice:
       name: Voice option for the Piper addon played thru Whisper
       description: >
         Used only on Piper.
         [Voice List Here](https://huggingface.co/rhasspy/piper-voices/tree/main)
-        Select speaker voice:
-      default: []
+        Select speaker Language:
+      default: [ en_US-arctic-medium ]
     voicerss_language:
       name: Language option for tts.voicerss_say
       description: >
@@ -900,8 +893,6 @@ sequence:
               media_player_entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               language: "{{ piper_language }}"
-              options:
-                voice: "{{ piper_voice }}"
             target:
               entity_id: tts.piper
       - conditions: '{{ my_tts == "tts.voicerss_say" }}'
@@ -941,4 +932,4 @@ sequence:
     then: !input "after_action"
 
 mode: queued
-icon: mdi-message-processing-outline
+icon: mdi:message-processing-outline
