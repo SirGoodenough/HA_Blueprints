@@ -692,7 +692,7 @@ blueprint:
         Used only on Piper.
         [Voice List Here](https://huggingface.co/rhasspy/piper-voices/tree/main)
         Select speaker voice:
-      default: en_US-arctic-medium
+      default: en-us-kathleen-low
     voicerss_language:
       name: Language option for tts.voicerss_say
       description: >
@@ -931,7 +931,7 @@ sequence:
               cache: false
               media_player_entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
-              # language: "{{ piper_language }}"
+              # # language: "{{ piper_language }}"
               # options:
               #   voice: "{{ piper_voice }}"
             target:
