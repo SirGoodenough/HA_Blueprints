@@ -1,8 +1,8 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Nabu-Casa required) - 2023-09-22
+  name: Door open tts.cloud_say announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2023-10-02-beta
   author: SirGoodenough
   description: >
-    This uses tts.cloud_say from Nabu-Casa to tell you a door is open too
+    This uses tts.cloud_say from Nabu-Casa or Whisper with the Piper Addon to tell you a door is open too
     long and a door has been closed.
 
     📩 There is not an official version control system for Blueprints. However I have
@@ -15,8 +15,28 @@ blueprint:
   homeassistant:
     min_version: 2023.8.0
   domain: automation
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   input:
+    tts_service:
+      name: Text to Speech Processor
+      description: >
+        Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
+
+        Option 1 is the Nabu-Casa based tts.cloud_say integration which
+          requires you to be subscribed to Nabu-Casa.  
+
+        Option 2 is the Piper add-on found in that uses Whisper Integration.
+          Piper does not require a subscription.
+      default: nabu
+      selector:
+        select:
+          options:
+          - label: Nabu-Case based tts.cloud_say
+            value: nabu
+          - label: Piper Add-on via Whisper Integration
+            value: piper
+          custom_value: false
+          multiple: false
     door_entity:
       name: 'Door Sensor (or any binary_sensor will do...)'
       description: >
@@ -127,7 +147,7 @@ blueprint:
           multiple: true
     speaker_gender:
       name: Speaker Gender
-      description: Select speaker gender male or female
+      description: Required for tts-cloud_say only. Select speaker gender male or female.
       default: female
       selector:
         select:
@@ -139,11 +159,11 @@ blueprint:
     speaker_language:
       name: Speaker Language
       description: >
+        Required for tts-cloud_say only.
         Select Language code. [See here for Details](https://www.nabucasa.com/config/tts/)
 
         This defaults to en-US (english/US). However all the languages available on
         2023-8-17 were put into the pick list. 
-
 
         ***NOTE: It is possible that not all Languages will give you both Genders.***
       default: en-US
@@ -294,8 +314,9 @@ blueprint:
           custom_value: false
           multiple: false
     speaker_voice:
-      name: Voice of the speaker
-      description: >  
+      name: Voice option for tts-cloud_say Nabu-Casa use only.
+      description: > 
+        Required for tts-cloud_say only.
         ***Here you need to be careful.***
 
         If you are OK with the default voice then just leave this field empty.
@@ -339,10 +360,132 @@ blueprint:
           "SaraNeural",
           "SteffanNeural",
           "TonyNeural") | random }}
-      default: []
+      default: JennyMultilingualNeural
       selector:
         text:
           multiline: true
+    piper_voice:
+      name: Voice option for the Piper addon played thru Whisper
+      description: >
+        Used only on Piper.
+        [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
+        Also available in the Add-on UI configuration dropdown.
+        If a new one is available you can enter it manually.
+        List updated here October 1, 2923.
+
+        If you speak english & want a bit of fun,
+        post this string in instead of picking from the list...
+
+
+        {{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}
+
+
+        default: en_US-lessac-medium
+      selector:
+        select:
+          options:
+            - ar_JO-kareem-medium
+            - ca_ES-upc_ona-medium
+            - ca_ES-upc_ona-x_low
+            - ca_ES-upc_pau-x_low
+            - cs_CZ-jirka-low
+            - cs_CZ-jirka-medium
+            - da_DK-talesyntese-medium
+            - de_DE-eva_k-x_low
+            - de_DE-karlsson-low
+            - de_DE-kerstin-low
+            - de_DE-pavoque-low
+            - de_DE-ramona-low
+            - de_DE-thorsten-high
+            - de_DE-thorsten-low
+            - de_DE-thorsten-medium
+            - de_DE-thorsten_emotional-medium
+            - el_GR-rapunzelina-low
+            - en_GB-alan-low
+            - en_GB-alan-medium
+            - en_GB-alba-medium
+            - en_GB-aru-medium
+            - en_GB-jenny_dioco-medium
+            - en_GB-northern_english_male-medium
+            - en_GB-semaine-medium
+            - en_GB-southern_english_female-low
+            - en_GB-vctk-medium
+            - en_US-amy-low
+            - en_US-amy-medium
+            - en_US-arctic-medium
+            - en_US-danny-low
+            - en_US-joe-medium
+            - en_US-kathleen-low
+            - en_US-kusal-medium
+            - en_US-l2arctic-medium
+            - en_US-lessac-high
+            - en_US-lessac-low
+            - en_US-lessac-medium
+            - en_US-libritts-high
+            - en_US-libritts_r-medium
+            - en_US-ryan-high
+            - en_US-ryan-low
+            - en_US-ryan-medium
+            - es_ES-carlfm-x_low
+            - es_ES-davefx-medium
+            - es_ES-mls_10246-low
+            - es_ES-mls_9972-low
+            - es_ES-sharvard-medium
+            - es_MX-ald-medium
+            - fi_FI-harri-low
+            - fi_FI-harri-medium
+            - fr_FR-gilles-low
+            - fr_FR-mls_1840-low
+            - fr_FR-siwis-low
+            - fr_FR-siwis-medium
+            - fr_FR-upmc-medium
+            - hu_HU-anna-medium
+            - hu_HU-berta-medium
+            - is_IS-bui-medium
+            - is_IS-salka-medium
+            - is_IS-steinn-medium
+            - is_IS-ugla-medium
+            - it_IT-riccardo-x_low
+            - ka_GE-natia-medium
+            - kk_KZ-iseke-x_low
+            - kk_KZ-issai-high
+            - kk_KZ-raya-x_low
+            - lb_LU-marylux-medium
+            - ne_NP-google-medium
+            - ne_NP-google-x_low
+            - nl_BE-nathalie-medium
+            - nl_BE-nathalie-x_low
+            - nl_BE-rdh-medium
+            - nl_BE-rdh-x_low
+            - nl_NL-mls_5809-low
+            - nl_NL-mls_7432-low
+            - no_NO-talesyntese-medium
+            - pl_PL-darkman-medium
+            - pl_PL-gosia-medium
+            - pl_PL-mls_6892-low
+            - pt_BR-edresson-low
+            - pt_BR-faber-medium
+            - pt_PT-tugão-medium
+            - ro_RO-mihai-medium
+            - ru_RU-denis-medium
+            - ru_RU-dmitri-medium
+            - ru_RU-irina-medium
+            - ru_RU-ruslan-medium
+            - sk_SK-lili-medium
+            - sr_RS-serbski_institut-medium
+            - sv_SE-nst-medium
+            - sw_CD-lanfrica-medium
+            - tr_TR-dfki-medium
+            - tr_TR-fahrettin-medium
+            - uk_UA-lada-x_low
+            - uk_UA-ukrainian_tts-medium
+            - vi_VN-25hours_single-low
+            - vi_VN-vais1000-medium
+            - vi_VN-vivos-x_low
+            - zh_CN-huayan-medium
+            - zh_CN-huayan-x_low
+          custom_value: true
+          multiple: false
     announcement_message:
       name: Announcement message
       description: >  
@@ -397,6 +540,7 @@ variables:
     # Convert !inputs to variables
   cooldown: !input cooldown
   reminded: !input reminded
+  tts_service: !input tts_service
 
 condition:
   - alias: Only allow execution within selected Hours / Weekdays
@@ -435,14 +579,40 @@ action:
         state: "on"
       then:
       - parallel:
-        - service: tts.cloud_say
-          data:
-            entity_id: !input speaker_target
-            message: !input announcement_message
-            options:
-              gender: !input speaker_gender
-              voice: !input speaker_voice
-            language: !input speaker_language
+        - choose:
+          - conditions: "{{ tts_service == 'nabu' }}"
+            sequence:
+              - alias: Send a voice message via tts-cloud_say
+                service: tts.cloud_say
+                data:
+                  entity_id: !input speaker_target
+                  message: !input announcement_message
+                  options:
+                    gender: !input speaker_gender
+                    voice: !input speaker_voice
+                  language: !input speaker_language
+          - conditions: '{{ tts_service == "piper" }}'
+            sequence:
+              - alias: Send a voice message via Piper Added-on & Whisper
+                service: tts.speak
+                data:
+                  cache: true
+                  media_player_entity_id: !input speaker_target
+                  message: !input announcement_message
+                  options:
+                    voice: !input piper_voice
+                target:
+                  entity_id: tts.piper
+          default:
+            alias: Put a message in the log if the TTS did not select
+            service: system_log.write
+            data:
+              message: >
+                Automation via Blueprint: 
+                Door open tts.cloud_say announcer (Uses Piper Addon OR Nabu-Casa Cloud)
+                Door Open section.
+                TTS not found. Review your !inputs.
+              level: warning
         - alias: Set to true if 'reminded' exists because a warning was now issued.
           if: "{{ reminded[0] is defined }}"
           then:
@@ -450,7 +620,7 @@ action:
             target:
               entity_id: !input reminded
       - alias: Delay to make sure the message can complete.
-        delay: 00:00:10
+        delay: 00:00:08
 
     until:
     - condition: state
@@ -465,13 +635,39 @@ action:
         - "{{ reminded[0] is defined }}"
         - "{{ expand(reminded)[0].state == 'on'}}"
   then:
-    - service: tts.cloud_say
+    choose:
+      - conditions: "{{ tts_service == 'nabu' }}"
+        sequence:
+          - alias: Send a voice message via tts-cloud_say
+            service: tts.cloud_say
+            data:
+              entity_id: !input speaker_target
+              message: !input final_message
+              options:
+                gender: !input speaker_gender
+                voice: !input speaker_voice
+              language: !input speaker_language
+      - conditions: '{{ tts_service == "piper" }}'
+        sequence:
+          - alias: Send a voice message via Piper Added-on & Whisper
+            service: tts.speak
+            data:
+              cache: true
+              media_player_entity_id: !input speaker_target
+              message: !input final_message
+              options:
+                voice: !input piper_voice
+            target:
+              entity_id: tts.piper
+    default:
+      alias: Put a message in the log if the TTS did not select a service properly
+      service: system_log.write
       data:
-        entity_id: !input speaker_target
-        message: !input final_message
-        options:
-          gender: !input speaker_gender
-          voice: !input speaker_voice
-        language: !input speaker_language
+        message: >
+          Automation via Blueprint: 
+          Door open tts.cloud_say announcer (Uses Piper Addon OR Nabu-Casa Cloud)
+          Door Close section.
+          TTS not found. Review your !inputs.
+        level: warning
 
 mode: restart

@@ -655,9 +655,17 @@ blueprint:
       description: >
         Used only on Piper.
         [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
-        Also available in the Addon UI configuration dropdown.
-        If a new one in available you can enter it manually.
+        Also available in the Add-on UI configuration dropdown.
+        If a new one is available you can enter it manually.
         List updated here October 1, 2923.
+
+        If you speak english & want a bit of fun,
+        post this string in instead of picking from the list...
+
+
+        {{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}
+
+
       default: en_US-lessac-medium
       selector:
         select:
@@ -848,7 +856,7 @@ blueprint:
             - ru-RU
             - uk-UK
             - tr-TR
-          custom_value: true
+          custom_value: false
           multiple: false
     yandextts_voice:
       name: Voice option for tts.yandextts_say
