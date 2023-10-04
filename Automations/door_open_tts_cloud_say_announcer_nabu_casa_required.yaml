@@ -620,7 +620,7 @@ action:
             target:
               entity_id: !input reminded
       - alias: Delay to make sure the message can complete.
-        delay: 00:00:08
+        delay: 00:00:02
 
     until:
     - condition: state
