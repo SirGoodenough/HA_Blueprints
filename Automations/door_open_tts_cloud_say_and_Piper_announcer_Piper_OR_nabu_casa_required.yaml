@@ -1,5 +1,5 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2023-10-02
+  name: Door open tts.cloud_say and Piper announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2023-10-02
   author: SirGoodenough
   description: >
     This uses tts.cloud_say from Nabu-Casa or Whisper with the Piper Addon to tell you a door is open too

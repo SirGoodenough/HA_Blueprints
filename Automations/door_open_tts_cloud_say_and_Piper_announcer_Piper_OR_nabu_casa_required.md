@@ -3,6 +3,8 @@ Works with BOTH Piler and Nabu-Casa tts-cloud-say. This blueprint is set up to w
 ## 📑 Changelog
 
 * **2023-10-02**: Add the ability to use Piper TTS.
+* * File Rename to reflect new function.
+* * Old Automatons will still work when pointed to new BP file name.
 * **2023-09-22**: Add silencing ability if the warning never triggers.
 * **2023-08-17**: Add voice ability
 * * Fix language list
@@ -51,6 +53,8 @@ Requirements
 * 1 media_player, group of media _players, or list of media_players to send the words to
 * Pick a gender and language from https://www.nabucasa.com/config/tts/
 * Pick a voice from https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py
+  
+  ***NOTE: For version 2023-10-02 the filename was changed to reflect the large change in function. To update, import the new Blueprint, and edit the prior automation to use the filename for the new BluePrint. Then delete the old BluePrint. Your old Automation for the prior version is compatible with the new blueprint with the exception of the path/name.***
 
 ## 🗂 Input fields
 
