@@ -1,7 +1,8 @@
-This blueprint is set up to watch a binary sensor. When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice. The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message. The delay time and all the other parameters are adjustable.
+Works with BOTH Piler and Nabu-Casa tts-cloud-say. This blueprint is set up to watch a binary sensor. When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice. The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message. The delay time and all the other parameters are adjustable.
 
 ## 📑 Changelog
 
+* **2023-10-02**: Add the ability to use Piper TTS.
 * **2023-09-22**: Add silencing ability if the warning never triggers.
 * **2023-08-17**: Add voice ability
 * * Fix language list
@@ -53,14 +54,17 @@ Requirements
 
 ## 🗂 Input fields
 
+    tts_service: 'Text to Speech Processor'
+        Select the configured TTS engine for media_player notifications.
+        [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
+
     door_entity: 'Door Sensor (or any binary_sensor will do...)'
         Entity that causes the announcement. Actually any entity that 
         changes its state from off to on will work here, You would
         just need to enter the entity manually if it's not a
         binary sensor.
 
-    reminded:
-      name: 'Did I remind you?'
+    reminded: 'Did I remind you?'
         This is optional.
         You can leave this at the default (empty) and the behavior of the BP will
         be exactly what it was in the past. This ensures your old set-up will not
@@ -93,6 +97,12 @@ Requirements
         If you want to change the voice, you need to pick from [This List, TTS_VOICES section](https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py)
         being certain to match the country code you picked above with one of
         the voices available for that country code on that list.
+
+    piper_voice: Voice option for the Piper addon played thru Whisper
+        Used only on Piper.
+        [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
+        Also available in the Add-on UI configuration dropdown.
+        If a new one is available you can enter it manually.
 
     announcement_message: Announcement message
         What to say when door is opened

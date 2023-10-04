@@ -1,5 +1,5 @@
 blueprint:
-  name: Door open tts.cloud_say announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2023-10-02-beta
+  name: Door open tts.cloud_say announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2023-10-02
   author: SirGoodenough
   description: >
     This uses tts.cloud_say from Nabu-Casa or Whisper with the Piper Addon to tell you a door is open too
@@ -15,7 +15,7 @@ blueprint:
   homeassistant:
     min_version: 2023.8.0
   domain: automation
-#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   input:
     tts_service:
       name: Text to Speech Processor

@@ -1,5 +1,5 @@
 blueprint:
-  name: TTS_say_Message-2023-09-29-beta-2
+  name: TTS_say_Message-2023-09-29
   author: SirGoodenough
   description: >
     📣 This is a script that can use any of the 11 integrated TTS Platforms
@@ -65,7 +65,7 @@ blueprint:
     [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)
 
   domain: script
-#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   homeassistant:
     min_version: 2023.8.0
   input:

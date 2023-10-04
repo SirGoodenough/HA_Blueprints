@@ -2,7 +2,9 @@
 
 ## 📑 Changelog
 
-* **2023-08-23**: Add voice option for the Nabu-Casa tts-cloud
+* **2023-09-29**: Add the ability to use Piper TTS.
+* * Change several of the selectors to allow custom. Use at your own risk.
+* **2023-08-23**: Add voice option for the Nabu-Casa tts-cloud.
 * **2023-08-07**: Updates for Home Assistant 2023.8
 * * Selector syntax change
 * * Condition Selector addition (where applicable)
@@ -120,13 +122,18 @@ Requirements
     GTS_language: TTS Google Translate Say Language
         This is for tts.google_translate_say only. See-> 
         https://cloud.google.com/text-to-speech/docs/voices
-        
 
     marytts_language: Language option for tts.marytts_say
         Used only on tts.marytts_say.
 
     picotts_language: Language option for tts.picotts_say
         Used only on tts.picotts_say.
+
+    piper_voice: Voice option for the Piper addon played thru Whisper
+        Used only on Piper.
+        [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
+        Also available in the Add-on UI configuration dropdown.
+        If a new one is available you can enter it manually.
 
     voicerss_language: Language option for tts.voicerss_say
         Used only on tts.voicerss_say.
