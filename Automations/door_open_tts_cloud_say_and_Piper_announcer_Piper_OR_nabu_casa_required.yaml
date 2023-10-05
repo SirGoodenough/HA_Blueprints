@@ -15,7 +15,7 @@ blueprint:
   homeassistant:
     min_version: 2023.8.0
   domain: automation
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
   input:
     tts_service:
       name: Text to Speech Processor
@@ -491,8 +491,10 @@ blueprint:
       description: >  
         What to say when door is opened
 
+        The variable {{ door }} is available if you want the dynamic
+          friendly_name of the device that triggered.
         This can be set to "" if you do not want a message while sensor is active.
-      default: Your Barn Door has been left open.
+      default: "Your {{ door }} has been left open."
       selector:
         text:
           multiline: true
@@ -501,8 +503,10 @@ blueprint:
       description: >
         What to say when door is closed.
 
+        The variable {{ door }} is available if you want the dynamic
+          friendly_name of the device that triggered.
         This can be set to "" if you do not want a message after the sensor is reset.
-      default: Thank you for closing the barn door.
+      default: "Thank you for closing the {{ door }}."
       selector:
         text:
           multiline: true
@@ -541,6 +545,10 @@ variables:
   cooldown: !input cooldown
   reminded: !input reminded
   tts_service: !input tts_service
+    # Figure out which door is opened and provide stuff
+  door_ent: "{{ trigger.entity_id }}"
+    # The variable 'door' is only used by the user for the TTS message.
+  door: "{{ trigger.to_state.attributes.friendly_name }}"
 
 condition:
   - alias: Only allow execution within selected Hours / Weekdays
@@ -564,19 +572,12 @@ action:
     sequence:
     - alias: This is the delay broke into 2 sec incr so it can be interupted.
       repeat:
-        while:
-          - condition: state
-            entity_id: !input door_entity
-            state: "on"
-          - condition: template
-            value_template: "{{ repeat.index < cooldown/2 }}"
+        while: >
+          {{ expand(door_ent)[0].state == 'on' and repeat.index <= cooldown/2 }}
         sequence:
           - delay: 00:00:02
     - alias: Send announcement message (potentially again)
-      if: 
-      - condition: state
-        entity_id: !input door_entity
-        state: "on"
+      if: "{{ expand(door_ent)[0].state == 'on' }}"
       then:
       - parallel:
         - choose:
@@ -596,7 +597,6 @@ action:
               - alias: Send a voice message via Piper Added-on & Whisper
                 service: tts.speak
                 data:
-                  cache: true
                   media_player_entity_id: !input speaker_target
                   message: !input announcement_message
                   options:
@@ -620,12 +620,9 @@ action:
             target:
               entity_id: !input reminded
       - alias: Delay to make sure the message can complete.
-        delay: 00:00:02
+        delay: 00:00:04
 
-    until:
-    - condition: state
-      entity_id: !input door_entity
-      state: 'off'
+    until: "{{ expand(door_ent)[0].state == 'off' }}"
 
 - alias: Say thanks at the end when appropriate. Leave message empty for always quiet.
   if: 
@@ -652,7 +649,6 @@ action:
           - alias: Send a voice message via Piper Added-on & Whisper
             service: tts.speak
             data:
-              cache: true
               media_player_entity_id: !input speaker_target
               message: !input final_message
               options:

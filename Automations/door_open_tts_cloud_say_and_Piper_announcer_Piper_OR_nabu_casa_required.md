@@ -5,6 +5,8 @@ Works with BOTH Piler and Nabu-Casa tts-cloud-say. This blueprint is set up to w
 * **2023-10-02**: Add the ability to use Piper TTS.
 * * File Rename to reflect new function.
 * * Old Automatons will still work when pointed to new BP file name.
+* * Added {{ door }} variable for users to plug into the messages.
+* * Fixed Bug where crashed if multiple door sensors were selected.
 * **2023-09-22**: Add silencing ability if the warning never triggers.
 * **2023-08-17**: Add voice ability
 * * Fix language list
@@ -109,10 +111,16 @@ Requirements
         If a new one is available you can enter it manually.
 
     announcement_message: Announcement message
-        What to say when door is opened
+        What to say when door is opened.
+        The variable {{ door }} is available if you want the dynamic
+          friendly_name of the device that triggered.
+        This can be set to "" if you do not want a message while sensor is active.
 
     final_message: Final message
         What to say when door is closed.
+        The variable {{ door }} is available if you want the dynamic
+          friendly_name of the device that triggered.
+        This can be set to "" if you do not want a message after the sensor is reset.
 
     cooldown: Announcement cooldown
         The minimum number of seconds needed before AND between between
