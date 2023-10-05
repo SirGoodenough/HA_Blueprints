@@ -11,11 +11,11 @@ blueprint:
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
 
-    [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046)
+    [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-and-piper-announcer-piper-or-nabu-casa-required/316046)
   homeassistant:
     min_version: 2023.8.0
   domain: automation
-#  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_and_Piper_announcer_Piper_OR_nabu_casa_required.yaml
   input:
     tts_service:
       name: Text to Speech Processor

@@ -136,16 +136,16 @@ This functionality started as a way to help my Bedroom AC unit keep an even temp
 
 #### 🧯Door Open TTS Cloud-Say Message Blueprint
 
-This Blueprint is a TTS.cloud-say version of another Door Announcer I found in the HA Blueprint Exchange.
+This Blueprint is a TTS.cloud-say version of another Door Announcer I found in the HA Blueprint Exchange. This has changed drastically since I first encountered the original.
 
-[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2Fdoor_open_tts_cloud_say_announcer_nabu_casa_required.yaml)
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2Fdoor_open_tts_cloud_say_and_Piper_announcer_Piper_OR_nabu_casa_required.yaml)
 
-https://community.home-assistant.io/t/door-open-tts-cloud-say-announcer-nabu-casa-required/316046
+https://community.home-assistant.io/t/door-open-tts-cloud-say-and-piper-announcer-piper-or-nabu-casa-required/316046
 
-This blueprint is set up to watch a binary sensor.  When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice.  The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message.  The delay time and all the other parameters are adjustable.
+Works with BOTH Piper and Nabu-Casa tts-cloud-say. This blueprint is set up to watch a binary sensor. When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice. The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message. The delay time and all the other parameters are adjustable.
 
-* [door_open_tts_cloud_say_announcer_nabu_casa_required.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.md)
-* [door_open_tts_cloud_say_announcer_nabu_casa_required.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_announcer_nabu_casa_required.yaml)
+* [door_open_tts_cloud_say_announcer_nabu_casa_required.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_and_Piper_announcer_Piper_OR_nabu_casa_required.md)
+* [door_open_tts_cloud_say_announcer_nabu_casa_required.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_and_Piper_announcer_Piper_OR_nabu_casa_required.yaml)
 
 #### 🧯Keypad Lock or puzzle Box Tool Blueprint
 
