@@ -1012,7 +1012,6 @@ sequence:
         sequence:
           - service: tts.speak
             data:
-              cache: false
               media_player_entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               options:
