@@ -1,7 +1,12 @@
-This blueprint is set up to watch a binary sensor. When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice. The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message. The delay time and all the other parameters are adjustable.
+Works with BOTH Piler and Nabu-Casa tts-cloud-say. This blueprint is set up to watch a binary sensor. When it goes from off to on (closed to open) it triggers a message to be sent to the google enabled speaker of your choice. The message will play after a delay you set and repeat on that same delay until the switch returns to off (closed), at which time it sends a different message. The delay time and all the other parameters are adjustable.
 
 ## 📑 Changelog
 
+* **2023-10-02**: Add the ability to use Piper TTS.
+* * File Rename to reflect new function.
+* * Old Automatons will still work when pointed to new BP file name.
+* * Added {{ door }} variable for users to plug into the messages.
+* * Fixed Bug where crashed if multiple door sensors were selected.
 * **2023-09-22**: Add silencing ability if the warning never triggers.
 * **2023-08-17**: Add voice ability
 * * Fix language list
@@ -50,8 +55,14 @@ Requirements
 * 1 media_player, group of media _players, or list of media_players to send the words to
 * Pick a gender and language from https://www.nabucasa.com/config/tts/
 * Pick a voice from https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py
+  
+  ***NOTE: For version 2023-10-02 the filename was changed to reflect the large change in function. To update, import the new Blueprint, and edit the prior automation to use the filename for the new BluePrint. Then delete the old BluePrint. Your old Automation for the prior version is compatible with the new blueprint with the exception of the path/name.***
 
 ## 🗂 Input fields
+
+    tts_service: 'Text to Speech Processor'
+        Select the configured TTS engine for media_player notifications.
+        [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
 
     door_entity: 'Door Sensor (or any binary_sensor will do...)'
         Entity that causes the announcement. Actually any entity that 
@@ -59,8 +70,7 @@ Requirements
         just need to enter the entity manually if it's not a
         binary sensor.
 
-    reminded:
-      name: 'Did I remind you?'
+    reminded: 'Did I remind you?'
         This is optional.
         You can leave this at the default (empty) and the behavior of the BP will
         be exactly what it was in the past. This ensures your old set-up will not
@@ -94,11 +104,23 @@ Requirements
         being certain to match the country code you picked above with one of
         the voices available for that country code on that list.
 
+    piper_voice: Voice option for the Piper addon played thru Whisper
+        Used only on Piper.
+        [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
+        Also available in the Add-on UI configuration dropdown.
+        If a new one is available you can enter it manually.
+
     announcement_message: Announcement message
-        What to say when door is opened
+        What to say when door is opened.
+        The variable {{ door }} is available if you want the dynamic
+          friendly_name of the device that triggered.
+        This can be set to "" if you do not want a message while sensor is active.
 
     final_message: Final message
         What to say when door is closed.
+        The variable {{ door }} is available if you want the dynamic
+          friendly_name of the device that triggered.
+        This can be set to "" if you do not want a message after the sensor is reset.
 
     cooldown: Announcement cooldown
         The minimum number of seconds needed before AND between between

@@ -1,5 +1,5 @@
 blueprint:
-  name: TTS_say_Message-2023-08-23
+  name: TTS_say_Message-2023-09-29
   author: SirGoodenough
   description: >
     📣 This is a script that can use any of the 11 integrated TTS Platforms
@@ -88,7 +88,7 @@ blueprint:
     TTS:
       name: Text to Speech Processor
       description: >
-        ### Required on ALL \*_say platforms
+        ### Required on ALL platforms
 
         Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
       selector:
@@ -102,10 +102,11 @@ blueprint:
             - tts.marytts_say
             - tts.microsoft_say
             - tts.picotts_say
+            - Piper
             - tts.voicerss_say
             - tts.watson_tts_say
             - tts.yandextts_say
-          custom_value: false
+          custom_value: true
           multiple: false
     announcement_message:
       name: Spoken Message
@@ -166,7 +167,7 @@ blueprint:
             - "106"
             - "110"
             - "111"
-          custom_value: false
+          custom_value: true
           multiple: false
     nabu_azure_language:
       name: tts_cloud (nabu Casa) Language
@@ -321,7 +322,7 @@ blueprint:
             - zh-HK
             - zh-TW
             - zu-ZA
-          custom_value: false
+          custom_value: true
           multiple: false
     nabu_azure_voice:
       name: tts_cloud (nabu Casa) Voice
@@ -443,7 +444,7 @@ blueprint:
             - tr-TR
             - uk-UA
             - vi-VN
-          custom_value: false
+          custom_value: true
           multiple: false
     Google_Cloud_Voice:
       name: Google Cloud Voice Code
@@ -452,6 +453,9 @@ blueprint:
         This is the voice code of the speaker. The default is: "en-US-Wavenet-F". 
         [Refer here](https://www.home-assistant.io/integrations/google_cloud) for more information.
       default: []
+      selector:
+        text:
+          multiline: false
     Google_Cloud_Profile:
       name: Google Cloud Profile
       description: >
@@ -470,7 +474,7 @@ blueprint:
             - large-home-entertainment-class-device
             - large-automotive-class-device
             - telephony-class-application
-          custom_value: false
+          custom_value: true
           multiple: false
     GTS_language:
       name: TTS Google Translate Say Language
@@ -626,7 +630,7 @@ blueprint:
             - sv
             - te
             - tr
-          custom_value: false
+          custom_value: true
           multiple: false
     picotts_language:
       name: Language option for tts.picotts_say
@@ -644,7 +648,129 @@ blueprint:
             - es-ES
             - fr-FR
             - it-IT
-          custom_value: false
+          custom_value: true
+          multiple: false
+    piper_voice:
+      name: Voice option for the Piper addon played thru Whisper
+      description: >
+        Used only on Piper.
+        [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
+        Also available in the Add-on UI configuration dropdown.
+        If a new one is available you can enter it manually.
+        List updated here October 1, 2923.
+
+        If you speak english & want a bit of fun,
+        post this string in instead of picking from the list...
+
+
+        {{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}
+
+
+      default: en_US-lessac-medium
+      selector:
+        select:
+          options:
+            - ar_JO-kareem-medium
+            - ca_ES-upc_ona-medium
+            - ca_ES-upc_ona-x_low
+            - ca_ES-upc_pau-x_low
+            - cs_CZ-jirka-low
+            - cs_CZ-jirka-medium
+            - da_DK-talesyntese-medium
+            - de_DE-eva_k-x_low
+            - de_DE-karlsson-low
+            - de_DE-kerstin-low
+            - de_DE-pavoque-low
+            - de_DE-ramona-low
+            - de_DE-thorsten-high
+            - de_DE-thorsten-low
+            - de_DE-thorsten-medium
+            - de_DE-thorsten_emotional-medium
+            - el_GR-rapunzelina-low
+            - en_GB-alan-low
+            - en_GB-alan-medium
+            - en_GB-alba-medium
+            - en_GB-aru-medium
+            - en_GB-jenny_dioco-medium
+            - en_GB-northern_english_male-medium
+            - en_GB-semaine-medium
+            - en_GB-southern_english_female-low
+            - en_GB-vctk-medium
+            - en_US-amy-low
+            - en_US-amy-medium
+            - en_US-arctic-medium
+            - en_US-danny-low
+            - en_US-joe-medium
+            - en_US-kathleen-low
+            - en_US-kusal-medium
+            - en_US-l2arctic-medium
+            - en_US-lessac-high
+            - en_US-lessac-low
+            - en_US-lessac-medium
+            - en_US-libritts-high
+            - en_US-libritts_r-medium
+            - en_US-ryan-high
+            - en_US-ryan-low
+            - en_US-ryan-medium
+            - es_ES-carlfm-x_low
+            - es_ES-davefx-medium
+            - es_ES-mls_10246-low
+            - es_ES-mls_9972-low
+            - es_ES-sharvard-medium
+            - es_MX-ald-medium
+            - fi_FI-harri-low
+            - fi_FI-harri-medium
+            - fr_FR-gilles-low
+            - fr_FR-mls_1840-low
+            - fr_FR-siwis-low
+            - fr_FR-siwis-medium
+            - fr_FR-upmc-medium
+            - hu_HU-anna-medium
+            - hu_HU-berta-medium
+            - is_IS-bui-medium
+            - is_IS-salka-medium
+            - is_IS-steinn-medium
+            - is_IS-ugla-medium
+            - it_IT-riccardo-x_low
+            - ka_GE-natia-medium
+            - kk_KZ-iseke-x_low
+            - kk_KZ-issai-high
+            - kk_KZ-raya-x_low
+            - lb_LU-marylux-medium
+            - ne_NP-google-medium
+            - ne_NP-google-x_low
+            - nl_BE-nathalie-medium
+            - nl_BE-nathalie-x_low
+            - nl_BE-rdh-medium
+            - nl_BE-rdh-x_low
+            - nl_NL-mls_5809-low
+            - nl_NL-mls_7432-low
+            - no_NO-talesyntese-medium
+            - pl_PL-darkman-medium
+            - pl_PL-gosia-medium
+            - pl_PL-mls_6892-low
+            - pt_BR-edresson-low
+            - pt_BR-faber-medium
+            - pt_PT-tugão-medium
+            - ro_RO-mihai-medium
+            - ru_RU-denis-medium
+            - ru_RU-dmitri-medium
+            - ru_RU-irina-medium
+            - ru_RU-ruslan-medium
+            - sk_SK-lili-medium
+            - sr_RS-serbski_institut-medium
+            - sv_SE-nst-medium
+            - sw_CD-lanfrica-medium
+            - tr_TR-dfki-medium
+            - tr_TR-fahrettin-medium
+            - uk_UA-lada-x_low
+            - uk_UA-ukrainian_tts-medium
+            - vi_VN-25hours_single-low
+            - vi_VN-vais1000-medium
+            - vi_VN-vivos-x_low
+            - zh_CN-huayan-medium
+            - zh_CN-huayan-x_low
+          custom_value: true
           multiple: false
     voicerss_language:
       name: Language option for tts.voicerss_say
@@ -705,7 +831,7 @@ blueprint:
             - th-th
             - tr-tr
             - vi-vn
-          custom_value: false
+          custom_value: true
           multiple: false
     voicerss_format:
       name: Message format option for tts.voicerss_say
@@ -713,6 +839,9 @@ blueprint:
         Used only on tts.voicerss_say. Select message format. [More Info Here](https://www.home-assistant.io/integrations/voicerss)
         There were too many to do a selector. [SEE for details](https://www.voicerss.org/api).
       default: []
+      selector:
+        text:
+          multiline: false
     yandextts_language:
       name: Language option for tts.yandextts_say
       description: >
@@ -762,7 +891,7 @@ blueprint:
             - robot
             - dude
             - smoky
-          custom_value: false
+          custom_value: true
           multiple: false
     yandextts_emotion:
       name: Emotion option for tts.yandextts_say
@@ -775,7 +904,7 @@ blueprint:
             - neutral
             - evil
             - good
-          custom_value: false
+          custom_value: true
           multiple: false
 
 fields:
@@ -812,9 +941,11 @@ variables:
     # Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
   my_speaker:  '{% if live_speaker %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}'
-    # Get the value for templating
+    # Get baidu values for templating
   baidu_person_val: !input "baidu_person"
   my_baidu_person: "{{ baidu_person_val | int(0) }}"
+    # Get Piper value for templating
+  piper_voice: !input piper_voice
 
 sequence:
   - alias: Do something before the TTS Command
@@ -877,6 +1008,16 @@ sequence:
               entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               language: !input picotts_language
+      - conditions: '{{ my_tts == "Piper" }}'
+        sequence:
+          - service: tts.speak
+            data:
+              media_player_entity_id: "{{ my_speaker }}"
+              message: "{{ my_message }}"
+              options:
+                voice: "{{ piper_voice }}"
+            target:
+              entity_id: tts.piper
       - conditions: '{{ my_tts == "tts.voicerss_say" }}'
         sequence:
           - service: tts.voicerss_say
@@ -914,4 +1055,4 @@ sequence:
     then: !input "after_action"
 
 mode: queued
-icon: mdi-message-processing-outline
+icon: mdi:message-processing-outline
