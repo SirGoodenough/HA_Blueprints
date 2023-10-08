@@ -19,7 +19,7 @@ I also monitor the Blueprint Exchange post related to each Blueprint and will re
 
 There are 3 places on Discord that I monitor, in preference order:
 
-My personal Discord HA Channel:  https://discord.gg/EqtsKMHAhv
+My personal Discord Blueprints Channel:  https://discord.gg/HwFKS4my8Y
 DrZzs Blueprint channel:                 https://discord.gg/jvk7yEFyX3
 Homa Assistant Blueprint Channel: https://discord.gg/jPPvqsWwzh
 
