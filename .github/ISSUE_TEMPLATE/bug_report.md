@@ -25,6 +25,9 @@ Homa Assistant Blueprint Channel: https://discord.gg/jPPvqsWwzh
 
 Do if you think you found a bug where the text points you wrong, or something is just broken, continue here.  If you have a Feature Request, see the other Issue Template...
 
+**Which Blueprint is This Concern About / Related To?**
+Link to or name of Blueprint.
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
