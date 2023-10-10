@@ -2,7 +2,7 @@ blueprint:
   name: Door open tts.cloud_say and Piper announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2023-10-02
   author: SirGoodenough
   description: >
-    This uses tts.cloud_say from Nabu-Casa or Whisper with the Piper Addon to tell you a door is open too
+    This uses tts.cloud_say from Nabu-Casa or Wyoming with the Piper Addon to tell you a door is open too
     long and a door has been closed.
 
     📩 There is not an official version control system for Blueprints. However I have
@@ -25,7 +25,7 @@ blueprint:
         Option 1 is the Nabu-Casa based tts.cloud_say integration which
           requires you to be subscribed to Nabu-Casa.  
 
-        Option 2 is the Piper add-on found in that uses Whisper Integration.
+        Option 2 is the Piper add-on found in that uses Wyoming Integration.
           Piper does not require a subscription.
       default: nabu
       selector:
@@ -33,7 +33,7 @@ blueprint:
           options:
           - label: Nabu-Case based tts.cloud_say
             value: nabu
-          - label: Piper Add-on via Whisper Integration
+          - label: Piper Add-on via Wyoming Integration
             value: piper
           custom_value: false
           multiple: false
@@ -365,7 +365,7 @@ blueprint:
         text:
           multiline: true
     piper_voice:
-      name: Voice option for the Piper addon played thru Whisper
+      name: Voice option for the Piper addon played thru Wyoming
       description: >
         Used only on Piper.
         [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
@@ -594,7 +594,7 @@ action:
                   language: !input speaker_language
           - conditions: '{{ tts_service == "piper" }}'
             sequence:
-              - alias: Send a voice message via Piper Added-on & Whisper
+              - alias: Send a voice message via Piper Added-on & Wyoming
                 service: tts.speak
                 data:
                   media_player_entity_id: !input speaker_target
@@ -646,7 +646,7 @@ action:
               language: !input speaker_language
       - conditions: '{{ tts_service == "piper" }}'
         sequence:
-          - alias: Send a voice message via Piper Added-on & Whisper
+          - alias: Send a voice message via Piper Added-on & Wyoming
             service: tts.speak
             data:
               media_player_entity_id: !input speaker_target

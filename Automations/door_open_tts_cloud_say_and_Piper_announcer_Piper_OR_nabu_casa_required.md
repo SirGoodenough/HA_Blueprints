@@ -105,7 +105,7 @@ Requirements
         being certain to match the country code you picked above with one of
         the voices available for that country code on that list.
 
-    piper_voice: Voice option for the Piper addon played thru Whisper
+    piper_voice: Voice option for the Piper addon played thru Wyoming
         Used only on Piper.
         [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
         Also available in the Add-on UI configuration dropdown.

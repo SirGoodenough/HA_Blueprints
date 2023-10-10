@@ -651,7 +651,7 @@ blueprint:
           custom_value: true
           multiple: false
     piper_voice:
-      name: Voice option for the Piper addon played thru Whisper
+      name: Voice option for the Piper addon played thru Wyoming
       description: >
         Used only on Piper.
         [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)

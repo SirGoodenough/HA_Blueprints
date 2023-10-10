@@ -1,4 +1,4 @@
-📣 This is a script that can use any of 11 integrated TTS Platforms Plus Piper via Whisper Integration in Home Assistant to send a message to a media player. Some will require Google Type Speakers, some will require Non-Google type speakers. This BP can now be called on-the-fly and change the message & media_player when called.
+📣 This is a script that can use any of 11 integrated TTS Platforms Plus Piper via Wyoming Integration in Home Assistant to send a message to a media player. Some will require Google Type Speakers, some will require Non-Google type speakers. This BP can now be called on-the-fly and change the message & media_player when called.
 
 ## 📑 Changelog
 
@@ -129,7 +129,7 @@ Requirements
     picotts_language: Language option for tts.picotts_say
         Used only on tts.picotts_say.
 
-    piper_voice: Voice option for the Piper addon played thru Whisper
+    piper_voice: Voice option for the Piper addon played thru Wyoming
         Used only on Piper.
         [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
         Also available in the Add-on UI configuration dropdown.
