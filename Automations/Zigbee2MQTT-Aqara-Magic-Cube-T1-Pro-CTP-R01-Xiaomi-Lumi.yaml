@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-08-07
+  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-10-11
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
@@ -620,7 +620,7 @@ blueprint:
         action: {}
     action_6_from_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 1
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 0 and the ANY
+      description: '**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -629,7 +629,7 @@ blueprint:
         action: {}
     action_6_from_2:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -638,7 +638,7 @@ blueprint:
         action: {}
     action_6_from_3:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
         ANY 🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -647,7 +647,7 @@ blueprint:
         action: {}
     action_6_from_4:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -656,7 +656,7 @@ blueprint:
         action: {}
     action_6_from_5:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -1059,7 +1059,7 @@ blueprint:
         action: {}
     scene_6_from_1:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 1
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 0 and the ANY
+      description: '**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -1068,7 +1068,7 @@ blueprint:
         action: {}
     scene_6_from_2:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -1077,7 +1077,7 @@ blueprint:
         action: {}
     scene_6_from_3:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
         ANY 🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -1086,7 +1086,7 @@ blueprint:
         action: {}
     scene_6_from_4:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -1095,7 +1095,7 @@ blueprint:
         action: {}
     scene_6_from_5:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
         I suggest using only one of the three groups of triggers, not multiple groups...'
@@ -1420,7 +1420,7 @@ action:
             sequence: !input 'action_5_from_6'
       - conditions: '{{ side == 6 }}'
         sequence:
-        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 0 from any events
+        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 6 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'action_6_from_1'
@@ -1573,7 +1573,7 @@ action:
             sequence: !input 'scene_5_from_6'
       - conditions: '{{ side == 6 }}'
         sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 0 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 6 from any events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_6_from_1'
