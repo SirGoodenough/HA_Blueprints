@@ -1148,7 +1148,7 @@ variables:
   mdl: 'Number Helper for Z2M Cube T1-Pro Integration'
   mf: 'SirGoodenough'
   sa: 'house'
-  sw: '2023-08-07'
+  sw: '2023-10-11'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml'
   cu: 'https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111'
 
