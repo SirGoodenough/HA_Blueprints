@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2023-10-13-beta**: Bug fix [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
 * **2023-10-11**: Bug fix [Descriptions wrong](https://github.com/SirGoodenough/HA_Blueprints/issues/21)
 * **2023-08-07**: Updates for Home Assistant 2023.8
   * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.md) FOR IMPORTANT UPDATE INSTRUCTIONS
