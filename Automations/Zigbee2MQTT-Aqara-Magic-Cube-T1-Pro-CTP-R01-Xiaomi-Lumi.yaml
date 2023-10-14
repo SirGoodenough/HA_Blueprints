@@ -139,7 +139,7 @@ blueprint:
       selector:
         action: {}
     action_flip_from_any_to_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From ant face to face 1
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 1
       description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
@@ -178,7 +178,7 @@ blueprint:
       selector:
         action: {}
     action_flip_from_any_to_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From ant face to face 2
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 2
       default: []
       selector:
         action: {}
@@ -214,7 +214,7 @@ blueprint:
       selector:
         action: {}
     action_flip_from_any_to_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From ant face to face 3
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 3
       default: []
       selector:
         action: {}
@@ -250,7 +250,7 @@ blueprint:
       selector:
         action: {}
     action_flip_from_any_to_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From ant face to face 4
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 4
       default: []
       selector:
         action: {}
@@ -286,7 +286,7 @@ blueprint:
       selector:
         action: {}
     action_flip_from_any_to_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From ant face to face 5
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 5
       default: []
       selector:
         action: {}
@@ -322,7 +322,7 @@ blueprint:
       selector:
         action: {}
     action_flip_from_any_to_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From ant face to face 6
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 6
       default: []
       selector:
         action: {}
