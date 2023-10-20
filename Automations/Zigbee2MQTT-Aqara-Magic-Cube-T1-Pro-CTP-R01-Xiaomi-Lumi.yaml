@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-10-13-beta
+  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-10-20
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
@@ -696,7 +696,6 @@ blueprint:
         action: {}
 
 
-
     scene_flip_to_face_1:
       name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 1 from any other face
       description: Face 1 is the one with the ''Aqara'' LOGO'
@@ -1171,7 +1170,7 @@ variables:
   mdl: 'Number Helper for Z2M Cube T1-Pro Integration'
   mf: 'SirGoodenough'
   sa: 'house'
-  sw: '2023-10-13-beta'
+  sw: '2023-10-20'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml'
   cu: 'https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111'
 

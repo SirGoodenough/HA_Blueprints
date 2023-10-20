@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2023-10-20**: Enhancement [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
 * **2023-08-07**: Updates for Home Assistant 2023.8
 * * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.md) FOR IMPORTANT UPDATE INSTRUCTIONS
 * * Selector syntax change
@@ -168,6 +169,9 @@ ______________
 
     flipped180_face_0:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 0
+
+    flip_from_any_to_face_0:
+      name: Group 1 actions 🍎 Flip the cube from any to face 0
 
     rotate_cw_face_0:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 0 up

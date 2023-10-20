@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 22023-08-07
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2023-10-20
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
@@ -732,7 +732,7 @@ variables:
   mdl: 'Number Helper for Z2M Cube Integration'
   mf: 'SirGoodenough'
   sa: 'house'
-  sw: '2023-08-07'
+  sw: '2023-10-20'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
   cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
 
