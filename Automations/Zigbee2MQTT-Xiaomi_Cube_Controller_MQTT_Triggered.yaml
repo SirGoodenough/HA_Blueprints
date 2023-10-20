@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 22023-08-07
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2023-10-20
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
@@ -136,6 +136,12 @@ blueprint:
       default: []
       selector:
         action: {}
+    flip_from_any_to_face_0:
+      name: Group 1 actions 🍎 Flip the cube from any to face 0
+      description: Face 0 is the one with the 'Aqara' LOGO
+      default: []
+      selector:
+        action: {}
     rotate_cw_face_0:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 0 up
       description: Face 0 is the one with the 'Aqara' LOGO
@@ -166,6 +172,12 @@ blueprint:
     flipped180_face_1:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 1
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      default: []
+      selector:
+        action: {}
+    flip_from_any_to_face_1:
+      name: Group 1 actions 🍎 Flip the cube from any to face 1
+      description: Face 1 is the one with the 'Aqara' LOGO
       default: []
       selector:
         action: {}
@@ -200,6 +212,12 @@ blueprint:
       default: []
       selector:
         action: {}
+    flip_from_any_to_face_2:
+      name: Group 1 actions 🍎 Flip the cube from any to face 2
+      description: Face 2 is the one with the 'Aqara' LOGO
+      default: []
+      selector:
+        action: {}
     rotate_cw_face_2:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 2 up
       default: []
@@ -228,6 +246,12 @@ blueprint:
     flipped180_face_3:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 3
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      default: []
+      selector:
+        action: {}
+    flip_from_any_to_face_3:
+      name: Group 1 actions 🍎 Flip the cube from any to face 3
+      description: Face 3 is the one with the 'Aqara' LOGO
       default: []
       selector:
         action: {}
@@ -262,6 +286,12 @@ blueprint:
       default: []
       selector:
         action: {}
+    flip_from_any_to_face_4:
+      name: Group 1 actions 🍎 Flip the cube from any to face 4
+      description: Face 4 is the one with the 'Aqara' LOGO
+      default: []
+      selector:
+        action: {}
     rotate_cw_face_4:
       name: Group 1 actions 🍎 Rotate cube clockwise with face 4 up
       default: []
@@ -290,6 +320,12 @@ blueprint:
     flipped180_face_5:
       name: Group 1 actions 🍎 Flip the cube 180 degrees to face 5
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      default: []
+      selector:
+        action: {}
+    flip_from_any_to_face_5:
+      name: Group 1 actions 🍎 Flip the cube from any to face 5
+      description: Face 5 is the one with the 'Aqara' LOGO
       default: []
       selector:
         action: {}
@@ -696,7 +732,7 @@ variables:
   mdl: 'Number Helper for Z2M Cube Integration'
   mf: 'SirGoodenough'
   sa: 'house'
-  sw: '2023-08-07'
+  sw: '2023-10-20'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
   cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
 
@@ -768,10 +804,6 @@ action:
     sequence: !input 'slide_any'
   - conditions: '{{ action == "tap" }}'
     sequence: !input 'doubletap_any'
-  - conditions: '{{ action == "flip90" }}'
-    sequence: !input 'flipped90_any'
-  - conditions: '{{ action == "flip180" }}'
-    sequence: !input 'flipped180_any'
   - conditions: '{{ action == "rotate_right" }}'
     sequence: !input 'rotate_cw_any'
   - conditions: '{{ action == "rotate_left" }}'
@@ -780,6 +812,42 @@ action:
     sequence: !input 'shake'
   - conditions: '{{ action == "fall" }}'
     sequence: !input 'fall'
+  - conditions: '{{ action == "flip90" }}'
+    sequence:
+    - parallel:
+      - !input 'flipped90_any'
+      - alias: These are flip to specific side from any side events
+        choose:
+        - conditions: '{{ side == 0 }}'
+          sequence: !input 'flip_from_any_to_face_0'
+        - conditions: '{{ side == 1 }}'
+          sequence: !input 'flip_from_any_to_face_1'
+        - conditions: '{{ side == 2 }}'
+          sequence: !input 'flip_from_any_to_face_2'
+        - conditions: '{{ side == 3 }}'
+          sequence: !input 'flip_from_any_to_face_3'
+        - conditions: '{{ side == 4 }}'
+          sequence: !input 'flip_from_any_to_face_4'
+        - conditions: '{{ side == 5 }}'
+          sequence: !input 'flip_from_any_to_face_5'
+  - conditions: '{{ action == "flip180" }}'
+    sequence:
+    - parallel:
+      - !input 'flipped180_any'
+      - alias: These are flip to specific side from any side events
+        choose:
+        - conditions: '{{ side == 0 }}'
+          sequence: !input 'flip_from_any_to_face_0'
+        - conditions: '{{ side == 1 }}'
+          sequence: !input 'flip_from_any_to_face_1'
+        - conditions: '{{ side == 2 }}'
+          sequence: !input 'flip_from_any_to_face_2'
+        - conditions: '{{ side == 3 }}'
+          sequence: !input 'flip_from_any_to_face_3'
+        - conditions: '{{ side == 4 }}'
+          sequence: !input 'flip_from_any_to_face_4'
+        - conditions: '{{ side == 5 }}'
+          sequence: !input 'flip_from_any_to_face_5'
 - alias: Group 1 🍎 These are action events based on the action broken down by side
   choose:
   - conditions: '{{ action == "slide" }}'

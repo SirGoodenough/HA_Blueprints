@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2023-10-20**: Enhancement [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
 * **2023-10-11**: Bug fix [Descriptions wrong](https://github.com/SirGoodenough/HA_Blueprints/issues/21)
 * **2023-08-07**: Updates for Home Assistant 2023.8
   * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.md) FOR IMPORTANT UPDATE INSTRUCTIONS
@@ -152,6 +153,9 @@ ______________
     action_flipped180_face_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 1
 
+    action_flip_from_any_to_face_1:
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 1
+
     action_rotate_cw_face_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 1 up
 
@@ -210,7 +214,7 @@ ______________
     **There is a set of these 🍎 for all 6 sides. 18 inputs total..**
 
     scene_flip_to_face_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip 180 degrees to face 1
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 1 from any other face
 
     scene_rotate_cw_face_1:
       name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 1 up
@@ -451,11 +455,11 @@ Updates will be published on my [GIT repository](https://github.com/SirGoodenoug
 
 ## 📲 **Software to Download** 💾
 
-HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FZigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml)
+HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fflip_to_side_x_issue_22%2FAutomations%2FZigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml)
 
-Direct link to download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml```
+Direct link to download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/flip_to_side_x_issue_22/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/flip_to_side_x_issue_22/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
 
 # 🌐 All My Blueprints
 

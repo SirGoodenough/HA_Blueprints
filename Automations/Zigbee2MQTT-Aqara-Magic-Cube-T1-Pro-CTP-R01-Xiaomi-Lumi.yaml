@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-10-11
+  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-10-20
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
@@ -86,7 +86,7 @@ blueprint:
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111)
 
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/flip_to_side_x_issue_22/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
   domain: automation
   homeassistant:
     min_version: 2023.8.0
@@ -138,6 +138,12 @@ blueprint:
       default: []
       selector:
         action: {}
+    action_flip_from_any_to_face_1:
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 1
+      description: Face 1 is the one with the 'Aqara' LOGO
+      default: []
+      selector:
+        action: {}
     action_rotate_cw_face_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 1 up
       description: Face 1 is the one with the 'Aqara' LOGO
@@ -168,6 +174,11 @@ blueprint:
     action_flipped180_face_2:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 2
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      default: []
+      selector:
+        action: {}
+    action_flip_from_any_to_face_2:
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 2
       default: []
       selector:
         action: {}
@@ -202,6 +213,11 @@ blueprint:
       default: []
       selector:
         action: {}
+    action_flip_from_any_to_face_3:
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 3
+      default: []
+      selector:
+        action: {}
     action_rotate_cw_face_3:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 3 up
       default: []
@@ -230,6 +246,11 @@ blueprint:
     action_flipped180_face_4:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 4
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      default: []
+      selector:
+        action: {}
+    action_flip_from_any_to_face_4:
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 4
       default: []
       selector:
         action: {}
@@ -264,6 +285,11 @@ blueprint:
       default: []
       selector:
         action: {}
+    action_flip_from_any_to_face_5:
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 5
+      default: []
+      selector:
+        action: {}
     action_rotate_cw_face_5:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 5 up
       default: []
@@ -292,6 +318,11 @@ blueprint:
     action_flipped180_face_6:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 6
       description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      default: []
+      selector:
+        action: {}
+    action_flip_from_any_to_face_6:
+      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 6
       default: []
       selector:
         action: {}
@@ -665,12 +696,9 @@ blueprint:
         action: {}
 
 
-
     scene_flip_to_face_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip 180 degrees to face 1
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...
-
-        Face 1 is the one with the ''Aqara'' LOGO'
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 1 from any other face
+      description: Face 1 is the one with the ''Aqara'' LOGO'
       default: []
       selector:
         action: {}
@@ -687,8 +715,7 @@ blueprint:
       selector:
         action: {}
     scene_flip_to_face_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip 180 degrees to face 2
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 2 from any other face
       default: []
       selector:
         action: {}
@@ -703,8 +730,7 @@ blueprint:
       selector:
         action: {}
     scene_flip_to_face_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip 180 degrees to face 3
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 3 from any other face
       default: []
       selector:
         action: {}
@@ -719,8 +745,7 @@ blueprint:
       selector:
         action: {}
     scene_flip_to_face_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip 180 degrees to face 4
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 4 from any other face
       default: []
       selector:
         action: {}
@@ -735,8 +760,7 @@ blueprint:
       selector:
         action: {}
     scene_flip_to_face_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip 180 degrees to face 5
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 5 from any other face
       default: []
       selector:
         action: {}
@@ -751,8 +775,7 @@ blueprint:
       selector:
         action: {}
     scene_flip_to_face_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip 180 degrees to face 6
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 6 from any other face
       default: []
       selector:
         action: {}
@@ -802,9 +825,8 @@ blueprint:
       selector:
         action: {}
     scene_flip_to_side_any:
-      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Flip 180 degrees any side
-      description: 'NOTE: This action is trick to master, and should be used sparingly...
-        Side doesn''t matter on this one.
+      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Flip to any side
+      description: 'Side doesn''t matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
@@ -1148,7 +1170,7 @@ variables:
   mdl: 'Number Helper for Z2M Cube T1-Pro Integration'
   mf: 'SirGoodenough'
   sa: 'house'
-  sw: '2023-10-11'
+  sw: '2023-10-20'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml'
   cu: 'https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111'
 
@@ -1236,10 +1258,6 @@ action:
         sequence: !input 'action_slide_any'
       - conditions: '{{ action == "tap" }}'
         sequence: !input 'action_doubletap_any'
-      - conditions: '{{ action == "flip90" }}'
-        sequence: !input 'action_flipped90_any'
-      - conditions: '{{ action == "flip180" }}'
-        sequence: !input 'action_flipped180_any'
       - conditions: '{{ action == "rotate_right" }}'
         sequence: !input 'action_rotate_cw_any'
       - conditions: '{{ action == "rotate_left" }}'
@@ -1248,6 +1266,42 @@ action:
         sequence: !input 'action_shake'
       - conditions: '{{ action == "throw" }}'
         sequence: !input 'action_throw'
+      - conditions: '{{ action == "flip90" }}'
+        sequence:
+        - parallel:
+          - !input 'action_flipped90_any'
+          - alias: These are flip to specific side from any side events
+            choose:
+            - conditions: '{{ side == 1 }}'
+              sequence: !input 'action_flip_from_any_to_face_1'
+            - conditions: '{{ side == 2 }}'
+              sequence: !input 'action_flip_from_any_to_face_2'
+            - conditions: '{{ side == 3 }}'
+              sequence: !input 'action_flip_from_any_to_face_3'
+            - conditions: '{{ side == 4 }}'
+              sequence: !input 'action_flip_from_any_to_face_4'
+            - conditions: '{{ side == 5 }}'
+              sequence: !input 'action_flip_from_any_to_face_5'
+            - conditions: '{{ side == 6 }}'
+              sequence: !input 'action_flip_from_any_to_face_6'
+      - conditions: '{{ action == "flip180" }}'
+        sequence:
+        - parallel:
+          - !input 'action_flipped180_any'
+          - alias: These are flip to specific side from any side events
+            choose:
+            - conditions: '{{ side == 1 }}'
+              sequence: !input 'action_flip_from_any_to_face_1'
+            - conditions: '{{ side == 2 }}'
+              sequence: !input 'action_flip_from_any_to_face_2'
+            - conditions: '{{ side == 3 }}'
+              sequence: !input 'action_flip_from_any_to_face_3'
+            - conditions: '{{ side == 4 }}'
+              sequence: !input 'action_flip_from_any_to_face_4'
+            - conditions: '{{ side == 5 }}'
+              sequence: !input 'action_flip_from_any_to_face_5'
+            - conditions: '{{ side == 6 }}'
+              sequence: !input 'action_flip_from_any_to_face_6'
     - alias: 🫳 ACTION MODE 🫳 Group 1 🍎 These are action events based on the action broken down by side
       choose:
       - conditions: '{{ action == "slide" }}'
@@ -1503,7 +1557,7 @@ action:
       choose:
       - conditions: '{{ side == 1 }}'
         sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 1 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 1 from specific events
           choose:
           - conditions: '{{ last_side == 2 }}'
             sequence: !input 'scene_1_from_2'
@@ -1517,7 +1571,7 @@ action:
             sequence: !input 'scene_1_from_6'
       - conditions: '{{ side == 2 }}'
         sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 2 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 2 from specific events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_2_from_1'
@@ -1531,7 +1585,7 @@ action:
             sequence: !input 'scene_2_from_6'
       - conditions: '{{ side == 3 }}'
         sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 3 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 3 from specific events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_3_from_1'
@@ -1545,7 +1599,7 @@ action:
             sequence: !input 'scene_3_from_6'
       - conditions: '{{ side == 4 }}'
         sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 4 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 4 from specific events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_4_from_1'
@@ -1559,7 +1613,7 @@ action:
             sequence: !input 'scene_4_from_6'
       - conditions: '{{ side == 5 }}'
         sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 5 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 5 from specific events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_5_from_1'
@@ -1573,7 +1627,7 @@ action:
             sequence: !input 'scene_5_from_6'
       - conditions: '{{ side == 6 }}'
         sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 6 from any events
+        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 6 from specific events
           choose:
           - conditions: '{{ last_side == 1 }}'
             sequence: !input 'scene_6_from_1'
