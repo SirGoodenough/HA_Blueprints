@@ -86,7 +86,7 @@ blueprint:
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111)
 
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/flip_to_side_x_issue_22/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
   domain: automation
   homeassistant:
     min_version: 2023.8.0
