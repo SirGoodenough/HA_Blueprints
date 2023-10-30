@@ -133,13 +133,13 @@ sequence:
               rgb_color: >-
                 {% if new_red < 0 %}
                   {# Make sure it doesn't go negative #}
-                  {{ 0, B, G }}
+                  {{ 0, G, B }}
                 {% elif new_red > 255 %}
                   {# Make sure it doesn't go over 255 #}
-                  {{ 255, B, G }}
+                  {{ 255, G, B }}
                 {% else %}
                   {# Send the value calculated #}
-                  {{ new_red, B, G }}
+                  {{ new_red, G, B }}
                 {% endif %}
             target:
               entity_id: "{{ light }}"
