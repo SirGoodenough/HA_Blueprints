@@ -1,5 +1,5 @@
 blueprint:
-  name: Throttle-your-water-flow-tasmota-2023-08-07
+  name: Throttle-your-water-flow-tasmota-2023-10-31
   author: SirGoodenough
   description: >
     This sets the amount of water sent to your Humidifier. 
@@ -65,7 +65,7 @@ blueprint:
             - domain: switch
           multiple: false
     mqtt_topic:
-      name: Topic to send the time value to the Tasmota device
+      name: Topic to used send the time value to the Tasmota device
       description: >
         This is the MQTT Topic needed.
       
@@ -79,6 +79,21 @@ blueprint:
       selector:
         text:
           multiline: false
+    scalar:
+      name: Scaling Factor
+      description: >
+        This number is the exponent in the calculation of how long the water stays on scaled
+        against thd amount the actual humidity is below the target.
+
+        The default is 2, but if your humidifier is not keeping up set it to a higher number.
+
+      default: 2.0
+      selector:
+        number:
+          min: 0.1
+          max: 10.0
+          mode: slider
+          step: 0.1
     minimum_time:
       name: Floor for time value sent to Tasmota
       description: >
@@ -140,8 +155,10 @@ variables:
   humidity_now_var: !input 'humidity'
     # Get current Humidity from Sensor
   humidity_now_val: '{{ states(humidity_now_var) | float(set_val) }}'
+    # Convert !input to variable
+  _scalar: !input 'scalar'
     # Ratio actual to the target & apply that % against the max time allowed.
-  time_raw: '{{ (1 - (humidity_now_val/set_val)**2) * max_t_var | float(1) }}'
+  time_raw: '{{ (1 - (humidity_now_val/set_val)**_scalar) * max_t_var | float(1) }}'
     # If the calc'ed time < min or > max time, select the limits. Else use calc'ed time.
   time_out: '{% if time_raw < min_t_var %}{{ min_t_var }}{% elif time_raw > max_t_var %}{{ max_t_var }}{% else %}{{ time_raw }}{% endif %}'
     # Convert !input to variable
@@ -184,6 +201,7 @@ action:
   #     humidity_now_val: '{{ humidity_now_val }}'
   #     time_raw: '{{ time_raw }}'
   #     time_out: '{{ time_out }}'
+  #     scalar: '{{ _scalar }}'
 
 mode: single
 max_exceeded: silent
