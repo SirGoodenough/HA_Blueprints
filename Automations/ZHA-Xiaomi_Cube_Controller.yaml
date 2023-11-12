@@ -732,7 +732,7 @@ action:
   event: zha_cube_last_action
   event_data:
     action: '{{ action }}'
-    side: '{{ current_side }}'
+    side: '{{ side }}'
     current_side: '{{ current_side }}'
     last_side: '{{ last_side }}'
     device_id: '{{ cube }}'
