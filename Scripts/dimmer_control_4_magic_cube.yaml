@@ -1,10 +1,10 @@
 blueprint:
-  name: dimmer_control_4_magic_cube_and_other_things - 2023-08-07
+  name: dimmer_control_4_magic_cube_and_other_things - 2023-10-28-beta
   author: SirGoodenough
   domain: script
   homeassistant:
     min_version: 2023.8.0
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/dimmer_control_4_magic_cube.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/transition/Scripts/dimmer_control_4_magic_cube.yaml
   description: >
     This script was invented to be used with my Magic Cube Blueprints. I released
     it as a standalone Script Blueprint because I saw others struggling with how
@@ -84,6 +84,15 @@ blueprint:
           max: 90
           step: 1
           mode: slider
+    transition_i:
+      name: Transition Input
+      description: Seconds to take to change light one level to another
+      default: []
+      selector:
+        number:
+          min: 0
+          max: 1800
+          step: 0.5
 
 fields:
   angle:
@@ -110,37 +119,63 @@ fields:
         multiple: false
         filter:
           domain: light
+  transition:
+    name: Transition Field
+    description: Seconds to take to change light one level to another
+    required: false
+    example: 4
+    selector:
+      number:
+        min: 0
+        max: 1800
+        step: 0.5
 
 variables:
-    # Get the sensitivity input
+  # Get the sensitivity input
   sensi_var: !input sensi
-    # Convert raw percentage to decimal for calculations. Default to 0.4.
+  # Convert raw percentage to decimal for calculations. Default to 0.4.
   sens_d: "{{ sensi_var / 100 | default( 0.4 ) }}"
-    # Get the minimum brightness input
+  # Get the minimum brightness input
   min_b_var: !input min_b
+  # Set new Brightness
+  bright_p: >-
+    {% set step_size = angle * sens_d %}
+      {# Get brightness as a percent. #}
+    {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
+    {% set new_brightness = cb | int(10) + step_size %}
+    {% if new_brightness < 5 %}
+      {# If it gets really low set to 0. Adjust if needed for your lights. #}
+      0
+    {% elif new_brightness <= min_b_var %}
+      {# If it's not quite 0, set to a minimum working brightness. #}
+      {{ min_b_var }}
+    {% elif 91 <= new_brightness < (90 + step_size) %}
+      {# If it's almost full brightness, set to 100%. #}
+      100
+    {% else %}
+      {# Send actual calculated value. #}
+    {{ new_brightness }}
+    {% endif %}
+  # Get the transition input if there is one
+  trans_i: !input transition_i
+  # Set the transition value if the operator requests it
+  transition_var: >-
+    {% if is_number(transition) %}
+      {{ transition }}
+    {% elsif is_number(trans_i) %}
+      {{ trans_i }}
+    {% else %}
+      "none"
+    {% endif %}
 
 sequence:
   - service: light.turn_on
-    data:
-      entity_id: "{{ light }}"
-      brightness_pct: >-
-        {% set step_size = angle * sens_d %}
-        {# Get brightness as a percent. #}
-        {% set cb = (state_attr( light, 'brightness') | float(10) / 255.0) * 100.0 %}
-        {% set new_brightness = cb | int(10) + step_size %}
-        {% if new_brightness < 5 %}
-          {# If it gets really low set to 0. Adjust if needed for your lights. #}
-          0
-        {% elif new_brightness <= min_b_var %}
-          {# If it's not quite 0, set to a minimum working brightness. #}
-          {{ min_b_var }}
-        {% elif 91 <= new_brightness < (90 + step_size) %}
-          {# If it's almost full brightness, set to 100%. #}
-          100
-        {% else %}
-          {# Send actual calculated value. #}
-          {{ new_brightness }}
-        {% endif %}
+    data: >-
+      entity_id: {{ light }}
+      brightness_pct: {{ bright_p }}
+      {%- if is_number(transition_var) %}
+      transition: {{ transition_var }}
+      {%- endif %}
 
 icon: mdi:lightbulb-on-50
 mode: queued
