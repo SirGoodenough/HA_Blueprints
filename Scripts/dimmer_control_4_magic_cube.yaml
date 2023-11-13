@@ -4,7 +4,7 @@ blueprint:
   domain: script
   homeassistant:
     min_version: 2023.8.0
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/transition/Scripts/dimmer_control_4_magic_cube.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/dimmer_control_4_magic_cube.yaml
   description: >
     This script was invented to be used with my Magic Cube Blueprints. I released
     it as a standalone Script Blueprint because I saw others struggling with how
