@@ -21,13 +21,10 @@ Why do I need this?
 
 ## 🔃 Device Reset
 
-This script was invented to be used with my Device Tracker-Monitor-Notifier
-Blueprint. I released it as a standalone Script Blueprint because I saw
-an opportunity to add another tool to my toolbox, and possibly to others
-toolboxes
+This script was invented to be used with my Device Tracker-Monitor-Notifier Blueprint. I released it as a standalone Script Blueprint because I saw an opportunity to add another tool to my toolbox, and possibly to others
+toolboxes.
 
-There are other places in my HA config where I need to reset something 
-and now I can use this thing.
+There are other places in my HA config where I need to reset something and now I can use this thing.
 
 It asks for the entity or list of entities that you want to reset and how long you want them to be off for the reset.
 
@@ -45,36 +42,16 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/device_reset.
 
 ## 🔊 Volume Control 4 Magic Cube
 
-This script was invented to be used with my Magic Cube Blueprints. I released
-it as a standalone Script Blueprint because because of requests to extend the
-function of my BP's with how to convert cube rotation to volume in other places.
-Research found me this [Post from Petro](https://community.home-assistant.io/t/cant-seem-to-set-volume-level-based-on-itself-from-data-template/237089/11?u=sir_goodenough)
-which had a very elegant solution to the problem, It was very easy decision
-to adopt it here.
+This script was invented to be used with my Magic Cube Blueprints. I released it as a standalone Script Blueprint because because of requests to extend the function of my BP's with how to convert cube rotation to volume in other places. Research found me this [Post from Petro](https://community.home-assistant.io/t/cant-seem-to-set-volume-level-based-on-itself-from-data-template/237089/11?u=sir_goodenough) which had a very elegant solution to the problem, It was very easy decision to adopt it here.
 
+To use this blueprint, install it from the source in the normal way. After that add your unique name for the Script, and add an icon and change the entity_id if desired.
 
-To use this blueprint, install it from the source in the normal way.
-After that add your unique name for the Script, and add an icon and change
-the entity_id if desired.
-You should only need to run the blueprint once, as you will be calling the
-unique name/entity you added above to use the code and provide action data.
-This script has one !input in the Blueprint screen to set the sensitivity
-of the rotation to volume changes. 30 seemed about right, but adjust as
+You should only need to run the blueprint once, as you will be calling the unique name/entity you added above to use the code and provide action data. This script has one !input in the Blueprint screen to set the sensitivity of the rotation to volume changes. 30 seemed about right, but adjust as
 needed.
 
+Because all the data is added to control the action live at each use this is the only !input. This requires you call this generated script wth 2 data values when you want it to run. One is a positive or negative number between 360 and -360 that in the original, represents the input angle from the cube movement. The other data point is the entity of the media_player that you are trying to control.
 
-Because all the data is added to control the action live at each use this
-is the only !input.
-This requires you call this generated script wth 2 data values when you want
-it to run. One is a positive or negative number between 360 and -360 that in
-the original, represents the input angle from the cube movement.
-The other data point is the entity of the media_player that you are
-trying to control.
-
-
-***NOTE:*** the trigger variable below will be different for Z2M and ZHA
-and others. Look at my documentation for that cube integration help if
-you need it.
+**NOTE:*** the trigger variable below will be different for Z2M and ZHA and others. Look at my documentation for that cube integration help if you need it.
 
 Sample call / use of this script for ZHA:
 ```yaml
@@ -104,30 +81,16 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_contro
 
 ## 🌈 Color Control 4 Magic Cube
 
-This script was invented to be used with my Magic Cube Blueprints. I released
-it as a standalone Script Blueprint because I saw others struggling with how
-so convert cube rotation to light dimming in other places.
+This script was invented to be used with my Magic Cube Blueprints. I released it as a standalone Script Blueprint because I saw others struggling with how so convert cube rotation to light dimming in other places.
 
 
-To use this blueprint, install it from the source in the normal way.
-After that add your unique name for the Script, and add an icon and change
-the entity_id if desired.
-You should only need to run the blueprint once, as you will be calling the
-unique name/entity you added above to use the code.
-This script has 1 input to select the relationship between the rotation
-amount and the speed of the color change.
+To use this blueprint, install it from the source in the normal way. After that add your unique name for the Script, and add an icon and change the entity_id if desired.
 
+You should only need to run the blueprint once, as you will be calling the unique name/entity you added above to use the code. This script has 1 input to select the relationship between the rotation amount and the speed of the color change.
 
-This requires you call this script wth 3 data values. One is a positive or
-negative number between 360 and -360 that in the original, represents the
-input angle from the cube movement. The second data point is the entity of
-the light or light group that you are trying to control.
-The third is to tell the BP id you are controlling the red, the blue,
-or the green part of the color.
+This requires you call this script wth 3 data values. One is a positive or negative number between 360 and -360 that in the original, represents the input angle from the cube movement. The second data point is the entity of the light or light group that you are trying to control. The third is to tell the BP id you are controlling the red, the blue, or the green part of the color.
 
-***NOTE:*** the trigger variable below will be different for Z2M and ZHA
-and others. Look at my documentation for that cube integration help if
-you need it.
+***NOTE:*** the trigger variable below will be different for Z2M and ZHA and others. Look at my documentation for that cube integration help if you need it.
 
 Sample call / use of this script with ZHA:
 ```yaml
@@ -159,42 +122,21 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control
 
 ## 🌗 Dimmer Control 4 Magic Cube
 
-This script was invented to be used with my Magic Cube Blueprints. I released
-it as a standalone Script Blueprint because I saw others struggling with how
-so convert cube rotation to light dimming in other places.
+This script was invented to be used with my Magic Cube Blueprints. I released it as a standalone Script Blueprint because I saw others struggling with how so convert cube rotation to light dimming in other places.
 
+To use this blueprint, install it from the source in the normal way. After that add your unique name for the Script, and add an icon and change the entity_id if desired.
 
-To use this blueprint, install it from the source in the normal way.
-After that add your unique name for the Script, and add an icon and change
-the entity_id if desired.
-You should only need to run the blueprint once, as you will be calling the
-unique name/entity you added above to use the code.
-This script has 2 inputs in the Blueprint screen to set the sensitivity
-of the rotation action and the minimum bbrightness level for your lights.
-If the rotation is too sensitive the lights will change from dim to bright
-in too short of a rotation so make it less sensitive.
-If the lights flicker at low brightness, raise the minimum brightness
-level to stop it.
-The data is sent to the generated script to control the action live at
-each use. You only need to ececute this blueprint generator script if you
-wish to change in input values or create another dimmer script.
+You should only need to run the blueprint once, as you will be calling the unique name/entity you added above to use the code. This script has 2 inputs in the Blueprint screen to set the sensitivity of the rotation action and the minimum brightness level for your lights. If the rotation is too sensitive the lights will change from dim to bright
+in too short of a rotation so make it less sensitive. If the lights flicker at low brightness, raise the minimum brightness level to stop it.
 
-There is a third optional field available, transition. This is the
-transition value for the lights. It can be picked as a field, as an
-input, or ignored. Ignored it doesn't change the current vlaue in the light.
-If you call the script with a data field that has priority and that
-will be the value set. If there is no data fiels called, and there is
-an input value, that will be used.
+The data is sent to the generated script to control the action live at each use. You only need to execute this blueprint generator script if you wish to change in input values or create another dimmer script.
 
+There is a third optional field available, transition. This is the transition value for the lights. It can be picked as a field, as an input, or ignored. Ignored it doesn't change the current value in the light. If you call the script with a data field that has priority and that will be the value set. If there is no data field called, and there is an input value, that will be used.
 
-This requires you call this script wth 2 data values. One is a positive or
-negative number between 360 and -360 that in the original, represents the
-input angle from the cube movement. The other data point is the entity of
+This requires you call this script wth 2 data values. One is a positive or negative number between 360 and -360 that in the original, represents the input angle from the cube movement. The other data point is the entity of
 the light or light group that you are trying to control.
 
-***NOTE:*** the trigger variable below will be different for Z2M and ZHA
-and others. Look at my documentation for that cube integration help if
-you need it.
+***NOTE:*** the trigger variable below will be different for Z2M and ZHA and others. Look at my documentation for that cube integration help if you need it.
 
 Sample call / use of this script for ZHA:
 ```yaml
@@ -225,30 +167,16 @@ https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/dimmer_contro
 
 ## 🎏 Long Short Toggle 4 Magic Cube
 
-This script was invented to be used with my Magic Cube Blueprints. I released
-it as a standalone Script Blueprint because I saw others struggling with how
-so convert cube rotation to actions in other places.
+This script was invented to be used with my Magic Cube Blueprints. I released it as a standalone Script Blueprint because I saw others struggling with how so convert cube rotation to actions in other places.
 
+To use this blueprint, install it from the source in the normal way. After that add your unique name for the Script, and add an icon and change the entity_id if desired.
 
-To use this blueprint, install it from the source in the normal way.
-After that add your unique name for the Script, and add an icon and change
-the entity_id if desired.
-You should only need to run the blueprint once, as you will be calling the
-unique name/entity you added above to use the code.
-This script has no inputs in the Blueprint screen because all the data is
-added to control the action live at each use.
+You should only need to run the blueprint once, as you will be calling the unique name/entity you added above to use the code. This script has no inputs in the Blueprint screen because all the data is added to control the action live at each use.
 
-
-This requires you call this script with a couple of data values. One is a 
-positive or negative number between 360 and -360 that in the original,
-represents the input angle from the cube movement.
-The other data point is the entity of the device(s) that you are trying 
-o control. Only 1 of the short_entity or long_entity is required 4 this
+This requires you call this script with a couple of data values. One is a positive or negative number between 360 and -360 that in the original, represents the input angle from the cube movement. The other data point is the entity of the device(s) that you are trying to control. Only 1 of the short_entity or long_entity is required 4 this
 Blueprint to work.
 
-***NOTE:*** the trigger variable below will be different for Z2M and ZHA
-and others. Look at my documentation for that cube integration help if
-you need it.
+***NOTE:*** the trigger variable below will be different for Z2M and ZHA and others. Look at my documentation for that cube integration help if you need it.
 
 Sample call / use of this script with ZHA:
 ```yaml
