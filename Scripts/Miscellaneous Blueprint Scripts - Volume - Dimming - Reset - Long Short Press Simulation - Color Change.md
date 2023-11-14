@@ -2,6 +2,7 @@ These are several Script Blueprints written to help other Automations or Bluepri
 
 ## 📑 Changelog
 
+* **2023-11-14**: Add Transition to Dimmer as per FR [#24](https://github.com/SirGoodenough/HA_Blueprints/issues/24)
 * **2023-08-07**: First release as it's own Blueprint Exchange thread 🎉
 <base target="_blank">
 
@@ -178,6 +179,13 @@ The data is sent to the generated script to control the action live at
 each use. You only need to ececute this blueprint generator script if you
 wish to change in input values or create another dimmer script.
 
+There is a third optional field available, transition. This is the
+transition value for the lights. It can be picked as a field, as an
+input, or ignored. Ignored it doesn't change the current vlaue in the light.
+If you call the script with a data field that has priority and that
+will be the value set. If there is no data fiels called, and there is
+an input value, that will be used.
+
 
 This requires you call this script wth 2 data values. One is a positive or
 negative number between 360 and -360 that in the original, represents the
@@ -194,6 +202,7 @@ Sample call / use of this script for ZHA:
     data:
     angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
     light: light.grp_studio
+    transition: 4
 ```
 
 Sample call / use of this script for Z2M:

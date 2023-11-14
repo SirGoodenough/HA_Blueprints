@@ -1,5 +1,5 @@
 blueprint:
-  name: dimmer_control_4_magic_cube_and_other_things - 2023-10-28-beta
+  name: dimmer_control_4_magic_cube_and_other_things - 2023-11-14
   author: SirGoodenough
   domain: script
   homeassistant:
