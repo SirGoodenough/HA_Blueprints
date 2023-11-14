@@ -162,7 +162,7 @@ variables:
   transition_var: >-
     {% if is_number(transition) %}
       {{ transition }}
-    {% elsif is_number(trans_i) %}
+    {% elif is_number(trans_i) %}
       {{ trans_i }}
     {% else %}
       "none"
