@@ -4,6 +4,7 @@ These are several Script Blueprints written to help other Automations or Bluepri
 
 * **2023-11-14**: Add Transition to Dimmer as per FR [#24](https://github.com/SirGoodenough/HA_Blueprints/issues/24)
 * **2023-08-07**: First release as it's own Blueprint Exchange thread 🎉
+
 <base target="_blank">
 
 ## 🔮 About this blueprint
@@ -36,7 +37,7 @@ HA link to download blueprint: [![Open your Home Assistant instance and show the
 
 Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/device_reset.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/device_reset.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/device_reset.yaml.
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
@@ -54,6 +55,7 @@ Because all the data is added to control the action live at each use this is the
 **NOTE:*** the trigger variable below will be different for Z2M and ZHA and others. Look at my documentation for that cube integration help if you need it.
 
 Sample call / use of this script for ZHA:
+
 ```yaml
 - service: script.cube_dimmer_control_bp
     data:
@@ -62,6 +64,7 @@ Sample call / use of this script for ZHA:
 ```
 
 Sample call / use of this script for Z2M:
+
 ```yaml
 - service: script.cube_dimmer_control_bp
     data:
@@ -75,7 +78,7 @@ HA link to download blueprint: [![Open your Home Assistant instance and show the
 
 Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/volume_control_4_magic_cube.yaml.
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
@@ -93,6 +96,7 @@ This requires you call this script wth 3 data values. One is a positive or negat
 ***NOTE:*** the trigger variable below will be different for Z2M and ZHA and others. Look at my documentation for that cube integration help if you need it.
 
 Sample call / use of this script with ZHA:
+
 ```yaml
 - service: script.cube_color_control
     data:
@@ -102,6 +106,7 @@ Sample call / use of this script with ZHA:
 ```
 
 Sample call / use of this script with Z2M:
+
 ```yaml
 - service: script.cube_color_control
     data:
@@ -116,7 +121,7 @@ HA link to download blueprint: [![Open your Home Assistant instance and show the
 
 Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control_4_magic_cube.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control_4_magic_cube.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/color_control_4_magic_cube.yaml.
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
@@ -139,6 +144,7 @@ the light or light group that you are trying to control.
 ***NOTE:*** the trigger variable below will be different for Z2M and ZHA and others. Look at my documentation for that cube integration help if you need it.
 
 Sample call / use of this script for ZHA:
+
 ```yaml
 - service: script.cube_dimmer_control_bp
     data:
@@ -148,20 +154,20 @@ Sample call / use of this script for ZHA:
 ```
 
 Sample call / use of this script for Z2M:
+
 ```yaml
 - service: script.cube_dimmer_control_bp
     data:
     angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
     light: light.grp_kitch
 ```
-
 ### 📲 **Software to Download** 💾
 
 HA link to download blueprint: [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fdimmer_control_4_magic_cube.yaml)
 
 Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/dimmer_control_4_magic_cube.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/dimmer_control_4_magic_cube.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/dimmer_control_4_magic_cube.yaml.
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
@@ -179,6 +185,7 @@ Blueprint to work.
 ***NOTE:*** the trigger variable below will be different for Z2M and ZHA and others. Look at my documentation for that cube integration help if you need it.
 
 Sample call / use of this script with ZHA:
+
 ```yaml
 - service: script.cube_long_short_toggle
     data:
@@ -188,6 +195,7 @@ Sample call / use of this script with ZHA:
 ```
 
 Sample call / use of this script with Z2M:
+
 ```yaml
 - service: script.cube_long_short_toggle
     data:
@@ -202,7 +210,7 @@ HA link to download blueprint: [![Open your Home Assistant instance and show the
 
 Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/long_short_toggle_4_magic_cube.yaml.
 
 # Please Click the 🧡 at the end of this top Post if you find this Useful
 
