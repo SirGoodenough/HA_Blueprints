@@ -1,5 +1,5 @@
 blueprint:
-  name: dimmer_control_4_magic_cube_and_other_things - 2023-11-14
+  name: dimmer_control_4_magic_cube_and_other_things - 2023-11-14-A
   author: SirGoodenough
   domain: script
   homeassistant:
@@ -160,22 +160,32 @@ variables:
   trans_i: !input transition_i
   # Set the transition value if the operator requests it
   transition_var: >-
-    {% if is_number(transition) %}
+    {% if is_number(transition | default('none')) %}
       {{ transition }}
-    {% elif is_number(trans_i) %}
+    {% elif is_number(trans_i | default('none')) %}
       {{ trans_i }}
     {% else %}
-      "none"
+      none
     {% endif %}
 
 sequence:
-  - service: light.turn_on
-    data: >-
-      entity_id: {{ light }}
-      brightness_pct: {{ bright_p }}
-      {%- if is_number(transition_var) %}
-      transition: {{ transition_var }}
-      {%- endif %}
+  - if:
+    - alias: turn the light & set brightness
+      condition: template
+      value_template: "{{ is_number(transition_var) }}"
+    then:
+      - alias: "Transition number IS available"
+        service: light.turn_on
+        data:
+          entity_id: '{{ light }}'
+          brightness_pct: '{{ bright_p }}'
+          transition: '{{ transition_var }}'
+    else:
+      - alias: "NO transition number available"
+        service: light.turn_on
+        data:
+          entity_id: '{{ light }}'
+          brightness_pct: '{{ bright_p }}'
 
 icon: mdi:lightbulb-on-50
 mode: queued
