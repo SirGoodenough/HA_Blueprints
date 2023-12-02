@@ -1,5 +1,5 @@
 blueprint:
-  name: State 1 temperature ramp control-2023-11-22
+  name: State 1 temperature ramp control-2023-12-02
   author: SirGoodenough
   description: >
     This ramps up the thermostat just enough at a time to keep your stage 2 
