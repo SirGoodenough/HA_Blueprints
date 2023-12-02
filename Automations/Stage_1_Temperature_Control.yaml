@@ -1,0 +1,228 @@
+blueprint:
+  name: State 1 temperature ramp control-2023-11-22
+  author: SirGoodenough
+  description: >
+    This ramps up the thermostat just enough at a time to keep your stage 2 
+    (or emergency) heat from activating. This is meant to be run for instance in 
+    the morning when the system is recovering from overnight thermostat set-back,
+    and you don't want it to kick in the stage 2 expensive heat source.
+
+    There is an optional facility to disable this based on zone occupancy.
+    Also there is a roll-your-own condition statement for things I haven't thought of.
+
+    📩 There is not an official version control system for Blueprints. However I have
+    found something that comes pretty close. It is not perfect, but for **MOST**
+    Blueprints, it does just fine. I encourage you to check this script out and use
+    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
+
+    [Community link for this blueprint]()
+  # source_url: TBD
+  homeassistant:
+    min_version: 2023.8.0
+  domain: automation
+  input:
+    climate_e:
+      name: Room Thermostat
+      description: >
+        The Climate device, thermostat, that you are ramping.
+      selector:
+        entity:
+          filter:
+            - domain: climate
+          multiple: false
+    maxTemp:
+      name: Goal Temperature
+      description: >
+        If it is at least this, go no warmer.
+      selector:
+        number:
+          min: 30
+          max: 90
+          unit_of_measurement: Degrees
+          mode: slider
+          step: 0.5
+    rampRate:
+      name: Degrees above actual
+      description: >
+        Keep set point this above actual
+      default: 1.5
+      selector:
+        number:
+          min: 0
+          max: 5
+          unit_of_measurement: Degrees
+          mode: slider
+          step: 0.5
+    interval:
+      name: Hold Period
+      description: >
+        Set this delay between thermostat temp setting events.
+        If it changes the goal set temp, it waits this long before it rechecks.
+        Basically this rate limits stuff.
+      default:
+        hours: 0
+        minutes: 3
+        seconds: 0
+      selector:
+        duration:
+    ramp_start_time:
+      name: Time of day ramp should start
+      description: >
+        Set this for the time of day you want the ramp function to be enabled.
+      selector:
+        time: {}
+    ramp_end_time:
+      name: Time of day ramp should stop
+      description: >
+        Set this for the time of day you want the ramp function to end.
+
+        Note: If it reaches maxTemp sooner, it will stop there.
+      selector:
+        time: {}
+    weekday:
+      name: Day of the week to use the Automation
+      description: Control temp on these days with this automation.
+      default:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+      selector:
+        select:
+          options:
+          - label: Monday
+            value: mon
+          - label: Tuesday
+            value: tue
+          - label: Wednesday
+            value: wed
+          - label: Thursday
+            value: thu
+          - label: Friday
+            value: fri
+          - label: Saturday
+            value: sat
+          - label: Sunday
+            value: sun
+          custom_value: false
+          multiple: true
+    occ_test:
+      name: Enable the Occupancy test?
+      description: |
+        This BluePrind can take into consideration if a zone is occupied.
+        To enable this feature, select yes.
+        To ignore this feature select no.
+      default: false
+      selector:
+        boolean:
+    t_zone:
+      name: Zone to monitor for occupancy
+      description: |
+        If you said yes above, then you enter the zome to monitoe here.
+        Default zone is home. Change to another zone if you want to.
+        If you said no above, this section has no effect on your BluePrint.
+      default: zone.home
+      selector:
+        entity:
+          filter:
+            - domain: zone
+          multiple: false
+    additional_conditions:
+      name: Additional conditions
+      description: |
+        Extra conditions you may want to add to this automation 
+        (Example: It is the heating season, etc.)
+      default: []
+      selector:
+        condition:
+
+trigger:
+  - platform: time
+    at: !input ramp_start_time
+    id: time_start
+  - platform: homeassistant
+    event: start
+    id: ha_restart
+
+variables:
+  _climate_e: !input climate_e
+    # Seconds between re-setting the thermostat.
+  _interval: !input interval
+    # Stop the sequence if you get to this temp.
+  _maxTemp: !input maxTemp
+    # Stop the sequence if it get to this time.
+  _ramp_end_time: !input ramp_end_time
+    # Set to current temp plus this number each time.
+  _rampRate: !input rampRate
+    # Should we run the occupancy test?
+  _occ_test: !input occ_test
+    # Zone to use for occulancy test only used if _occ_test is true.
+  _t_zone: !input t_zone
+
+condition: 
+  - alias: 'Only allow execution on selected Weekdays and (for HA restart) time period'
+    condition: time
+    after: !input ramp_start_time
+    before: !input ramp_end_time
+    weekday: !input weekday
+  - alias: Bail if over maxTemp
+    condition: template
+    value_template: >-
+      {{ state_attr(_climate_e, "current_temperature") < _maxTemp }}
+  - alias: "Occupancy: Pass if occ_test is false or occ_test is true & zone > 0."
+    condition: template
+    value_template: >-
+      {% if _occ_test %}
+        {% if _t_zone > 0 %}
+          true
+        {% else %}
+          false
+        {% endif %}
+      {% else %}
+        true
+      {% endif %}
+  - alias: User pick
+    condition: !input additional_conditions
+
+action:
+  - alias: "Repeat bumping until you hit the top or the time is up"
+    repeat:
+      while:
+        - alias: Stop when at maxTemp
+          condition: template
+          value_template: >-
+            {{ state_attr(_climate_e, "current_temperature")
+            | float(_maxTemp+0.1)
+            <= _maxTemp }}
+        - alias: "Don't try after endTime."
+          condition: time
+          before: !input ramp_end_time
+      sequence:
+        - alias: Check if current is above maxTemp & if setpoint bump is needed
+          if: >-
+            {{ state_attr(_climate_e, "current_temperature")
+            | float(_maxTemp+0.3)
+            <= _maxTemp
+            and
+            state_attr(_climate_e, "temperature")
+            != [state_attr(_climate_e, "current_temperature")
+            | float(_maxTemp - _rampRate) + _rampRate,
+            _maxTemp] | min }}
+          then:
+            - alias: Bump the temp up at rampRate until it gets to max
+              service: climate.set_temperature
+              target:
+                entity_id: !input climate_e
+              data:
+                temperature: >-
+                  {{ [state_attr(_climate_e, "current_temperature")
+                  | float(_maxTemp - _rampRate) + _rampRate,
+                  _maxTemp] | min }}
+            - delay: "{{ _interval }}"
+          else:
+            - alias: One minute delay before recycle
+              delay: 60
+mode: single
