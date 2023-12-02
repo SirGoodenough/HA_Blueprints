@@ -96,7 +96,7 @@ HA link to download blueprint: [![Open your Home Assistant instance and show the
 
 Direct link to  download Blueprint: ```https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Stage_1_Temperature_Control.yaml```
 
-https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Stage_1_Temperature_Control.yaml
+https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Stage_1_Temperature_Control.yaml.
 
 # 🌐 All My Blueprints
 

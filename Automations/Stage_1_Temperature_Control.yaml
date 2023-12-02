@@ -15,7 +15,7 @@ blueprint:
     Blueprints, it does just fine. I encourage you to check this script out and use
     it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
 
-    [Community link for this blueprint]()
+    [Community link for this blueprint](https://community.home-assistant.io/t/stage-1-temperature-control-for-climate-entity/649401)
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Stage_1_Temperature_Control.yaml
   homeassistant:
     min_version: 2023.8.0
