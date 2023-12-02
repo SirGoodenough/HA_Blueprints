@@ -256,3 +256,14 @@ https://community.home-assistant.io/t/octoprint-additional-buttons-helper-bluepr
 
 * [Octoprint_Additional_Buttons_Helper.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.md)
 * [Octoprint_Additional_Buttons_Helper.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml)
+
+#### 🧯 Stage_1_Temperature_Control
+
+This is Blueprint is provided as a helper for people using the Octoprint Plugin called OctoPrint-HomeAssistant. What this does is add 6 buttons, 4 of which you as the user can set your own G-Codes to for customizing. Also adds safe shutdown and presentation functions.
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FAutomations%2FStage_1_Temperature_Control.yaml)
+
+TBD Community link
+
+* [Octoprint_Additional_Buttons_Helper.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Stage_1_Temperature_Control.md)
+* [Octoprint_Additional_Buttons_Helper.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Stage_1_Temperature_Control.yaml)
