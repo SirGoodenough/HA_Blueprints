@@ -937,10 +937,12 @@ variables:
   my_tts: !input "TTS"
     # Get the message to select from !input or live data
   announcement_message: !input "announcement_message"
-  my_message: '{% if live_message %} {{ live_message }} {% else %} {{ announcement_message }} {% endif %}'
+  my_message: >
+    {% if live_message is defined %} {{ live_message }} {% else %} {{ announcement_message }} {% endif %}
     # Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
-  my_speaker:  '{% if live_speaker %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}'
+  my_speaker: >
+    {% if live_speaker is defined %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}
     # Get baidu values for templating
   baidu_person_val: !input "baidu_person"
   my_baidu_person: "{{ baidu_person_val | int(0) }}"

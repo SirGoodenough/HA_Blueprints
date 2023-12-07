@@ -1181,22 +1181,24 @@ variables:
 condition:
   - condition: or
     conditions:
-      - condition: template
-        alias: Check for valid Action Mode triggers
-        value_template: '{{ trigger.payload_json is defined and
+    - condition: template
+      alias: Check for valid Action Mode triggers
+      value_template: >
+        {{ trigger.payload_json is defined and
           trigger.payload_json.operation_mode is defined and
           trigger.payload_json.action is defined and
-          trigger.payload_json.operation_mode == ''action_mode'' and
-          trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
-          ''flip180'', ''slide'', ''tap'', ''shake'', ''throw'') }}'
-      - condition: template
-        alias: Check for valid Scene Mode triggers
-        value_template: '{{ trigger.payload_json is defined and
+          trigger.payload_json.operation_mode == "action_mode" and
+          trigger.payload_json.action in ("rotate_right", "rotate_left", "flip90", 
+          "flip180", "slide", "tap", "shake", "throw") }}
+    - condition: template
+      alias: Check for valid Scene Mode triggers
+      value_template: >
+        {{ trigger.payload_json is defined and
           trigger.payload_json.operation_mode is defined and
           trigger.payload_json.action is defined and
-          trigger.payload_json.operation_mode == ''scene_mode'' and
-          trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
-          ''flip_to_side'', ''shake'', ''throw'', ''hold'') }}'
+          trigger.payload_json.operation_mode == "scene_mode" and
+          trigger.payload_json.action in ("rotate_right", "rotate_left",
+          "flip_to_side", "shake", "throw", "hold") }}
   - alias: User pick
     condition: !input additional_conditions
 
