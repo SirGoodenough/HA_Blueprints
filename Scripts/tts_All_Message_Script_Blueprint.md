@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2023-12-07**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-09-29**: Add the ability to use Piper TTS.
 * * Change several of the selectors to allow custom. Use at your own risk.
 * **2023-08-23**: Add voice option for the Nabu-Casa tts-cloud.
