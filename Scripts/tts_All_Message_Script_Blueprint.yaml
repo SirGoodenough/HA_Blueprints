@@ -929,24 +929,32 @@ fields:
           domain: media_player
 
 variables:
-    # Do something before sending the TTS
+# Do something before sending the TTS
   my_b4_action: !input "b4_action"
-    # Do something after sending the TTS
+# Do something after sending the TTS
   my_after_action: !input "after_action"
-    # Get the Integration for templating
+# Get the Integration for templating
   my_tts: !input "TTS"
-    # Get the message to select from !input or live data
+# Get the message to select from !input or live data
   announcement_message: !input "announcement_message"
   my_message: >
-    {% if live_message is defined %} {{ live_message }} {% else %} {{ announcement_message }} {% endif %}
-    # Get the speaker to select from !input or live data
+    {% if live_message is defined %}
+      {{ live_message }}
+    {% else %}
+      {{ announcement_message }}
+    {% endif %}
+# Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
   my_speaker: >
-    {% if live_speaker is defined %} {{ live_speaker }} {% else %} {{ speaker_target }} {% endif %}
-    # Get baidu values for templating
+    {% if live_speaker is defined %}
+      {{ live_speaker }}
+    {% else %}
+      {{ speaker_target }}
+    {% endif %}
+# Get baidu values for templating
   baidu_person_val: !input "baidu_person"
   my_baidu_person: "{{ baidu_person_val | int(0) }}"
-    # Get Piper value for templating
+# Get Piper value for templating
   piper_voice: !input piper_voice
 
 sequence:

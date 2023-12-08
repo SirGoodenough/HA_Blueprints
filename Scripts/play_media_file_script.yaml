@@ -89,18 +89,30 @@ fields:
         type: text
 
 variables:
-    # Get the speaker to select from !input or live data
+# Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
   my_speaker: >
-    {% if otf_speaker_target is defined %} {{ otf_speaker_target }} {% else %} {{ speaker_target }} {% endif %}
-    # Get the media file to select from !input or live data
+    {% if not otf_speaker_target in ("none", "null", "unavailable", "") %}
+      {{ otf_speaker_target }}
+    {% else %}
+      {{ speaker_target }}
+    {% endif %}
+# Get the media file to select from !input or live data
   file_2_play: !input file_2_play
   my_file_2_play: >
-    {% if otf_file_2_play is defined %} {{ otf_file_2_play }} {% else %} {{ file_2_play }} {% endif %}
-    # Get the media type to select from !input or live data
+    {% if not otf_file_2_play in ("none", "null", "unavailable", "") %}
+      {{ otf_file_2_play }}
+    {% else %}
+      {{ file_2_play }}
+    {% endif %}
+# Get the media type to select from !input or live data
   media_type: !input media_type
   my_media_type: >
-    {% if otf_media_type is defined %} {{ otf_media_type }} {% else %} {{ media_type }} {% endif %}
+    {% if not otf_media_type in ("none", "null", "unavailable", "") %}
+      {{ otf_media_type }}
+    {% else %}
+      {{ media_type }}
+    {% endif %}
 
 sequence:
 - alias: Media Player Blueprint Script
