@@ -1179,7 +1179,7 @@ variables:
 # Get the last_side for use in logic below.
   last_side: >
     {# The first time it will not be there, so make sure its 0 instead of undefined. #}
-    {% if not num_ha_val in ("none", "null", "unavailable", "") %}
+    {% if not num_ha_val in ["unknown", "unavailable", "none", "null", ""] %}
       {{ num_ha_val }}
     {% else %}
       0
