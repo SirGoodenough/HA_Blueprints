@@ -913,7 +913,6 @@ fields:
     description: This will change the default message on-the-fly
     required: false
     example: This is where to put your message to be spoken
-    default: This is where to put your message to be spoken
     selector:
       text:
         multiline: true
@@ -922,6 +921,7 @@ fields:
     name: Live Media Player
     description: Change the default media player on the fly
     required: false
+    example: "media_player.basement_speaker"
     selector:
       entity:
         multiple: true
@@ -938,18 +938,22 @@ variables:
 # Get the message to select from !input or live data
   announcement_message: !input "announcement_message"
   my_message: >
-    {% if live_message is defined %}
+    {% if live_message | default("") %}
       {{ live_message }}
-    {% else %}
+    {% elif announcement_message | default("") %}
       {{ announcement_message }}
+    {% else %}
+      unknown: No message provided. tts_All_Message_Script_Blueprint.yaml
     {% endif %}
 # Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
   my_speaker: >
-    {% if live_speaker is defined %}
+    {% if live_speaker | default("") %}
       {{ live_speaker }}
-    {% else %}
+    {% elif speaker_target | default("") %}
       {{ speaker_target }}
+    {% else %}
+      unknown: No speaker entity provided. tts_All_Message_Script_Blueprint.yaml
     {% endif %}
 # Get baidu values for templating
   baidu_person_val: !input "baidu_person"
