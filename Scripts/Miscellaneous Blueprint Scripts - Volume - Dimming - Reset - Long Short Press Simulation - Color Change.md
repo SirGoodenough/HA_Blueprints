@@ -2,6 +2,7 @@ These are several Script Blueprints written to help other Automations or Bluepri
 
 ## 📑 Changelog
 
+* **2023-12-07**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-11-14**: Add Transition to Dimmer as per FR [#24](https://github.com/SirGoodenough/HA_Blueprints/issues/24)
 * **2023-08-07**: First release as it's own Blueprint Exchange thread 🎉
 

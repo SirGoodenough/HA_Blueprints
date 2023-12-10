@@ -1,5 +1,5 @@
 blueprint:
-  name: volume_control_4_magic_cube_and_other_things - 2023-11-14
+  name: volume_control_4_magic_cube_and_other_things - 2023-12-07
   author: SirGoodenough
   domain: script
   homeassistant:
@@ -96,9 +96,9 @@ fields:
           domain: media_player
 
 variables:
-    # Get the sensitivity input
+# Get the sensitivity input
   scalar_var: !input scalar
-    # Apply scaler to the actual angle
+# Apply scaler to the actual angle
   delta: "{{ scalar_var * angle | default(0.2) | float(0.3) }}"
 
 sequence:

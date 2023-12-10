@@ -1,5 +1,5 @@
 blueprint:
-  name: color_control_for_magic_cube_and_other_things - 2023-11-14
+  name: color_control_for_magic_cube_and_other_things - 2023-12-07
   author: SirGoodenough
   domain: script
   homeassistant:
@@ -105,18 +105,18 @@ fields:
 
 variables:
   sensi_var: !input sensi
-    # Convert raw percentage to decimal for calculations. Default to 0.6.
+# Convert raw percentage to decimal for calculations. Default to 0.6.
   sens_d: "{{ sensi_var / 100 | default( 0.6 ) }}"
-    # Set step size based on sensitivity input
+# Set step size based on sensitivity input
   step_size: "{{ angle * sens_d }}"
-    # Create color variable from our light info
+# Create color variable from our light info
   color:
     "{{ state_attr(light, 'rgb_color') }}"
-    # Create color variable s
+# Create color variable s
   R: "{{ color[0] }}"
   G: "{{ color[1] }}"
   B: "{{ color[2] }}"
-    # Set new step sizes
+# Set new step sizes
   new_red: "{{ R + step_size | int(0) }}"
   new_green: "{{ G + step_size | int(0) }}"
   new_blue: "{{ B + step_size | int(0) }}"
