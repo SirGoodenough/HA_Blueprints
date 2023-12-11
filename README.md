@@ -193,12 +193,12 @@ This Blueprint uses a ZHA built sensor to sort out the 38 commands from the Xiao
 
 [![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA-Xiaomi_Cube_Controller.yaml)
 
-https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/495975
+https://community.home-assistant.io/t/zha-xiaomi-cube-controller/495975
 
 The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do.  Functions that are left empty will simply do nothing. NOTICE: Using this Blueprint, this cube *can* be triggered many ways, but only 38 of them are unique...
 
-* [Zigbee2MQTT - Xiaomi Cube Controller.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA-Xiaomi_Cube_Controller.md)
-* [Zigbee2MQTT - Xiaomi Cube Controller.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA-Xiaomi_Cube_Controller.yaml)
+* [🧯ZHA - Xiaomi Cube Controller.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA-Xiaomi_Cube_Controller.md)
+* [🧯ZHA - Xiaomi Cube Controller.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/ZHA-Xiaomi_Cube_Controller.yaml)
 
 #### 🧯Device_tracker Monitor & Notifier
 
