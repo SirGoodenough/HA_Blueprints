@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-10-20
+  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-12-09
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
@@ -95,9 +95,9 @@ blueprint:
       name: Topic
       description: >
         The main MQTT Topic for your cube. 
-        
+
         Details on finding the correct topic can be found here: 
-        
+
         [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.md#to-make-the-blueprint-work-it-will-need)
 
       default: "zigbee2mqtt/?"
@@ -132,9 +132,10 @@ blueprint:
         action: {}
     action_flipped180_face_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 1
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...
+      description:
+        "**NOTE:** This action is trick to master, and should be used sparingly...
 
-        Face 1 is the one with the ''Aqara'' LOGO'
+        Face 1 is the one with the 'Aqara' LOGO"
       default: []
       selector:
         action: {}
@@ -173,7 +174,7 @@ blueprint:
         action: {}
     action_flipped180_face_2:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 2
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
       default: []
       selector:
         action: {}
@@ -209,7 +210,7 @@ blueprint:
         action: {}
     action_flipped180_face_3:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 3
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
       default: []
       selector:
         action: {}
@@ -245,7 +246,7 @@ blueprint:
         action: {}
     action_flipped180_face_4:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 4
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
       default: []
       selector:
         action: {}
@@ -281,7 +282,7 @@ blueprint:
         action: {}
     action_flipped180_face_5:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 5
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
       default: []
       selector:
         action: {}
@@ -317,7 +318,7 @@ blueprint:
         action: {}
     action_flipped180_face_6:
       name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 6
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
       default: []
       selector:
         action: {}
@@ -338,363 +339,394 @@ blueprint:
         action: {}
     action_shake:
       name: 🫳 ACTION MODE ONLY 🫳 Shake the cube 🍩
-      description: 'This trigger only occurs once in the set-up.
+      description: "This trigger only occurs once in the set-up.
 
-        It can be combined in any group.'
+        It can be combined in any group."
       default: []
       selector:
         action: {}
     action_throw:
       name: 🫳 ACTION MODE ONLY 🫳 Throw the cube 🍩
-      description: ' You don''t actually ''Throw'' the cube. The action is as follows:
+      description:
+        " You don't actually 'Throw' the cube. The action is as follows:
 
-          > Pick up the cube firmly.
+        > Pick up the cube firmly.
 
-          > Make a throwing motion with it but do not motion back towards yourself.
+        > Make a throwing motion with it but do not motion back towards yourself.
 
-          > Hold it there for a second.
+        > Hold it there for a second.
 
-          > The throw trigger should be sent to Z2M.
+        > The throw trigger should be sent to Z2M.
 
 
         This trigger only occurs once in the set-up.
-        
-        It can be combined in any group.'
+
+        It can be combined in any group."
       default: []
       selector:
         action: {}
     action_slide_any:
       name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Slide on any side
-      description: 'Side doesn''t matter on this one.
+      description: "Side doesn't matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_doubletap_any:
       name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Double tap on any side
-      description: 'Side doesn''t matter on this one.
+      description: "Side doesn't matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_flipped90_any:
       name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Flip 90 degrees to any side
-      description: 'Side doesn''t matter on this one.
+      description: "Side doesn't matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_flipped180_any:
       name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Flip 180 degrees to any side
-      description: 'NOTE: This action is trick to master, and should be used sparingly...
-        Side doesn''t matter on this one.
+      description:
+        "NOTE: This action is trick to master, and should be used sparingly...
+        Side doesn't matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_rotate_cw_any:
       name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate CW on any side
-      description: 'Side doesn''t matter on this one.
+      description: "Side doesn't matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_rotate_ccw_any:
       name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate CCW on any side
-      description: 'Side doesn''t matter on this one.
+      description: "Side doesn't matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_1_from_6:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 6
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_1_from_2:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_1_from_3:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_1_from_4:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_1_from_5:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_2_from_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_2_from_3:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_2_from_4:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_2_from_5:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 5
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_2_from_6:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 6
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_3_from_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_3_from_2:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_3_from_4:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 4
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_3_from_5:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_3_from_6:
       name: G🫳 ACTION MODE ONLY 🫳 roup 3 🍐 Flip to side 3 from side 6
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_4_from_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_4_from_2:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_4_from_3:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 3
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_4_from_5:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_4_from_6:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 6
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_5_from_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_5_from_2:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 2
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_5_from_3:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_5_from_4:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_5_from_6:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 6
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_6_from_1:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 1
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_6_from_2:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_6_from_3:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_6_from_4:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     action_6_from_5:
       name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
-
 
     scene_flip_to_face_1:
       name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 1 from any other face
@@ -791,336 +823,367 @@ blueprint:
         action: {}
     scene_hold:
       name: 👀 SCENE MODE ONLY 👀 Lift up the cube and hold it 🍩
-      description: 'This trigger only occurs once in the set-up.
+      description: "This trigger only occurs once in the set-up.
 
-        It can be combined in any group.'
+        It can be combined in any group."
       default: []
       selector:
         action: {}
     scene_shake:
       name: 👀 SCENE MODE ONLY 👀 Shake the cube 🍩
-      description: 'This trigger only occurs once in the set-up.
+      description: "This trigger only occurs once in the set-up.
 
-        It can be combined in any group.'
+        It can be combined in any group."
       default: []
       selector:
         action: {}
     scene_throw:
       name: 👀 SCENE MODE ONLY 👀 Throw the cube 🍩
-      description: ' You don''t actually ''Throw'' the cube. The action is as follows:
+      description:
+        " You don't actually 'Throw' the cube. The action is as follows:
 
-          > Pick up the cube firmly.
-          
-          > Make a throwing motion with it but do not motion back towards yourself.
+        > Pick up the cube firmly.
 
-          > Hold it there for a second.
+        > Make a throwing motion with it but do not motion back towards yourself.
 
-          > The throw trigger should be sent to Z2M.
+        > Hold it there for a second.
+
+        > The throw trigger should be sent to Z2M.
 
 
         This trigger only occurs once in the set-up.
-        
-        It can be combined in any group.'
+
+        It can be combined in any group."
       default: []
       selector:
         action: {}
     scene_flip_to_side_any:
       name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Flip to any side
-      description: 'Side doesn''t matter on this one.
+      description: "Side doesn't matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_rotate_cw_any:
       name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube CW with any side
-      description: 'Side doesn''t matter on this one.
+      description: "Side doesn't matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_rotate_ccw_any:
       name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube CCW with any side
-      description: 'Side doesn''t matter on this one.
+      description: "Side doesn't matter on this one.
 
         **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_1_from_6:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 6
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_1_from_2:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_1_from_3:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_1_from_4:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_1_from_5:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_2_from_1:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_2_from_3:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_2_from_4:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_2_from_5:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 5
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_2_from_6:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 6
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_3_from_1:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_3_from_2:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_3_from_4:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 4
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_3_from_5:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_3_from_6:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 6
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_4_from_1:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_4_from_2:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_4_from_3:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 3
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_4_from_5:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_4_from_6:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 6
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_5_from_1:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_5_from_2:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 2
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_5_from_3:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_5_from_4:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_5_from_6:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 6
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_6_from_1:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 1
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
+      description:
+        "**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_6_from_2:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_6_from_3:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
         ANY 🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_6_from_4:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
     scene_6_from_5:
       name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+      description:
+        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
         🍊 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
+        I suggest using only one of the three groups of triggers, not multiple groups..."
       default: []
       selector:
         action: {}
@@ -1130,51 +1193,71 @@ trigger:
     topic: !input topic
 
 variables:
-    # Get the action command.
-  action: '{{ trigger.payload_json.action }}'
-    # Get the angle.
-  angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
-    # Get the side.
-  side: '{{ trigger.payload_json.side }}'
-    # Get the operation_mode.
-  op_mode: '{{ trigger.payload_json.operation_mode }}'
+# Get the action command.
+  action: >
+    {% if trigger.payload_json.action is defined %}
+      {{ trigger.payload_json.action }}
+    {% else %}
+      none
+    {% endif %}
+# Get the angle.
+  angle: >
+    {% if trigger.payload_json.action_angle is number %}
+      {{ trigger.payload_json.action_angle | float(0.0) }}
+    {% else %}
+      0.0
+    {% endif %}
+# Get the side.
+  side: >
+    {% if trigger.payload_json.side is number %}
+      {{ trigger.payload_json.side | int(0) }}
+    {% else %}
+      0
+    {% endif %}
+# Get the operation_mode.
+  op_mode: >
+    {% if trigger.payload_json.operation_mode is defined %}
+      {{ trigger.payload_json.operation_mode }}
+    {% else %}
+      none
+    {% endif %}
 
-    # Get the topic as a variable.
+# Get the topic as a variable.
   topic_var: !input topic
-    # Generate the Friendly_name from the Topic.
+# Generate the Friendly_name from the Topic.
   friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9_/./-]", "") }}'
-    # Generate the device_id from the Friendly_name.
-  device_id: '{{ device_id( friendly_name ) }}'
-    # Pull out the ieee identifier.
-  ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
-    # Generate just the number for the ieee.
-  ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
+# Generate the device_id from the Friendly_name.
+  device_id: "{{ device_id( friendly_name ) }}"
+# Pull out the ieee identifier.
+  ieee_id_long: "{{(( device_attr( device_id, 'identifiers') |list)[0][1]) }}"
+# Generate just the number for the ieee.
+  ieee_id: "{{ieee_id_long.split('_')[1] }}"
 
-    # Set the name of the Number entity.
-  num_name: 'last side'
-    # Set the entity_id of the Number entity.
-  num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
-    # Get the value of this entity from HA
-  num_ha_val: '{{ states(num_ha_name) | default(0) | int(0) }}'
+# Set the name of the Number entity.
+  num_name: "last side"
+# Set the entity_id of the Number entity.
+  num_ha_name: "{{ 'number.' + friendly_name + '_last_side' }}"
+# Get the value of this entity from HA
+  num_ha_val: "{{ states(num_ha_name) | default(0) | int(0) }}"
 
-    # Get the last_side for use in logic below.
-  last_side: '
+# Get the last_side for use in logic below.
+  last_side: >
     {# The first time it will not be there, so make sure its 0 instead of undefined. #}
-    {% if not num_ha_val in (''none'', ''null'', ''unavailable'', '''') %}
+    {% if not num_ha_val in ["undefined", "unknown", "unavailable", "none", "null", ""] %}
       {{ num_ha_val }}
     {% else %}
       0
-    {% endif %}'
+    {% endif %}
 
-    # Set-up for Device parameters once
-  mdl: 'Number Helper for Z2M Cube T1-Pro Integration'
-  mf: 'SirGoodenough'
-  sa: 'house'
-  sw: '2023-10-20'
-  hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml'
-  cu: 'https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111'
+# Set-up for Device parameters once
+  mdl: "Number Helper for Z2M Cube T1-Pro Integration"
+  mf: "SirGoodenough"
+  sa: "house"
+  sw: "2023-12-09"
+  hw: "https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml"
+  cu: "https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111"
 
-    # Set Topics once
+# Set Topics once
   config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
   topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
 
@@ -1183,466 +1266,471 @@ condition:
     conditions:
       - condition: template
         alias: Check for valid Action Mode triggers
-        value_template: '{{ trigger.payload_json is defined and 
-          trigger.payload_json.action is defined and 
-          trigger.payload_json.operation_mode == ''action_mode'' and
-          trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
-          ''flip180'', ''slide'', ''tap'', ''shake'', ''throw'') }}'
+        value_template: >
+          {{ trigger.payload_json is defined and
+            trigger.payload_json.operation_mode is defined and
+            trigger.payload_json.action is defined and
+            trigger.payload_json.operation_mode == "action_mode" and
+            trigger.payload_json.action in ["rotate_right", "rotate_left",
+            "flip90", "flip180", "slide", "tap", "shake", "throw"] }}
       - condition: template
         alias: Check for valid Scene Mode triggers
-        value_template: '{{ trigger.payload_json is defined and 
-          trigger.payload_json.action is defined and 
-          trigger.payload_json.operation_mode == ''scene_mode'' and
-          trigger.payload_json.action in (''rotate_right'', ''rotate_left'',
-          ''flip_to_side'', ''shake'', ''throw'', ''hold'') }}'
+        value_template: >
+          {{ trigger.payload_json is defined and
+            trigger.payload_json.operation_mode is defined and
+            trigger.payload_json.action is defined and
+            trigger.payload_json.operation_mode == "scene_mode" and
+            trigger.payload_json.action in ["rotate_right", "rotate_left",
+            "flip_to_side", "shake", "throw", "hold"] }}
   - alias: User pick
     condition: !input additional_conditions
 
 action:
-- alias: Make number helper to store last side
-  service: mqtt.publish
-  data:
-    "topic": "{{ config_topic_2 }}"
-    "retain": true
-    "payload": >
-      { "name": "{{ num_name }}",
-        "avty_t": "homeassistant/status",
-        "uniq_id": "{{ friendly_name + '-' + device_id }}",
-        "cmd_t": "{{ topic_2 }}",
-        "sta_t": "{{ topic_2 }}",
-        "min": "0",
-        "max": "6",
-        "step": "1",
-        "mode": "box",
-        "ret": true,
-        "dev": {
-          "name": "{{ friendly_name }}",
-          "mdl": "{{ mdl }}",
-          "mf": "{{ mf }}",
-          "sa": "{{ sa }}",
-          "sw": "{{ sw }}",
-          "hw": "{{ hw }}",
-          "cu": "{{ cu }}",
-          "ids": [
-            "{{ ieee_id + '-' + num_name }}"
-          ]
+  - alias: Make number helper to store last side
+    service: mqtt.publish
+    data:
+      "topic": "{{ config_topic_2 }}"
+      "retain": true
+      "payload": >
+        { "name": "{{ num_name }}",
+          "avty_t": "homeassistant/status",
+          "uniq_id": "{{ friendly_name + '-' + device_id }}",
+          "cmd_t": "{{ topic_2 }}",
+          "sta_t": "{{ topic_2 }}",
+          "min": "0",
+          "max": "6",
+          "step": "1",
+          "mode": "box",
+          "ret": true,
+          "dev": {
+            "name": "{{ friendly_name }}",
+            "mdl": "{{ mdl }}",
+            "mf": "{{ mf }}",
+            "sa": "{{ sa }}",
+            "sw": "{{ sw }}",
+            "hw": "{{ hw }}",
+            "cu": "{{ cu }}",
+            "ids": [
+              "{{ ieee_id + '-' + num_name }}"
+            ]
+          }
         }
-      }
 
-- alias: 'Fire Last Action event. This is for optional troubleshooting data.'
-  event: cube_last_action
-  event_data:
-    action: '{{ action }}'
-    side: '{{ side }}'
-    last_side: '{{ last_side }}'
-    friendly_name: '{{ friendly_name }}'
-    device_id: '{{ device_id }}'
-    ieee_id: '{{ ieee_id }}'
-    angle: '{{ angle }}'
-    mode: '{{ op_mode }}'
+  - alias: "Fire Last Action event. This is for optional troubleshooting data."
+    event: cube_last_action
+    event_data:
+      action: "{{ action }}"
+      side: "{{ side }}"
+      last_side: "{{ last_side }}"
+      friendly_name: "{{ friendly_name }}"
+      device_id: "{{ device_id }}"
+      ieee_id: "{{ ieee_id }}"
+      angle: "{{ angle }}"
+      mode: "{{ op_mode }}"
 
-- alias: 'Store the current_side as the last_side for the next trigger'
-  service: number.set_value
-  target:
-    entity_id: '{{ num_ha_name }}'
-  data:
-    value: '{{ side }}'
+  - alias: "Store the current_side as the last_side for the next trigger"
+    service: number.set_value
+    target:
+      entity_id: "{{ num_ha_name }}"
+    data:
+      value: "{{ side }}"
 
-- alias: 'Choose Action Mode or Scene Mode'
-  choose:
-  - conditions: '{{ op_mode == "action_mode" }}'
-    sequence:
-    - alias: 🫳 ACTION MODE 🫳 Group 2 🍊 and No Group 🍩 These are action events for ANY Side
-      choose:
-      - conditions: '{{ action == "slide" }}'
-        sequence: !input 'action_slide_any'
-      - conditions: '{{ action == "tap" }}'
-        sequence: !input 'action_doubletap_any'
-      - conditions: '{{ action == "rotate_right" }}'
-        sequence: !input 'action_rotate_cw_any'
-      - conditions: '{{ action == "rotate_left" }}'
-        sequence: !input 'action_rotate_ccw_any'
-      - conditions: '{{ action == "shake" }}'
-        sequence: !input 'action_shake'
-      - conditions: '{{ action == "throw" }}'
-        sequence: !input 'action_throw'
-      - conditions: '{{ action == "flip90" }}'
+  - alias: "Choose Action Mode or Scene Mode"
+    choose:
+      - conditions: '{{ op_mode == "action_mode" }}'
         sequence:
-        - parallel:
-          - !input 'action_flipped90_any'
-          - alias: These are flip to specific side from any side events
+          - alias: 🫳 ACTION MODE 🫳 Group 2 🍊 and No Group 🍩 These are action events for ANY Side
             choose:
-            - conditions: '{{ side == 1 }}'
-              sequence: !input 'action_flip_from_any_to_face_1'
-            - conditions: '{{ side == 2 }}'
-              sequence: !input 'action_flip_from_any_to_face_2'
-            - conditions: '{{ side == 3 }}'
-              sequence: !input 'action_flip_from_any_to_face_3'
-            - conditions: '{{ side == 4 }}'
-              sequence: !input 'action_flip_from_any_to_face_4'
-            - conditions: '{{ side == 5 }}'
-              sequence: !input 'action_flip_from_any_to_face_5'
-            - conditions: '{{ side == 6 }}'
-              sequence: !input 'action_flip_from_any_to_face_6'
-      - conditions: '{{ action == "flip180" }}'
-        sequence:
-        - parallel:
-          - !input 'action_flipped180_any'
-          - alias: These are flip to specific side from any side events
+              - conditions: '{{ action == "slide" }}'
+                sequence: !input "action_slide_any"
+              - conditions: '{{ action == "tap" }}'
+                sequence: !input "action_doubletap_any"
+              - conditions: '{{ action == "rotate_right" }}'
+                sequence: !input "action_rotate_cw_any"
+              - conditions: '{{ action == "rotate_left" }}'
+                sequence: !input "action_rotate_ccw_any"
+              - conditions: '{{ action == "shake" }}'
+                sequence: !input "action_shake"
+              - conditions: '{{ action == "throw" }}'
+                sequence: !input "action_throw"
+              - conditions: '{{ action == "flip90" }}'
+                sequence:
+                  - parallel:
+                      - !input "action_flipped90_any"
+                      - alias: These are flip to specific side from any side events
+                        choose:
+                          - conditions: "{{ side == 1 }}"
+                            sequence: !input "action_flip_from_any_to_face_1"
+                          - conditions: "{{ side == 2 }}"
+                            sequence: !input "action_flip_from_any_to_face_2"
+                          - conditions: "{{ side == 3 }}"
+                            sequence: !input "action_flip_from_any_to_face_3"
+                          - conditions: "{{ side == 4 }}"
+                            sequence: !input "action_flip_from_any_to_face_4"
+                          - conditions: "{{ side == 5 }}"
+                            sequence: !input "action_flip_from_any_to_face_5"
+                          - conditions: "{{ side == 6 }}"
+                            sequence: !input "action_flip_from_any_to_face_6"
+              - conditions: '{{ action == "flip180" }}'
+                sequence:
+                  - parallel:
+                      - !input "action_flipped180_any"
+                      - alias: These are flip to specific side from any side events
+                        choose:
+                          - conditions: "{{ side == 1 }}"
+                            sequence: !input "action_flip_from_any_to_face_1"
+                          - conditions: "{{ side == 2 }}"
+                            sequence: !input "action_flip_from_any_to_face_2"
+                          - conditions: "{{ side == 3 }}"
+                            sequence: !input "action_flip_from_any_to_face_3"
+                          - conditions: "{{ side == 4 }}"
+                            sequence: !input "action_flip_from_any_to_face_4"
+                          - conditions: "{{ side == 5 }}"
+                            sequence: !input "action_flip_from_any_to_face_5"
+                          - conditions: "{{ side == 6 }}"
+                            sequence: !input "action_flip_from_any_to_face_6"
+          - alias: 🫳 ACTION MODE 🫳 Group 1 🍎 These are action events based on the action broken down by side
             choose:
-            - conditions: '{{ side == 1 }}'
-              sequence: !input 'action_flip_from_any_to_face_1'
-            - conditions: '{{ side == 2 }}'
-              sequence: !input 'action_flip_from_any_to_face_2'
-            - conditions: '{{ side == 3 }}'
-              sequence: !input 'action_flip_from_any_to_face_3'
-            - conditions: '{{ side == 4 }}'
-              sequence: !input 'action_flip_from_any_to_face_4'
-            - conditions: '{{ side == 5 }}'
-              sequence: !input 'action_flip_from_any_to_face_5'
-            - conditions: '{{ side == 6 }}'
-              sequence: !input 'action_flip_from_any_to_face_6'
-    - alias: 🫳 ACTION MODE 🫳 Group 1 🍎 These are action events based on the action broken down by side
-      choose:
-      - conditions: '{{ action == "slide" }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are slide events
-          choose:
-          - conditions: '{{ side == 1 }}'
-            sequence: !input 'action_slide_face_1'
-          - conditions: '{{ side == 2 }}'
-            sequence: !input 'action_slide_face_2'
-          - conditions: '{{ side == 3 }}'
-            sequence: !input 'action_slide_face_3'
-          - conditions: '{{ side == 4 }}'
-            sequence: !input 'action_slide_face_4'
-          - conditions: '{{ side == 5 }}'
-            sequence: !input 'action_slide_face_5'
-          - conditions: '{{ side == 6 }}'
-            sequence: !input 'action_slide_face_6'
-      - conditions: '{{ action == "tap" }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are doubletap events
-          choose:
-          - conditions: '{{ side == 1 }}'
-            sequence: !input 'action_doubletap_face_1'
-          - conditions: '{{ side == 2 }}'
-            sequence: !input 'action_doubletap_face_2'
-          - conditions: '{{ side == 3 }}'
-            sequence: !input 'action_doubletap_face_3'
-          - conditions: '{{ side == 4 }}'
-            sequence: !input 'action_doubletap_face_4'
-          - conditions: '{{ side == 5 }}'
-            sequence: !input 'action_doubletap_face_5'
-          - conditions: '{{ side == 6 }}'
-            sequence: !input 'action_doubletap_face_6'
-      - conditions: '{{ action == "flip90" }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are flipped90 events
-          choose:
-          - conditions: '{{ side == 1 }}'
-            sequence: !input 'action_flipped90_face_1'
-          - conditions: '{{ side == 2 }}'
-            sequence: !input 'action_flipped90_face_2'
-          - conditions: '{{ side == 3 }}'
-            sequence: !input 'action_flipped90_face_3'
-          - conditions: '{{ side == 4 }}'
-            sequence: !input 'action_flipped90_face_4'
-          - conditions: '{{ side == 5 }}'
-            sequence: !input 'action_flipped90_face_5'
-          - conditions: '{{ side == 6 }}'
-            sequence: !input 'action_flipped90_face_6'
-      - conditions: '{{ action == "flip180" }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are flipped180 events
-          choose:
-          - conditions: '{{ side == 1 }}'
-            sequence: !input 'action_flipped180_face_1'
-          - conditions: '{{ side == 2 }}'
-            sequence: !input 'action_flipped180_face_2'
-          - conditions: '{{ side == 3 }}'
-            sequence: !input 'action_flipped180_face_3'
-          - conditions: '{{ side == 4 }}'
-            sequence: !input 'action_flipped180_face_4'
-          - conditions: '{{ side == 5 }}'
-            sequence: !input 'action_flipped180_face_5'
-          - conditions: '{{ side == 6 }}'
-            sequence: !input 'action_flipped180_face_6'
-      - conditions: '{{ action == "rotate_right" }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are rotate CW events
-          choose:
-          - conditions: '{{ side == 1 }}'
-            sequence: !input 'action_rotate_cw_face_1'
-          - conditions: '{{ side == 2 }}'
-            sequence: !input 'action_rotate_cw_face_2'
-          - conditions: '{{ side == 3 }}'
-            sequence: !input 'action_rotate_cw_face_3'
-          - conditions: '{{ side == 4 }}'
-            sequence: !input 'action_rotate_cw_face_4'
-          - conditions: '{{ side == 5 }}'
-            sequence: !input 'action_rotate_cw_face_5'
-          - conditions: '{{ side == 6 }}'
-            sequence: !input 'action_rotate_cw_face_6'
-      - conditions: '{{ action == "rotate_left" }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are rotate CCW events
-          choose:
-          - conditions: '{{ side == 1 }}'
-            sequence: !input 'action_rotate_ccw_face_1'
-          - conditions: '{{ side == 2 }}'
-            sequence: !input 'action_rotate_ccw_face_2'
-          - conditions: '{{ side == 3 }}'
-            sequence: !input 'action_rotate_ccw_face_3'
-          - conditions: '{{ side == 4 }}'
-            sequence: !input 'action_rotate_ccw_face_4'
-          - conditions: '{{ side == 5 }}'
-            sequence: !input 'action_rotate_ccw_face_5'
-          - conditions: '{{ side == 6 }}'
-            sequence: !input 'action_rotate_ccw_face_6'
-    - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 Side to side jump events
-      choose:
-      - conditions: '{{ side == 1 }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 1 from any events
-          choose:
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'action_1_from_2'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'action_1_from_3'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'action_1_from_4'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'action_1_from_5'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'action_1_from_6'
-      - conditions: '{{ side == 2 }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 2 from any events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'action_2_from_1'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'action_2_from_3'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'action_2_from_4'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'action_2_from_5'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'action_2_from_6'
-      - conditions: '{{ side == 3 }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 3 from any events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'action_3_from_1'
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'action_3_from_2'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'action_3_from_4'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'action_3_from_5'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'action_3_from_6'
-      - conditions: '{{ side == 4 }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 4 from any events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'action_4_from_1'
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'action_4_from_2'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'action_4_from_3'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'action_4_from_5'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'action_4_from_6'
-      - conditions: '{{ side == 5 }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 5 from any events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'action_5_from_1'
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'action_5_from_2'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'action_5_from_3'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'action_5_from_4'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'action_5_from_6'
-      - conditions: '{{ side == 6 }}'
-        sequence:
-        - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 6 from any events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'action_6_from_1'
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'action_6_from_2'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'action_6_from_3'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'action_6_from_4'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'action_6_from_5'
+              - conditions: '{{ action == "slide" }}'
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are slide events
+                    choose:
+                      - conditions: "{{ side == 1 }}"
+                        sequence: !input "action_slide_face_1"
+                      - conditions: "{{ side == 2 }}"
+                        sequence: !input "action_slide_face_2"
+                      - conditions: "{{ side == 3 }}"
+                        sequence: !input "action_slide_face_3"
+                      - conditions: "{{ side == 4 }}"
+                        sequence: !input "action_slide_face_4"
+                      - conditions: "{{ side == 5 }}"
+                        sequence: !input "action_slide_face_5"
+                      - conditions: "{{ side == 6 }}"
+                        sequence: !input "action_slide_face_6"
+              - conditions: '{{ action == "tap" }}'
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are doubletap events
+                    choose:
+                      - conditions: "{{ side == 1 }}"
+                        sequence: !input "action_doubletap_face_1"
+                      - conditions: "{{ side == 2 }}"
+                        sequence: !input "action_doubletap_face_2"
+                      - conditions: "{{ side == 3 }}"
+                        sequence: !input "action_doubletap_face_3"
+                      - conditions: "{{ side == 4 }}"
+                        sequence: !input "action_doubletap_face_4"
+                      - conditions: "{{ side == 5 }}"
+                        sequence: !input "action_doubletap_face_5"
+                      - conditions: "{{ side == 6 }}"
+                        sequence: !input "action_doubletap_face_6"
+              - conditions: '{{ action == "flip90" }}'
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are flipped90 events
+                    choose:
+                      - conditions: "{{ side == 1 }}"
+                        sequence: !input "action_flipped90_face_1"
+                      - conditions: "{{ side == 2 }}"
+                        sequence: !input "action_flipped90_face_2"
+                      - conditions: "{{ side == 3 }}"
+                        sequence: !input "action_flipped90_face_3"
+                      - conditions: "{{ side == 4 }}"
+                        sequence: !input "action_flipped90_face_4"
+                      - conditions: "{{ side == 5 }}"
+                        sequence: !input "action_flipped90_face_5"
+                      - conditions: "{{ side == 6 }}"
+                        sequence: !input "action_flipped90_face_6"
+              - conditions: '{{ action == "flip180" }}'
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are flipped180 events
+                    choose:
+                      - conditions: "{{ side == 1 }}"
+                        sequence: !input "action_flipped180_face_1"
+                      - conditions: "{{ side == 2 }}"
+                        sequence: !input "action_flipped180_face_2"
+                      - conditions: "{{ side == 3 }}"
+                        sequence: !input "action_flipped180_face_3"
+                      - conditions: "{{ side == 4 }}"
+                        sequence: !input "action_flipped180_face_4"
+                      - conditions: "{{ side == 5 }}"
+                        sequence: !input "action_flipped180_face_5"
+                      - conditions: "{{ side == 6 }}"
+                        sequence: !input "action_flipped180_face_6"
+              - conditions: '{{ action == "rotate_right" }}'
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are rotate CW events
+                    choose:
+                      - conditions: "{{ side == 1 }}"
+                        sequence: !input "action_rotate_cw_face_1"
+                      - conditions: "{{ side == 2 }}"
+                        sequence: !input "action_rotate_cw_face_2"
+                      - conditions: "{{ side == 3 }}"
+                        sequence: !input "action_rotate_cw_face_3"
+                      - conditions: "{{ side == 4 }}"
+                        sequence: !input "action_rotate_cw_face_4"
+                      - conditions: "{{ side == 5 }}"
+                        sequence: !input "action_rotate_cw_face_5"
+                      - conditions: "{{ side == 6 }}"
+                        sequence: !input "action_rotate_cw_face_6"
+              - conditions: '{{ action == "rotate_left" }}'
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳  Group 1 🍎 These are rotate CCW events
+                    choose:
+                      - conditions: "{{ side == 1 }}"
+                        sequence: !input "action_rotate_ccw_face_1"
+                      - conditions: "{{ side == 2 }}"
+                        sequence: !input "action_rotate_ccw_face_2"
+                      - conditions: "{{ side == 3 }}"
+                        sequence: !input "action_rotate_ccw_face_3"
+                      - conditions: "{{ side == 4 }}"
+                        sequence: !input "action_rotate_ccw_face_4"
+                      - conditions: "{{ side == 5 }}"
+                        sequence: !input "action_rotate_ccw_face_5"
+                      - conditions: "{{ side == 6 }}"
+                        sequence: !input "action_rotate_ccw_face_6"
+          - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 Side to side jump events
+            choose:
+              - conditions: "{{ side == 1 }}"
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 1 from any events
+                    choose:
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "action_1_from_2"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "action_1_from_3"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "action_1_from_4"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "action_1_from_5"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "action_1_from_6"
+              - conditions: "{{ side == 2 }}"
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 2 from any events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "action_2_from_1"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "action_2_from_3"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "action_2_from_4"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "action_2_from_5"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "action_2_from_6"
+              - conditions: "{{ side == 3 }}"
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 3 from any events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "action_3_from_1"
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "action_3_from_2"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "action_3_from_4"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "action_3_from_5"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "action_3_from_6"
+              - conditions: "{{ side == 4 }}"
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 4 from any events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "action_4_from_1"
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "action_4_from_2"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "action_4_from_3"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "action_4_from_5"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "action_4_from_6"
+              - conditions: "{{ side == 5 }}"
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 5 from any events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "action_5_from_1"
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "action_5_from_2"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "action_5_from_3"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "action_5_from_4"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "action_5_from_6"
+              - conditions: "{{ side == 6 }}"
+                sequence:
+                  - alias: 🫳 ACTION MODE 🫳 Group 3 🍐 To side 6 from any events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "action_6_from_1"
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "action_6_from_2"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "action_6_from_3"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "action_6_from_4"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "action_6_from_5"
 
-  - conditions: '{{ op_mode == "scene_mode" }}'
-    sequence:
-    - alias: 👀 SCENE MODE 👀 Group 2 🍊 and No Group 🍩 These are action events for ANY Side
-      choose:
-      - conditions: '{{ action == "flip_to_side" }}'
-        sequence: !input 'scene_flip_to_side_any'
-      - conditions: '{{ action == "rotate_right" }}'
-        sequence: !input 'scene_rotate_cw_any'
-      - conditions: '{{ action == "rotate_left" }}'
-        sequence: !input 'scene_rotate_ccw_any'
-      - conditions: '{{ action == "hold" }}'
-        sequence: !input 'scene_hold'
-      - conditions: '{{ action == "shake" }}'
-        sequence: !input 'scene_shake'
-      - conditions: '{{ action == "throw" }}'
-        sequence: !input 'scene_throw'
-    - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are action events based on the action broken down by side
-      choose:
-      - conditions: '{{ action == "flip_to_side" }}'
+      - conditions: '{{ op_mode == "scene_mode" }}'
         sequence:
-        - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are flip_to_side events
-          choose:
-          - conditions: '{{ side == 1 }}'
-            sequence: !input 'scene_flip_to_face_1'
-          - conditions: '{{ side == 2 }}'
-            sequence: !input 'scene_flip_to_face_2'
-          - conditions: '{{ side == 3 }}'
-            sequence: !input 'scene_flip_to_face_3'
-          - conditions: '{{ side == 4 }}'
-            sequence: !input 'scene_flip_to_face_4'
-          - conditions: '{{ side == 5 }}'
-            sequence: !input 'scene_flip_to_face_5'
-          - conditions: '{{ side == 6 }}'
-            sequence: !input 'scene_flip_to_face_6'
-      - conditions: '{{ action == "rotate_right" }}'
-        sequence:
-        - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are rotate CW events
-          choose:
-          - conditions: '{{ side == 1 }}'
-            sequence: !input 'scene_rotate_cw_face_1'
-          - conditions: '{{ side == 2 }}'
-            sequence: !input 'scene_rotate_cw_face_2'
-          - conditions: '{{ side == 3 }}'
-            sequence: !input 'scene_rotate_cw_face_3'
-          - conditions: '{{ side == 4 }}'
-            sequence: !input 'scene_rotate_cw_face_4'
-          - conditions: '{{ side == 5 }}'
-            sequence: !input 'scene_rotate_cw_face_5'
-          - conditions: '{{ side == 6 }}'
-            sequence: !input 'scene_rotate_cw_face_6'
-      - conditions: '{{ action == "rotate_left" }}'
-        sequence:
-        - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are rotate CCW events
-          choose:
-          - conditions: '{{ side == 1 }}'
-            sequence: !input 'scene_rotate_ccw_face_1'
-          - conditions: '{{ side == 2 }}'
-            sequence: !input 'scene_rotate_ccw_face_2'
-          - conditions: '{{ side == 3 }}'
-            sequence: !input 'scene_rotate_ccw_face_3'
-          - conditions: '{{ side == 4 }}'
-            sequence: !input 'scene_rotate_ccw_face_4'
-          - conditions: '{{ side == 5 }}'
-            sequence: !input 'scene_rotate_ccw_face_5'
-          - conditions: '{{ side == 6 }}'
-            sequence: !input 'scene_rotate_ccw_face_6'
-    - alias: 👀 SCENE MODE 👀 Group 3 🍐 Side to side jump events
-      choose:
-      - conditions: '{{ side == 1 }}'
-        sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 1 from specific events
-          choose:
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'scene_1_from_2'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'scene_1_from_3'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'scene_1_from_4'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'scene_1_from_5'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'scene_1_from_6'
-      - conditions: '{{ side == 2 }}'
-        sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 2 from specific events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'scene_2_from_1'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'scene_2_from_3'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'scene_2_from_4'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'scene_2_from_5'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'scene_2_from_6'
-      - conditions: '{{ side == 3 }}'
-        sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 3 from specific events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'scene_3_from_1'
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'scene_3_from_2'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'scene_3_from_4'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'scene_3_from_5'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'scene_3_from_6'
-      - conditions: '{{ side == 4 }}'
-        sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 4 from specific events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'scene_4_from_1'
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'scene_4_from_2'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'scene_4_from_3'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'scene_4_from_5'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'scene_4_from_6'
-      - conditions: '{{ side == 5 }}'
-        sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 5 from specific events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'scene_5_from_1'
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'scene_5_from_2'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'scene_5_from_3'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'scene_5_from_4'
-          - conditions: '{{ last_side == 6 }}'
-            sequence: !input 'scene_5_from_6'
-      - conditions: '{{ side == 6 }}'
-        sequence:
-        - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 6 from specific events
-          choose:
-          - conditions: '{{ last_side == 1 }}'
-            sequence: !input 'scene_6_from_1'
-          - conditions: '{{ last_side == 2 }}'
-            sequence: !input 'scene_6_from_2'
-          - conditions: '{{ last_side == 3 }}'
-            sequence: !input 'scene_6_from_3'
-          - conditions: '{{ last_side == 4 }}'
-            sequence: !input 'scene_6_from_4'
-          - conditions: '{{ last_side == 5 }}'
-            sequence: !input 'scene_6_from_5'
+          - alias: 👀 SCENE MODE 👀 Group 2 🍊 and No Group 🍩 These are action events for ANY Side
+            choose:
+              - conditions: '{{ action == "flip_to_side" }}'
+                sequence: !input "scene_flip_to_side_any"
+              - conditions: '{{ action == "rotate_right" }}'
+                sequence: !input "scene_rotate_cw_any"
+              - conditions: '{{ action == "rotate_left" }}'
+                sequence: !input "scene_rotate_ccw_any"
+              - conditions: '{{ action == "hold" }}'
+                sequence: !input "scene_hold"
+              - conditions: '{{ action == "shake" }}'
+                sequence: !input "scene_shake"
+              - conditions: '{{ action == "throw" }}'
+                sequence: !input "scene_throw"
+          - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are action events based on the action broken down by side
+            choose:
+              - conditions: '{{ action == "flip_to_side" }}'
+                sequence:
+                  - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are flip_to_side events
+                    choose:
+                      - conditions: "{{ side == 1 }}"
+                        sequence: !input "scene_flip_to_face_1"
+                      - conditions: "{{ side == 2 }}"
+                        sequence: !input "scene_flip_to_face_2"
+                      - conditions: "{{ side == 3 }}"
+                        sequence: !input "scene_flip_to_face_3"
+                      - conditions: "{{ side == 4 }}"
+                        sequence: !input "scene_flip_to_face_4"
+                      - conditions: "{{ side == 5 }}"
+                        sequence: !input "scene_flip_to_face_5"
+                      - conditions: "{{ side == 6 }}"
+                        sequence: !input "scene_flip_to_face_6"
+              - conditions: '{{ action == "rotate_right" }}'
+                sequence:
+                  - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are rotate CW events
+                    choose:
+                      - conditions: "{{ side == 1 }}"
+                        sequence: !input "scene_rotate_cw_face_1"
+                      - conditions: "{{ side == 2 }}"
+                        sequence: !input "scene_rotate_cw_face_2"
+                      - conditions: "{{ side == 3 }}"
+                        sequence: !input "scene_rotate_cw_face_3"
+                      - conditions: "{{ side == 4 }}"
+                        sequence: !input "scene_rotate_cw_face_4"
+                      - conditions: "{{ side == 5 }}"
+                        sequence: !input "scene_rotate_cw_face_5"
+                      - conditions: "{{ side == 6 }}"
+                        sequence: !input "scene_rotate_cw_face_6"
+              - conditions: '{{ action == "rotate_left" }}'
+                sequence:
+                  - alias: 👀 SCENE MODE 👀 Group 1 🍎 These are rotate CCW events
+                    choose:
+                      - conditions: "{{ side == 1 }}"
+                        sequence: !input "scene_rotate_ccw_face_1"
+                      - conditions: "{{ side == 2 }}"
+                        sequence: !input "scene_rotate_ccw_face_2"
+                      - conditions: "{{ side == 3 }}"
+                        sequence: !input "scene_rotate_ccw_face_3"
+                      - conditions: "{{ side == 4 }}"
+                        sequence: !input "scene_rotate_ccw_face_4"
+                      - conditions: "{{ side == 5 }}"
+                        sequence: !input "scene_rotate_ccw_face_5"
+                      - conditions: "{{ side == 6 }}"
+                        sequence: !input "scene_rotate_ccw_face_6"
+          - alias: 👀 SCENE MODE 👀 Group 3 🍐 Side to side jump events
+            choose:
+              - conditions: "{{ side == 1 }}"
+                sequence:
+                  - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 1 from specific events
+                    choose:
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "scene_1_from_2"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "scene_1_from_3"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "scene_1_from_4"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "scene_1_from_5"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "scene_1_from_6"
+              - conditions: "{{ side == 2 }}"
+                sequence:
+                  - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 2 from specific events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "scene_2_from_1"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "scene_2_from_3"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "scene_2_from_4"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "scene_2_from_5"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "scene_2_from_6"
+              - conditions: "{{ side == 3 }}"
+                sequence:
+                  - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 3 from specific events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "scene_3_from_1"
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "scene_3_from_2"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "scene_3_from_4"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "scene_3_from_5"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "scene_3_from_6"
+              - conditions: "{{ side == 4 }}"
+                sequence:
+                  - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 4 from specific events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "scene_4_from_1"
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "scene_4_from_2"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "scene_4_from_3"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "scene_4_from_5"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "scene_4_from_6"
+              - conditions: "{{ side == 5 }}"
+                sequence:
+                  - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 5 from specific events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "scene_5_from_1"
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "scene_5_from_2"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "scene_5_from_3"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "scene_5_from_4"
+                      - conditions: "{{ last_side == 6 }}"
+                        sequence: !input "scene_5_from_6"
+              - conditions: "{{ side == 6 }}"
+                sequence:
+                  - alias: 👀 SCENE MODE 👀 Group 3 🍐 To side 6 from specific events
+                    choose:
+                      - conditions: "{{ last_side == 1 }}"
+                        sequence: !input "scene_6_from_1"
+                      - conditions: "{{ last_side == 2 }}"
+                        sequence: !input "scene_6_from_2"
+                      - conditions: "{{ last_side == 3 }}"
+                        sequence: !input "scene_6_from_3"
+                      - conditions: "{{ last_side == 4 }}"
+                        sequence: !input "scene_6_from_4"
+                      - conditions: "{{ last_side == 5 }}"
+                        sequence: !input "scene_6_from_5"
 
-- alias: Delay ⏱ for debounce so toggle functions work. Also blueprint is in single
-    mode.
-  delay: 00:00:01
+  - alias:
+      Delay ⏱ for debounce so toggle functions work. Also blueprint is in single
+      mode.
+    delay: 00:00:01
 
 mode: single
 max_exceeded: silent

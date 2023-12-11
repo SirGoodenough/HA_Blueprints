@@ -1,5 +1,5 @@
 blueprint:
-  name: Media Player Script Blueprint 2023-08-07
+  name: Media Player Script Blueprint 2023-12-09
   author: SirGoodenough
   description: >
     This provides a way to play canned media files with the big 
@@ -62,6 +62,7 @@ fields:
     name: on-the-fly Device(s) to send the file to
     description: Change the default media player on the fly
     required: false
+    example: "media_player.basement_speaker"
     selector:
       entity:
         multiple: true
@@ -72,7 +73,6 @@ fields:
     description: This will change the default sound file on-the-fly
     required: false
     example: "media-source://media_source/local/mp3/Door-chime-sound.mp3"
-    default: "media-source://media_source/local/mp3/Door-chime-sound.mp3"
     selector:
       text:
         multiline: false
@@ -82,22 +82,42 @@ fields:
     description: This will change the default Media_Content_type on-the-fly
     required: false
     example: "audio/mp3"
-    default: "audio/mp3"
     selector:
       text:
         multiline: false
         type: text
 
 variables:
-    # Get the speaker to select from !input or live data
+# Get the speaker to select from !input or live data
   speaker_target: !input speaker_target
-  my_speaker: '{% if otf_speaker_target %} {{ otf_speaker_target }} {% else %} {{ speaker_target }} {% endif %}'
-    # Get the media file to select from !input or live data
+  my_speaker: >
+    {% if otf_speaker_target | default("") %}
+      {{ otf_speaker_target }}
+    {% elif speaker_target | default("") %}
+      {{ speaker_target }}
+    {% else %}
+      unknown: No speaker entity provided. play_media_file_script.yaml
+    {% endif %}
+# Get the media file to select from !input or live data
   file_2_play: !input file_2_play
-  my_file_2_play: '{% if otf_file_2_play %} {{ otf_file_2_play }} {% else %} {{ file_2_play }} {% endif %}'
-    # Get the media type to select from !input or live data
+  my_file_2_play: >
+    {% if otf_file_2_play | default("") %}
+      {{ otf_file_2_play }}
+    {% elif file_2_play | default("") %}
+      {{ file_2_play }}
+    {% else %}
+      unknown: No filename provided. play_media_file_script.yaml
+    {% endif %}
+# Get the media type to select from !input or live data
   media_type: !input media_type
-  my_media_type: '{% if otf_media_type %} {{ otf_media_type }} {% else %} {{ media_type }} {% endif %}'
+  my_media_type: >
+    {% if otf_media_type | default("") %}
+      {{ otf_media_type }}
+    {% elif media_type | default("") %}
+      {{ media_type }}
+    {% else %}
+      unknown: No media_type name provided. play_media_file_script.yaml
+    {% endif %}
 
 sequence:
 - alias: Media Player Blueprint Script

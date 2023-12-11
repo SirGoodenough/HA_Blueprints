@@ -1,5 +1,5 @@
 blueprint:
-  name: dimmer_control_4_magic_cube_and_other_things - 2023-11-14-A
+  name: dimmer_control_4_magic_cube_and_other_things - 2023-12-07
   author: SirGoodenough
   domain: script
   homeassistant:
@@ -131,13 +131,13 @@ fields:
         step: 0.5
 
 variables:
-  # Get the sensitivity input
+# Get the sensitivity input
   sensi_var: !input sensi
-  # Convert raw percentage to decimal for calculations. Default to 0.4.
+# Convert raw percentage to decimal for calculations. Default to 0.4.
   sens_d: "{{ sensi_var / 100 | default( 0.4 ) }}"
-  # Get the minimum brightness input
+# Get the minimum brightness input
   min_b_var: !input min_b
-  # Set new Brightness
+# Set new Brightness
   bright_p: >-
     {% set step_size = angle * sens_d %}
       {# Get brightness as a percent. #}
@@ -156,9 +156,9 @@ variables:
       {# Send actual calculated value. #}
     {{ new_brightness }}
     {% endif %}
-  # Get the transition input if there is one
+# Get the transition input if there is one
   trans_i: !input transition_i
-  # Set the transition value if the operator requests it
+# Set the transition value if the operator requests it
   transition_var: >-
     {% if is_number(transition | default('none')) %}
       {{ transition }}

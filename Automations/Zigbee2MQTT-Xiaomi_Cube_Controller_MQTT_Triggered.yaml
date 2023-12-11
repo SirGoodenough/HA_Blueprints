@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2023-10-20
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2023-12-09
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
@@ -692,60 +692,81 @@ trigger:
     topic: !input topic
 
 variables:
-    # Get the action command.
-  action: '{{ trigger.payload_json.action }}'
-    # Get the angle.
-  angle: '{{ trigger.payload_json.action_angle | float(0.0) }}'
-    # Get the side.
-  side: '{{ trigger.payload_json.side }}'
-    # Get the operation_mode.
-  op_mode: '{{ trigger.payload_json.operation_mode }}'
+# Get the action.
+  action: >
+    {% if trigger.payload_json.action is defined %}
+      {{ trigger.payload_json.action }}
+    {% else %}
+      none
+    {% endif %}
+# Get the angle.
+  angle: >
+    {% if trigger.payload_json.action_angle is number %}
+      {{ trigger.payload_json.action_angle | float(0.0) }}
+    {% else %}
+      0.0
+    {% endif %}
+# Get the side.
+  side: >
+    {% if trigger.payload_json.side is number %}
+      {{ trigger.payload_json.side | int(0) }}
+    {% else %}
+      0
+    {% endif %}
+# Get the operation_mode.
+  op_mode: >
+    {% if trigger.payload_json.operation_mode is defined %}
+      {{ trigger.payload_json.operation_mode }}
+    {% else %}
+      none
+    {% endif %}
 
-    # Get the topic as a variable.
+# Get the topic as a variable.
   topic_var: !input topic
-    # Generate the Friendly_name from the Topic.
+# Generate the Friendly_name from the Topic.
   friendly_name: '{{ topic_var.split(''/'')[1] | regex_replace("[^A-Za-z0-9_/./-]", "") }}'
-    # Generate the device_id from the Friendly_name.
+# Generate the device_id from the Friendly_name.
   device_id: '{{ device_id( friendly_name ) }}'
-    # Pull out the ieee identifier.
+# Pull out the ieee identifier.
   ieee_id_long: '{{(( device_attr( device_id, ''identifiers'') |list)[0][1]) }}'
-    # Generate just the number for the ieee.
+# Generate just the number for the ieee.
   ieee_id: '{{ieee_id_long.split(''_'')[1] }}'
 
-    # Set the name of the Number entity.
+# Set the name of the Number entity.
   num_name: 'last side'
-    # Set the entity_id of the Number entity.
+# Set the entity_id of the Number entity.
   num_ha_name: '{{ ''number.'' + friendly_name + ''_last_side'' }}'
-    # Get the value of this entity from HA
+# Get the value of this entity from HA
   num_ha_val: '{{ states(num_ha_name) | default(0) | int(0) }}'
 
-    # Get the last_side for use in logic below.
-  last_side: '
+# Get the last_side for use in logic below.
+  last_side: >
     {# The first time it will not be there, so make sure its 0 instead of undefined. #}
-    {% if not num_ha_val in (''none'', ''null'', ''unavailable'', '''') %}
+    {% if not num_ha_val in ["undefined", "unknown", "unavailable", "none", "null", ""] %}
       {{ num_ha_val }}
     {% else %}
       0
-    {% endif %}'
+    {% endif %}
 
-    # Set-up for Device parameters once
+# Set-up for Device parameters once
   mdl: 'Number Helper for Z2M Cube Integration'
   mf: 'SirGoodenough'
   sa: 'house'
-  sw: '2023-10-20'
+  sw: '2023-12-09'
   hw: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT - Xiaomi Cube Controller.yaml'
   cu: 'https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203'
 
-    # Set Topics once
+# Set Topics once
   config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
   topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
 
 condition:
   - condition: template
-    value_template: '{{ trigger.payload_json is defined and 
-      trigger.payload_json.action is defined and 
-      trigger.payload_json.action in (''rotate_right'', ''rotate_left'', ''flip90'', 
-      ''flip180'', ''slide'', ''tap'', ''shake'', ''fall'') }}'
+    value_template:  >
+      {{ trigger.payload_json is defined and
+        trigger.payload_json.action is defined and
+        trigger.payload_json.action in ["rotate_right", "rotate_left",
+        "flip90", "flip180", "slide", "tap", "shake", "fall"] }}
   - alias: User pick
     condition: !input additional_conditions
 

@@ -1,5 +1,5 @@
 blueprint:
-  name: device_reset_script - 2023-11-14
+  name: device_reset_script - 2023-12-07
   author: SirGoodenough
   domain: script
   homeassistant:
