@@ -1358,7 +1358,7 @@ action:
                   - parallel:
                       - !input "action_flipped90_any"
                       - alias: These are flip to specific side from any side events
-                        choose:
+                        choose: &flip1
                           - conditions: "{{ side == 1 }}"
                             sequence: !input "action_flip_from_any_to_face_1"
                           - conditions: "{{ side == 2 }}"
@@ -1377,18 +1377,7 @@ action:
                       - !input "action_flipped180_any"
                       - alias: These are flip to specific side from any side events
                         choose:
-                          - conditions: "{{ side == 1 }}"
-                            sequence: !input "action_flip_from_any_to_face_1"
-                          - conditions: "{{ side == 2 }}"
-                            sequence: !input "action_flip_from_any_to_face_2"
-                          - conditions: "{{ side == 3 }}"
-                            sequence: !input "action_flip_from_any_to_face_3"
-                          - conditions: "{{ side == 4 }}"
-                            sequence: !input "action_flip_from_any_to_face_4"
-                          - conditions: "{{ side == 5 }}"
-                            sequence: !input "action_flip_from_any_to_face_5"
-                          - conditions: "{{ side == 6 }}"
-                            sequence: !input "action_flip_from_any_to_face_6"
+                          *flip1
           - alias: 🫳 ACTION MODE 🫳 Group 1 🍎 These are action events based on the action broken down by side
             choose:
               - conditions: '{{ action == "slide" }}'
