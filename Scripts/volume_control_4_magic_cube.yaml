@@ -106,7 +106,7 @@ sequence:
     data_template:
       volume_level: >-
         {% set v = state_attr(mp, 'volume_level') | float(0.4) %}
-        {{ v + 0.0000625 * delta }}
+        {{ min(max(0, v + 0.0000625 * delta), 1) }}
     target:
         entity_id: "{{ mp }}"
 
