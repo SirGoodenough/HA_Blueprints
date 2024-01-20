@@ -4,24 +4,25 @@
 
 * **2023-12-07**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-09-29**: Add the ability to use Piper TTS.
-* * Change several of the selectors to allow custom. Use at your own risk.
+  * Change several of the selectors to allow custom. Use at your own risk.
 * **2023-08-23**: Add voice option for the Nabu-Casa tts-cloud.
 * **2023-08-07**: Updates for Home Assistant 2023.8
-* * Selector syntax change
-* * Condition Selector addition (where applicable)
-* * MQTT Discovery name changes (where applicable)
-* * Clean-up code formatting
+  * Selector syntax change
+  * Condition Selector addition (where applicable)
+  * MQTT Discovery name changes (where applicable)
+  * Clean-up code formatting
 * **2023-07-17**: Updated language lists, external links, formatting, & field default.
 * **2023-04-15**: Add ability to feed message and media_player change to script on the fly.
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
-* * Name of Blueprint may have changed meaing you have to re-download with a new link.
-* * If name changed, it is similar. Variables have not changed.
+  * Name of Blueprint may have changed meaing you have to re-download with a new link.
+  * If name changed, it is similar. Variables have not changed.
 * **2022-05-05**: Updated for 2022.5.0 HA. Changed Choose to if / then statement.
 * **2022-04-26**: Add an optional action selector before and after the main TTS for volume, mp3 sounders, sirens, etc.
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
 * **2022-03-09**: First blueprint version 🎉
-<base target="_blank">
+
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 

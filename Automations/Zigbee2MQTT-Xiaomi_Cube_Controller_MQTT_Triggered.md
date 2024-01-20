@@ -5,46 +5,47 @@
 * **2023-12-09**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-10-20**: Enhancement [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
 * **2023-08-07**: Updates for Home Assistant 2023.8
-* * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.md) FOR IMPORTANT UPDATE INSTRUCTIONS
-* * Selector syntax change
-* * Condition Selector addition (where applicable)
-* * MQTT Discovery name changes (where applicable)
-* * Clean-up code formatting
+  * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.md) FOR IMPORTANT UPDATE INSTRUCTIONS
+  * Selector syntax change
+  * Condition Selector addition (where applicable)
+  * MQTT Discovery name changes (where applicable)
+  * Clean-up code formatting
 * **2022-03-01-A**: Beef-up the note not to use spaces and non alpha in MQTT topics.
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-28**: Code cleanup.
-* * Add note to fix configuration conflict template error:
-* * Update angle configuration text to help with config errors. No Code Change.
-* *  **Error while executing automation automation.friendly_name_automations: TemplateError: Must provide a device or entity ID**
+  * Add note to fix configuration conflict template error:
+  * Update angle configuration text to help with config errors. No Code Change.
+  *  **Error while executing automation automation.friendly_name_automations: TemplateError: Must provide a device or entity ID**
 * **2022-12-22**: Change instances of the attribute ```angle``` to ```action_angle``` to fix non-legacy bug.
-* * Add note not to use spaces and non alpha in MQTT topics.
+  * Add note not to use spaces and non alpha in MQTT topics.
 * **2022-12-12**: Add Update Method Note, minor code change.
-* * Name of Blueprint may have changed meaning you have to re-download with a new link.
-* * If name changed, it is similar. Variables have not changed.
+  * Name of Blueprint may have changed meaning you have to re-download with a new link.
+  * If name changed, it is similar. Variables have not changed.
 * **2022-12-04**: Re-did the backend to use MQTT instead of the Z2M Legacy configuration.
-* * This removes the legacy trigger requirement and makes it respond much faster.
-* * Old version Deprecated and available on the original Github link but will be no longer supported.
-* * Old Github link still works if you need it for something...
+  * This removes the legacy trigger requirement and makes it respond much faster.
+  * Old version Deprecated and available on the original Github link but will be no longer supported.
+  * Old Github link still works if you need it for something...
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut or.
 * **2022-04-26 update-B**: UPDATE: No code changes. Added examples to provide another 30 more ways to trigger something using conditionals in Group 3 🍐,
 * **2022-04-26 update-A** UPDATE: No code changes. Added examples to provide 24 more ways to trigger something using the rotate sensor as a device toggle, both long and short for each rotate sensor.
 * **2022-04-26**: Re-configure to add 30 Action Methods !!NOTICE!! If you are upgrading the Blueprint, upgrade the template sensor as well. The variables are different...
-* * Add 30 flip actions for any side to any side addressing
-* * Add 'last_side' variable to display sensor and code
-* * Change variable named 'event' into 'action' fo clarity
-* * Change variable named 'sub-event' into 'side' for clarity
-* * dded Group 1 🍎, Group 2 🍊, & Group 3 🍐 to help users decide which sensors to populate
-* * Added Emojis to help people visualize what action is in what Group
+  * Add 30 flip actions for any side to any side addressing
+  * Add 'last_side' variable to display sensor and code
+  * Change variable named 'event' into 'action' fo clarity
+  * Change variable named 'sub-event' into 'side' for clarity
+  * dded Group 1 🍎, Group 2 🍊, & Group 3 🍐 to help users decide which sensors to populate
+  * Added Emojis to help people visualize what action is in what Group
 * **2022-04-11**: No Code Change. Added guidance to solve missing Action Sensor condition in this document.
-* * Example code bug fix from [Michael Fischer](https://community.home-assistant.io/u/DagobahMike)
+  * Example code bug fix from [Michael Fischer](https://community.home-assistant.io/u/DagobahMike)
 * **2022-03-17**: Added 6 functions that do not care about side. Makes it simple if you only want a couple of functions.
-* * Added some aliases on some choose statements to improve Trace Diagrams and Troubleshooting.
+  * Added some aliases on some choose statements to improve Trace Diagrams and Troubleshooting.
 * **2022-03-12**: Changed de-bounce logic from not repeating the last action to single mode and added a 1 second delay at the end. Was hard to do the same action twice (IE: Rotation) as the logic would prevent it.
 * **2022-02-15.1**: Later that same day realized that if you have more than 1 cube, the event will be lacking so added ID.
 * **2022-02-15**: 🎉 Forked from https://community.home-assistant.io/t/z2m-xiaomi-cube-controller/263006 Version 1.2
-* * Updated Documentation.
-* * Added Latched event sensor.
-<base target="_blank">
+  * Updated Documentation.
+  * Added Latched event sensor.
+
+<base target="_blank"\>
 
 ## 🔧 * Hardware Versions
 

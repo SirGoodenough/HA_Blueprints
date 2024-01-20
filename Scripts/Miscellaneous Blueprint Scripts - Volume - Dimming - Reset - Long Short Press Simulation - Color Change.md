@@ -6,7 +6,7 @@ These are several Script Blueprints written to help other Automations or Bluepri
 * **2023-11-14**: Add Transition to Dimmer as per FR [#24](https://github.com/SirGoodenough/HA_Blueprints/issues/24)
 * **2023-08-07**: First release as it's own Blueprint Exchange thread 🎉
 
-<base target="_blank">
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 

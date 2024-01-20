@@ -3,16 +3,17 @@ This is Blueprint is provided as a helper for people using the Octoprint Plugin 
 ## 📑 Changelog
 
 * **2023-08-07**: Updates for Home Assistant 2023.8
-* * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Octoprint_Additional_Buttons_Helper.md) FOR IMPORTANT UPDATE INSTRUCTIONS
-* * Selector syntax change
-* * Condition Selector addition (where applicable)
-* * MQTT Discovery name changes (where applicable)
-* * Clean-up code formatting
+  * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Octoprint_Additional_Buttons_Helper.md) FOR IMPORTANT UPDATE INSTRUCTIONS
+  * Selector syntax change
+  * Condition Selector addition (where applicable)
+  * MQTT Discovery name changes (where applicable)
+  * Clean-up code formatting
 * **2023-04-12**: Add Filament Change Button and Filament Load Button
-* * Add ability to change the end of the Y axis for the Presentation Button
-* * Code cleanup
+  * Add ability to change the end of the Y axis for the Presentation Button
+  * Code cleanup
 * **2023-03-19**: 🎉 First release!
-<base target="_blank">
+
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 

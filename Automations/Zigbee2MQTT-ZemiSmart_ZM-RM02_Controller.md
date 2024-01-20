@@ -3,19 +3,19 @@
 ## 📑 Changelog
 
 * **2023-08-07**: Updates for Home Assistant 2023.8
-* * Selector syntax change
-* * Condition Selector addition (where applicable)
-* * MQTT Discovery name changes (where applicable)
-* * Clean-up code formatting
+  * Selector syntax change
+  * Condition Selector addition (where applicable)
+  * MQTT Discovery name changes (where applicable)
+  * Clean-up code formatting
 * **2023-07-17**: Adjust trigger-to statement
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
-* * Name of Blueprint may have changed meaing you have to re-download with a new link.
-* * If name changed, it is similar. Variables have not changed.
+  * Name of Blueprint may have changed meaing you have to re-download with a new link.
+  * If name changed, it is similar. Variables have not changed.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions.
 * **2022-04-17**: 🎉 🎛 🔋 New Blueprint!
-<base target="_blank">
 
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 

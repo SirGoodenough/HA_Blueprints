@@ -16,7 +16,7 @@
 * **2023-01-26-1**: Add in the forgotten Scene Mode Hold function
 * **2023-01-26**: 🎉 First Release. Based on Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered Blueprint
 
-<base target="_blank">
+<base target="_blank"\>
 
 ## 🔧 * Hardware Versions
 

@@ -4,18 +4,19 @@
 
 * **2023-10-20**: Enhancement [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
 * **2023-08-07**: Updates for Home Assistant 2023.8
-* * Selector syntax change
-* * Condition Selector addition (where applicable)
-* * MQTT Discovery name changes (where applicable)
-* * Clean-up code formatting
+  * Selector syntax change
+  * Condition Selector addition (where applicable)
+  * MQTT Discovery name changes (where applicable)
+  * Clean-up code formatting
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2023-01-19**: Add instructions for new cube version ```Cube T1 Pro``` Action mode setup in Docs.
-* * Add note that Drop is no longer available if using the ```Cube T1 Pro``` cube version.
+  * Add note that Drop is no longer available if using the ```Cube T1 Pro``` cube version.
 * **2022-12-12**: Add Update Method Note, minor code change.
-* * Name of Blueprint may have changed meaing you have to re-download with a new link.
-* * If name changed, it is similar. Variables have not changed.
+  * Name of Blueprint may have changed meaing you have to re-download with a new link.
+  * If name changed, it is similar. Variables have not changed.
 * **2022-11-30**: 🎉📦🔋 First Version
-<base target="_blank">
+
+<base target="_blank"\>
 
 ## 🔧 * Hardware Versions
 

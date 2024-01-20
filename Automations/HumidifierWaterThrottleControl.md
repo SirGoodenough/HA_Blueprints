@@ -13,7 +13,8 @@ This blueprint monitors a humidity sensor & by determining the error from the go
   * Fix extraction of current humidity
   * Comment out troubleshooting code
 * **2023-01-30**: 🎉 First Release
-<base target="_blank">
+
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 

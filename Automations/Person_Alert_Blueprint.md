@@ -3,16 +3,17 @@ This is Blueprint will monitor a person or persons, and when they 'enter' or 'le
 ## 📑 Changelog
 
 * **2023-08-07**: Updates for Home Assistant 2023.8
-* * Selector syntax change
-* * Condition Selector addition (where applicable)
-* * MQTT Discovery name changes (where applicable)
-* * Clean-up code formatting
+  * Selector syntax change
+  * Condition Selector addition (where applicable)
+  * MQTT Discovery name changes (where applicable)
+  * Clean-up code formatting
 * **2023-05-11**: Fix for some devices that think home is spelled Home. (IOS I think...)
-* * Issue link: https://github.com/SirGoodenough/HA_Blueprints/issues/10
-* * Fix Typo's in header and title.  May affect your calling Automation (M not H)
+  * [Issue link](https://github.com/SirGoodenough/HA_Blueprints/issues/10)
+  * Fix Typo's in header and title.  May affect your calling Automation (M not H)
 * **2023-03-01.1**: Minor adjustments to sample script files for smoother operation
 * **2023-03-01**: 🎉 First release!
-<base target="_blank">
+
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 

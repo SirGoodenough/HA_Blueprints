@@ -4,21 +4,22 @@ ALSO you can watch the accompanying [YouTube Video](https://youtu.be/ZILTAZQPr_Q
 ## 📑 Changelog
 
 * **2023-08-07**: Updates for Home Assistant 2023.8
-* * Selector syntax change
-* * Condition Selector addition (where applicable)
-* * MQTT Discovery name changes (where applicable)
-* * Clean-up code formatting
+  * Selector syntax change
+  * Condition Selector addition (where applicable)
+  * MQTT Discovery name changes (where applicable)
+  * Clean-up code formatting
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
-* * Name of Blueprint may have changed meaing you have to re-download with a new link.
-* * If name changed, it is similar. Variables have not changed.
+  * Name of Blueprint may have changed meaing you have to re-download with a new link.
+  * If name changed, it is similar. Variables have not changed.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut and.
 * **2021-11-20**: Add Minimum Home Assistant version.
 * **2021-09-03**: Add Description.
 * **2021-08-04**: Add comments and cleanup.
 * **2021-07-21**: Add the watchdog timeout test.
 * **2021-07-11**: First blueprint version 🎉 Needs Home Assistant Core 2021.7 or higher for Trigger_ID to work
-<base target="_blank">
+
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 

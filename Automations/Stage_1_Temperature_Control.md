@@ -2,8 +2,12 @@ This is Blueprint will adjust your climate entity thermostat to 1° above the cu
 
 ## 📑 Changelog
 
+* **2024-01-19**:  Add Trigger to make it more likely to run after restarting automations.
+  * Add variables - clean-up action code - generate values once instead of multiple times.
+  * Clarify some descriptions.
 * **2023-12-02**:  🎉 First release!
-<base target="_blank">
+
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 

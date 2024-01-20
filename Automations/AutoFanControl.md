@@ -3,22 +3,22 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 ## 📑 Changelog
 
 * **2023-08-07**: Updates for Home Assistant 2023.8
-* * Selector syntax change
-* * Condition Selector addition (where applicable)
-* * MQTT Discovery name changes (where applicable)
-* * Clean-up code formatting
+  * Selector syntax change
+  * Condition Selector addition (where applicable)
+  * MQTT Discovery name changes (where applicable)
+  * Clean-up code formatting
 * **2023-07-19**: Remove Helper on MQTT version
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-26**: BugFix. Time default no longer all zeros. Update default Tnx: [cappadanna](https://community.home-assistant.io/u/cappadanna)
 * **2022-12-12**: Add Update Method Note, minor code change.
-* * Name of Blueprint may have changed meaning you have to re-download with a new link.
-* * If name changed, it is similar. Variables have not changed.
+  * Name of Blueprint may have changed meaning you have to re-download with a new link.
+  * If name changed, it is similar. Variables have not changed.
 * **2022-05-15-A**: Minor code clean-up on Casting, no functional change.
-* * Updated AirCon Start Example code to include start AirCon only if warm enough in room.
+  * Updated AirCon Start Example code to include start AirCon only if warm enough in room.
 * **2022-05-15**: Add 2nd Blueprint triggered with HA fan entity, otherwise identical.
 * **2022-05-12.1**: Change MQTT QOS to 2
 * **2022-05-12**: Added support for weekday control
-* * Added Action Selectors to the 'fan' & 'all done' loops for controlling AirCon or Heat or anything.
+  * Added Action Selectors to the 'fan' & 'all done' loops for controlling AirCon or Heat or anything.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions plus shortcut and & or.
 * **2022-02-07**: Add Default value to float filters (for HA Breaking change).
 * **2021-11-20**: Add Minimum Home Assistant version.
@@ -26,7 +26,8 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 * **2021-08-19**: Remove negative Temp Gap hysteresis, logic wrong.
 * **2021-08-04**: Remove Default path as it made my fan beep for no reason.
 * **2021-08-02**: First blueprint version 🎉 needs Home Assistant Core 2021.7 or higher for Trigger_ID to work.
-<base target="_blank">
+
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 

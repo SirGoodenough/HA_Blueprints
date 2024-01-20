@@ -29,7 +29,7 @@ Works with BOTH Piper and Nabu-Casa tts-cloud-say. This blueprint is set up to w
 * **2021-09-03**: Add Description
 * **2021-06-16**: First blueprint version 🎉 Needs Home Assistant Core 2021.3 or higher and Nabu-Casa to work
 
-<base target="_blank">
+<base target="_blank"\>
 
 ## 🔮 About this blueprint
 
