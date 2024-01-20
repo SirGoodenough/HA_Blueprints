@@ -1,4 +1,4 @@
-This is Blueprint will adjust your climate entity thermostat to 1° above the current temp and keep it there until a max temp. This keeps my stage 2 heat source off during chosen times. Only runs within the time period you state. There isd also facility to control based on zone occumation and a roll-your-own reason.
+This is Blueprint will adjust your climate entity thermostat to 1°(adjustable) above the current temp and keep it there until a max temp. This keeps my stage 2 heat source off during chosen times. Only runs within the time period you state. There is also facility to control based on zone occumation and a roll-your-own reason.
 
 ## 📑 Changelog
 
