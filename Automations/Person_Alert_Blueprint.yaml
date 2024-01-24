@@ -1,5 +1,5 @@
 blueprint:
-  name: Person Alert Monitor - 2023-08-07
+  name: Person Alert Monitor - 2024-01-24
   author: SirGoodenough
   description: >
     This BluePrint will monitor a person or
@@ -59,8 +59,12 @@ blueprint:
       description: >
         Select the Zone you want this BP to trigger on when this person
         enters or leaves it.
+        If you want to select all the zones you have listed in this HA instance
+          then use the default. If you want to pick individual zones be sure to
+          override the default because it auto-picks all.
         Multiples are allowed.
 
+      default: '{{ states.zone | map(attribute="entity_id") | list }}'
       selector:
         entity:
           multiple: true
