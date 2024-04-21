@@ -130,25 +130,28 @@ blueprint:
           multiple: true
           filter:
             - domain: media_player
-    speaker_gender:
-      name: Speaker Gender
-      description: >
-        ### Required on MOST \*_say platforms
+    # speaker_gender:
+    #     # The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
+          #   and will be removed. Please update your automations and scripts to replace the gender
+          #   option with an option for a supported voice instead.
+    #   name: Speaker Gender
+    #   description: >
+    #     ### Required on SOME \*_say platforms
 
-        Select speaker gender male or female.
-        May not work with all TTS engines.
-      default: []
-      selector:
-        select:
-          options:
-          - label: Female
-            value: female
-          - label: Male
-            value: male
-          - label: Neutral (Does not work on all flavors)
-            value: neutral
-          custom_value: false
-          multiple: false
+    #     Select speaker gender male or female.
+    #     May not work with all TTS engines.
+    #   default: []
+    #   selector:
+    #     select:
+    #       options:
+    #       - label: Female
+    #         value: female
+    #       - label: Male
+    #         value: male
+    #       - label: Neutral (Does not work on all flavors)
+    #         value: neutral
+    #       custom_value: false
+    #       multiple: false
     baidu_person:
       name: Baidu Person Code
       description: >
@@ -988,7 +991,6 @@ sequence:
               entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               options:
-                gender: !input speaker_gender
                 voice: !input nabu_azure_voice
               language: !input nabu_azure_language
       - conditions: '{{ my_tts == "tts.google_cloud_say" }}'
@@ -999,7 +1001,6 @@ sequence:
               message: "{{ my_message }}"
               options:
                 voice: !input Google_Cloud_Voice
-                gender: !input speaker_gender
                 profiles: !input Google_Cloud_Profile
               language: !input cloud_language
       - conditions: '{{ my_tts == "tts.marytts_say" }}'
