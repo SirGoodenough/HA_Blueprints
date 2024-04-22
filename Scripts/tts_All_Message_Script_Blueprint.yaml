@@ -1,5 +1,5 @@
 blueprint:
-  name: TTS_say_Message-2023-12-09
+  name: TTS_say_Message-2024-04-21
   author: SirGoodenough
   description: >
     📣 This is a script that can use any of the 11 integrated TTS Platforms
@@ -65,7 +65,7 @@ blueprint:
     [Community link for this blueprint](https://community.home-assistant.io/t/tts-script-blueprint-for-all-11-ha-core-tts-flavors/400700)
 
   domain: script
-  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
+  source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/TTS-Gender-Mitigation/Scripts/tts_All_Message_Script_Blueprint.yaml
   homeassistant:
     min_version: 2023.8.0
   input:
@@ -132,8 +132,8 @@ blueprint:
             - domain: media_player
     # speaker_gender:
     #     # The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
-          #   and will be removed. Please update your automations and scripts to replace the gender
-          #   option with an option for a supported voice instead.
+    #     #   and will be removed. Please update your automations and scripts to replace the gender
+    #     #   option with an option for a supported voice instead.
     #   name: Speaker Gender
     #   description: >
     #     ### Required on SOME \*_say platforms
@@ -340,8 +340,6 @@ blueprint:
 
         Failure to do so will result in no voice being heard.
 
-
-        Also picking a voice here results in your pick for Gender to be ignored.
 
         If you want to know what these sound like, well, you are just going to
         have to try them and see what you like.
