@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2024-06-02**: Blueprint Input Sections for enhanced Descriptions.
 * **2023-12-09**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-10-20**: Enhancement [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
 * **2023-08-07**: Updates for Home Assistant 2023.8

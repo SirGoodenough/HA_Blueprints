@@ -1,5 +1,5 @@
 blueprint:
-  name: TTS_say_Message-2024-04-21
+  name: TTS_say_Message-2023-12-09
   author: SirGoodenough
   description: >
     📣 This is a script that can use any of the 11 integrated TTS Platforms
@@ -67,7 +67,7 @@ blueprint:
   domain: script
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   homeassistant:
-    min_version: 2023.8.0
+    min_version: 2024.6.0
   input:
     b4_action:
       name: Action before TTS
@@ -85,51 +85,58 @@ blueprint:
       default: []
       selector:
         action: {}
-    TTS:
-      name: Text to Speech Processor
+    required_input:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        ### Required on ALL platforms
+        This          
+      input:
+        TTS:
+          name: Text to Speech Processor
+          description: >
+            ### Required on ALL platforms
 
-        Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
-      selector:
-        select:
-          options:
-            - tts.amazon_polly_say
-            - tts.baidu_say
-            - tts.cloud_say
-            - tts.google_cloud_say
-            - tts.google_translate_say
-            - tts.marytts_say
-            - tts.microsoft_say
-            - tts.picotts_say
-            - Piper
-            - tts.voicerss_say
-            - tts.watson_tts_say
-            - tts.yandextts_say
-          custom_value: true
-          multiple: false
-    announcement_message:
-      name: Spoken Message
-      description: >
-        ### Required on ALL \*_say platforms
+            Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
+          selector:
+            select:
+              options:
+                - tts.amazon_polly_say
+                - tts.baidu_say
+                - tts.cloud_say
+                - tts.google_cloud_say
+                - tts.google_translate_say
+                - tts.marytts_say
+                - tts.microsoft_say
+                - tts.picotts_say
+                - Piper
+                - tts.voicerss_say
+                - tts.watson_tts_say
+                - tts.yandextts_say
+              custom_value: true
+              multiple: false
+        announcement_message:
+          name: Spoken Message
+          description: >
+            ### Required on ALL \*_say platforms
 
-        Type your message here:
-      default: '{{ ("Random test one","Random test two","Random test three") | random }}'
-      selector:
-        text:
-          multiline: true
-    speaker_target:
-      name: Entity(s) to speak thru
-      description: >
-        ### Required on ALL \*_say platforms
+            Type your message here:
+          default: '{{ ("Random test one","Random test two","Random test three") | random }}'
+          selector:
+            text:
+              multiline: true
+        speaker_target:
+          name: Entity(s) to speak thru
+          description: >
+            ### Required on ALL \*_say platforms
 
-        Be sure to select the correct type / brand of device for the TTS you are using. 
-        Not All speakers work with all TTS engines
-      selector:
-        entity:
-          multiple: true
-          filter:
-            - domain: media_player
+            Be sure to select the correct type / brand of device for the TTS you are using. 
+            Not All speakers work with all TTS engines
+          selector:
+            entity:
+              multiple: true
+              filter:
+                - domain: media_player
     # speaker_gender:
     #     # The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
     #     #   and will be removed. Please update your automations and scripts to replace the gender
@@ -989,6 +996,7 @@ sequence:
               entity_id: "{{ my_speaker }}"
               message: "{{ my_message }}"
               options:
+                gender: !input speaker_gender
                 voice: !input nabu_azure_voice
               language: !input nabu_azure_language
       - conditions: '{{ my_tts == "tts.google_cloud_say" }}'
@@ -999,6 +1007,7 @@ sequence:
               message: "{{ my_message }}"
               options:
                 voice: !input Google_Cloud_Voice
+                gender: !input speaker_gender
                 profiles: !input Google_Cloud_Profile
               language: !input cloud_language
       - conditions: '{{ my_tts == "tts.marytts_say" }}'
