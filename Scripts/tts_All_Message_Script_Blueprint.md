@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2024-04-21**: The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
 * **2023-12-07**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-09-29**: Add the ability to use Piper TTS.
   * Change several of the selectors to allow custom. Use at your own risk.
@@ -82,11 +83,6 @@ Requirements
         Be sure to select the correct type / brand
         of device for the TTS you are using.
         Not All speakers work with all TTS engines.
-
-    speaker_gender: Speaker Gender
-        Used on most *_say platforms.
-        Select speaker gender male or female.
-        May not work with all TTS engines.
 
     baidu_person: Baidu Person Code
         Used only on most tts_baidu_say platform.
