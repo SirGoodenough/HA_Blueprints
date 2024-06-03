@@ -1,5 +1,5 @@
 blueprint:
-  name: Door open tts.cloud_say and Piper announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2023-10-02
+  name: Door open tts.cloud_say and Piper announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2024-04-22
   author: SirGoodenough
   description: >
     This uses tts.cloud_say from Nabu-Casa or Wyoming with the Piper Addon to tell you a door is open too
@@ -145,17 +145,20 @@ blueprint:
           filter:
             - domain: media_player
           multiple: true
-    speaker_gender:
-      name: Speaker Gender
-      description: Required for tts-cloud_say only. Select speaker gender male or female.
-      default: female
-      selector:
-        select:
-          options:
-          - female
-          - male
-          custom_value: false
-          multiple: false
+    # speaker_gender:
+    #     # The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
+    #     #   and will be removed. Please update your automations and scripts to replace the gender
+    #     #   option with an option for a supported voice instead.
+    #   name: Speaker Gender
+    #   description: Required for tts-cloud_say only. Select speaker gender male or female.
+    #   default: female
+    #   selector:
+    #     select:
+    #       options:
+    #       - female
+    #       - male
+    #       custom_value: false
+    #       multiple: false
     speaker_language:
       name: Speaker Language
       description: >
@@ -327,8 +330,6 @@ blueprint:
 
         Failure to do so will result in no voice being heard.
 
-
-        Also picking a voice here results in your pick for Gender to be ignored.
 
         If you want to know what these sound like, well, you are just going to
         have to try them and see what you like.
@@ -589,7 +590,6 @@ action:
                   entity_id: !input speaker_target
                   message: !input announcement_message
                   options:
-                    gender: !input speaker_gender
                     voice: !input speaker_voice
                   language: !input speaker_language
           - conditions: '{{ tts_service == "piper" }}'
@@ -641,7 +641,6 @@ action:
               entity_id: !input speaker_target
               message: !input final_message
               options:
-                gender: !input speaker_gender
                 voice: !input speaker_voice
               language: !input speaker_language
       - conditions: '{{ tts_service == "piper" }}'

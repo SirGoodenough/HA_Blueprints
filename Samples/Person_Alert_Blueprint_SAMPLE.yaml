@@ -134,7 +134,7 @@ script:
 # The speaker entities entry needs to be a device on your network.
 # This is set-up with tts.cloud_say using Nabu-Casa, but
 #   tts.google_translate_say and others would also work at no cost.
-# Note that 'lang' (Language) and 'gend' (gender) or 'entities'
+# Note that 'lang' (Language) or 'entities'
 #   (entity_ids of media players) does not have to be pushed if 
 #   you don't want to change it from the defaults set in the script.
 
@@ -147,7 +147,6 @@ enter_action:
         '' has arrived at '' + trigger.to_state.state
         }}'
       lang: en-GB
-      gend: female
 leave_action:
   - service: script.personalert_audio
     data:
@@ -156,7 +155,6 @@ leave_action:
         '' has left '' + trigger.from_state.state
         }}'
       lang: en-GB
-      gend: female
 jump_action:
   - service: script.personalert_audio
     data:
@@ -166,7 +164,6 @@ jump_action:
         '' and is located at: '' + trigger.to_state.state
         }}'
       lang: en-GB
-      gend: female
 
 # Script being called
 script:
@@ -205,17 +202,20 @@ script:
           text:
             multiline: false
             type: text
-      gend:
-        name: Gender
-        description:
-          The gender, male or female, of the voice.
-        required: false
-        default: female
-        selector:
-          select:
-            options:
-              - female
-              - male
+      # gend:
+      #     # The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
+      #     #   and will be removed. Please update your automations and scripts to replace the gender
+      #     #   option with an option for a supported voice instead.
+      #   name: Gender
+      #   description:
+      #     The gender, male or female, of the voice.
+      #   required: false
+      #   default: female
+      #   selector:
+      #     select:
+      #       options:
+      #         - female
+      #         - male
       voice:
         name: tts_cloud (nabu Casa) Voice
         description: >  
@@ -229,8 +229,6 @@ script:
 
           Failure to do so will result in no voice being heard.
 
-
-          Also picking a voice here results in your pick for Gender to be ignored.
 
           If you want to know what these sound like, well, you are just going to
           have to try them and see what you like.
@@ -274,7 +272,6 @@ script:
       _entities: media_player.intercom_group
       _mess: "I'm lost"
       _lang: en-US
-      _gend: female
       _voice: []
 
     sequence:
@@ -294,7 +291,6 @@ script:
         message: "{{ mess | default(_mess) }}"
         language: "{{ lang | default(_lang) }}"
         options:
-          gender: "{{ gend | default(_gend) }}"
           voice: "{{ voice | default(_voice) }}"
 
     mode: single

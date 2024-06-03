@@ -2,6 +2,7 @@ Works with BOTH Piper and Nabu-Casa tts-cloud-say. This blueprint is set up to w
 
 ## 📑 Changelog
 
+* **2024-04-22**: The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
 * **2023-10-02**: Add the ability to use Piper TTS.
   * File Rename to reflect new function.
   * Old Automatons will still work when pointed to new BP file name.
@@ -19,7 +20,7 @@ Works with BOTH Piper and Nabu-Casa tts-cloud-say. This blueprint is set up to w
   * Clean-up code formatting
 * **2023-03-01**: Add Author Tag. Bump HA required Version to 2023-3-0
 * **2022-12-12**: Add Update Method Note, minor code change.
-  * Name of Blueprint may have changed meaing you have to re-download with a new link.
+  * Name of Blueprint may have changed meaning you have to re-download with a new link.
   * If name changed, it is similar. Variables have not changed.
 * **2022-05-05**: Updated for 2022.5.0 HA. Added Markdown to !input Descriptions.
 * **2022-04-11**: Add multiple to Speaker Selection and changed minimum HA to 2022.4.0
@@ -90,9 +91,6 @@ Requirements
 
     speaker_target: Speaker
         Entity to announce event on
-
-    speaker_gender: Speaker Gender
-        Select speaker gender male or female
 
     speaker_language: Speaker Language
         Select Language code.
