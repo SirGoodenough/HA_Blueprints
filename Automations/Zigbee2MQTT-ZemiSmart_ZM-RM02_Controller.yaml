@@ -1,5 +1,5 @@
 blueprint:
-  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2023-08-07
+  name: Zigbee2MQTT - ZemiSmart ZM-RM02 Controller - 2024-06-04
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 18
@@ -30,119 +30,190 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-ZemiSmart_ZM-RM02_Controller.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.8.0
+    min_version: 2024.6.0
   input:
-    remote:
-      name: Remote
+    required_input:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        The entity to put here is the sensor that Z2M imported that is
-        named like this>
+        This input is required for the blueprint to function
+      input:
+        remote:
+          name: Remote
+          description: >
+            The entity to put here is the sensor that Z2M imported that is
+            named like this>
 
-        ```sensor.XXYour_HameXX_action```
-      selector:
-        entity:
-          filter:
-            - integration: mqtt
-              domain: sensor
-          multiple: false
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
-      default: []
-      selector:
-        condition:
-    tap_1:
-      name: Single click on Button 1 action
-      default: []
-      selector:
-        action: {}
-    doubletap_1:
-      name: Double click on Button 1 action
-      default: []
-      selector:
-        action: {}
-    hold_1:
-      name: LongPress on Button 1 action
-      default: []
-      selector:
-        action: {}
-    tap_2:
-      name: Single click on Button 2 action
-      default: []
-      selector:
-        action: {}
-    doubletap_2:
-      name: Double click on Button 2 action
-      default: []
-      selector:
-        action: {}
-    hold_2:
-      name: LongPress on Button 2 action
-      default: []
-      selector:
-        action: {}
-    tap_3:
-      name: Single click on Button 3 action
-      default: []
-      selector:
-        action: {}
-    doubletap_3:
-      name: Double click on Button 3 action
-      default: []
-      selector:
-        action: {}
-    hold_3:
-      name: LongPress on Button 3 action
-      default: []
-      selector:
-        action: {}
-    tap_4:
-      name: Single click on Button 4 action
-      default: []
-      selector:
-        action: {}
-    doubletap_4:
-      name: Double click on Button 4 action
-      default: []
-      selector:
-        action: {}
-    hold_4:
-      name: LongPress on Button 4 action
-      default: []
-      selector:
-        action: {}
-    tap_5:
-      name: Single click on Button 5 action
-      default: []
-      selector:
-        action: {}
-    doubletap_5:
-      name: Double click on Button 5 action
-      default: []
-      selector:
-        action: {}
-    hold_5:
-      name: LongPress on Button 5 action
-      default: []
-      selector:
-        action: {}
-    tap_6:
-      name: Single click on Button 6 action
-      default: []
-      selector:
-        action: {}
-    doubletap_6:
-      name: Double click on Button 6 action
-      default: []
-      selector:
-        action: {}
-    hold_6:
-      name: LongPress on Button 6 action
-      default: []
-      selector:
-        action: {}
+            ```sensor.XXYour_HameXX_action```
+          selector:
+            entity:
+              filter:
+                - integration: mqtt
+                  domain: sensor
+              multiple: false
+
+    optional_conditions:
+      name: Optional conditions🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
+      description: >
+        This input was added by user request. With it you can add your own condition.
+          If you only want the cube to work like this in the morning,
+          then after 6pm you want it to do different actions, add a condition that
+          will only let this run from 6am until 6pm. Then have another copy of
+          the blueprint that will only run from 6pm until 6am. (for example)
+
+          Any valid conditions you can dream up, you should be able to add here.
+
+          Leave it as the default of you don't want to add a condition of your own.
+      input:
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Home occupied, TV on, etc)
+          default: []
+          selector:
+            condition:
+
+    button_1_actions:
+      name: Button 1 actions
+      icon: mdi:numeric-1-circle-outline
+      collapsed: true
+      description: >
+        These are the things you can do with button 1
+      input:
+        tap_1:
+          name: Single click on Button 1 action
+          default: []
+          selector:
+            action: {}
+        doubletap_1:
+          name: Double click on Button 1 action
+          default: []
+          selector:
+            action: {}
+        hold_1:
+          name: LongPress on Button 1 action
+          default: []
+          selector:
+            action: {}
+
+    button_2_actions:
+      name: Button 2 actions
+      icon: mdi:numeric-2-circle-outline
+      collapsed: true
+      description: >
+        These are the things you can do with button 2
+      input:
+        tap_2:
+          name: Single click on Button 2 action
+          default: []
+          selector:
+            action: {}
+        doubletap_2:
+          name: Double click on Button 2 action
+          default: []
+          selector:
+            action: {}
+        hold_2:
+          name: LongPress on Button 2 action
+          default: []
+          selector:
+            action: {}
+
+    button_3_actions:
+      name: Button 3 actions
+      icon: mdi:numeric-3-circle-outline
+      collapsed: true
+      description: >
+        These are the things you can do with button 3
+      input:
+        tap_3:
+          name: Single click on Button 3 action
+          default: []
+          selector:
+            action: {}
+        doubletap_3:
+          name: Double click on Button 3 action
+          default: []
+          selector:
+            action: {}
+        hold_3:
+          name: LongPress on Button 3 action
+          default: []
+          selector:
+            action: {}
+
+    button_4_actions:
+      name: Button 4 actions
+      icon: mdi:numeric-4-circle-outline
+      collapsed: true
+      description: >
+        These are the things you can do with button 4
+      input:
+        tap_4:
+          name: Single click on Button 4 action
+          default: []
+          selector:
+            action: {}
+        doubletap_4:
+          name: Double click on Button 4 action
+          default: []
+          selector:
+            action: {}
+        hold_4:
+          name: LongPress on Button 4 action
+          default: []
+          selector:
+            action: {}
+
+    button_5_actions:
+      name: Button 5 actions
+      icon: mdi:numeric-5-circle-outline
+      collapsed: true
+      description: >
+        These are the things you can do with button 5
+      input:
+        tap_5:
+          name: Single click on Button 5 action
+          default: []
+          selector:
+            action: {}
+        doubletap_5:
+          name: Double click on Button 5 action
+          default: []
+          selector:
+            action: {}
+        hold_5:
+          name: LongPress on Button 5 action
+          default: []
+          selector:
+            action: {}
+
+    button_6_actions:
+      name: Button 6 actions
+      icon: mdi:numeric-6-circle-outline
+      collapsed: true
+      description: >
+        These are the things you can do with button 6
+      input:
+        tap_6:
+          name: Single click on Button 6 action
+          default: []
+          selector:
+            action: {}
+        doubletap_6:
+          name: Double click on Button 6 action
+          default: []
+          selector:
+            action: {}
+        hold_6:
+          name: LongPress on Button 6 action
+          default: []
+          selector:
+            action: {}
 
 trigger:
 - platform: state

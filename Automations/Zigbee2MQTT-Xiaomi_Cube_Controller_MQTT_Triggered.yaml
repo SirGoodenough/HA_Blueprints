@@ -25,7 +25,7 @@ blueprint:
 
 
     ### 🍕 There are 2 actions (shake and drop) that only occur once and are OK to
-    be combined with any other group. **Group 4 actions 🍕**
+    be combined with any other group.  Listed as **Group 4 sections 🍕**.
 
 
     Please be aware that ALL actions **except** the **Group 4 actions 🍕**
@@ -112,6 +112,7 @@ blueprint:
           selector:
             text:
               multiline: false
+
     optional_conditions:
       name: Optional conditions🤓
       icon: mdi:alert-octagon-outline
@@ -136,6 +137,7 @@ blueprint:
           default: []
           selector:
             condition:
+
     side_0_group_1_actions:
       name: Side 0 Group 1 actions 🍎
       icon: mdi:numeric-0-box
@@ -165,7 +167,6 @@ blueprint:
         flipped180_face_0:
           name: Group 1 actions 🍎 Flip the cube 180 degrees to face 0
           description: '**NOTE:** This action is trick to master, and should be used sparingly...
-
             Face 0 is the one with the ''Aqara'' LOGO'
           default: []
           selector:
@@ -188,6 +189,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_1_group_1_actions:
       name: Side 1 Group 1 actions 🍎
       icon: mdi:numeric-1-box
@@ -233,6 +235,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_2_group_1_actions:
       name: Side 2 Group 1 actions 🍎
       icon: mdi:numeric-2-box
@@ -283,6 +286,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_3_group_1_actions:
       name: Side 3 Group 1 actions 🍎
       icon: mdi:numeric-3-box
@@ -323,6 +327,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_4_group_1_actions:
       name: Side 4 Group 1 actions 🍎
       icon: mdi:numeric-4-box
@@ -368,6 +373,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_5_group_1_actions:
       name: Side 5 Group 1 actions 🍎
       icon: mdi:numeric-5-box
@@ -413,6 +419,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     any_side_group_2_actions:
       name: Any side Group 2 actions 🍒
       icon: mdi:fruit-cherries
@@ -482,6 +489,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_0_group_3_actions:
       name: Side 0 Group 3 actions 🍐
       icon: mdi:numeric-0-circle
@@ -536,6 +544,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_1_group_3_actions:
       name: Side 1 Group 3 actions 🍐
       icon: mdi:numeric-1-circle
@@ -589,6 +598,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_2_group_3_actions:
       name: Side 2 Group 3 actions 🍐
       icon: mdi:numeric-2-circle
@@ -642,6 +652,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_3_group_3_actions:
       name: Side 3 Group 3 actions 🍐
       icon: mdi:numeric-3-circle
@@ -695,6 +706,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_4_group_3_actions:
       name: Side 4 Group 3 actions 🍐
       icon: mdi:numeric-4-circle
@@ -757,6 +769,7 @@ blueprint:
           default: []
           selector:
             action: {}
+
     side_5_group_3_actions:
       name: Side 5 Group 3 actions 🍐
       icon: mdi:numeric-5-circle
@@ -801,16 +814,17 @@ blueprint:
           default: []
           selector:
             action: {}
+
     group_4_actions:
       name: Group 4 actions only used once (no side) 🍕
       icon: mdi:pizza
       collapsed: true
       description: >
-        These are Group 1 actions that happen with Face 5
-          of the cube up to start.
+        These are Group 4 actions only used once (no side) 🍕
+          they can be safely compined with any other command.
       input:
         shake:
-          name: Shake the cube 🍕
+          name: Shake the cube 🍕 Group 4
           description: 'This trigger only occurs once in the set-up.
 
             It can be combined in any group.'
@@ -818,7 +832,7 @@ blueprint:
           selector:
             action: {}
         fall:
-          name: Drop the cube 🍕
+          name: Drop the cube 🍕 Group 4
           description: 'This trigger only occurs once in the set-up.
 
             It can be combined in any group.'

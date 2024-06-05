@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2024-06-04**: Blueprint Input Sections for enhanced Descriptions.
 * **2023-10-20**: Enhancement [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
 * **2023-08-07**: Updates for Home Assistant 2023.8
   * Selector syntax change
@@ -68,34 +69,34 @@ Requirements
 ______________
 
     shake:
-      name: Shake the cube 🍩
+      name: Shake the cube 🍕 Group 4
         This trigger only occurs once in the set-up.
         It can be combined in any group.'
 
     drop:
-      name: Drop the cube 🍩
+      name: Drop the cube 🍕 Group 4
         **NOTE: NOT available with the ```Cube T1 Pro``` version of the cube!!**
         This trigger only occurs once in the set-up.
         It can be combined in any group.'
 ______________
 
     slide_any:
-      name: Group 2 actions 🍊 Slide the cube with any side
+      name: Group 2 actions 🍒 Slide the cube with any side
 
     doubletap_any:
-      name: Group 2 actions 🍊 Double tap the cube with any side
+      name: Group 2 actions 🍒 Double tap the cube with any side
 
     flipped90_any:
-      name: Group 2 actions 🍊 Flip the cube 90 degrees to any side
+      name: Group 2 actions 🍒 Flip the cube 90 degrees to any side
 
     flipped180_any:
-      name: Group 2 actions 🍊 Flip the cube 180 degrees any side
+      name: Group 2 actions 🍒 Flip the cube 180 degrees any side
 
     rotate_cw_any:
-      name: Group 2 actions 🍊 Rotate cube clockwise with any side
+      name: Group 2 actions 🍒 Rotate cube clockwise with any side
 
     rotate_ccw_any:
-      name: Group 2 actions 🍊 Rotate cube counter clockwise with any side
+      name: Group 2 actions 🍒 Rotate cube counter clockwise with any side
 ______________
 
     **There is a set of these for all 6 sides. 36 inputs total..**
@@ -128,27 +129,27 @@ ______________
     0_from_1:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 1
         **!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
-        🍊 automations will also trigger.
+        🍒 automations will also trigger.
 
     0_from_2:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 2
         **!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
-        🍊 automations will also trigger.
+        🍒 automations will also trigger.
 
     0_from_3:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 3
         **!!Warning!!** The flip 180 automations 🍎 for side 0 and the
-        ANY 🍊 automations will also trigger.
+        ANY 🍒 automations will also trigger.
 
     0_from_4:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 4
         **!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
-        🍊 automations will also trigger.
+        🍒 automations will also trigger.
 
     0_from_5:
       name: Group 3 actions 🍐 Flip the cube to side 0 from side 5
         **!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
-        🍊 automations will also trigger.
+        🍒 automations will also trigger.
 
 ## 👀 ✈️ Extended Information
 
@@ -162,20 +163,20 @@ Functions that are left empty will simply do nothing.
 ### 🍎 There is a set of 36 event functions that will trigger on specific actions
 on specific sides that are listed as **Group 1 actions 🍎**.
 
-### 🍊 There is a set of 6 event functions that will trigger on specific actions
-on *ANY* side that are listed as **Group 2 sctions 🍊**.
+### 🍒 There is a set of 6 event functions that will trigger on specific actions
+on *ANY* side that are listed as **Group 2 sctions 🍒**.
 
 ### 🍐 There is a set of 30 event functions that will trigger on cube flips to
-& froma specific sides that are listed as **Group 3 sctions 🍐**.
+& from a specific sides that are listed as **Group 3 sctions 🍐**.
 
-### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to
-be combined with any other group.
+### 🍕 There are 2 actions (shake and drop) that only occur once and are OK to
+be combined with any other group. Listed as **Group 4 sections 🍕**.
 
 Please be aware that ALL actions except the 2 listed above,
 
-🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore
+🍕 will trigger an action in **ALL 3 groups at the same time** every time. Therefore
 I suggest if you just have a couple of things you want this remote to do that
-you choose the *ANY / Group 2 / 🍊* events.
+you choose the *ANY / Group 2 / 🍒* events.
 
 If you want more than a few events, you should select actions in **Group 1 / 🍎
 OR Group 3 / 🍐**.
@@ -279,7 +280,7 @@ This can be used over and over for as many lights as you want to control. But yo
 
 ## 🔁 🔴 Using Rotate CW and CCW as a Short-Press / Long-Press Toggle
 
-Not enough switch positions for you?  **How about a possible 24 more?**  I came up with some scripts you can add to Home Assistant and call for more actions. One is for CW rotation < 100 degrees, another for > 100 degrees. Also the same for CCW. These are can be called from the Group 1 🍎 rotate actions and the Group 2 🍊 rotate actions. Match the CW call/recieve or the CCW call/receive pairs together or you are going to be sad. 😩
+Not enough switch positions for you?  **How about a possible 24 more?**  I came up with some scripts you can add to Home Assistant and call for more actions. One is for CW rotation < 100 degrees, another for > 100 degrees. Also the same for CCW. These are can be called from the Group 1 🍎 rotate actions and the Group 2 🍒 rotate actions. Match the CW call/recieve or the CCW call/receive pairs together or you are going to be sad. 😩
 
 Here is a sample of what you put into the script Blueprint UI. It will need to be a manual YAML edit and contain your specific variables. What you see here is one from my config.
 

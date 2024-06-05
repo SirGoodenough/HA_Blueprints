@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2024-06-04**: Blueprint Input Sections for enhanced Descriptions.
 * **2023-12-09**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-10-20**: Enhancement [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
 * **2023-10-11**: Bug fix [Descriptions wrong](https://github.com/SirGoodenough/HA_Blueprints/issues/21)
@@ -108,11 +109,11 @@ After this find the topic again the same way as above and it should work.
 ______________
 
     action_shake:
-      name: 🫳 ACTION MODE ONLY 🫳 Shake the cube 🍩
+      name: 🫳 ACTION MODE ONLY 🫳 Shake the cube 🍕
         This trigger only occurs once in the set-up.
 
     action_throw:
-      name: 🫳 ACTION MODE ONLY 🫳 Throw the cube 🍩
+      name: 🫳 ACTION MODE ONLY 🫳 Throw the cube 🍕
         You don't actually ''Throw'' the cube. The action is as follows:
           > Pick up the cube firmly.
           > Make a throwing motion with it but do not motion back towards yourself.
@@ -122,22 +123,22 @@ ______________
 ______________
 
     action_slide_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Slide on any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Slide on any side
 
     action_doubletap_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Double tap on any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Double tap on any side
 
     action_flipped90_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Flip 90 degrees to any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Flip 90 degrees to any side
 
     action_flipped180_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Flip 180 degrees to any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Flip 180 degrees to any side
 
     action_rotate_cw_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate CW on any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Rotate CW on any side
 
     action_rotate_ccw_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate CCW on any side
+      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Rotate CCW on any side
 ______________
 
     **There is a set of these 🍎 for all 6 sides. 36 inputs total..**
@@ -184,15 +185,15 @@ ______________
 ______________
 
     scene_hold:
-      name: 👀 SCENE MODE ONLY 👀 Lift up the cube and hold it 🍩
+      name: 👀 SCENE MODE ONLY 👀 Lift up the cube and hold it 🍕 Group 4
         This trigger only occurs once in the set-up.
 
     scene_shake:
-      name: 👀 SCENE MODE ONLY 👀 Shake the cube 🍩
+      name: 👀 SCENE MODE ONLY 👀 Shake the cube 🍕 Group 4
         This trigger only occurs once in the set-up.
 
     scene_throw:
-      name: 👀 SCENE MODE ONLY 👀 Throw the cube 🍩
+      name: 👀 SCENE MODE ONLY 👀 Throw the cube 🍕 Group 4
         You don''t actually ''Throw'' the cube. The action is as follows:
           > Pick up the cube firmly.
           > Make a throwing motion with it but do not motion back towards yourself.
@@ -203,13 +204,13 @@ ______________
 ______________
 
     scene_flip_to_side_any:
-      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Flip 180 degrees any side
+      name: 👀 SCENE MODE ONLY 👀 Group 2 🍒 Flip 180 degrees any side
 
     scene_rotate_cw_any:
-      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube CW with any side
+      name: 👀 SCENE MODE ONLY 👀 Group 2 🍒 Rotate cube CW with any side
 
     scene_rotate_ccw_any:
-      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube CCW with any side
+      name: 👀 SCENE MODE ONLY 👀 Group 2 🍒 Rotate cube CCW with any side
 ______________
 
     **There is a set of these 🍎 for all 6 sides. 18 inputs total..**
@@ -255,20 +256,20 @@ Functions that are left empty will simply do nothing.
 ### 🍎 There is a set of 36 event functions that will trigger on specific actions
 on specific sides that are listed as **Group 1 actions 🍎**.
 
-### 🍊 There is a set of 6 event functions that will trigger on specific actions
-on *ANY* side that are listed as **Group 2 sctions 🍊**.
+### 🍒 There is a set of 6 event functions that will trigger on specific actions
+on *ANY* side that are listed as **Group 2 sctions 🍒**.
 
 ### 🍐 There is a set of 30 event functions that will trigger on cube flips to
 & froma specific sides that are listed as **Group 3 sctions 🍐**.
 
-### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to
-be combined with any other group.
+### 🍕 There are 2 actions (shake and drop) that only occur once and are OK to
+be combined with any other group. Listed as **Group 4 sections 🍕**.
 
 Please be aware that ALL actions except the 2 listed above,
 
-🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore
+🍕 will trigger an action in **ALL 3 groups at the same time** every time. Therefore
 I suggest if you just have a couple of things you want this remote to do that
-you choose the *ANY / Group 2 / 🍊* events.
+you choose the *ANY / Group 2 / 🍒* events.
 
 If you want more than a few events, you should select actions in **Group 1 / 🍎
 OR Group 3 / 🍐**.
@@ -379,7 +380,7 @@ It has been found that some set-ups use ```trigger.payload_json.action_angle``` 
 
 ## 🔁 🔴 Using Rotate CW and CCW as a Short-Press / Long-Press Toggle
 
-Not enough switch positions for you?  **How about a possible 24 more?**  I came up with some scripts you can add to Home Assistant and call for more actions. One is for CW rotation < 100 degrees, another for > 100 degrees. Also the same for CCW. These are can be called from the Group 1 🍎 rotate actions and the Group 2 🍊 rotate actions. Match the CW call/recieve or the CCW call/receive pairs together or you are going to be sad. 😩
+Not enough switch positions for you?  **How about a possible 24 more?**  I came up with some scripts you can add to Home Assistant and call for more actions. One is for CW rotation < 100 degrees, another for > 100 degrees. Also the same for CCW. These are can be called from the Group 1 🍎 rotate actions and the Group 2 🍒 rotate actions. Match the CW call/recieve or the CCW call/receive pairs together or you are going to be sad. 😩
 
 Here is a sample of what you put into the script Blueprint UI. It will need to be a manual YAML edit and contain your specific variables. What you see here is one from my config.
 
