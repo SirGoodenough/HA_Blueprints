@@ -67,7 +67,7 @@ blueprint:
     level_1:
       name: First action to take
       icon: mdi:clock-time-one
-      collapsed: false
+      collapsed: true
       description: >
         The first time the problem is detected, these are the actions and parameters.
 
@@ -193,7 +193,7 @@ blueprint:
     level_4:
       name: Forth and final action to take
       icon: mdi:clock-time-four
-      collapsed: false
+      collapsed: true
       description: >
         The fourth and final time the problem is detected, these are the actions and parameters.
 

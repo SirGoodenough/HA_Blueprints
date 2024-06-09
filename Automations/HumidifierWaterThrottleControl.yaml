@@ -59,20 +59,6 @@ blueprint:
               filter:
                 - domain: sensor
               multiple: false
-
-    required_inputs_with_defaults:
-      name: Defaulted Inputs
-      icon: mdi:alert-decagram
-      collapsed: true
-      description: >
-        These inputs are required, but have values that are defaulted to values that work for me.
-          It is possible you will need to change them.
-          My suggestion is to not change them until you detect an issue that you think can be
-          fixed by changing these.
-
-          In the end, these must have a value.
-          This blueprint will work if no changes are made to this section.
-      input:
         power_1:
           name: Switch entity for switch 1 controlling the water
           description: >
@@ -100,6 +86,20 @@ blueprint:
           selector:
             text:
               multiline: false
+
+    required_inputs_with_defaults:
+      name: Defaulted Inputs
+      icon: mdi:alert-decagram
+      collapsed: true
+      description: >
+        These inputs are required, but have values that are defaulted to values that work for me.
+          It is possible you will need to change them.
+          My suggestion is to not change them until you detect an issue that you think can be
+          fixed by changing these.
+
+          In the end, these must have a value.
+          This blueprint will work if no changes are made to this section.
+      input:
         scalar:
           name: Scaling Factor
           description: >

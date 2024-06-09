@@ -46,6 +46,7 @@ blueprint:
     [Community link for this blueprint](https://community.home-assistant.io/t/octoprint-additional-buttons-helper-blueprint/549826)
 
   source_url: 'https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Octoprint_Additional_Buttons_Helper.yaml'
+  domain: automation
   homeassistant:
     min_version: 2024.6.0
   input:
