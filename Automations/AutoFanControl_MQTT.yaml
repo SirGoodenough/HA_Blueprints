@@ -98,7 +98,7 @@ blueprint:
       icon: mdi:alert-decagram
       collapsed: true
       description: >
-        These inpute are required, but have values that are defaulted to values that work for me.
+        These inputs are required, but have values that are defaulted to values that work for me.
           It is possible you will need to change them.
           My suggestion is to not change them until you detect an issue that you think can be
           fixed by changing these.
@@ -172,7 +172,7 @@ blueprint:
       icon: mdi:alert-octagon-outline
       collapsed: true
       description: >
-        These inputs set optional parameters that allow you to customice the intended actions.
+        These inputs set optional parameters that allow you to customize the intended actions.
           Read the individual descriptions for more details.
 
           The Blueprint will work if no changes are made to this section.

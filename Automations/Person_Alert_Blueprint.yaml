@@ -1,5 +1,5 @@
 blueprint:
-  name: Person Alert Monitor - 2024-01-24
+  name: Person Alert Monitor - 2024-06-08
   author: SirGoodenough
   description: >
     This BluePrint will monitor a person or
@@ -40,156 +40,173 @@ blueprint:
 
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.yaml
   homeassistant:
-    min_version: 2023.8.0
-  domain: automation
+    min_version: 2024.6.0
   input:
-    people2monitor:
-      name: Person or People to follow
+    required_inputs:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        Select the Person you want this BP to trigger on for this action.
-        Multiples are allowed.
+        These inputs are required for the blueprint to function and must be filled in.
+      input:
+        people2monitor:
+          name: Person or People to follow
+          description: >
+            Select the Person you want this BP to trigger on for this action.
+            Multiples are allowed.
 
-      selector:
-        entity:
-          multiple: true
-          filter:
-            - domain: person
-    zone2monitor:
-      name: Zone to watch
+          selector:
+            entity:
+              multiple: true
+              filter:
+                - domain: person
+        zone2monitor:
+          name: Zone to watch
+          description: >
+            Select the Zone you want this BP to trigger on when this person
+            enters or leaves it.
+            If you want to select all the zones you have listed in this HA instance
+              then use the default. If you want to pick individual zones be sure to
+              override the default because it auto-picks all.
+            Multiples are allowed.
+
+          default: '{{ states.zone | map(attribute="entity_id") | list }}'
+          selector:
+            entity:
+              multiple: true
+              filter:
+                - domain: zone
+        enter_action:
+          name: Enter the Zone Action
+          description: >
+            Build the action here that you want to happen when they enter
+            this zone. There is a 'Persistent Notification' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
+
+            If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
+
+            If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+
+            There is also a built-in [Actionable Notification Script Blueprint](https://github.com/home-assistant/core/blob/master/homeassistant/components/script/blueprints/confirmable_notification.yaml)
+            that could work here. It is included with Home Assistant.
+
+          default: []
+          selector:
+            action: {}
+        leave_action:
+          name: Leave the Zone Action
+          description: >
+            Build the action here that you want to happen when they leave
+            this zone. There is a 'Persistent Notification' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
+
+            If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
+
+            If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+
+          default: []
+          selector:
+            action: {}
+        jump_action:
+          name: Jump known zone to known zone Action
+          description: >
+            Build the action here that you want to happen when both the 
+            zone they left and the zone they entered is known, but not the same zone.
+            There is a 'Persistent Notification' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
+
+            If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
+
+            If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
+
+          default: []
+          selector:
+            action: {}
+
+    optional_parameters:
+      name: Optional parameters🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
       description: >
-        Select the Zone you want this BP to trigger on when this person
-        enters or leaves it.
-        If you want to select all the zones you have listed in this HA instance
-          then use the default. If you want to pick individual zones be sure to
-          override the default because it auto-picks all.
-        Multiples are allowed.
+        These inputs set optional parameters that allow you to customize the intended actions.
+          Read the individual descriptions for more details.
 
-      default: '{{ states.zone | map(attribute="entity_id") | list }}'
-      selector:
-        entity:
-          multiple: true
-          filter:
-            - domain: zone
-    hold_period:
-      name: Hold Period
-      description: >
-        Sometimes devices want to disconnect and connect often, 
-        Home Assistant deals with this using a considered-on or considered-off time.
-        This is the same thing.
+          The Blueprint will work if no changes are made to this section.
+      input:
+        hold_period:
+          name: Hold Period
+          description: >
+            Sometimes devices want to disconnect and connect often, 
+            Home Assistant deals with this using a considered-on or considered-off time.
+            This is the same thing.
 
-        Sometimes you don't need anything here.
+            Sometimes you don't need anything here.
 
-        I suggest you try the default 00:00:00 here and add time if you need it.
-        Using this means the automation will be running the entire time period 
-        that you select and will not be available for other triggers.
+            I suggest you try the default 00:00:00 here and add time if you need it.
+            Using this means the automation will be running the entire time period 
+            that you select and will not be available for other triggers.
 
-        This time is delay is not effective if automation is in parallel mode.
+            This time delay is not effective if automation is in parallel mode.
 
-      default:
-        hours: 0
-        minutes: 0
-        seconds: 0
-      selector:
-        duration:
-    enter_action:
-      name: Enter the Zone Action
-      description: >
-        Build the action here that you want to happen when they enter
-        this zone. There is a 'Persistent Notification' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
-
-        If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
-
-        If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
-
-        There is also a built-in [Actionable Notification Script Blueprint](https://github.com/home-assistant/core/blob/master/homeassistant/components/script/blueprints/confirmable_notification.yaml)
-        that could work here. It is included with Home Assistant.
-
-      default: []
-      selector:
-        action: {}
-    leave_action:
-      name: Leave the Zone Action
-      description: >
-        Build the action here that you want to happen when they leave
-        this zone. There is a 'Persistent Notification' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
-
-        If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
-
-        If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
-
-      default: []
-      selector:
-        action: {}
-    jump_action:
-      name: Jump known zone to known zone Action
-      description: >
-        Build the action here that you want to happen when both the 
-        zone they left and the zone they entered is known, but not the same zone.
-        There is a 'Persistent Notification' example in [The Docs File.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Person_Alert_Blueprint.md)
-
-        If you want to do a TTS I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml)
-
-        If you want to play a sound effect or music I suggest [This Blueprint.](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/play_media_file_script.yaml)
-
-      default: []
-      selector:
-        action: {}
-    enable_time:
-      name: Time of day to begin action(s)
-      description: >
-        Set this for the time of day you want to allow action(s) to begin.
-        Leave as is to always be enabled.
-      default: 00:00:00
-      selector:
-        time: {}
-    disable_time:
-      name: Time of day to end action(s)
-      description: >
-        Set this for the time of day you want action(s) to end.
-        Leave as is to always be enabled.
-      default: 00:00:00
-      selector:
-        time: {}
-    weekday:
-      name: Day of the week to allow action(s)
-      description: >
-        Change options if you want to include or exclude any specific day.
-        All days are selected by default.
-      default:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
-      - sat
-      - sun
-      selector:
-        select:
-          options:
-          - label: Monday
-            value: mon
-          - label: Tuesday
-            value: tue
-          - label: Wednesday
-            value: wed
-          - label: Thursday
-            value: thu
-          - label: Friday
-            value: fri
-          - label: Saturday
-            value: sat
-          - label: Sunday
-            value: sun
-          custom_value: false
-          multiple: true
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
-      default: []
-      selector:
-        condition:
+          default:
+            hours: 0
+            minutes: 0
+            seconds: 0
+          selector:
+            duration:
+        enable_time:
+          name: Time of day to begin action(s)
+          description: >
+            Set this for the time of day you want to allow action(s) to begin.
+            Leave as is to always be enabled.
+          default: 00:00:00
+          selector:
+            time: {}
+        disable_time:
+          name: Time of day to end action(s)
+          description: >
+            Set this for the time of day you want action(s) to end.
+            Leave as is to always be enabled.
+          default: 00:00:00
+          selector:
+            time: {}
+        weekday:
+          name: Day of the week to allow action(s)
+          description: >
+            Change options if you want to include or exclude any specific day.
+            All days are selected by default.
+          default:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+          selector:
+            select:
+              options:
+              - label: Monday
+                value: mon
+              - label: Tuesday
+                value: tue
+              - label: Wednesday
+                value: wed
+              - label: Thursday
+                value: thu
+              - label: Friday
+                value: fri
+              - label: Saturday
+                value: sat
+              - label: Sunday
+                value: sun
+              custom_value: false
+              multiple: true
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Home occupied, TV on, etc)
+          default: []
+          selector:
+            condition:
 
 trigger: 
   - platform: state

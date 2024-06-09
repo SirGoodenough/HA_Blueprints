@@ -1,5 +1,5 @@
 blueprint:
-  name: Keypad 5 button cypher to turn on something - 2023-08-07
+  name: Keypad 5 button cypher to turn on something - 2024-06-08
   author: SirGoodenough
   description: >
     This will accept any 5 button presses or ```Binary Sensor``` detections and
@@ -15,87 +15,119 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/keypad_5_button_cipher_to_turn_on_something.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.8.0
+    min_version: 2024.6.0
   input:
-    button_one:
-      name: Button Press One
-      description: '```Binary Sensor``` for First Button Pressed'
-      selector:
-        entity:
-          filter:
-            - domain: binary_sensor
-          multiple: false
-    button_two:
-      name: Button Press Two
-      description: '```Binary Sensor``` for Second Button Pressed'
-      selector:
-        entity:
-          filter:
-            - domain: binary_sensor
-          multiple: false
-    button_three:
-      name: Button Press Three
-      description: '```Binary Sensor``` for Third Button Pressed'
-      selector:
-        entity:
-          filter:
-            - domain: binary_sensor
-          multiple: false
-    button_four:
-      name: Button Press Four
-      description: '```Binary Sensor``` for Forth Button Pressed'
-      selector:
-        entity:
-          filter:
-            - domain: binary_sensor
-          multiple: false
-    button_five:
-      name: Button Press Five
-      description: '```Binary Sensor``` for Fifth Button Pressed'
-      selector:
-        entity:
-          filter:
-            - domain: binary_sensor
-          multiple: false
-    lock_control:
-      name: Buffer for the Final Lock Enable
-      description: '```input_boolean``` - Final Enable to trigger your lock or action'
-      selector:
-        entity:
-          filter:
-            - domain: input_boolean
-          multiple: false
-    seq_status:
-      name: Control Sequence Status Placeholder
+    required_inputs:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        ```input_number``` - The internal use lock sequence number (set range
-        to 0 to 100) You will need one of these for every copy of this automation,  IE
-        one for every lock code.
-      selector:
-        entity:
-          filter:
-            - domain: input_number
-          multiple: false
-    on_timer:
-      name: Lock On Time in Seconds
-      description: Time output signal is on in seconds. Generally 5 seconds is good
-        here.
-      default: 60
-      selector:
-        number:
-          min: 5.0
-          max: 360.0
-          unit_of_measurement: seconds
-          mode: slider
-          step: 1.0
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
-      default: []
-      selector:
-        condition:
+        These inputs are required for the blueprint to function and must be filled in.
+      input:
+        button_one:
+          name: Button Press One
+          description: '```Binary Sensor``` for First Button Pressed'
+          selector:
+            entity:
+              filter:
+                - domain: binary_sensor
+              multiple: false
+        button_two:
+          name: Button Press Two
+          description: '```Binary Sensor``` for Second Button Pressed'
+          selector:
+            entity:
+              filter:
+                - domain: binary_sensor
+              multiple: false
+        button_three:
+          name: Button Press Three
+          description: '```Binary Sensor``` for Third Button Pressed'
+          selector:
+            entity:
+              filter:
+                - domain: binary_sensor
+              multiple: false
+        button_four:
+          name: Button Press Four
+          description: '```Binary Sensor``` for Forth Button Pressed'
+          selector:
+            entity:
+              filter:
+                - domain: binary_sensor
+              multiple: false
+        button_five:
+          name: Button Press Five
+          description: '```Binary Sensor``` for Fifth Button Pressed'
+          selector:
+            entity:
+              filter:
+                - domain: binary_sensor
+              multiple: false
+        lock_control:
+          name: Buffer for the Final Lock Enable
+          description: '```input_boolean``` - Final Enable to trigger your lock or action'
+          selector:
+            entity:
+              filter:
+                - domain: input_boolean
+              multiple: false
+        seq_status:
+          name: Control Sequence Status Placeholder
+          description: >
+            ```input_number``` - The internal use lock sequence number (set range
+            to 0 to 100) You will need one of these for every copy of this automation,  IE
+            one for every lock code.
+          selector:
+            entity:
+              filter:
+                - domain: input_number
+              multiple: false
+
+    required_inputs_with_defaults:
+      name: Defaulted Input
+      icon: mdi:alert-decagram
+      collapsed: true
+      description: >
+        This input is required, but has a value that is defaulted to a value that worked for me.
+          It is possible you will need to change it.
+          My suggestion is to not change it until you detect an issue that you think can be
+          fixed by changing this.
+
+          In the end, this must have a value.
+          This blueprint will work if no changes are made to this section.
+      input:
+        on_timer:
+          name: Lock On Time in Seconds
+          description: Time output signal is on in seconds. Generally 5 seconds is good
+            here.
+          default: 60
+          selector:
+            number:
+              min: 5.0
+              max: 360.0
+              unit_of_measurement: seconds
+              mode: slider
+              step: 1.0
+
+    optional_parameters:
+      name: Optional parameters🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
+      description: >
+        These inputs set optional parameters that allow you to customize the intended actions.
+          Read the individual descriptions for more details.
+
+          The Blueprint will work if no changes are made to this section.
+      input:
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Home occupied, TV on, etc)
+          default: []
+          selector:
+            condition:
 
 trigger:
 - platform: state

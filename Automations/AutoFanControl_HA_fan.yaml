@@ -170,7 +170,7 @@ blueprint:
       icon: mdi:alert-octagon-outline
       collapsed: true
       description: >
-        These inputs set optional parameters that allow you to customice the intended actions.
+        These inputs set optional parameters that allow you to customize the intended actions.
           Read the individual descriptions for more details.
 
           The Blueprint will work if no changes are made to this section.

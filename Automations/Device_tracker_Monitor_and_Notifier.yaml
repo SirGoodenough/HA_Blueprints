@@ -50,7 +50,7 @@ blueprint:
       icon: mdi:alert-box
       collapsed: false
       description: >
-        This input arise required for the blueprint to function and must be filled in.
+        This input is required for the blueprint to function and must be filled in.
       input:
         trackees:
           name: Devices to Track
@@ -236,7 +236,7 @@ blueprint:
       icon: mdi:alert-octagon-outline
       collapsed: true
       description: >
-        These inputs set optional parameters that allow you to customice the intended actions.
+        These inputs set optional parameters that allow you to customize the intended actions.
           Read the individual descriptions for more details.
 
           The Blueprint will work if no changes are made to this section.
