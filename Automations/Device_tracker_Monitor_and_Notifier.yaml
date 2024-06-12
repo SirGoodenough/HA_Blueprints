@@ -1,5 +1,5 @@
 blueprint:
-  name: Notify if selected Device_Tracker goes down and do something about it - 2023-08-07
+  name: Notify if selected Device_Tracker goes down and do something about it - 2024-06-04
   author: SirGoodenough
   description: >
     This is intended to be used with pfSense HACS Integration: 
@@ -43,227 +43,286 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.8.0
+    min_version: 2024.6.0
   input:
-    trackees:
-      name: Devices to Track
+    required_inputs:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        Select all the devices that you would like to track with this
-        Blueprint. Multiples are allowed.
+        This input is required for the blueprint to function and must be filled in.
+      input:
+        trackees:
+          name: Devices to Track
+          description: >
+            Select all the devices that you would like to track with this
+            Blueprint. Multiples are allowed.
 
-      selector:
-        entity:
-          filter:
-            - domain: device_tracker
-          multiple: true
-    gone_for:
-      name: Time delay before reporting outage 1st time
-      description: >
-        This variable is here to allow a time delay before the
-        Blueprint starts doing anything. Sometimes you have a thing that likes
-        to dissapear for a short time but usually finds it's way home. 
-        (BUT sometimes doesn't)
-        Or you are using this Blueprint to run an automatic reset action but
-        need a delay to make sure that there actually is a problem.
-        00:00:00.00 is the default which means as soon as the devices go
-        to away, it triggers.
-      default:
-        hours: 0
-        minutes: 0
-        seconds: 0
-      selector:
-        duration:
-    alt_notify:
-      name: Manual Notifications Level 1
-      description: >
-        Enter the action yaml for any specific notification or action 
-        you would like to perform on the first notification. 
-        This can be anything from a custom pushbullet or text message, a message 
-        to the system log, a manual event to trigger something else, or a simple 
-        TTS message to your Google Speaker. It can also be all of these things 
-        at once. It could even be something like a reboot command to
-        right the ship. 
-        
-        Any action yaml statement that is valid will be executed.
+          selector:
+            entity:
+              filter:
+                - domain: device_tracker
+              multiple: true
 
-      default: []
-      selector:
-        action: {}
-    gone_for_longer:
-      name: Time delay before reporting outage 2nd time
+    level_1:
+      name: First action to take
+      icon: mdi:clock-time-one
+      collapsed: true
       description: >
-        This variable is here to allow a time delay before the
-        Blueprint triggers a second time.
-        This means it was off longer than the first delay and whatever
-        you did to recover the first time didn't work leaving the device
-        ```not home```.
-        Is useful if you are using this BP to restart stuck devices.
-        Default is set to an hour but in general use it should be set to
-        a value greater than the first delay.
+        The first time the problem is detected, these are the actions and parameters.
 
-      default:
-        hours: 1
-        minutes: 0
-        seconds: 0
-      selector:
-        duration:
-    alt_notify_2:
-      name: Manual Notifications Level 2
-      description: >
-        Enter the action yaml for any specific notification or action 
-        you would like to perform on the second notification.
-        This is what to do after the 2nd trigger delay.
-        Any action yaml statement that is valid will be executed.
-        Default is nothing so only a normal notification will happen with the
-        2nd trigger if left blank.
+          The Blueprint will not error, but won't actually do anything if no changes
+          are made to this section.
+      input:
+        gone_for:
+          name: Time delay before reporting outage 1st time
+          description: >
+            This variable is here to allow a time delay before the
+            Blueprint starts doing anything. Sometimes you have a thing that likes
+            to dissapear for a short time but usually finds it's way home. 
+            (BUT sometimes doesn't)
+            Or you are using this Blueprint to run an automatic reset action but
+            need a delay to make sure that there actually is a problem.
+            00:00:00.00 is the default which means as soon as the devices go
+            to away, it triggers.
+          default:
+            hours: 0
+            minutes: 0
+            seconds: 0
+          selector:
+            duration:
+        alt_notify:
+          name: Manual Notifications Level 1
+          description: >
+            Enter the action yaml for any specific notification or action 
+            you would like to perform on the first notification. 
+            This can be anything from a custom pushbullet or text message, a message 
+            to the system log, a manual event to trigger something else, or a simple 
+            TTS message to your Google Speaker. It can also be all of these things 
+            at once. It could even be something like a reboot command to
+            right the ship. 
+            
+            Any action yaml statement that is valid will be executed.
 
-      default: []
-      selector:
-        action: {}
-    gone_for_still_longer:
-      name: Time delay before reporting outage 3rd time
-      description: >
-        This variable is here to allow a time delay before the
-        Blueprint triggers a third time.
-        This means it was off longer than the first + second delay and whatever
-        you did to recover the first two times didn't work leaving the device
-        ```not home```.
-        Is useful if you are using this BP to restart stuck devices.
-        Default is set to 4 hours but in general use it should be set to
-        a value greater than the second delay.
+          default: []
+          selector:
+            action: {}
 
-      default:
-        hours: 4
-        minutes: 0
-        seconds: 0
-      selector:
-        duration:
-    alt_notify_3:
-      name: Manual Notifications Level 3
+    level_2:
+      name: Second action to take
+      icon: mdi:clock-time-two
+      collapsed: true
       description: >
-        Enter the action yaml for any specific notification or action 
-        you would like to perform on the third notification.
-        This is what to do after the 3rd trigger delay.
-        Any action yaml statement that is valid will be executed.
-        Default is nothing so only a normal notification will happen with the
-        3nd trigger if left blank.
+        The second time the problem is detected, these are the actions and parameters.
 
-      default: []
-      selector:
-        action: {}
-    gone_for_still_more_longer:
-      name: Time delay before reporting outage 4th time
-      description: >
-        This variable is here to allow a time delay before the
-        Blueprint triggers a fourth time.
-        This means it was off longer than all the delays and whatever
-        you did to recover the times didn't work leaving the device
-        ```not home```.
-        Is useful if you are using this BP to restart stuck devices.
-        Default is set to 6 hours but in general use it should be set to
-        a value greater than the third delay.
+          The Blueprint will work if no changes are made to this section.
+      input:
+        gone_for_longer:
+          name: Time delay before reporting outage 2nd time
+          description: >
+            This variable is here to allow a time delay before the
+            Blueprint triggers a second time.
+            This means it was off longer than the first delay and whatever
+            you did to recover the first time didn't work leaving the device
+            ```not home```.
+            Is useful if you are using this BP to restart stuck devices.
+            Default is set to an hour but in general use it should be set to
+            a value greater than the first delay.
 
-      default:
-        hours: 6
-        minutes: 0
-        seconds: 0
-      selector:
-        duration:
-    alt_notify_4:
-      name: Manual Notifications Level 4
-      description: >
-        Enter the action yaml for any specific notification or action 
-        you would like to perform on the fourth notification.
-        This is what to do after the 3rd trigger delay.
-        Any action yaml statement that is valid will be executed.
-        Default is nothing so only a normal notification will happen with the
-        3nd trigger if left blank.
+          default:
+            hours: 1
+            minutes: 0
+            seconds: 0
+          selector:
+            duration:
+        alt_notify_2:
+          name: Manual Notifications Level 2
+          description: >
+            Enter the action yaml for any specific notification or action 
+            you would like to perform on the second notification.
+            This is what to do after the 2nd trigger delay.
+            Any action yaml statement that is valid will be executed.
+            Default is nothing so only a normal notification will happen with the
+            2nd trigger if left blank.
 
-      default: []
-      selector:
-        action: {}
-    skip_p_notifcation:
-      name: 'Choose to send persistent notification (or not).'
-      description: >
-        on/true means a Persistent Notification is sent, off/false 
-        means it is not. 
-        If you set this to off and do not add a manual notification method, 
-        this blueprint then does nothing.
+          default: []
+          selector:
+            action: {}
 
-      default: true
-      selector:
-        boolean:
-    notification_id:
-      name: Optional Persistent Notification ID
+    level_3:
+      name: Third action to take
+      icon: mdi:clock-time-three
+      collapsed: true
       description: >
-        This is an optional parameter to be used for notifications to
-        mobile devices and other things.
-        This will be converted to all letters and / or numbers with no spaces,
-        so keep that in mind when referencing it later.
-        If you put an ID in here, the first message that is triggered will lock in 
-        until you clear it. This will prevent any further notifications from this 
-        blueprint until you clear the old message.
-        
-        If you don't know what this is for, you probably should leave it blank.
-      default: []
-      selector:
-        text: {}
-    notify_enable_time:
-      name: Time of day to begin notifications
+        The third time the problem is detected, these are the actions and parameters.
+
+          The Blueprint will work if no changes are made to this section.
+      input:
+        gone_for_still_longer:
+          name: Time delay before reporting outage 3rd time
+          description: >
+            This variable is here to allow a time delay before the
+            Blueprint triggers a third time.
+            This means it was off longer than the first + second delay and whatever
+            you did to recover the first two times didn't work leaving the device
+            ```not home```.
+            Is useful if you are using this BP to restart stuck devices.
+            Default is set to 4 hours but in general use it should be set to
+            a value greater than the second delay.
+
+          default:
+            hours: 4
+            minutes: 0
+            seconds: 0
+          selector:
+            duration:
+        alt_notify_3:
+          name: Manual Notifications Level 3
+          description: >
+            Enter the action yaml for any specific notification or action 
+            you would like to perform on the third notification.
+            This is what to do after the 3rd trigger delay.
+            Any action yaml statement that is valid will be executed.
+            Default is nothing so only a normal notification will happen with the
+            3nd trigger if left blank.
+
+          default: []
+          selector:
+            action: {}
+
+    level_4:
+      name: Forth and final action to take
+      icon: mdi:clock-time-four
+      collapsed: true
       description: >
-        Set this for the time of day you want to allow notifications to begin.
-        Leave as is to always be enabled.
-      default: 00:00:00
-      selector:
-        time: {}
-    notify_disable_time:
-      name: Time of day to end notifications
+        The fourth and final time the problem is detected, these are the actions and parameters.
+
+          The Blueprint will work if no changes are made to this section.
+      input:
+        gone_for_still_more_longer:
+          name: Time delay before reporting outage 4th time
+          description: >
+            This variable is here to allow a time delay before the
+            Blueprint triggers a fourth time.
+            This means it was off longer than all the delays and whatever
+            you did to recover the times didn't work leaving the device
+            ```not home```.
+            Is useful if you are using this BP to restart stuck devices.
+            Default is set to 6 hours but in general use it should be set to
+            a value greater than the third delay.
+
+          default:
+            hours: 6
+            minutes: 0
+            seconds: 0
+          selector:
+            duration:
+        alt_notify_4:
+          name: Manual Notifications Level 4
+          description: >
+            Enter the action yaml for any specific notification or action 
+            you would like to perform on the fourth notification.
+            This is what to do after the 3rd trigger delay.
+            Any action yaml statement that is valid will be executed.
+            Default is nothing so only a normal notification will happen with the
+            3nd trigger if left blank.
+
+          default: []
+          selector:
+            action: {}
+
+    optional_parameters:
+      name: Optional parameters🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
       description: >
-        Set this for the time of day you want notificatons to end.
-        Leave as is to always be enabled.
-      default: 00:00:00
-      selector:
-        time: {}
-    weekday:
-      name: Day of the week to allow notifications
-      description: >
-        Change options if you want to include or exclude any specific day.
-        All days are selected by default.
-      default:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
-      - sat
-      - sun
-      selector:
-        select:
-          options:
-          - label: Monday
-            value: mon
-          - label: Tuesday
-            value: tue
-          - label: Wednesday
-            value: wed
-          - label: Thursday
-            value: thu
-          - label: Friday
-            value: fri
-          - label: Saturday
-            value: sat
-          - label: Sunday
-            value: sun
-          custom_value: false
-          multiple: true
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
-      default: []
-      selector:
-        condition:
+        These inputs set optional parameters that allow you to customize the intended actions.
+          Read the individual descriptions for more details.
+
+          The Blueprint will work if no changes are made to this section.
+      input:
+        skip_p_notifcation:
+          name: 'Choose to send persistent notification (or not).'
+          description: >
+            on/true means a Persistent Notification is sent, off/false 
+            means it is not. 
+            If you set this to off and do not add a manual notification method, 
+            this blueprint then does nothing.
+
+          default: true
+          selector:
+            boolean:
+        notification_id:
+          name: Optional Persistent Notification ID
+          description: >
+            This is an optional parameter to be used for notifications to
+            mobile devices and other things.
+            This will be converted to all letters and / or numbers with no spaces,
+            so keep that in mind when referencing it later.
+            If you put an ID in here, the first message that is triggered will lock in 
+            until you clear it. This will prevent any further notifications from this 
+            blueprint until you clear the old message.
+            
+            If you don't know what this is for, you probably should leave it blank.
+          default: []
+          selector:
+            text: {}
+        notify_enable_time:
+          name: Time of day to begin notifications
+          description: >
+            Set this for the time of day you want to allow notifications to begin.
+            Leave as is to always be enabled.
+          default: 00:00:00
+          selector:
+            time: {}
+        notify_disable_time:
+          name: Time of day to end notifications
+          description: >
+            Set this for the time of day you want notificatons to end.
+            Leave as is to always be enabled.
+          default: 00:00:00
+          selector:
+            time: {}
+        weekday:
+          name: Day of the week to allow notifications
+          description: >
+            Change options if you want to include or exclude any specific day.
+            All days are selected by default.
+          default:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+          - sun
+          selector:
+            select:
+              options:
+              - label: Monday
+                value: mon
+              - label: Tuesday
+                value: tue
+              - label: Wednesday
+                value: wed
+              - label: Thursday
+                value: thu
+              - label: Friday
+                value: fri
+              - label: Saturday
+                value: sat
+              - label: Sunday
+                value: sun
+              custom_value: false
+              multiple: true
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Home occupied, TV on, etc)
+          default: []
+          selector:
+            condition:
 
 trigger:
   - platform: state

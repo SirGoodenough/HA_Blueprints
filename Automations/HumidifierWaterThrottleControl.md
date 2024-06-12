@@ -2,6 +2,7 @@ This blueprint monitors a humidity sensor & by determining the error from the go
 
 ## 📑 Changelog
 
+* **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
 * **2023-10-31**: Add Scalar to adjust the flow profile
 * **2023-08-07**: Updates for Home Assistant 2023.8
 * Selector syntax change

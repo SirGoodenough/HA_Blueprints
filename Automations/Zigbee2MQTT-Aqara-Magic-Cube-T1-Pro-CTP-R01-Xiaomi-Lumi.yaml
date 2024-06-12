@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2023-12-09
+  name: Aqara-Magic-Cube-T1-Pro-(CTP-R01) - 2024-06-04
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 58+
@@ -23,16 +23,16 @@ blueprint:
 
     #### 🍎 There is a set of 36 + 18 actions that will trigger on specific actions on specific sides that are listed as **Group 1 🍎**
 
-    #### 🍊 There is a set of 6 + 3 actions that will trigger on specific actions on *ANY* side that are listed as **Group 2 🍊**
+    #### 🍒 There is a set of 6 + 3 actions that will trigger on specific actions on *ANY* side that are listed as **Group 2 🍒**
 
     #### 🍐 There is a set of 30 + 30 event functions that will trigger on cube flips to & from specific sides that are listed as **Group 3 🍐**
 
-    #### 🍩 There are 5 actions (shake & throw for each mode & hold in scene mode) that only occur once in each mode & are OK to be combined with any other group in that mode. 🍩
+    #### 🍕 There are 5 actions (shake & throw for each mode & hold in scene mode) that only occur once in each mode & are OK to be combined with any other group in that mode.  Listed as **Group 4 sections 🍕**.
 
     Please be aware that ALL actions except the 4 listed above,
-    🍩 will trigger an action in **ALL 3 groups in the matching mode at the same time** every time.
+    🍕 will trigger an action in **ALL 3 groups in the matching mode at the same time** every time.
     Therefore I suggest if you just have a couple of things you want this remote to do that
-    you choose the *ANY / Group 2 / 🍊* events. 
+    you choose the *ANY / Group 2 / 🍒* events. 
     Action events and Scene events are separate from each other.
 
     If you want more than a few events, you should select actions in **Group 1 / 🍎
@@ -89,1104 +89,1380 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.8.0
+    min_version: 2024.6.0
   input:
-    topic:
-      name: Topic
+    required_input:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        The main MQTT Topic for your cube. 
-
-        Details on finding the correct topic can be found here: 
-
-        [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.md#to-make-the-blueprint-work-it-will-need)
-
-      default: "zigbee2mqtt/?"
-      selector:
-        text:
-          multiline: false
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
-      default: []
-      selector:
-        condition:
-    action_slide_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 1 up
-      description: Face 1 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    action_doubletap_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 1 up
-      description: Face 1 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    action_flipped90_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 1
-      description: Face 1 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    action_flipped180_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 1
-      description:
-        "**NOTE:** This action is trick to master, and should be used sparingly...
-
-        Face 1 is the one with the 'Aqara' LOGO"
-      default: []
-      selector:
-        action: {}
-    action_flip_from_any_to_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 1
-      description: Face 1 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    action_rotate_cw_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 1 up
-      description: Face 1 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    action_rotate_ccw_face_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 1 up
-      description: Face 1 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    action_slide_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 2 up
-      default: []
-      selector:
-        action: {}
-    action_doubletap_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 2 up
-      default: []
-      selector:
-        action: {}
-    action_flipped90_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 2
-      default: []
-      selector:
-        action: {}
-    action_flipped180_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 2
-      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
-      default: []
-      selector:
-        action: {}
-    action_flip_from_any_to_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 2
-      default: []
-      selector:
-        action: {}
-    action_rotate_cw_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 2 up
-      default: []
-      selector:
-        action: {}
-    action_rotate_ccw_face_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 2 up
-      default: []
-      selector:
-        action: {}
-    action_slide_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 3 up
-      default: []
-      selector:
-        action: {}
-    action_doubletap_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 3 up
-      default: []
-      selector:
-        action: {}
-    action_flipped90_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 3
-      default: []
-      selector:
-        action: {}
-    action_flipped180_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 3
-      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
-      default: []
-      selector:
-        action: {}
-    action_flip_from_any_to_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 3
-      default: []
-      selector:
-        action: {}
-    action_rotate_cw_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 3 up
-      default: []
-      selector:
-        action: {}
-    action_rotate_ccw_face_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 3 up
-      default: []
-      selector:
-        action: {}
-    action_slide_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 4 up
-      default: []
-      selector:
-        action: {}
-    action_doubletap_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 4 up
-      default: []
-      selector:
-        action: {}
-    action_flipped90_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 4
-      default: []
-      selector:
-        action: {}
-    action_flipped180_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 4
-      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
-      default: []
-      selector:
-        action: {}
-    action_flip_from_any_to_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 4
-      default: []
-      selector:
-        action: {}
-    action_rotate_cw_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 4 up
-      default: []
-      selector:
-        action: {}
-    action_rotate_ccw_face_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 4 up
-      default: []
-      selector:
-        action: {}
-    action_slide_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 5 up
-      default: []
-      selector:
-        action: {}
-    action_doubletap_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 5 up
-      default: []
-      selector:
-        action: {}
-    action_flipped90_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 5
-      default: []
-      selector:
-        action: {}
-    action_flipped180_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 5
-      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
-      default: []
-      selector:
-        action: {}
-    action_flip_from_any_to_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 5
-      default: []
-      selector:
-        action: {}
-    action_rotate_cw_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 5 up
-      default: []
-      selector:
-        action: {}
-    action_rotate_ccw_face_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 5 up
-      default: []
-      selector:
-        action: {}
-    action_slide_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 6 up
-      default: []
-      selector:
-        action: {}
-    action_doubletap_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 6 up
-      default: []
-      selector:
-        action: {}
-    action_flipped90_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 6
-      default: []
-      selector:
-        action: {}
-    action_flipped180_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 6
-      description: "**NOTE:** This action is trick to master, and should be used sparingly..."
-      default: []
-      selector:
-        action: {}
-    action_flip_from_any_to_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 6
-      default: []
-      selector:
-        action: {}
-    action_rotate_cw_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 6 up
-      default: []
-      selector:
-        action: {}
-    action_rotate_ccw_face_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 6 up
-      default: []
-      selector:
-        action: {}
-    action_shake:
-      name: 🫳 ACTION MODE ONLY 🫳 Shake the cube 🍩
-      description: "This trigger only occurs once in the set-up.
-
-        It can be combined in any group."
-      default: []
-      selector:
-        action: {}
-    action_throw:
-      name: 🫳 ACTION MODE ONLY 🫳 Throw the cube 🍩
-      description:
-        " You don't actually 'Throw' the cube. The action is as follows:
-
-        > Pick up the cube firmly.
-
-        > Make a throwing motion with it but do not motion back towards yourself.
-
-        > Hold it there for a second.
-
-        > The throw trigger should be sent to Z2M.
-
-
-        This trigger only occurs once in the set-up.
-
-        It can be combined in any group."
-      default: []
-      selector:
-        action: {}
-    action_slide_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Slide on any side
-      description: "Side doesn't matter on this one.
-
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_doubletap_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Double tap on any side
-      description: "Side doesn't matter on this one.
-
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_flipped90_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Flip 90 degrees to any side
-      description: "Side doesn't matter on this one.
-
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_flipped180_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Flip 180 degrees to any side
-      description:
-        "NOTE: This action is trick to master, and should be used sparingly...
-        Side doesn't matter on this one.
-
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_rotate_cw_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate CW on any side
-      description: "Side doesn't matter on this one.
-
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_rotate_ccw_any:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍊 Rotate CCW on any side
-      description: "Side doesn't matter on this one.
-
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_1_from_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 6
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_1_from_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 2
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_1_from_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 3
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_1_from_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 4
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_1_from_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 5
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_2_from_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 1
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_2_from_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 3
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_2_from_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 4
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_2_from_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 5
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_2_from_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 6
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_3_from_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 1
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_3_from_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 2
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_3_from_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 4
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_3_from_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 5
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_3_from_6:
-      name: G🫳 ACTION MODE ONLY 🫳 roup 3 🍐 Flip to side 3 from side 6
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_4_from_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 1
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_4_from_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 2
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_4_from_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 3
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_4_from_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 5
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_4_from_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 6
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_5_from_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 1
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_5_from_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 2
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_5_from_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 3
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_5_from_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 4
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_5_from_6:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 6
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_6_from_1:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 1
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_6_from_2:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 2
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_6_from_3:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 3
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_6_from_4:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 4
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    action_6_from_5:
-      name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 5
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-
-    scene_flip_to_face_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 1 from any other face
-      description: Face 1 is the one with the ''Aqara'' LOGO'
-      default: []
-      selector:
-        action: {}
-    scene_rotate_cw_face_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 1 up
-      description: Face 1 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    scene_rotate_ccw_face_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 1 up
-      description: Face 1 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    scene_flip_to_face_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 2 from any other face
-      default: []
-      selector:
-        action: {}
-    scene_rotate_cw_face_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 2 up
-      default: []
-      selector:
-        action: {}
-    scene_rotate_ccw_face_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 2 up
-      default: []
-      selector:
-        action: {}
-    scene_flip_to_face_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 3 from any other face
-      default: []
-      selector:
-        action: {}
-    scene_rotate_cw_face_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 3 up
-      default: []
-      selector:
-        action: {}
-    scene_rotate_ccw_face_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 3 up
-      default: []
-      selector:
-        action: {}
-    scene_flip_to_face_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 4 from any other face
-      default: []
-      selector:
-        action: {}
-    scene_rotate_cw_face_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 4 up
-      default: []
-      selector:
-        action: {}
-    scene_rotate_ccw_face_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 4 up
-      default: []
-      selector:
-        action: {}
-    scene_flip_to_face_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 5 from any other face
-      default: []
-      selector:
-        action: {}
-    scene_rotate_cw_face_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 5 up
-      default: []
-      selector:
-        action: {}
-    scene_rotate_ccw_face_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 5 up
-      default: []
-      selector:
-        action: {}
-    scene_flip_to_face_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 6 from any other face
-      default: []
-      selector:
-        action: {}
-    scene_rotate_cw_face_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 6 up
-      default: []
-      selector:
-        action: {}
-    scene_rotate_ccw_face_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 6 up
-      default: []
-      selector:
-        action: {}
-    scene_hold:
-      name: 👀 SCENE MODE ONLY 👀 Lift up the cube and hold it 🍩
-      description: "This trigger only occurs once in the set-up.
-
-        It can be combined in any group."
-      default: []
-      selector:
-        action: {}
-    scene_shake:
-      name: 👀 SCENE MODE ONLY 👀 Shake the cube 🍩
-      description: "This trigger only occurs once in the set-up.
-
-        It can be combined in any group."
-      default: []
-      selector:
-        action: {}
-    scene_throw:
-      name: 👀 SCENE MODE ONLY 👀 Throw the cube 🍩
-      description:
-        " You don't actually 'Throw' the cube. The action is as follows:
-
-        > Pick up the cube firmly.
-
-        > Make a throwing motion with it but do not motion back towards yourself.
-
-        > Hold it there for a second.
-
-        > The throw trigger should be sent to Z2M.
-
-
-        This trigger only occurs once in the set-up.
-
-        It can be combined in any group."
-      default: []
-      selector:
-        action: {}
-    scene_flip_to_side_any:
-      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Flip to any side
-      description: "Side doesn't matter on this one.
-
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_rotate_cw_any:
-      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube CW with any side
-      description: "Side doesn't matter on this one.
-
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_rotate_ccw_any:
-      name: 👀 SCENE MODE ONLY 👀 Group 2 🍊 Rotate cube CCW with any side
-      description: "Side doesn't matter on this one.
-
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_1_from_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 6
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_1_from_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 2
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_1_from_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 3
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_1_from_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 4
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_1_from_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 5
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_2_from_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 1
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_2_from_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 3
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_2_from_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 4
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_2_from_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 5
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_2_from_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 6
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_3_from_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 1
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_3_from_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 2
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_3_from_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 4
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_3_from_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 5
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_3_from_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 6
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_4_from_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 1
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_4_from_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 2
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_4_from_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 3
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_4_from_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 5
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_4_from_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 6
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_5_from_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 1
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger. 🍎🍐
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_5_from_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 2
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_5_from_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 3
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_5_from_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 4
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_5_from_6:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 6
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_6_from_1:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 1
-      description:
-        "**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_6_from_2:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 2
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_6_from_3:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 3
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
-        ANY 🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_6_from_4:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 4
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
-    scene_6_from_5:
-      name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 5
-      description:
-        "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
-        🍊 automations will also trigger.
-
-        I suggest using only one of the three groups of triggers, not multiple groups..."
-      default: []
-      selector:
-        action: {}
+        This blueprint has been known to freak out when there are spaces or odd characters
+          in the MQTT Topic. Make sure there are no spaces, ONLY a single word,
+          and ONLY A thru Z, a thru z, and 0 thru 9 in the topic.
+          (```  /  ``` is ok between device and topic)
+
+          If there are other characters, you will need to change the name of the cube to
+          remove those characters.
+
+          ### IF YOU SEE --> TemplateError: Must provide a device or entity ID
+
+          If you get an error like that, The friendly_name in Z2M likely does not match the 
+          friendly_name on HA. To fix go into the Z2M ```Open web UI``` and set the 
+          friendly_name there. Setting this in just HA or in Z2M without ticking the update HA
+          box will cause this. See the blueprint documentation page for details.
+      input:
+        topic:
+          name: Topic
+          description: >
+            The main MQTT Topic for your cube. 
+
+            Details on finding the correct topic can be found here: 
+
+            [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.md#to-make-the-blueprint-work-it-will-need)
+
+          default: "zigbee2mqtt/?"
+          selector:
+            text:
+              multiline: false
+
+    optional_conditions:
+      name: Optional conditions🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
+      description: >
+        This input was added by user request. With it you can add your own condition.
+          If you only want the cube to work like this in the morning,
+          then after 6pm you want it to do different actions, add a condition that
+          will only let this run from 6am until 6pm. Then have another copy of
+          the blueprint that will only run from 6pm until 6am. (for example)
+
+          Any valid conditions you can dream up, you should be able to add here.
+
+          Leave it as the default of you don't want to add a condition of your own.
+      input:
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Home occupied, TV on, etc)
+          default: []
+          selector:
+            condition:
+
+    action_side_1_group_1_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 1 Group 1 actions 🍎
+      icon: mdi:numeric-1-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 1
+          (the one with the 'Aqara' LOGO) of the cube up to start.
+      input:
+        action_slide_face_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 1 up
+          description: Face 1 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        action_doubletap_face_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 1 up
+          description: Face 1 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        action_flipped90_face_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 1
+          description: Face 1 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        action_flipped180_face_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 1
+          description:
+            "**NOTE:** This action is trick to master, and should be used sparingly...
+            Face 1 is the one with the 'Aqara' LOGO"
+          default: []
+          selector:
+            action: {}
+        action_flip_from_any_to_face_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 1
+          description: Face 1 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        action_rotate_cw_face_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 1 up
+          description: Face 1 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        action_rotate_ccw_face_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 1 up
+          description: Face 1 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+
+    action_side_2_group_1_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 2 Group 1 actions 🍎
+      icon: mdi:numeric-2-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 2
+      input:
+        action_slide_face_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 2 up
+          default: []
+          selector:
+            action: {}
+        action_doubletap_face_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 2 up
+          default: []
+          selector:
+            action: {}
+        action_flipped90_face_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 2
+          default: []
+          selector:
+            action: {}
+        action_flipped180_face_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 2
+          description: "**NOTE:** This action is trick to master, and should be used sparingly..."
+          default: []
+          selector:
+            action: {}
+        action_flip_from_any_to_face_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 2
+          default: []
+          selector:
+            action: {}
+        action_rotate_cw_face_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 2 up
+          default: []
+          selector:
+            action: {}
+        action_rotate_ccw_face_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 2 up
+          default: []
+          selector:
+            action: {}
+
+    action_side_3_group_1_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 3 Group 1 actions 🍎
+      icon: mdi:numeric-3-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 3
+      input:
+        action_slide_face_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 3 up
+          default: []
+          selector:
+            action: {}
+        action_doubletap_face_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 3 up
+          default: []
+          selector:
+            action: {}
+        action_flipped90_face_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 3
+          default: []
+          selector:
+            action: {}
+        action_flipped180_face_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 3
+          description: "**NOTE:** This action is trick to master, and should be used sparingly..."
+          default: []
+          selector:
+            action: {}
+        action_flip_from_any_to_face_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 3
+          default: []
+          selector:
+            action: {}
+        action_rotate_cw_face_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 3 up
+          default: []
+          selector:
+            action: {}
+        action_rotate_ccw_face_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 3 up
+          default: []
+          selector:
+            action: {}
+
+    action_side_4_group_1_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 4 Group 1 actions 🍎
+      icon: mdi:numeric-4-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 4
+      input:
+        action_slide_face_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 4 up
+          default: []
+          selector:
+            action: {}
+        action_doubletap_face_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 4 up
+          default: []
+          selector:
+            action: {}
+        action_flipped90_face_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 4
+          default: []
+          selector:
+            action: {}
+        action_flipped180_face_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 4
+          description: "**NOTE:** This action is trick to master, and should be used sparingly..."
+          default: []
+          selector:
+            action: {}
+        action_flip_from_any_to_face_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 4
+          default: []
+          selector:
+            action: {}
+        action_rotate_cw_face_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 4 up
+          default: []
+          selector:
+            action: {}
+        action_rotate_ccw_face_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 4 up
+          default: []
+          selector:
+            action: {}
+
+    action_side_5_group_1_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 5 Group 1 actions 🍎
+      icon: mdi:numeric-5-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 5
+      input:
+        action_slide_face_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 5 up
+          default: []
+          selector:
+            action: {}
+        action_doubletap_face_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 5 up
+          default: []
+          selector:
+            action: {}
+        action_flipped90_face_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 5
+          default: []
+          selector:
+            action: {}
+        action_flipped180_face_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 5
+          description: "**NOTE:** This action is trick to master, and should be used sparingly..."
+          default: []
+          selector:
+            action: {}
+        action_flip_from_any_to_face_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 5
+          default: []
+          selector:
+            action: {}
+        action_rotate_cw_face_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 5 up
+          default: []
+          selector:
+            action: {}
+        action_rotate_ccw_face_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 5 up
+          default: []
+          selector:
+            action: {}
+
+    action_side_6_group_1_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 6 Group 1 actions 🍎
+      icon: mdi:numeric-6-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 6
+      input:
+        action_slide_face_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Slide with face 6 up
+          default: []
+          selector:
+            action: {}
+        action_doubletap_face_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Double tap with face 6 up
+          default: []
+          selector:
+            action: {}
+        action_flipped90_face_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 90 degrees to face 6
+          default: []
+          selector:
+            action: {}
+        action_flipped180_face_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip 180 degrees to face 6
+          description: "**NOTE:** This action is trick to master, and should be used sparingly..."
+          default: []
+          selector:
+            action: {}
+        action_flip_from_any_to_face_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Flip From any face to face 6
+          default: []
+          selector:
+            action: {}
+        action_rotate_cw_face_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CW with face 6 up
+          default: []
+          selector:
+            action: {}
+        action_rotate_ccw_face_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 1 🍎 Rotate CCW with face 6 up
+          default: []
+          selector:
+            action: {}
+
+    action_any_side_group_2_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Any side Group 2 actions 🍒
+      icon: mdi:fruit-cherries
+      collapsed: true
+      description: >
+        🍒 These are a set of 6 event functions that will trigger on specific actions
+          on *ANY* side. **Group 2 actions 🍒**
+      input:
+        action_slide_any:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Slide on any side
+          description: "Side doesn't matter on this one.
+
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_doubletap_any:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Double tap on any side
+          description: "Side doesn't matter on this one.
+
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_flipped90_any:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Flip 90 degrees to any side
+          description: "Side doesn't matter on this one.
+
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_flipped180_any:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Flip 180 degrees to any side
+          description:
+            "NOTE: This action is trick to master, and should be used sparingly...
+            Side doesn't matter on this one.
+
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_rotate_cw_any:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Rotate CW on any side
+          description: "Side doesn't matter on this one.
+
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_rotate_ccw_any:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 2 🍒 Rotate CCW on any side
+          description: "Side doesn't matter on this one.
+
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    action_side_1_group_3_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 1 Group 3 actions 🍐
+      icon: mdi:numeric-1-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 1 as the ending point.
+          All are flips from another side to side 1.
+      input:
+        action_1_from_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 6
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_1_from_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 2
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_1_from_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 3
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_1_from_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 4
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_1_from_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 1 from side 5
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    action_side_2_group_3_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 2 Group 3 actions 🍐
+      icon: mdi:numeric-2-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 2 as the ending point.
+          All are flips from another side to side 2.
+      input:
+        action_2_from_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 1
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_2_from_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 3
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_2_from_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 4
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_2_from_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 5
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_2_from_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 2 from side 6
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    action_side_3_group_3_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 3 Group 3 actions 🍐
+      icon: mdi:numeric-3-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 3 as the ending point.
+          All are flips from another side to side 3.
+      input:
+        action_3_from_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 1
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_3_from_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 2
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_3_from_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 4
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_3_from_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 3 from side 5
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_3_from_6:
+          name: G🫳 ACTION MODE ONLY 🫳 roup 3 🍐 Flip to side 3 from side 6
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    action_side_4_group_3_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 4 Group 3 actions 🍐
+      icon: mdi:numeric-4-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 4 as the ending point.
+          All are flips from another side to side 4.
+      input:
+        action_4_from_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 1
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_4_from_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 2
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_4_from_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 3
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_4_from_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 5
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_4_from_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 4 from side 6
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    action_side_5_group_3_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 5 Group 3 actions 🍐
+      icon: mdi:numeric-5-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 5 as the ending point.
+          All are flips from another side to side 5.
+      input:
+        action_5_from_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 1
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_5_from_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 2
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_5_from_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 3
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_5_from_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 4
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_5_from_6:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 5 from side 6
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    action_side_6_group_3_actions:
+      name: 🫳 ACTION MODE ONLY 🫳 Side 2 Group 3 actions 🍐
+      icon: mdi:numeric-6-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 6 as the ending point.
+          All are flips from another side to side 6.
+      input:
+        action_6_from_1:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 1
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_6_from_2:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 2
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_6_from_3:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 3
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_6_from_4:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 4
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        action_6_from_5:
+          name: 🫳 ACTION MODE ONLY 🫳 Group 3 🍐 Flip to side 6 from side 5
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    group_4_actions:
+      name: Group 4 actions only used once (no side) 🍕
+      icon: mdi:pizza
+      collapsed: true
+      description: >
+        These are Group 4 actions only used once (no side) 🍕
+          they can be safely compined with any other action mode command.
+      input:
+        action_shake:
+          name: 🫳 ACTION MODE ONLY 🫳 Shake the cube 🍕 Group 4
+          description: "This trigger only occurs once in the set-up.
+
+            It can be combined in any group."
+          default: []
+          selector:
+            action: {}
+        action_throw:
+          name: 🫳 ACTION MODE ONLY 🫳 Throw the cube 🍕 Group 4
+          description:
+            " You don't actually 'Throw' the cube. The action is as follows:
+
+            > Pick up the cube firmly.
+
+            > Make a throwing motion with it but do not motion back towards yourself.
+
+            > Hold it there for a second.
+
+            > The throw trigger should be sent to Z2M.
+
+
+            This trigger only occurs once in the set-up.
+
+            It can be combined in any group."
+          default: []
+          selector:
+            action: {}
+
+    scene_side_1_group_1_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 1 Group 1 actions 🍎
+      icon: mdi:numeric-1-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 1
+          (the one with the 'Aqara' LOGO) of the cube up to start.
+      input:
+        scene_flip_to_face_1:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 1 from any other face
+          description: Face 1 is the one with the ''Aqara'' LOGO'
+          default: []
+          selector:
+            action: {}
+        scene_rotate_cw_face_1:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 1 up
+          description: Face 1 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        scene_rotate_ccw_face_1:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 1 up
+          description: Face 1 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+
+    scene_side_2_group_1_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 2 Group 1 actions 🍎
+      icon: mdi:numeric-2-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 2
+      input:
+        scene_flip_to_face_2:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 2 from any other face
+          default: []
+          selector:
+            action: {}
+        scene_rotate_cw_face_2:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 2 up
+          default: []
+          selector:
+            action: {}
+        scene_rotate_ccw_face_2:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 2 up
+          default: []
+          selector:
+            action: {}
+
+    scene_side_3_group_1_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 3 Group 1 actions 🍎
+      icon: mdi:numeric-3-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 3
+      input:
+        scene_flip_to_face_3:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 3 from any other face
+          default: []
+          selector:
+            action: {}
+        scene_rotate_cw_face_3:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 3 up
+          default: []
+          selector:
+            action: {}
+        scene_rotate_ccw_face_3:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 3 up
+          default: []
+          selector:
+            action: {}
+
+    scene_side_4_group_1_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 4 Group 1 actions 🍎
+      icon: mdi:numeric-4-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 4
+      input:
+        scene_flip_to_face_4:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 4 from any other face
+          default: []
+          selector:
+            action: {}
+        scene_rotate_cw_face_4:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 4 up
+          default: []
+          selector:
+            action: {}
+        scene_rotate_ccw_face_4:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 4 up
+          default: []
+          selector:
+            action: {}
+
+    scene_side_5_group_1_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 5 Group 1 actions 🍎
+      icon: mdi:numeric-5-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 5
+      input:
+        scene_flip_to_face_5:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 5 from any other face
+          default: []
+          selector:
+            action: {}
+        scene_rotate_cw_face_5:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 5 up
+          default: []
+          selector:
+            action: {}
+        scene_rotate_ccw_face_5:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 5 up
+          default: []
+          selector:
+            action: {}
+
+    scene_side_6_group_1_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 6 Group 1 actions 🍎
+      icon: mdi:numeric-6-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that end with Face 6
+      input:
+        scene_flip_to_face_6:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Flip to face 6 from any other face
+          default: []
+          selector:
+            action: {}
+        scene_rotate_cw_face_6:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CW with face 6 up
+          default: []
+          selector:
+            action: {}
+        scene_rotate_ccw_face_6:
+          name: 👀 SCENE MODE ONLY 👀 Group 1 🍎 Rotate cube CCW with face 6 up
+          default: []
+          selector:
+            action: {}
+
+    scene_any_side_group_2_actions:
+      name: 👀 SCENE MODE ONLY 👀 Any side Group 2 actions 🍒
+      icon: mdi:fruit-cherries
+      collapsed: true
+      description: >
+        🍒 These are a set of 6 event functions that will trigger on specific actions
+          on *ANY* side. **Group 2 actions 🍒**
+      input:
+        scene_flip_to_side_any:
+          name: 👀 SCENE MODE ONLY 👀 Group 2 🍒 Flip to any side
+          description: "Side doesn't matter on this one.
+
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_rotate_cw_any:
+          name: 👀 SCENE MODE ONLY 👀 Group 2 🍒 Rotate cube CW with any side
+          description: "Side doesn't matter on this one.
+
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_rotate_ccw_any:
+          name: 👀 SCENE MODE ONLY 👀 Group 2 🍒 Rotate cube CCW with any side
+          description: "Side doesn't matter on this one.
+
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    scene_side_1_group_3_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 1 Group 3 actions 🍐
+      icon: mdi:numeric-1-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 1 as the ending point.
+          All are flips from another side to side 1.
+      input:
+        scene_1_from_6:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 6
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_1_from_2:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 2
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_1_from_3:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 3
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_1_from_4:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 4
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_1_from_5:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 1 from side 5
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    scene_side_2_group_3_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 2 Group 3 actions 🍐
+      icon: mdi:numeric-2-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 2 as the ending point.
+          All are flips from another side to side 2.
+      input:
+        scene_2_from_1:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 1
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_2_from_3:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 3
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_2_from_4:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 4
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_2_from_5:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 5
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_2_from_6:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 2 from side 6
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    scene_side_3_group_3_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 3 Group 3 actions 🍐
+      icon: mdi:numeric-3-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 3 as the ending point.
+          All are flips from another side to side 3.
+      input:
+        scene_3_from_1:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 1
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_3_from_2:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 2
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_3_from_4:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 4
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_3_from_5:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 5
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_3_from_6:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 3 from side 6
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 3 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    scene_side_4_group_3_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 4 Group 3 actions 🍐
+      icon: mdi:numeric-4-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 4 as the ending point.
+          All are flips from another side to side 4.
+      input:
+        scene_4_from_1:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 1
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_4_from_2:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 2
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_4_from_3:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 3
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_4_from_5:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 5
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_4_from_6:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 4 from side 6
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    scene_side_5_group_3_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 5 Group 3 actions 🍐
+      icon: mdi:numeric-5-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 5 as the ending point.
+          All are flips from another side to side 5.
+      input:
+        scene_5_from_1:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 1
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_5_from_2:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 2
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_5_from_3:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 3
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_5_from_4:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 4
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_5_from_6:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 5 from side 6
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    scene_side_6_group_3_actions:
+      name: 👀 SCENE MODE ONLY 👀 Side 6 Group 3 actions 🍐
+      icon: mdi:numeric-6-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 6 as the ending point.
+          All are flips from another side to side 6.
+      input:
+        scene_6_from_1:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 1
+          description:
+            "**!!Warning!!** The flip 180 automations 🍎 for side 6 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_6_from_2:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 2
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_6_from_3:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 3
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_6_from_4:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 4
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+        scene_6_from_5:
+          name: 👀 SCENE MODE ONLY 👀 Group 3 🍐 Flip to side 6 from side 5
+          description:
+            "**!!Warning!!** The flip 90 automations 🍎 for side 6 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups..."
+          default: []
+          selector:
+            action: {}
+
+    scene_group_4_actions:
+      name: Group 4 actions only used once (no side) 🍕
+      icon: mdi:pizza
+      collapsed: true
+      description: >
+        These are Group 4 actions only used once (no side) 🍕
+          they can be safely compined with any other scene mode command.
+      input:
+        scene_hold:
+          name: 👀 SCENE MODE ONLY 👀 Lift up the cube and hold it still 🍕
+          description: "This trigger only occurs once in the set-up.
+
+            It can be combined in any group."
+          default: []
+          selector:
+            action: {}
+        scene_shake:
+          name: 👀 SCENE MODE ONLY 👀 Shake the cube 🍕
+          description: "This trigger only occurs once in the set-up.
+
+            It can be combined in any group."
+          default: []
+          selector:
+            action: {}
+        scene_throw:
+          name: 👀 SCENE MODE ONLY 👀 Throw the cube 🍕
+          description:
+            " You don't actually 'Throw' the cube. The action is as follows:
+
+            > Pick up the cube firmly.
+
+            > Make a throwing motion with it but do not motion back towards yourself.
+
+            > Hold it there for a second.
+
+            > The throw trigger should be sent to Z2M.
+
+
+            This trigger only occurs once in the set-up.
+
+            It can be combined in any group."
+          default: []
+          selector:
+            action: {}
 
 trigger:
   - platform: mqtt
@@ -1339,7 +1615,7 @@ action:
     choose:
       - conditions: '{{ op_mode == "action_mode" }}'
         sequence:
-          - alias: 🫳 ACTION MODE 🫳 Group 2 🍊 and No Group 🍩 These are action events for ANY Side
+          - alias: 🫳 ACTION MODE 🫳 Group 2 🍒 and No Group 🍕 These are action events for ANY Side
             choose:
               - conditions: '{{ action == "slide" }}'
                 sequence: !input "action_slide_any"
@@ -1565,7 +1841,7 @@ action:
 
       - conditions: '{{ op_mode == "scene_mode" }}'
         sequence:
-          - alias: 👀 SCENE MODE 👀 Group 2 🍊 and No Group 🍩 These are action events for ANY Side
+          - alias: 👀 SCENE MODE 👀 Group 2 🍒 and No Group 🍕 These are action events for ANY Side
             choose:
               - conditions: '{{ action == "flip_to_side" }}'
                 sequence: !input "scene_flip_to_side_any"

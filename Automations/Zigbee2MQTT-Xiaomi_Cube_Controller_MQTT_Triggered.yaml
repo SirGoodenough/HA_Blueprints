@@ -1,5 +1,5 @@
 blueprint:
-  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2023-12-09
+  name: Aqara Magic Cube Zigbee2MQTT MQTT Triggered - 2024-06-02
   author: SirGoodenough
   description: >
     This Blueprint uses a Zigbee2MQTT built sensor to sort out the 38(+54)
@@ -16,25 +16,27 @@ blueprint:
     on specific sides that are listed as **Group 1 actions 🍎**.
 
 
-    ### 🍊 There is a set of 6 event functions that will trigger on specific actions
-    on *ANY* side that are listed as **Group 2 sctions 🍊**.
+    ### 🍒 There is a set of 6 event functions that will trigger on specific actions
+    on *ANY* side that are listed as **Group 2 actions 🍒**.
 
 
     ### 🍐 There is a set of 30 event functions that will trigger on cube flips to
-    & froma specific sides that are listed as **Group 3 sctions 🍐**.
+    & from specific sides that are listed as **Group 3 actions 🍐**.
 
 
-    ### 🍩 There are 2 actions (shake and drop) that only occur once and are OK to
-    be combined with any other group.
+    ### 🍕 There are 2 actions (shake and drop) that only occur once and are OK to
+    be combined with any other group.  Listed as **Group 4 sections 🍕**.
 
 
-    Please be aware that ALL actions except the 2 listed above,
-    🍩 will trigger an action in **ALL 3 groups at the same time** every time. Therefore
+    Please be aware that ALL actions **except** the **Group 4 actions 🍕**
+    will trigger an action in **ALL 3 groups at the same time** every time. Therefore
     I suggest if you just have a couple of things you want this remote to do that
-    you choose the *ANY / Group 2 / 🍊* events.
+    you choose the *ANY / Group 2 / 🍒* events.
 
     If you want more than a few events, you should select actions in **Group 1 / 🍎
     OR Group 3 / 🍐**.
+
+    **Group 4 actions 🍕** will not affect others.
 
     With careful selection you can use mixed groups, but you run the risk of a single
     cube action triggering more than 1 Home Assistant action and making a mess of
@@ -44,20 +46,7 @@ blueprint:
     #### NOTICE: This cube *can* be triggered 124 ways, but only 38(+54) of them are
     unique (with templating).
 
-    ##### This blueprint has been known to freak out when there are spaces or odd characters
-    in the MQTT Topic. Make sure there are no spaces, ONLY a single word,
-    and ONLY A thru Z, a thru z, and 0 thru 9 in the topic.
-    (```  /  ``` is ok between device and topic) If there are,
-    you will need to change the name of the cube to remove those characters.
-
-    ### IF YOU SEE --> TemplateError: Must provide a device or entity ID
-
-    If you get an error like that, The friendly_name in Z2M likely does not match the 
-    friendly_name on HA. To fix go into the Z2M ```Open web UI``` and set the 
-    friendly_name there. Setting this in just HA or in Z2M without ticking the update HA
-    box will cause this. See the blueprint documentation page for details.
-
-
+    
     There is sample code to make the template sensor in the help file on GitHib named
     [Zigbee2MQTT - Xiaomi Cube Controller MQTT Triggered.md](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md)
     & in the [community page related to this](https://community.home-assistant.io/t/zigbee2mqtt-xiaomi-cube-controller/393203).
@@ -87,605 +76,769 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Xiaomi_Cube_Controller_MQTT_Triggered.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.8.0
+    min_version: 2024.6.0
   input:
-    topic:
-      name: Topic
+    required_input:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        The main MQTT Topic for your cube. 
-        
-        Details on finding the correct topic can be found here: 
-        
-        [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md#-to-make-the-blueprint-work-it-will-need)
+        This blueprint has been known to freak out when there are spaces or odd characters
+          in the MQTT Topic. Make sure there are no spaces, ONLY a single word,
+          and ONLY A thru Z, a thru z, and 0 thru 9 in the topic.
+          (```  /  ``` is ok between device and topic)
 
-      default: "zigbee2mqtt/?"
-      selector:
-        text:
-          multiline: false
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
-      default: []
-      selector:
-        condition:
-    slide_face_0:
-      name: Group 1 actions 🍎 Slide the cube with face 0 up
-      description: Face 0 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    doubletap_face_0:
-      name: Group 1 actions 🍎 Double tap the cube with face 0 up
-      description: Face 0 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    flipped90_face_0:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 0
-      description: Face 0 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    flipped180_face_0:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 0
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...
+          If there are other characters, you will need to change the name of the cube to
+          remove those characters.
 
-        Face 0 is the one with the ''Aqara'' LOGO'
-      default: []
-      selector:
-        action: {}
-    flip_from_any_to_face_0:
-      name: Group 1 actions 🍎 Flip the cube from any to face 0
-      description: Face 0 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    rotate_cw_face_0:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 0 up
-      description: Face 0 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    rotate_ccw_face_0:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 0 up
-      description: Face 0 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    slide_face_1:
-      name: Group 1 actions 🍎 Slide the cube with face 1 up
-      default: []
-      selector:
-        action: {}
-    doubletap_face_1:
-      name: Group 1 actions 🍎 Double tap the cube with face 1 up
-      default: []
-      selector:
-        action: {}
-    flipped90_face_1:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 1
-      default: []
-      selector:
-        action: {}
-    flipped180_face_1:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 1
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
-      default: []
-      selector:
-        action: {}
-    flip_from_any_to_face_1:
-      name: Group 1 actions 🍎 Flip the cube from any to face 1
-      description: Face 1 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    rotate_cw_face_1:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 1 up
-      default: []
-      selector:
-        action: {}
-    rotate_ccw_face_1:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 1 up
-      default: []
-      selector:
-        action: {}
-    slide_face_2:
-      name: Group 1 actions 🍎 Slide the cube with face 2 up
-      default: []
-      selector:
-        action: {}
-    doubletap_face_2:
-      name: Group 1 actions 🍎 Double tap the cube with face 2 up
-      default: []
-      selector:
-        action: {}
-    flipped90_face_2:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 2
-      default: []
-      selector:
-        action: {}
-    flipped180_face_2:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 2
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
-      default: []
-      selector:
-        action: {}
-    flip_from_any_to_face_2:
-      name: Group 1 actions 🍎 Flip the cube from any to face 2
-      description: Face 2 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    rotate_cw_face_2:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 2 up
-      default: []
-      selector:
-        action: {}
-    rotate_ccw_face_2:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 2 up
-      default: []
-      selector:
-        action: {}
-    slide_face_3:
-      name: Group 1 actions 🍎 Slide the cube with face 3 up
-      default: []
-      selector:
-        action: {}
-    doubletap_face_3:
-      name: Group 1 actions 🍎 Double tap the cube with face 3 up
-      default: []
-      selector:
-        action: {}
-    flipped90_face_3:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 3
-      default: []
-      selector:
-        action: {}
-    flipped180_face_3:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 3
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
-      default: []
-      selector:
-        action: {}
-    flip_from_any_to_face_3:
-      name: Group 1 actions 🍎 Flip the cube from any to face 3
-      description: Face 3 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    rotate_cw_face_3:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 3 up
-      default: []
-      selector:
-        action: {}
-    rotate_ccw_face_3:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 3 up
-      default: []
-      selector:
-        action: {}
-    slide_face_4:
-      name: Group 1 actions 🍎 Slide the cube with face 4 up
-      default: []
-      selector:
-        action: {}
-    doubletap_face_4:
-      name: Group 1 actions 🍎 Double tap the cube with face 4 up
-      default: []
-      selector:
-        action: {}
-    flipped90_face_4:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 4
-      default: []
-      selector:
-        action: {}
-    flipped180_face_4:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 4
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
-      default: []
-      selector:
-        action: {}
-    flip_from_any_to_face_4:
-      name: Group 1 actions 🍎 Flip the cube from any to face 4
-      description: Face 4 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    rotate_cw_face_4:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 4 up
-      default: []
-      selector:
-        action: {}
-    rotate_ccw_face_4:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 4 up
-      default: []
-      selector:
-        action: {}
-    slide_face_5:
-      name: Group 1 actions 🍎 Slide the cube with face 5 up
-      default: []
-      selector:
-        action: {}
-    doubletap_face_5:
-      name: Group 1 actions 🍎 Double tap the cube with face 5 up
-      default: []
-      selector:
-        action: {}
-    flipped90_face_5:
-      name: Group 1 actions 🍎 Flip the cube 90 degrees to face 5
-      default: []
-      selector:
-        action: {}
-    flipped180_face_5:
-      name: Group 1 actions 🍎 Flip the cube 180 degrees to face 5
-      description: '**NOTE:** This action is trick to master, and should be used sparingly...'
-      default: []
-      selector:
-        action: {}
-    flip_from_any_to_face_5:
-      name: Group 1 actions 🍎 Flip the cube from any to face 5
-      description: Face 5 is the one with the 'Aqara' LOGO
-      default: []
-      selector:
-        action: {}
-    rotate_cw_face_5:
-      name: Group 1 actions 🍎 Rotate cube clockwise with face 5 up
-      default: []
-      selector:
-        action: {}
-    rotate_ccw_face_5:
-      name: Group 1 actions 🍎 Rotate cube counter clockwise with face 5 up
-      default: []
-      selector:
-        action: {}
-    shake:
-      name: Shake the cube 🍩
-      description: 'This trigger only occurs once in the set-up.
+          ### IF YOU SEE --> TemplateError: Must provide a device or entity ID
 
-        It can be combined in any group.'
-      default: []
-      selector:
-        action: {}
-    fall:
-      name: Drop the cube 🍩
-      description: 'This trigger only occurs once in the set-up.
+          If you get an error like that, The friendly_name in Z2M likely does not match the 
+          friendly_name on HA. To fix go into the Z2M ```Open web UI``` and set the 
+          friendly_name there. Setting this in just HA or in Z2M without ticking the update HA
+          box will cause this. See the blueprint documentation page for details.
+          
+      input:
+        topic:
+          name: Topic
+          description: >
+            The main MQTT Topic for your cube. 
+            
+            Details on finding the correct topic can be found here: 
+            
+            [Find my Cube Topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT%20-%20Xiaomi%20Cube%20Controller%20MQTT%20Triggered.md#-to-make-the-blueprint-work-it-will-need)
 
-        It can be combined in any group.'
-      default: []
-      selector:
-        action: {}
-    slide_any:
-      name: Group 2 actions 🍊 Slide the cube with any side
-      description: 'Side doesn''t matter on this one.
+          default: "zigbee2mqtt/?"
+          selector:
+            text:
+              multiline: false
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+    optional_conditions:
+      name: Optional conditions🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
+      description: >
+        This input was added by user request. With it you can add your own condition.
+          If you only want the cube to work like this in the morning,
+          then after 6pm you want it to do different actions, add a condition that
+          will only let this run from 6am until 6pm. Then have another copy of
+          the blueprint that will only run from 6pm until 6am. (for example)
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    doubletap_any:
-      name: Group 2 actions 🍊 Double tap the cube with any side
-      description: 'Side doesn''t matter on this one.
+          Any valid conditions you can dream up, you should be able to add here.
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+          Leave it as the default of you don't want to add a condition of your own.
+          
+      input:
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Home occupied, TV on, etc)
+          default: []
+          selector:
+            condition:
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    flipped90_any:
-      name: Group 2 actions 🍊 Flip the cube 90 degrees to any side
-      description: 'Side doesn''t matter on this one.
+    side_0_group_1_actions:
+      name: Side 0 Group 1 actions 🍎
+      icon: mdi:numeric-0-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that happen with Face 0
+          (the one with the 'Aqara' LOGO) of the cube up to start.
+      input:
+        slide_face_0:
+          name: Group 1 actions 🍎 Slide the cube with face 0 up
+          description: Face 0 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        doubletap_face_0:
+          name: Group 1 actions 🍎 Double tap the cube with face 0 up
+          description: Face 0 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        flipped90_face_0:
+          name: Group 1 actions 🍎 Flip the cube 90 degrees to face 0
+          description: Face 0 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        flipped180_face_0:
+          name: Group 1 actions 🍎 Flip the cube 180 degrees to face 0
+          description: '**NOTE:** This action is trick to master, and should be used sparingly...
+            Face 0 is the one with the ''Aqara'' LOGO'
+          default: []
+          selector:
+            action: {}
+        flip_from_any_to_face_0:
+          name: Group 1 actions 🍎 Flip the cube from any to face 0
+          description: Face 0 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        rotate_cw_face_0:
+          name: Group 1 actions 🍎 Rotate cube clockwise with face 0 up
+          description: Face 0 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        rotate_ccw_face_0:
+          name: Group 1 actions 🍎 Rotate cube counter clockwise with face 0 up
+          description: Face 0 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+    side_1_group_1_actions:
+      name: Side 1 Group 1 actions 🍎
+      icon: mdi:numeric-1-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that happen with Face 1
+          of the cube up to start.
+      input:
+        slide_face_1:
+          name: Group 1 actions 🍎 Slide the cube with face 1 up
+          default: []
+          selector:
+            action: {}
+        doubletap_face_1:
+          name: Group 1 actions 🍎 Double tap the cube with face 1 up
+          default: []
+          selector:
+            action: {}
+        flipped90_face_1:
+          name: Group 1 actions 🍎 Flip the cube 90 degrees to face 1
+          default: []
+          selector:
+            action: {}
+        flipped180_face_1:
+          name: Group 1 actions 🍎 Flip the cube 180 degrees to face 1
+          description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+          default: []
+          selector:
+            action: {}
+        flip_from_any_to_face_1:
+          name: Group 1 actions 🍎 Flip the cube from any to face 1
+          description: Face 1 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        rotate_cw_face_1:
+          name: Group 1 actions 🍎 Rotate cube clockwise with face 1 up
+          default: []
+          selector:
+            action: {}
+        rotate_ccw_face_1:
+          name: Group 1 actions 🍎 Rotate cube counter clockwise with face 1 up
+          default: []
+          selector:
+            action: {}
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    flipped180_any:
-      name: Group 2 actions 🍊 Flip the cube 180 degrees any side
-      description: 'NOTE: This action is trick to master, and should be used sparingly...
-        Side doesn''t matter on this one.
+    side_2_group_1_actions:
+      name: Side 2 Group 1 actions 🍎
+      icon: mdi:numeric-2-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that happen with Face 2
+          of the cube up to start.
+      input:
+        slide_face_2:
+          name: Group 1 actions 🍎 Slide the cube with face 2 up
+          default: []
+          selector:
+            action: {}
+        doubletap_face_2:
+          name: Group 1 actions 🍎 Double tap the cube with face 2 up
+          default: []
+          selector:
+            action: {}
+        flipped90_face_2:
+          name: Group 1 actions 🍎 Flip the cube 90 degrees to face 2
+          default: []
+          selector:
+            action: {}
+        flipped180_face_2:
+          name: Group 1 actions 🍎 Flip the cube 180 degrees to face 2
+          description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+          default: []
+          selector:
+            action: {}
+        flip_from_any_to_face_2:
+          name: Group 1 actions 🍎 Flip the cube from any to face 2
+          description: Face 2 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        rotate_cw_face_2:
+          name: Group 1 actions 🍎 Rotate cube clockwise with face 2 up
+          default: []
+          selector:
+            action: {}
+        rotate_ccw_face_2:
+          name: Group 1 actions 🍎 Rotate cube counter clockwise with face 2 up
+          default: []
+          selector:
+            action: {}
+        slide_face_3:
+          name: Group 1 actions 🍎 Slide the cube with face 3 up
+          default: []
+          selector:
+            action: {}
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+    side_3_group_1_actions:
+      name: Side 3 Group 1 actions 🍎
+      icon: mdi:numeric-3-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that happen with Face 3
+          of the cube up to start.
+      input:
+        doubletap_face_3:
+          name: Group 1 actions 🍎 Double tap the cube with face 3 up
+          default: []
+          selector:
+            action: {}
+        flipped90_face_3:
+          name: Group 1 actions 🍎 Flip the cube 90 degrees to face 3
+          default: []
+          selector:
+            action: {}
+        flipped180_face_3:
+          name: Group 1 actions 🍎 Flip the cube 180 degrees to face 3
+          description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+          default: []
+          selector:
+            action: {}
+        flip_from_any_to_face_3:
+          name: Group 1 actions 🍎 Flip the cube from any to face 3
+          description: Face 3 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        rotate_cw_face_3:
+          name: Group 1 actions 🍎 Rotate cube clockwise with face 3 up
+          default: []
+          selector:
+            action: {}
+        rotate_ccw_face_3:
+          name: Group 1 actions 🍎 Rotate cube counter clockwise with face 3 up
+          default: []
+          selector:
+            action: {}
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    rotate_cw_any:
-      name: Group 2 actions 🍊 Rotate cube clockwise with any side
-      description: 'Side doesn''t matter on this one.
+    side_4_group_1_actions:
+      name: Side 4 Group 1 actions 🍎
+      icon: mdi:numeric-4-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that happen with Face 4
+          of the cube up to start.
+      input:
+        slide_face_4:
+          name: Group 1 actions 🍎 Slide the cube with face 4 up
+          default: []
+          selector:
+            action: {}
+        doubletap_face_4:
+          name: Group 1 actions 🍎 Double tap the cube with face 4 up
+          default: []
+          selector:
+            action: {}
+        flipped90_face_4:
+          name: Group 1 actions 🍎 Flip the cube 90 degrees to face 4
+          default: []
+          selector:
+            action: {}
+        flipped180_face_4:
+          name: Group 1 actions 🍎 Flip the cube 180 degrees to face 4
+          description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+          default: []
+          selector:
+            action: {}
+        flip_from_any_to_face_4:
+          name: Group 1 actions 🍎 Flip the cube from any to face 4
+          description: Face 4 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        rotate_cw_face_4:
+          name: Group 1 actions 🍎 Rotate cube clockwise with face 4 up
+          default: []
+          selector:
+            action: {}
+        rotate_ccw_face_4:
+          name: Group 1 actions 🍎 Rotate cube counter clockwise with face 4 up
+          default: []
+          selector:
+            action: {}
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+    side_5_group_1_actions:
+      name: Side 5 Group 1 actions 🍎
+      icon: mdi:numeric-5-box
+      collapsed: true
+      description: >
+        These are Group 1 actions that happen with Face 5
+          of the cube up to start.
+      input:
+        slide_face_5:
+          name: Group 1 actions 🍎 Slide the cube with face 5 up
+          default: []
+          selector:
+            action: {}
+        doubletap_face_5:
+          name: Group 1 actions 🍎 Double tap the cube with face 5 up
+          default: []
+          selector:
+            action: {}
+        flipped90_face_5:
+          name: Group 1 actions 🍎 Flip the cube 90 degrees to face 5
+          default: []
+          selector:
+            action: {}
+        flipped180_face_5:
+          name: Group 1 actions 🍎 Flip the cube 180 degrees to face 5
+          description: '**NOTE:** This action is trick to master, and should be used sparingly...'
+          default: []
+          selector:
+            action: {}
+        flip_from_any_to_face_5:
+          name: Group 1 actions 🍎 Flip the cube from any to face 5
+          description: Face 5 is the one with the 'Aqara' LOGO
+          default: []
+          selector:
+            action: {}
+        rotate_cw_face_5:
+          name: Group 1 actions 🍎 Rotate cube clockwise with face 5 up
+          default: []
+          selector:
+            action: {}
+        rotate_ccw_face_5:
+          name: Group 1 actions 🍎 Rotate cube counter clockwise with face 5 up
+          default: []
+          selector:
+            action: {}
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    rotate_ccw_any:
-      name: Group 2 actions 🍊 Rotate cube counter clockwise with any side
-      description: 'Side doesn''t matter on this one.
+    any_side_group_2_actions:
+      name: Any side Group 2 actions 🍒
+      icon: mdi:fruit-cherries
+      collapsed: true
+      description: >
+        🍒 These are a set of 6 event functions that will trigger on specific actions
+          on *ANY* side. **Group 2 actions 🍒**
+      input:
+        slide_any:
+          name: Group 2 actions 🍒 Slide the cube with any side
+          description: 'Side doesn''t matter on this one.
 
-        **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    0_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 0 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        doubletap_any:
+          name: Group 2 actions 🍒 Double tap the cube with any side
+          description: 'Side doesn''t matter on this one.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    0_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 0 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
-        🍊 automations will also trigger.
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    0_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 0 from side 3
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 0 and the
-        ANY 🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        flipped90_any:
+          name: Group 2 actions 🍒 Flip the cube 90 degrees to any side
+          description: 'Side doesn''t matter on this one.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    0_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 0 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
-        🍊 automations will also trigger.
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    0_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 0 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        flipped180_any:
+          name: Group 2 actions 🍒 Flip the cube 180 degrees any side
+          description: 'NOTE: This action is trick to master, and should be used sparingly...
+            Side doesn''t matter on this one.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    1_from_0:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 0
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    1_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        rotate_cw_any:
+          name: Group 2 actions 🍒 Rotate cube clockwise with any side
+          description: 'Side doesn''t matter on this one.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    1_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    1_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 4
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 1 and the
-        ANY 🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        rotate_ccw_any:
+          name: Group 2 actions 🍒 Rotate cube counter clockwise with any side
+          description: 'Side doesn''t matter on this one.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    1_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 1 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
-        🍊 automations will also trigger.
+            **!!Warning!!** The automations for the specific side will also trigger. 🍎🍐
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    2_from_0:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 0
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    2_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
+    side_0_group_3_actions:
+      name: Side 0 Group 3 actions 🍐
+      icon: mdi:numeric-0-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 0 as the ending point.
+          (the one with the 'Aqara' LOGO) of the cube up to start.
+          All are flips from another side to side 0.
+      input:
+        0_from_1:
+          name: Group 3 actions 🍐 Flip the cube to side 0 from side 1
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    2_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        0_from_2:
+          name: Group 3 actions 🍐 Flip the cube to side 0 from side 2
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    2_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        0_from_3:
+          name: Group 3 actions 🍐 Flip the cube to side 0 from side 3
+          description: '**!!Warning!!** The flip 180 automations 🍎 for side 0 and the
+            ANY 🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    2_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 2 from side 5
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
-        ANY 🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        0_from_4:
+          name: Group 3 actions 🍐 Flip the cube to side 0 from side 4
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    3_from_0:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 0
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 3 and the
-        ANY 🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        0_from_5:
+          name: Group 3 actions 🍐 Flip the cube to side 0 from side 5
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 0 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    3_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    3_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
+    side_1_group_3_actions:
+      name: Side 1 Group 3 actions 🍐
+      icon: mdi:numeric-1-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 1 as the ending point.
+          All are flips from another side to side 1.
+      input:
+        1_from_0:
+          name: Group 3 actions 🍐 Flip the cube to side 1 from side 0
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    3_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        1_from_2:
+          name: Group 3 actions 🍐 Flip the cube to side 1 from side 2
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    3_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 3 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        1_from_3:
+          name: Group 3 actions 🍐 Flip the cube to side 1 from side 3
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    4_from_0:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 0
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        1_from_4:
+          name: Group 3 actions 🍐 Flip the cube to side 1 from side 4
+          description: '**!!Warning!!** The flip 180 automations 🍎 for side 1 and the
+            ANY 🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    4_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 1
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 4 and the
-        ANY 🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        1_from_5:
+          name: Group 3 actions 🍐 Flip the cube to side 1 from side 5
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 1 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    4_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 2
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    4_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
+    side_2_group_3_actions:
+      name: Side 2 Group 3 actions 🍐
+      icon: mdi:numeric-2-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 2 as the ending point.
+          All are flips from another side to side 2.
+      input:
+        2_from_0:
+          name: Group 3 actions 🍐 Flip the cube to side 2 from side 0
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    4_from_5:
-      name: Group 3 actions 🍐 Flip the cube to side 4 from side 5
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        2_from_1:
+          name: Group 3 actions 🍐 Flip the cube to side 2 from side 1
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    5_from_0:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 0
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        2_from_3:
+          name: Group 3 actions 🍐 Flip the cube to side 2 from side 3
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    5_from_1:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 1
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger. 🍎🍐
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        2_from_4:
+          name: Group 3 actions 🍐 Flip the cube to side 2 from side 4
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 2 and the ANY
+            🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    5_from_2:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 2
-      description: '**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
-        ANY 🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        2_from_5:
+          name: Group 3 actions 🍐 Flip the cube to side 2 from side 5
+          description: '**!!Warning!!** The flip 180 automations 🍎 for side 2 and the
+            ANY 🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    5_from_3:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 3
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger.
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
-    5_from_4:
-      name: Group 3 actions 🍐 Flip the cube to side 5 from side 4
-      description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
-        🍊 automations will also trigger.
+    side_3_group_3_actions:
+      name: Side 3 Group 3 actions 🍐
+      icon: mdi:numeric-3-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 3 as the ending point.
+          All are flips from another side to side 3.
+      input:
+        3_from_0:
+          name: Group 3 actions 🍐 Flip the cube to side 3 from side 0
+          description: '**!!Warning!!** The flip 180 automations 🍎 for side 3 and the
+            ANY 🍒 automations will also trigger.
 
-        I suggest using only one of the three groups of triggers, not multiple groups...'
-      default: []
-      selector:
-        action: {}
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        3_from_1:
+          name: Group 3 actions 🍐 Flip the cube to side 3 from side 1
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        3_from_2:
+          name: Group 3 actions 🍐 Flip the cube to side 3 from side 2
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        3_from_4:
+          name: Group 3 actions 🍐 Flip the cube to side 3 from side 4
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        3_from_5:
+          name: Group 3 actions 🍐 Flip the cube to side 3 from side 5
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 3 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+
+    side_4_group_3_actions:
+      name: Side 4 Group 3 actions 🍐
+      icon: mdi:numeric-4-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 4 as the ending point.
+          All are flips from another side to side 4.
+      input:
+        4_from_0:
+          name: Group 3 actions 🍐 Flip the cube to side 4 from side 0
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        4_from_1:
+          name: Group 3 actions 🍐 Flip the cube to side 4 from side 1
+          description: '**!!Warning!!** The flip 180 automations 🍎 for side 4 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        4_from_2:
+          name: Group 3 actions 🍐 Flip the cube to side 4 from side 2
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        4_from_3:
+          name: Group 3 actions 🍐 Flip the cube to side 4 from side 3
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        4_from_5:
+          name: Group 3 actions 🍐 Flip the cube to side 4 from side 5
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 4 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        5_from_0:
+          name: Group 3 actions 🍐 Flip the cube to side 5 from side 0
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+
+    side_5_group_3_actions:
+      name: Side 5 Group 3 actions 🍐
+      icon: mdi:numeric-5-circle
+      collapsed: true
+      description: >
+        These are Group 3 actions that happen with Face 5 as the ending point.
+          All are flips from another side to side 5.
+      input:
+        5_from_1:
+          name: Group 3 actions 🍐 Flip the cube to side 5 from side 1
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger. 🍎🍐
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        5_from_2:
+          name: Group 3 actions 🍐 Flip the cube to side 5 from side 2
+          description: '**!!Warning!!** The flip 180 automations 🍎 for side 5 and the
+            ANY 🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        5_from_3:
+          name: Group 3 actions 🍐 Flip the cube to side 5 from side 3
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+        5_from_4:
+          name: Group 3 actions 🍐 Flip the cube to side 5 from side 4
+          description: '**!!Warning!!** The flip 90 automations 🍎 for side 5 and the ANY
+            🍒 automations will also trigger.
+
+            I suggest using only one of the three groups of triggers, not multiple groups...'
+          default: []
+          selector:
+            action: {}
+
+    group_4_actions:
+      name: Group 4 actions only used once (no side) 🍕
+      icon: mdi:pizza
+      collapsed: true
+      description: >
+        These are Group 4 actions only used once (no side) 🍕
+          they can be safely compined with any other command.
+      input:
+        shake:
+          name: Shake the cube 🍕 Group 4
+          description: 'This trigger only occurs once in the set-up.
+
+            It can be combined in any group.'
+          default: []
+          selector:
+            action: {}
+        fall:
+          name: Drop the cube 🍕 Group 4
+          description: 'This trigger only occurs once in the set-up.
+
+            It can be combined in any group.'
+          default: []
+          selector:
+            action: {}
 
 trigger:
   - platform: mqtt
@@ -819,7 +972,7 @@ action:
   data:
     value: '{{ side }}'
 
-- alias: Group 2 🍊 and No Group 🍩 These are action events for ANY Side
+- alias: Group 2 🍒 and No Group 🍩 These are action events for ANY Side
   choose:
   - conditions: '{{ action == "slide" }}'
     sequence: !input 'slide_any'

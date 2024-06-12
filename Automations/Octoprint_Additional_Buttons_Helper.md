@@ -2,6 +2,7 @@ This is Blueprint is provided as a helper for people using the Octoprint Plugin 
 
 ## 📑 Changelog
 
+* **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
 * **2023-08-07**: Updates for Home Assistant 2023.8
   * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Octoprint_Additional_Buttons_Helper.md) FOR IMPORTANT UPDATE INSTRUCTIONS
   * Selector syntax change

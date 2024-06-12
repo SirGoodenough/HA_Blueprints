@@ -1,5 +1,5 @@
 blueprint:
-  name: TTS_say_Message-2024-04-21
+  name: TTS_say_Message-2024-06-08
   author: SirGoodenough
   description: >
     📣 This is a script that can use any of the 11 integrated TTS Platforms
@@ -18,7 +18,6 @@ blueprint:
     work there and apply them in this Blueprint. The safest thing to do other than
     that is to start with the basic sonfiguration for the TTS_say integration that
     you are using and add options one at a time.
-
 
     The very basic requirements are for you to provide the *tts_say method that you
     have installed and tested, the entity that you want to send it to, and the message
@@ -67,69 +66,86 @@ blueprint:
   domain: script
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/tts_All_Message_Script_Blueprint.yaml
   homeassistant:
-    min_version: 2023.8.0
+    min_version: 2024.6.0
   input:
-    b4_action:
-      name: Action before TTS
+    optional_parameters:
+      name: Optional parameters🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
       description: >
-        This is intended to add a volume control action or whatever you want
-        to do before sending the TTS message
-      default: []
-      selector:
-        action: {}
-    after_action:
-      name: Action after TTS
-      description: >
-        This is intended to add a volume control action or whatever you want
-        to do after sending the TTS message
-      default: []
-      selector:
-        action: {}
-    TTS:
-      name: Text to Speech Processor
-      description: >
-        ### Required on ALL platforms
+        These inputs set optional parameters that allow you to customize the intended actions.
+          Read the individual descriptions for more details.
 
-        Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
-      selector:
-        select:
-          options:
-            - tts.amazon_polly_say
-            - tts.baidu_say
-            - tts.cloud_say
-            - tts.google_cloud_say
-            - tts.google_translate_say
-            - tts.marytts_say
-            - tts.microsoft_say
-            - tts.picotts_say
-            - Piper
-            - tts.voicerss_say
-            - tts.watson_tts_say
-            - tts.yandextts_say
-          custom_value: true
-          multiple: false
-    announcement_message:
-      name: Spoken Message
+          The Blueprint will work if no changes are made to this section.
+      input:
+        b4_action:
+          name: Action before TTS
+          description: >
+            This is intended to add a volume control action or whatever you want
+            to do before sending the TTS message
+          default: []
+          selector:
+            action: {}
+        after_action:
+          name: Action after TTS
+          description: >
+            This is intended to add a volume control action or whatever you want
+            to do after sending the TTS message
+          default: []
+          selector:
+            action: {}
+    required_inputs:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        ### Required on ALL \*_say platforms
+        These inputs are required for the blueprint to function and must be filled in.
+      input:
+        TTS:
+          name: Text to Speech Processor
+          description: >
+            ### Required on ALL platforms
 
-        Type your message here:
-      default: '{{ ("Random test one","Random test two","Random test three") | random }}'
-      selector:
-        text:
-          multiline: true
-    speaker_target:
-      name: Entity(s) to speak thru
-      description: >
-        ### Required on ALL \*_say platforms
+            Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
+          selector:
+            select:
+              options:
+                - tts.amazon_polly_say
+                - tts.baidu_say
+                - tts.cloud_say
+                - tts.google_cloud_say
+                - tts.google_translate_say
+                - tts.marytts_say
+                - tts.microsoft_say
+                - tts.picotts_say
+                - Piper
+                - tts.voicerss_say
+                - tts.watson_tts_say
+                - tts.yandextts_say
+              custom_value: true
+              multiple: false
+        announcement_message:
+          name: Spoken Message
+          description: >
+            ### Required on ALL \*_say platforms
 
-        Be sure to select the correct type / brand of device for the TTS you are using. 
-        Not All speakers work with all TTS engines
-      selector:
-        entity:
-          multiple: true
-          filter:
-            - domain: media_player
+            Type your message here:
+          default: '{{ ("Random test one","Random test two","Random test three") | random }}'
+          selector:
+            text:
+              multiline: true
+        speaker_target:
+          name: Entity(s) to speak thru
+          description: >
+            ### Required on ALL \*_say platforms
+
+            Be sure to select the correct type / brand of device for the TTS you are using. 
+            Not All speakers work with all TTS engines
+          selector:
+            entity:
+              multiple: true
+              filter:
+                - domain: media_player
     # speaker_gender:
     #     # The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
     #     #   and will be removed. Please update your automations and scripts to replace the gender
@@ -152,761 +168,851 @@ blueprint:
     #         value: neutral
     #       custom_value: false
     #       multiple: false
-    baidu_person:
-      name: Baidu Person Code
+
+    baidu_inputs:
+      name: Required input for use with tts.baidu_say
+      icon: mdi:microphone-message
+      collapsed: true
       description: >
-        Used only on tts_baidu_say platform. [More Info here.](https://www.home-assistant.io/integrations/baidu/)
-        This is the voice code of the speaker.
-      default: []
-      selector:
-        select:
-          options:
-            - "0"
-            - "1"
-            - "3"
-            - "4"
-            - "5"
-            - "103"
-            - "106"
-            - "110"
-            - "111"
-          custom_value: true
-          multiple: false
-    nabu_azure_language:
-      name: tts_cloud (nabu Casa) Language
+        These inputs are required for the blueprint to function and must be filled in.
+
+        In the end, these *may* have a default value but I suggest you provide a value.
+      input:
+        baidu_person:
+          name: Baidu Person Code
+          description: >
+            Used only on tts_baidu_say platform. [More Info here.](https://www.home-assistant.io/integrations/baidu/)
+            This is the voice code of the speaker.
+          default: []
+          selector:
+            select:
+              options:
+                - "0"
+                - "1"
+                - "3"
+                - "4"
+                - "5"
+                - "103"
+                - "106"
+                - "110"
+                - "111"
+              custom_value: true
+              multiple: false
+
+    nabu_inputs:
+      name: Required input for use with tts.cloud_say (Nabu Casa)
+      icon: mdi:microphone-message
+      collapsed: true
       description: >
-        Select Language code. [See here for Details](https://www.nabucasa.com/config/tts/)
+        These inputs are required for the blueprint to function and must be filled in.
 
-        This defaults to en-US (english/US). However all the languages available on
-        2023-8-17 were put into the pick list. 
+        In the end, these *may* have a default value but I suggest you provide a value.
+      input:
+        nabu_azure_language:
+          name: tts_cloud (nabu Casa) Language
+          description: >
+            Select Language code. [See here for Details](https://www.nabucasa.com/config/tts/)
 
-      default: en-US
-      selector:
-        select:
-          options:
-            - af-ZA
-            - am-ET
-            - ar-AE
-            - ar-BH
-            - ar-DZ
-            - ar-EG
-            - ar-IL
-            - ar-IQ
-            - ar-JO
-            - ar-KW
-            - ar-LB
-            - ar-LY
-            - ar-MA
-            - ar-OM
-            - ar-PS
-            - ar-QA
-            - ar-SA
-            - ar-SY
-            - ar-TN
-            - ar-YE
-            - az-AZ
-            - bg-BG
-            - bn-IN
-            - bs-BA
-            - ca-ES
-            - cs-CZ
-            - cy-GB
-            - da-DK
-            - de-AT
-            - de-CH
-            - de-DE
-            - el-GR
-            - en-AU
-            - en-CA
-            - en-GB
-            - en-GH
-            - en-HK
-            - en-IE
-            - en-IN
-            - en-KE
-            - en-NG
-            - en-NZ
-            - en-PH
-            - en-SG
-            - en-TZ
-            - en-US
-            - en-ZA
-            - es-AR
-            - es-BO
-            - es-CL
-            - es-CO
-            - es-CR
-            - es-CU
-            - es-DO
-            - es-EC
-            - es-ES
-            - es-GQ
-            - es-GT
-            - es-HN
-            - es-MX
-            - es-NI
-            - es-PA
-            - es-PE
-            - es-PR
-            - es-PY
-            - es-SV
-            - es-US
-            - es-UY
-            - es-VE
-            - et-EE
-            - eu-ES
-            - fa-IR
-            - fi-FI
-            - fil-PH
-            - fr-BE
-            - fr-CA
-            - fr-CH
-            - fr-FR
-            - ga-IE
-            - gl-ES
-            - gu-IN
-            - he-IL
-            - hi-IN
-            - hr-HR
-            - hu-HU
-            - hy-AM
-            - id-ID
-            - is-IS
-            - it-CH
-            - it-IT
-            - ja-JP
-            - jv-ID
-            - ka-GE
-            - kk-KZ
-            - km-KH
-            - kn-IN
-            - ko-KR
-            - lo-LA
-            - lt-LT
-            - lv-LV
-            - mk-MK
-            - ml-IN
-            - mn-MN
-            - mr-IN
-            - ms-MY
-            - mt-MT
-            - my-MM
-            - nb-NO
-            - ne-NP
-            - nl-BE
-            - nl-NL
-            - pl-PL
-            - ps-AF
-            - pt-BR
-            - pt-PT
-            - ro-RO
-            - ru-RU
-            - si-LK
-            - sk-SK
-            - sl-SI
-            - so-SO
-            - sq-AL
-            - sr-RS
-            - sv-SE
-            - sw-KE
-            - sw-TZ
-            - ta-IN
-            - te-IN
-            - th-TH
-            - tr-TR
-            - uk-UA
-            - uz-UZ
-            - vi-VN
-            - wuu-CN
-            - yue-CN
-            - zh-CN
-            - zh-CN-shandong
-            - zh-CN-sichuan
-            - zh-HK
-            - zh-TW
-            - zu-ZA
-          custom_value: true
-          multiple: false
-    nabu_azure_voice:
-      name: tts_cloud (nabu Casa) Voice
-      description: >  
-        ***Here you need to be careful.***
+            This defaults to en-US (english/US). However all the languages available on
+            2023-8-17 were put into the pick list. 
 
-        If you are OK with the default voice then just leave this field empty.
+          default: en-US
+          selector:
+            select:
+              options:
+                - af-ZA
+                - am-ET
+                - ar-AE
+                - ar-BH
+                - ar-DZ
+                - ar-EG
+                - ar-IL
+                - ar-IQ
+                - ar-JO
+                - ar-KW
+                - ar-LB
+                - ar-LY
+                - ar-MA
+                - ar-OM
+                - ar-PS
+                - ar-QA
+                - ar-SA
+                - ar-SY
+                - ar-TN
+                - ar-YE
+                - az-AZ
+                - bg-BG
+                - bn-IN
+                - bs-BA
+                - ca-ES
+                - cs-CZ
+                - cy-GB
+                - da-DK
+                - de-AT
+                - de-CH
+                - de-DE
+                - el-GR
+                - en-AU
+                - en-CA
+                - en-GB
+                - en-GH
+                - en-HK
+                - en-IE
+                - en-IN
+                - en-KE
+                - en-NG
+                - en-NZ
+                - en-PH
+                - en-SG
+                - en-TZ
+                - en-US
+                - en-ZA
+                - es-AR
+                - es-BO
+                - es-CL
+                - es-CO
+                - es-CR
+                - es-CU
+                - es-DO
+                - es-EC
+                - es-ES
+                - es-GQ
+                - es-GT
+                - es-HN
+                - es-MX
+                - es-NI
+                - es-PA
+                - es-PE
+                - es-PR
+                - es-PY
+                - es-SV
+                - es-US
+                - es-UY
+                - es-VE
+                - et-EE
+                - eu-ES
+                - fa-IR
+                - fi-FI
+                - fil-PH
+                - fr-BE
+                - fr-CA
+                - fr-CH
+                - fr-FR
+                - ga-IE
+                - gl-ES
+                - gu-IN
+                - he-IL
+                - hi-IN
+                - hr-HR
+                - hu-HU
+                - hy-AM
+                - id-ID
+                - is-IS
+                - it-CH
+                - it-IT
+                - ja-JP
+                - jv-ID
+                - ka-GE
+                - kk-KZ
+                - km-KH
+                - kn-IN
+                - ko-KR
+                - lo-LA
+                - lt-LT
+                - lv-LV
+                - mk-MK
+                - ml-IN
+                - mn-MN
+                - mr-IN
+                - ms-MY
+                - mt-MT
+                - my-MM
+                - nb-NO
+                - ne-NP
+                - nl-BE
+                - nl-NL
+                - pl-PL
+                - ps-AF
+                - pt-BR
+                - pt-PT
+                - ro-RO
+                - ru-RU
+                - si-LK
+                - sk-SK
+                - sl-SI
+                - so-SO
+                - sq-AL
+                - sr-RS
+                - sv-SE
+                - sw-KE
+                - sw-TZ
+                - ta-IN
+                - te-IN
+                - th-TH
+                - tr-TR
+                - uk-UA
+                - uz-UZ
+                - vi-VN
+                - wuu-CN
+                - yue-CN
+                - zh-CN
+                - zh-CN-shandong
+                - zh-CN-sichuan
+                - zh-HK
+                - zh-TW
+                - zu-ZA
+              custom_value: true
+              multiple: false
+        nabu_azure_voice:
+          name: tts_cloud (nabu Casa) Voice
+          description: >  
+            ***Here you need to be careful.***
 
-        If you want to change the voice, you need to pick from [This List, TTS_VOICES section](https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py)
-        being certain to match the country code you picked above with one of
-        the voices available for that country code on that list.
+            If you are OK with the default voice then just leave this field empty.
 
-        Failure to do so will result in no voice being heard.
+            If you want to change the voice, you need to pick from [This List, TTS_VOICES section](https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py)
+            being certain to match the country code you picked above with one of
+            the voices available for that country code on that list.
+
+            Failure to do so will result in no voice being heard.
 
 
-        If you want to know what these sound like, well, you are just going to
-        have to try them and see what you like.
+            If you want to know what these sound like, well, you are just going to
+            have to try them and see what you like.
 
-        If you are en-US, you might want to paste this in there for some fun:
+            If you are en-US, you might want to paste this in there for some fun:
 
-          {{ ("JennyNeural",
-          "AIGenerate1Neural",
-          "AIGenerate2Neural",
-          "AmberNeural",
-          "AnaNeural",
-          "AriaNeural",
-          "AshleyNeural",
-          "BrandonNeural",
-          "ChristopherNeural",
-          "CoraNeural",
-          "DavisNeural",
-          "ElizabethNeural",
-          "EricNeural",
-          "GuyNeural",
-          "JacobNeural",
-          "JaneNeural",
-          "JasonNeural",
-          "JennyMultilingualNeural",
-          "MichelleNeural",
-          "MonicaNeural",
-          "NancyNeural",
-          "RogerNeural",
-          "SaraNeural",
-          "SteffanNeural",
-          "TonyNeural") | random }}
-      default: []
-      selector:
-        text:
-          multiline: true
-    cloud_language:
-      name: TTS Cloud Language
+              {{ ("JennyNeural",
+              "AIGenerate1Neural",
+              "AIGenerate2Neural",
+              "AmberNeural",
+              "AnaNeural",
+              "AriaNeural",
+              "AshleyNeural",
+              "BrandonNeural",
+              "ChristopherNeural",
+              "CoraNeural",
+              "DavisNeural",
+              "ElizabethNeural",
+              "EricNeural",
+              "GuyNeural",
+              "JacobNeural",
+              "JaneNeural",
+              "JasonNeural",
+              "JennyMultilingualNeural",
+              "MichelleNeural",
+              "MonicaNeural",
+              "NancyNeural",
+              "RogerNeural",
+              "SaraNeural",
+              "SteffanNeural",
+              "TonyNeural") | random }}
+          default: []
+          selector:
+            text:
+              multiline: true
+
+    google_cloud_inputs:
+      name: Required input for use with tts.google_cloud_say
+      icon: mdi:microphone-message
+      collapsed: true
       description: >
-        This is for tts.google_cloud_say. Select
-        Language code. [See this.](https://cloud.google.com/text-to-speech/docs/voices) This defaults
-        to en-US as english/US. All the languages available on 2023-8-23
-        were put into the pick list. 
-        
-        *NOTE: It is possible that not all Languages will give you both Genders.*
+        These inputs are required for the blueprint to function and must be filled in.
 
-      default: en-US
-      selector:
-        select:
-          options:
-            - af-ZA
-            - ar-XA
-            - eu-ES
-            - bn-IN
-            - bg-BG
-            - ca-ES
-            - yue-HK
-            - cs-CZ
-            - da-DK
-            - nl-BE
-            - nl-NL
-            - en-AU
-            - en-IN
-            - en-GB
-            - en-US
-            - fil-PH
-            - fi-FI
-            - fr-CA
-            - fr-FR
-            - gl-ES
-            - de-DE
-            - el-GR
-            - gu-IN
-            - he-IL
-            - hi-IN
-            - hu-HU
-            - is-IS
-            - id-ID
-            - it-IT
-            - ja-JP
-            - kn-IN
-            - ko-KR
-            - lv-LV
-            - lt-LT
-            - ms-MY
-            - ml-IN
-            - cmn-CN
-            - mr-IN
-            - nb-NO
-            - pl-PL
-            - pt-BR
-            - pt-PT
-            - pa-IN
-            - ro-RO
-            - ru-RU
-            - sr-RS
-            - sk-SK
-            - es-ES
-            - es-US
-            - sv-SE
-            - ta-IN
-            - te-IN
-            - th-TH
-            - tr-TR
-            - uk-UA
-            - vi-VN
-          custom_value: true
-          multiple: false
-    Google_Cloud_Voice:
-      name: Google Cloud Voice Code
-      description: >
-        Used only with tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/voices)
-        This is the voice code of the speaker. The default is: "en-US-Wavenet-F". 
-        [Refer here](https://www.home-assistant.io/integrations/google_cloud) for more information.
-      default: []
-      selector:
-        text:
-          multiline: false
-    Google_Cloud_Profile:
-      name: Google Cloud Profile
-      description: >
-        Used only on tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/audio-profiles)
-        This is a parameter to match the output to the sound of the speaker. [Refer here](https://www.home-assistant.io/integrations/google_cloud)
-        for more information.
-      default: []
-      selector:
-        select:
-          options:
-            - wearable-class-device
-            - handset-class-device
-            - headphone-class-device
-            - small-bluetooth-speaker-class-device
-            - medium-bluetooth-speaker-class-device
-            - large-home-entertainment-class-device
-            - large-automotive-class-device
-            - telephony-class-application
-          custom_value: true
-          multiple: false
-    GTS_language:
-      name: TTS Google Translate Say Language
-      description: >
-        This is for tts.google_translate_say only. Check the complete list
-        of [supported languages](https://cloud.google.com/text-to-speech/docs/voices) for allowed values.
-        The 2 letter lead acronym [example- en for english] is all that is used
-        here. The >2 letter ones do not work...]  All the languages available on 2023-7-17
-        were put into the pick list.
-        
-        This defaults to ```en``` [english]
-      default: en
-      selector:
-        select:
-          options:
-            - af
-            - ak
-            - am
-            - ar
-            - as
-            - ay
-            - az
-            - be
-            - bg
-            - bm
-            - bn
-            - bs
-            - ca
-            - co
-            - cs
-            - cy
-            - da
-            - de
-            - dv
-            - ee
-            - el
-            - en
-            - eo
-            - es
-            - et
-            - eu
-            - fa
-            - fi
-            - fr
-            - fy
-            - ga
-            - gd
-            - gl
-            - gn
-            - gu
-            - ha
-            - hi
-            - hr
-            - ht
-            - hu
-            - hy
-            - id
-            - ig
-            - is
-            - it
-            - ja
-            - jv
-            - jw
-            - ka
-            - kk
-            - km
-            - kn
-            - ko
-            - ku
-            - ky
-            - la
-            - lb
-            - lg
-            - ln
-            - lo
-            - lt
-            - lv
-            - mg
-            - mi
-            - mk
-            - ml
-            - mn
-            - mr
-            - ms
-            - mt
-            - my
-            - ne
-            - nl
-            - "no"
-            - ny
-            - om
-            - or
-            - pa
-            - pl
-            - ps
-            - pt
-            - qu
-            - ro
-            - ru
-            - rw
-            - sa
-            - sd
-            - si
-            - sk
-            - sl
-            - sm
-            - sn
-            - so
-            - sq
-            - sr
-            - st
-            - su
-            - sv
-            - sw
-            - ta
-            - te
-            - tg
-            - th
-            - ti
-            - tk
-            - tl
-            - tr
-            - ts
-            - tt
-            - ug
-            - uk
-            - ur
-            - uz
-            - vi
-            - xh
-            - yi
-            - yo
-            - zu
-          custom_value: true
-          multiple: false
-    marytts_language:
-      name: Language option for tts.marytts_say
-      description:  >
-        Used only on tts.marytts_say. [More Info Here](https://www.home-assistant.io/integrations/marytts)
-        All the languages available on 2023-7-17 were put into the pick list.
-        Select speaker Language:
-      default: []
-      selector:
-        select:
-          options:
-            - de
-            - en_GB
-            - en_US
-            - fr
-            - it
-            - lb
-            - ru
-            - sv
-            - te
-            - tr
-          custom_value: true
-          multiple: false
-    picotts_language:
-      name: Language option for tts.picotts_say
-      description: >
-        Used only on tts.picotts_say. [More Info Here](https://www.home-assistant.io/integrations/picotts)
-        All the languages available on 2023-7-17 were put into the pick list.
-        Select speaker Language:
-      default: []
-      selector:
-        select:
-          options:
-            - en-US
-            - en-GB
-            - de-DE
-            - es-ES
-            - fr-FR
-            - it-IT
-          custom_value: true
-          multiple: false
-    piper_voice:
-      name: Voice option for the Piper addon played thru Wyoming
-      description: >
-        Used only on Piper.
-        [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
-        Also available in the Add-on UI configuration dropdown.
-        If a new one is available you can enter it manually.
-        List updated here October 1, 2923.
+        In the end, these *may* have a default value but I suggest you provide a value.
+      input:
+        cloud_language:
+          name: TTS Cloud Language
+          description: >
+            This is for tts.google_cloud_say. Select
+            Language code. [See this.](https://cloud.google.com/text-to-speech/docs/voices) This defaults
+            to en-US as english/US. All the languages available on 2023-8-23
+            were put into the pick list. 
+            
+            *NOTE: It is possible that not all Languages will give you both Genders.*
 
-        If you speak english & want a bit of fun,
-        post this string in instead of picking from the list...
+          default: en-US
+          selector:
+            select:
+              options:
+                - af-ZA
+                - ar-XA
+                - eu-ES
+                - bn-IN
+                - bg-BG
+                - ca-ES
+                - yue-HK
+                - cs-CZ
+                - da-DK
+                - nl-BE
+                - nl-NL
+                - en-AU
+                - en-IN
+                - en-GB
+                - en-US
+                - fil-PH
+                - fi-FI
+                - fr-CA
+                - fr-FR
+                - gl-ES
+                - de-DE
+                - el-GR
+                - gu-IN
+                - he-IL
+                - hi-IN
+                - hu-HU
+                - is-IS
+                - id-ID
+                - it-IT
+                - ja-JP
+                - kn-IN
+                - ko-KR
+                - lv-LV
+                - lt-LT
+                - ms-MY
+                - ml-IN
+                - cmn-CN
+                - mr-IN
+                - nb-NO
+                - pl-PL
+                - pt-BR
+                - pt-PT
+                - pa-IN
+                - ro-RO
+                - ru-RU
+                - sr-RS
+                - sk-SK
+                - es-ES
+                - es-US
+                - sv-SE
+                - ta-IN
+                - te-IN
+                - th-TH
+                - tr-TR
+                - uk-UA
+                - vi-VN
+              custom_value: true
+              multiple: false
+        Google_Cloud_Voice:
+          name: Google Cloud Voice Code
+          description: >
+            Used only with tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/voices)
+            This is the voice code of the speaker. The default is: "en-US-Wavenet-F". 
+            [Refer here](https://www.home-assistant.io/integrations/google_cloud) for more information.
+          default: []
+          selector:
+            text:
+              multiline: false
+        Google_Cloud_Profile:
+          name: Google Cloud Profile
+          description: >
+            Used only on tts.google_cloud_say platform. [Pick from here](https://cloud.google.com/text-to-speech/docs/audio-profiles)
+            This is a parameter to match the output to the sound of the speaker. [Refer here](https://www.home-assistant.io/integrations/google_cloud)
+            for more information.
+          default: []
+          selector:
+            select:
+              options:
+                - wearable-class-device
+                - handset-class-device
+                - headphone-class-device
+                - small-bluetooth-speaker-class-device
+                - medium-bluetooth-speaker-class-device
+                - large-home-entertainment-class-device
+                - large-automotive-class-device
+                - telephony-class-application
+              custom_value: true
+              multiple: false
+
+    google_translate_inputs:
+      name: Required input for use with tts.google_translate_say
+      icon: mdi:microphone-message
+      collapsed: true
+      description: >
+        These inputs are required for the blueprint to function and must be filled in.
+
+        In the end, these *may* have a default value but I suggest you provide a value.
+      input:
+        GTS_language:
+          name: TTS Google Translate Say Language
+          description: >
+            This is for tts.google_translate_say only. Check the complete list
+            of [supported languages](https://cloud.google.com/text-to-speech/docs/voices) for allowed values.
+            The 2 letter lead acronym [example- en for english] is all that is used
+            here. The >2 letter ones do not work...]  All the languages available on 2023-7-17
+            were put into the pick list.
+            
+            This defaults to ```en``` [english]
+          default: en
+          selector:
+            select:
+              options:
+                - af
+                - ak
+                - am
+                - ar
+                - as
+                - ay
+                - az
+                - be
+                - bg
+                - bm
+                - bn
+                - bs
+                - ca
+                - co
+                - cs
+                - cy
+                - da
+                - de
+                - dv
+                - ee
+                - el
+                - en
+                - eo
+                - es
+                - et
+                - eu
+                - fa
+                - fi
+                - fr
+                - fy
+                - ga
+                - gd
+                - gl
+                - gn
+                - gu
+                - ha
+                - hi
+                - hr
+                - ht
+                - hu
+                - hy
+                - id
+                - ig
+                - is
+                - it
+                - ja
+                - jv
+                - jw
+                - ka
+                - kk
+                - km
+                - kn
+                - ko
+                - ku
+                - ky
+                - la
+                - lb
+                - lg
+                - ln
+                - lo
+                - lt
+                - lv
+                - mg
+                - mi
+                - mk
+                - ml
+                - mn
+                - mr
+                - ms
+                - mt
+                - my
+                - ne
+                - nl
+                - "no"
+                - ny
+                - om
+                - or
+                - pa
+                - pl
+                - ps
+                - pt
+                - qu
+                - ro
+                - ru
+                - rw
+                - sa
+                - sd
+                - si
+                - sk
+                - sl
+                - sm
+                - sn
+                - so
+                - sq
+                - sr
+                - st
+                - su
+                - sv
+                - sw
+                - ta
+                - te
+                - tg
+                - th
+                - ti
+                - tk
+                - tl
+                - tr
+                - ts
+                - tt
+                - ug
+                - uk
+                - ur
+                - uz
+                - vi
+                - xh
+                - yi
+                - yo
+                - zu
+              custom_value: true
+              multiple: false
+
+    marytts_inputs:
+      name: Required input for use with tts.marytts_say
+      icon: mdi:microphone-message
+      collapsed: true
+      description: >
+        These inputs are required for the blueprint to function and must be filled in.
+
+        In the end, these *may* have a default value but I suggest you provide a value.
+      input:
+        marytts_language:
+          name: Language option for tts.marytts_say
+          description:  >
+            Used only on tts.marytts_say. [More Info Here](https://www.home-assistant.io/integrations/marytts)
+            All the languages available on 2023-7-17 were put into the pick list.
+            Select speaker Language:
+          default: []
+          selector:
+            select:
+              options:
+                - de
+                - en_GB
+                - en_US
+                - fr
+                - it
+                - lb
+                - ru
+                - sv
+                - te
+                - tr
+              custom_value: true
+              multiple: false
+
+    picotts_inputs:
+      name: Required input for use with tts.picotts_say
+      icon: mdi:microphone-message
+      collapsed: true
+      description: >
+        These inputs are required for the blueprint to function and must be filled in.
+
+        In the end, these *may* have a default value but I suggest you provide a value.
+      input:
+        picotts_language:
+          name: Language option for tts.picotts_say
+          description: >
+            Used only on tts.picotts_say. [More Info Here](https://www.home-assistant.io/integrations/picotts)
+            All the languages available on 2023-7-17 were put into the pick list.
+            Select speaker Language:
+          default: []
+          selector:
+            select:
+              options:
+                - en-US
+                - en-GB
+                - de-DE
+                - es-ES
+                - fr-FR
+                - it-IT
+              custom_value: true
+              multiple: false
+
+    piper_inputs:
+      name: Required input for use with Piper Addon
+      icon: mdi:microphone-message
+      collapsed: true
+      description: >
+        These inputs are required for the blueprint to function and must be filled in.
+
+        In the end, these *may* have a default value but I suggest you provide a value.
+      input:
+        piper_voice:
+          name: Voice option for the Piper addon played thru Wyoming
+          description: >
+            Used only on Piper.
+            [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
+            Also available in the Add-on UI configuration dropdown.
+            If a new one is available you can enter it manually.
+            List updated here October 1, 2923.
+
+            If you speak english & want a bit of fun,
+            post this string in instead of picking from the list...
 
 
-        {{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}
+            {{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}
 
 
-      default: en_US-lessac-medium
-      selector:
-        select:
-          options:
-            - ar_JO-kareem-medium
-            - ca_ES-upc_ona-medium
-            - ca_ES-upc_ona-x_low
-            - ca_ES-upc_pau-x_low
-            - cs_CZ-jirka-low
-            - cs_CZ-jirka-medium
-            - da_DK-talesyntese-medium
-            - de_DE-eva_k-x_low
-            - de_DE-karlsson-low
-            - de_DE-kerstin-low
-            - de_DE-pavoque-low
-            - de_DE-ramona-low
-            - de_DE-thorsten-high
-            - de_DE-thorsten-low
-            - de_DE-thorsten-medium
-            - de_DE-thorsten_emotional-medium
-            - el_GR-rapunzelina-low
-            - en_GB-alan-low
-            - en_GB-alan-medium
-            - en_GB-alba-medium
-            - en_GB-aru-medium
-            - en_GB-jenny_dioco-medium
-            - en_GB-northern_english_male-medium
-            - en_GB-semaine-medium
-            - en_GB-southern_english_female-low
-            - en_GB-vctk-medium
-            - en_US-amy-low
-            - en_US-amy-medium
-            - en_US-arctic-medium
-            - en_US-danny-low
-            - en_US-joe-medium
-            - en_US-kathleen-low
-            - en_US-kusal-medium
-            - en_US-l2arctic-medium
-            - en_US-lessac-high
-            - en_US-lessac-low
-            - en_US-lessac-medium
-            - en_US-libritts-high
-            - en_US-libritts_r-medium
-            - en_US-ryan-high
-            - en_US-ryan-low
-            - en_US-ryan-medium
-            - es_ES-carlfm-x_low
-            - es_ES-davefx-medium
-            - es_ES-mls_10246-low
-            - es_ES-mls_9972-low
-            - es_ES-sharvard-medium
-            - es_MX-ald-medium
-            - fi_FI-harri-low
-            - fi_FI-harri-medium
-            - fr_FR-gilles-low
-            - fr_FR-mls_1840-low
-            - fr_FR-siwis-low
-            - fr_FR-siwis-medium
-            - fr_FR-upmc-medium
-            - hu_HU-anna-medium
-            - hu_HU-berta-medium
-            - is_IS-bui-medium
-            - is_IS-salka-medium
-            - is_IS-steinn-medium
-            - is_IS-ugla-medium
-            - it_IT-riccardo-x_low
-            - ka_GE-natia-medium
-            - kk_KZ-iseke-x_low
-            - kk_KZ-issai-high
-            - kk_KZ-raya-x_low
-            - lb_LU-marylux-medium
-            - ne_NP-google-medium
-            - ne_NP-google-x_low
-            - nl_BE-nathalie-medium
-            - nl_BE-nathalie-x_low
-            - nl_BE-rdh-medium
-            - nl_BE-rdh-x_low
-            - nl_NL-mls_5809-low
-            - nl_NL-mls_7432-low
-            - no_NO-talesyntese-medium
-            - pl_PL-darkman-medium
-            - pl_PL-gosia-medium
-            - pl_PL-mls_6892-low
-            - pt_BR-edresson-low
-            - pt_BR-faber-medium
-            - pt_PT-tugão-medium
-            - ro_RO-mihai-medium
-            - ru_RU-denis-medium
-            - ru_RU-dmitri-medium
-            - ru_RU-irina-medium
-            - ru_RU-ruslan-medium
-            - sk_SK-lili-medium
-            - sr_RS-serbski_institut-medium
-            - sv_SE-nst-medium
-            - sw_CD-lanfrica-medium
-            - tr_TR-dfki-medium
-            - tr_TR-fahrettin-medium
-            - uk_UA-lada-x_low
-            - uk_UA-ukrainian_tts-medium
-            - vi_VN-25hours_single-low
-            - vi_VN-vais1000-medium
-            - vi_VN-vivos-x_low
-            - zh_CN-huayan-medium
-            - zh_CN-huayan-x_low
-          custom_value: true
-          multiple: false
-    voicerss_language:
-      name: Language option for tts.voicerss_say
+          default: en_US-lessac-medium
+          selector:
+            select:
+              options:
+                - ar_JO-kareem-medium
+                - ca_ES-upc_ona-medium
+                - ca_ES-upc_ona-x_low
+                - ca_ES-upc_pau-x_low
+                - cs_CZ-jirka-low
+                - cs_CZ-jirka-medium
+                - da_DK-talesyntese-medium
+                - de_DE-eva_k-x_low
+                - de_DE-karlsson-low
+                - de_DE-kerstin-low
+                - de_DE-pavoque-low
+                - de_DE-ramona-low
+                - de_DE-thorsten-high
+                - de_DE-thorsten-low
+                - de_DE-thorsten-medium
+                - de_DE-thorsten_emotional-medium
+                - el_GR-rapunzelina-low
+                - en_GB-alan-low
+                - en_GB-alan-medium
+                - en_GB-alba-medium
+                - en_GB-aru-medium
+                - en_GB-jenny_dioco-medium
+                - en_GB-northern_english_male-medium
+                - en_GB-semaine-medium
+                - en_GB-southern_english_female-low
+                - en_GB-vctk-medium
+                - en_US-amy-low
+                - en_US-amy-medium
+                - en_US-arctic-medium
+                - en_US-danny-low
+                - en_US-joe-medium
+                - en_US-kathleen-low
+                - en_US-kusal-medium
+                - en_US-l2arctic-medium
+                - en_US-lessac-high
+                - en_US-lessac-low
+                - en_US-lessac-medium
+                - en_US-libritts-high
+                - en_US-libritts_r-medium
+                - en_US-ryan-high
+                - en_US-ryan-low
+                - en_US-ryan-medium
+                - es_ES-carlfm-x_low
+                - es_ES-davefx-medium
+                - es_ES-mls_10246-low
+                - es_ES-mls_9972-low
+                - es_ES-sharvard-medium
+                - es_MX-ald-medium
+                - fi_FI-harri-low
+                - fi_FI-harri-medium
+                - fr_FR-gilles-low
+                - fr_FR-mls_1840-low
+                - fr_FR-siwis-low
+                - fr_FR-siwis-medium
+                - fr_FR-upmc-medium
+                - hu_HU-anna-medium
+                - hu_HU-berta-medium
+                - is_IS-bui-medium
+                - is_IS-salka-medium
+                - is_IS-steinn-medium
+                - is_IS-ugla-medium
+                - it_IT-riccardo-x_low
+                - ka_GE-natia-medium
+                - kk_KZ-iseke-x_low
+                - kk_KZ-issai-high
+                - kk_KZ-raya-x_low
+                - lb_LU-marylux-medium
+                - ne_NP-google-medium
+                - ne_NP-google-x_low
+                - nl_BE-nathalie-medium
+                - nl_BE-nathalie-x_low
+                - nl_BE-rdh-medium
+                - nl_BE-rdh-x_low
+                - nl_NL-mls_5809-low
+                - nl_NL-mls_7432-low
+                - no_NO-talesyntese-medium
+                - pl_PL-darkman-medium
+                - pl_PL-gosia-medium
+                - pl_PL-mls_6892-low
+                - pt_BR-edresson-low
+                - pt_BR-faber-medium
+                - pt_PT-tugão-medium
+                - ro_RO-mihai-medium
+                - ru_RU-denis-medium
+                - ru_RU-dmitri-medium
+                - ru_RU-irina-medium
+                - ru_RU-ruslan-medium
+                - sk_SK-lili-medium
+                - sr_RS-serbski_institut-medium
+                - sv_SE-nst-medium
+                - sw_CD-lanfrica-medium
+                - tr_TR-dfki-medium
+                - tr_TR-fahrettin-medium
+                - uk_UA-lada-x_low
+                - uk_UA-ukrainian_tts-medium
+                - vi_VN-25hours_single-low
+                - vi_VN-vais1000-medium
+                - vi_VN-vivos-x_low
+                - zh_CN-huayan-medium
+                - zh_CN-huayan-x_low
+              custom_value: true
+              multiple: false
+
+    voicerss_inputs:
+      name: Required input for use with tts.voicerss_say
+      icon: mdi:microphone-message
+      collapsed: true
       description: >
-        Used only on tts.voicerss_say. [More Info Here](https://www.home-assistant.io/integrations/voicerss)
-        All the languages available on 2023-7-17 were put into the pick list.
-        Select speaker Language. [SEE for details](https://www.voicerss.org/api).
-      default: []
-      selector:
-        select:
-          options:
-            - ar-eg
-            - ar-sa
-            - bg-bg
-            - ca-es
-            - zh-cn
-            - zh-hk
-            - zh-tw
-            - hr-hr
-            - cs-cz
-            - da-dk
-            - nl-be
-            - nl-nl
-            - en-au
-            - en-ca
-            - en-gb
-            - en-in
-            - en-ie
-            - en-us
-            - fi-fi
-            - fr-ca
-            - fr-fr
-            - fr-ch
-            - de-at
-            - de-de
-            - de-ch
-            - el-gr
-            - he-il
-            - hi-in
-            - hu-hu
-            - id-id
-            - it-it
-            - ja-jp
-            - ko-kr
-            - ms-my
-            - nb-no
-            - pl-pl
-            - pt-br
-            - pt-pt
-            - ro-ro
-            - ru-ru
-            - sk-sk
-            - sl-si
-            - es-mx
-            - es-es
-            - sv-se
-            - ta-in
-            - th-th
-            - tr-tr
-            - vi-vn
-          custom_value: true
-          multiple: false
-    voicerss_format:
-      name: Message format option for tts.voicerss_say
+        These inputs are required for the blueprint to function and must be filled in.
+
+        In the end, these *may* have a default value but I suggest you provide a value.
+      input:
+        voicerss_language:
+          name: Language option for tts.voicerss_say
+          description: >
+            Used only on tts.voicerss_say. [More Info Here](https://www.home-assistant.io/integrations/voicerss)
+            All the languages available on 2023-7-17 were put into the pick list.
+            Select speaker Language. [SEE for details](https://www.voicerss.org/api).
+          default: []
+          selector:
+            select:
+              options:
+                - ar-eg
+                - ar-sa
+                - bg-bg
+                - ca-es
+                - zh-cn
+                - zh-hk
+                - zh-tw
+                - hr-hr
+                - cs-cz
+                - da-dk
+                - nl-be
+                - nl-nl
+                - en-au
+                - en-ca
+                - en-gb
+                - en-in
+                - en-ie
+                - en-us
+                - fi-fi
+                - fr-ca
+                - fr-fr
+                - fr-ch
+                - de-at
+                - de-de
+                - de-ch
+                - el-gr
+                - he-il
+                - hi-in
+                - hu-hu
+                - id-id
+                - it-it
+                - ja-jp
+                - ko-kr
+                - ms-my
+                - nb-no
+                - pl-pl
+                - pt-br
+                - pt-pt
+                - ro-ro
+                - ru-ru
+                - sk-sk
+                - sl-si
+                - es-mx
+                - es-es
+                - sv-se
+                - ta-in
+                - th-th
+                - tr-tr
+                - vi-vn
+              custom_value: true
+              multiple: false
+        voicerss_format:
+          name: Message format option for tts.voicerss_say
+          description: >
+            Used only on tts.voicerss_say. Select message format. [More Info Here](https://www.home-assistant.io/integrations/voicerss)
+            There were too many to do a selector. [SEE for details](https://www.voicerss.org/api).
+          default: []
+          selector:
+            text:
+              multiline: false
+
+    yandextts_inputs:
+      name: Required input for use with tts.yandextts_say
+      icon: mdi:microphone-message
+      collapsed: true
       description: >
-        Used only on tts.voicerss_say. Select message format. [More Info Here](https://www.home-assistant.io/integrations/voicerss)
-        There were too many to do a selector. [SEE for details](https://www.voicerss.org/api).
-      default: []
-      selector:
-        text:
-          multiline: false
-    yandextts_language:
-      name: Language option for tts.yandextts_say
-      description: >
-        Used only on tts.yandextts_say. 
-        All the languages available on 2023-7-17 were put into the pick list.
-        Select speaker Language. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
-      default: []
-      selector:
-        select:
-          options:
-            - en-US
-            - ru-RU
-            - uk-UK
-            - tr-TR
-          custom_value: false
-          multiple: false
-    yandextts_voice:
-      name: Voice option for tts.yandextts_say
-      description: >
-        Used only on tts.yandextts_say. Select speaker Voice. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
-      default: []
-      selector:
-        select:
-          options:
-            - jane
-            - oksana
-            - alyss
-            - omazh
-            - silaerkan
-            - nastya
-            - sasha
-            - tanya
-            - tatyana_abramova
-            - voicesearch
-            - zombie
-            - zahar
-            - ermil
-            - levitan
-            - ermilov
-            - kolya
-            - kostya
-            - nick
-            - erkanyavas
-            - zhenya
-            - anton_samokhvalov
-            - ermil_with_tuning
-            - robot
-            - dude
-            - smoky
-          custom_value: true
-          multiple: false
-    yandextts_emotion:
-      name: Emotion option for tts.yandextts_say
-      description: >
-        Used only on tts.yandextts_say. Select speaker Emotion. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
-      default: []
-      selector:
-        select:
-          options:
-            - neutral
-            - evil
-            - good
-          custom_value: true
-          multiple: false
+        These inputs are required for the blueprint to function and must be filled in.
+
+        In the end, these *may* have a default value but I suggest you provide a value.
+      input:
+        yandextts_language:
+          name: Language option for tts.yandextts_say
+          description: >
+            Used only on tts.yandextts_say. 
+            All the languages available on 2023-7-17 were put into the pick list.
+            Select speaker Language. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
+          default: []
+          selector:
+            select:
+              options:
+                - en-US
+                - ru-RU
+                - uk-UK
+                - tr-TR
+              custom_value: false
+              multiple: false
+        yandextts_voice:
+          name: Voice option for tts.yandextts_say
+          description: >
+            Used only on tts.yandextts_say. Select speaker Voice. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
+          default: []
+          selector:
+            select:
+              options:
+                - jane
+                - oksana
+                - alyss
+                - omazh
+                - silaerkan
+                - nastya
+                - sasha
+                - tanya
+                - tatyana_abramova
+                - voicesearch
+                - zombie
+                - zahar
+                - ermil
+                - levitan
+                - ermilov
+                - kolya
+                - kostya
+                - nick
+                - erkanyavas
+                - zhenya
+                - anton_samokhvalov
+                - ermil_with_tuning
+                - robot
+                - dude
+                - smoky
+              custom_value: true
+              multiple: false
+        yandextts_emotion:
+          name: Emotion option for tts.yandextts_say
+          description: >
+            Used only on tts.yandextts_say. Select speaker Emotion. [SEE for Details](https://www.home-assistant.io/integrations/yandextts).
+          default: []
+          selector:
+            select:
+              options:
+                - neutral
+                - evil
+                - good
+              custom_value: true
+              multiple: false
 
 fields:
   live_message:

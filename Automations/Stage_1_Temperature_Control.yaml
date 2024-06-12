@@ -1,5 +1,5 @@
 blueprint:
-  name: State 1 temperature ramp control-2024-01-19
+  name: State 1 temperature ramp control-2024-06-08
   author: SirGoodenough
   description: >
     This ramps up the thermostat just enough at a time to keep your stage 2 
@@ -17,127 +17,159 @@ blueprint:
 
     [Community link for this blueprint](https://community.home-assistant.io/t/stage-1-temperature-control-for-climate-entity/649401)
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Stage_1_Temperature_Control.yaml
-  homeassistant:
-    min_version: 2023.8.0
   domain: automation
+  homeassistant:
+    min_version: 2024.6.0
   input:
-    climate_e:
-      name: Room Thermostat Climate Entity
+    required_inputs:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        The Climate device, thermostat, that you are ramping.
-      selector:
-        entity:
-          filter:
-            - domain: climate
-          multiple: false
-    maxTemp:
-      name: Goal Temperature
-      description: >
-        If it is at least this, go no warmer.
-      selector:
-        number:
-          min: 30
-          max: 90
-          unit_of_measurement: Degrees
-          mode: slider
-          step: 0.5
-    rampRate:
-      name: Degrees above actual
-      description: >
-        Keep set point this above actual
-      default: 1.5
-      selector:
-        number:
-          min: 0
-          max: 5
-          unit_of_measurement: Degrees
-          mode: slider
-          step: 0.5
-    interval:
-      name: Hold Period
-      description: >
-        Set this delay between thermostat temp setting events.
-        If it changes the goal set temp, it waits this long before it rechecks.
-        Basically this rate limits stuff.
-      default:
-        hours: 0
-        minutes: 3
-        seconds: 0
-      selector:
-        duration:
-    ramp_start_time:
-      name: Time of day ramp should start
-      description: >
-        Set this for the time of day you want the ramp function to be enabled.
-      selector:
-        time: {}
-    ramp_end_time:
-      name: Time of day ramp should stop
-      description: >
-        Set this for the time of day you want the ramp function to end.
+        This input is required for the blueprint to function and must be filled in.
+      input:
+        climate_e:
+          name: Room Thermostat Climate Entity
+          description: >
+            The Climate device, thermostat, that you are ramping.
+          selector:
+            entity:
+              filter:
+                - domain: climate
+              multiple: false
+        ramp_start_time:
+          name: Time of day ramp should start
+          description: >
+            Set this for the time of day you want the ramp function to be enabled.
+          selector:
+            time: {}
+        ramp_end_time:
+          name: Time of day ramp should stop
+          description: >
+            Set this for the time of day you want the ramp function to end.
 
-        Note: If it reaches maxTemp sooner, it will stop there.
-      selector:
-        time: {}
-    weekday:
-      name: Day of the week to use the Automation
-      description: Control temp on these days with this automation.
-      default:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-        - sat
-        - sun
-      selector:
-        select:
-          options:
-          - label: Monday
-            value: mon
-          - label: Tuesday
-            value: tue
-          - label: Wednesday
-            value: wed
-          - label: Thursday
-            value: thu
-          - label: Friday
-            value: fri
-          - label: Saturday
-            value: sat
-          - label: Sunday
-            value: sun
-          custom_value: false
-          multiple: true
-    occ_test:
-      name: Enable the Occupancy test?
-      description: |
-        This BluePrint can take into consideration if a zone is occupied.
-        To enable this feature, select yes.
-        To ignore this feature select no.
-      default: false
-      selector:
-        boolean:
-    t_zone:
-      name: Zone to monitor for occupancy
-      description: |
-        If you said yes above, then you enter the zome to monitor here.
-        Default zone is home. Change to another zone if you want to.
-        If you said no above, this section has no effect on your BluePrint.
-      default: zone.home
-      selector:
-        entity:
-          filter:
-            - domain: zone
-          multiple: false
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Is it heating season, is my primary heat source ready, etc.)
-      default: []
-      selector:
-        condition:
+            Note: If it reaches maxTemp sooner, it will stop there.
+          selector:
+            time: {}
+        maxTemp:
+          name: Goal Temperature
+          description: >
+            If it is at least this, go no warmer.
+          selector:
+            number:
+              min: 30
+              max: 90
+              unit_of_measurement: Degrees
+              mode: slider
+              step: 0.5
+
+    required_inputs_with_defaults:
+      name: Defaulted Inputs
+      icon: mdi:alert-decagram
+      collapsed: true
+      description: >
+        These inputs are required, but have values that are defaulted to values that work for me.
+          It is possible you will need to change them.
+          My suggestion is to not change them until you detect an issue that you think can be
+          fixed by changing these.
+
+          In the end, these must have a value.
+          This blueprint will work if no changes are made to this section.
+      input:
+        rampRate:
+          name: Degrees above actual
+          description: >
+            Keep set point this above actual
+          default: 1.5
+          selector:
+            number:
+              min: 0
+              max: 5
+              unit_of_measurement: Degrees
+              mode: slider
+              step: 0.5
+
+    optional_parameters:
+      name: Optional parameters🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
+      description: >
+        These inputs set optional parameters that allow you to customize the intended actions.
+          Read the individual descriptions for more details.
+
+          The Blueprint will work if no changes are made to this section.
+      input:
+        interval:
+          name: Hold Period
+          description: >
+            Set this delay between thermostat temp setting events.
+            If it changes the goal set temp, it waits this long before it rechecks.
+            Basically this rate limits stuff.
+          default:
+            hours: 0
+            minutes: 3
+            seconds: 0
+          selector:
+            duration:
+        weekday:
+          name: Day of the week to use the Automation
+          description: Control temp on these days with this automation.
+          default:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+            - sat
+            - sun
+          selector:
+            select:
+              options:
+              - label: Monday
+                value: mon
+              - label: Tuesday
+                value: tue
+              - label: Wednesday
+                value: wed
+              - label: Thursday
+                value: thu
+              - label: Friday
+                value: fri
+              - label: Saturday
+                value: sat
+              - label: Sunday
+                value: sun
+              custom_value: false
+              multiple: true
+        occ_test:
+          name: Enable the Occupancy test?
+          description: |
+            This BluePrint can take into consideration if a zone is occupied.
+            To enable this feature, select yes.
+            To ignore this feature select no.
+          default: false
+          selector:
+            boolean:
+        t_zone:
+          name: Zone to monitor for occupancy
+          description: |
+            If you said yes above, then you enter the zome to monitor here.
+            Default zone is home. Change to another zone if you want to.
+            If you said no above, this section has no effect on your BluePrint.
+          default: zone.home
+          selector:
+            entity:
+              filter:
+                - domain: zone
+              multiple: false
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Is it heating season, is my primary heat source ready, etc.)
+          default: []
+          selector:
+            condition:
 
 trigger:
   - platform: time

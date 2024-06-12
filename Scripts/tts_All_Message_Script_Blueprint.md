@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
 * **2024-04-21**: The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
 * **2023-12-07**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-09-29**: Add the ability to use Piper TTS.

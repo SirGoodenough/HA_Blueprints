@@ -1,5 +1,5 @@
 blueprint:
-  name: Throttle-your-water-flow-tasmota-2023-10-31
+  name: Throttle-your-water-flow-tasmota-2024-06-08
   author: SirGoodenough
   description: >
     This sets the amount of water sent to your Humidifier. 
@@ -36,99 +36,131 @@ blueprint:
   domain: automation
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml
   homeassistant:
-    min_version: 2023.8.0
+    min_version: 2024.6.0
   input:
-    humidifier:
-      name: Humidifier Entity
-      description: Generic Hygrometer entity
-      selector:
-        entity:
-          multiple: false
-    humidity:
-      name: Humidity Sensor Group
-      description: Sensor that contains the current actual Humidity
-      selector:
-        entity:
-          filter:
-            - domain: sensor
-          multiple: false
-    power_1:
-      name: Switch entity for switch 1 controlling the water
+    required_inputs:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        This needs to be the HA switch entity from the Sonoff SV 
-        that controls the water output valve so that this BP knows when the
-        water is actually on.
+        These inputs are required for the blueprint to function and must be filled in.
+      input:
+        humidifier:
+          name: Humidifier Entity
+          description: Generic Hygrometer entity
+          selector:
+            entity:
+              multiple: false
+        humidity:
+          name: Humidity Sensor Group
+          description: Sensor that contains the current actual Humidity
+          selector:
+            entity:
+              filter:
+                - domain: sensor
+              multiple: false
+        power_1:
+          name: Switch entity for switch 1 controlling the water
+          description: >
+            This needs to be the HA switch entity from the Sonoff SV 
+            that controls the water output valve so that this BP knows when the
+            water is actually on.
 
-      selector:
-        entity:
-          filter:
-            - domain: switch
-          multiple: false
-    mqtt_topic:
-      name: Topic to used send the time value to the Tasmota device
+          selector:
+            entity:
+              filter:
+                - domain: switch
+              multiple: false
+        mqtt_topic:
+          name: Topic to used send the time value to the Tasmota device
+          description: >
+            This is the MQTT Topic needed.
+          
+            A topic such as this with your device top topic. We are setting var2 vi cmnd:
+
+            ```cmnd/humidifier/var2```
+
+            You need to look at **YOUR device** and determine the exact correct topic
+            to send to the broker to make yours work. See description file if you need more help.
+
+          selector:
+            text:
+              multiline: false
+
+    required_inputs_with_defaults:
+      name: Defaulted Inputs
+      icon: mdi:alert-decagram
+      collapsed: true
       description: >
-        This is the MQTT Topic needed.
-      
-        A topic such as this with your device top topic. We are setting var2 vi cmnd:
+        These inputs are required, but have values that are defaulted to values that work for me.
+          It is possible you will need to change them.
+          My suggestion is to not change them until you detect an issue that you think can be
+          fixed by changing these.
 
-        ```cmnd/humidifier/var2```
+          In the end, these must have a value.
+          This blueprint will work if no changes are made to this section.
+      input:
+        scalar:
+          name: Scaling Factor
+          description: >
+            This number is the exponent in the calculation of how long the water stays on scaled
+            against thd amount the actual humidity is below the target.
 
-        You need to look at **YOUR device** and determine the exact correct topic
-        to send to the broker to make yours work. See description file if you need more help.
+            The default is 2, but if your humidifier is not keeping up set it to a higher number.
 
-      selector:
-        text:
-          multiline: false
-    scalar:
-      name: Scaling Factor
+          default: 2.0
+          selector:
+            number:
+              min: 0.1
+              max: 10.0
+              mode: slider
+              step: 0.1
+        minimum_time:
+          name: Floor for time value sent to Tasmota
+          description: >
+            Minimum number of seconds you will allow the water to run.
+            Defaults are set around a 2 minute Tasmota Cycle
+
+          default: 10.0
+          selector:
+            number:
+              min: 0.0
+              max: 120.0
+              unit_of_measurement: seconds
+              mode: slider
+              step: 0.1
+        maximum_time:
+          name: Ceiling for time value sent to Tasmota
+          description: 'Maximum number of seconds you will allow the water to run. 
+            Defaults are set around a 2 minute Tasmota Cycle
+            '
+          default: 80.0
+          selector:
+            number:
+              min: 0.0
+              max: 120.0
+              unit_of_measurement: seconds
+              mode: slider
+              step: 0.1
+
+    optional_parameters:
+      name: Optional parameters🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
       description: >
-        This number is the exponent in the calculation of how long the water stays on scaled
-        against thd amount the actual humidity is below the target.
+        These inputs set optional parameters that allow you to customize the intended actions.
+          Read the individual descriptions for more details.
 
-        The default is 2, but if your humidifier is not keeping up set it to a higher number.
-
-      default: 2.0
-      selector:
-        number:
-          min: 0.1
-          max: 10.0
-          mode: slider
-          step: 0.1
-    minimum_time:
-      name: Floor for time value sent to Tasmota
-      description: >
-        Minimum number of seconds you will allow the water to run.
-        Defaults are set around a 2 minute Tasmota Cycle
-
-      default: 10.0
-      selector:
-        number:
-          min: 0.0
-          max: 120.0
-          unit_of_measurement: seconds
-          mode: slider
-          step: 0.1
-    maximum_time:
-      name: Ceiling for time value sent to Tasmota
-      description: 'Maximum number of seconds you will allow the water to run. 
-        Defaults are set around a 2 minute Tasmota Cycle
-        '
-      default: 80.0
-      selector:
-        number:
-          min: 0.0
-          max: 120.0
-          unit_of_measurement: seconds
-          mode: slider
-          step: 0.1
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
-      default: []
-      selector:
-        condition:
+          The Blueprint will work if no changes are made to this section.
+      input:
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Home occupied, TV on, etc)
+          default: []
+          selector:
+            condition:
 
 trigger:
 - platform: state

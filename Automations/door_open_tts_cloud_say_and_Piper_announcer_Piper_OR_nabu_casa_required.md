@@ -2,6 +2,7 @@ Works with BOTH Piper and Nabu-Casa tts-cloud-say. This blueprint is set up to w
 
 ## 📑 Changelog
 
+* **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
 * **2024-04-22**: The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
 * **2023-10-02**: Add the ability to use Piper TTS.
   * File Rename to reflect new function.
@@ -62,35 +63,30 @@ Requirements
 
 ## 🗂 Input fields
 
-    tts_service: 'Text to Speech Processor'
-        Select the configured TTS engine for media_player notifications.
-        [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
-
     door_entity: 'Door Sensor (or any binary_sensor will do...)'
         Entity that causes the announcement. Actually any entity that 
         changes its state from off to on will work here, You would
         just need to enter the entity manually if it's not a
         binary sensor.
 
-    reminded: 'Did I remind you?'
-        This is optional.
-        You can leave this at the default (empty) and the behavior of the BP will
-        be exactly what it was in the past. This ensures your old set-up will not
-        break if you upgrade the BluePrint.
-        Or if you create an 'input_boolean'/'toggle' helper and put the name in
-        here, the behavior will be the door is silent as long as you do not
-        exceed the time it takes to get to the warning message that the door is
-        open. If that warning message triggers once, it will then thank you after
-        you close it.
-
-    start_time: StartTime
-        Time of day you want to enable the announcement each day.
-
-    end_time: EndTime
-        Time of day you want to disable the announcement each day. 
-
     speaker_target: Speaker
         Entity to announce event on
+
+    tts_service: 'Text to Speech Processor'
+        Select the configured TTS engine for media_player notifications.
+        [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
+
+    announcement_message: Announcement message
+        What to say when door is opened.
+        The variable {{ door }} is available if you want the dynamic
+          friendly_name of the device that triggered.
+        This can be set to "" if you do not want a message while sensor is active.
+
+    final_message: Final message
+        What to say when door is closed.
+        The variable {{ door }} is available if you want the dynamic
+          friendly_name of the device that triggered.
+        This can be set to "" if you do not want a message after the sensor is reset.
 
     speaker_language: Speaker Language
         Select Language code.
@@ -109,21 +105,26 @@ Requirements
         Also available in the Add-on UI configuration dropdown.
         If a new one is available you can enter it manually.
 
-    announcement_message: Announcement message
-        What to say when door is opened.
-        The variable {{ door }} is available if you want the dynamic
-          friendly_name of the device that triggered.
-        This can be set to "" if you do not want a message while sensor is active.
-
-    final_message: Final message
-        What to say when door is closed.
-        The variable {{ door }} is available if you want the dynamic
-          friendly_name of the device that triggered.
-        This can be set to "" if you do not want a message after the sensor is reset.
-
     cooldown: Announcement cooldown
         The minimum number of seconds needed before AND between between
         announcements.
+
+    reminded: 'Did I remind you?'
+        This is optional.
+        You can leave this at the default (empty) and the behavior of the BP will
+        be exactly what it was in the past. This ensures your old set-up will not
+        break if you upgrade the BluePrint.
+        Or if you create an 'input_boolean'/'toggle' helper and put the name in
+        here, the behavior will be the door is silent as long as you do not
+        exceed the time it takes to get to the warning message that the door is
+        open. If that warning message triggers once, it will then thank you after
+        you close it.
+
+    start_time: StartTime
+        Time of day you want to enable the announcement each day.
+
+    end_time: EndTime
+        Time of day you want to disable the announcement each day. 
 
     additional_conditions:
         Extra conditions you may want to add to this automation 

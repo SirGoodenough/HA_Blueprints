@@ -1,5 +1,5 @@
 blueprint:
-  name: Door open tts.cloud_say and Piper announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2024-04-22
+  name: Door open tts.cloud_say and Piper announcer (Uses Piper Addon OR Nabu-Casa Cloud) - 2024-06-08
   author: SirGoodenough
   description: >
     This uses tts.cloud_say from Nabu-Casa or Wyoming with the Piper Addon to tell you a door is open too
@@ -12,528 +12,560 @@ blueprint:
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/door-open-tts-cloud-say-and-piper-announcer-piper-or-nabu-casa-required/316046)
-  homeassistant:
-    min_version: 2023.8.0
-  domain: automation
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/door_open_tts_cloud_say_and_Piper_announcer_Piper_OR_nabu_casa_required.yaml
+  domain: automation
+  homeassistant:
+    min_version: 2024.6.0
   input:
-    tts_service:
-      name: Text to Speech Processor
+    required_inputs:
+      name: Required input 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
+        These inputs are required for the blueprint to function and must be filled in.
+      input:
+        door_entity:
+          name: 'Door Sensor (or any binary_sensor will do...)'
+          description: >
+            Entity that initiates the announcement. Actually any entity that changes
+            its state from off to on will work here, You would just need to enter the
+            entity manually if it's not a binary sensor.
+            However this BP is expecting 'on' or 'off' as the available states.
+          selector:
+            entity:
+              multiple: true
+              filter:
+                - domain: binary_sensor
+        speaker_target:
+          name: Speaker
+          description: Entity to announce event on
+          selector:
+            entity:
+              filter:
+                - domain: media_player
+              multiple: true
 
-        Option 1 is the Nabu-Casa based tts.cloud_say integration which
-          requires you to be subscribed to Nabu-Casa.  
-
-        Option 2 is the Piper add-on found in that uses Wyoming Integration.
-          Piper does not require a subscription.
-      default: nabu
-      selector:
-        select:
-          options:
-          - label: Nabu-Case based tts.cloud_say
-            value: nabu
-          - label: Piper Add-on via Wyoming Integration
-            value: piper
-          custom_value: false
-          multiple: false
-    door_entity:
-      name: 'Door Sensor (or any binary_sensor will do...)'
+    required_inputs_with_defaults:
+      name: Defaulted Inputs
+      icon: mdi:alert-decagram
+      collapsed: true
       description: >
-        Entity that initiates the announcement. Actually any entity that changes
-        its state from off to on will work here, You would just need to enter the
-        entity manually if it's not a binary sensor.
-        However this BP is expecting 'on' or 'off' as the available states.
-      selector:
-        entity:
-          multiple: true
-          filter:
-            - domain: binary_sensor
-    reminded:
-      name: 'Did I remind you?'
-      default:
+        These inputs are required, but have values that are defaulted to values that work for me.
+          It is possible you will need to change them.
+          My suggestion is to not change them until you detect an issue that you think can be
+          fixed by changing these.
+
+          In the end, these must have a value.
+          This blueprint will work if no changes are made to this section.
+      input:
+        tts_service:
+          name: Text to Speech Processor
+          description: >
+            Select the configured TTS engine for media_player notifications. [SEE for details](https://www.home-assistant.io/integrations/#text-to-speech)
+
+            Option 1 is the Nabu-Casa based tts.cloud_say integration which
+              requires you to be subscribed to Nabu-Casa.  
+
+            Option 2 is the Piper add-on found in that uses Wyoming Integration.
+              Piper does not require a subscription.
+          default: nabu
+          selector:
+            select:
+              options:
+              - label: Nabu-Case based tts.cloud_say
+                value: nabu
+              - label: Piper Add-on via Wyoming Integration
+                value: piper
+              custom_value: false
+              multiple: false
+        announcement_message:
+          name: Announcement message
+          description: >  
+            What to say when door is opened
+
+            The variable {{ door }} is available if you want the dynamic
+              friendly_name of the device that triggered.
+            This can be set to "" if you do not want a message while sensor is active.
+          default: "Your {{ door }} has been left open."
+          selector:
+            text:
+              multiline: true
+        final_message:
+          name: Final message
+          description: >
+            What to say when door is closed.
+
+            The variable {{ door }} is available if you want the dynamic
+              friendly_name of the device that triggered.
+            This can be set to "" if you do not want a message after the sensor is reset.
+          default: "Thank you for closing the {{ door }}."
+          selector:
+            text:
+              multiline: true
+        # speaker_gender:
+        #     # The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
+        #     #   and will be removed. Please update your automations and scripts to replace the gender
+        #     #   option with an option for a supported voice instead.
+        #   name: Speaker Gender
+        #   description: Required for tts-cloud_say only. Select speaker gender male or female.
+        #   default: female
+        #   selector:
+        #     select:
+        #       options:
+        #       - female
+        #       - male
+        #       custom_value: false
+        #       multiple: false
+        speaker_language:
+          name: Speaker Language
+          description: >
+            Required for tts-cloud_say only.
+            Select Language code. [See here for Details](https://www.nabucasa.com/config/tts/)
+
+            This defaults to en-US (english/US). However all the languages available on
+            2023-8-17 were put into the pick list. 
+
+            ***NOTE: It is possible that not all Languages will give you both Genders.***
+          default: en-US
+          selector:
+            select:
+              options:
+                - af-ZA
+                - am-ET
+                - ar-AE
+                - ar-BH
+                - ar-DZ
+                - ar-EG
+                - ar-IL
+                - ar-IQ
+                - ar-JO
+                - ar-KW
+                - ar-LB
+                - ar-LY
+                - ar-MA
+                - ar-OM
+                - ar-PS
+                - ar-QA
+                - ar-SA
+                - ar-SY
+                - ar-TN
+                - ar-YE
+                - az-AZ
+                - bg-BG
+                - bn-IN
+                - bs-BA
+                - ca-ES
+                - cs-CZ
+                - cy-GB
+                - da-DK
+                - de-AT
+                - de-CH
+                - de-DE
+                - el-GR
+                - en-AU
+                - en-CA
+                - en-GB
+                - en-GH
+                - en-HK
+                - en-IE
+                - en-IN
+                - en-KE
+                - en-NG
+                - en-NZ
+                - en-PH
+                - en-SG
+                - en-TZ
+                - en-US
+                - en-ZA
+                - es-AR
+                - es-BO
+                - es-CL
+                - es-CO
+                - es-CR
+                - es-CU
+                - es-DO
+                - es-EC
+                - es-ES
+                - es-GQ
+                - es-GT
+                - es-HN
+                - es-MX
+                - es-NI
+                - es-PA
+                - es-PE
+                - es-PR
+                - es-PY
+                - es-SV
+                - es-US
+                - es-UY
+                - es-VE
+                - et-EE
+                - eu-ES
+                - fa-IR
+                - fi-FI
+                - fil-PH
+                - fr-BE
+                - fr-CA
+                - fr-CH
+                - fr-FR
+                - ga-IE
+                - gl-ES
+                - gu-IN
+                - he-IL
+                - hi-IN
+                - hr-HR
+                - hu-HU
+                - hy-AM
+                - id-ID
+                - is-IS
+                - it-CH
+                - it-IT
+                - ja-JP
+                - jv-ID
+                - ka-GE
+                - kk-KZ
+                - km-KH
+                - kn-IN
+                - ko-KR
+                - lo-LA
+                - lt-LT
+                - lv-LV
+                - mk-MK
+                - ml-IN
+                - mn-MN
+                - mr-IN
+                - ms-MY
+                - mt-MT
+                - my-MM
+                - nb-NO
+                - ne-NP
+                - nl-BE
+                - nl-NL
+                - pl-PL
+                - ps-AF
+                - pt-BR
+                - pt-PT
+                - ro-RO
+                - ru-RU
+                - si-LK
+                - sk-SK
+                - sl-SI
+                - so-SO
+                - sq-AL
+                - sr-RS
+                - sv-SE
+                - sw-KE
+                - sw-TZ
+                - ta-IN
+                - te-IN
+                - th-TH
+                - tr-TR
+                - uk-UA
+                - uz-UZ
+                - vi-VN
+                - wuu-CN
+                - yue-CN
+                - zh-CN
+                - zh-CN-shandong
+                - zh-CN-sichuan
+                - zh-HK
+                - zh-TW
+                - zu-ZA
+              custom_value: false
+              multiple: false
+        speaker_voice:
+          name: Voice option for tts-cloud_say Nabu-Casa use only.
+          description: > 
+            Required for tts-cloud_say only.
+            ***Here you need to be careful.***
+
+            If you are OK with the default voice then just leave this field empty.
+
+            If you want to change the voice, you need to pick from [This List, TTS_VOICES section](https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py)
+            being certain to match the country code you picked above with one of
+            the voices available for that country code on that list.
+
+            Failure to do so will result in no voice being heard.
+
+
+            If you want to know what these sound like, well, you are just going to
+            have to try them and see what you like.
+
+            If you are en-US, you might want to paste this in there for some fun:
+
+              {{ ("JennyNeural",
+              "AIGenerate1Neural",
+              "AIGenerate2Neural",
+              "AmberNeural",
+              "AnaNeural",
+              "AriaNeural",
+              "AshleyNeural",
+              "BrandonNeural",
+              "ChristopherNeural",
+              "CoraNeural",
+              "DavisNeural",
+              "ElizabethNeural",
+              "EricNeural",
+              "GuyNeural",
+              "JacobNeural",
+              "JaneNeural",
+              "JasonNeural",
+              "JennyMultilingualNeural",
+              "MichelleNeural",
+              "MonicaNeural",
+              "NancyNeural",
+              "RogerNeural",
+              "SaraNeural",
+              "SteffanNeural",
+              "TonyNeural") | random }}
+          default: JennyMultilingualNeural
+          selector:
+            text:
+              multiline: true
+        piper_voice:
+          name: Voice option for the Piper addon played thru Wyoming
+          description: >
+            Used only on Piper.
+            [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
+            Also available in the Add-on UI configuration dropdown.
+            If a new one is available you can enter it manually.
+            List updated here October 1, 2923.
+
+            If you speak english & want a bit of fun,
+            post this string in instead of picking from the list...
+
+
+            {{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}
+
+
+          default: en_US-lessac-medium
+          selector:
+            select:
+              options:
+                - ar_JO-kareem-medium
+                - ca_ES-upc_ona-medium
+                - ca_ES-upc_ona-x_low
+                - ca_ES-upc_pau-x_low
+                - cs_CZ-jirka-low
+                - cs_CZ-jirka-medium
+                - da_DK-talesyntese-medium
+                - de_DE-eva_k-x_low
+                - de_DE-karlsson-low
+                - de_DE-kerstin-low
+                - de_DE-pavoque-low
+                - de_DE-ramona-low
+                - de_DE-thorsten-high
+                - de_DE-thorsten-low
+                - de_DE-thorsten-medium
+                - de_DE-thorsten_emotional-medium
+                - el_GR-rapunzelina-low
+                - en_GB-alan-low
+                - en_GB-alan-medium
+                - en_GB-alba-medium
+                - en_GB-aru-medium
+                - en_GB-jenny_dioco-medium
+                - en_GB-northern_english_male-medium
+                - en_GB-semaine-medium
+                - en_GB-southern_english_female-low
+                - en_GB-vctk-medium
+                - en_US-amy-low
+                - en_US-amy-medium
+                - en_US-arctic-medium
+                - en_US-danny-low
+                - en_US-joe-medium
+                - en_US-kathleen-low
+                - en_US-kusal-medium
+                - en_US-l2arctic-medium
+                - en_US-lessac-high
+                - en_US-lessac-low
+                - en_US-lessac-medium
+                - en_US-libritts-high
+                - en_US-libritts_r-medium
+                - en_US-ryan-high
+                - en_US-ryan-low
+                - en_US-ryan-medium
+                - es_ES-carlfm-x_low
+                - es_ES-davefx-medium
+                - es_ES-mls_10246-low
+                - es_ES-mls_9972-low
+                - es_ES-sharvard-medium
+                - es_MX-ald-medium
+                - fi_FI-harri-low
+                - fi_FI-harri-medium
+                - fr_FR-gilles-low
+                - fr_FR-mls_1840-low
+                - fr_FR-siwis-low
+                - fr_FR-siwis-medium
+                - fr_FR-upmc-medium
+                - hu_HU-anna-medium
+                - hu_HU-berta-medium
+                - is_IS-bui-medium
+                - is_IS-salka-medium
+                - is_IS-steinn-medium
+                - is_IS-ugla-medium
+                - it_IT-riccardo-x_low
+                - ka_GE-natia-medium
+                - kk_KZ-iseke-x_low
+                - kk_KZ-issai-high
+                - kk_KZ-raya-x_low
+                - lb_LU-marylux-medium
+                - ne_NP-google-medium
+                - ne_NP-google-x_low
+                - nl_BE-nathalie-medium
+                - nl_BE-nathalie-x_low
+                - nl_BE-rdh-medium
+                - nl_BE-rdh-x_low
+                - nl_NL-mls_5809-low
+                - nl_NL-mls_7432-low
+                - no_NO-talesyntese-medium
+                - pl_PL-darkman-medium
+                - pl_PL-gosia-medium
+                - pl_PL-mls_6892-low
+                - pt_BR-edresson-low
+                - pt_BR-faber-medium
+                - pt_PT-tugão-medium
+                - ro_RO-mihai-medium
+                - ru_RU-denis-medium
+                - ru_RU-dmitri-medium
+                - ru_RU-irina-medium
+                - ru_RU-ruslan-medium
+                - sk_SK-lili-medium
+                - sr_RS-serbski_institut-medium
+                - sv_SE-nst-medium
+                - sw_CD-lanfrica-medium
+                - tr_TR-dfki-medium
+                - tr_TR-fahrettin-medium
+                - uk_UA-lada-x_low
+                - uk_UA-ukrainian_tts-medium
+                - vi_VN-25hours_single-low
+                - vi_VN-vais1000-medium
+                - vi_VN-vivos-x_low
+                - zh_CN-huayan-medium
+                - zh_CN-huayan-x_low
+              custom_value: true
+              multiple: false
+        cooldown:
+          name: Announcement cooldown
+          description: >
+            The minimum number of seconds needed before AND between between
+            announcements.
+
+            This is your initial delay and pause between messages...
+          default: 10
+          selector:
+            number:
+              min: 4.0
+              max: 7200.0
+              unit_of_measurement: seconds
+              step: 1.0
+              mode: slider
+
+    optional_parameters:
+      name: Optional parameters🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
       description: >
-        This is optional.
-        Original behavior of this BluePrint was that every time you close the door,
-        the action to thank you for closing the door is activated. This is fine
-        for some things, but in a door that you go in and out of a lot, it gets
-        annoying when your Google thanks you everytime the door closes.
+        These inputs set optional parameters that allow you to customize the intended actions.
+          Read the individual descriptions for more details.
 
-        So to get around that currently your choice is to leave the door close 
-        announcement empty and therefore silent, which I don't like.
-        This is a new way to handle that problem.
-        
-        You can leave this at the default (empty) and the behavior of the BP will
-        be exactly what it was in the past. This ensures your old set-up will not
-        break if you upgrade the BluePrint.
+          The Blueprint will work if no changes are made to this section.
+      input:
+        reminded:
+          name: 'Did I remind you?'
+          default:
+          description: >
+            This is optional.
+            Original behavior of this BluePrint was that every time you close the door,
+            the action to thank you for closing the door is activated. This is fine
+            for some things, but in a door that you go in and out of a lot, it gets
+            annoying when your Google thanks you everytime the door closes.
 
-        Or if you create an 'input_boolean'/'toggle' helper and put the name in
-        here, the behavior will be the door is silent as long as you do not
-        exceed the time it takes to get to the warning message that the door is
-        open. If that warning message triggers once, it will then thank you after
-        you close it.
+            So to get around that currently your choice is to leave the door close 
+            announcement empty and therefore silent, which I don't like.
+            This is a new way to handle that problem.
+            
+            You can leave this at the default (empty) and the behavior of the BP will
+            be exactly what it was in the past. This ensures your old set-up will not
+            break if you upgrade the BluePrint.
 
-        So normal door operation it's just a door. If you leave it open too long,
-        it reminds you it is still open, and when you eventually close it,
-        it will thank you for closing it.
+            Or if you create an 'input_boolean'/'toggle' helper and put the name in
+            here, the behavior will be the door is silent as long as you do not
+            exceed the time it takes to get to the warning message that the door is
+            open. If that warning message triggers once, it will then thank you after
+            you close it.
 
-        Create a helper and select it here for that style of action.
-      selector:
-        entity:
-          multiple: false
-          filter:
-            - domain: input_boolean
-    start_time:
-      name: StartTime
-      description: >
-        Time of day you want to enable the announcement each day.
+            So normal door operation it's just a door. If you leave it open too long,
+            it reminds you it is still open, and when you eventually close it,
+            it will thank you for closing it.
 
-
-        Leave at 12:00:00 if you want it to always be on.
-      selector:
-        time: {}
-      default: 00:00:00
-    end_time:
-      name: EndTime
-      description: >
-        Time of day you want to disable the announcement each day. 
-
-
-        Leave at 12:00:00 if you want it to always be on.
-      selector:
-        time: {}
-      default: 00:00:00
-    weekday:
-      name: Day of the week to use the Automation
-      description: >
-        Day(s) of the week you want to enable the announcement. 
+            Create a helper and select it here for that style of action.
+          selector:
+            entity:
+              multiple: false
+              filter:
+                - domain: input_boolean
+        start_time:
+          name: StartTime
+          description: >
+            Time of day you want to enable the announcement each day.
 
 
-        Leave at default all selected if you want it to always be on.
-      default:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-        - sat
-        - sun
-      selector:
-        select:
-          options:
-          - label: Monday
-            value: mon
-          - label: Tuesday
-            value: tue
-          - label: Wednesday
-            value: wed
-          - label: Thursday
-            value: thu
-          - label: Friday
-            value: fri
-          - label: Saturday
-            value: sat
-          - label: Sunday
-            value: sun
-          custom_value: false
-          multiple: true
-    speaker_target:
-      name: Speaker
-      description: Entity to announce event on
-      selector:
-        entity:
-          filter:
-            - domain: media_player
-          multiple: true
-    # speaker_gender:
-    #     # The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
-    #     #   and will be removed. Please update your automations and scripts to replace the gender
-    #     #   option with an option for a supported voice instead.
-    #   name: Speaker Gender
-    #   description: Required for tts-cloud_say only. Select speaker gender male or female.
-    #   default: female
-    #   selector:
-    #     select:
-    #       options:
-    #       - female
-    #       - male
-    #       custom_value: false
-    #       multiple: false
-    speaker_language:
-      name: Speaker Language
-      description: >
-        Required for tts-cloud_say only.
-        Select Language code. [See here for Details](https://www.nabucasa.com/config/tts/)
-
-        This defaults to en-US (english/US). However all the languages available on
-        2023-8-17 were put into the pick list. 
-
-        ***NOTE: It is possible that not all Languages will give you both Genders.***
-      default: en-US
-      selector:
-        select:
-          options:
-            - af-ZA
-            - am-ET
-            - ar-AE
-            - ar-BH
-            - ar-DZ
-            - ar-EG
-            - ar-IL
-            - ar-IQ
-            - ar-JO
-            - ar-KW
-            - ar-LB
-            - ar-LY
-            - ar-MA
-            - ar-OM
-            - ar-PS
-            - ar-QA
-            - ar-SA
-            - ar-SY
-            - ar-TN
-            - ar-YE
-            - az-AZ
-            - bg-BG
-            - bn-IN
-            - bs-BA
-            - ca-ES
-            - cs-CZ
-            - cy-GB
-            - da-DK
-            - de-AT
-            - de-CH
-            - de-DE
-            - el-GR
-            - en-AU
-            - en-CA
-            - en-GB
-            - en-GH
-            - en-HK
-            - en-IE
-            - en-IN
-            - en-KE
-            - en-NG
-            - en-NZ
-            - en-PH
-            - en-SG
-            - en-TZ
-            - en-US
-            - en-ZA
-            - es-AR
-            - es-BO
-            - es-CL
-            - es-CO
-            - es-CR
-            - es-CU
-            - es-DO
-            - es-EC
-            - es-ES
-            - es-GQ
-            - es-GT
-            - es-HN
-            - es-MX
-            - es-NI
-            - es-PA
-            - es-PE
-            - es-PR
-            - es-PY
-            - es-SV
-            - es-US
-            - es-UY
-            - es-VE
-            - et-EE
-            - eu-ES
-            - fa-IR
-            - fi-FI
-            - fil-PH
-            - fr-BE
-            - fr-CA
-            - fr-CH
-            - fr-FR
-            - ga-IE
-            - gl-ES
-            - gu-IN
-            - he-IL
-            - hi-IN
-            - hr-HR
-            - hu-HU
-            - hy-AM
-            - id-ID
-            - is-IS
-            - it-CH
-            - it-IT
-            - ja-JP
-            - jv-ID
-            - ka-GE
-            - kk-KZ
-            - km-KH
-            - kn-IN
-            - ko-KR
-            - lo-LA
-            - lt-LT
-            - lv-LV
-            - mk-MK
-            - ml-IN
-            - mn-MN
-            - mr-IN
-            - ms-MY
-            - mt-MT
-            - my-MM
-            - nb-NO
-            - ne-NP
-            - nl-BE
-            - nl-NL
-            - pl-PL
-            - ps-AF
-            - pt-BR
-            - pt-PT
-            - ro-RO
-            - ru-RU
-            - si-LK
-            - sk-SK
-            - sl-SI
-            - so-SO
-            - sq-AL
-            - sr-RS
-            - sv-SE
-            - sw-KE
-            - sw-TZ
-            - ta-IN
-            - te-IN
-            - th-TH
-            - tr-TR
-            - uk-UA
-            - uz-UZ
-            - vi-VN
-            - wuu-CN
-            - yue-CN
-            - zh-CN
-            - zh-CN-shandong
-            - zh-CN-sichuan
-            - zh-HK
-            - zh-TW
-            - zu-ZA
-          custom_value: false
-          multiple: false
-    speaker_voice:
-      name: Voice option for tts-cloud_say Nabu-Casa use only.
-      description: > 
-        Required for tts-cloud_say only.
-        ***Here you need to be careful.***
-
-        If you are OK with the default voice then just leave this field empty.
-
-        If you want to change the voice, you need to pick from [This List, TTS_VOICES section](https://github.com/NabuCasa/hass-nabucasa/blob/master/hass_nabucasa/voice.py)
-        being certain to match the country code you picked above with one of
-        the voices available for that country code on that list.
-
-        Failure to do so will result in no voice being heard.
+            Leave at 12:00:00 if you want it to always be on.
+          selector:
+            time: {}
+          default: 00:00:00
+        end_time:
+          name: EndTime
+          description: >
+            Time of day you want to disable the announcement each day. 
 
 
-        If you want to know what these sound like, well, you are just going to
-        have to try them and see what you like.
-
-        If you are en-US, you might want to paste this in there for some fun:
-
-          {{ ("JennyNeural",
-          "AIGenerate1Neural",
-          "AIGenerate2Neural",
-          "AmberNeural",
-          "AnaNeural",
-          "AriaNeural",
-          "AshleyNeural",
-          "BrandonNeural",
-          "ChristopherNeural",
-          "CoraNeural",
-          "DavisNeural",
-          "ElizabethNeural",
-          "EricNeural",
-          "GuyNeural",
-          "JacobNeural",
-          "JaneNeural",
-          "JasonNeural",
-          "JennyMultilingualNeural",
-          "MichelleNeural",
-          "MonicaNeural",
-          "NancyNeural",
-          "RogerNeural",
-          "SaraNeural",
-          "SteffanNeural",
-          "TonyNeural") | random }}
-      default: JennyMultilingualNeural
-      selector:
-        text:
-          multiline: true
-    piper_voice:
-      name: Voice option for the Piper addon played thru Wyoming
-      description: >
-        Used only on Piper.
-        [Voice List Here](https://huggingface.co/rhasspy/piper-voices/blob/main/voices.json)
-        Also available in the Add-on UI configuration dropdown.
-        If a new one is available you can enter it manually.
-        List updated here October 1, 2923.
-
-        If you speak english & want a bit of fun,
-        post this string in instead of picking from the list...
+            Leave at 12:00:00 if you want it to always be on.
+          selector:
+            time: {}
+          default: 00:00:00
+        weekday:
+          name: Day of the week to use the Automation
+          description: >
+            Day(s) of the week you want to enable the announcement. 
 
 
-        {{("en_US-lessac-medium","en_US-amy-low","en_US-amy-medium","en_US-arctic-medium","en_US-danny-low","en_US-joe-medium","en_US-kathleen-low","en_US-kusal-medium","en_US-l2arctic-medium","en_US-lessac-high","en_US-lessac-low","en_US-lessac-medium","en_US-libritts-high","en_US-libritts_r-medium","en_US-ryan-high","en_US-ryan-low","en_US-ryan-medium")|random}}
-
-
-        default: en_US-lessac-medium
-      selector:
-        select:
-          options:
-            - ar_JO-kareem-medium
-            - ca_ES-upc_ona-medium
-            - ca_ES-upc_ona-x_low
-            - ca_ES-upc_pau-x_low
-            - cs_CZ-jirka-low
-            - cs_CZ-jirka-medium
-            - da_DK-talesyntese-medium
-            - de_DE-eva_k-x_low
-            - de_DE-karlsson-low
-            - de_DE-kerstin-low
-            - de_DE-pavoque-low
-            - de_DE-ramona-low
-            - de_DE-thorsten-high
-            - de_DE-thorsten-low
-            - de_DE-thorsten-medium
-            - de_DE-thorsten_emotional-medium
-            - el_GR-rapunzelina-low
-            - en_GB-alan-low
-            - en_GB-alan-medium
-            - en_GB-alba-medium
-            - en_GB-aru-medium
-            - en_GB-jenny_dioco-medium
-            - en_GB-northern_english_male-medium
-            - en_GB-semaine-medium
-            - en_GB-southern_english_female-low
-            - en_GB-vctk-medium
-            - en_US-amy-low
-            - en_US-amy-medium
-            - en_US-arctic-medium
-            - en_US-danny-low
-            - en_US-joe-medium
-            - en_US-kathleen-low
-            - en_US-kusal-medium
-            - en_US-l2arctic-medium
-            - en_US-lessac-high
-            - en_US-lessac-low
-            - en_US-lessac-medium
-            - en_US-libritts-high
-            - en_US-libritts_r-medium
-            - en_US-ryan-high
-            - en_US-ryan-low
-            - en_US-ryan-medium
-            - es_ES-carlfm-x_low
-            - es_ES-davefx-medium
-            - es_ES-mls_10246-low
-            - es_ES-mls_9972-low
-            - es_ES-sharvard-medium
-            - es_MX-ald-medium
-            - fi_FI-harri-low
-            - fi_FI-harri-medium
-            - fr_FR-gilles-low
-            - fr_FR-mls_1840-low
-            - fr_FR-siwis-low
-            - fr_FR-siwis-medium
-            - fr_FR-upmc-medium
-            - hu_HU-anna-medium
-            - hu_HU-berta-medium
-            - is_IS-bui-medium
-            - is_IS-salka-medium
-            - is_IS-steinn-medium
-            - is_IS-ugla-medium
-            - it_IT-riccardo-x_low
-            - ka_GE-natia-medium
-            - kk_KZ-iseke-x_low
-            - kk_KZ-issai-high
-            - kk_KZ-raya-x_low
-            - lb_LU-marylux-medium
-            - ne_NP-google-medium
-            - ne_NP-google-x_low
-            - nl_BE-nathalie-medium
-            - nl_BE-nathalie-x_low
-            - nl_BE-rdh-medium
-            - nl_BE-rdh-x_low
-            - nl_NL-mls_5809-low
-            - nl_NL-mls_7432-low
-            - no_NO-talesyntese-medium
-            - pl_PL-darkman-medium
-            - pl_PL-gosia-medium
-            - pl_PL-mls_6892-low
-            - pt_BR-edresson-low
-            - pt_BR-faber-medium
-            - pt_PT-tugão-medium
-            - ro_RO-mihai-medium
-            - ru_RU-denis-medium
-            - ru_RU-dmitri-medium
-            - ru_RU-irina-medium
-            - ru_RU-ruslan-medium
-            - sk_SK-lili-medium
-            - sr_RS-serbski_institut-medium
-            - sv_SE-nst-medium
-            - sw_CD-lanfrica-medium
-            - tr_TR-dfki-medium
-            - tr_TR-fahrettin-medium
-            - uk_UA-lada-x_low
-            - uk_UA-ukrainian_tts-medium
-            - vi_VN-25hours_single-low
-            - vi_VN-vais1000-medium
-            - vi_VN-vivos-x_low
-            - zh_CN-huayan-medium
-            - zh_CN-huayan-x_low
-          custom_value: true
-          multiple: false
-    announcement_message:
-      name: Announcement message
-      description: >  
-        What to say when door is opened
-
-        The variable {{ door }} is available if you want the dynamic
-          friendly_name of the device that triggered.
-        This can be set to "" if you do not want a message while sensor is active.
-      default: "Your {{ door }} has been left open."
-      selector:
-        text:
-          multiline: true
-    final_message:
-      name: Final message
-      description: >
-        What to say when door is closed.
-
-        The variable {{ door }} is available if you want the dynamic
-          friendly_name of the device that triggered.
-        This can be set to "" if you do not want a message after the sensor is reset.
-      default: "Thank you for closing the {{ door }}."
-      selector:
-        text:
-          multiline: true
-    cooldown:
-      name: Announcement cooldown
-      description: >
-        The minimum number of seconds needed before AND between between
-        announcements.
-
-        This is your initial delay and pause between messages...
-      default: 10
-      selector:
-        number:
-          min: 4.0
-          max: 7200.0
-          unit_of_measurement: seconds
-          step: 1.0
-          mode: slider
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
-      default: []
-      selector:
-        condition:
+            Leave at default all selected if you want it to always be on.
+          default:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+            - sat
+            - sun
+          selector:
+            select:
+              options:
+              - label: Monday
+                value: mon
+              - label: Tuesday
+                value: tue
+              - label: Wednesday
+                value: wed
+              - label: Thursday
+                value: thu
+              - label: Friday
+                value: fri
+              - label: Saturday
+                value: sat
+              - label: Sunday
+                value: sun
+              custom_value: false
+              multiple: true
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Home occupied, TV on, etc)
+          default: []
+          selector:
+            condition:
 
 trigger:
   platform: state

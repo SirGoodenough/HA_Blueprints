@@ -1,5 +1,5 @@
 blueprint:
-  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_HA_fan-2023-08-07
+  name: Auto_Fan_Temperature_Control_for_3-Speed_Fan_HA_fan-2024-06-04
   author: SirGoodenough
   description: >
     This sets the fan speed for a 3 speed fan (such as an IFAN03/IFAN04)
@@ -31,219 +31,251 @@ blueprint:
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl_HA_fan.yaml
   domain: automation
   homeassistant:
-    min_version: 2023.8.0
+    min_version: 2024.6.0
   input:
-    fan_control:
-      name: Toggle to turn the fan function off for when away or seasonally
+    required_inputs:
+      name: Required inputs 👀
+      icon: mdi:alert-box
+      collapsed: false
       description: >
-        (#1) ```input_boolean``` - If this is set to off, the Automation
-        will be disabled.
+        These inputs are required for the blueprint to function and must be filled in.
+      input:
+        fan:
+          name: Fan Entity
+          description: >
+            (#10) This is the Home Assistant Fan entity
+          selector:
+            entity:
+              filter:
+                - domain: fan
+              multiple: false
+        fan_control:
+          name: Toggle to turn the fan function off for when away or seasonally
+          description: >
+            (#1) ```input_boolean``` - If this is set to off, the Automation
+            will be disabled.
 
-        This Helper has to be set up in [![Open your Home Assistant instance and show
-        your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
-      selector:
-        entity:
-          filter:
-            - domain: input_boolean
-          multiple: false
-    room_temp_now:
-      name: Room Temperature Sensor
+            This Helper has to be set up in [![Open your Home Assistant instance and show
+            your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
+          selector:
+            entity:
+              filter:
+                - domain: input_boolean
+              multiple: false
+        room_temp_now:
+          name: Room Temperature Sensor
+          description: >
+            (#2) This is a temperature sensor or averaged temperature sensor
+            preferrably within the path of the moving air from the fan.
+
+            Otherwise the action will be laggy where changes in temperature will have
+            a lower effect on fan speed.
+          selector:
+            entity:
+              filter:
+                - domain: sensor
+              multiple: false
+        room_set_temp:
+          name: Room Target Temperature
+          description: >
+            (#3) ```input_number``` - This is the target temperature of the
+            room.
+
+            This can be Metric or imperial, but the same scale as the temperature sensor.
+
+            This Helper has to be set up in [![Open your Home Assistant instance and show
+            your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
+          selector:
+            entity:
+              filter:
+                - domain: input_number
+              multiple: false
+
+    required_inputs_with_defaults:
+      name: Defaulted Inputs
+      icon: mdi:alert-decagram
+      collapsed: true
       description: >
-        (#2) This is a temperature sensor or averaged temperature sensor
-        preferrably within the path of the moving air from the fan.
+        These inpute are required, but have values that are defaulted to values that work for me.
+          It is possible you will need to change them.
+          My suggestion is to not change them until you detect an issue that you think can be
+          fixed by changing these.
 
-        Otherwise the action will be laggy where changes in temperature will have
-        a lower effect on fan speed.
-      selector:
-        entity:
-          filter:
-            - domain: sensor
-          multiple: false
-    room_set_temp:
-      name: Room Target Temperature
+          In the end, these must have a value.
+          This blueprint will work if no changes are made to this section.
+      input:
+        temp_gap:
+          name: Temp Hysteresis
+          description: >
+            (#4) This keeps the fan from speed cycling too often. (Let's
+            call it Hysterisis)
+
+            Set it bigger if the fan goes on and off too much.
+
+            Set it smaller if the fan doesn't change speeds fast enough.
+
+            0 is a good number if this area is not used in conjunction with a heating
+            or cooling unit where you want to set them both to 21C (for instance).
+
+            I use the Temperature setting input_number as an input to climate and this
+            at the same time, so I needed an offset.
+
+            My AirCon (or a heat source) is triggered using the 2 action sensors provived.
+            See examples in the [Documentation Here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
+          default: 1.3
+          selector:
+            number:
+              min: 0.0
+              max: 7.0
+              unit_of_measurement: Degrees
+              mode: slider
+              step: 0.1
+        temp_gap_1_to_2:
+          name: Temp Gap between Low and Medium
+          description: >
+            (#5) This is the temp swing between Low and Medium.
+
+            If the sensor reads between the base temperature and this number of degrees
+            warmer, the fan is on LOW.
+
+            Below the base temperature the fan is off.
+          default: 4.5
+          selector:
+            number:
+              min: 1.0
+              max: 100.0
+              unit_of_measurement: Degrees
+              mode: slider
+              step: 0.1
+        temp_gap_2_to_3:
+          name: Temp Gap between Medium and High
+          description: >
+            (#6) This is the temp change between Medium and High.
+
+            If the sensor reads between the base temperature plus the 1 to 2 temperature
+            and this number of degrees warmer, the fan is on MEDIUM.
+
+            Any warmer than this and the fan is set to HIGH.
+          default: 2.0
+          selector:
+            number:
+              min: 1.0
+              max: 100.0
+              unit_of_measurement: Degrees
+              mode: slider
+              step: 0.1
+
+    optional_parameters:
+      name: Optional parameters🤓
+      icon: mdi:alert-octagon-outline
+      collapsed: true
       description: >
-        (#3) ```input_number``` - This is the target temperature of the
-        room.
+        These inputs set optional parameters that allow you to customize the intended actions.
+          Read the individual descriptions for more details.
 
-        This can be Metric or imperial, but the same scale as the temperature sensor.
+          The Blueprint will work if no changes are made to this section.
+      input:
+        fan_on_time:
+          name: Time of day fan should start
+          description: >
+            (#7) Set this for the time of day you want the fan function to be enabled.
+          default:
+            00:00:00
+          selector:
+            time: {}
+        fan_off_time:
+          name: Time of day fan should stop
+          description: >
+            (#8) Set this for the time of day you want the fan function to end.
+          default:
+            00:00:00
+          selector:
+            time: {}
+        weekday:
+          name: Day of the week to use the Automation
+          description: (#9)
+          default:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+            - sat
+            - sun
+          selector:
+            select:
+              options:
+              - label: Monday
+                value: mon
+              - label: Tuesday
+                value: tue
+              - label: Wednesday
+                value: wed
+              - label: Thursday
+                value: thu
+              - label: Friday
+                value: fri
+              - label: Saturday
+                value: sat
+              - label: Sunday
+                value: sun
+              custom_value: false
+              multiple: true
+        loop_action:
+          name: User action for fan enabled condition (loop)
+          description: >
+            (#11) This is intended to start / set temp on an AC unit or whatever
+            you want to do. It is executed on every successful trigger that does not send
+            the operation to off.
 
-        This Helper has to be set up in [![Open your Home Assistant instance and show
-        your helper entities.](https://my.home-assistant.io/badges/helpers.svg)](https://my.home-assistant.io/redirect/helpers/)
-      selector:
-        entity:
-          filter:
-            - domain: input_number
-          multiple: false
-    temp_gap:
-      name: Temp Hysteresis
-      description: >
-        (#4) This keeps the fan from speed cycling too often. (Let's
-        call it Hysterisis)
+            See the [Example](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
+            that is added as YAML mode here.
 
-        Set it bigger if the fan goes on and off too much.
+            Leave it empty to do nothing extra.
+          default: []
+          selector:
+            action: {}
+        off_action:
+          name: User action for fan off condition (off_action)
+          description: >
+            (#12) This is intended to disable an AirCon unit or whatever you
+            want to do. It is executed on every successful operation off trigger.
 
-        Set it smaller if the fan doesn't change speeds fast enough.
+            See the [Example](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
+            that is added as YAML mode here.
 
-        0 is a good number if this area is not used in conjunction with a heating
-        or cooling unit where you want to set them both to 21C (for instance).
+            Leave it empty to do nothing extra.
+          default: []
+          selector:
+            action: {}
+        temp_off_offset:
+          name: Temp Off Offset
+          description: >
+            (#13) This is a request by users.
 
-        I use the Temperature setting input_number as an input to climate and this
-        at the same time, so I needed an offset.
+            This number must be zero or negative and is be an offset applied against
+            the Room Target Temperature for turning the fan off. It essentually allows
+            the fan shut-off temp to be different from the fan turn-on temp.
 
-        My AirCon (or a heat source) is triggered using the 2 action sensors provived.
-        See examples in the [Documentation Here](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
-      default: 1.3
-      selector:
-        number:
-          min: 0.0
-          max: 7.0
-          unit_of_measurement: Degrees
-          mode: slider
-          step: 0.1
-    temp_gap_1_to_2:
-      name: Temp Gap between Low and Medium
-      description: >
-        (#5) This is the temp swing between Low and Medium.
-
-        If the sensor reads between the base temperature and this number of degrees
-        warmer, the fan is on LOW.
-
-        Below the base temperature the fan is off.
-      default: 4.5
-      selector:
-        number:
-          min: 1.0
-          max: 100.0
-          unit_of_measurement: Degrees
-          mode: slider
-          step: 0.1
-    temp_gap_2_to_3:
-      name: Temp Gap between Medium and High
-      description: >
-        (#6) This is the temp change between Medium and High.
-
-        If the sensor reads between the base temperature plus the 1 to 2 temperature
-        and this number of degrees warmer, the fan is on MEDIUM.
-
-        Any warmer than this and the fan is set to HIGH.
-      default: 2.0
-      selector:
-        number:
-          min: 1.0
-          max: 100.0
-          unit_of_measurement: Degrees
-          mode: slider
-          step: 0.1
-    fan_on_time:
-      name: Time of day fan should start
-      description: >
-        (#7) Set this for the time of day you want the fan function to be enabled.
-      default:
-        00:00:00
-      selector:
-        time: {}
-    fan_off_time:
-      name: Time of day fan should stop
-      description: >
-        (#8) Set this for the time of day you want the fan function to end.
-      default:
-        00:00:00
-      selector:
-        time: {}
-    weekday:
-      name: Day of the week to use the Automation
-      description: (#9)
-      default:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
-        - sat
-        - sun
-      selector:
-        select:
-          options:
-          - label: Monday
-            value: mon
-          - label: Tuesday
-            value: tue
-          - label: Wednesday
-            value: wed
-          - label: Thursday
-            value: thu
-          - label: Friday
-            value: fri
-          - label: Saturday
-            value: sat
-          - label: Sunday
-            value: sun
-          custom_value: false
-          multiple: true
-    fan:
-      name: Fan Entity
-      description: >
-        (#10) This is the Home Assistant Fan entity
-      selector:
-        entity:
-          filter:
-            - domain: fan
-          multiple: false
-    loop_action:
-      name: User action for fan enabled condition (loop)
-      description: >
-        (#11) This is intended to start / set temp on an AC unit or whatever
-        you want to do. It is executed on every successful trigger that does not send
-        the operation to off.
-
-        See the [Example](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
-        that is added as YAML mode here.
-
-        Leave it empty to do nothing extra.
-      default: []
-      selector:
-        action: {}
-    off_action:
-      name: User action for fan off condition (off_action)
-      description: >
-        (#12) This is intended to disable an AirCon unit or whatever you
-        want to do. It is executed on every successful operation off trigger.
-
-        See the [Example](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/AutoFanControl.md)
-        that is added as YAML mode here.
-
-        Leave it empty to do nothing extra.
-      default: []
-      selector:
-        action: {}
-    temp_off_offset:
-      name: Temp Off Offset
-      description: >
-        (#13) This is a request by users.
-
-        This number must be zero or negative and is be an offset applied against
-        the Room Target Temperature for turning the fan off. It essentually allows
-        the fan shut-off temp to be different from the fan turn-on temp.
-
-        The potential to have a fan that never turns on or never turns off is large.
-        Because of this I suggest this value stay at 0 which is the default.
-        Buyer Beware...
-      default: 0
-      selector:
-        number:
-          min: -10.0
-          max: 0
-          unit_of_measurement: Degrees
-          mode: slider
-          step: 0.1
-    additional_conditions:
-      name: Additional conditions
-      description: |
-        Extra conditions you may want to add to this automation 
-        (Example: Home occupied, TV on, etc)
-      default: []
-      selector:
-        condition:
+            The potential to have a fan that never turns on or never turns off is large.
+            Because of this I suggest this value stay at 0 which is the default.
+            Buyer Beware...
+          default: 0
+          selector:
+            number:
+              min: -10.0
+              max: 0
+              unit_of_measurement: Degrees
+              mode: slider
+              step: 0.1
+        additional_conditions:
+          name: Additional conditions
+          description: |
+            Extra conditions you may want to add to this automation 
+            (Example: Home occupied, TV on, etc)
+          default: []
+          selector:
+            condition:
 
 trigger:
 - platform: time

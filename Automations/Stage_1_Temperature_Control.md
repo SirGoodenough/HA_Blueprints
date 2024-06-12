@@ -2,10 +2,11 @@ This is Blueprint will adjust your climate entity thermostat to 1°(adjustable) 
 
 ## 📑 Changelog
 
-* **2024-01-19**:  Add Trigger to make it more likely to run after restarting automations.
+* **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
+* **2024-01-19**: Add Trigger to make it more likely to run after restarting automations.
   * Add variables - clean-up action code - generate values once instead of multiple times.
   * Clarify some descriptions.
-* **2023-12-02**:  🎉 First release!
+* **2023-12-02**: 🎉 First release!
 
 <base target="_blank"\>
 
