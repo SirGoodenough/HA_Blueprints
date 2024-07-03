@@ -3,6 +3,7 @@ This Script Blueprint generates 3 Buttons to help you manage your Tasmota instal
 ## 📑 Changelog
 
 * **2023-08-07**: Updates for Home Assistant 2023.8
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
   * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Tasmota_EZ-Buttons.md) FOR IMPORTANT UPDATE INSTRUCTIONS
   * Selector syntax change
   * Condition Selector addition (where applicable)
@@ -42,7 +43,7 @@ Why do I need this?
 >
 > The third Button just upgrades everything to the latest version. I can upgrade all my devices in about 3 minutes like this. [My Youtube Short](https://www.youtube.com/watch?v=OT5id_P2JVw)
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

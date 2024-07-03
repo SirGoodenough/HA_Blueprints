@@ -3,6 +3,7 @@ These are several Script Blueprints written to help other Automations or Bluepri
 ## 📑 Changelog
 
 * **2023-12-07**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2023-11-14**: Add Transition to Dimmer as per FR [#24](https://github.com/SirGoodenough/HA_Blueprints/issues/24)
 * **2023-08-07**: First release as it's own Blueprint Exchange thread 🎉
 
@@ -20,6 +21,16 @@ Why do I need this?
 
 > There are several Script Blueprints in here. The Descriptions provided should help you decide if you need them in your life or not.
 > Several of these are designed to accept a number from 0 to 360 like the angle number that comes out of a Aqara Xiaomi Magic Cube's angle value and do something with it. There are others as well that do other things.
+
+#### 🗿License Notice:
+
+* Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
+
+* I may or may not be able to support you when you have a problem after you make changes to my code, as some of the code is no longer mine.
+
+* I & my license also require attribution as a link back to the original should you use this code in your own creation.
+
+* [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file) expected to be followed & referenced as attribution should you use this code elsewhere.
 
 ## 🔃 Device Reset
 

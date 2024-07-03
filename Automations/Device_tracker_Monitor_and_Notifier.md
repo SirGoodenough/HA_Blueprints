@@ -3,6 +3,7 @@ This Blueprint monitors device_tracker entities that you choose & notifies you i
 ## 📑 Changelog
 
 * **2024-06-04**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2023-08-07**: Updates for Home Assistant 2023.8
   * Selector syntax change
   * Condition Selector addition (where applicable)
@@ -40,7 +41,7 @@ Why do I need this?
 >
 > I also found that Home Assistant has created a blueprint to send actionable persistent notifications to your phone, so I reference that here to be helpful if you are looking for that. If you want to send these notifications to a mobile device, i suggest you look at [Home Assistant Actionable Notification Script Blueprint.](https://github.com/home-assistant/core/blob/master/homeassistant/components/script/blueprints/confirmable_notification.yaml) to use in conjunction with my blueprint.
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

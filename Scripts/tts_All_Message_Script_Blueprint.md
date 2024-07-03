@@ -3,6 +3,7 @@
 ## 📑 Changelog
 
 * **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2024-04-21**: The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
 * **2023-12-07**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-09-29**: Add the ability to use Piper TTS.
@@ -40,7 +41,7 @@ Why do I need this?
 >
 > The actual mechanics of making the TTS work are in my hands. If HA does an update and breaks it all (again), I will fix the blueprint and you will NOT have to go to 50 places in your yaml code to fix it.
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

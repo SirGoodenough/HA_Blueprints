@@ -3,6 +3,7 @@ This is a SCRIPT Blueprint that uses my Broadlink RM3 to turn my TV on and get i
 ## 📑 Changelog
 
 * **2023-08-07**: Updates for Home Assistant 2023.8
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
   * Selector syntax change
   * Condition Selector addition (where applicable)
   * MQTT Discovery name changes (where applicable)
@@ -36,7 +37,7 @@ Why do I need this?
 >
 > ![My Buttons in Lovelace](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Screenshot_2022-01-08_20-11-15.png?raw=true "Examples of this Blueprint in Lovelace")
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 
