@@ -36,6 +36,16 @@ Why do I need this?
 >
 > ![My Buttons in Lovelace](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Screenshot_2022-01-08_20-11-15.png?raw=true "Examples of this Blueprint in Lovelace")
 
+#### 🗿License Notice👮🏿‍♂️:
+
+* Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
+
+* I may or may not be able to support you when you have a problem after you make changes to my code, as some of the code is no longer mine.
+
+* I & my license also require attribution as a link back to the original should you use this code in your own creation.
+
+* [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file) expected to be followed & referenced as attribution should you use this code elsewhere.
+
 ## 🔧 Configuration
 
 Requirements

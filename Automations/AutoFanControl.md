@@ -45,7 +45,16 @@ Why do I need this?
 > I continue to use this functionality in a slightly different way in my home system. If you want to see my use the automation form of this look at my [HA Configuration GitHub repository](https://github.com/SirGoodenough/Home-Assistant-Config). You will see that I have combined the control of the AC unit climate entity with this fan speed function and also have an 'on demand' version of this for when the room needs to be used during the day. My feeling was that I wanted to make this accessible to a wider audience, so I created this blueprint.
 >
 > If you are looking to tweak the function here or are looking for something the same but different, hit me up on my [Discord](https://discord.gg/Uhmhu3B) and we can work on that! If you see problems or have questions and don't want to use Discord, Comments here are also welcome.
->
+
+#### 🗿License Notice👮🏿‍♂️:
+
+* Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
+
+* I may or may not be able to support you when you have a problem after you make changes to my code, as some of the code is no longer mine.
+
+* I & my license also require attribution as a link back to the original should you use this code in your own creation.
+
+* [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file) expected to be followed & referenced as attribution should you use this code elsewhere.
 
 ## 🔧 Configuration
 

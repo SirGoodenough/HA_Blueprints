@@ -44,6 +44,16 @@ Why do I need this?
 
 > The Cube remote/switch device has a lot of ways to trigger it. This Blueprint makes it a bit easier to figure out what you are doing and remembering that in the future. It also makes sure the trigger is as clean and repeatable as possible, screening out false triggers and making the log clean and the experience good overall.
 
+#### 🗿License Notice👮🏿‍♂️:
+
+* Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
+
+* I may or may not be able to support you when you have a problem after you make changes to my code, as some of the code is no longer mine.
+
+* I & my license also require attribution as a link back to the original should you use this code in your own creation.
+
+* [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file) expected to be followed & referenced as attribution should you use this code elsewhere.
+
 ## 🔧 Configuration
 
 Requirements

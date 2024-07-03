@@ -25,13 +25,26 @@ blueprint:
 
       ```on var1#state>110 do backlog power1 on;delay 1200;power1 off break on var1#state>100 do backlog power1 on;delay 1100;power1 off break on var1#state>90 do backlog power1 on;delay 1000;power1 off break on var1#state>80 do backlog power1 on;delay 900;power1 off break on var1#state>70 do backlog power1 on;delay 800;power1 off break on var1#state>60 do backlog power1 on;delay 700;power1 off break on var1#state>50 do backlog power1 on;delay 600;power1 off break on var1#state>40 do backlog power1 on;delay 500;power1 off break on var1#state>30 do backlog power1 on;delay 400;power1 off break on var1#state>20 do backlog power1 on;delay 300;power1 off break on var1#state<=20 do backlog power1 on;delay 200;power1 off endon```
 
-    📩 There is not an official version control system for Blueprints. However I have
-    found something that comes pretty close. It is not perfect, but for **MOST**
-    Blueprints, it does just fine. I encourage you to check this script out and use
-    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
-
 
     [Community link for this blueprint](https://community.home-assistant.io/t/humidifier-water-throttle-control/527583)
+
+
+    ## 🗿Notice👮🏿‍♂️:
+
+    * Copies of the original Blueprint that were converted via the 'Take Control'
+    feature or other means are officially not supported by me.
+
+
+    * I may or may not be able to support you when you have a problem after you make changes
+    to my code, as some of the code is no longer mine.
+
+
+    * I & my license also require attribution as a link back to the original
+    should you use this code in your own creation.
+
+
+    * [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
+    expected to be followed & referenced as attribution should you use this code elsewhere.
 
   domain: automation
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/HumidifierWaterThrottleControl.yaml

@@ -32,8 +32,16 @@ Why do I need this?
 >
 >
 > NOTE!!! WARNING!!! The first thing to remember is ANYTIME you make ANY changes to this Blueprint, you MUST restart the server so that the button entities can rebuild in the configuration you have selected. If you don't restart OctoPrint, the change may not be seen and you will wonder why and what is happening.
->
->
+
+#### 🗿License Notice👮🏿‍♂️:
+
+* Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
+
+* I may or may not be able to support you when you have a problem after you make changes to my code, as some of the code is no longer mine.
+
+* I & my license also require attribution as a link back to the original should you use this code in your own creation.
+
+* [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file) expected to be followed & referenced as attribution should you use this code elsewhere.
 
 ## 🔧 Configuration
 
