@@ -32,13 +32,26 @@ blueprint:
 
     ### [Persistent Notification Integration Docs ](https://www.home-assistant.io/integrations/persistent_notification/)
 
-    📩 There is not an official version control system for Blueprints. However I have 
-    found something that comes pretty close. It is not perfect, but for **MOST** 
-    Blueprints, it does just fine. I encourage you to check this script out and use 
-    it to easily check if I have updated this blueprint. [🔗koter84 Blueprint Update Script ](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
-
 
     [Community link for this blueprint ](https://community.home-assistant.io/t/device-tracker-monitor-notifier/500688)
+
+
+    ## 🗿Notice👮🏿‍♂️:
+
+    * Copies of the original Blueprint that were converted via the 'Take Control'
+    feature or other means are officially not supported by me.
+
+
+    * I may or may not be able to support you when you have a problem after you make changes
+    to my code, as some of the code is no longer mine.
+
+
+    * I & my license also require attribution as a link back to the original
+    should you use this code in your own creation.
+
+
+    * [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
+    expected to be followed & referenced as attribution should you use this code elsewhere.
 
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Device_tracker_Monitor_and_Notifier.yaml
   domain: automation

@@ -31,7 +31,16 @@ Why do I need this?
 > I decided I wanted to clean up a bunch of my automations by removing the several lines of YAML every time I wanted to play an mp3 file. 
 > 
 > In addition to that, playing specific sound files and other things becomes a simple call to a script file, so really a function. The actual meat and potatoes of the function is exactly the same for all the sounders and if a change needs to be made, it only has to be made in 1 place in a multiple re-use scenario.
->
+
+#### 🗿License Notice👮🏿‍♂️:
+
+* Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
+
+* I may or may not be able to support you when you have a problem after you make changes to my code, as some of the code is no longer mine.
+
+* I & my license also require attribution as a link back to the original should you use this code in your own creation.
+
+* [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file) expected to be followed & referenced as attribution should you use this code elsewhere.
 
 ## 🔧 Configuration
 

@@ -78,13 +78,26 @@ blueprint:
     few questions and when I saw a few questions in that chat from people struggling,
     I wanted to help. I also had a better idea for troubleshooting info.
 
-    📩 There is not an official version control system for Blueprints. However I have
-    found something that comes pretty close. It is not perfect, but for **MOST**
-    Blueprints, it does just fine. I encourage you to check this script out and use
-    it to easily check if I have updated this blueprint. 🔗 [koter84 Blueprint Update Script](https://github.com/koter84/HomeAssistant_Blueprints_Update/)
-
 
     [Community link for this blueprint](https://community.home-assistant.io/t/zigbee2mqtt-aqara-magic-cube-t1-pro-ctp-r01-xiaomi-lumi-cagl02/525111)
+
+
+    ## 🗿Notice👮🏿‍♂️:
+
+    * Copies of the original Blueprint that were converted via the 'Take Control'
+    feature or other means are officially not supported by me.
+
+
+    * I may or may not be able to support you when you have a problem after you make changes
+    to my code, as some of the code is no longer mine.
+
+
+    * I & my license also require attribution as a link back to the original
+    should you use this code in your own creation.
+
+
+    * [Here is a link to my license & the original github post](https://github.com/SirGoodenough/HA_Blueprints?tab=License-1-ov-file)
+    expected to be followed & referenced as attribution should you use this code elsewhere.
 
   source_url: https://github.com/SirGoodenough/HA_Blueprints/blob/master/Automations/Zigbee2MQTT-Aqara-Magic-Cube-T1-Pro-CTP-R01-Xiaomi-Lumi.yaml
   domain: automation
