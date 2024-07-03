@@ -3,6 +3,7 @@ Works with BOTH Piper and Nabu-Casa tts-cloud-say. This blueprint is set up to w
 ## 📑 Changelog
 
 * **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2024-04-22**: The gender option for text-to-speech in the Home Assistant Cloud integration is deprecated
 * **2023-10-02**: Add the ability to use Piper TTS.
   * File Rename to reflect new function.
@@ -49,7 +50,7 @@ Why do I need this?
 >
 > There are ways to enable the announcement only during time slots and/or specific weekdays, so you **could** have a different message every day of the week...
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

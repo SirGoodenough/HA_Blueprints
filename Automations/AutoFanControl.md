@@ -3,6 +3,7 @@ This Blueprint is for controlling a 3 speed fan based on a temp sensor reading. 
 ## 📑 Changelog
 
 * **2024-06-04**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2023-08-07**: Updates for Home Assistant 2023.8
   * Selector syntax change
   * Condition Selector addition (where applicable)
@@ -46,7 +47,7 @@ Why do I need this?
 >
 > If you are looking to tweak the function here or are looking for something the same but different, hit me up on my [Discord](https://discord.gg/Uhmhu3B) and we can work on that! If you see problems or have questions and don't want to use Discord, Comments here are also welcome.
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

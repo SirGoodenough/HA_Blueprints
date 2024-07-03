@@ -3,6 +3,7 @@
 ## 📑 Changelog
 
 * **2024-06-04**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2023-08-07**: Updates for Home Assistant 2023.8
   * Selector syntax change
   * Condition Selector addition (where applicable)
@@ -30,7 +31,7 @@ Why do I need this?
 
 > This Blueprint uses the Z2M (Zigbee2MQTT) imported Action sensor to sort out the 18 commands from the 6 buttons of a ZemiSmart ZM-RM02 Controller. The split out of functions gives you the ability to assign local scripts or functions to do the things you want the remote to do. Functions that are left empty will simply do nothing.
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

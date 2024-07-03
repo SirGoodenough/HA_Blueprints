@@ -3,6 +3,7 @@ This is Blueprint will monitor a person or persons, and when they 'enter' or 'le
 ## 📑 Changelog
 
 * **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2024-01-24**: Changed zones default to auto-list all zones.
 * **2023-08-07**: Updates for Home Assistant 2023.8
   * Selector syntax change
@@ -43,7 +44,7 @@ Why do I need this?
 >
 > [PERSON INTEGRATION LINK ](https://www.home-assistant.io/integrations/person/)
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

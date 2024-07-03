@@ -3,6 +3,7 @@
 ## 📑 Changelog
 
 * **2024-06-02**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2023-12-09**: Stop log spamming leak. [#32](https://github.com/SirGoodenough/HA_Blueprints/issues/32)
 * **2023-10-20**: Enhancement [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
 * **2023-08-07**: Updates for Home Assistant 2023.8
@@ -64,7 +65,7 @@ Why do I need this?
 
 > The Cube remote/switch device has a lot of ways to trigger it. This Blueprint makes it a bit easier to figure out what you are doing and remembering that in the future. It also makes sure the trigger is as clean and repeatable as possible, screening out false triggers and making the log clean and the experience good overall.
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

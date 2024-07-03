@@ -3,6 +3,7 @@ This is Blueprint will adjust your climate entity thermostat to 1°(adjustable) 
 ## 📑 Changelog
 
 * **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2024-01-19**: Add Trigger to make it more likely to run after restarting automations.
   * Add variables - clean-up action code - generate values once instead of multiple times.
   * Clarify some descriptions.
@@ -29,7 +30,7 @@ Why do I need this?
 > [HA ZONES LINK](https://www.home-assistant.io/integrations/zone/)
 > [![Open your Home Assistant instance and show your zones.](https://my.home-assistant.io/badges/zones.svg)](https://my.home-assistant.io/redirect/zones/)
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

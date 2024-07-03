@@ -3,6 +3,7 @@ This is Blueprint is provided as a helper for people using the Octoprint Plugin 
 ## 📑 Changelog
 
 * **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2023-08-07**: Updates for Home Assistant 2023.8
   * LOOK [THIS LINK](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Update_Instructions/Update--Octoprint_Additional_Buttons_Helper.md) FOR IMPORTANT UPDATE INSTRUCTIONS
   * Selector syntax change
@@ -33,7 +34,7 @@ Why do I need this?
 >
 > NOTE!!! WARNING!!! The first thing to remember is ANYTIME you make ANY changes to this Blueprint, you MUST restart the server so that the button entities can rebuild in the configuration you have selected. If you don't restart OctoPrint, the change may not be seen and you will wonder why and what is happening.
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 

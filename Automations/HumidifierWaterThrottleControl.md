@@ -3,6 +3,7 @@ This blueprint monitors a humidity sensor & by determining the error from the go
 ## 📑 Changelog
 
 * **2024-06-08**: Blueprint Input Sections for enhanced Descriptions.
+  * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2023-10-31**: Add Scalar to adjust the flow profile
 * **2023-08-07**: Updates for Home Assistant 2023.8
 * Selector syntax change
@@ -37,7 +38,7 @@ Why do I need this?
 >
 >This could, however, apply to any flow over wick humidifier by simply splitting the wires that go to the water valve and powering the water valve thru a sonoff SV running tasmota.
 
-#### 🗿License Notice👮🏿‍♂️:
+#### 🗿License Notice:
 
 * Copies of the original Blueprint that were converted via the 'Take Control' feature or other means are officially not supported by me.
 
