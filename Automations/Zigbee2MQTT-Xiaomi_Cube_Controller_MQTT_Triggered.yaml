@@ -294,11 +294,6 @@ blueprint:
           default: []
           selector:
             action: {}
-        slide_face_3:
-          name: Group 1 actions 🍎 Slide the cube with face 3 up
-          default: []
-          selector:
-            action: {}
 
     side_3_group_1_actions:
       name: Side 3 Group 1 actions 🍎
@@ -308,6 +303,11 @@ blueprint:
         These are Group 1 actions that happen with Face 3
           of the cube up to start.
       input:
+        slide_face_3:
+          name: Group 1 actions 🍎 Slide the cube with face 3 up
+          default: []
+          selector:
+            action: {}
         doubletap_face_3:
           name: Group 1 actions 🍎 Double tap the cube with face 3 up
           default: []
@@ -907,8 +907,11 @@ variables:
 
 # Get the last_side for use in logic below.
   last_side: >
+    {# Check if there is action_from_side data and use that first.#}
+    {% if trigger.payload_json.action_from_side is number %}
+      {{ trigger.payload_json.action_from_side | int(0) }}
     {# The first time it will not be there, so make sure its 0 instead of undefined. #}
-    {% if not num_ha_val in ["undefined", "unknown", "unavailable", "none", "null", ""] %}
+    {% elif not num_ha_val in ["undefined", "unknown", "unavailable", "none", "null", ""] %}
       {{ num_ha_val }}
     {% else %}
       0
