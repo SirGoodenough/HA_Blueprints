@@ -1,6 +1,6 @@
 blueprint:
   name: Aqara Magic Cube ZHA - 2024-06-04
-  author: SirGoodenough
+  author: dani
   description: >
     This Blueprint uses a Z2M Event Sensor to sort out the 38(+54)
     unique actions available from the Xiaomi Magic Cube Remote. (Some unique actions
@@ -113,23 +113,27 @@ blueprint:
 
         Also required is of course the cube identifier.
       input:
-        last_side_input:
-          name: Last side up numeric helper
-          description: Please select a Numeric Helper to be used to record the last side that saw action.
-          selector:
-            entity:
-              filter:
-                - domain: input_number
-              multiple: false
-        cube:
-          name: Aqara Cube
-          description: Select the Aqara Cube device
-          selector:
-            device:
-              filter:
-                - integration: zha
-                  manufacturer: LUMI
-              multiple: false
+        required_input:
+          name: Required input 👀
+          icon: mdi:alert-box
+          collapsed: false
+          description: >
+            This input is required for the blueprint to function
+          input:
+            remote:
+              name: Remote
+              description: >
+                The entity to put here is the sensor that Z2M imported that is
+                named like this>
+    
+                ```sensor.XXYour_HameXX_action```
+              selector:
+                entity:
+                  filter:
+                    - integration: mqtt
+                      domain: sensor
+                  multiple: false
+
     optional_conditions:
       name: Optional conditions🤓
       icon: mdi:alert-octagon-outline
