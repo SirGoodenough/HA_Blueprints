@@ -87,7 +87,7 @@ Then clicking on ```MQTT INFO```:
 
 ![Click MQTT INFO](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/MQTTInfo.png?raw=true "Click MQTT INFO")
 
-Then looking for the subscribed topic that looks like this... ```zigbee2nqtt/[your device name here]```:
+Then looking for the subscribed topic that looks like this... ```zigbee2mqtt/[your device name here]```:
 
 ![Find the subscribed topic](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/MQTTTopic.png?raw=true "Find the subscribed topic")
 
