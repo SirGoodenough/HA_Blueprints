@@ -2,6 +2,7 @@
 
 ## 📑 Changelog
 
+* **2025-02-10**: Added section to explain how to interview and change Action / Scene Mode in ZHA
 * **2024-06-04**: Blueprint Input Sections for enhanced Descriptions.
   * (Documentation change 2-7-2024 to add License notice. Changes only to Descriptions.)
 * **2023-10-20**: Enhancement [Add flip to side from any](https://github.com/SirGoodenough/HA_Blueprints/issues/22)
@@ -233,6 +234,27 @@ I have had reports of the 'tap' action working. It was due to the lack of instru
 ![Demo of Tap Action](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/Tap_Action.gif?raw=true "Demo of Tap Action")
 
 In a similar manner, flips need to tap the surface at the end of the 90 or 180 flip. Setting up the template sensor above will help train you in the force needed for all the actions.
+
+## 🤹‍♀️ Getting The Cube Interviewed and Into Action Mode
+
+This cube has a Scene Mode and an Action Mode. Most people will want to choose Action Mode for ZHA because it has more functions available. The ZHA Quirk for this Does not have Scene Mode functions available, so most of the features will not be available to you if you choose that one.
+
+You can tell what mode it's in by what functions show up in the log visible in the device screen.
+
+If the thing doesn't respond at all, it didn't complete the interview correctly. This happened to me many many times... I eventually found if I start 'add device' in ZHA, then hold down the button until it flashes AND keep holding it down until it flashes again, it **usually** completes the interview. I also found that a couple of times I had to disable the device and remove it from ZHA Completely before it would re-interview and be functional again. I'm testing this thru a mesh device as I am not close to my ZHA coordinator where I am sitting, but that is my experience with it today.
+
+If it will rotate left, rotate right, shake and slide only then it's in Scene Mode. You are missing a bunch of functions. Funny enough it also does the throw and hold function but ZHA has no idea what they are and just report in the log something happened that it doesn't have a name for.
+![Some of the functions available in Scene Mode](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/ZHASceneMode.png?raw=true "Log showing Scene Mode Actions")
+
+However if it will do all those things plus do a flip, slide, and knock function, it is in action mode. Action mode doesn't do Hold function, but that is cube design.
+![Some of the functions available in Action Mode](https://github.com/SirGoodenough/HA_Blueprints/blob/master/images/ZHASceneMode.png?raw=true "Log showing Action Mode Actions")
+
+Now, how do you change it...
+* I found if you click it 6 rimes slowly so it blinks between, it just registers a button push in the log and nothing happens.
+* If you hold the button too long, it tries to re-interview.
+* If you click the button 6 times quick (no flashing between), the log doesn't show anything, but the mode changes. You should see a switch to the other function list above and it has switched modes without telling you bupkis. Also, that sucks.
+
+I completely understand why people are having problems...
 
 ## 🙊 Acknowledgments
 
