@@ -334,7 +334,7 @@ condition: !input additional_conditions
 
 action:
 - choose:
-  - alias: Fan normal turn off sequence
+  - alias: Normal fan normal turn off sequence
     conditions:
       or:
       - alias: Time limit has been reached
@@ -367,10 +367,10 @@ action:
         before: !input fan_off_time
         weekday: !input weekday
     sequence:
-    - alias: Do something when the fan stop condition triggers
+    - alias: Do an extra action loaded from loop_action input
       if: '{{ not my_loop_action in (''none'', ''null'', ''unavailable'', '''') }}'
       then: !input 'loop_action'
-    - alias: Set the fan speed based on the sensor temperature
+    - alias: Always set the fan speed based on the sensor temperature
       service: mqtt.publish
       data:
         topic: !input mqtt_fan_topic
