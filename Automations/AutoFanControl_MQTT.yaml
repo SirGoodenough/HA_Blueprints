@@ -292,24 +292,24 @@ blueprint:
           selector:
             condition:
 
-trigger:
-- platform: time
+triggers:
+- trigger: time
   id: go_if_the_stop_time_occurs
   at: !input fan_off_time
-- platform: state
+- trigger: state
   id: go_if_the_control_is_switched_off
   entity_id: !input fan_control
   to: 'off'
-- platform: state
+- trigger: state
   id: go_on_any_sensor_temp_changes
   entity_id: !input room_temp_now
-- platform: state
+- trigger: state
   id: go_on_any_set_temp_changes
   entity_id: !input room_set_temp
-- platform: time
+- trigger: time
   id: go_if_the_start_time_occurs
   at: !input fan_on_time
-- platform: state
+- trigger: state
   id: go_if_the_control_is_switched_on
   entity_id: !input fan_control
   to: 'on'
@@ -332,7 +332,7 @@ variables:
 
 condition: !input additional_conditions
 
-action:
+actions:
 - choose:
   - alias: Fan normal turn off sequence
     conditions:
@@ -348,7 +348,7 @@ action:
       if: '{{ not my_off_action in (''none'', ''null'', ''unavailable'', '''') }}'
       then: !input 'off_action'
     - alias: Stop the fan
-      service: mqtt.publish
+      action: mqtt.publish
       data:
         topic: !input mqtt_fan_topic
         payload: 0
@@ -371,7 +371,7 @@ action:
       if: '{{ not my_loop_action in (''none'', ''null'', ''unavailable'', '''') }}'
       then: !input 'loop_action'
     - alias: Set the fan speed based on the sensor temperature
-      service: mqtt.publish
+      action: mqtt.publish
       data:
         topic: !input mqtt_fan_topic
         qos: 2

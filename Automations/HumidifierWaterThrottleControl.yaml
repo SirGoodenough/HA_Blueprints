@@ -175,15 +175,15 @@ blueprint:
           selector:
             condition:
 
-trigger:
-- platform: state
+triggers:
+- trigger: state
   id: go if the humidifer was switched on or off
   entity_id: !input 'humidifier'
-- platform: state
+- trigger: state
   id: go if the humidifier set point changes
   entity_id: !input 'humidifier'
   attribute: humidity
-- platform: state
+- trigger: state
   id: go if the humidity changes
   entity_id: !input 'humidity'
 
@@ -209,7 +209,7 @@ variables:
     # Convert !input to variable
   power_1_var: !input power_1
 
-condition:
+conditions:
   - condition: and
     conditions:
     - condition: state
@@ -222,12 +222,12 @@ condition:
   - alias: User pick
     condition: !input additional_conditions
 
-action:
+actions:
   - alias: "Wait until Humidifier is not sending water"
     wait_template: '{{ is_state( power_1_var, ''off'' ) }}'
     timeout: "00:01:50"
   - alias: Send the water time.
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       topic: !input 'mqtt_topic'
       qos: 2

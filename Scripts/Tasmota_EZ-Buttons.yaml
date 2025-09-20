@@ -157,7 +157,7 @@ blueprint:
         to use for restarting all Tasmota devices. 
         Use this if you are having wierd problems and want to 
         restart them with a fresh boot. 
-        I also suggest you add a 'Button Press' service for this button 
+        I also suggest you add a 'Button Press' action for this button 
         to execute a minute or so after Home Assistant restarts. 
         It will update all the devices and pull fresh sensor and 
         state readings into HA so things are working right away when you start. 
@@ -219,7 +219,7 @@ sequence:
         value_template: '{{ ez_canary_grouptopic_var == ez_canary_grouptopic_v1 }}'
     sequence:
       - alias: Make the button 4 canary update
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           "topic": "{{ ha_topic }}{{ ez_canary_var }}/config"
           "retain": true
@@ -242,7 +242,7 @@ sequence:
               "payload_press": "1"
             }
 - alias: Make the button 4 restart
-  service: mqtt.publish
+  action: mqtt.publish
   data:
     "topic": "{{ ha_topic }}{{ ez_restart_var }}/config"
     "retain": true
@@ -265,7 +265,7 @@ sequence:
         "payload_press": "1"
       }
 - alias: Make the button 4 all update
-  service: mqtt.publish
+  action: mqtt.publish
   data:
     "topic": "{{ ha_topic }}{{ ez_update_var }}/config"
     "retain": true

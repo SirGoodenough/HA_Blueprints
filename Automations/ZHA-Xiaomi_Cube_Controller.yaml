@@ -852,8 +852,8 @@ blueprint:
           selector:
             action: {}
 
-trigger:
-- platform: event
+triggers:
+- trigger: event
   event_type: zha_event
   event_data:
     device_id: !input cube
@@ -883,16 +883,16 @@ variables:
     #  It misses sometimes but it's the best we have with ZHA implementation.
   side: '{{ iif((action != ''rotate_right'' and action != ''rotate_left''), current_side, last_side) }}'
 
-condition:
+conditions:
   - condition: template
       # Only allow valid commands. Sorts out any weirdness.
     value_template: '{{ trigger.event.data.command in (''rotate_right'', ''rotate_left'', ''flip'', ''slide'', ''knock'', ''shake'', ''drop'') }}'
   - alias: User pick
     condition: !input additional_conditions
 
-action:
+actions:
 - alias: 'Store the current_side as the last_side for the next trigger'
-  service: input_number.set_value
+  action: input_number.set_value
   target:
     entity_id: !input last_side_input
   data:

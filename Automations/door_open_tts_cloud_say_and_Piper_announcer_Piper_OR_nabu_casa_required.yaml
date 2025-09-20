@@ -581,8 +581,8 @@ blueprint:
           selector:
             condition:
 
-trigger:
-  platform: state
+triggers:
+  trigger: state
   entity_id: !input door_entity
   from: 'off'
   to: 'on'
@@ -597,7 +597,7 @@ variables:
     # The variable 'door' is only used by the user for the TTS message.
   door: "{{ trigger.to_state.attributes.friendly_name }}"
 
-condition:
+conditions:
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
     after: !input start_time
@@ -606,11 +606,11 @@ condition:
   - alias: User pick
     condition: !input additional_conditions
 
-action:
+actions:
 - alias: Set the flag to false if 'reminded' exists.
   if: "{{ reminded[0] is defined }}"
   then:
-    service: input_boolean.turn_off
+    action: input_boolean.turn_off
     target:
       entity_id: !input reminded
 
@@ -628,20 +628,20 @@ action:
       then:
       - parallel:
         - choose:
-          - conditions: "{{ tts_service == 'nabu' }}"
+          - conditions: "{{ tts_action == 'nabu' }}"
             sequence:
               - alias: Send a voice message via tts-cloud_say
-                service: tts.cloud_say
+                action: tts.cloud_say
                 data:
                   entity_id: !input speaker_target
                   message: !input announcement_message
                   options:
                     voice: !input speaker_voice
                   language: !input speaker_language
-          - conditions: '{{ tts_service == "piper" }}'
+          - conditions: '{{ tts_action == "piper" }}'
             sequence:
               - alias: Send a voice message via Piper Added-on & Wyoming
-                service: tts.speak
+                action: tts.speak
                 data:
                   media_player_entity_id: !input speaker_target
                   message: !input announcement_message
@@ -651,7 +651,7 @@ action:
                   entity_id: tts.piper
           default:
             alias: Put a message in the log if the TTS did not select
-            service: system_log.write
+            action: system_log.write
             data:
               message: >
                 Automation via Blueprint: 
@@ -662,7 +662,7 @@ action:
         - alias: Set to true if 'reminded' exists because a warning was now issued.
           if: "{{ reminded[0] is defined }}"
           then:
-            service: input_boolean.turn_on
+            action: input_boolean.turn_on
             target:
               entity_id: !input reminded
       - alias: Delay to make sure the message can complete.
@@ -679,20 +679,20 @@ action:
         - "{{ expand(reminded)[0].state == 'on'}}"
   then:
     choose:
-      - conditions: "{{ tts_service == 'nabu' }}"
+      - conditions: "{{ tts_action == 'nabu' }}"
         sequence:
           - alias: Send a voice message via tts-cloud_say
-            service: tts.cloud_say
+            action: tts.cloud_say
             data:
               entity_id: !input speaker_target
               message: !input final_message
               options:
                 voice: !input speaker_voice
               language: !input speaker_language
-      - conditions: '{{ tts_service == "piper" }}'
+      - conditions: '{{ tts_action == "piper" }}'
         sequence:
           - alias: Send a voice message via Piper Added-on & Wyoming
-            service: tts.speak
+            action: tts.speak
             data:
               media_player_entity_id: !input speaker_target
               message: !input final_message
@@ -702,7 +702,7 @@ action:
               entity_id: tts.piper
     default:
       alias: Put a message in the log if the TTS did not select a service properly
-      service: system_log.write
+      action: system_log.write
       data:
         message: >
           Automation via Blueprint: 

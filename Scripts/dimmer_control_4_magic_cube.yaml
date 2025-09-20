@@ -56,7 +56,7 @@ blueprint:
 
       Sample call / use of this script for ZHA:
         ```yaml
-        - service: script.cube_dimmer_control_bp
+        - action: script.cube_dimmer_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
             light: light.grp_studio
@@ -64,7 +64,7 @@ blueprint:
 
       Sample call / use of this script for Z2M:
         ```yaml
-        - service: script.cube_dimmer_control_bp
+        - action: script.cube_dimmer_control_bp
           data:
             angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
             light: light.grp_kitch
@@ -193,14 +193,14 @@ sequence:
       value_template: "{{ is_number(transition_var) }}"
     then:
       - alias: "Transition number IS available"
-        service: light.turn_on
+        action: light.turn_on
         data:
           entity_id: '{{ light }}'
           brightness_pct: '{{ bright_p }}'
           transition: '{{ transition_var }}'
     else:
       - alias: "NO transition number available"
-        service: light.turn_on
+        action: light.turn_on
         data:
           entity_id: '{{ light }}'
           brightness_pct: '{{ bright_p }}'
