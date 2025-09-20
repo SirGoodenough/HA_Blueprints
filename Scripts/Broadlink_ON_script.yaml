@@ -107,30 +107,30 @@ blueprint:
           mode: slider
 
 sequence:
-  - service: switch.turn_on
+  - action: switch.turn_on
     target:
       entity_id: !input 'adapter_power'
-  - service: script.turn_on
+  - action: script.turn_on
     target:
       entity_id: !input 'reciever_power'
   - delay: !input 'cooldown'
-  - service: script.turn_on
+  - action: script.turn_on
     target:
       entity_id: !input 'tv_power'
   - delay: !input 'cooldown'
-  - service: script.turn_on
+  - action: script.turn_on
     target:
       entity_id: !input 'reciever_input'
   - delay: !input 'cooldown'
-  - service: script.turn_on
+  - action: script.turn_on
     target:
       entity_id: !input 'tv_ota_mode'
   - delay: !input 'cooldown'
-  - service: script.turn_on
+  - action: script.turn_on
     target:
       entity_id: !input 'reciever_out_mode'
   - delay: !input 'cooldown'
-  - service: script.turn_on
+  - action: script.turn_on
     target:
       entity_id: !input 'tv_mode'
 

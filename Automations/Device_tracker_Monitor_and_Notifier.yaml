@@ -337,23 +337,23 @@ blueprint:
           selector:
             condition:
 
-trigger:
-  - platform: state
+triggers:
+  - trigger: state
     id: level_1
     entity_id: !input trackees
     from: "home"
     for: !input gone_for
-  - platform: state
+  - trigger: state
     id: level_2
     entity_id: !input trackees
     from: "home"
     for: !input gone_for_longer
-  - platform: state
+  - trigger: state
     id: level_3
     entity_id: !input trackees
     from: "home"
     for: !input gone_for_still_longer
-  - platform: state
+  - trigger: state
     id: level_4
     entity_id: !input trackees
     from: "home"
@@ -377,7 +377,7 @@ variables:
     # Strip the beginning and end garbage from those attributes.
   attr: '{{ attr_raw.split(''; '')[1].split(''>'')[0] }}'
 
-condition:
+conditions:
   - alias: Only allow execution within selected Hours / Weekdays
     condition: time
     after: !input 'notify_enable_time'
@@ -386,7 +386,7 @@ condition:
   - alias: User pick
     condition: !input additional_conditions
 
-action:
+actions:
 - alias: 'Persistent Notifications. Options are skip it, use a notification_id, or default to no id'
   choose:
   - conditions: '{{ skip_p_notification== false }}'
@@ -394,7 +394,7 @@ action:
   - conditions: '{{ notify_id | length > 0 }}'
     sequence: 
     - alias: Notify interested parties WITH notification_id
-      service: persistent_notification.create
+      action: persistent_notification.create
       data:
         title: '{{ states[trigger.to_state.entity_id].name + '' Status'' }}'
         message: '{{ states[trigger.to_state.entity_id].name + '' is '' + states[trigger.to_state.entity_id].state }}
@@ -407,7 +407,7 @@ action:
         notification_id: '{{ notify_id }}'
   default:
     - alias: Notify interested parties WITHOUT notification_id
-      service: persistent_notification.create
+      action: persistent_notification.create
       data:
         title: '{{ states[trigger.to_state.entity_id].name + '' Status'' }}'
         message: '{{ states[trigger.to_state.entity_id].name + '' is '' + states[trigger.to_state.entity_id].state }}

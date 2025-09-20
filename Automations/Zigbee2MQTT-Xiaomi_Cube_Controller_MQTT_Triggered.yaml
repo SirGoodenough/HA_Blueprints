@@ -853,8 +853,8 @@ blueprint:
           selector:
             action: {}
 
-trigger:
-  - platform: mqtt
+triggers:
+  - trigger: mqtt
     topic: !input topic
 
 variables:
@@ -926,7 +926,7 @@ variables:
   config_topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side/config' }}"
   topic_2: "{{ 'homeassistant/number/' + ieee_id + '/last_side' }}"
 
-condition:
+conditions:
   - condition: template
     value_template:  >
       {{ trigger.payload_json is defined and
@@ -936,9 +936,9 @@ condition:
   - alias: User pick
     condition: !input additional_conditions
 
-action:
+actions:
 - alias: Make number helper to store last side
-  service: mqtt.publish
+  action: mqtt.publish
   data:
     "topic": "{{ config_topic_2 }}"
     "retain": true
@@ -979,7 +979,7 @@ action:
     angle: '{{ angle }}'
 
 - alias: 'Store the current_side as the last_side for the next trigger'
-  service: number.set_value
+  action: number.set_value
   target:
     entity_id: '{{ num_ha_name }}'
   data:

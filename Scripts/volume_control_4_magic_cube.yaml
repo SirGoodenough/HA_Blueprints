@@ -39,7 +39,7 @@ blueprint:
 
       Sample call / use of this script for ZHA:
         ```yaml
-        - service: script.cube_dimmer_control_bp
+        - action: script.cube_dimmer_control_bp
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
             mp: media_player.farg
@@ -47,7 +47,7 @@ blueprint:
 
       Sample call / use of this script for Z2M:
         ```yaml
-        - service: script.cube_dimmer_control_bp
+        - action: script.cube_dimmer_control_bp
           data:
             angle: '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
             mp: media_player.farg
@@ -120,7 +120,7 @@ variables:
   delta: "{{ scalar_var * angle | default(0.2) | float(0.3) }}"
 
 sequence:
-  - service: media_player.volume_set
+  - action: media_player.volume_set
     data_template:
       volume_level: >-
         {% set v = state_attr(mp, 'volume_level') | float(0.4) %}

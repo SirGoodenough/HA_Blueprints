@@ -229,8 +229,8 @@ blueprint:
           selector:
             action: {}
 
-trigger:
-- platform: state
+triggers:
+- trigger: state
   entity_id: !input remote
 
 variables:
@@ -244,7 +244,7 @@ variables:
   entity_id: !input remote
   friendly_name: '{{ trigger.to_state.attributes.friendly_name }}'
 
-condition:
+conditions:
   - condition: template
     value_template: >-
       {{ event in (
@@ -255,7 +255,7 @@ condition:
   - alias: User pick
     condition: !input additional_conditions
 
-action:
+actions:
 - alias: Fire Last Action event
   event: rm02_last_action
   event_data:

@@ -186,15 +186,15 @@ blueprint:
           selector:
             condition:
 
-trigger:
-  - platform: time
+triggers:
+  - trigger: time
     at: !input ramp_start_time
     id: time_start
-  - platform: state
+  - trigger: state
     entity_id: !input climate_e
     attribute: current_temperature
     id: room_temp_changed
-  - platform: homeassistant
+  - trigger: homeassistant
     event: start
     id: ha_restart
 
@@ -245,7 +245,7 @@ condition:
   - alias: User pick
     condition: !input additional_conditions
 
-action:
+actions:
   - alias: "Repeat bumping temp until you hit the top or the time is up"
     repeat:
       while:
@@ -260,7 +260,7 @@ action:
           if: "{{ _current_temp <= _maxTemp and _thermostat_set_temp != _bump_target }}"
           then:
             - alias: Bump the temp up at rampRate until it gets to max
-              service: climate.set_temperature
+              action: climate.set_temperature
               target:
                 entity_id: !input climate_e
               data:
