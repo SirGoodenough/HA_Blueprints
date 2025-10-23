@@ -1,0 +1,31 @@
+Does it matter if the closest is in the past or future?  In other words, are you looking for the closest next datetime or the absolute closest datetime?
+
+```yaml
+# The following assume you have a variable, dt_list, that holds 
+# a list of datetime objects 
+
+#Next closest
+{%- set now_var = now() %}
+{%- set new_list = ([now_var] + dt_list)|sort %}
+{%- set now_index = new_list.index(now_var) %}
+{{ new_list[now_index+1]}}
+
+#Past closest
+{%- set now_var = now() %}
+{%- set new_list = ([now_var] + dt_list)|sort %}
+{%- set now_index = new_list.index(now_var) %}
+{{ new_list[now_index-1]}}
+ 
+#Absolute closest
+{%- set now_var = now() %}
+{%- set new_list = ([now_var] + dt_list)|sort %}
+{%- set now_index = new_list.index(now_var) %}
+{% if now_index == 0 %}
+  {{ new_list[1] }}
+{% elif now_index == new_list|count-1 %}
+  {{ new_list[-2] }}
+{% else %}
+  {%- set remaining = new_list[now_index-1:now_index+2] %}
+  {{remaining[0] if (remaining[0] - now_var > now_var - remaining[2]) else remaining[2] }} 
+{% endif %}
+```
