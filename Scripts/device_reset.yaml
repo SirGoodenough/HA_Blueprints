@@ -66,13 +66,13 @@ blueprint:
 
 sequence:
   - alias: Turn off the device
-    service: homeassistant.turn_off
+    action: homeassistant.turn_off
     data: {}
     target:
       entity_id: !input target_entity
   - delay: !input time_off
   - alias: Turn on the device
-    service: homeassistant.turn_on
+    action: homeassistant.turn_on
     data: {}
     target:
       entity_id: !input target_entity

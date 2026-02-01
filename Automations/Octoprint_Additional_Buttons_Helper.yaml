@@ -328,30 +328,30 @@ trigger_variables:
   lf_cmd_t: '{{ printer_topic }}BluePrint/filLoad'
   cf_cmd_t: '{{ printer_topic }}BluePrint/filChange'
 
-trigger:
-- platform: state
+triggers:
+- trigger: state
   entity_id: !input print_status
   id: "start_up"
   to: "Operational"
-- platform: numeric_state
+- trigger: numeric_state
   entity_id: !input printhead_temp
   id: "asd_in_range"
   below: !input asd_u_trig_temp
   above: !input asd_l_trig_temp
   for: !input asd_delay
-- platform: mqtt
+- trigger: mqtt
   topic: '{{ p_cmd_t }}'
   payload: "PRESS"
   id: 'Presentation'
-- platform: mqtt
+- trigger: mqtt
   topic: '{{ sd_cmd_t }}'
   payload: "PRESS"
   id: 'shutdown_pressed'
-- platform: mqtt
+- trigger: mqtt
   topic: '{{ lf_cmd_t }}'
   payload: "PRESS"
   id: 'load_filament'
-- platform: mqtt
+- trigger: mqtt
   topic: '{{ cf_cmd_t }}'
   payload: "PRESS"
   id: 'change_filament'
@@ -449,7 +449,7 @@ variables:
     {% if fil_feed > 200 %}{{ fil_feed - 200 | int(0) }}{% else %}0{% endif %}'
   max_y: !input max_y
 
-action:
+actions:
 - alias: Determine if there was an actionable event
   choose:
   - conditions:
@@ -469,7 +469,7 @@ action:
               - '{{ states("select."~dv_name~"_auto_shutdown_ctrl") == "enable" }}'
     sequence:
       - alias: Shut down Octoprint
-        service: button.press
+        action: button.press
         entity_id: !input octoprint_shutdown
       - alias: Hold for the MQTT connection do go away
         wait_template: "{{ is_state( printer_status, 'unavailable' ) }}"
@@ -477,10 +477,10 @@ action:
       - alias: Hold a bit longer to make sure the PI has stopped
         delay: 00:00:59
       - alias: Kill the wall plug
-        service: homeassistant.turn_off
+        action: homeassistant.turn_off
         entity_id: !input printer_power_switch
       - alias: Clear the PRESS
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ sd_cmd_t }}'
           payload: ""
@@ -497,35 +497,35 @@ action:
           id: Presentation
     sequence:
       - alias: Jog the Z up a bit so no hitty
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/jog'
           payload: "{{ { \"z\": 40, \"speed\": 2500 } | to_json }}"
           qos: "1"
           retain: false
       - alias: Set to absolute positioning mode
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: G90
           qos: "1"
           retain: false
       - alias: Bring part forward
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: G0 X1 Y{{ max_y }} F2500
           qos: "1"
           retain: false
       - alias: Release the motors
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M84
           qos: "1"
           retain: false
       - alias: Clear the PRESS
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ p_cmd_t }}'
           payload: ""
@@ -542,56 +542,56 @@ action:
           id: load_filament
     sequence:
       - alias: Marlin allow Extruder jog when cold
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M302 P1
           qos: "1"
           retain: false
       - alias: Extruder into relative mode
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M83
           qos: "1"
           retain: false
       - alias: Move the extruder into hotend
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: G1 E{{fil_feed_1st}} F2500
           qos: "1"
           retain: false
       - alias: Move the extruder into hotend
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: G1 E{{fil_feed_2nd}} F2500
           qos: "1"
           retain: false
       - alias: Marlin dis-allow Extruder jog when cold
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M302 P2
           qos: "1"
           retain: false
       - alias: Extruder into absolute mode
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M82
           qos: "1"
           retain: false
       - alias: Extruder Motor release
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M18 E3
           qos: "1"
           retain: false
       - alias: Clear the PRESS
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ lf_cmd_t }}'
           payload: ""
@@ -608,56 +608,56 @@ action:
           id: change_filament
     sequence:
       - alias: Marlin allow Extruder jog when cold
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M302 P1
           qos: "1"
           retain: false
       - alias: Extruder into relative mode
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M83
           qos: "1"
           retain: false
       - alias: Move the extruder out
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: G1 E-200 F2500
           qos: "1"
           retain: false
       - alias: Move the extruder out
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: G1 E-200 F2500
           qos: "1"
           retain: false
       - alias: Marlin dis-allow Extruder jog when cold
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M302 P2
           qos: "1"
           retain: false
       - alias: Extruder into absolute mode
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M82
           qos: "1"
           retain: false
       - alias: Extruder Motor release
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ printer_topic }}hassControl/commands'
           payload: M18 E3
           qos: "1"
           retain: false
       - alias: Clear the PRESS
-        service: mqtt.publish
+        action: mqtt.publish
         data:
           topic: '{{ cf_cmd_t }}'
           payload: ""
@@ -665,7 +665,7 @@ action:
           retain: false
   default:
   - alias: Home Button Create
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       "topic": "{{ h_c_topic }}"
       "retain": true
@@ -691,7 +691,7 @@ action:
           "pl_prs": "{{ h_pl_prs }}"
         }
   - alias: Bed Level Button Create
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       "topic": "{{ bl_c_topic }}"
       "retain": true
@@ -717,7 +717,7 @@ action:
           "pl_prs": "{{ bl_pl_prs }}"
         }
   - alias: User Aux 1 Button Create
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       "topic": "{{ a1_c_topic }}"
       "retain": true
@@ -743,7 +743,7 @@ action:
           "pl_prs": "{{ a1_pl_prs }}"
         }
   - alias: User Aux 2 Button Create
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       "topic": "{{ a2_c_topic }}"
       "retain": true
@@ -769,7 +769,7 @@ action:
           "pl_prs": "{{ a2_pl_prs }}"
         }
   - alias: Presentation Button Create
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       "topic": "{{ p_c_topic }}"
       "retain": true
@@ -795,7 +795,7 @@ action:
           "pl_prs": "{{ p_pl_prs }}"
         }
   - alias: Safe Shutdown Button Create
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       "topic": "{{ sd_c_topic }}"
       "retain": true
@@ -821,7 +821,7 @@ action:
           "pl_prs": "{{ sd_pl_prs }}"
         }
   - alias: Auto Shutdown Control
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       "topic": "{{ asdc_c_topic }}"
       "retain": true
@@ -848,7 +848,7 @@ action:
           "ops": {{ asdc_ops }}
         }
   - alias: Load Filament Button Create
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       "topic": "{{ lf_c_topic }}"
       "retain": true
@@ -874,7 +874,7 @@ action:
           "pl_prs": "{{ lf_pl_prs }}"
         }
   - alias: Change Filament Button Create
-    service: mqtt.publish
+    action: mqtt.publish
     data:
       "topic": "{{ cf_c_topic }}"
       "retain": true

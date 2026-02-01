@@ -5,7 +5,7 @@ blueprint:
     This provides a way to play canned media files with the big 
       long list of YAML entries but keep the main script or automation clean. 
       All that is required there would be a simple line like:  
-        '- service: script.media_player_doorbell_sound'
+        '- action: script.media_player_doorbell_sound'
 
 
     [Community link for this blueprint](https://community.home-assistant.io/t/script-blueprint-to-play-media-player-files-not-an-automation-blueprint/371988)
@@ -135,7 +135,7 @@ variables:
 
 sequence:
 - alias: Media Player Blueprint Script
-  service: media_player.play_media
+  action: media_player.play_media
   data:
     entity_id: "{{my_speaker}}"
     media_content_id: "{{my_file_2_play}}"

@@ -33,7 +33,7 @@ blueprint:
 
       Sample call / use of this script with ZHA:
         ```yaml
-        - service: script.cube_color_control
+        - action: script.cube_color_control
           data:
             angle: '{{ trigger.event.data.args.relative_degrees | default(0.1) | float(0.2) }}'
             light: light.grp_studio
@@ -42,7 +42,7 @@ blueprint:
 
       Sample call / use of this script with Z2M:
         ```yaml
-        - service: script.cube_color_control
+        - action: script.cube_color_control
           data:
             '{{ trigger.payload_json.action_angle | default(0.1) | float(0.2) }}'
             light: light.kitchensink
@@ -146,7 +146,7 @@ sequence:
             condition: template
             value_template: "{{ t_color == 'red' }}"
         sequence:
-          - service: light.turn_on
+          - action: light.turn_on
             data:
               rgb_color: >-
                 {% if new_red < 0 %}
@@ -166,7 +166,7 @@ sequence:
             condition: template
             value_template: "{{ t_color == 'green' }}"
         sequence:
-          - service: light.turn_on
+          - action: light.turn_on
             data:
               rgb_color: >-
                 {% if new_green < 0 %}
@@ -186,7 +186,7 @@ sequence:
             condition: template
             value_template: "{{ t_color == 'blue' }}"
         sequence:
-          - service: light.turn_on
+          - action: light.turn_on
             data:
               rgb_color: >-
                 {% if new_blue < 0 %}

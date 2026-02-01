@@ -1,0 +1,85 @@
+blueprint:
+  name: Pellet Stove Disable - ThermoPI-Furnace Extension - 2026-02-01
+  author: SirGoodenough
+  domain: script
+  homeassistant:
+    min_version: 2023.8.0
+  # source_url: 
+  description: >-
+    This script was invented to be used with ThermoPI-Furnace, a python script
+     for a rasPI set up to monitor and control your furnace. The python has an
+     option to control a relay via MQTT commands.
+
+    I use my relay output to enable or disable the pellet feed in my pellet stove,
+     but you can do anything you like with the GPIO signal that is turned on and off.
+
+    NOTE: Mine ie controlling a normally closed relay, so when I state below
+     (shut off the pellets), it is in fact turning the relay on.
+
+    This is so that if the external device is powered down, the stove works as normal.
+
+    You will need to know the MQTT topic that the python program generated
+     and add it here.
+  input:
+    required_inputs:
+      name: "Required inputs \U0001F440"
+      icon: mdi:alert-box
+      collapsed: false
+      description: >-
+        These inputs are required for the blueprint to function and must
+         be filled in.
+      input:
+        mqtt_toggle_topic:
+          name: BS Topic
+          description: >-
+            This is the MQTT Topic needed to change the Binary Sensor.
+
+            It should look similar to:
+
+            ```homeassistant/binary_sensor/107935_pel_stove_disable/state```
+
+            You need to look at **YOUR device** and determine the exact correct topic
+             to send to the broker to make yours work.
+            MQTTExplorer is a good tool to use to figure this out.
+          selector:
+            text:
+    optional_parameters:
+      name: "Optional parameters\U0001F913"
+      icon: mdi:alert-octagon-outline
+      collapsed: true
+      description: >-
+       These inputs set optional parameters that allow you to customize
+        the intended actions.\n  Read the individual descriptions for more details
+
+        The Blueprint will work if no changes are made to this section.
+      input:
+        state_default:
+          name: Default state if no data is received when calling script
+          description: >-
+           Set this to 0 to default as off and 1 so default as on.
+            This will assume 0 or off if not changed.
+          default: 0
+          selector:
+            number: 
+              min: 0
+              max: 1
+              step: 1
+              mode: slider
+fields:
+  control:
+    name: Control State
+    description: Set to 1 to shut off pellets, 0 to restore normal operation.
+    required: false
+    example: "false"
+    selector:
+      boolean:
+variables:
+  _state_d: !input state_default
+sequence:
+  - alias: Set the state
+    action: mqtt.publish
+    data:
+      topic: !input mqtt_toggle_topic
+      payload: >
+        {{ iif(control, 1, 0, _state_d)}}
+icon: mdi-toggle-switch-outline

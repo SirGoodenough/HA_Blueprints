@@ -143,28 +143,28 @@ blueprint:
           selector:
             condition:
 
-trigger:
-- platform: state
+triggers:
+- trigger: state
   entity_id: !input 'button_one'
   id: pad1
   from: 'off'
   to: 'on'
-- platform: state
+- trigger: state
   entity_id: !input 'button_two'
   id: pad2
   from: 'off'
   to: 'on'
-- platform: state
+- trigger: state
   entity_id: !input 'button_three'
   id: pad3
   from: 'off'
   to: 'on'
-- platform: state
+- trigger: state
   entity_id: !input 'button_four'
   id: pad4
   from: 'off'
   to: 'on'
-- platform: state
+- trigger: state
   entity_id: !input 'button_five'
   id: pad5
   from: 'off'
@@ -178,9 +178,9 @@ variables:
 
 condition: !input additional_conditions
 
-action:
+actions:
 - alias: Reset seq number to 99 if timeout occurred
-  service: input_number.set_value
+  action: input_number.set_value
   data:
     entity_id: !input 'seq_status'
     value: >
@@ -198,7 +198,7 @@ action:
       id: pad1
     sequence:
     - alias: Set seq number to 1
-      service: input_number.set_value
+      action: input_number.set_value
       data:
         entity_id: !input 'seq_status'
         value: 1
@@ -211,7 +211,7 @@ action:
         value_template: '{{ is_state( seq_status_ent, ''1.0'') }}'
     sequence:
     - alias: Set seq number to 3
-      service: input_number.set_value
+      action: input_number.set_value
       data:
         value: 3
       target:
@@ -225,7 +225,7 @@ action:
         value_template: '{{ is_state( seq_status_ent, ''3.0'') }}'
     sequence:
     - alias: Set seq number to 7
-      service: input_number.set_value
+      action: input_number.set_value
       data:
         value: 7
       target:
@@ -239,7 +239,7 @@ action:
         value_template: '{{ is_state( seq_status_ent, ''7.0'') }}'
     sequence:
     - alias: Set seq number to 15
-      service: input_number.set_value
+      action: input_number.set_value
       data:
         value: 15
       target:
@@ -253,34 +253,34 @@ action:
         value_template: '{{ is_state( seq_status_ent, ''15.0'') }}'
     sequence:
     - alias: Set seq number to 31
-      service: input_number.set_value
+      action: input_number.set_value
       data:
         value: 31
       target:
         entity_id: !input 'seq_status'
     - alias: Enable the Lock
-      service: input_boolean.turn_on
+      action: input_boolean.turn_on
       entity_id: !input 'lock_control'
     - alias: Leave the lock enabled for a time limit
       delay: !input 'on_timer'
     - alias: Disable the Lock normal
-      service: input_boolean.turn_off
+      action: input_boolean.turn_off
       entity_id: !input 'lock_control'
     - alias: Reset status number normal
-      service: input_number.set_value
+      action: input_number.set_value
       data:
         value: 0
       target:
         entity_id: !input 'seq_status'
   default:
   - alias: Reset status number on fail code
-    service: input_number.set_value
+    action: input_number.set_value
     data:
       value: 0
     target:
       entity_id: !input 'seq_status'
   - alias: Shut it down on fail code
-    service: input_boolean.turn_off
+    action: input_boolean.turn_off
     entity_id: !input 'lock_control'
 
 mode: single
