@@ -114,6 +114,19 @@ https://community.home-assistant.io/t/miscellaneous-blueprint-scripts-volume-dim
 
 * [Miscellaneous Blueprint Scripts - Volume - Dimming - Reset - Long Short Press Simulation - Color Change.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/Miscellaneous%20Blueprint%20Scripts%20-%20Volume%20-%20Dimming%20-%20Reset%20-%20Long%20Short%20Press%20Simulation%20-%20Color%20Change.md)
 
+#### 🧯Pellet Disable Blueprint
+
+This is a SCRIPT Blueprint. This provides a way to set an MQTT Topic to 1 or 0. Intended to supplement my [ThermoPI-Furnace](https://github.com/SirGoodenough/ThermoPI-Furnace) project.
+
+[![Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled.](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2FSirGoodenough%2FHA_Blueprints%2Fblob%2Fmaster%2FScripts%2Fpellet_disable.yaml)
+
+Related Project: https://github.com/SirGoodenough/ThermoPI-Furnace
+
+This is a niche blueprint that was added to supplement my [ThermoPI-Furnace](https://github.com/SirGoodenough/ThermoPI-Furnace) project. One of the options there is to control a GPIO pit using MQTT. This Blueprint will be used to tuen that MQTT Topic on and on, allowing automation control ot the pin in Home Assistant.
+
+* [pellet_disable.md Help File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/pellet_disable.md)
+* [pellet_disable.yaml Code File](https://github.com/SirGoodenough/HA_Blueprints/blob/master/Scripts/pellet_disable.yaml)
+
 ## 🔃 Automations
 
 #### 🧯Auto Fan Control Blueprint
