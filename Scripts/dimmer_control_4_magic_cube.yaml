@@ -141,7 +141,7 @@ fields:
     name: Transition Field
     description: Seconds to take to change light one level to another
     required: false
-    example: 4
+    example: "4"
     selector:
       number:
         min: 0
