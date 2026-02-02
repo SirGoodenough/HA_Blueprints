@@ -76,73 +76,57 @@ To build the script:
 This is a case I use this in my setup. When my pellet stove internal temperature reached 500F for 5 minutes, it turns off the pellet feed. When it balls below 495 for 5 minutes, it turns the pellet feed back on.
 
     ```yaml
-
-- id: 'c8c7f8f9-febd-4de6-ad0e-7aa84abd2903'
-  alias: Notify Aurora
-  description: Voice that you should look for an aurora
-  triggers:
-  - trigger: numeric_state
-    entity_id:
-    - sensor.aurora_visibility_visibility
-    above: 7
-  conditions: []
-  actions:
-  - action: script.tts_aurora
-    metadata: {}
-    data: {}
-  mode: single
-- id: '1769984565687'
-  alias: Pellet Stove Limiter
-  description: Stop feeding pellets when the stove is above 500 F
-  triggers:
-  - trigger: numeric_state
-    entity_id:
-    - sensor.furnace_pellet_firebox_temperature
-    for:
-      minutes: 5
-    above: 500
-    id: Hot
-  - trigger: numeric_state
-    entity_id:
-    - sensor.furnace_pellet_firebox_temperature
-    for:
-      minutes: 5
-    below: 490
-    id: Cold
-  - trigger: homeassistant
-    event: start
-    id: HA Start
-  - trigger: homeassistant
-    event: shutdown
-    id: HA Stop
-  conditions: []
-  actions:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - Hot
-      sequence:
-      - alias: It is Hot so stop feeding fuel
-        action: script.pellet_feed_enable
-        data:
-          control: true
-    - conditions:
-      - condition: trigger
-        id:
-        - Cold
-      sequence:
-      - alias: It is cold so back to normal
+  `- id: '134082ab-6536-4074-82d2-173ebdba68fe'
+    alias: Pellet Stove Limiter
+    description: Stop feeding pellets when the stove is above 500 F
+    triggers:
+    - trigger: numeric_state
+      entity_id:
+      - sensor.furnace_pellet_firebox_temperature
+      for:
+        minutes: 5
+      above: 500
+      id: Hot
+    - trigger: numeric_state
+      entity_id:
+      - sensor.furnace_pellet_firebox_temperature
+      for:
+        minutes: 5
+      below: 490
+      id: Cold
+    - trigger: homeassistant
+      event: start
+      id: HA Start
+    - trigger: homeassistant
+      event: shutdown
+      id: HA Stop
+    conditions: []
+    actions:
+    - choose:
+      - conditions:
+        - condition: trigger
+          id:
+          - Hot
+        sequence:
+        - alias: It is Hot so stop feeding fuel
+          action: script.pellet_feed_enable
+          data:
+            control: true
+      - conditions:
+        - condition: trigger
+          id:
+          - Cold
+        sequence:
+        - alias: It is cold so back to normal
+          action: script.pellet_feed_enable
+          data:
+            control: false
+      default:
+      - alias: Stop interfering if you do not know the state
         action: script.pellet_feed_enable
         data:
           control: false
-    default:
-    - alias: Stop interfering if you do not know the state
-      action: script.pellet_feed_enable
-      data:
-        control: false
-  mode: single
-
+`  mode: single
     ```
 
 This is what the script content for the Blueprint looks like in mine:
